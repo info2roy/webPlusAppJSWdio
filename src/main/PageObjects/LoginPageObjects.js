@@ -4,6 +4,7 @@ class LoginPageObjects {
     email = '#email';
     password = '.form-input#password';
     loginButton = '//button[text()="Login"]';
+
     
     }
 

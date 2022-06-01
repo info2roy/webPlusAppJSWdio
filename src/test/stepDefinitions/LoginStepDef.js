@@ -1,4 +1,5 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
+const { assert } = require('chai');
 const loginFunc = require('../../main/PageFunctionalities/LoginFunctionality')
 
 Given(/^I am on the login page$/, async function(){
@@ -17,4 +18,5 @@ When(/^I login with "([^"]*)?" and "([^"]*)?" credentials$/, async function(user
 Then(/^I should see a home page$/, function(){
     var currentPageUrl = browser.getUrl();
     console.log("current page url ==> "+currentPageUrl);
+    assert.equal(home.com, actualhome.com)
 })
