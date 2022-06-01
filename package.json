@@ -1,0 +1,28 @@
+{
+  "name": "conker-webdriverio",
+  "version": "1.0.0",
+  "description": "WebdriverIO script framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PriyankarRoy",
+  "license": "ISC",
+  "devDependencies": {
+    "@wdio/cli": "^7.19.7",
+    "@wdio/cucumber-framework": "^7.19.7",
+    "@wdio/local-runner": "^7.19.7",
+    "@wdio/mocha-framework": "^7.19.7",
+    "@wdio/spec-reporter": "^7.19.7",
+    "chai": "^4.3.6",
+    "chromedriver": "^101.0.0",
+    "cucumber": "^6.0.7",
+    "local-runner": "^0.1.1-alpha",
+    "wdio-chromedriver-service": "^7.3.2",
+    "webdriverio": "^7.19.7",
+    "@babel/core": "^7.6.0",
+    "@babel/register": "^7.6.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "1.7.0"
+  }
+}
