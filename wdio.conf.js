@@ -97,7 +97,7 @@ exports.config = {
     baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 30000,
+    waitforTimeout: 300000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -132,7 +132,34 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    // install allure dependency
+    // npm install @wdio/allure-reporter --save-dev
+    // install allure commandline
+
+    reporters: [
+        [
+            'allure', 
+            {
+                outputDir: 'allure-results'
+        }]],
+
+    beforeSuite: function (suite) {
+            global.allure = allure
+            allure.addFeature(suite.name)
+            allure.addDescription('Generating Allure reports ' + suite.name)
+        },
+
+    beforeTest: function (test) {
+            allure.addEnvironment('BROWSER', browser.capabilities.browserName)
+            allure.addEnvironment('BROWSER_VERSION', browser.capabilities.version)
+            allure.addEnvironment('PLATFORM', browser.capabilities.platform)
+            allure.addDescription('generating Allure reports' + test.title)
+            allure.addLabel(
+              'label' + +today.toISOString().replace(/[^\w]/g, '') + '.png'
+            )
+    },
+
+        
 
 
     
