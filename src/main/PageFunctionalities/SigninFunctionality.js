@@ -11,7 +11,7 @@ class SigninPage {
       await signinPage.enterPassword(password);
       await browser.pause(2000);
       await signinPage.clickContinueSigninButton();
-      await browser.pause(5000);
+      await browser.pause(2000);
 }
 
 
@@ -22,7 +22,7 @@ class SigninPage {
       await signinPage.enterUserId(username);
       await browser.pause(1000);
       await signinPage.clickContinueLoginButton();
-      await browser.pause(5000);
+      await browser.pause(1000);
   }
 }
 
