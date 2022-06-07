@@ -16,21 +16,25 @@ class SigninPage  {
     }
 
     clickContinueLoginButton() {
+        console.log("clickContinueLoginButton")
         util.clickElement(signinPageObject.continueLoginButton);
         return this;
     }
   
     enterEmail(emailID) {
+        console.log("enterEmail")
         util.setInputField(emailID, signinPageObject.email);
         return this;
     }
   
     enterPassword(password) { 
+        console.log("enterPassword")
         util.setInputField(password, signinPageObject.password);
         return this;
     }
   
     clickContinueSigninButton() {
+        console.log("clickContinueSigninButton")
         util.clickElement(signinPageObject.continueSigninButton);
         return this;
     }

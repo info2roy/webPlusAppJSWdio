@@ -22,7 +22,7 @@ class SigninPage {
       await signinPage.enterUserId(username);
       await browser.pause(1000);
       await signinPage.clickContinueLoginButton();
-      await browser.pause(1000);
+      await browser.pause(5000);
   }
 }
 
