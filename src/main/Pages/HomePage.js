@@ -5,7 +5,6 @@ class HomePage {
 
     selectLoginTab() {
         util.clickElement(homePageObject.loginTab);
-        return this;
     }
 }
 

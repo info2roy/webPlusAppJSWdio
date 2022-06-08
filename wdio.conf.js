@@ -25,7 +25,7 @@ exports.config = {
     port: 4723,
     // path: '/wd/hub',
     specs: [
-        './src/test/features/*.feature'
+        './src/test/features/UploadProfilePicture.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -47,20 +47,55 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
+    capabilities: [
+    {
     
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
+        maxInstances: 1,
+        browserName: 'chrome',
+        acceptInsecureCerts: true
+    },
+    // {
+    
+    //     // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+    //     // grid with only 5 firefox instances available you can make sure that not more than
+    //     // 5 instances get started at a time.
+    //     maxInstances: 5,
+    //     browserName: 'chrome',
+    //     acceptInsecureCerts: true,
+    //     "appium:platform": 'Android',
+    //     "appium:deviceName": 'Pixel 3',
+    //     "appium:platformName": 'Android',
+    //     name : 'My First Mobile Test'
+    // },
+    {
+    
+        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+        // grid with only 5 firefox instances available you can make sure that not more than
+        // 5 instances get started at a time.
+        maxInstances: 1,
         browserName: 'chrome',
         acceptInsecureCerts: true,
+        "goog:chromeOptions": {
+          args: [
+            //"--headless",
+            //"--no-sandbox",
+            //"--disable-gpu",
+            //"--disable-dev-shm-usage",
+            //"start-maximized",
+            "--window-size=400,960",
+            "--use-mobile-user-agent",
+            //"--ash-host-window-bounds=2200x1020"
+         ],
+        },
     },
     {
         platformName: "android",
