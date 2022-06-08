@@ -28,6 +28,6 @@
     "webdriverio": "^7.19.7"
   },
   "dependencies": {
-    "appium": "^1.22.3"
+    "appium": "^2.0.0-beta.40"
   }
 }

@@ -5,7 +5,8 @@ class Device {
   
     setDevice(newDevice) {
       if (
-        newDevice.toLowerCase() !== 'mobile' &&
+        newDevice.toLowerCase() !== 'androidApp' &&
+        newDevice.toLowerCase() !== 'iOSApp' &&
         newDevice.toLowerCase() !== 'desktop'
       ) {
         return false
@@ -18,8 +19,12 @@ class Device {
 
     // getELement(locator) -- read object class from here 
 
-    isMobile() {
-      return this.device === 'mobile'
+    isAndroidApp() {
+      return this.device === 'androidApp'
+    }
+
+    isiOSApp() {
+      return this.device === 'iOSApp'
     }
   
     isDesktop() {
@@ -28,7 +33,5 @@ class Device {
 }
   
 
-// const device = new Device()
-// export default device
 module.exports = new Device()
   

@@ -23,6 +23,7 @@ exports.config = {
     // will be called from there.
     //
     port: 4723,
+    // path: '/wd/hub',
     specs: [
         './src/test/features/*.feature'
     ],
@@ -63,7 +64,7 @@ exports.config = {
     },
     {
         platformName: "android",
-        "appium:deviceName": "Pixel 3",
+        "appium:deviceName": "Pixel 4 API 30",
         "appium:automationName": "uiautomator2",
         "appium:app": path.join(process.cwd(),"src/support/Apps/UAT.apk"),
 
@@ -145,7 +146,16 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver', 'appium'],
+    services: [['appium'],
+              ['appium', {
+                  args: {
+                      address: 'localhost',
+                      port: 4723
+                  },
+                  logPath: './'
+
+                        }]
+                    ],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
