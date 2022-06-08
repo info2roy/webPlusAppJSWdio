@@ -23,6 +23,14 @@ class Utils {
         await browser.pause(5000)
     }
 
+    async uploadFile(localFilePath, fileInputSelector, submitButtonSelector) {
+        const fileInput = $(fileInputSelector);
+        const submitButton = $(submitButtonSelector);
+        const remoteFilePath = await browser.uploadFile(localFilePath);
+        await fileInput.setValue(remoteFilePath);
+        await submitButton.click();
+    }
+
 }
 
 module.exports = new Utils()
