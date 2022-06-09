@@ -25,7 +25,7 @@ exports.config = {
     port: 4723,
     // path: '/wd/hub',
     specs: [
-        './src/test/features/UploadProfilePicture.feature'
+        './src/test/features/LoginViaHomepage.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -61,21 +61,9 @@ exports.config = {
         // 5 instances get started at a time.
         maxInstances: 1,
         browserName: 'chrome',
-        acceptInsecureCerts: true
+        acceptInsecureCerts: true,
     },
-    // {
     
-    //     // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-    //     // grid with only 5 firefox instances available you can make sure that not more than
-    //     // 5 instances get started at a time.
-    //     maxInstances: 5,
-    //     browserName: 'chrome',
-    //     acceptInsecureCerts: true,
-    //     "appium:platform": 'Android',
-    //     "appium:deviceName": 'Pixel 3',
-    //     "appium:platformName": 'Android',
-    //     name : 'My First Mobile Test'
-    // },
     {
     
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
@@ -84,24 +72,20 @@ exports.config = {
         maxInstances: 1,
         browserName: 'chrome',
         acceptInsecureCerts: true,
+        //platformName: 'mac',
         "goog:chromeOptions": {
           args: [
             //"--headless",
-            //"--no-sandbox",
-            //"--disable-gpu",
-            //"--disable-dev-shm-usage",
-            //"start-maximized",
             "--window-size=400,960",
             "--use-mobile-user-agent",
-            //"--ash-host-window-bounds=2200x1020"
          ],
         },
-    },
-    {
-        platformName: "android",
-        "appium:deviceName": "Pixel 4 API 30",
-        "appium:automationName": "uiautomator2",
-        "appium:app": path.join(process.cwd(),"src/support/Apps/UAT.apk"),
+    // },
+    // {
+    //     platformName: "android",
+    //     "appium:deviceName": "Pixel 4 API 30",
+    //     "appium:automationName": "uiautomator2",
+    //     "appium:app": path.join(process.cwd(),"src/support/Apps/UAT.apk"),
 
 
 
