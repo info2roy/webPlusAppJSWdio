@@ -5,6 +5,10 @@ class HomePage {
   async login() {
     homePage.selectLoginTab();
   }
+
+  async clickMenuButton() {
+    homePage.clickMenuButton();
+  }
   
 }
 

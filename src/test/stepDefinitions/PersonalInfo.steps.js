@@ -16,12 +16,12 @@ Given (/^I click on the Update Picture button$/, async () => {
 });
 
 When (/^I select a picture file to update$/, async () => {
-    console.log("I select a picture file to update");
+    console.log("When I select a picture file to update");
     await personalInfoFunc.uploadFile();
-    await browser.pause(2000);
+    await browser.pause(1000);
 });
 
 Then (/^The picture is uploaded successfully$/, async () => {
-    console.log("The picture is uploaded successfully");
-    await browser.pause(2000);
+    console.log("Then The picture is uploaded successfully");
+    await browser.pause(1000);
 });

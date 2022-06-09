@@ -7,7 +7,8 @@ class Device {
       if (
         newDevice.toLowerCase() !== 'androidApp' &&
         newDevice.toLowerCase() !== 'iOSApp' &&
-        newDevice.toLowerCase() !== 'desktop'
+        newDevice.toLowerCase() !== 'desktop' &&
+        newDevice.toLowerCase() !== 'mobileweb'
       ) {
         return false
       }
@@ -29,6 +30,10 @@ class Device {
   
     isDesktop() {
       return this.device === 'desktop'
+    }
+
+    isMobileWeb() {
+      return this.device === 'mobileweb'
     }
 }
   
