@@ -1,154 +1,234 @@
 [35m[Appium][39m No drivers have been installed in /Users/priyankarroy/Documents/QaAutomation. Use the "appium driver" command to install the one(s) you want to use.
 [35m[Appium][39m No plugins have been installed. Use the "appium plugin" command to install the one(s) you want to use.
 [35m[HTTP][39m [37m-->[39m [37mPOST[39m [37m/session[39m
-[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
-[debug] [35m[AppiumDriver@3d1c][39m Calling AppiumDriver.createSession() with args: [{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionRequested' logged at 1654667781628 (11:26:21 GMT+0530 (India Standard Time))
-[35m[Appium][39m Attempting to find matching driver for automationName 'uiautomator2' and platformName 'android'
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionStarted' logged at 1654667781632 (11:26:21 GMT+0530 (India Standard Time))
-[debug] [35m[AppiumDriver@3d1c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'uiautomator2' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
-[debug] [35m[AppiumDriver@3d1c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
-[debug] [35m[AppiumDriver@3d1c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
-[debug] [35m[AppiumDriver@3d1c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[debug] [35m[AppiumDriver@3d1c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
-[debug] [35m[AppiumDriver@3d1c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
-[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m26 ms - 1047[39m
+[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
+[debug] [35m[AppiumDriver@1e3c][39m Calling AppiumDriver.createSession() with args: [{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionRequested' logged at 1654673645104 (13:04:05 GMT+0530 (India Standard Time))
+[35m[BaseDriver][39m The capabilities ["platformName"] are standard capabilities and do not require "appium:" prefix
+[35m[Appium][39m Attempting to find matching driver for automationName 'appium' and platformName 'android'
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionStarted' logged at 1654673645109 (13:04:05 GMT+0530 (India Standard Time))
+[debug] [35m[AppiumDriver@1e3c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'appium' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
+[debug] [35m[AppiumDriver@1e3c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
+[debug] [35m[AppiumDriver@1e3c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
+[debug] [35m[AppiumDriver@1e3c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [35m[AppiumDriver@1e3c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
+[debug] [35m[AppiumDriver@1e3c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
+[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m56 ms - 1035[39m
 [35m[HTTP][39m [90m[39m
 [35m[HTTP][39m [37m-->[39m [37mPOST[39m [37m/session[39m
-[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"browserName":"chrome","acceptInsecureCerts":true},"firstMatch":[{}]},"desiredCapabilities":{"browserName":"chrome","acceptInsecureCerts":true}}[39m
-[debug] [35m[AppiumDriver@3d1c][39m Calling AppiumDriver.createSession() with args: [{"browserName":"chrome","acceptInsecureCerts":true},null,{"alwaysMatch":{"browserName":"chrome","acceptInsecureCerts":true},"firstMatch":[{}]}]
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionRequested' logged at 1654667781658 (11:26:21 GMT+0530 (India Standard Time))
-[35m[Appium][39m Could not parse W3C capabilities: 'automationName' can't be blank; 'platformName' can't be blank
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionStarted' logged at 1654667781660 (11:26:21 GMT+0530 (India Standard Time))
-[debug] [35m[AppiumDriver@3d1c][39m Encountered internal error running command: InvalidArgumentError: 'automationName' can't be blank; 'platformName' can't be blank
-[debug] [35m[AppiumDriver@3d1c][39m     at processCapabilities (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/capabilities.js:290:13)
-[debug] [35m[AppiumDriver@3d1c][39m     at parseCapsForInnerDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/utils.js:127:21)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:241:26)
-[debug] [35m[AppiumDriver@3d1c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
-[debug] [35m[AppiumDriver@3d1c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[debug] [35m[AppiumDriver@3d1c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
-[debug] [35m[AppiumDriver@3d1c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
-[35m[HTTP][39m [37m<-- POST /session [39m[33m400[39m [90m6 ms - 1439[39m
+[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
+[debug] [35m[AppiumDriver@1e3c][39m Calling AppiumDriver.createSession() with args: [{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionRequested' logged at 1654673645161 (13:04:05 GMT+0530 (India Standard Time))
+[35m[BaseDriver][39m The capabilities ["platformName"] are standard capabilities and do not require "appium:" prefix
+[35m[Appium][39m Attempting to find matching driver for automationName 'appium' and platformName 'android'
+[35m[HTTP][39m [37m-->[39m [37mPOST[39m [37m/session[39m
+[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
+[debug] [35m[AppiumDriver@1e3c][39m Calling AppiumDriver.createSession() with args: [{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionRequested' logged at 1654673645163 (13:04:05 GMT+0530 (India Standard Time))
+[35m[BaseDriver][39m The capabilities ["platformName"] are standard capabilities and do not require "appium:" prefix
+[35m[Appium][39m Attempting to find matching driver for automationName 'appium' and platformName 'android'
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionStarted' logged at 1654673645164 (13:04:05 GMT+0530 (India Standard Time))
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionStarted' logged at 1654673645164 (13:04:05 GMT+0530 (India Standard Time))
+[debug] [35m[AppiumDriver@1e3c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'appium' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
+[debug] [35m[AppiumDriver@1e3c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
+[debug] [35m[AppiumDriver@1e3c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
+[debug] [35m[AppiumDriver@1e3c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [35m[AppiumDriver@1e3c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
+[debug] [35m[AppiumDriver@1e3c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
+[debug] [35m[AppiumDriver@1e3c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'appium' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
+[debug] [35m[AppiumDriver@1e3c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
+[debug] [35m[AppiumDriver@1e3c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
+[debug] [35m[AppiumDriver@1e3c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [35m[AppiumDriver@1e3c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
+[debug] [35m[AppiumDriver@1e3c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
+[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m5 ms - 1151[39m
+[35m[HTTP][39m [90m[39m
+[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m5 ms - 1151[39m
 [35m[HTTP][39m [90m[39m
 [35m[HTTP][39m [37m-->[39m [37mPOST[39m [37m/session[39m
-[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
-[debug] [35m[AppiumDriver@3d1c][39m Calling AppiumDriver.createSession() with args: [{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionRequested' logged at 1654667781666 (11:26:21 GMT+0530 (India Standard Time))
-[35m[Appium][39m Attempting to find matching driver for automationName 'uiautomator2' and platformName 'android'
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionStarted' logged at 1654667781668 (11:26:21 GMT+0530 (India Standard Time))
-[debug] [35m[AppiumDriver@3d1c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'uiautomator2' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
-[debug] [35m[AppiumDriver@3d1c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
-[debug] [35m[AppiumDriver@3d1c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
-[debug] [35m[AppiumDriver@3d1c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[debug] [35m[AppiumDriver@3d1c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
-[debug] [35m[AppiumDriver@3d1c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
-[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m3 ms - 1047[39m
+[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
+[debug] [35m[AppiumDriver@1e3c][39m Calling AppiumDriver.createSession() with args: [{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionRequested' logged at 1654673645180 (13:04:05 GMT+0530 (India Standard Time))
+[35m[BaseDriver][39m The capabilities ["platformName"] are standard capabilities and do not require "appium:" prefix
+[35m[Appium][39m Attempting to find matching driver for automationName 'appium' and platformName 'android'
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionStarted' logged at 1654673645181 (13:04:05 GMT+0530 (India Standard Time))
+[debug] [35m[AppiumDriver@1e3c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'appium' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
+[debug] [35m[AppiumDriver@1e3c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
+[debug] [35m[AppiumDriver@1e3c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
+[debug] [35m[AppiumDriver@1e3c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [35m[AppiumDriver@1e3c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
+[debug] [35m[AppiumDriver@1e3c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
+[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m3 ms - 1035[39m
 [35m[HTTP][39m [90m[39m
 [35m[HTTP][39m [37m-->[39m [37mPOST[39m [37m/session[39m
-[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
-[debug] [35m[AppiumDriver@3d1c][39m Calling AppiumDriver.createSession() with args: [{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionRequested' logged at 1654667781677 (11:26:21 GMT+0530 (India Standard Time))
-[35m[Appium][39m Attempting to find matching driver for automationName 'uiautomator2' and platformName 'android'
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionStarted' logged at 1654667781678 (11:26:21 GMT+0530 (India Standard Time))
-[debug] [35m[AppiumDriver@3d1c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'uiautomator2' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
-[debug] [35m[AppiumDriver@3d1c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
-[debug] [35m[AppiumDriver@3d1c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
-[debug] [35m[AppiumDriver@3d1c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[debug] [35m[AppiumDriver@3d1c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
-[debug] [35m[AppiumDriver@3d1c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
-[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m3 ms - 1047[39m
+[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
+[debug] [35m[AppiumDriver@1e3c][39m Calling AppiumDriver.createSession() with args: [{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionRequested' logged at 1654673645187 (13:04:05 GMT+0530 (India Standard Time))
+[35m[BaseDriver][39m The capabilities ["platformName"] are standard capabilities and do not require "appium:" prefix
+[35m[Appium][39m Attempting to find matching driver for automationName 'appium' and platformName 'android'
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionStarted' logged at 1654673645189 (13:04:05 GMT+0530 (India Standard Time))
+[debug] [35m[AppiumDriver@1e3c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'appium' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
+[debug] [35m[AppiumDriver@1e3c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
+[debug] [35m[AppiumDriver@1e3c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
+[debug] [35m[AppiumDriver@1e3c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [35m[AppiumDriver@1e3c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
+[debug] [35m[AppiumDriver@1e3c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
+[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m3 ms - 1035[39m
 [35m[HTTP][39m [90m[39m
 [35m[HTTP][39m [37m-->[39m [37mPOST[39m [37m/session[39m
-[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
-[debug] [35m[AppiumDriver@3d1c][39m Calling AppiumDriver.createSession() with args: [{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"uiautomator2","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionRequested' logged at 1654667781688 (11:26:21 GMT+0530 (India Standard Time))
-[35m[Appium][39m Attempting to find matching driver for automationName 'uiautomator2' and platformName 'android'
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionStarted' logged at 1654667781688 (11:26:21 GMT+0530 (India Standard Time))
-[debug] [35m[AppiumDriver@3d1c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'uiautomator2' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
-[debug] [35m[AppiumDriver@3d1c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
-[debug] [35m[AppiumDriver@3d1c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
-[debug] [35m[AppiumDriver@3d1c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[debug] [35m[AppiumDriver@3d1c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
-[debug] [35m[AppiumDriver@3d1c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
-[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m3 ms - 1047[39m
+[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
+[debug] [35m[AppiumDriver@1e3c][39m Calling AppiumDriver.createSession() with args: [{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionRequested' logged at 1654673645192 (13:04:05 GMT+0530 (India Standard Time))
+[35m[BaseDriver][39m The capabilities ["platformName"] are standard capabilities and do not require "appium:" prefix
+[35m[Appium][39m Attempting to find matching driver for automationName 'appium' and platformName 'android'
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionStarted' logged at 1654673645193 (13:04:05 GMT+0530 (India Standard Time))
+[debug] [35m[AppiumDriver@1e3c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'appium' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
+[debug] [35m[AppiumDriver@1e3c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
+[debug] [35m[AppiumDriver@1e3c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
+[debug] [35m[AppiumDriver@1e3c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [35m[AppiumDriver@1e3c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
+[debug] [35m[AppiumDriver@1e3c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
+[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m3 ms - 1151[39m
 [35m[HTTP][39m [90m[39m
 [35m[HTTP][39m [37m-->[39m [37mPOST[39m [37m/session[39m
-[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"browserName":"chrome","acceptInsecureCerts":true},"firstMatch":[{}]},"desiredCapabilities":{"browserName":"chrome","acceptInsecureCerts":true}}[39m
-[debug] [35m[AppiumDriver@3d1c][39m Calling AppiumDriver.createSession() with args: [{"browserName":"chrome","acceptInsecureCerts":true},null,{"alwaysMatch":{"browserName":"chrome","acceptInsecureCerts":true},"firstMatch":[{}]}]
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionRequested' logged at 1654667781691 (11:26:21 GMT+0530 (India Standard Time))
-[35m[Appium][39m Could not parse W3C capabilities: 'automationName' can't be blank; 'platformName' can't be blank
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionStarted' logged at 1654667781692 (11:26:21 GMT+0530 (India Standard Time))
-[debug] [35m[AppiumDriver@3d1c][39m Encountered internal error running command: InvalidArgumentError: 'automationName' can't be blank; 'platformName' can't be blank
-[debug] [35m[AppiumDriver@3d1c][39m     at processCapabilities (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/capabilities.js:290:13)
-[debug] [35m[AppiumDriver@3d1c][39m     at parseCapsForInnerDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/utils.js:127:21)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:241:26)
-[debug] [35m[AppiumDriver@3d1c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
-[debug] [35m[AppiumDriver@3d1c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[debug] [35m[AppiumDriver@3d1c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
-[debug] [35m[AppiumDriver@3d1c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
-[35m[HTTP][39m [37m<-- POST /session [39m[33m400[39m [90m2 ms - 1439[39m
+[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
+[debug] [35m[AppiumDriver@1e3c][39m Calling AppiumDriver.createSession() with args: [{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionRequested' logged at 1654673645216 (13:04:05 GMT+0530 (India Standard Time))
+[35m[BaseDriver][39m The capabilities ["platformName"] are standard capabilities and do not require "appium:" prefix
+[35m[Appium][39m Attempting to find matching driver for automationName 'appium' and platformName 'android'
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionStarted' logged at 1654673645217 (13:04:05 GMT+0530 (India Standard Time))
+[debug] [35m[AppiumDriver@1e3c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'appium' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
+[debug] [35m[AppiumDriver@1e3c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
+[debug] [35m[AppiumDriver@1e3c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
+[debug] [35m[AppiumDriver@1e3c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [35m[AppiumDriver@1e3c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
+[debug] [35m[AppiumDriver@1e3c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
+[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m4 ms - 1035[39m
 [35m[HTTP][39m [90m[39m
 [35m[HTTP][39m [37m-->[39m [37mPOST[39m [37m/session[39m
-[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"browserName":"chrome","acceptInsecureCerts":true},"firstMatch":[{}]},"desiredCapabilities":{"browserName":"chrome","acceptInsecureCerts":true}}[39m
-[debug] [35m[AppiumDriver@3d1c][39m Calling AppiumDriver.createSession() with args: [{"browserName":"chrome","acceptInsecureCerts":true},null,{"alwaysMatch":{"browserName":"chrome","acceptInsecureCerts":true},"firstMatch":[{}]}]
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionRequested' logged at 1654667781702 (11:26:21 GMT+0530 (India Standard Time))
-[35m[Appium][39m Could not parse W3C capabilities: 'automationName' can't be blank; 'platformName' can't be blank
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionStarted' logged at 1654667781702 (11:26:21 GMT+0530 (India Standard Time))
-[debug] [35m[AppiumDriver@3d1c][39m Encountered internal error running command: InvalidArgumentError: 'automationName' can't be blank; 'platformName' can't be blank
-[debug] [35m[AppiumDriver@3d1c][39m     at processCapabilities (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/capabilities.js:290:13)
-[debug] [35m[AppiumDriver@3d1c][39m     at parseCapsForInnerDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/utils.js:127:21)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:241:26)
-[debug] [35m[AppiumDriver@3d1c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
-[debug] [35m[AppiumDriver@3d1c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[debug] [35m[AppiumDriver@3d1c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
-[debug] [35m[AppiumDriver@3d1c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
-[35m[HTTP][39m [37m<-- POST /session [39m[33m400[39m [90m3 ms - 1439[39m
+[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
+[debug] [35m[AppiumDriver@1e3c][39m Calling AppiumDriver.createSession() with args: [{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionRequested' logged at 1654673645232 (13:04:05 GMT+0530 (India Standard Time))
+[35m[BaseDriver][39m The capabilities ["platformName"] are standard capabilities and do not require "appium:" prefix
+[35m[Appium][39m Attempting to find matching driver for automationName 'appium' and platformName 'android'
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionStarted' logged at 1654673645232 (13:04:05 GMT+0530 (India Standard Time))
+[debug] [35m[AppiumDriver@1e3c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'appium' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
+[debug] [35m[AppiumDriver@1e3c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
+[debug] [35m[AppiumDriver@1e3c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
+[debug] [35m[AppiumDriver@1e3c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [35m[AppiumDriver@1e3c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
+[debug] [35m[AppiumDriver@1e3c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
+[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m3 ms - 1035[39m
 [35m[HTTP][39m [90m[39m
 [35m[HTTP][39m [37m-->[39m [37mPOST[39m [37m/session[39m
-[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"browserName":"chrome","acceptInsecureCerts":true},"firstMatch":[{}]},"desiredCapabilities":{"browserName":"chrome","acceptInsecureCerts":true}}[39m
-[debug] [35m[AppiumDriver@3d1c][39m Calling AppiumDriver.createSession() with args: [{"browserName":"chrome","acceptInsecureCerts":true},null,{"alwaysMatch":{"browserName":"chrome","acceptInsecureCerts":true},"firstMatch":[{}]}]
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionRequested' logged at 1654667781710 (11:26:21 GMT+0530 (India Standard Time))
-[35m[Appium][39m Could not parse W3C capabilities: 'automationName' can't be blank; 'platformName' can't be blank
-[debug] [35m[AppiumDriver@3d1c][39m Event 'newSessionStarted' logged at 1654667781711 (11:26:21 GMT+0530 (India Standard Time))
-[debug] [35m[AppiumDriver@3d1c][39m Encountered internal error running command: InvalidArgumentError: 'automationName' can't be blank; 'platformName' can't be blank
-[debug] [35m[AppiumDriver@3d1c][39m     at processCapabilities (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/capabilities.js:290:13)
-[debug] [35m[AppiumDriver@3d1c][39m     at parseCapsForInnerDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/utils.js:127:21)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:241:26)
-[debug] [35m[AppiumDriver@3d1c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
-[debug] [35m[AppiumDriver@3d1c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[debug] [35m[AppiumDriver@3d1c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
-[debug] [35m[AppiumDriver@3d1c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
-[debug] [35m[AppiumDriver@3d1c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
-[35m[HTTP][39m [37m<-- POST /session [39m[33m400[39m [90m3 ms - 1439[39m
+[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
+[debug] [35m[AppiumDriver@1e3c][39m Calling AppiumDriver.createSession() with args: [{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionRequested' logged at 1654673645241 (13:04:05 GMT+0530 (India Standard Time))
+[35m[BaseDriver][39m The capabilities ["platformName"] are standard capabilities and do not require "appium:" prefix
+[35m[Appium][39m Attempting to find matching driver for automationName 'appium' and platformName 'android'
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionStarted' logged at 1654673645242 (13:04:05 GMT+0530 (India Standard Time))
+[debug] [35m[AppiumDriver@1e3c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'appium' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
+[debug] [35m[AppiumDriver@1e3c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
+[debug] [35m[AppiumDriver@1e3c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
+[debug] [35m[AppiumDriver@1e3c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [35m[AppiumDriver@1e3c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
+[debug] [35m[AppiumDriver@1e3c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
+[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m3 ms - 1035[39m
+[35m[HTTP][39m [90m[39m
+[35m[HTTP][39m [37m-->[39m [37mPOST[39m [37m/session[39m
+[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
+[debug] [35m[AppiumDriver@1e3c][39m Calling AppiumDriver.createSession() with args: [{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionRequested' logged at 1654673645262 (13:04:05 GMT+0530 (India Standard Time))
+[35m[BaseDriver][39m The capabilities ["platformName"] are standard capabilities and do not require "appium:" prefix
+[35m[Appium][39m Attempting to find matching driver for automationName 'appium' and platformName 'android'
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionStarted' logged at 1654673645263 (13:04:05 GMT+0530 (India Standard Time))
+[debug] [35m[AppiumDriver@1e3c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'appium' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
+[debug] [35m[AppiumDriver@1e3c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
+[debug] [35m[AppiumDriver@1e3c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
+[debug] [35m[AppiumDriver@1e3c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [35m[AppiumDriver@1e3c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
+[debug] [35m[AppiumDriver@1e3c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
+[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m3 ms - 1035[39m
+[35m[HTTP][39m [90m[39m
+[35m[HTTP][39m [37m-->[39m [37mPOST[39m [37m/session[39m
+[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
+[debug] [35m[AppiumDriver@1e3c][39m Calling AppiumDriver.createSession() with args: [{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionRequested' logged at 1654673645296 (13:04:05 GMT+0530 (India Standard Time))
+[35m[BaseDriver][39m The capabilities ["platformName"] are standard capabilities and do not require "appium:" prefix
+[35m[Appium][39m Attempting to find matching driver for automationName 'appium' and platformName 'android'
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionStarted' logged at 1654673645296 (13:04:05 GMT+0530 (India Standard Time))
+[debug] [35m[AppiumDriver@1e3c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'appium' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
+[debug] [35m[AppiumDriver@1e3c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
+[debug] [35m[AppiumDriver@1e3c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
+[debug] [35m[AppiumDriver@1e3c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [35m[AppiumDriver@1e3c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
+[debug] [35m[AppiumDriver@1e3c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
+[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m2 ms - 1035[39m
+[35m[HTTP][39m [90m[39m
+[35m[HTTP][39m [37m-->[39m [37mPOST[39m [37m/session[39m
+[35m[HTTP][39m [90m{"capabilities":{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]},"desiredCapabilities":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"}}[39m
+[debug] [35m[AppiumDriver@1e3c][39m Calling AppiumDriver.createSession() with args: [{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},null,{"alwaysMatch":{"appium:platformName":"android","appium:deviceName":"Pixel 4 API 30","appium:automationName":"appium","appium:app":"/Users/priyankarroy/Documents/QaAutomation/src/support/Apps/UAT.apk"},"firstMatch":[{}]}]
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionRequested' logged at 1654673645315 (13:04:05 GMT+0530 (India Standard Time))
+[35m[BaseDriver][39m The capabilities ["platformName"] are standard capabilities and do not require "appium:" prefix
+[35m[Appium][39m Attempting to find matching driver for automationName 'appium' and platformName 'android'
+[debug] [35m[AppiumDriver@1e3c][39m Event 'newSessionStarted' logged at 1654673645316 (13:04:05 GMT+0530 (India Standard Time))
+[debug] [35m[AppiumDriver@1e3c][39m Encountered internal error running command: Error: Could not find a driver for automationName 'appium' and platformName android'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Could not find installed driver to support given caps)
+[debug] [35m[AppiumDriver@1e3c][39m     at DriverConfig.findMatchingDriver (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/extension/driver-config.js:174:13)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.createSession (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:261:29)
+[debug] [35m[AppiumDriver@1e3c][39m     at commandExecutor (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:73:9)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/basedriver/driver.js:90:15)
+[debug] [35m[AppiumDriver@1e3c][39m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [35m[AppiumDriver@1e3c][39m     at defaultBehavior (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:666:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeWrappedCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:760:16)
+[debug] [35m[AppiumDriver@1e3c][39m     at AppiumDriver.executeCommand (/Users/priyankarroy/Documents/QaAutomation/node_modules/appium/lib/appium.js:682:17)
+[debug] [35m[AppiumDriver@1e3c][39m     at asyncHandler (/Users/priyankarroy/Documents/QaAutomation/node_modules/@appium/base-driver/lib/protocol/protocol.js:339:19)
+[35m[HTTP][39m [37m<-- POST /session [39m[31m500[39m [90m3 ms - 1035[39m
 [35m[HTTP][39m [90m[39m
 [35m[Appium][39m Received SIGTERM - shutting down
-[debug] [35m[AppiumDriver@3d1c][39m There are no active sessions for cleanup
+[debug] [35m[AppiumDriver@1e3c][39m There are no active sessions for cleanup
 [35m[HTTP][39m Waiting until the server is closed
 [35m[HTTP][39m Received server close event
