@@ -1,6 +1,7 @@
 /node_modules
 /allure-results
 /logs
+/test
 .idea
 .vscode
 .DS_STORE

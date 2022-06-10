@@ -129,27 +129,26 @@ exports.config = {
 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
-        requireModule: ['@babel/register'],
-        require: ['./test/stepDefinitions/given.js', './test/stepDefinitions/when.js', './test/stepDefinitions/then.js'],   // <string[]> (file/dir) require files before executing features
-        backtrace: true,    // <boolean> show full backtrace for errors
-        //compiler: ['js:babel-core/register'], // <string[]> filetype:compiler used for processing required features
-        compiler: [], // <string[]> filetype:compiler used for processing required features
-        failAmbiguousDefinitions: true,       // <boolean< Treat ambiguous definitions as errors
-        dryRun: false,      // <boolean> invoke formatters without executing steps
-        failFast: false,    // <boolean> abort the run on first failure
-        ignoreUndefinedDefinitions: false,    // <boolean> Enable this config to treat undefined definitions as warnings
-        name: [],           // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
-        snippets: true,     // <boolean> hide step definition snippets for pending steps
-        format: ['pretty'], // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
-        colors: true,       // <boolean> disable colors in formatter output
-        snippets: false,    // <boolean> hide step definition snippets for pending steps
-        source: false,      // <boolean> hide source uris
-        profile: [],        // <string[]> (name) specify the profile to use
-        strict: true,       // <boolean> fail if there are any undefined or pending steps
-        tagExpression: 'not @Pending',      // <string> (expression) only execute the features or scenarios with tags matching the expression, see https://docs.cucumber.io/tag-expressions/
-        timeout: defaultTimeoutInterval,    // <number> timeout for step definitions
-        tagsInTitle: false,                 // <boolean> add cucumber tags to feature or scenario name
-        snippetSyntax: undefined,           // <string> specify a custom snippet syntax
+      require: [
+        './src/test/stepDefinitions/LoginStepDef.js',
+    ],
+    backtrace: true,
+    compiler: ['js:babel-core/register'],
+    failAmbigiousDefinitions: true,
+    dryRun: false,
+    failFast: false,
+    ignoreUndefinedDefinitions: false,
+    name: [],
+    snippets: true,
+    format: ['pretty'],
+    colors: true,
+    source: false,
+    profile: [],
+    strict: true,
+    tagExpression: 'not @Pending',
+    timeout: 30000,
+    tagsInTitle: false,
+    snippetSyntax: undefined,
     },
     //
     // =====
@@ -242,15 +241,15 @@ exports.config = {
     //
     // Gets executed before test execution begins. At this point you can access all global
     // variables, such as `browser`. It is the perfect place to define custom commands.
-    before: function() {
-      /**
-       * Setup the Chai assertion framework
-       */
-      const chai    = require('chai');
-      global.expect = chai.expect;
-      global.assert = chai.assert;
-      global.should = chai.should();
-    },
+    // before: function() {
+    //   /**
+    //    * Setup the Chai assertion framework
+    //    */
+    //   const chai    = require('chai');
+    //   global.expect = chai.expect;
+    //   global.assert = chai.assert;
+    //   global.should = chai.should();
+    // },
     //
     // after: function (capabilities, specs) {
     //   //do your stuff

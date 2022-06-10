@@ -25,7 +25,7 @@ exports.config = {
     port: 4723,
     // path: '/wd/hub',
     specs: [
-        './src/test/features/LoginViaHomepage.feature'
+        './src/test/features/Login.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -56,67 +56,67 @@ exports.config = {
     capabilities: [
     {
     
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-        maxInstances: 1,
-        browserName: 'chrome',
-        acceptInsecureCerts: true,
-    },
-    
-    {
-    
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-        maxInstances: 1,
-        browserName: 'chrome',
-        acceptInsecureCerts: true,
-        //platformName: 'mac',
-        "goog:chromeOptions": {
-          args: [
-            //"--headless",
-            "--window-size=400,960",
-            "--use-mobile-user-agent",
-         ],
-        },
+    //     // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+    //     // grid with only 5 firefox instances available you can make sure that not more than
+    //     // 5 instances get started at a time.
+    //     maxInstances: 1,
+    //     browserName: 'chrome',
+    //     acceptInsecureCerts: true,
     // },
+    
     // {
-    //     platformName: "android",
-    //     "appium:deviceName": "Pixel 4 API 30",
-    //     "appium:automationName": "uiautomator2",
-    //     "appium:app": path.join(process.cwd(),"src/support/Apps/UAT.apk"),
+    
+    //     // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+    //     // grid with only 5 firefox instances available you can make sure that not more than
+    //     // 5 instances get started at a time.
+    //     maxInstances: 1,
+    //     browserName: 'chrome',
+    //     acceptInsecureCerts: true,
+    //     //platformName: 'mac',
+    //     "goog:chromeOptions": {
+    //       args: [
+    //         //"--headless",
+    //         "--window-size=400,960",
+    //         "--use-mobile-user-agent",
+    //      ],
+    //     },
+    // // },
+    // // {
+        // platformName: "android",
+        // "appium:deviceName": "Pixel 4 API 30",
+        // "appium:automationName": "UIAutomator2",
+        // "appium:app": path.join(process.cwd(),"src/support/Apps/UAT.apk"),
 
 
 
-        // a: {
-        //     // "host": "localhost",
-        //     // "port": 4723,
-        //     // "path": "/",
-        //     // "automationProtocol": "webdriver",
-        //     capabilities: {
-        //         browserName: 'chrome',
-        //         acceptInsecureCerts: true,
-        //     }
-        // },
-        // b: {
-        //     "host": "localhost",
-        //     "port": 4723,
-        //     "path": "/wd/hub",
-        //     "automationProtocol": "webdriver",
-        //     capabilities: {
-        //         "platformName": "android",
-        //         "appium:platformVersion": "11",
-        //         "appium:deviceName": "Android Emulator",
-        //         "appium:app": "C:\\Users\\prave\\Downloads\\ApiDemos-debug.apk",
-        //         "appium:automationName": "uiautomator2",
-        //         "appium:avd": "2"
-        //     }
-        // }
-        // If outputDir is provided WebdriverIO can capture driver session logs
-        // it is possible to configure which logTypes to include/exclude.
-        // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-        // excludeDriverLogs: ['bugreport', 'server'],
+    //     // a: {
+    //     //     // "host": "localhost",
+    //     //     // "port": 4723,
+    //     //     // "path": "/",
+    //     //     // "automationProtocol": "webdriver",
+    //     //     capabilities: {
+    //     //         browserName: 'chrome',
+    //     //         acceptInsecureCerts: true,
+    //     //     }
+    //     // },
+    //     // b: {
+    //     //     "host": "localhost",
+    //     //     "port": 4723,
+    //     //     "path": "/wd/hub",
+    //     //     "automationProtocol": "webdriver",
+    //     //     capabilities: {
+    //     //         "platformName": "android",
+    //     //         "appium:platformVersion": "11",
+    //     //         "appium:deviceName": "Android Emulator",
+    //     //         "appium:app": "C:\\Users\\prave\\Downloads\\ApiDemos-debug.apk",
+    //     //         "appium:automationName": "uiautomator2",
+    //     //         "appium:avd": "2"
+    //     //     }
+    //     // }
+    //     // If outputDir is provided WebdriverIO can capture driver session logs
+    //     // it is possible to configure which logTypes to include/exclude.
+    //     // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+    //     // excludeDriverLogs: ['bugreport', 'server'],
     }],
     //
     // ===================
@@ -165,16 +165,15 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: [['appium'],
-              ['appium', {
-                  args: {
-                      address: 'localhost',
-                      port: 4723
-                  },
-                  logPath: './'
+    // services: [['appium', {
+    //               args: {
+    //                   address: 'localhost',
+    //                   port: 4723
+    //               },
+    //               logPath: './'
 
-                        }]
-                    ],
+    //                     }]
+    //                 ],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
