@@ -12,6 +12,5 @@ Feature: Scripbox Login and update of profile picture
 
         Given I open the profile dropdown
         When I select personal information
-        When I click on the Update Picture button
-        When I select a picture file to update
+        When I update the profile picture
         Then The picture is uploaded successfully
