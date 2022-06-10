@@ -6,11 +6,13 @@ class PersonalInfoPage  {
     clickUpdatePicture() {
         console.log("clickUpdatePicture")
         util.clickElement(personalInfoPageObject.updatePicture);
+        return this;
     }
     uploadFile() {
         console.log("uploadFile")
         const localFilePath = path.join(__dirname, '../../test/data/desktop.jpg');
         util.uploadFile(localFilePath, personalInfoPageObject.inputFile, personalInfoPageObject.submitButton)
+        return this;
     }
 
 }

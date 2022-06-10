@@ -6,14 +6,10 @@ class PersonalInfoPage {
         await expect(browser).toHaveUrl('/personal-info');
     }
 
-    async clickUpdatePicture() {
-        await personalInfoPage.clickUpdatePicture();
-        await browser.pause(2000);
-    }
+    async updateProfilePic() {
 
-    async uploadFile() {
-       await personalInfoPage.uploadFile();
-       await browser.pause(2000);
+        await personalInfoPage.clickUpdatePicture()
+                        .uploadFile();
     }
 }
 module.exports = new PersonalInfoPage();
