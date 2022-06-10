@@ -1,4 +1,4 @@
-const util = require('../../support/Utils');
+const util = require('../../support/Utils/Utils');
 const homePageObject =require('../PageObjects/HomePageObjects');
 
 class HomePage {
