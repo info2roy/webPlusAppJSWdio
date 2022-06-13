@@ -9,15 +9,9 @@ Then(/^I should see personal information page loaded$/, async () => {
     await browser.pause(1000);
 });
 
-Given (/^I click on the Update Picture button$/, async () => {
-    console.log("Given I click on the Update Picture button");
-    await personalInfoFunc.clickUpdatePicture();
-    await browser.pause(1000);
-});
-
-When (/^I select a picture file to update$/, async () => {
+When (/^I update the profile picture$/, async () => {
     console.log("When I select a picture file to update");
-    await personalInfoFunc.uploadFile();
+    await personalInfoFunc.updateProfilePic();
     await browser.pause(1000);
 });
 
