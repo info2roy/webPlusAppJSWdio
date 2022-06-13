@@ -7,8 +7,20 @@ class HomePage {
         util.clickElement(homePageObject.loginTab);
     }
 
+    loginTabIsDisplayed() {
+        return util.elementIsDisplayed(homePageObject.loginTab);
+    }
+
+    signupTabIsDisplayed() {
+        return util.elementIsDisplayed(homePageObject.signupTab);
+    }
+
     clickMenuButton() {
         util.clickElement(homePageObject.menuButton);
+    }
+
+    menuButtonIsDisplayed() {
+        return util.elementIsDisplayed(homePageObject.menuButton);
     }
 
     loginButton_android(){
