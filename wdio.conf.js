@@ -23,7 +23,7 @@ exports.config = {
     port: 4723,
     // path: '/wd/hub',
     specs: [
-        './src/test/features/Login.feature'
+        './src/test/features/LoginViaHomepage.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -123,7 +123,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'debug',
     //
     // Set specific log levels per logger
     // loggers:
@@ -157,7 +157,7 @@ exports.config = {
     connectionRetryTimeout: 120000,
     //
     // Default request retries count
-    connectionRetryCount: 3,
+    connectionRetryCount: 1,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance

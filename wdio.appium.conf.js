@@ -3,9 +3,6 @@ const path = require('path');
 
 exports.config = {
     ...config,
-    // specs: [
-    //     './src/test/features/Login.feature',
-    // ],
     ...{
     //   host: '0.0.0.0',
     host: 'http://localhost',
@@ -25,14 +22,10 @@ exports.config = {
       capabilities: [{
         platformName: "android",
         "appium:deviceName": "Pixel 4 API 30",
+        "appium:platformVersion": "11.0",
         "appium:automationName": "UIAutomator2",
-        "appium:app": path.join(process.cwd(),"src/support/Apps/UAT.apk"),
+        "appium:app": path.join(process.cwd(),"src/support/Apps/519.apk"),
       }],
-
-    //   cucumberOpts: {
-    //     require: [
-    //         './src/test/stepDefinitions/*.js',
-    //     ]},
 
         // // For iOS bases mobile device
         // capabilities: [{

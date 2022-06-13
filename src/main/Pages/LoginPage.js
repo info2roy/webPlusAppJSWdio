@@ -1,6 +1,6 @@
 
 // const clickElement = require('../../support/action/clickElement');
-const util = require('../../support/Utils');
+const util = require('../../support/Utils/Utils');
 const isDisplayed = require('webdriverio/build/commands/element/isDisplayed');
 const loginObject =require('../PageObjects/LoginPageObjects');
 const DeviceLib = require('../../support/libraries/Device')
