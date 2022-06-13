@@ -17,13 +17,15 @@ Given(/^I am on the scripbox home page$/, async () => {
     else
         platform = "desktop"
 
-    // device.setDevice(platform);
-    // if (device.isMobileWeb || device.isDesktop){
-    //     await browser.url("https://uat-andromeda-2-uat.scripbox.org");   
-    //     await browser.pause(1000);
-    // }
-    // else 
-    if ( platform == "androidApp" ){
+    console.log(`platform ${platform}`)
+
+    device.setDevice(platform);
+    if (device.isMobileWeb() || device.isDesktop()){
+        console.log(`Launching web app mobileweb:${device.isMobileWeb()} desktop: ${device.isDesktop()}`);
+        await browser.url("https://uat-andromeda-2-uat.scripbox.org");   
+        await browser.pause(1000);
+    }
+    else if ( device.isAndroidApp() ){
         console.log("Launching Android app")
         expect(await homeFunc.androidHomePageLaunch()).to.be.true
     }

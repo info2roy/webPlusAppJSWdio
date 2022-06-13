@@ -5,8 +5,8 @@ class Device {
   
     setDevice(newDevice) {
       if (
-        newDevice.toLowerCase() !== 'androidApp' &&
-        newDevice.toLowerCase() !== 'iOSApp' &&
+        newDevice.toLowerCase() !== 'androidapp' &&
+        newDevice.toLowerCase() !== 'iosapp' &&
         newDevice.toLowerCase() !== 'desktop' &&
         newDevice.toLowerCase() !== 'mobileweb'
       ) {
@@ -21,11 +21,11 @@ class Device {
     // getELement(locator) -- read object class from here 
 
     isAndroidApp() {
-      return this.device === 'androidApp'
+      return this.device === 'androidapp'
     }
 
     isiOSApp() {
-      return this.device === 'iOSApp'
+      return this.device === 'iosapp'
     }
   
     isDesktop() {
