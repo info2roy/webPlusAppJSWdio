@@ -3,6 +3,12 @@ class HomePageObjects {
 
     //Responsive UI related objects
     menuButton = "button[data-action='menu hamburger']" //three line menu button on response web UI
+
+    // Android locators
+
+    loginButtonHomePage = "//*[@text='Login']"
+    ScripboxCustomerBanner = "//*[@text='Login']"
+
 }
 
 module.exports = new HomePageObjects();

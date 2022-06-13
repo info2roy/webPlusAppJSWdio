@@ -1,19 +1,23 @@
+const isDisplayed = require('webdriverio/build/commands/element/isDisplayed');
+
 class Utils {
 
-    waitForDisplayed (selector, falseCase) {
-        /**
-         * Maximum number of milliseconds to wait for
-         * @type {Int}
-         */
-        const ms = 10000
-        $(selector).waitForDisplayed(ms, !!falseCase)
+    async waitForElementDisplayed (selector) {
+        let elem = await $(selector)
+        await elem.waitForDisplayed({ timeout: 10000 });
         return this;
     }
 
     async clickElement(selector){
       const myButton = await $(selector);
-      await myButton.click()
-           
+      await myButton.click()    
+    }
+
+    async elementIsDisplayed(selector){
+        await browser.pause(5000);
+        let isDisplayed = await $(selector).isDisplayed();
+        console.log(selector+" is displayed check --> "+isDisplayed);
+        return isDisplayed
     }
 
     async setInputField(value, selector) {

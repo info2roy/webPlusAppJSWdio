@@ -25,6 +25,9 @@ exports.config = {
         "appium:platformVersion": "11.0",
         "appium:automationName": "UIAutomator2",
         "appium:app": path.join(process.cwd(),"src/support/Apps/519.apk"),
+
+        "appium:appPackage": "com.scripbox.takecharge",
+        "appium:appActivity": "com.scripbox.takecharge.MainActivity",
       }],
 
         // // For iOS bases mobile device

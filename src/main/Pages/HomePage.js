@@ -10,6 +10,16 @@ class HomePage {
     clickMenuButton() {
         util.clickElement(homePageObject.menuButton);
     }
+
+    loginButton_android(){
+        return util.elementIsDisplayed(homePageObject.loginButtonHomePage);
+    }
+
+    scripBoxCustomerbanner_android(){
+        return util.elementIsDisplayed(homePageObject.ScripboxCustomerBanner);
+    }
+
+
 }
 
 module.exports = new HomePage();
