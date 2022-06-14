@@ -5,6 +5,13 @@ class SigninPageObjects {
     password = 'input#user_password'; //password for the login form
     continueLoginButton = '#test-login-next-button'; //Continue login after filling the userId(phone no or email)
     continueSigninButton = 'button#test-signup-next-button'; //Continue signin after filling the username and password
+
+    // Android locators
+    
+
+
+
+    
     
 }
 

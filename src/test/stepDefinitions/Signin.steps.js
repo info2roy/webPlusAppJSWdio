@@ -3,9 +3,9 @@ const signinFunc = require('../../main/PageFunctionalities/SigninFunctionality')
 const expect = require('chai').expect;
 
 When(/^I login with username$/, async () => {
-    console.log("When I login with username");
-    expect(await signinFunc.firstLoginPageLaunched()).to.be.true;
-    await signinFunc.loginWithUsername("test+180756@scripbox.io");
+        console.log("When I login with username");
+        expect(await signinFunc.firstLoginPageLaunched()).to.be.true;
+        await signinFunc.loginWithUsername("test+180756@scripbox.io");
 });
 
 When(/^I login to scripbox with username and password$/, async () => {

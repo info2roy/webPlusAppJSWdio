@@ -57,7 +57,5 @@ When (/^I click on login tab$/, async () => {
     else if (driver.isAndroid){
         await homeFunc.androidlogin()
         expect(await loginFunc.androidHomePageLaunch()).to.be.true
-    }
-    
-
+    }  
 });

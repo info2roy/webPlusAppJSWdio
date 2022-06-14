@@ -19,6 +19,7 @@ class Utils {
         await browser.pause(5000);
         let isDisplayed = await $(selector).isDisplayed();
         console.log(selector+" is displayed check --> "+isDisplayed);
+        await browser.pause(5000);
         return isDisplayed
     }
 
@@ -26,6 +27,13 @@ class Utils {
         const myButton = $(selector);
         expect(myButton).toBeDisplayed()
         myButton.setValue(value);
+        await browser.pause(5000)
+    }
+
+    async setInputValueToAndroid(value, selector) {
+        const myButton = $(selector);
+        expect(myButton).toBeDisplayed()
+        myButton.addValue(value);
         await browser.pause(5000)
     }
 
