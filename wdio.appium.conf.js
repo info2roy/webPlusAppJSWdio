@@ -21,7 +21,8 @@ exports.config = {
       // For Android bases mobile device
       capabilities: [{
         platformName: "android",
-        "appium:deviceName": "Pixel 4 API 30",
+        //"appium:deviceName": "Pixel 4 API 30",
+        "appium:deviceName": "Nexus S API 29",
         "appium:platformVersion": "11.0",
         "appium:automationName": "UIAutomator2",
         "appium:app": path.join(process.cwd(),"src/support/Apps/UAT.apk"),

@@ -18,8 +18,7 @@ exports.config = {
       "goog:chromeOptions": {
         args: [
           //"--headless",
-          "--window-size=400,960",
-          "--use-mobile-user-agent",
+          "--window-size=400,960"
         ],
       },
     }],
