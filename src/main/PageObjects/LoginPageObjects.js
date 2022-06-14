@@ -6,9 +6,14 @@ class LoginPageObjects {
     loginButton = '//button[text()="Login"]';
 
     // Android Objects
-    moreOptions = '//*[contains(@content-desc,"More")]'
-    loginEmailText = '//*[@class="android.widget.EditText" and @package="com.scripbox.takecharge"]'
     
+    loginCredentialsText_android = '//*[@class="android.widget.EditText" and @package="com.scripbox.takecharge"]'
+    loginSignupButton_android = "//*[@text='Login or Signup']"
+    nextButtonLoginPage_android = "//*[@text='NEXT']"
+    continueButton_android = "//*[@text='CONTINUE']"
+    loginSignUpHeader_android = "//*[@text='Login / Signup']"
+
+
 
 
     

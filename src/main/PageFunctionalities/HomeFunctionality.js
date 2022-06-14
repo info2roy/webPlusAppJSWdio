@@ -3,15 +3,25 @@ const homePage = require('../Pages/HomePage')
 class HomePage {
 
   async login() {
-    homePage.selectLoginTab();
+      homePage.selectLoginTab();
   }
 
   async clickMenuButton() {
-    homePage.clickMenuButton();
+    if (driver.isAndroid){
+      homePage.clickLoginButtonHomePage();
+    }
+    else{
+      homePage.clickMenuButton();
+    }
+    
   }
 
   async androidHomePageLaunch(){
-    return (homePage.loginButton_android() && homePage.scripBoxCustomerbanner_android());
+    return (homePage.loginButtonDisplayed_android() && homePage.scripBoxCustomerbannerDisplayed_android());
+  }
+
+  async androidlogin(){
+   await homePage.clickLoginHomePage_android()
   }
   
 }

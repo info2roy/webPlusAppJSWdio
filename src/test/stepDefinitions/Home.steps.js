@@ -2,6 +2,7 @@ const { Given, When, Then } = require('@wdio/cucumber-framework');
 // const { default: DriverCommand } = require('appium/build/lib/cli/driver-command');
 const homeFunc = require('../../main/PageFunctionalities/HomeFunctionality');
 const HomePage = require('../../main/Pages/HomePage');
+const loginFunc = require('../../main/PageFunctionalities/LoginFunctionality')
 const device = require("../../support/libraries/Device");
 const expect = require('chai').expect
 
@@ -37,13 +38,18 @@ When (/^I click on menu button$/, async () => {
         await browser.pause(1000);
     }
     else if (driver.isAndroid){
-        
+        browser.pause(10000)
+        console.log("Menu button not available")
     }
 })
 
 When (/^I click on login tab$/, async () => {
     console.log("When I click on login tab");
-    await homeFunc.login();
-    await browser.pause(1000);
-
+    if (device.isMobileWeb()){
+        await homeFunc.login();
+    }
+    else if (driver.isAndroid){
+        await homeFunc.androidlogin()
+        expect(await loginFunc.androidHomePageLaunch()).to.be.true
+    }
 });

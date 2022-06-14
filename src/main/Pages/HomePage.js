@@ -1,5 +1,6 @@
 const util = require('../../support/Utils/Utils');
 const homePageObject =require('../PageObjects/HomePageObjects');
+const loginPageObject = require('../PageObjects/LoginPageObjects')
 
 class HomePage {
 
@@ -7,15 +8,28 @@ class HomePage {
         util.clickElement(homePageObject.loginTab);
     }
 
+    clickLoginOrSignup_android(){
+        util.clickElement(loginPageObject.loginSignupButton_android)
+    }
+
+    async clickLoginHomePage_android() {
+        util.clickElement(homePageObject.loginButtonHomePage_android);
+        // await browser.pause(10000)
+    }
+
     clickMenuButton() {
         util.clickElement(homePageObject.menuButton);
+        if (driver.isAndroid){
+            util.clickElement(homePageObject.moreOptions_android);
+        }
     }
 
-    loginButton_android(){
-        return util.elementIsDisplayed(homePageObject.loginButtonHomePage);
+
+    loginButtonDisplayed_android(){
+        return util.elementIsDisplayed(homePageObject.loginButtonHomePage_android);
     }
 
-    scripBoxCustomerbanner_android(){
+    scripBoxCustomerbannerDisplayed_android(){
         return util.elementIsDisplayed(homePageObject.ScripboxCustomerBanner);
     }
 

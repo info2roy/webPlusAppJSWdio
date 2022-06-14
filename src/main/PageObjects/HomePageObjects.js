@@ -6,8 +6,10 @@ class HomePageObjects {
 
     // Android locators
 
-    loginButtonHomePage = "//*[@text='Login']"
+    loginButtonHomePage_android = "//*[@text='Login']"
     ScripboxCustomerBanner = "//*[@text='Login']"
+    moreOptions_android = '//*[contains(@content-desc,"More")]'
+
 
 }
 

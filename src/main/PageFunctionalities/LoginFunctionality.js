@@ -10,6 +10,11 @@ class LoginPage {
       loginPage.enterEmail(username).enterPassword(password).clickLoginButton();
       
   }
+
+  async androidHomePageLaunch(){
+    
+    return (loginPage.loginSignupPageNavigation_android() && loginPage.loginEmailTextBoxPresent());
+  }
   
 }
 

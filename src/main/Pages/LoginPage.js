@@ -40,6 +40,14 @@ class LoginPage{
       return this;
     }
 
+    loginSignupPageNavigation_android(){
+      return util.elementIsDisplayed(loginObject.loginSignUpHeader_android)
+    }
+
+    loginEmailTextBoxPresent(){
+      return util.elementIsDisplayed(loginObject.loginCredentialsText_android)
+    }
+
 
 }
 module.exports = new LoginPage()
