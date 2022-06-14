@@ -3,7 +3,9 @@ const dashboardPage = require('../Pages/DashboardPage')
 class DashboardPage {
 
     async validate () {
-        //await expect(browser).toHaveUrl('dashboard');
+        let url = await browser.getUrl();
+        console.log(`url => ${url}`);
+        await expect(url).toContain("dashboard");
         await browser.pause(1000);
     }
 
