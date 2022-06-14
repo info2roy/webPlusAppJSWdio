@@ -16,6 +16,14 @@ class HomePage {
         util.clickElement(homePageObject.loginButtonHomePage_android);
         // await browser.pause(10000)
     }
+    
+    loginTabIsDisplayed() {
+        return util.elementIsDisplayed(homePageObject.loginTab);
+    }
+
+    signupTabIsDisplayed() {
+        return util.elementIsDisplayed(homePageObject.signupTab);
+    }
 
     clickMenuButton() {
         util.clickElement(homePageObject.menuButton);
@@ -27,6 +35,10 @@ class HomePage {
 
     loginButtonDisplayed_android(){
         return util.elementIsDisplayed(homePageObject.loginButtonHomePage_android);
+    }
+
+    menuButtonIsDisplayed() {
+        return util.elementIsDisplayed(homePageObject.menuButton);
     }
 
     scripBoxCustomerbannerDisplayed_android(){

@@ -15,10 +15,23 @@ class SigninPage  {
         return this;
     }
 
+    userIdFieldIsDisplayed() {
+        return util.elementIsDisplayed(signinPageObject.userId);
+    }
+
+
     clickContinueLoginButton() {
         console.log("clickContinueLoginButton")
         util.clickElement(signinPageObject.continueLoginButton);
         return this;
+    }
+
+    continueLoginButtonIsDisplayed() {
+        return util.elementIsDisplayed(signinPageObject.continueLoginButton);
+    }
+
+    emailFieldIsDisplayed() {
+        return util.elementIsDisplayed(signinPageObject.email);
     }
   
     enterEmail(emailID) {
@@ -27,12 +40,20 @@ class SigninPage  {
         return this;
     }
   
+    passwordFieldIsDisplayed() {
+        return util.elementIsDisplayed(signinPageObject.password);
+    }
+
     enterPassword(password) { 
         console.log("enterPassword")
         util.setInputField(password, signinPageObject.password);
         return this;
     }
   
+    continueSigninButtonIsDisplayed() {
+        return util.elementIsDisplayed(signinPageObject.continueSigninButton);
+    }
+
     clickContinueSigninButton() {
         console.log("clickContinueSigninButton")
         util.clickElement(signinPageObject.continueSigninButton);

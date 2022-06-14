@@ -12,8 +12,15 @@ class SigninPage {
       await browser.pause(2000);
       await signinPage.clickContinueSigninButton();
       await browser.pause(2000);
+      
 }
+  async secondLoginPageLaunched() {
+      return (signinPage.emailFieldIsDisplayed() && signinPage.passwordFieldIsDisplayed() && signinPage.continueSigninButtonIsDisplayed());
+  }
+  async firstLoginPageLaunched() {
+      return (signinPage.userIdFieldIsDisplayed() && signinPage.continueLoginButtonIsDisplayed());
 
+  }
 
   async loginWithUsername(username) {
 

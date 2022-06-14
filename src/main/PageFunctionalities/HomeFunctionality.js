@@ -16,6 +16,14 @@ class HomePage {
     
   }
 
+  async webHomePageLaunch() {
+    return (homePage.loginTabIsDisplayed() && homePage.signupTabIsDisplayed());
+  }
+
+  async responsiveHomePageLaunch() {
+    return homePage.menuButtonIsDisplayed();
+  }
+
   async androidHomePageLaunch(){
     return (homePage.loginButtonDisplayed_android() && homePage.scripBoxCustomerbannerDisplayed_android());
   }
