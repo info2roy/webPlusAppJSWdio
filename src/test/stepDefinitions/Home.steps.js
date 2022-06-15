@@ -36,8 +36,8 @@ Given(/^I am on the scripbox home page$/, async () => {
 When (/^I click on menu button$/, async () => {
     console.log(`When I click on menu button => mobileweb: ${device.isMobileWeb()}`);
     if (device.isMobileWeb()) {
-        expect(await homeFunc.responsiveHomePageLaunch()).to.be.true;
         await homeFunc.clickMenuButton();
+        expect(await homeFunc.webHomePageLaunch()).to.be.true;
         await browser.pause(1000);
     }
     else if (driver.isAndroid){
@@ -50,8 +50,6 @@ When (/^I click on login tab$/, async () => {
     console.log("When I click on login tab");
     if (device.isMobileWeb()){
         await homeFunc.login();
-        expect(await homeFunc.webHomePageLaunch()).to.be.true;
-        // await homeFunc.login();
         await browser.pause(1000);
     }
     else if (driver.isAndroid){
