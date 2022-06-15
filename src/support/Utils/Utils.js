@@ -11,8 +11,9 @@ class Utils {
     async clickElement(selector){
       browser.pause(5000)
       const myButton = await $(selector);
-      expect(myButton).toBeDisplayed()
-      await myButton.click()    
+      //expect(myButton).toBeDisplayed();
+      this.elementIsDisplayed(selector)
+      await myButton.click();
     }
 
     async elementIsDisplayed(selector){
