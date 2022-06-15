@@ -39,20 +39,19 @@ class SigninPage  {
 
     async clickContinueLoginButton() {
         if (device.isMobileWeb()){
-            util.clickElement(signinPageObject.continueLoginButton);
-            return this;
+            await browser.pause(5000);                                        //this pause has to be removed 
+            await util.clickElement(signinPageObject.continueLoginButton);
         }
         else if(driver.isAndroid){
             util.clickElement(loginPageObject.nextButtonLoginPage_android);
             await browser.pause(5000)
-            return this;
         }
         
     }
 
-    continueLoginButtonIsDisplayed() {
+    async continueLoginButtonIsDisplayed() {
         if (device.isMobileWeb()){
-            return util.elementIsDisplayed(signinPageObject.continueLoginButton);
+            return await util.elementIsDisplayed(signinPageObject.continueLoginButton);
         }
         else if(driver.isAndroid){
             browser.pause(4000)

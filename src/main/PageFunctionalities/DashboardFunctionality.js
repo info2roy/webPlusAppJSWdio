@@ -4,7 +4,7 @@ const dashboardPageObject = require('../PageObjects/DashboardPageObjects')
 class DashboardPage {
 
     async validate () {
-        if(device.isMobileWeb()){
+        if(device.isMobileWeb() || device.isDesktop()) {
             let url = await browser.getUrl();
             console.log(`url => ${url}`);
             await expect(url).toContain("dashboard");

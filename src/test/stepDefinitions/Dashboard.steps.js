@@ -1,5 +1,6 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 const dashboardFunc = require('../../main/PageFunctionalities/DashboardFunctionality');
+const { device } = require('../../support/libraries/Device');
 
 
 

@@ -3,7 +3,7 @@ class HomePageObjects {
     signupTab = "a[data-action='menu signup']"; //open signup page from home page via this tab
 
     //Responsive UI related objects
-    menuButton = "button[data-action='menu hamburger']" //three line menu button on response web UI
+    menuButton = "//button[@data-action='menu hamburger']" //three line menu button on response web UI
 
     // Android locators
 

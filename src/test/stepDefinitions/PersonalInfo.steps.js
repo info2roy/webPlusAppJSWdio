@@ -17,5 +17,5 @@ When (/^I update the profile picture$/, async () => {
 
 Then (/^The picture is uploaded successfully$/, async () => {
     console.log("Then The picture is uploaded successfully");
-    await browser.pause(1000);
+    await browser.pause(3000);
 });

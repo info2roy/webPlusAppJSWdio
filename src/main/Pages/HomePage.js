@@ -25,8 +25,8 @@ class HomePage {
         return util.elementIsDisplayed(homePageObject.signupTab);
     }
 
-    clickMenuButton() {
-        util.clickElement(homePageObject.menuButton);
+    async clickMenuButton() {
+        await util.clickElement(homePageObject.menuButton);
         if (driver.isAndroid){
             util.clickElement(homePageObject.moreOptions_android);
         }

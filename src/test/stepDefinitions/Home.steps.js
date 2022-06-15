@@ -23,7 +23,8 @@ Given(/^I am on the scripbox home page$/, async () => {
     device.setDevice(platform);
     if (device.isMobileWeb() || device.isDesktop()){
         console.log(`Launching web app mobileweb:${device.isMobileWeb()} desktop: ${device.isDesktop()}`);
-        await browser.url("https://uat-andromeda-2-uat.scripbox.org");   // This to be driven from a config file
+        await browser.url("https://uat-andromeda-38-uat.scripbox.org");   // This to be driven from a config file
+        //await browser.url("https://scripbox.com");   // This to be driven from a config file
         await browser.pause(1000);   //No pause in framework
     }
     else if ( device.isAndroidApp() ){

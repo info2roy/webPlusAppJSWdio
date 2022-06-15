@@ -1,16 +1,27 @@
 const util = require('../../support/Utils/Utils');
 const dashboardPageObject =require('../PageObjects/DashboardPageObjects');
+const device = require('../../support/libraries/Device');
 
 class DashboardPage  {
 
     openProfileDropdown() {
-        console.log("openProfileDropdown");
-        util.clickElement(dashboardPageObject.profileDropdown);
+        if (device.isDesktop()) {
+            console.log("openProfileDropdown");
+            util.clickElement(dashboardPageObject.profileDropdown);
+        } else if (device.isMobileWeb()) {
+            console.log("click more button");
+            util.clickElement(dashboardPageObject.moreButton);
+        }
     } 
 
     selectPersonalInformation() {
-        console.log("selectPersonalInformation");
-        util.clickElement(dashboardPageObject.personalInfo);
+        if (device.isDesktop()) {
+            console.log("selectPersonalInformation");
+            util.clickElement(dashboardPageObject.personalInfo);
+        } else if(device.isMobileWeb()) {
+            console.log("click on Personal Infomation");
+            util.clickElement(dashboardPageObject.personalInfoResponsive);
+        }
     }
 
 
