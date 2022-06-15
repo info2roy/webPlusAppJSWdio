@@ -23,8 +23,8 @@ Given(/^I am on the scripbox home page$/, async () => {
     device.setDevice(platform);
     if (device.isMobileWeb() || device.isDesktop()){
         console.log(`Launching web app mobileweb:${device.isMobileWeb()} desktop: ${device.isDesktop()}`);
-        await browser.url("https://uat-andromeda-2-uat.scripbox.org");   
-        await browser.pause(1000);
+        await browser.url("https://uat-andromeda-2-uat.scripbox.org");   // This to be driven from a config file
+        await browser.pause(1000);   //No pause in framework
     }
     else if ( device.isAndroidApp() ){
         console.log("Launching Android app")
@@ -40,7 +40,7 @@ When (/^I click on menu button$/, async () => {
         await homeFunc.clickMenuButton();
         await browser.pause(1000);
     }
-    else if (driver.isAndroid){
+    else if (driver.isAndroid){      // to be driven from device class
         browser.pause(10000)
         console.log("Menu button not available")
     }
