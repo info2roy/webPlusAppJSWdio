@@ -49,7 +49,7 @@ When (/^I click on menu button$/, async () => {
 
 When (/^I click on login tab$/, async () => {
     console.log("When I click on login tab");
-    if (device.isMobileWeb()){
+    if (device.isMobileWeb() || device.isDesktop() ){
         await homeFunc.login();
         await browser.pause(1000);
     }

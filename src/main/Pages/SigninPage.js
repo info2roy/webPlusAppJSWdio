@@ -13,7 +13,7 @@ class SigninPage  {
     }
   
     async enterUserId(emailID) {
-        if (device.isMobileWeb()){
+        if (device.isMobileWeb() || device.isDesktop()){
             util.setInputField(emailID, signinPageObject.userId);
             return this;
         }
@@ -26,7 +26,7 @@ class SigninPage  {
     }
 
     userIdFieldIsDisplayed() {
-        if (device.isMobileWeb()){
+        if (device.isMobileWeb() || device.isDesktop()){
             return util.elementIsDisplayed(signinPageObject.userId);
         }
         else if (driver.isAndroid){
@@ -38,7 +38,7 @@ class SigninPage  {
 
 
     async clickContinueLoginButton() {
-        if (device.isMobileWeb()){
+        if (device.isMobileWeb() || device.isDesktop()){
             await browser.pause(5000);                                        //this pause has to be removed 
             await util.clickElement(signinPageObject.continueLoginButton);
         }
@@ -50,7 +50,7 @@ class SigninPage  {
     }
 
     async continueLoginButtonIsDisplayed() {
-        if (device.isMobileWeb()){
+        if (device.isMobileWeb() || device.isDesktop()){
             return await util.elementIsDisplayed(signinPageObject.continueLoginButton);
         }
         else if(driver.isAndroid){
@@ -61,7 +61,7 @@ class SigninPage  {
     }
 
     emailFieldIsDisplayed() {
-        if (device.isMobileWeb()){
+        if (device.isMobileWeb() || device.isDesktop()){
             return util.elementIsDisplayed(signinPageObject.email);
         }
         else if(driver.isAndroid){
@@ -72,7 +72,7 @@ class SigninPage  {
     }
   
     enterEmail(emailID) {
-        if (device.isMobileWeb()){
+        if (device.isMobileWeb() || device.isDesktop()){
             util.setInputField(emailID, signinPageObject.email);
             return this;
         }
@@ -84,7 +84,7 @@ class SigninPage  {
     }
   
     passwordFieldIsDisplayed() {
-        if (device.isMobileWeb()){
+        if (device.isMobileWeb() || device.isDesktop()){
             return util.elementIsDisplayed(signinPageObject.password);
         }
         else if(driver.isAndroid){
@@ -95,7 +95,7 @@ class SigninPage  {
     }
 
     async enterPassword(password) { 
-        if (device.isMobileWeb()){
+        if (device.isMobileWeb() || device.isDesktop()){
             util.setInputField(password, signinPageObject.password);
             return this;
         }
@@ -107,7 +107,7 @@ class SigninPage  {
     }
   
     continueSigninButtonIsDisplayed() {
-        if (device.isMobileWeb()){
+        if (device.isMobileWeb() || device.isDesktop()){
             return util.elementIsDisplayed(signinPageObject.continueSigninButton);
         }
         else if(driver.isAndroid){
@@ -117,7 +117,7 @@ class SigninPage  {
     }
 
     async clickContinueSigninButton() {
-        if (device.isMobileWeb()){
+        if (device.isMobileWeb() || device.isDesktop()){
             util.clickElement(signinPageObject.continueSigninButton);
         }
         else if(driver.isAndroid){
