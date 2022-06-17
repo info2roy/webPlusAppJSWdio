@@ -17,10 +17,10 @@ class Utils {
     }
 
     async elementIsDisplayed(selector){
-        await browser.pause(5000);
+        await browser.pause(2000);
         let isDisplayed = await $(selector).isDisplayed();
         console.log(selector+" is displayed check --> "+isDisplayed);
-        await browser.pause(5000);
+        await browser.pause(2000);
         return isDisplayed
     }
 
@@ -44,6 +44,10 @@ class Utils {
         const remoteFilePath = await browser.uploadFile(localFilePath);
         await fileInput.setValue(remoteFilePath);
         await submitButton.click();
+    }
+
+    async scrollUntilTextIntoView(textToBeIntoView) {
+        await $(`android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView("${textToBeIntoView}")`);
     }
 
 }

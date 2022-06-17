@@ -3,7 +3,11 @@ const personalInfoPage = require('../Pages/PersonalInfoPage')
 class PersonalInfoPage {
 
     async validate () {
-        await expect(browser).toHaveUrl('/personal-info');
+        await personalInfoPage.validate();
+    }
+
+    async profileInfoPageLaunched() {
+        return (await personalInfoPage.profileInfomationIsDisplayed());
     }
 
     async updateProfilePic() {

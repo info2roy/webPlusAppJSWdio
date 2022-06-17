@@ -6,21 +6,29 @@ class DashboardPage  {
 
     openProfileDropdown() {
         if (device.isDesktop()) {
-            console.log("openProfileDropdown");
+            console.log("Desktop: openProfileDropdown");
             util.clickElement(dashboardPageObject.profileDropdown);
         } else if (device.isMobileWeb()) {
-            console.log("click more button");
+            console.log("Responsive: click more button");
             util.clickElement(dashboardPageObject.moreButton);
+        } else if (device.isAndroidApp()) {
+            console.log("AndroidApp: click on more button");
+            util.clickElement(dashboardPageObject.moreButton_android);
+
         }
     } 
 
-    selectPersonalInformation() {
+    async selectPersonalInformation() {
         if (device.isDesktop()) {
-            console.log("selectPersonalInformation");
+            console.log("Desktop: selectPersonalInformation");
             util.clickElement(dashboardPageObject.personalInfo);
         } else if(device.isMobileWeb()) {
-            console.log("click on Personal Infomation");
+            console.log("Responsive: click on Personal Infomation");
             util.clickElement(dashboardPageObject.personalInfoResponsive);
+        } else if(device.isAndroidApp()) {
+            console.log("AndroidApp: click on Personal Infomation");
+            util.scrollUntilTextIntoView("Personal information");
+            await util.clickElement(dashboardPageObject.personalInfo_android);
         }
     }
 

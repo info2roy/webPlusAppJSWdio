@@ -10,7 +10,7 @@ Then(/^I should see personal information page loaded$/, async () => {
 });
 
 When (/^I update the profile picture$/, async () => {
-    console.log("When I select a picture file to update");
+    console.log("When I update the profile picture");
     await personalInfoFunc.updateProfilePic();
     await browser.pause(1000);
 });
