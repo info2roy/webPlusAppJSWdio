@@ -26,8 +26,13 @@ class PersonalInfoPage  {
     }
 
     clickUpdatePicture() {
-        console.log("clickUpdatePicture")
-        util.clickElement(personalInfoPageObject.updatePicture);
+        if (device.isMobileWeb() || device.isDesktop()){
+            console.log("Web: clickUpdatePicture");
+            util.clickElement(personalInfoPageObject.updatePicture);
+        } else if(device.isAndroidApp()) {
+            console.log("Android: clickUpdatePicture");
+            util.clickElement(personalInfoPageObject.updatePictureAndroid);
+        }
         return this;
     }
     uploadFile() {
