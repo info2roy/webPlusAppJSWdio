@@ -7,6 +7,8 @@ class DashboardPageObjects {
     moreButton = "//div[text()='More']" //more button on the dashboard page after login
     personalInfoResponsive = "//div[text()='Personal Information']" //personal information
 
+    helloUser = "//*[@text='HELLO']"
+
 
     // Android locators
     helloUser_android = "//*[@text='HELLO']"
