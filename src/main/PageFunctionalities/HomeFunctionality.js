@@ -3,7 +3,7 @@ const homePage = require('../Pages/HomePage')
 class HomePage {
 
   async login() {
-      homePage.selectLoginTab();
+      await homePage.selectLoginTab();
   }
 
   async clickMenuButton() {
