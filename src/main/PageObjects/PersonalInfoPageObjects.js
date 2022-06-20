@@ -6,7 +6,7 @@ class PersonalInfoPageObjects {
     submitButton = "//button[text()='Submit']";
 
 
-    profileInfomationText = "//android.widget.TextView[text()='Profile information']" //android profile information page
+    profileInfomationText = "//android.widget.TextView[@text='Profile information']" //android profile information page
     updatePictureAndroid = "//android.widget.TextView[text()='Update picture']" //update picture button
 }
 
