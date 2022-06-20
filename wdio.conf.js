@@ -23,7 +23,7 @@ exports.config = {
     port: 4723,
     // path: '/wd/hub',
     specs: [
-        './src/test/features/UploadProfilePicture.feature'
+        './src/test/features/LoginViaHomepage.feature'
     ],
     // Patterns to exclude.
     exclude: [

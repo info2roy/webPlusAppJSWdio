@@ -5,17 +5,14 @@ const personalInfoFunc = require('../../main/PageFunctionalities/PersonalInfoFun
 
 Then(/^I should see personal information page loaded$/, async () => {
     console.log("Then I should see personal information page loaded");
-    await personalInfoFunc.validate();
-    await browser.pause(1000);
+    await personalInfoFunc.profileInfoPageLaunched();
 });
 
 When (/^I update the profile picture$/, async () => {
     console.log("When I update the profile picture");
-    await personalInfoFunc.updateProfilePic();
-    await browser.pause(1000);
+    await personalInfoFunc.updateProfilePicture();
 });
 
 Then (/^The picture is uploaded successfully$/, async () => {
     console.log("Then The picture is uploaded successfully");
-    await browser.pause(3000);
 });

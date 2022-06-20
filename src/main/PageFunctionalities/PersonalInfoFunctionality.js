@@ -2,18 +2,15 @@ const personalInfoPage = require('../Pages/PersonalInfoPage')
 
 class PersonalInfoPage {
 
-    async validate () {
-        await personalInfoPage.validate();
-    }
-
     async profileInfoPageLaunched() {
         return (await personalInfoPage.profileInfomationIsDisplayed());
     }
 
-    async updateProfilePic() {
+    async updateProfilePicture() {
 
-        await personalInfoPage.clickUpdatePicture()
-                        .uploadFile();
+        await personalInfoPage.clickUpdatePicture();
+        await personalInfoPage.clickCameraPictureAndUpdate();
+        await personalInfoPage.uploadFile();
     }
 }
 module.exports = new PersonalInfoPage();

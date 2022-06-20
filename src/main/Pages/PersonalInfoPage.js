@@ -2,16 +2,9 @@ const util = require('../../support/Utils/Utils');
 const personalInfoPageObject =require('../PageObjects/PersonalInfoPageObjects');
 const path = require('path');
 const device = require("../../support/libraries/Device");
+const expect = require('chai').expect;
 
 class PersonalInfoPage  {
-
-    async validate() {
-        if(device.isMobileWeb() || device.isDesktop()) {
-            await expect(browser).toHaveUrl('/personal-info');
-        } else if(device.isAndroidApp()) {
-
-        }
-    }
     
     async profileInfomationIsDisplayed() {
         if (device.isMobileWeb() || device.isDesktop()){
@@ -21,25 +14,38 @@ class PersonalInfoPage  {
             return true
         }
         else if (device.isAndroidApp()){
-            return util.elementIsDisplayed(personalInfoPageObject.profileInfomationText);
+            return util.elementIsDisplayed(personalInfoPageObject.profileInfomationHeader);
         }
     }
 
-    clickUpdatePicture() {
+    async clickUpdatePicture() {
         if (device.isMobileWeb() || device.isDesktop()){
             console.log("Web: clickUpdatePicture");
-            util.clickElement(personalInfoPageObject.updatePicture);
+            await util.clickElement(personalInfoPageObject.updatePicture);
         } else if(device.isAndroidApp()) {
             console.log("Android: clickUpdatePicture");
-            util.clickElement(personalInfoPageObject.updatePictureAndroid);
+            await util.clickElement(personalInfoPageObject.updatePicture_android);
+            expect(await util.elementIsDisplayed(personalInfoPageObject.alertForAllowCameraAccess_android)).to.be.true;
         }
-        return this;
     }
-    uploadFile() {
-        console.log("uploadFile")
-        const localFilePath = path.join(__dirname, '../../test/data/desktop.jpg');
-        util.uploadFile(localFilePath, personalInfoPageObject.inputFile, personalInfoPageObject.submitButton)
-        return this;
+    async clickCameraPictureAndUpdate() {
+        if(device.isAndroidApp()) {
+            await util.clickElement(personalInfoPageObject.alertForAllowCameraAccess_whileUsingTheAppOption_android);
+            expect(await util.elementIsDisplayed(personalInfoPageObject.alertForAllowMediaAccess_android)).to.be.true;
+            await util.clickElement(personalInfoPageObject.alertForAllowMediaAccess_allowOption_android);
+            await util.clickElement(personalInfoPageObject.clickPictureButton_android);
+            await util.clickElement(personalInfoPageObject.donePictureButton_android);
+            expect(await util.elementIsDisplayed(personalInfoPageObject.editPhotoHeader_android)).to.be.true;
+            await util.clickElement(personalInfoPageObject.doneCropButton_android);
+
+        }
+    }
+    async uploadFile() {
+        if (device.isMobileWeb() || device.isDesktop()) {
+            console.log("Web: uploadFile")
+            const localFilePath = path.join(__dirname, '../../test/data/desktop.jpg');
+            await util.uploadFile(localFilePath, personalInfoPageObject.inputFile, personalInfoPageObject.submitButton)
+        }
     }
 
 }
