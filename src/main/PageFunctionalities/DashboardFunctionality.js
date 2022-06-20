@@ -5,9 +5,7 @@ class DashboardPage {
 
     async validate () {
         if(device.isMobileWeb() || device.isDesktop()) {
-            let url = await browser.getUrl();
-            console.log(`url => ${url}`);
-            await expect(url).toContain("dashboard");
+            expect(await dashboardPageObject.helloUser).toBeDisplayed()
             await browser.pause(1000);
         }
         else if(driver.isAndroid){
