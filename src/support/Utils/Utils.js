@@ -28,7 +28,6 @@ class Utils {
         const myButton = $(selector);
         expect(myButton).toBeDisplayed()
         myButton.setValue(value);
-        await browser.pause(5000)
     }
 
     async setInputValueToAndroid(value, selector) {

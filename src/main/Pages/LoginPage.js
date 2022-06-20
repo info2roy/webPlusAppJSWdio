@@ -83,9 +83,9 @@ class LoginPage{
         
     }
 
-    enterEmail(emailID) {
+    async enterEmail(emailID) {
         if (device.isMobileWeb() || device.isDesktop()){
-            util.setInputField(emailID, loginObject.email);
+            await util.setInputField(emailID, loginObject.email);
             return this;
         }
         else if(device.isAndroid){
@@ -108,7 +108,7 @@ class LoginPage{
 
     async enterPassword(password) { 
         if (device.isMobileWeb() || device.isDesktop()){
-            util.setInputField(password, loginObject.password);
+            await util.setInputField(password, loginObject.password);
             return this;
         }
         else if(driver.isAndroid){
@@ -130,7 +130,8 @@ class LoginPage{
 
     async clickContinueSigninButton() {
         if (device.isMobileWeb() || device.isDesktop()){
-            util.clickElement(loginObject.continueSigninButton);
+            await util.clickElement(loginObject.continueSigninButton);
+            await browser.pause(10000);
         }
         else if(driver.isAndroid){
             await browser.pause(4000)

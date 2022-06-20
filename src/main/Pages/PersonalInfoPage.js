@@ -9,7 +9,8 @@ class PersonalInfoPage  {
     async profileInfomationIsDisplayed() {
         if (device.isMobileWeb() || device.isDesktop()){
             let url = await browser.getUrl();
-            await expect(url).toContain("personal-info");
+            //await expect(url).toContain("personal-info");
+            await expect(url).to.contain.oneOf(['personal-info'])
             //return util.elementIsDisplayed(personalInfoPageObject.userId);
             return true
         }
