@@ -26,117 +26,67 @@ class LoginPage{
     }
   
     async enterUserId(emailID) {
-      if (device.isMobileWeb() || device.isDesktop()){
-          util.setInputField(emailID, loginObject.userId);
-          return this;
-      }
-      else if(driver.isAndroid){
-          util.setInputValueToAndroid(emailID, loginObject.loginCredentialsText_android);
-          await browser.pause(4000)
-          return this;
-      }
-      return this 
+        await util.setInputField(emailID, loginObject.userIdField);
+        return this;
     }
 
-    userIdFieldIsDisplayed() {
-        if (device.isMobileWeb() || device.isDesktop()){
-            return util.elementIsDisplayed(loginObject.userId);
-        }
-        else if (driver.isAndroid){
-            browser.pause(4000)
-            return util.elementIsDisplayed(loginObject.loginCredentialsText_android);
-        }
-        
+    async userIdFieldIsDisplayed() {
+        return await util.elementIsDisplayed(loginObject.userIdField);
     }
 
-    async clickContinueLoginButton() {
-        if (device.isMobileWeb() || device.isDesktop()){
-            await browser.pause(5000);                                        //this pause has to be removed 
-            await util.clickElement(loginObject.continueLoginButton);
-        }
-        else if(driver.isAndroid){
-            util.clickElement(loginObject.nextButtonLoginPage_android);
-            await browser.pause(5000)
-        }
-        
+    async clickContinueOrNextButton() {
+        await util.clickElement(loginObject.continueOrNextButton);
+        return this;
     }
 
-    async continueLoginButtonIsDisplayed() {
-        if (device.isMobileWeb() || device.isDesktop()){
-            return await util.elementIsDisplayed(loginObject.continueLoginButton);
+    async continueOrNextButtonIsDisplayed() {
+        return await util.elementIsDisplayed(loginObject.continueOrNextButton);
+    }
+
+    async firstLoginPageHeaderIsDisplayed() {
+        if (device.isAndroidApp()) {
+            return await util.elementIsDisplayed(loginObject.firstLoginPageHeader);
+        } else {
+            return true;
         }
-        else if(driver.isAndroid){
-            browser.pause(4000)
-            return util.elementIsDisplayed(loginObject.nextButtonLoginPage_android)
-        }
-        
     }
 
     emailFieldIsDisplayed() {
         if (device.isMobileWeb() || device.isDesktop()){
-            return util.elementIsDisplayed(loginObject.email);
+            return util.elementIsDisplayed(loginObject.emailField);
         }
         else if(driver.isAndroid){
             console.log("Email field not available for Android")
             return true
         }
-        
     }
 
     async enterEmail(emailID) {
         if (device.isMobileWeb() || device.isDesktop()){
-            await util.setInputField(emailID, loginObject.email);
+            await util.setInputField(emailID, loginObject.emailField);
             return this;
         }
         else if(device.isAndroid){
-            console.log("Skipping for Android")
+            console.log("Skipping enterEmail for Android")
             return this;
         }
-        
     }
 
     passwordFieldIsDisplayed() {
-        if (device.isMobileWeb() || device.isDesktop()){
-            return util.elementIsDisplayed(loginObject.password);
-        }
-        else if(driver.isAndroid){
-            console.log("Password field not available for Android")
-            return util.elementIsDisplayed(loginObject.loginCredentialsText_android);
-        }
-        
+        return util.elementIsDisplayed(loginObject.passwordField);
     }
 
-    async enterPassword(password) { 
-        if (device.isMobileWeb() || device.isDesktop()){
-            await util.setInputField(password, loginObject.password);
-            return this;
-        }
-        else if(driver.isAndroid){
-            await browser.pause(5000)
-            await util.setInputValueToAndroid(password, loginObject.loginCredentialsText_android);
-            return this;
-        }
+    async enterPassword(password) {
+        await util.setInputField(password, loginObject.passwordField);
+        return this;
     }
 
-    continueSigninButtonIsDisplayed() {
-        if (device.isMobileWeb() || device.isDesktop()){
-            return util.elementIsDisplayed(loginObject.continueSigninButton);
-        }
-        else if(driver.isAndroid){
-            return util.elementIsDisplayed(loginObject.continueButton_android);
-        }
-        
+    continueLoginButtonIsDisplayed() {
+        return util.elementIsDisplayed(loginObject.continueLoginButton);
     }
 
-    async clickContinueSigninButton() {
-        if (device.isMobileWeb() || device.isDesktop()){
-            await util.clickElement(loginObject.continueSigninButton);
-            await browser.pause(10000);
-        }
-        else if(driver.isAndroid){
-            await browser.pause(4000)
-            await util.clickElement(loginObject.continueButton_android);
-        }
+    async clickContinueLoginButton() {
+        await util.clickElement(loginObject.continueLoginButton);
         return this;
     }
   

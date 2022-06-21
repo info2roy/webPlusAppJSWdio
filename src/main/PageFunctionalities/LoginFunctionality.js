@@ -9,25 +9,25 @@ class LoginPage {
 
   
   async loginWithUsernameAndPassword(username, password) {
-    console.log("inside loginWithUsernameAndPassword(username, password)");
-
     await loginPage.enterEmail(username);
     await loginPage.enterPassword(password);
-    await loginPage.clickContinueSigninButton();
+    await loginPage.clickContinueLoginButton();
           
 }
   async secondLoginPageLaunched() {
       return ((await loginPage.emailFieldIsDisplayed()) && (await loginPage.passwordFieldIsDisplayed()) 
-      && (await loginPage.continueSigninButtonIsDisplayed()));
+      && (await loginPage.continueLoginButtonIsDisplayed()));
   }
 
   async firstLoginPageLaunched() {
-      return ((await loginPage.userIdFieldIsDisplayed()) && (await loginPage.continueLoginButtonIsDisplayed()));
+      return ((await loginPage.firstLoginPageHeaderIsDisplayed()) && 
+      (await loginPage.userIdFieldIsDisplayed()) && 
+      (await loginPage.continueOrNextButtonIsDisplayed()));
   }
 
   async loginWithUsername(username) {
       await loginPage.enterUserId(username);
-      await loginPage.clickContinueLoginButton();
+      await loginPage.clickContinueOrNextButton();
   }  
 }
 

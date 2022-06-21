@@ -1,45 +1,86 @@
 const isDisplayed = require('webdriverio/build/commands/element/isDisplayed');
+const device = require('../libraries/Device');
 
 class Utils {
 
+
+    getLocator(object) {
+        if (device.isMobileWeb()) {
+            if (object.hasOwnProperty('mobileweb')) {
+                return object.mobileweb;
+            } else {
+                return object.web;
+            }
+        } else if(device.isDesktop()) {
+            if (object.hasOwnProperty('desktop')) {
+                return object.desktop;
+            } else {
+                return object.web;
+            }
+        } else if (device.isAndroidApp() ) {
+            return object.androidapp;
+        } else if (device.isiOSApp() ) {
+            return object.iosapp;
+        }
+    }
+    getPlatform() {
+        let platform = "";
+        console.log(browser.requestedCapabilities);
+        if ("goog:chromeOptions" in browser.requestedCapabilities) {
+            platform = "mobileweb";
+        } else if (driver.isAndroid){
+            platform = "androidApp";
+        }
+        else
+            platform = "desktop";
+        console.log(`platform ${platform}`)
+        return platform;
+    }
+
     async waitForElementDisplayed (selector) {
-        let elem = await $(selector)
+        let elem = await $(this.getLocator(selector))
         await elem.waitForDisplayed({ timeout: 10000 });
         return this;
     }
 
     async clickElement(selector){
       browser.pause(5000)
-      const myButton = await $(selector);
+      const locator = this.getLocator(selector);
+      const myButton = await $(locator);
       //expect(myButton).toBeDisplayed();
-      this.elementIsDisplayed(selector)
+      this.elementIsDisplayed(selector);
       await myButton.click();
     }
 
     async elementIsDisplayed(selector){
         await browser.pause(2000);
-        let isDisplayed = await $(selector).isDisplayed();
-        console.log(selector+" is displayed check --> "+isDisplayed);
+        const locator = this.getLocator(selector);
+        let isDisplayed = await $(locator).isDisplayed();
+        console.log(locator+" is displayed check --> "+isDisplayed);
         await browser.pause(2000);
         return isDisplayed
     }
 
     async setInputField(value, selector) {
-        const myButton = $(selector);
-        expect(myButton).toBeDisplayed()
-        myButton.setValue(value);
+        const myButton = await $(this.getLocator(selector));
+        await expect(myButton).toBeDisplayed();
+        if (device.isAndroidApp()) {
+            await myButton.addValue(value);
+        } else {
+            await myButton.setValue(value);
+        }
     }
 
     async setInputValueToAndroid(value, selector) {
-        const myButton = $(selector);
+        const myButton = $(this.getLocator(selector));
         expect(myButton).toBeDisplayed()
         myButton.addValue(value);
         await browser.pause(5000)
     }
 
     async uploadFile(localFilePath, fileInputSelector, submitButtonSelector) {
-        const fileInput = await $(fileInputSelector);
-        const submitButton = await $(submitButtonSelector);
+        const fileInput = await $(this.getLocator(fileInputSelector));
+        const submitButton = await $(this.getLocator(submitButtonSelector));
         const remoteFilePath = await browser.uploadFile(localFilePath);
         await fileInput.setValue(remoteFilePath);
         await submitButton.click();

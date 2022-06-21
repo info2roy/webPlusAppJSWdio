@@ -1,11 +1,12 @@
 const util = require('../../support/Utils/Utils');
 const homePageObject =require('../PageObjects/HomePageObjects');
-const loginPageObject = require('../PageObjects/LoginPageObjects')
+const loginPageObject = require('../PageObjects/LoginPageObjects');
+const device = require('../../support/libraries/Device');
 
 class HomePage {
 
-    selectLoginTab() {
-        util.clickElement(homePageObject.loginTab);
+    selectLoginOption() {
+        util.clickElement(homePageObject.loginButton);
     }
 
     clickLoginOrSignup_android(){
@@ -13,28 +14,33 @@ class HomePage {
     }
 
     async clickLoginHomePage_android() {
-        util.clickElement(homePageObject.loginButtonHomePage_android);
-        // await browser.pause(10000)
+        util.clickElement(homePageObject.loginButton);
     }
     
     loginTabIsDisplayed() {
-        return util.elementIsDisplayed(homePageObject.loginTab);
+        return util.elementIsDisplayed(homePageObject.loginButton);
     }
 
     signupTabIsDisplayed() {
-        return util.elementIsDisplayed(homePageObject.signupTab);
+        if (device.isMobileWeb() || device.isDesktop() ) {
+            return util.elementIsDisplayed(homePageObject.signupButton);
+        } else {
+            return true;
+        }
     }
 
     async clickMenuButton() {
-        await util.clickElement(homePageObject.menuButton);
-        if (driver.isAndroid){
-            util.clickElement(homePageObject.moreOptions_android);
+        if (device.isMobileWeb()) {
+            await util.clickElement(homePageObject.menuButton);
         }
+        // if (driver.isAndroid){
+        //     util.clickElement(homePageObject.moreOptions);
+        // }
     }
 
 
     loginButtonDisplayed_android(){
-        return util.elementIsDisplayed(homePageObject.loginButtonHomePage_android);
+        return util.elementIsDisplayed(homePageObject.loginButton);
     }
 
     menuButtonIsDisplayed() {
@@ -42,7 +48,7 @@ class HomePage {
     }
 
     scripBoxCustomerbannerDisplayed_android(){
-        return util.elementIsDisplayed(homePageObject.ScripboxCustomerBanner);
+        return util.elementIsDisplayed(homePageObject.customerBanner);
     }
 
 
