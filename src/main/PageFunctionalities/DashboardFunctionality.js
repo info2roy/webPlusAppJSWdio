@@ -5,7 +5,6 @@ class DashboardPage {
 
     async validate () {
         expect(await dashboardPageObject.helloUser).toBeDisplayed();
-        //await browser.pause(1000);
     }
 
     async openProfileDropdown() {
