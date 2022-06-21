@@ -9,12 +9,10 @@ class DashboardPage {
 
     async openProfileDropdown() {
         await dashboardPage.openProfileDropdown();
-        await browser.pause(2000);
     } 
 
     async selectPersonalInformation() {
         await dashboardPage.selectPersonalInformation();
-        await browser.pause(2000);
     }
 
 }

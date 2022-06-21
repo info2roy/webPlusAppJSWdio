@@ -5,8 +5,18 @@ class Utils {
 
 
     getLocator(object) {
-        if (device.isMobileWeb() || device.isDesktop()) {
-            return object.web;
+        if (device.isMobileWeb()) {
+            if (object.hasOwnProperty('mobileweb')) {
+                return object.mobileweb;
+            } else {
+                return object.web;
+            }
+        } else if(device.isDesktop()) {
+            if (object.hasOwnProperty('desktop')) {
+                return object.desktop;
+            } else {
+                return object.web;
+            }
         } else if (device.isAndroidApp() ) {
             return object.androidapp;
         } else if (device.isiOSApp() ) {

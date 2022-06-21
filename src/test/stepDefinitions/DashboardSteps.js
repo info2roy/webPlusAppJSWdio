@@ -13,7 +13,6 @@ Then(/^I should see dashboard page loaded$/, async () => {
 Given (/^I open the profile dropdown$/, async () => {
     console.log("Given I open the profile dropdown");
     await dashboardFunc.openProfileDropdown();
-    await browser.pause(1000);
 });
 
 
@@ -21,7 +20,6 @@ When (/^I select personal information$/, async () => {
     console.log("When I select personal information");
     await dashboardFunc.selectPersonalInformation();
     expect(await personalInfoFunc.profileInfoPageLaunched()).to.be.true;
-    await browser.pause(1000);
 });
 
 

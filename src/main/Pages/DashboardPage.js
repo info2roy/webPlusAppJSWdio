@@ -4,34 +4,16 @@ const device = require('../../support/libraries/Device');
 
 class DashboardPage  {
 
-    openProfileDropdown() {
-        if (device.isDesktop()) {
-            console.log("Desktop: openProfileDropdown");
-            util.clickElement(dashboardPageObject.profileDropdown);
-        } else if (device.isMobileWeb()) {
-            console.log("Responsive: click more button");
-            util.clickElement(dashboardPageObject.moreButton);
-        } else if (device.isAndroidApp()) {
-            console.log("AndroidApp: click on more button");
-            util.clickElement(dashboardPageObject.moreButton_android);
-
-        }
+    async openProfileDropdown() {
+        await util.clickElement(dashboardPageObject.moreButton);
     } 
 
     async selectPersonalInformation() {
-        if (device.isDesktop()) {
-            console.log("Desktop: selectPersonalInformation");
-            util.clickElement(dashboardPageObject.personalInfo);
-        } else if(device.isMobileWeb()) {
-            console.log("Responsive: click on Personal Infomation");
-            util.clickElement(dashboardPageObject.personalInfoResponsive);
-        } else if(device.isAndroidApp()) {
-            console.log("AndroidApp: click on Personal Infomation");
-            util.scrollUntilTextIntoView("Personal information");
-            await util.clickElement(dashboardPageObject.personalInfo_android);
+        if(device.isAndroidApp()) {
+            console.log("AndroidApp: click on Personal Infomation requires scrolling until it comes into view");
+            await util.scrollUntilTextIntoView("Personal information");
         }
+        await util.clickElement(dashboardPageObject.personalInfoOption);
     }
-
-
 }
 module.exports = new DashboardPage();
