@@ -38,15 +38,8 @@ class LoginPage{
       return this 
     }
 
-    userIdFieldIsDisplayed() {
-        if (device.isMobileWeb() || device.isDesktop()){
-            return util.elementIsDisplayed(loginObject.userId);
-        }
-        else if (driver.isAndroid){
-            browser.pause(4000)
-            return util.elementIsDisplayed(loginObject.loginCredentialsText_android);
-        }
-        
+    async userIdFieldIsDisplayed() {
+        return await util.elementIsDisplayed(loginObject.userId);
     }
 
     async clickContinueLoginButton() {
@@ -62,14 +55,15 @@ class LoginPage{
     }
 
     async continueLoginButtonIsDisplayed() {
-        if (device.isMobileWeb() || device.isDesktop()){
-            return await util.elementIsDisplayed(loginObject.continueLoginButton);
+        return await util.elementIsDisplayed(loginObject.continueOrNextButton);
+    }
+
+    async firstLoginPageHeaderIsDisplayed() {
+        if (device.isAndroidApp()) {
+            return await util.elementIsDisplayed(loginObject.firstLoginPageHeader);
+        } else {
+            return true;
         }
-        else if(driver.isAndroid){
-            browser.pause(4000)
-            return util.elementIsDisplayed(loginObject.nextButtonLoginPage_android)
-        }
-        
     }
 
     emailFieldIsDisplayed() {

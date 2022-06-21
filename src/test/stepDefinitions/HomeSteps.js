@@ -9,7 +9,7 @@ const util = require('../../support/Utils/Utils');
 
 
 Given(/^I am on the scripbox home page$/, async () => {
-    console.log("When I am on the scripbox home page");
+    console.log("Given I am on the scripbox home page");
     let platform = util.getPlatform();
     device.setDevice(platform);
 
@@ -22,29 +22,16 @@ Given(/^I am on the scripbox home page$/, async () => {
         console.log("Launching Android app")
         expect(await homeFunc.androidHomePageLaunch()).to.be.true
     }
-    
 });
 
 When (/^I click on menu button$/, async () => {
-    console.log(`When I click on menu button => mobileweb: ${device.isMobileWeb()}`);
-    if (device.isMobileWeb()) {
-        await homeFunc.clickMenuButton();
-        expect(await homeFunc.webHomePageLaunch()).to.be.true;
-        await browser.pause(1000);
-    }
-    else if (driver.isAndroid){      // to be driven from device class
-        console.log("Menu button not available")
-    }
+    console.log("When I click on menu button");
+    await homeFunc.clickMenuButton();
+    expect(await homeFunc.webHomePageLaunch()).to.be.true;
 })
 
 When (/^I click on login tab$/, async () => {
     console.log("When I click on login tab");
-    if (device.isMobileWeb() || device.isDesktop() ){
-        await homeFunc.login();
-        await browser.pause(1000);
-    }
-    else if (driver.isAndroid){
-        await homeFunc.androidlogin()
-        expect(await loginFunc.androidHomePageLaunch()).to.be.true
-    }  
+    await homeFunc.login();
+    expect(await loginFunc.firstLoginPageLaunched()).to.be.true
 });

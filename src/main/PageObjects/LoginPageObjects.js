@@ -17,9 +17,10 @@ class LoginPageObjects {
     continueButton_android = "//*[@text='CONTINUE']"
     loginSignUpHeader_android = "//*[@text='Login / Signup']"
 
-
-
-
+    //common object
+    userId = {web: '#test-email-input', androidapp: '//*[@class="android.widget.EditText" and @package="com.scripbox.takecharge"]'};
+    continueOrNextButton = {web: '#test-login-next-button', androidapp: "//*[@text='NEXT']"};
+    firstLoginPageHeader = {web: '//label[@text=" Login or create a new account "]', androidapp: "//*[@text='Login / Signup']"}
     
     }
 
