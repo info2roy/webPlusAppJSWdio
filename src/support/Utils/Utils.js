@@ -39,9 +39,9 @@ class Utils {
     }
 
     async setInputField(value, selector) {
-        const myButton = $(selector);
-        expect(myButton).toBeDisplayed()
-        myButton.setValue(value);
+        const myButton = await $(selector);
+        await expect(myButton).toBeDisplayed()
+        await myButton.setValue(value);
     }
 
     async setInputValueToAndroid(value, selector) {
