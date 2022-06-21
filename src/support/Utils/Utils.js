@@ -38,8 +38,8 @@ class Utils {
     }
 
     async uploadFile(localFilePath, fileInputSelector, submitButtonSelector) {
-        const fileInput = $(fileInputSelector);
-        const submitButton = $(submitButtonSelector);
+        const fileInput = await $(fileInputSelector);
+        const submitButton = await $(submitButtonSelector);
         const remoteFilePath = await browser.uploadFile(localFilePath);
         await fileInput.setValue(remoteFilePath);
         await submitButton.click();
