@@ -53,8 +53,12 @@ class Utils {
 
     async setInputField(value, selector) {
         const myButton = await $(this.getLocator(selector));
-        await expect(myButton).toBeDisplayed()
-        await myButton.setValue(value);
+        await expect(myButton).toBeDisplayed();
+        if (device.isAndroidApp()) {
+            await myButton.addValue(value);
+        } else {
+            await myButton.setValue(value);
+        }
     }
 
     async setInputValueToAndroid(value, selector) {

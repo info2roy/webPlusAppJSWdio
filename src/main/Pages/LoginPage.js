@@ -26,35 +26,20 @@ class LoginPage{
     }
   
     async enterUserId(emailID) {
-      if (device.isMobileWeb() || device.isDesktop()){
-          util.setInputField(emailID, loginObject.userId);
-          return this;
-      }
-      else if(driver.isAndroid){
-          util.setInputValueToAndroid(emailID, loginObject.loginCredentialsText_android);
-          await browser.pause(4000)
-          return this;
-      }
-      return this 
+        await util.setInputField(emailID, loginObject.userIdField);
+        return this;
     }
 
     async userIdFieldIsDisplayed() {
-        return await util.elementIsDisplayed(loginObject.userId);
+        return await util.elementIsDisplayed(loginObject.userIdField);
     }
 
-    async clickContinueLoginButton() {
-        if (device.isMobileWeb() || device.isDesktop()){
-            await browser.pause(5000);                                        //this pause has to be removed 
-            await util.clickElement(loginObject.continueLoginButton);
-        }
-        else if(driver.isAndroid){
-            util.clickElement(loginObject.nextButtonLoginPage_android);
-            await browser.pause(5000)
-        }
-        
+    async clickContinueOrNextButton() {
+        await util.clickElement(loginObject.continueOrNextButton);
+        return this;
     }
 
-    async continueLoginButtonIsDisplayed() {
+    async continueOrNextButtonIsDisplayed() {
         return await util.elementIsDisplayed(loginObject.continueOrNextButton);
     }
 
@@ -68,13 +53,12 @@ class LoginPage{
 
     emailFieldIsDisplayed() {
         if (device.isMobileWeb() || device.isDesktop()){
-            return util.elementIsDisplayed(loginObject.email);
+            return util.elementIsDisplayed(loginObject.emailField);
         }
         else if(driver.isAndroid){
             console.log("Email field not available for Android")
             return true
         }
-        
     }
 
     async enterEmail(emailID) {
@@ -86,18 +70,10 @@ class LoginPage{
             console.log("Skipping for Android")
             return this;
         }
-        
     }
 
     passwordFieldIsDisplayed() {
-        if (device.isMobileWeb() || device.isDesktop()){
-            return util.elementIsDisplayed(loginObject.password);
-        }
-        else if(driver.isAndroid){
-            console.log("Password field not available for Android")
-            return util.elementIsDisplayed(loginObject.loginCredentialsText_android);
-        }
-        
+        return util.elementIsDisplayed(loginObject.passwordField);
     }
 
     async enterPassword(password) { 
@@ -112,14 +88,8 @@ class LoginPage{
         }
     }
 
-    continueSigninButtonIsDisplayed() {
-        if (device.isMobileWeb() || device.isDesktop()){
-            return util.elementIsDisplayed(loginObject.continueSigninButton);
-        }
-        else if(driver.isAndroid){
-            return util.elementIsDisplayed(loginObject.continueButton_android);
-        }
-        
+    continueLoginButtonIsDisplayed() {
+        return util.elementIsDisplayed(loginObject.continueLoginButton);
     }
 
     async clickContinueSigninButton() {

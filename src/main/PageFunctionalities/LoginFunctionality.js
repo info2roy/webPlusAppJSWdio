@@ -18,18 +18,18 @@ class LoginPage {
 }
   async secondLoginPageLaunched() {
       return ((await loginPage.emailFieldIsDisplayed()) && (await loginPage.passwordFieldIsDisplayed()) 
-      && (await loginPage.continueSigninButtonIsDisplayed()));
+      && (await loginPage.continueLoginButtonIsDisplayed()));
   }
 
   async firstLoginPageLaunched() {
-      return ( (await loginPage.firstLoginPageHeaderIsDisplayed()) && 
+      return ((await loginPage.firstLoginPageHeaderIsDisplayed()) && 
       (await loginPage.userIdFieldIsDisplayed()) && 
-      (await loginPage.continueLoginButtonIsDisplayed()));
+      (await loginPage.continueOrNextButtonIsDisplayed()));
   }
 
   async loginWithUsername(username) {
       await loginPage.enterUserId(username);
-      await loginPage.clickContinueLoginButton();
+      await loginPage.clickContinueOrNextButton();
   }  
 }
 
