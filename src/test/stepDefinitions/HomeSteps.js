@@ -5,22 +5,14 @@ const HomePage = require('../../main/Pages/HomePage');
 const loginFunc = require('../../main/PageFunctionalities/LoginFunctionality')
 const device = require("../../support/libraries/Device");
 const expect = require('chai').expect
+const util = require('../../support/Utils/Utils');
 
 
 Given(/^I am on the scripbox home page$/, async () => {
     console.log("When I am on the scripbox home page");
-    console.log(browser.requestedCapabilities);
-    if ("goog:chromeOptions" in browser.requestedCapabilities) {
-        platform = "mobileweb";
-    } else if (driver.isAndroid){
-        platform = "androidApp" 
-    }
-    else
-        platform = "desktop"
-
-    console.log(`platform ${platform}`)
-
+    let platform = util.getPlatform();
     device.setDevice(platform);
+
     if (device.isMobileWeb() || device.isDesktop()){
         console.log(`Launching web app mobileweb:${device.isMobileWeb()} desktop: ${device.isDesktop()}`);
         await browser.url("https://uat-andromeda-2-uat.scripbox.org");   // This to be driven from a config file

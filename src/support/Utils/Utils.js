@@ -2,6 +2,20 @@ const isDisplayed = require('webdriverio/build/commands/element/isDisplayed');
 
 class Utils {
 
+    getPlatform() {
+        let platform = "";
+        console.log(browser.requestedCapabilities);
+        if ("goog:chromeOptions" in browser.requestedCapabilities) {
+            platform = "mobileweb";
+        } else if (driver.isAndroid){
+            platform = "androidApp";
+        }
+        else
+            platform = "desktop";
+        console.log(`platform ${platform}`)
+        return platform;
+    }
+
     async waitForElementDisplayed (selector) {
         let elem = await $(selector)
         await elem.waitForDisplayed({ timeout: 10000 });
