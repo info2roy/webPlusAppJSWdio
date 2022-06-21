@@ -4,16 +4,8 @@ const dashboardPageObject = require('../PageObjects/DashboardPageObjects')
 class DashboardPage {
 
     async validate () {
-        if(device.isMobileWeb() || device.isDesktop()) {
-            expect(await dashboardPageObject.helloUser).toBeDisplayed()
-            await browser.pause(1000);
-        }
-        else if(driver.isAndroid){
-            console.log("checking android dashboard assertion")
-            await browser.pause(3000)
-            expect(await dashboardPageObject.helloUser_android).toBeDisplayed()
-        }
-        
+        expect(await dashboardPageObject.helloUser).toBeDisplayed();
+        //await browser.pause(1000);
     }
 
     async openProfileDropdown() {

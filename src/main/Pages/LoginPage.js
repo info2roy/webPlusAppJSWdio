@@ -63,11 +63,11 @@ class LoginPage{
 
     async enterEmail(emailID) {
         if (device.isMobileWeb() || device.isDesktop()){
-            await util.setInputField(emailID, loginObject.email);
+            await util.setInputField(emailID, loginObject.emailField);
             return this;
         }
         else if(device.isAndroid){
-            console.log("Skipping for Android")
+            console.log("Skipping enterEmail for Android")
             return this;
         }
     }
@@ -76,31 +76,17 @@ class LoginPage{
         return util.elementIsDisplayed(loginObject.passwordField);
     }
 
-    async enterPassword(password) { 
-        if (device.isMobileWeb() || device.isDesktop()){
-            await util.setInputField(password, loginObject.password);
-            return this;
-        }
-        else if(driver.isAndroid){
-            await browser.pause(5000)
-            await util.setInputValueToAndroid(password, loginObject.loginCredentialsText_android);
-            return this;
-        }
+    async enterPassword(password) {
+        await util.setInputField(password, loginObject.passwordField);
+        return this;
     }
 
     continueLoginButtonIsDisplayed() {
         return util.elementIsDisplayed(loginObject.continueLoginButton);
     }
 
-    async clickContinueSigninButton() {
-        if (device.isMobileWeb() || device.isDesktop()){
-            await util.clickElement(loginObject.continueSigninButton);
-            await browser.pause(10000);
-        }
-        else if(driver.isAndroid){
-            await browser.pause(4000)
-            await util.clickElement(loginObject.continueButton_android);
-        }
+    async clickContinueLoginButton() {
+        await util.clickElement(loginObject.continueLoginButton);
         return this;
     }
   

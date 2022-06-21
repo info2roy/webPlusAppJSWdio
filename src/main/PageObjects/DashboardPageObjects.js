@@ -7,7 +7,7 @@ class DashboardPageObjects {
     moreButton = "//div[text()='More']" //more button on the dashboard page after login
     personalInfoResponsive = "//div[text()='Personal Information']" //personal information
 
-    helloUser = "//*[@text='HELLO']"
+    //helloUser = "//*[@text='HELLO']"
 
 
     // Android locators
@@ -16,6 +16,8 @@ class DashboardPageObjects {
     investMoreButton_android = "//*[@text='Invest more']"
     moreButton_android = "//android.widget.TextView[@text='More']" //more button on the dashboard page after login
     personalInfo_android = "//android.widget.TextView[@text='Personal information']" //personal information
+
+    helloUser = {web: "//*[@text='HELLO']", androidapp: "//*[@text='HELLO']"};
     
 }
 

@@ -9,11 +9,9 @@ class LoginPage {
 
   
   async loginWithUsernameAndPassword(username, password) {
-    console.log("inside loginWithUsernameAndPassword(username, password)");
-
     await loginPage.enterEmail(username);
     await loginPage.enterPassword(password);
-    await loginPage.clickContinueSigninButton();
+    await loginPage.clickContinueLoginButton();
           
 }
   async secondLoginPageLaunched() {
