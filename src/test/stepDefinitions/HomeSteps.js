@@ -30,8 +30,8 @@ When (/^I click on menu button$/, async () => {
     expect(await homeFunc.webHomePageLaunch()).to.be.true;
 })
 
-When (/^I click on login tab$/, async () => {
-    console.log("When I click on login tab");
+When (/^I click on login option$/, async () => {
+    console.log("When I click on login option");
     await homeFunc.login();
     expect(await loginFunc.firstLoginPageLaunched()).to.be.true
 });
