@@ -1,5 +1,4 @@
 class PersonalInfoPageObjects {
-  // android locators
   fileInput = { web: 'input#file' }; // file input tag for uploading profile picture on web => <input type="file">
 
   submitPictureButton = { web: "//button[text()='Submit']" }; // The submit button for updated profile picture on web

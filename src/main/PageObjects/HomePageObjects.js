@@ -1,5 +1,4 @@
 class HomePageObjects {
-  // refactored objects
   menuButton = { web: "//button[@data-action='menu hamburger']" };
 
   loginButton = { web: "a[data-action='menu login']", androidapp: "//*[@text='Login']" };

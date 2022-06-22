@@ -1,16 +1,15 @@
 class LoginPageObjects {
-  loginCredentialsText_android = '//*[@class="android.widget.EditText" and @package="com.scripbox.takecharge"]';
+  loginCredentialsTextAndroid = '//*[@class="android.widget.EditText" and @package="com.scripbox.takecharge"]';
 
-  // common object
-  userIdField = { web: '#test-email-input', androidapp: this.loginCredentialsText_android };
+  userIdField = { web: '#test-email-input', androidapp: this.loginCredentialsTextAndroid };
 
   continueOrNextButton = { web: '#test-login-next-button', androidapp: "//*[@text='NEXT']" };
 
   firstLoginPageHeader = { web: '//label[@text=" Login or create a new account "]', androidapp: "//*[@text='Login / Signup']" };
 
-  emailField = { web: 'input#user_email', androidapp: this.loginCredentialsText_android };
+  emailField = { web: 'input#user_email', androidapp: this.loginCredentialsTextAndroid };
 
-  passwordField = { web: 'input#user_password', androidapp: this.loginCredentialsText_android };
+  passwordField = { web: 'input#user_password', androidapp: this.loginCredentialsTextAndroid };
 
   continueLoginButton = { web: 'button#test-signup-next-button', androidapp: "//*[@text='CONTINUE']" };
 
