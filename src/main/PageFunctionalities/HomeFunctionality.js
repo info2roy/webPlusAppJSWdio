@@ -1,13 +1,12 @@
-const homePage = require('../Pages/HomePage')
+const homePage = require('../Pages/HomePage');
 
 class HomePage {
-
   async login() {
-      await homePage.selectLoginOption();
+    await homePage.selectLoginOption();
   }
 
   async clickMenuButton() {
-    homePage.clickMenuButton();
+    await homePage.clickMenuButton();
   }
 
   async webHomePageLaunch() {
@@ -15,17 +14,12 @@ class HomePage {
   }
 
   async responsiveHomePageLaunch() {
-    return homePage.menuButtonIsDisplayed();
+    return (await homePage.menuButtonIsDisplayed());
   }
 
-  async androidHomePageLaunch(){
-    return ((await homePage.loginButtonDisplayed_android()) && (await homePage.scripBoxCustomerbannerDisplayed_android()));
+  async androidHomePageLaunch() {
+    return ((await homePage.loginButtonDisplayedAndroid()) && (await homePage.scripBoxCustomerbannerDisplayedAndroid()));
   }
-
-  async androidlogin(){
-   await homePage.clickLoginHomePage_android()
-  }
-  
 }
 
 module.exports = new HomePage();

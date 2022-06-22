@@ -1,42 +1,39 @@
 class Device {
-    constructor() {
-      this.device = 'desktop'
-    }
-  
-    setDevice(newDevice) {
-      if (
-        newDevice.toLowerCase() !== 'androidapp' &&
-        newDevice.toLowerCase() !== 'iosapp' &&
-        newDevice.toLowerCase() !== 'desktop' &&
-        newDevice.toLowerCase() !== 'mobileweb'
-      ) {
-        return false
-      }
-  
-      this.device = newDevice.toLowerCase()
-      return this.device
-    }
-  
+  constructor() {
+    this.device = 'desktop';
+  }
 
-    // getELement(locator) -- read object class from here 
-
-    isAndroidApp() {
-      return this.device === 'androidapp'
+  setDevice(newDevice) {
+    if (
+      newDevice.toLowerCase() !== 'androidapp'
+        && newDevice.toLowerCase() !== 'iosapp'
+        && newDevice.toLowerCase() !== 'desktop'
+        && newDevice.toLowerCase() !== 'mobileweb'
+    ) {
+      return false;
     }
 
-    isiOSApp() {
-      return this.device === 'iosapp'
-    }
-  
-    isDesktop() {
-      return this.device === 'desktop'
-    }
+    this.device = newDevice.toLowerCase();
+    return this.device;
+  }
 
-    isMobileWeb() {
-      return this.device === 'mobileweb'
-    }
+  // getELement(locator) -- read object class from here
+
+  isAndroidApp() {
+    return this.device === 'androidapp';
+  }
+
+  isiOSApp() {
+    return this.device === 'iosapp';
+  }
+
+  isDesktop() {
+    return this.device === 'desktop';
+  }
+
+  isMobileWeb() {
+    return this.device === 'mobileweb';
+  }
 }
-  
 
-module.exports = new Device()
-  
+module.exports = new Device();
