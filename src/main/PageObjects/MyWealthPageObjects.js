@@ -3,11 +3,13 @@ class MyWealthPageObjects {
     // Web locators 
 
     // Android locators
-    myWealthButton_android = "//*[@text='My Wealth']"
-    investmentTabMyWealth_android = "//*[@text='Investments']"
-    insuranceTabMyWealth_android = "//*[@text='Insurance']"
-    investmentStrategyTabInBlogs_android = "//*[@text='Investment Strategy']"
-    investmentPageBlogSubscribe='//*[@text="Subscribe"]'
+    wisdomPageFirstBlog = {androidapp:"//*[@text='BLOG']"}
+
+    myWealthButton = {androidapp:"//*[@text='My Wealth']"}
+    investmentTabMyWealth = {androidapp:"//*[@text='Investments']"}
+    insuranceTabMyWealth = {androidapp:"//*[@text='Insurance']"}
+    investmentStrategyTabInBlogs = {androidapp:"//*[@text='Investment Strategy']"}
+    investmentPageBlogSubscribe={androidapp:"//*[@text='Subscribe']"}
 
     
 

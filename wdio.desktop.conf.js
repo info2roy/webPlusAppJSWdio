@@ -1,5 +1,5 @@
 const { config } = require('./wdio.conf')
-const path = require('path');
+// const path = require('path');
 
 exports.config = {
     ...config,

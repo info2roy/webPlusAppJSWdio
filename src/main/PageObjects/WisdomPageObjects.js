@@ -3,14 +3,13 @@ class WisdomPageObjects {
     // Web locators 
 
     // Android locators
-    wisdomButton_android = "//*[@text='Wisdom']"
-    startCheckup_android = "//*[@text='START CHECKUP' or @text='RESUME CHECKUP']"
-    newsThatMatters_android = "//*[@text='News that matters']"
-    startCheckup_android = "//*[@text='START CHECKUP']"
-    wisdomPageBlogSection="//*[@text='Blogs']"
-    wisdomPageFirstBlog_android = "//*[@text='BLOG']"
-    wisdomPageBlogSubscriptionMessage = '//*[@text="Practical wealth creation insights for you."]'
-    wisdomPageBlogInvestmentStrategy_android = "//*[@text='Investment Strategy']"
+    wisdomButton = {androidapp:"//*[@text='Wisdom']"}
+    startCheckup = {androidapp:"//*[@text='START CHECKUP' or @text='RESUME CHECKUP']"}
+    newsThatMatters = {androidapp:"//*[@text='News that matters']"}
+    wisdomPageBlogSection={androidapp:"//*[@text='Blogs']"}
+    wisdomPageFirstBlog = {androidapp:"//*[@text='BLOG']"}
+    wisdomPageBlogSubscriptionMessage = {androidapp:"//*[@text='Practical wealth creation insights for you.'']"}
+    wisdomPageBlogInvestmentStrategy = {androidapp:"//*[@text='Investment Strategy']"}
     
     
     
