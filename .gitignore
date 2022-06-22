@@ -5,4 +5,4 @@
 .idea
 .vscode
 .DS_STORE
-wdio-appium.log
+./wdio-appium.log

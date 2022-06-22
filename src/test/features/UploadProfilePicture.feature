@@ -13,5 +13,5 @@ Feature: Scripbox Login and update of profile picture
 
         Given I open the profile dropdown
         When I select personal information
-        When I update the profile picture
-        Then The picture is uploaded successfully
+        # When I update the profile picture
+        # Then The picture is uploaded successfully
