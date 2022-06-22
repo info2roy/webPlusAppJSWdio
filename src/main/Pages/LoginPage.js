@@ -1,4 +1,3 @@
-// const clickElement = require('../../support/action/clickElement');
 const isDisplayed = require('webdriverio/build/commands/element/isDisplayed');
 const util = require('../../support/Utils/Utils');
 const loginObject = require('../PageObjects/LoginPageObjects');

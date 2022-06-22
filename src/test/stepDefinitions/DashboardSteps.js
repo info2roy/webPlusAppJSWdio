@@ -2,7 +2,6 @@ const { Given, When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const dashboardFunc = require('../../main/PageFunctionalities/DashboardFunctionality');
 const personalInfoFunc = require('../../main/PageFunctionalities/PersonalInfoFunctionality');
-const { device } = require('../../support/libraries/Device');
 
 Then(/^I should see dashboard page loaded$/, async () => {
   console.log('Then I should see dashboard page loaded');
