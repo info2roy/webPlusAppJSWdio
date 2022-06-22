@@ -6,7 +6,7 @@ class HomePage {
   }
 
   async clickMenuButton() {
-    homePage.clickMenuButton();
+    await homePage.clickMenuButton();
   }
 
   async webHomePageLaunch() {
@@ -14,7 +14,7 @@ class HomePage {
   }
 
   async responsiveHomePageLaunch() {
-    return homePage.menuButtonIsDisplayed();
+    return (await homePage.menuButtonIsDisplayed());
   }
 
   async androidHomePageLaunch() {
