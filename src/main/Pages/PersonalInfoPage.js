@@ -30,6 +30,7 @@ class PersonalInfoPage  {
             expect(await util.elementIsDisplayed(personalInfoPageObject.alertForAllowMediaAccess)).to.be.true;
             await util.clickElement(personalInfoPageObject.alertForAllowMediaAccess_allowOption);
             await util.clickElement(personalInfoPageObject.clickPictureButton);
+            expect(await util.elementIsDisplayed(personalInfoPageObject.donePictureButton)).to.be.true;
             await util.clickElement(personalInfoPageObject.donePictureButton);
             expect(await util.elementIsDisplayed(personalInfoPageObject.editPhotoHeader)).to.be.true;
             await util.clickElement(personalInfoPageObject.doneCropButton);
