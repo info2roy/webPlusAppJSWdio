@@ -1,6 +1,5 @@
 const util = require('../../support/Utils/Utils');
 const homePageObject = require('../PageObjects/HomePageObjects');
-const loginPageObject = require('../PageObjects/LoginPageObjects');
 const device = require('../../support/libraries/Device');
 
 class HomePage {
@@ -25,7 +24,7 @@ class HomePage {
     }
   }
 
-  async loginButtonDisplayed_android() {
+  async loginButtonDisplayedAndroid() {
     return await util.elementIsDisplayed(homePageObject.loginButton);
   }
 
@@ -33,7 +32,7 @@ class HomePage {
     return await util.elementIsDisplayed(homePageObject.menuButton);
   }
 
-  async scripBoxCustomerbannerDisplayed_android() {
+  async scripBoxCustomerbannerDisplayedAndroid() {
     return await util.elementIsDisplayed(homePageObject.customerBanner);
   }
 }
