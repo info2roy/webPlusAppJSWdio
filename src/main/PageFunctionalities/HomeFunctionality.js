@@ -21,10 +21,6 @@ class HomePage {
   async androidHomePageLaunch(){
     return ((await homePage.loginButtonDisplayed_android()) && (await homePage.scripBoxCustomerbannerDisplayed_android()));
   }
-
-  async androidlogin(){
-   await homePage.clickLoginHomePage_android()
-  }
   
 }
 

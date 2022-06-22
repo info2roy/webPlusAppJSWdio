@@ -5,15 +5,7 @@ const device = require('../../support/libraries/Device');
 
 class HomePage {
 
-    selectLoginOption() {
-        util.clickElement(homePageObject.loginButton);
-    }
-
-    clickLoginOrSignup_android(){
-        util.clickElement(loginPageObject.loginSignupButton_android)
-    }
-
-    async clickLoginHomePage_android() {
+    async selectLoginOption() {
         await util.clickElement(homePageObject.loginButton);
     }
     
