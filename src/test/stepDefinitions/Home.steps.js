@@ -27,7 +27,7 @@ Given(/^I am on the scripbox home page$/, async () => {
         await browser.pause(1000);   //No pause in framework
     }
     else if ( device.isAndroidApp() ){
-        console.log("Launching Android app")
+        await console.log("Launching Android app")
         expect(await homeFunc.androidHomePageLaunch()).to.be.true
     }
     

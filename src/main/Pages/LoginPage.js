@@ -3,7 +3,7 @@
 const util = require('../../support/Utils/Utils');
 const isDisplayed = require('webdriverio/build/commands/element/isDisplayed');
 const loginObject =require('../PageObjects/LoginPageObjects');
-const DeviceLib = require('../../support/libraries/Device')
+const DeviceLib = require('../../support/libraries/Device');
 
 class LoginPage{
 
@@ -47,6 +47,19 @@ class LoginPage{
     loginEmailTextBoxPresent(){
       return util.elementIsDisplayed(loginObject.loginCredentialsText_android)
     }
+
+    async clickStartExploring(){
+      if(driver.isAndroid){
+        await util.clickElement(loginObject.startExploring_android)
+      }
+      return this;
+    }
+
+    async scripBoxExclusiveBenifitsDisplayed(){
+      return (await util.elementIsDisplayed(loginObject.scripBoxExclusiveBenifits_android));      
+    }
+
+
 
 
 }

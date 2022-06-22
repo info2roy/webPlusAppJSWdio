@@ -122,7 +122,6 @@ class SigninPage  {
             util.clickElement(signinPageObject.continueSigninButton);
         }
         else if(driver.isAndroid){
-            await browser.pause(4000)
             await util.clickElement(loginPageObject.continueButton_android);
         }
         return this;

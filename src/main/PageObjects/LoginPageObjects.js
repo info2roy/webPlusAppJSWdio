@@ -12,6 +12,8 @@ class LoginPageObjects {
     nextButtonLoginPage_android = "//*[@text='NEXT']"
     continueButton_android = "//*[@text='CONTINUE']"
     loginSignUpHeader_android = "//*[@text='Login / Signup']"
+    startExploring_android = "//*[@text='Start exploring']"
+    scripBoxExclusiveBenifits_android = "//*[@text='Scripbox exclusive benefits']"
 
 
 

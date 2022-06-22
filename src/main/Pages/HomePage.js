@@ -13,8 +13,7 @@ class HomePage {
     }
 
     async clickLoginHomePage_android() {
-        util.clickElement(homePageObject.loginButtonHomePage_android);
-        // await browser.pause(10000)
+        await util.clickElement(homePageObject.loginButtonHomePage_android);
     }
     
     loginTabIsDisplayed() {
@@ -33,16 +32,16 @@ class HomePage {
     }
 
 
-    loginButtonDisplayed_android(){
-        return util.elementIsDisplayed(homePageObject.loginButtonHomePage_android);
+    async loginButtonDisplayed_android(){
+        return await util.elementIsDisplayed(homePageObject.loginButtonHomePage_android);
     }
 
     menuButtonIsDisplayed() {
         return util.elementIsDisplayed(homePageObject.menuButton);
     }
 
-    scripBoxCustomerbannerDisplayed_android(){
-        return util.elementIsDisplayed(homePageObject.ScripboxCustomerBanner);
+    async scripBoxCustomerbannerDisplayed_android(){
+        return await util.elementIsDisplayed(homePageObject.ScripboxCustomerBanner);
     }
 
 

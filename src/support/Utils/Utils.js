@@ -9,18 +9,22 @@ class Utils {
     }
 
     async clickElement(selector){
-      browser.pause(5000)
       const myButton = await $(selector);
-      //expect(myButton).toBeDisplayed();
       this.elementIsDisplayed(selector)
       await myButton.click();
     }
 
     async elementIsDisplayed(selector){
-        await browser.pause(5000);
+        await browser.waitUntil(
+            async () => (await $(selector).isDisplayed()),
+            {
+                timeout: 30000,
+                timeoutMsg: selector + ' Selector not displayed yet'
+            }
+        );
+        // await browser.pause(5000);
         let isDisplayed = await $(selector).isDisplayed();
         console.log(selector+" is displayed check --> "+isDisplayed);
-        await browser.pause(5000);
         return isDisplayed
     }
 
@@ -44,6 +48,10 @@ class Utils {
         const remoteFilePath = await browser.uploadFile(localFilePath);
         await fileInput.setValue(remoteFilePath);
         await submitButton.click();
+    }
+
+    async scrollUntilTextIntoView(textToBeIntoView) {
+        await $('android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView("${textToBeIntoView}")');
     }
 
 }

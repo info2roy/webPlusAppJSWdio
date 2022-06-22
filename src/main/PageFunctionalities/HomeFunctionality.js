@@ -25,7 +25,9 @@ class HomePage {
   }
 
   async androidHomePageLaunch(){
-    return (homePage.loginButtonDisplayed_android() && homePage.scripBoxCustomerbannerDisplayed_android());
+    return (await homePage.loginButtonDisplayed_android()
+     && await homePage.scripBoxCustomerbannerDisplayed_android()
+    );
   }
 
   async androidlogin(){

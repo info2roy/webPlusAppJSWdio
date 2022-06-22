@@ -20,3 +20,8 @@ Then(/^I should see a home page$/, function(){
     console.log("current page url ==> "+currentPageUrl);
     assert.equal(home.com, actualhome.com)
 })
+
+Then(/^I click on start exploring$/,  async function(){
+        await expect(loginFunc.startExploring()).toBe.true
+})
+

@@ -1,6 +1,7 @@
 const dashboardPage = require('../Pages/DashboardPage')
 const device = require('../../support/libraries/Device');
-const dashboardPageObject = require('../PageObjects/DashboardPageObjects')
+const dashboardPageObject = require('../PageObjects/DashboardPageObjects');
+const Utils = require('../../support/Utils/Utils');
 class DashboardPage {
 
     async validate () {
@@ -12,8 +13,7 @@ class DashboardPage {
         }
         else if(driver.isAndroid){
             console.log("checking android dashboard assertion")
-            await browser.pause(3000)
-            expect(await dashboardPageObject.helloUser_android).toBeDisplayed()
+            expect (await Utils.elementIsDisplayed(dashboardPageObject.helloUser_android)).toBe.true
         }
         
     }

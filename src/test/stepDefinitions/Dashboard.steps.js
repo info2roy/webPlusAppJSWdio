@@ -6,7 +6,6 @@ const dashboardFunc = require('../../main/PageFunctionalities/DashboardFunctiona
 Then(/^I should see dashboard page loaded$/, async () => {
     console.log("Then I should see dashboard page loaded");
     await dashboardFunc.validate();
-    await browser.pause(1000);
 });
 
 Given (/^I open the profile dropdown$/, async () => {
