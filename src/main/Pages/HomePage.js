@@ -9,13 +9,13 @@ class HomePage {
         await util.clickElement(homePageObject.loginButton);
     }
     
-    loginTabIsDisplayed() {
-        return util.elementIsDisplayed(homePageObject.loginButton);
+    async loginTabIsDisplayed() {
+        return (await util.elementIsDisplayed(homePageObject.loginButton));
     }
 
-    signupTabIsDisplayed() {
+    async signupTabIsDisplayed() {
         if (device.isMobileWeb() || device.isDesktop() ) {
-            return util.elementIsDisplayed(homePageObject.signupButton);
+            return (await util.elementIsDisplayed(homePageObject.signupButton));
         } else {
             return true;
         }
@@ -25,9 +25,6 @@ class HomePage {
         if (device.isMobileWeb()) {
             await util.clickElement(homePageObject.menuButton);
         }
-        // if (driver.isAndroid){
-        //     util.clickElement(homePageObject.moreOptions);
-        // }
     }
 
 
