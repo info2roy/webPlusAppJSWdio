@@ -16,14 +16,6 @@ class LoginPage{
       isDisplayed(loginObject.scripboxLoginImage);
         return this;
     }
-
-    loginSignupPageNavigation_android(){
-      return util.elementIsDisplayed(loginObject.loginSignUpHeader_android)
-    }
-
-    loginEmailTextBoxPresent(){
-      return util.elementIsDisplayed(loginObject.loginCredentialsText_android)
-    }
   
     async enterUserId(emailID) {
         await util.setInputField(emailID, loginObject.userIdField);

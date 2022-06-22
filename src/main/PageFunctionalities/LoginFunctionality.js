@@ -2,10 +2,6 @@ const loginPage = require('../Pages/LoginPage')
 
 class LoginPage {
 
-  async androidHomePageLaunch(){
-        return (loginPage.loginSignupPageNavigation_android() && loginPage.loginEmailTextBoxPresent());
-  }
-
   async startExploring(){
       await loginPage.clickStartExploring()
       return (loginPage.scripBoxExclusiveBenifitsDisplayed())
