@@ -1,9 +1,8 @@
-const homePage = require('../Pages/HomePage')
+const homePage = require('../Pages/HomePage');
 
 class HomePage {
-
   async login() {
-      await homePage.selectLoginOption();
+    await homePage.selectLoginOption();
   }
 
   async clickMenuButton() {
@@ -18,10 +17,9 @@ class HomePage {
     return homePage.menuButtonIsDisplayed();
   }
 
-  async androidHomePageLaunch(){
+  async androidHomePageLaunch() {
     return ((await homePage.loginButtonDisplayed_android()) && (await homePage.scripBoxCustomerbannerDisplayed_android()));
   }
-  
 }
 
 module.exports = new HomePage();

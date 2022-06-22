@@ -1,44 +1,40 @@
 const util = require('../../support/Utils/Utils');
-const wisdomPageObject = require('../PageObjects/WisdomPageObjects')
+const wisdomPageObject = require('../PageObjects/WisdomPageObjects');
 
 class WisdomPage {
+  async selectWisdomTab_android() {
+    await util.clickElement(wisdomPageObject.wisdomButton);
+    // return this;
+  }
 
-    async selectWisdomTab_android() {
-        await util.clickElement(wisdomPageObject.wisdomButton);
-        // return this;
-    }
+  checkIfWisdomPageIsDisplayed_android() {
+    util.elementIsDisplayed(wisdomPageObject.newsThatMatters);
+    return this;
+  }
 
-    checkIfWisdomPageIsDisplayed_android(){
-        util.elementIsDisplayed(wisdomPageObject.newsThatMatters)
-        return this;
-    }
+  async scrollToStartCheckup() {
+    await util.scrollUntilTextIntoView(wisdomPageObject.startCheckup);
+    return this;
+  }
 
-    async scrollToStartCheckup(){
-        await util.scrollUntilTextIntoView(wisdomPageObject.startCheckup)
-        return this;
-    }
+  async clickOnStartCheckup() {
+    await util.clickElement(wisdomPageObject.startCheckup);
+    return this;
+  }
 
-    async clickOnStartCheckup() {
-        await util.clickElement(wisdomPageObject.startCheckup);
-        return this;
-    }
+  async scrollToBlogs() {
+    await util.scrollUntilTextIntoView(wisdomPageObject.wisdomPageFirstBlog);
+    return this;
+  }
 
-    async scrollToBlogs(){
-        await util.scrollUntilTextIntoView(wisdomPageObject.wisdomPageFirstBlog)
-        return this;
-    }
+  async clickOnFirstBlog() {
+    await util.clickElement(wisdomPageObject.wisdomPageFirstBlog);
+    return this;
+  }
 
-    async clickOnFirstBlog(){
-        await util.clickElement(wisdomPageObject.wisdomPageFirstBlog);
-        return this;
-    }
-
-    async checkBlogIsOpen(){
-        return util.elementIsDisplayed(wisdomPageObject.wisdomPageBlogSubscriptionMessage)
-    }
-    
-
-
+  async checkBlogIsOpen() {
+    return util.elementIsDisplayed(wisdomPageObject.wisdomPageBlogSubscriptionMessage);
+  }
 }
 
 module.exports = new WisdomPage();
