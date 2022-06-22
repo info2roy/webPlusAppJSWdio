@@ -44,38 +44,18 @@ class Utils {
     }
 
     async clickElement(selector){
-<<<<<<< HEAD
-      const myButton = await $(selector);
-      this.elementIsDisplayed(selector)
-=======
-      browser.pause(5000)
       const locator = this.getLocator(selector);
       const myButton = await $(locator);
-      //expect(myButton).toBeDisplayed();
       this.elementIsDisplayed(selector);
->>>>>>> b6bef6a57690b6ecfee6dccec74816b21f21eea0
       await myButton.click();
     }
 
     async elementIsDisplayed(selector){
-<<<<<<< HEAD
-        await browser.waitUntil(
-            async () => (await $(selector).isDisplayed()),
-            {
-                timeout: 30000,
-                timeoutMsg: selector + ' Selector not displayed yet'
-            }
-        );
-        // await browser.pause(5000);
-        let isDisplayed = await $(selector).isDisplayed();
-        console.log(selector+" is displayed check --> "+isDisplayed);
-=======
         await browser.pause(2000);
         const locator = this.getLocator(selector);
         let isDisplayed = await $(locator).isDisplayed();
         console.log(locator+" is displayed check --> "+isDisplayed);
         await browser.pause(2000);
->>>>>>> b6bef6a57690b6ecfee6dccec74816b21f21eea0
         return isDisplayed
     }
 
@@ -105,11 +85,7 @@ class Utils {
     }
 
     async scrollUntilTextIntoView(textToBeIntoView) {
-<<<<<<< HEAD
         await $('android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView("${textToBeIntoView}")');
-=======
-        await $(`android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView("${textToBeIntoView}")`);
->>>>>>> b6bef6a57690b6ecfee6dccec74816b21f21eea0
     }
 
 }
