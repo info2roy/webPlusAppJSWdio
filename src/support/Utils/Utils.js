@@ -51,17 +51,24 @@ class Utils {
     }
 
     async elementIsDisplayed(selector){
-        await browser.pause(2000);
         const locator = this.getLocator(selector);
-        let isDisplayed = await $(locator).isDisplayed();
+        const element = await $(locator);
+        await browser.waitUntil(
+            async () => (element).isDisplayed(),
+            {
+                timeout: 30000,
+                timeoutMsg: locator + ' Selector not displayed yet'
+            }
+        );
+
+        let isDisplayed = await $(element).isDisplayed();
         console.log(locator+" is displayed check --> "+isDisplayed);
-        await browser.pause(2000);
         return isDisplayed
     }
 
     async setInputField(value, selector) {
-        const myButton = await $(this.getLocator(selector));
-        await expect(myButton).toBeDisplayed();
+        const myButton = await $(this.getLocator(selector));        
+        this.elementIsDisplayed(selector);
         if (device.isAndroidApp()) {
             await myButton.addValue(value);
         } else {
@@ -73,7 +80,6 @@ class Utils {
         const myButton = $(this.getLocator(selector));
         expect(myButton).toBeDisplayed()
         myButton.addValue(value);
-        await browser.pause(5000)
     }
 
     async uploadFile(localFilePath, fileInputSelector, submitButtonSelector) {

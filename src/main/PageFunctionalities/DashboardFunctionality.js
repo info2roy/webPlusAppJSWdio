@@ -1,5 +1,4 @@
 const dashboardPage = require('../Pages/DashboardPage')
-const device = require('../../support/libraries/Device');
 const dashboardPageObject = require('../PageObjects/DashboardPageObjects');
 const Utils = require('../../support/Utils/Utils');
 class DashboardPage {
