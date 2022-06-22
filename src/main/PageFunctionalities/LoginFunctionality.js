@@ -2,15 +2,6 @@ const loginPage = require('../Pages/LoginPage')
 
 class LoginPage {
 
-  async visit() {
-    loginPage.visit('https://learn.conkerworld.com/s/myprofile');
-  }
-
-  async login(username, password) {
-      loginPage.enterEmail(username).enterPassword(password).clickLoginButton();
-      
-  }
-
   async androidHomePageLaunch(){
         return (loginPage.loginSignupPageNavigation_android() && loginPage.loginEmailTextBoxPresent());
   }
@@ -19,7 +10,29 @@ class LoginPage {
       await loginPage.clickStartExploring()
       return (loginPage.scripBoxExclusiveBenifitsDisplayed())
   }
+
   
+  async loginWithUsernameAndPassword(username, password) {
+    await loginPage.enterEmail(username);
+    await loginPage.enterPassword(password);
+    await loginPage.clickContinueLoginButton();
+          
+}
+  async secondLoginPageLaunched() {
+      return ((await loginPage.emailFieldIsDisplayed()) && (await loginPage.passwordFieldIsDisplayed()) 
+      && (await loginPage.continueLoginButtonIsDisplayed()));
+  }
+
+  async firstLoginPageLaunched() {
+      return ((await loginPage.firstLoginPageHeaderIsDisplayed()) && 
+      (await loginPage.userIdFieldIsDisplayed()) && 
+      (await loginPage.continueOrNextButtonIsDisplayed()));
+  }
+
+  async loginWithUsername(username) {
+      await loginPage.enterUserId(username);
+      await loginPage.clickContinueOrNextButton();
+  }  
 }
 
 module.exports = new LoginPage()

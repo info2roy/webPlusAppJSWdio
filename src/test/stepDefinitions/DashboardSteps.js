@@ -1,6 +1,8 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 const dashboardFunc = require('../../main/PageFunctionalities/DashboardFunctionality');
-
+const personalInfoFunc = require('../../main/PageFunctionalities/PersonalInfoFunctionality');
+const { device } = require('../../support/libraries/Device');
+const expect = require('chai').expect;
 
 
 Then(/^I should see dashboard page loaded$/, async () => {
@@ -11,14 +13,13 @@ Then(/^I should see dashboard page loaded$/, async () => {
 Given (/^I open the profile dropdown$/, async () => {
     console.log("Given I open the profile dropdown");
     await dashboardFunc.openProfileDropdown();
-    await browser.pause(1000);
 });
 
 
 When (/^I select personal information$/, async () => {
     console.log("When I select personal information");
     await dashboardFunc.selectPersonalInformation();
-    await browser.pause(1000);
+    expect(await personalInfoFunc.profileInfoPageLaunched()).to.be.true;
 });
 
 

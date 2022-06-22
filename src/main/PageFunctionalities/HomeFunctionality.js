@@ -3,21 +3,15 @@ const homePage = require('../Pages/HomePage')
 class HomePage {
 
   async login() {
-      homePage.selectLoginTab();
+      await homePage.selectLoginOption();
   }
 
   async clickMenuButton() {
-    if (driver.isAndroid){
-      homePage.clickLoginButtonHomePage();
-    }
-    else{
-      homePage.clickMenuButton();
-    }
-    
+    homePage.clickMenuButton();
   }
 
   async webHomePageLaunch() {
-    return (homePage.loginTabIsDisplayed() && homePage.signupTabIsDisplayed());
+    return ((await homePage.loginTabIsDisplayed()) && (await homePage.signupTabIsDisplayed()));
   }
 
   async responsiveHomePageLaunch() {
@@ -25,9 +19,7 @@ class HomePage {
   }
 
   async androidHomePageLaunch(){
-    return (await homePage.loginButtonDisplayed_android()
-     && await homePage.scripBoxCustomerbannerDisplayed_android()
-    );
+    return ((await homePage.loginButtonDisplayed_android()) && (await homePage.scripBoxCustomerbannerDisplayed_android()));
   }
 
   async androidlogin(){

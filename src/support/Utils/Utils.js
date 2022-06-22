@@ -1,20 +1,64 @@
 const isDisplayed = require('webdriverio/build/commands/element/isDisplayed');
+const device = require('../libraries/Device');
 
 class Utils {
 
+
+    getLocator(object) {
+        if (device.isMobileWeb()) {
+            if (object.hasOwnProperty('mobileweb')) {
+                return object.mobileweb;
+            } else {
+                return object.web;
+            }
+        } else if(device.isDesktop()) {
+            if (object.hasOwnProperty('desktop')) {
+                return object.desktop;
+            } else {
+                return object.web;
+            }
+        } else if (device.isAndroidApp() ) {
+            return object.androidapp;
+        } else if (device.isiOSApp() ) {
+            return object.iosapp;
+        }
+    }
+    getPlatform() {
+        let platform = "";
+        console.log(browser.requestedCapabilities);
+        if ("goog:chromeOptions" in browser.requestedCapabilities) {
+            platform = "mobileweb";
+        } else if (driver.isAndroid){
+            platform = "androidApp";
+        }
+        else
+            platform = "desktop";
+        console.log(`platform ${platform}`)
+        return platform;
+    }
+
     async waitForElementDisplayed (selector) {
-        let elem = await $(selector)
+        let elem = await $(this.getLocator(selector))
         await elem.waitForDisplayed({ timeout: 10000 });
         return this;
     }
 
     async clickElement(selector){
+<<<<<<< HEAD
       const myButton = await $(selector);
       this.elementIsDisplayed(selector)
+=======
+      browser.pause(5000)
+      const locator = this.getLocator(selector);
+      const myButton = await $(locator);
+      //expect(myButton).toBeDisplayed();
+      this.elementIsDisplayed(selector);
+>>>>>>> b6bef6a57690b6ecfee6dccec74816b21f21eea0
       await myButton.click();
     }
 
     async elementIsDisplayed(selector){
+<<<<<<< HEAD
         await browser.waitUntil(
             async () => (await $(selector).isDisplayed()),
             {
@@ -25,33 +69,47 @@ class Utils {
         // await browser.pause(5000);
         let isDisplayed = await $(selector).isDisplayed();
         console.log(selector+" is displayed check --> "+isDisplayed);
+=======
+        await browser.pause(2000);
+        const locator = this.getLocator(selector);
+        let isDisplayed = await $(locator).isDisplayed();
+        console.log(locator+" is displayed check --> "+isDisplayed);
+        await browser.pause(2000);
+>>>>>>> b6bef6a57690b6ecfee6dccec74816b21f21eea0
         return isDisplayed
     }
 
     async setInputField(value, selector) {
-        const myButton = $(selector);
-        expect(myButton).toBeDisplayed()
-        myButton.setValue(value);
-        await browser.pause(5000)
+        const myButton = await $(this.getLocator(selector));
+        await expect(myButton).toBeDisplayed();
+        if (device.isAndroidApp()) {
+            await myButton.addValue(value);
+        } else {
+            await myButton.setValue(value);
+        }
     }
 
     async setInputValueToAndroid(value, selector) {
-        const myButton = $(selector);
+        const myButton = $(this.getLocator(selector));
         expect(myButton).toBeDisplayed()
         myButton.addValue(value);
         await browser.pause(5000)
     }
 
     async uploadFile(localFilePath, fileInputSelector, submitButtonSelector) {
-        const fileInput = $(fileInputSelector);
-        const submitButton = $(submitButtonSelector);
+        const fileInput = await $(this.getLocator(fileInputSelector));
+        const submitButton = await $(this.getLocator(submitButtonSelector));
         const remoteFilePath = await browser.uploadFile(localFilePath);
         await fileInput.setValue(remoteFilePath);
         await submitButton.click();
     }
 
     async scrollUntilTextIntoView(textToBeIntoView) {
+<<<<<<< HEAD
         await $('android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView("${textToBeIntoView}")');
+=======
+        await $(`android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView("${textToBeIntoView}")`);
+>>>>>>> b6bef6a57690b6ecfee6dccec74816b21f21eea0
     }
 
 }

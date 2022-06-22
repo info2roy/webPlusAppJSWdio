@@ -1,13 +1,12 @@
 class DashboardPageObjects {
 
-    profileDropdown = "span.desktop-dropdown-icon"; //profile dropdown
-    personalInfo = "span.test-personal-information"; //personal Information
-
-    // Android locators
-    helloUser_android = "//*[@text='HELLO']"
-    withdrawButton_android = "//*[@text='Withdraw']"
-    investMoreButton_android = "//*[@text='Invest more']"
-    
+    helloUser = {web: "//*[@text='HELLO']", androidapp: "//*[@text='HELLO']"};
+    moreButton = {web: "//div[text()='More']", desktop: "span.desktop-dropdown-icon", 
+        androidapp: "//android.widget.TextView[@text='More']"}
+    personalInfoOption = {web: "//div[text()='Personal Information']", desktop: "span.test-personal-information",
+        androidapp: "//android.widget.TextView[@text='Personal information']"}
+    withdrawButton = {androidapp: "//*[@text='Withdraw']"}
+    investMoreButton = {androidapp: "//*[@text='Invest more']"}
 }
 
 module.exports = new DashboardPageObjects();

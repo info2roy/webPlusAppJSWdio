@@ -1,24 +1,15 @@
 class LoginPageObjects {
+    loginCredentialsText_android = '//*[@class="android.widget.EditText" and @package="com.scripbox.takecharge"]'    
 
-    scripboxLoginImage = '.desktop-logo';
-    email = '#email';
-    password = '.form-input#password';
-    loginButton = '//button[text()="Login"]';
-
-    // Android Objects
-    
-    loginCredentialsText_android = '//*[@class="android.widget.EditText" and @package="com.scripbox.takecharge"]'
-    loginSignupButton_android = "//*[@text='Login or Signup']"
-    nextButtonLoginPage_android = "//*[@text='NEXT']"
-    continueButton_android = "//*[@text='CONTINUE']"
-    loginSignUpHeader_android = "//*[@text='Login / Signup']"
-    startExploring_android = "//*[@text='Start exploring']"
-    scripBoxExclusiveBenifits_android = "//*[@text='Scripbox exclusive benefits']"
-
-
-
-
-    
-    }
+    //common object
+    userIdField = {web: '#test-email-input', androidapp: this.loginCredentialsText_android};
+    continueOrNextButton = {web: '#test-login-next-button', androidapp: "//*[@text='NEXT']"};
+    firstLoginPageHeader = {web: '//label[@text=" Login or create a new account "]', androidapp: "//*[@text='Login / Signup']"};
+    emailField = {web: "input#user_email", androidapp: this.loginCredentialsText_android};
+    passwordField = {web: "input#user_password", androidapp: this.loginCredentialsText_android};
+    continueLoginButton = {web: "button#test-signup-next-button", androidapp: "//*[@text='CONTINUE']"}
+    startExploring = {androidapp: "//*[@text='Start exploring']"}
+    scripBoxExclusiveBenifits = {androidapp:"//*[@text='Scripbox exclusive benefits']"}
+}
 
 module.exports = new LoginPageObjects()

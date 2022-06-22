@@ -1,18 +1,19 @@
 const util = require('../../support/Utils/Utils');
 const dashboardPageObject =require('../PageObjects/DashboardPageObjects');
+const device = require('../../support/libraries/Device');
 
 class DashboardPage  {
 
-    openProfileDropdown() {
-        console.log("openProfileDropdown");
-        util.clickElement(dashboardPageObject.profileDropdown);
+    async openProfileDropdown() {
+        await util.clickElement(dashboardPageObject.moreButton);
     } 
 
-    selectPersonalInformation() {
-        console.log("selectPersonalInformation");
-        util.clickElement(dashboardPageObject.personalInfo);
+    async selectPersonalInformation() {
+        if(device.isAndroidApp()) {
+            console.log("AndroidApp: click on Personal Infomation requires scrolling until it comes into view");
+            await util.scrollUntilTextIntoView("Personal information");
+        }
+        await util.clickElement(dashboardPageObject.personalInfoOption);
     }
-
-
 }
 module.exports = new DashboardPage();

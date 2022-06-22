@@ -3,41 +3,18 @@
 const util = require('../../support/Utils/Utils');
 const isDisplayed = require('webdriverio/build/commands/element/isDisplayed');
 const loginObject =require('../PageObjects/LoginPageObjects');
-const DeviceLib = require('../../support/libraries/Device');
+const device = require('../../support/libraries/Device')
 
 class LoginPage{
 
-  async visit(url) {
-    await browser.url(url)
-    return this;
-  }
+    async visit(url) {
+      await browser.url(url)
+      return this;
+    }
   
     scriptBoxLoginPageImage() {
       isDisplayed(loginObject.scripboxLoginImage);
         return this;
-    }
-
-    enterLoginDetails = (userEmail, userPassword) => {
-      const emailInputValue = DeviceLib.isMobile() ? `#loginPage-Email` : loginObject.email
-      const passInputValue = DeviceLib.isMobile() ? `#loginPage-Password` : loginObject.password
-      util.setInputField(userEmail, emailInputValue)
-      util.setInputField(userPassword, passInputValue)
-    }
-
-
-    enterEmail(emailID) {
-        util.setInputField(emailID, loginObject.email)
-        return this;
-    }
-
-    enterPassword(password) { 
-      util.setInputField(password, loginObject.password)
-      return this;
-    }
-
-    clickLoginButton() {
-      util.clickElement(loginObject.loginButton)
-      return this;
     }
 
     loginSignupPageNavigation_android(){
@@ -47,20 +24,84 @@ class LoginPage{
     loginEmailTextBoxPresent(){
       return util.elementIsDisplayed(loginObject.loginCredentialsText_android)
     }
+  
+    async enterUserId(emailID) {
+        await util.setInputField(emailID, loginObject.userIdField);
+        return this;
+    }
+
+    async userIdFieldIsDisplayed() {
+        return await util.elementIsDisplayed(loginObject.userIdField);
+    }
+
+    async clickContinueOrNextButton() {
+        await util.clickElement(loginObject.continueOrNextButton);
+        return this;
+    }
+
+    async continueOrNextButtonIsDisplayed() {
+        return await util.elementIsDisplayed(loginObject.continueOrNextButton);
+    }
+
+    async firstLoginPageHeaderIsDisplayed() {
+        if (device.isAndroidApp()) {
+            return await util.elementIsDisplayed(loginObject.firstLoginPageHeader);
+        } else {
+            return true;
+        }
+    }
+
+    emailFieldIsDisplayed() {
+        if (device.isMobileWeb() || device.isDesktop()){
+            return util.elementIsDisplayed(loginObject.emailField);
+        }
+        else if(driver.isAndroid){
+            console.log("Email field not available for Android")
+            return true
+        }
+    }
+
+    async enterEmail(emailID) {
+        if (device.isMobileWeb() || device.isDesktop()){
+            await util.setInputField(emailID, loginObject.emailField);
+            return this;
+        }
+        else if(device.isAndroid){
+            console.log("Skipping enterEmail for Android")
+            return this;
+        }
+    }
 
     async clickStartExploring(){
       if(driver.isAndroid){
-        await util.clickElement(loginObject.startExploring_android)
+        await util.clickElement(loginObject.startExploring)
       }
       return this;
     }
 
     async scripBoxExclusiveBenifitsDisplayed(){
-      return (await util.elementIsDisplayed(loginObject.scripBoxExclusiveBenifits_android));      
+      return (await util.elementIsDisplayed(loginObject.scripBoxExclusiveBenifits));      
     }
 
 
 
+    async passwordFieldIsDisplayed() {
+        return await util.elementIsDisplayed(loginObject.passwordField);
+    }
 
+    async enterPassword(password) {
+        await util.setInputField(password, loginObject.passwordField);
+        return this;
+    }
+
+    continueLoginButtonIsDisplayed() {
+        return util.elementIsDisplayed(loginObject.continueLoginButton);
+    }
+
+    async clickContinueLoginButton() {
+        await util.clickElement(loginObject.continueLoginButton);
+        return this;
+    }
+  
 }
 module.exports = new LoginPage()
