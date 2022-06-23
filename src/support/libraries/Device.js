@@ -5,10 +5,10 @@ class Device {
 
   setDevice(newDevice) {
     if (
-      newDevice.toLowerCase() !== 'androidapp'
-        && newDevice.toLowerCase() !== 'iosapp'
-        && newDevice.toLowerCase() !== 'desktop'
-        && newDevice.toLowerCase() !== 'mobileweb'
+      newDevice.toLowerCase() !== 'androidapp' &&
+        newDevice.toLowerCase() !== 'iosapp' &&
+        newDevice.toLowerCase() !== 'desktop' &&
+        newDevice.toLowerCase() !== 'mobileweb'
     ) {
       return false;
     }

@@ -6,14 +6,7 @@ const device = require('../../support/libraries/Device');
 
 class PersonalInfoPage {
   async profileInfomationIsDisplayed() {
-    if (device.isMobileWeb() || device.isDesktop()) {
-      const url = await browser.getUrl();
-      await expect(url).to.contain.oneOf(['personal-info']);
-      return true;
-    }
-    if (device.isAndroidApp()) {
-      return await util.elementIsDisplayed(personalInfoPageObject.profileInfomationHeader);
-    }
+    return await util.elementIsDisplayed(personalInfoPageObject.profileInfomationHeader);
   }
 
   async clickUpdatePicture() {

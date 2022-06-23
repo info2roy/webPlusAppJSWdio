@@ -85,13 +85,13 @@ class LoginPage {
   }
 
   async continueLoginButtonIsDisplayed() {
-      return await util.elementIsDisplayed(loginObject.continueLoginButton);
+    return await util.elementIsDisplayed(loginObject.continueLoginButton);
   }
 
   async clickContinueLoginButton() {
-      await util.clickElement(loginObject.continueLoginButton);
-      return this;
+    await util.clickElement(loginObject.continueLoginButton);
+    return this;
   }
-  
+
 }
 module.exports = new LoginPage();

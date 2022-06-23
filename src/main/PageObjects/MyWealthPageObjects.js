@@ -2,17 +2,17 @@ class MyWealthPageObjects {
   // Web locators
 
   // Android locators
-  wisdomPageFirstBlog = { androidapp: "//*[@text='BLOG']" };
+  wisdomPageFirstBlog = { androidapp: '//*[@text=\'BLOG\']' };
 
-  myWealthButton = { androidapp: "//*[@text='My Wealth']" };
+  myWealthButton = { androidapp: '//*[@text=\'My Wealth\']' };
 
-  investmentTabMyWealth = { androidapp: "//*[@text='Investments']" };
+  investmentTabMyWealth = { androidapp: '//*[@text=\'Investments\']' };
 
-  insuranceTabMyWealth = { androidapp: "//*[@text='Insurance']" };
+  insuranceTabMyWealth = { androidapp: '//*[@text=\'Insurance\']' };
 
-  investmentStrategyTabInBlogs = { androidapp: "//*[@text='Investment Strategy']" };
+  investmentStrategyTabInBlogs = { androidapp: '//*[@text=\'Investment Strategy\']' };
 
-  investmentPageBlogSubscribe = { androidapp: "//*[@text='Subscribe']" };
+  investmentPageBlogSubscribe = { androidapp: '//*[@text=\'Subscribe\']' };
 }
 
 module.exports = new MyWealthPageObjects();
