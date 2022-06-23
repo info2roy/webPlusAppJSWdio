@@ -2,12 +2,12 @@ const util = require('../../support/Utils/Utils');
 const wisdomPageObject = require('../PageObjects/WisdomPageObjects');
 
 class WisdomPage {
-  async selectWisdomTab_android() {
+  async selectWisdomTab() {
     await util.clickElement(wisdomPageObject.wisdomButton);
     // return this;
   }
 
-  checkIfWisdomPageIsDisplayed_android() {
+  checkIfWisdomPageIsDisplayed() {
     await util.elementIsDisplayed(wisdomPageObject.newsThatMatters);
     return this;
   }

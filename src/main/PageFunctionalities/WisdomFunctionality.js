@@ -3,8 +3,8 @@ const wisdomPage = require('../Pages/WisdomPage');
 class WisdomFunctionality {
   async navigateToWisdomPage() {
     await console.log('Navigating user to Wisdom page');
-    await wisdomPage.selectWisdomTab_android();
-    return (await wisdomPage.checkIfWisdomPageIsDisplayed_android());
+    await wisdomPage.selectWisdomTab();
+    return (await wisdomPage.checkIfWisdomPageIsDisplayed());
   }
 
   async startCheckup() {
