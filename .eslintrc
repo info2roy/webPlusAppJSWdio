@@ -1,0 +1,203 @@
+{
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "plugins": [
+    "import"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "amd": true,
+    "jest": true,
+    "jquery": true,
+    "node": true
+  },
+  "root": true,
+  "globals": {
+    "Android": true,
+    "ga": true,
+    "_paq": true,
+    "fbq": true,
+    "SB": true,
+    "Materialize": true,
+    "analytics": true,
+    "Verloop": true,
+    "process": true,
+    "history": false
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      },
+      "webpack": {
+        "config": "./webpack/webpack.config.js"
+      }
+    },
+    "import/extensions": [
+      ".js",
+      ".jsx"
+    ]
+  },
+  "rules": {
+    "comma-dangle": "off",
+    "space-infix-ops": [
+      "warn",
+      {
+        "int32Hint": false
+      }
+    ],
+    "space-before-blocks": [
+      "warn",
+      "always"
+    ],
+    "no-undef": "off",
+    "no-warning-comments": [
+      "warn",
+      {
+        "terms": [
+          "TODO:",
+          "fixme"
+        ],
+        "location": "anywhere"
+      }
+    ],
+    "no-use-before-define": "error",
+    "max-len": [
+      "warn",
+      {
+        "code": 120
+      }
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "consistent-return": "error",
+    "no-duplicate-imports": "error",
+    "no-useless-computed-key": "error",
+    "no-useless-rename": "error",
+    "no-var": "error",
+    "object-shorthand": "error",
+    "prefer-const": "warn",
+    "prefer-template": "warn",
+    "block-spacing": [
+      "warn",
+      "always"
+    ],
+    "brace-style": [
+      "warn",
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "comma-spacing": [
+      "warn",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 1
+      }
+    ],
+    "no-trailing-spaces": "error",
+    "eol-last": "warn",
+    "key-spacing": [
+      "error",
+      {
+        "beforeColon": false,
+        "afterColon": true
+      }
+    ],
+    "no-nested-ternary": "warn",
+    "class-methods-use-this": "off",
+    "no-else-return": "warn",
+    "no-fallthrough": "warn",
+    "no-lone-blocks": "error",
+    "no-multi-spaces": "error",
+    "no-unused-expressions": "warn",
+    "object-curly-spacing": [
+      "warn",
+      "always"
+    ],
+    "radix": "warn",
+    "no-case-declarations": "error",
+    "react/display-name": "off",
+    "template-curly-spacing": "off",
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1,
+        "MemberExpression": 1,
+        "CallExpression": {
+          "arguments": 1
+        },
+        "ignoredNodes": [
+          "TemplateLiteral"
+        ]
+      }
+    ],
+    "func-call-spacing": [
+      "error",
+      "never"
+    ],
+    "no-tabs": "error",
+    "no-template-curly-in-string": "error",
+    "import/no-unresolved": [
+      "error",
+      {
+        "commonjs": true,
+        "caseSensitive": true
+      }
+    ],
+    "import/named": "error",
+    "import/default": "error",
+    "import/export": "error",
+    "import/no-named-as-default": "error",
+    "import/no-named-as-default-member": "error",
+    "import/no-mutable-exports": "error",
+    "import/no-duplicates": "error",
+    "import/no-dynamic-require": "error",
+    "import/no-named-default": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "argsIgnorePattern": "^__"
+      }
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "operator-linebreak": [
+      "error",
+      "after"
+    ]
+  }
+}

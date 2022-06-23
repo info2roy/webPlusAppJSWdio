@@ -10,6 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.0",
+    "@babel/eslint-parser": "^7.18.2",
     "@babel/register": "^7.6.0",
     "@wdio/allure-reporter": "^7.20.0",
     "@wdio/appium-service": "^7.20.1",
@@ -27,6 +28,7 @@
     "cucumber": "^6.0.7",
     "eslint": "^8.18.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-import": "^2.26.0",
     "local-runner": "^0.1.1-alpha",
     "wdio-chromedriver-service": "^7.3.2",
