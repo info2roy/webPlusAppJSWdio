@@ -7,7 +7,7 @@ class WisdomPage {
     // return this;
   }
 
-  checkIfWisdomPageIsDisplayed() {
+  async checkIfWisdomPageIsDisplayed() {
     await util.elementIsDisplayed(wisdomPageObject.newsThatMatters);
     return this;
   }
