@@ -8,7 +8,7 @@ class WisdomPage {
   }
 
   checkIfWisdomPageIsDisplayed_android() {
-    util.elementIsDisplayed(wisdomPageObject.newsThatMatters);
+    await util.elementIsDisplayed(wisdomPageObject.newsThatMatters);
     return this;
   }
 
@@ -33,7 +33,7 @@ class WisdomPage {
   }
 
   async checkBlogIsOpen() {
-    return util.elementIsDisplayed(wisdomPageObject.wisdomPageBlogSubscriptionMessage);
+    return await util.elementIsDisplayed(wisdomPageObject.wisdomPageBlogSubscriptionMessage);
   }
 }
 

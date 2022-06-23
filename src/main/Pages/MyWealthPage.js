@@ -9,12 +9,12 @@ class MyWealthPage {
   }
 
   async checkIfWealthPageIsDisplayed_android() {
-    util.elementIsDisplayed(wisdomPageObject.newsThatMatters);
+    await util.elementIsDisplayed(wisdomPageObject.newsThatMatters);
     return this;
   }
 
   async navigateToInvestmentStrategyTab_android() {
-    console.log('Navigating to other tabs in web view.');
+    await console.log('Navigating to other tabs in web view.');
     await util.clickElement(myWealthPageObject.investmentStrategyTabInBlogs);
   }
 }

@@ -12,14 +12,14 @@ class PersonalInfoPage {
       return true;
     }
     if (device.isAndroidApp()) {
-      return util.elementIsDisplayed(personalInfoPageObject.profileInfomationHeader);
+      return await util.elementIsDisplayed(personalInfoPageObject.profileInfomationHeader);
     }
   }
 
   async clickUpdatePicture() {
     await util.clickElement(personalInfoPageObject.updatePictureOption);
     if (device.isAndroidApp()) {
-      console.log('Android: clickUpdatePicture');
+      await console.log('Android: clickUpdatePicture');
       expect(await util.elementIsDisplayed(personalInfoPageObject.alertForAllowCameraAccess)).to.be.true;
     }
   }
@@ -39,7 +39,7 @@ class PersonalInfoPage {
 
   async uploadFile() {
     if (device.isMobileWeb() || device.isDesktop()) {
-      console.log('Web: uploadFile');
+      await console.log('Web: uploadFile');
       const localFilePath = path.join(__dirname, '../../test/data/desktop.jpg');
       await util.uploadFile(localFilePath, personalInfoPageObject.fileInput, personalInfoPageObject.submitPictureButton);
     }

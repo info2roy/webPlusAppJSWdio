@@ -9,8 +9,8 @@ class LoginPage {
     return this;
   }
 
-  scriptBoxLoginPageImage() {
-    isDisplayed(loginObject.scripboxLoginImage);
+  async scriptBoxLoginPageImage() {
+    await util.elementIsDisplayed(loginObject.scripboxLoginImage);
     return this;
   }
 
@@ -39,12 +39,12 @@ class LoginPage {
     return true;
   }
 
-  emailFieldIsDisplayed() {
+  async emailFieldIsDisplayed() {
     if (device.isMobileWeb() || device.isDesktop()) {
-      return util.elementIsDisplayed(loginObject.emailField);
+      return await util.elementIsDisplayed(loginObject.emailField);
     }
     if (driver.isAndroid) {
-      console.log('Email field not available for Android');
+      await console.log('Email field not available for Android');
       return true;
     }
   }
@@ -55,7 +55,7 @@ class LoginPage {
       return this;
     }
     if (device.isAndroid) {
-      console.log('Skipping enterEmail for Android');
+      await console.log('Skipping enterEmail for Android');
       return this;
     }
   }
@@ -81,7 +81,7 @@ class LoginPage {
   }
 
   continueLoginButtonIsDisplayed() {
-    return util.elementIsDisplayed(loginObject.continueLoginButton);
+    return await util.elementIsDisplayed(loginObject.continueLoginButton);
   }
 
     async continueLoginButtonIsDisplayed() {
