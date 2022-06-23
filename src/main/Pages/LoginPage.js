@@ -1,4 +1,3 @@
-const isDisplayed = require('webdriverio/build/commands/element/isDisplayed');
 const util = require('../../support/Utils/Utils');
 const loginObject = require('../PageObjects/LoginPageObjects');
 const device = require('../../support/libraries/Device');
@@ -42,22 +41,22 @@ class LoginPage {
   async emailFieldIsDisplayed() {
     if (device.isMobileWeb() || device.isDesktop()) {
       return await util.elementIsDisplayed(loginObject.emailField);
-    }
-    if (driver.isAndroid) {
+    } else if (driver.isAndroid) {
       await console.log('Email field not available for Android');
       return true;
     }
+    return true;
   }
 
   async enterEmail(emailID) {
     if (device.isMobileWeb() || device.isDesktop()) {
       await util.setInputField(emailID, loginObject.emailField);
       return this;
-    }
-    if (device.isAndroid) {
+    } else if (device.isAndroid) {
       await console.log('Skipping enterEmail for Android');
       return this;
     }
+    return this;
   }
 
   async clickStartExploring() {
@@ -78,10 +77,6 @@ class LoginPage {
   async enterPassword(password) {
     await util.setInputField(password, loginObject.passwordField);
     return this;
-  }
-
-  async continueLoginButtonIsDisplayed() {
-    return await util.elementIsDisplayed(loginObject.continueLoginButton);
   }
 
   async continueLoginButtonIsDisplayed() {
