@@ -1,4 +1,4 @@
-const { Given, When, Then } = require('@wdio/cucumber-framework');
+const { Given, When } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const homeFunc = require('../../main/PageFunctionalities/HomeFunctionality');
 const loginFunc = require('../../main/PageFunctionalities/LoginFunctionality');

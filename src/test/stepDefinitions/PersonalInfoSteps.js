@@ -1,4 +1,4 @@
-const { Given, When, Then } = require('@wdio/cucumber-framework');
+const { When, Then } = require('@wdio/cucumber-framework');
 const personalInfoFunc = require('../../main/PageFunctionalities/PersonalInfoFunctionality');
 
 Then(/^I should see personal information page loaded$/, async () => {
