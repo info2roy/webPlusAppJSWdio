@@ -10,7 +10,7 @@ class HomePage {
   }
 
   async webHomePageLaunch() {
-    return ((await homePage.loginTabIsDisplayed()) && (await homePage.signupTabIsDisplayed()));
+    return ((await homePage.loginOptionIsDisplayed()) && (await homePage.signupOptionIsDisplayed()));
   }
 
   async responsiveHomePageLaunch() {

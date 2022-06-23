@@ -7,11 +7,11 @@ class HomePage {
     await util.clickElement(homePageObject.loginButton);
   }
 
-  async loginTabIsDisplayed() {
+  async loginOptionIsDisplayed() {
     return (await util.elementIsDisplayed(homePageObject.loginButton));
   }
 
-  async signupTabIsDisplayed() {
+  async signupOptionIsDisplayed() {
     if (device.isMobileWeb() || device.isDesktop()) {
       return (await util.elementIsDisplayed(homePageObject.signupButton));
     }
