@@ -80,8 +80,8 @@ class LoginPage {
     return this;
   }
 
-  continueLoginButtonIsDisplayed() {
-    return util.elementIsDisplayed(loginObject.continueLoginButton);
+  async continueLoginButtonIsDisplayed() {
+    return await util.elementIsDisplayed(loginObject.continueLoginButton);
   }
 
   async continueLoginButtonIsDisplayed() {
