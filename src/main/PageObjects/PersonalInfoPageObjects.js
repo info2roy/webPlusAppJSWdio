@@ -9,11 +9,14 @@ class PersonalInfoPageObjects {
   updatePictureOption = { web: '//div[text()=\'Update Picture\']',
     app: '//*[@text=\'Update picture\']' }; // update picture button
 
-  alertForAllowCameraAccess = { app: '//*[@text=\'Allow Scripbox to take pictures and record video?\']' }; // The dialog for "Allow Scripbox to take pictures and record video?"
+  // The dialog for "Allow Scripbox to take pictures and record video?"
+  alertForAllowCameraAccess = { app: '//*[@text=\'Allow Scripbox to take pictures and record video?\']' };
 
-  alertForAllowCameraAccess_whileUsingTheAppOption = { app: '//*[@text=\'While using the app\']' }; // The option "While using the app"
+  // The option "While using the app"
+  alertForAllowCameraAccess_whileUsingTheAppOption = { app: '//*[@text=\'While using the app\']' };
 
-  alertForAllowMediaAccess = { app: '//*[@text=\'Allow Scripbox to access photos and media on your device?\']' }; // The dialog for "Allow Scripbox to access photos and media on your device?"
+  // The dialog for "Allow Scripbox to access photos and media on your device?"
+  alertForAllowMediaAccess = { app: '//*[@text=\'Allow Scripbox to access photos and media on your device?\']' };
 
   alertForAllowMediaAccess_allowOption = { app: '//*[@text=\'Allow\']' }; // The option "Allow"
 
