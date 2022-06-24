@@ -3,14 +3,6 @@ const loginObject = require('../PageObjects/LoginPageObjects');
 const device = require('../../support/libraries/Device');
 
 class LoginPage {
-  async visit(url) {
-    await browser.url(url);
-  }
-
-  async scriptBoxLoginPageImage() {
-    await util.elementIsDisplayed(loginObject.scripboxLoginImage);
-  }
-
   async enterUserId(emailID) {
     await util.setInputField(emailID, loginObject.userIdField);
   }
