@@ -5,7 +5,7 @@ class LoginPageObjects {
 
   continueOrNextButton = { web: '#test-login-next-button', app: '//*[@text=\'NEXT\']' };
 
-  firstLoginPageHeader = { web: '//label[@text=" Login or create a new account "]',
+  firstLoginPageHeader = { web: '//label[@class="signup-email-text"]',
     app: '//*[@text=\'Login / Signup\']' };
 
   emailField = { web: 'input#user_email', app: this.loginCredentialsTextAndroid };

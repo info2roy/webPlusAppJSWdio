@@ -18,9 +18,7 @@ class LoginPage {
   }
 
   async firstLoginPageLaunched() {
-    return ((await loginPage.firstLoginPageHeaderIsDisplayed()) &&
-      (await loginPage.userIdFieldIsDisplayed()) &&
-      (await loginPage.continueOrNextButtonIsDisplayed()));
+    return (await loginPage.firstLoginPageHeaderIsDisplayed());
   }
 
   async loginWithUsername(username) {

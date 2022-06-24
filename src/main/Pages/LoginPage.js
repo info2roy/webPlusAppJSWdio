@@ -28,10 +28,7 @@ class LoginPage {
   }
 
   async firstLoginPageHeaderIsDisplayed() {
-    if (device.isAndroidApp()) {
-      return await util.elementIsDisplayed(loginObject.firstLoginPageHeader);
-    }
-    return true;
+    return await util.elementIsDisplayed(loginObject.firstLoginPageHeader);
   }
 
   async emailFieldIsDisplayed() {
