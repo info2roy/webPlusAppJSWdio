@@ -7,7 +7,7 @@ class HomePageObjects {
 
   moreOptions = { androidapp: '//*[contains(@content-desc,"More")]' };
 
-  customerBanner = { androidapp: '//*[@text=\'Login\']' };
+  customerBanner = { androidapp: '//*[@text=\'Already a Scripbox customer? \']' };
 }
 
 module.exports = new HomePageObjects();
