@@ -2,7 +2,7 @@ const personalInfoPage = require('../Pages/PersonalInfoPage');
 
 class PersonalInfoPage {
   async profileInfoPageLaunched() {
-    return (await personalInfoPage.profileInfomationIsDisplayed());
+    return (await personalInfoPage.profileInfomationHeaderIsDisplayed());
   }
 
   async updateProfilePicture() {

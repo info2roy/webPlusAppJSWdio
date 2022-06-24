@@ -5,7 +5,7 @@ const personalInfoPageObject = require('../PageObjects/PersonalInfoPageObjects')
 const device = require('../../support/libraries/Device');
 
 class PersonalInfoPage {
-  async profileInfomationIsDisplayed() {
+  async profileInfomationHeaderIsDisplayed() {
     return await util.elementIsDisplayed(personalInfoPageObject.profileInfomationHeader);
   }
 
