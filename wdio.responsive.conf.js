@@ -1,27 +1,26 @@
-const { config } = require('./wdio.conf')
-const path = require('path');
+const { config } = require('./wdio.conf');
 
 exports.config = {
-    ...config,
+  ...config,
 
-    ...{
+  ...{
     host: 'http://localhost',
     port: 4723,
     path: '/wd/hub',
-    services: ['chromedriver'], 
+    services: ['chromedriver'],
 
     // For mobile web platform
     capabilities: [{
       maxInstances: 1,
       browserName: 'chrome',
       acceptInsecureCerts: true,
-      "goog:chromeOptions": {
+      'goog:chromeOptions': {
         args: [
           //"--headless",
-          "--window-size=400,960"
+          '--window-size=400,960'
         ],
       },
     }],
 
-    }
+  }
 };
