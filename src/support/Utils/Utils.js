@@ -1,4 +1,3 @@
-const isDisplayed = require('webdriverio/build/commands/element/isDisplayed');
 const device = require('../libraries/Device');
 
 class Utils {
@@ -8,16 +7,17 @@ class Utils {
         return object.mobileweb;
       }
       return object.web;
-    } if (device.isDesktop()) {
+    } else if (device.isDesktop()) {
       if (object.hasOwnProperty('desktop')) {
         return object.desktop;
       }
       return object.web;
-    } if (device.isAndroidApp()) {
+    } else if (device.isAndroidApp()) {
       return object.androidapp;
-    } if (device.isiOSApp()) {
+    } else if (device.isiOSApp()) {
       return object.iosapp;
     }
+    return object.mobileweb;
   }
 
   getPlatform() {
