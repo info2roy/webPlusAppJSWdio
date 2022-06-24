@@ -5,17 +5,14 @@ const device = require('../../support/libraries/Device');
 class LoginPage {
   async visit(url) {
     await browser.url(url);
-    return this;
   }
 
   async scriptBoxLoginPageImage() {
     await util.elementIsDisplayed(loginObject.scripboxLoginImage);
-    return this;
   }
 
   async enterUserId(emailID) {
     await util.setInputField(emailID, loginObject.userIdField);
-    return this;
   }
 
   async userIdFieldIsDisplayed() {
@@ -24,7 +21,6 @@ class LoginPage {
 
   async clickContinueOrNextButton() {
     await util.clickElement(loginObject.continueOrNextButton);
-    return this;
   }
 
   async continueOrNextButtonIsDisplayed() {
@@ -51,19 +47,15 @@ class LoginPage {
   async enterEmail(emailID) {
     if (device.isMobileWeb() || device.isDesktop()) {
       await util.setInputField(emailID, loginObject.emailField);
-      return this;
     } else if (device.isAndroid) {
       await console.log('Skipping enterEmail for Android');
-      return this;
     }
-    return this;
   }
 
   async clickStartExploring() {
     if (driver.isAndroid) {
       await util.clickElement(loginObject.startExploring);
     }
-    return this;
   }
 
   async scripBoxExclusiveBenifitsDisplayed() {
@@ -76,7 +68,6 @@ class LoginPage {
 
   async enterPassword(password) {
     await util.setInputField(password, loginObject.passwordField);
-    return this;
   }
 
   async continueLoginButtonIsDisplayed() {
@@ -85,7 +76,6 @@ class LoginPage {
 
   async clickContinueLoginButton() {
     await util.clickElement(loginObject.continueLoginButton);
-    return this;
   }
 
 }
