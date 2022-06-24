@@ -13,8 +13,7 @@ class LoginPage {
   }
 
   async secondLoginPageLaunched() {
-    return ((await loginPage.emailFieldIsDisplayed()) && (await loginPage.passwordFieldIsDisplayed()) &&
-      (await loginPage.continueLoginButtonIsDisplayed()));
+    return (await loginPage.secondLoginPageHeaderIsDisplayed());
   }
 
   async firstLoginPageLaunched() {

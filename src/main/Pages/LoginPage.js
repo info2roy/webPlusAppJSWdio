@@ -15,30 +15,16 @@ class LoginPage {
     await util.setInputField(emailID, loginObject.userIdField);
   }
 
-  async userIdFieldIsDisplayed() {
-    return await util.elementIsDisplayed(loginObject.userIdField);
-  }
-
   async clickContinueOrNextButton() {
     await util.clickElement(loginObject.continueOrNextButton);
-  }
-
-  async continueOrNextButtonIsDisplayed() {
-    return await util.elementIsDisplayed(loginObject.continueOrNextButton);
   }
 
   async firstLoginPageHeaderIsDisplayed() {
     return await util.elementIsDisplayed(loginObject.firstLoginPageHeader);
   }
 
-  async emailFieldIsDisplayed() {
-    if (device.isMobileWeb() || device.isDesktop()) {
-      return await util.elementIsDisplayed(loginObject.emailField);
-    } else if (driver.isAndroid) {
-      await console.log('Email field not available for Android');
-      return true;
-    }
-    return true;
+  async secondLoginPageHeaderIsDisplayed() {
+    return await util.elementIsDisplayed(loginObject.secondLoginPageHeader);
   }
 
   async enterEmail(emailID) {
@@ -59,16 +45,8 @@ class LoginPage {
     return (await util.elementIsDisplayed(loginObject.scripBoxExclusiveBenifits));
   }
 
-  async passwordFieldIsDisplayed() {
-    return await util.elementIsDisplayed(loginObject.passwordField);
-  }
-
   async enterPassword(password) {
     await util.setInputField(password, loginObject.passwordField);
-  }
-
-  async continueLoginButtonIsDisplayed() {
-    return await util.elementIsDisplayed(loginObject.continueLoginButton);
   }
 
   async clickContinueLoginButton() {

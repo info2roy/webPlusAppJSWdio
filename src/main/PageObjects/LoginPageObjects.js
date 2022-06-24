@@ -8,6 +8,9 @@ class LoginPageObjects {
   firstLoginPageHeader = { web: '//label[@class="signup-email-text"]',
     app: '//*[@text="Login / Signup"]' };
 
+  secondLoginPageHeader = { web: '#login-heading',
+    app: '//*[@text="Enter Password"]' };
+
   emailField = { web: 'input#user_email', app: this.loginCredentialsTextAndroid };
 
   passwordField = { web: 'input#user_password', app: this.loginCredentialsTextAndroid };
