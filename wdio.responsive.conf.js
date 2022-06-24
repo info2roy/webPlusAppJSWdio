@@ -22,5 +22,6 @@ exports.config = {
       },
     }],
 
+    baseUrl: 'https://uat-andromeda-2-uat.scripbox.org'
   }
 };
