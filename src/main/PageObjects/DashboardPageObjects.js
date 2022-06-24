@@ -1,21 +1,21 @@
 class DashboardPageObjects {
-  helloUser = { web: '//div[text()=\'HELLO\']', androidapp: '//*[@text=\'HELLO\']' };
+  helloUser = { web: '//div[text()=\'HELLO\']', app: '//*[@text=\'HELLO\']' };
 
   moreButton = {
     web: '//div[text()=\'More\']',
     desktop: 'span.desktop-dropdown-icon',
-    androidapp: '//android.widget.TextView[@text=\'More\']',
+    app: '//android.widget.TextView[@text=\'More\']',
   };
 
   personalInfoOption = {
     web: '//div[text()=\'Personal Information\']',
     desktop: 'span.test-personal-information',
-    androidapp: '//android.widget.TextView[@text=\'Personal information\']',
+    app: '//android.widget.TextView[@text=\'Personal information\']',
   };
 
-  withdrawButton = { androidapp: '//*[@text=\'Withdraw\']' };
+  withdrawButton = { app: '//*[@text=\'Withdraw\']' };
 
-  investMoreButton = { androidapp: '//*[@text=\'Invest more\']' };
+  investMoreButton = { app: '//*[@text=\'Invest more\']' };
 }
 
 module.exports = new DashboardPageObjects();

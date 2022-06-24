@@ -1,21 +1,22 @@
 class LoginPageObjects {
   loginCredentialsTextAndroid = '//*[@class="android.widget.EditText" and @package="com.scripbox.takecharge"]';
 
-  userIdField = { web: '#test-email-input', androidapp: this.loginCredentialsTextAndroid };
+  userIdField = { web: '#test-email-input', app: this.loginCredentialsTextAndroid };
 
-  continueOrNextButton = { web: '#test-login-next-button', androidapp: '//*[@text=\'NEXT\']' };
+  continueOrNextButton = { web: '#test-login-next-button', app: '//*[@text=\'NEXT\']' };
 
-  firstLoginPageHeader = { web: '//label[@text=" Login or create a new account "]', androidapp: '//*[@text=\'Login / Signup\']' };
+  firstLoginPageHeader = { web: '//label[@text=" Login or create a new account "]',
+    app: '//*[@text=\'Login / Signup\']' };
 
-  emailField = { web: 'input#user_email', androidapp: this.loginCredentialsTextAndroid };
+  emailField = { web: 'input#user_email', app: this.loginCredentialsTextAndroid };
 
-  passwordField = { web: 'input#user_password', androidapp: this.loginCredentialsTextAndroid };
+  passwordField = { web: 'input#user_password', app: this.loginCredentialsTextAndroid };
 
-  continueLoginButton = { web: 'button#test-signup-next-button', androidapp: '//*[@text=\'CONTINUE\']' };
+  continueLoginButton = { web: 'button#test-signup-next-button', app: '//*[@text=\'CONTINUE\']' };
 
-  startExploring = { androidapp: '//*[@text=\'Start exploring\']' };
+  startExploring = { app: '//*[@text=\'Start exploring\']' };
 
-  scripBoxExclusiveBenifits = { androidapp: '//*[@text=\'Scripbox exclusive benefits\']' };
+  scripBoxExclusiveBenifits = { app: '//*[@text=\'Scripbox exclusive benefits\']' };
 }
 
 module.exports = new LoginPageObjects();

@@ -13,11 +13,17 @@ class Utils {
       }
       return object.web;
     } else if (device.isAndroidApp()) {
-      return object.androidapp;
+      if (object.hasOwnProperty('android')) {
+        return object.android;
+      }
+      return object.app;
     } else if (device.isiOSApp()) {
-      return object.iosapp;
+      if (object.hasOwnProperty('ios')) {
+        return object.ios;
+      }
+      return object.app;
     }
-    return object.mobileweb;
+    return object.app;
   }
 
   getPlatform() {

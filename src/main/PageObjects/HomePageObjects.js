@@ -1,13 +1,13 @@
 class HomePageObjects {
   menuButton = { web: '//button[@data-action=\'menu hamburger\']' };
 
-  loginButton = { web: 'a[data-action=\'menu login\']', androidapp: '//*[@text=\'Login\']' };
+  loginButton = { web: 'a[data-action=\'menu login\']', app: '//*[@text=\'Login\']' };
 
   signupButton = { web: 'a[data-action=\'menu signup\']' };
 
-  moreOptions = { androidapp: '//*[contains(@content-desc,"More")]' };
+  moreOptions = { app: '//*[contains(@content-desc,"More")]' };
 
-  customerBanner = { androidapp: '//*[@text=\'Already a Scripbox customer? \']' };
+  customerBanner = { app: '//*[@text=\'Already a Scripbox customer? \']' };
 }
 
 module.exports = new HomePageObjects();
