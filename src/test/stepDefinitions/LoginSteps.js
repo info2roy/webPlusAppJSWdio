@@ -14,14 +14,3 @@ When(/^I login with username and password$/, async () => {
   await LoginFunctionality.loginWithUsernameAndPassword(LoginData.username, LoginData.password);
   await console.log('Filled username and password');
 });
-
-When(/^I login with "([^"]*)"$/, async (username) => {
-  await console.log(`When I login with username:${username}`);
-  await LoginFunctionality.loginWithUsername(username);
-  expect(await LoginFunctionality.secondLoginPageLaunched()).to.be.true;
-});
-
-When(/^I login with "([^"]*)" and "([^"]*)"$/, async (username, password) => {
-  await console.log(`When I login with username:${username} and password:${password}`);
-  await LoginFunctionality.loginWithUsernameAndPassword(username, password);
-});
