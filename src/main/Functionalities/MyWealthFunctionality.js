@@ -1,14 +1,14 @@
-const myWealthPage = require('../Pages/MyWealthPage');
+const MyWealthPage = require('../Pages/MyWealthPage');
 
 class MyWealthFunctionality {
   async navigateToMyWealthPage() {
     await console.log('Navigating user to My Wealth page');
-    await myWealthPage.selectWealthTab();
+    await MyWealthPage.selectWealthTab();
     // return (await wisdomPage.checkIfWealthPageIsDisplayed());
   }
 
   async navigateToInvestmentStrategy() {
-    await myWealthPage.navigateToInvestmentStrategyTab();
+    await MyWealthPage.navigateToInvestmentStrategyTab();
   }
 }
 

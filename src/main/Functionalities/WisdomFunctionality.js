@@ -1,23 +1,23 @@
-const wisdomPage = require('../Pages/WisdomPage');
+const WisdomPage = require('../Pages/WisdomPage');
 
 class WisdomFunctionality {
   async navigateToWisdomPage() {
     await console.log('Navigating user to Wisdom page');
-    await wisdomPage.selectWisdomTab();
-    return (await wisdomPage.checkIfWisdomPageIsDisplayed());
+    await WisdomPage.selectWisdomTab();
+    return (await WisdomPage.checkIfWisdomPageIsDisplayed());
   }
 
   async startCheckup() {
     await console.log('Clicking on start checkup in wisdom page');
-    await wisdomPage.scrollToStartCheckup();
-    await wisdomPage.clickOnStartCheckup();
+    await WisdomPage.scrollToStartCheckup();
+    await WisdomPage.clickOnStartCheckup();
   }
 
   async openFirstBlog() {
     await console.log('Clicking on start checkup in wisdom page');
-    await wisdomPage.scrollToBlogs();
-    await wisdomPage.clickOnFirstBlog();
-    await wisdomPage.checkBlogIsOpen();
+    await WisdomPage.scrollToBlogs();
+    await WisdomPage.clickOnFirstBlog();
+    await WisdomPage.checkBlogIsOpen();
   }
 }
 

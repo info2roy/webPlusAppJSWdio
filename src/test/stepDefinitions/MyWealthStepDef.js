@@ -1,6 +1,6 @@
 const { When } = require('@wdio/cucumber-framework');
 const MyWealthFunctionality = require('../../main/Functionalities/MyWealthFunctionality');
-const MyWealthPageObjects = require('../../main/PageObjects/MyWealthPageObjects');
+const MyWealthPageObjects = require('../../main/Objects/MyWealthObjects');
 const Utils = require('../../support/Utils/Utils');
 
 When(/^I navigate to My Wealth page$/, async () => {

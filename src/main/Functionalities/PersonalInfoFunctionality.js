@@ -1,14 +1,14 @@
-const personalInfoPage = require('../Pages/PersonalInfoPage');
+const PersonalInfoPage = require('../Pages/PersonalInfoPage');
 
-class PersonalInfoPage {
+class PersonalInfoFunctionality {
   async profileInfoPageLaunched() {
-    return (await personalInfoPage.profileInfomationHeaderIsDisplayed());
+    return (await PersonalInfoPage.profileInfomationHeaderIsDisplayed());
   }
 
   async updateProfilePicture() {
-    await personalInfoPage.clickUpdatePicture();
-    await personalInfoPage.clickCameraPictureAndUpdate();
-    await personalInfoPage.uploadFile();
+    await PersonalInfoPage.clickUpdatePicture();
+    await PersonalInfoPage.clickCameraPictureAndUpdate();
+    await PersonalInfoPage.uploadFile();
   }
 }
-module.exports = new PersonalInfoPage();
+module.exports = new PersonalInfoFunctionality();

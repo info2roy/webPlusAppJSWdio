@@ -1,18 +1,18 @@
-const dashboardPage = require('../Pages/DashboardPage');
-const dashboardPageObject = require('../PageObjects/DashboardPageObjects');
+const DashboardPage = require('../Pages/DashboardPage');
+const DashboardObjects = require('../Objects/DashboardObjects');
 const Utils = require('../../support/Utils/Utils');
 
-class DashboardPage {
+class DashboardFunctionality {
   async validate() {
-    expect(await Utils.elementIsDisplayed(dashboardPageObject.helloUser)).toBe.true;
+    expect(await Utils.elementIsDisplayed(DashboardObjects.helloUser)).toBe.true;
   }
 
   async openProfileDropdown() {
-    await dashboardPage.openProfileDropdown();
+    await DashboardPage.openProfileDropdown();
   }
 
   async selectPersonalInformation() {
-    await dashboardPage.selectPersonalInformation();
+    await DashboardPage.selectPersonalInformation();
   }
 }
-module.exports = new DashboardPage();
+module.exports = new DashboardFunctionality();

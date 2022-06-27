@@ -1,4 +1,4 @@
-class PersonalInfoPageObjects {
+class PersonalInfoObjects {
   fileInput = { web: 'input#file' }; // file input tag for uploading profile picture on web => <input type="file">
 
   submitPictureButton = { web: '//button[text()="Submit"]' }; // The submit button for updated profile picture on web
@@ -29,4 +29,4 @@ class PersonalInfoPageObjects {
   doneCropButton = { app: '~Crop' }; // the done Crop button
 }
 
-module.exports = new PersonalInfoPageObjects();
+module.exports = new PersonalInfoObjects();

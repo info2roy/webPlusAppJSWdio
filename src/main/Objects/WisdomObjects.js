@@ -1,4 +1,4 @@
-class WisdomPageObjects {
+class WisdomObjects {
   // Web locators
 
   // Android locators
@@ -17,4 +17,4 @@ class WisdomPageObjects {
   wisdomPageBlogInvestmentStrategy = { app: '//*[@text="Investment Strategy"]' };
 }
 
-module.exports = new WisdomPageObjects();
+module.exports = new WisdomObjects();

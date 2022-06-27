@@ -1,39 +1,39 @@
-const util = require('../../support/Utils/Utils');
-const homePageObject = require('../PageObjects/HomePageObjects');
-const device = require('../../support/libraries/Device');
+const Utils = require('../../support/Utils/Utils');
+const HomeObjects = require('../Objects/HomeObjects');
+const Device = require('../../support/libraries/Device');
 
 class HomePage {
   async selectLoginOption() {
-    await util.clickElement(homePageObject.loginButton);
+    await Utils.clickElement(HomeObjects.loginButton);
   }
 
   async loginOptionIsDisplayed() {
-    return (await util.elementIsDisplayed(homePageObject.loginButton));
+    return (await Utils.elementIsDisplayed(HomeObjects.loginButton));
   }
 
   async signupOptionIsDisplayed() {
-    if (device.isMobileWeb() || device.isDesktop()) {
-      return (await util.elementIsDisplayed(homePageObject.signupButton));
+    if (Device.isMobileWeb() || Device.isDesktop()) {
+      return (await Utils.elementIsDisplayed(HomeObjects.signupButton));
     }
     return true;
   }
 
   async clickMenuButton() {
-    if (device.isMobileWeb()) {
-      await util.clickElement(homePageObject.menuButton);
+    if (Device.isMobileWeb()) {
+      await Utils.clickElement(HomeObjects.menuButton);
     }
   }
 
   async loginButtonDisplayedAndroid() {
-    return await util.elementIsDisplayed(homePageObject.loginButton);
+    return await Utils.elementIsDisplayed(HomeObjects.loginButton);
   }
 
   async menuButtonIsDisplayed() {
-    return await util.elementIsDisplayed(homePageObject.menuButton);
+    return await Utils.elementIsDisplayed(HomeObjects.menuButton);
   }
 
   async scripBoxCustomerbannerDisplayedAndroid() {
-    return await util.elementIsDisplayed(homePageObject.customerBanner);
+    return await Utils.elementIsDisplayed(HomeObjects.customerBanner);
   }
 }
 

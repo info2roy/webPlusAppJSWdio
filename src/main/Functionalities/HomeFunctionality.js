@@ -1,25 +1,25 @@
-const homePage = require('../Pages/HomePage');
+const HomePage = require('../Pages/HomePage');
 
-class HomePage {
+class HomeFunctionality {
   async login() {
-    await homePage.selectLoginOption();
+    await HomePage.selectLoginOption();
   }
 
   async clickMenuButton() {
-    await homePage.clickMenuButton();
+    await HomePage.clickMenuButton();
   }
 
   async webHomePageLaunch() {
-    return ((await homePage.loginOptionIsDisplayed()) && (await homePage.signupOptionIsDisplayed()));
+    return ((await HomePage.loginOptionIsDisplayed()) && (await HomePage.signupOptionIsDisplayed()));
   }
 
   async responsiveHomePageLaunch() {
-    return (await homePage.menuButtonIsDisplayed());
+    return (await HomePage.menuButtonIsDisplayed());
   }
 
   async androidHomePageLaunch() {
-    return ((await homePage.loginButtonDisplayedAndroid()) && (await homePage.scripBoxCustomerbannerDisplayedAndroid()));
+    return ((await HomePage.loginButtonDisplayedAndroid()) && (await HomePage.scripBoxCustomerbannerDisplayedAndroid()));
   }
 }
 
-module.exports = new HomePage();
+module.exports = new HomeFunctionality();

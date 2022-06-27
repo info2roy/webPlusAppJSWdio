@@ -1,29 +1,29 @@
-const loginPage = require('../Pages/LoginPage');
+const LoginPage = require('../Pages/LoginPage');
 
-class LoginPage {
+class LoginFunctionality {
   async startExploring() {
-    await loginPage.clickStartExploring();
-    return (await loginPage.scripBoxExclusiveBenifitsDisplayed());
+    await LoginPage.clickStartExploring();
+    return (await LoginPage.scripBoxExclusiveBenifitsDisplayed());
   }
 
   async loginWithUsernameAndPassword(username, password) {
-    await loginPage.enterEmail(username);
-    await loginPage.enterPassword(password);
-    await loginPage.clickContinueLoginButton();
+    await LoginPage.enterEmail(username);
+    await LoginPage.enterPassword(password);
+    await LoginPage.clickContinueLoginButton();
   }
 
   async secondLoginPageLaunched() {
-    return (await loginPage.secondLoginPageHeaderIsDisplayed());
+    return (await LoginPage.secondLoginPageHeaderIsDisplayed());
   }
 
   async firstLoginPageLaunched() {
-    return (await loginPage.firstLoginPageHeaderIsDisplayed());
+    return (await LoginPage.firstLoginPageHeaderIsDisplayed());
   }
 
   async loginWithUsername(username) {
-    await loginPage.enterUserId(username);
-    await loginPage.clickContinueOrNextButton();
+    await LoginPage.enterUserId(username);
+    await LoginPage.clickContinueOrNextButton();
   }
 }
 
-module.exports = new LoginPage();
+module.exports = new LoginFunctionality();

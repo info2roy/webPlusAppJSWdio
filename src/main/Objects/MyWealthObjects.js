@@ -1,4 +1,4 @@
-class MyWealthPageObjects {
+class MyWealthObjects {
   // Web locators
 
   // Android locators
@@ -15,4 +15,4 @@ class MyWealthPageObjects {
   investmentPageBlogSubscribe = { app: '//*[@text="Subscribe"]' };
 }
 
-module.exports = new MyWealthPageObjects();
+module.exports = new MyWealthObjects();
