@@ -1,4 +1,4 @@
-class LoginPageObjects {
+class LoginObjects {
   loginCredentialsTextAndroid = '//*[@class="android.widget.EditText" and @package="com.scripbox.takecharge"]';
 
   userIdField = { web: '#test-email-input', app: this.loginCredentialsTextAndroid };
@@ -21,4 +21,4 @@ class LoginPageObjects {
   scripBoxExclusiveBenifits = { app: '//*[@text="Scripbox exclusive benefits"]' };
 }
 
-module.exports = new LoginPageObjects();
+module.exports = new LoginObjects();

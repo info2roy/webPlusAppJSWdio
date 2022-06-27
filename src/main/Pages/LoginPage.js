@@ -1,48 +1,48 @@
-const util = require('../../support/Utils/Utils');
-const loginObject = require('../PageObjects/LoginPageObjects');
-const device = require('../../support/libraries/Device');
+const Utils = require('../../support/Utils/Utils');
+const LoginObjects = require('../Objects/LoginObjects');
+const Device = require('../../support/libraries/Device');
 
 class LoginPage {
   async enterUserId(emailID) {
-    await util.setInputField(emailID, loginObject.userIdField);
+    await Utils.setInputField(emailID, LoginObjects.userIdField);
   }
 
   async clickContinueOrNextButton() {
-    await util.clickElement(loginObject.continueOrNextButton);
+    await Utils.clickElement(LoginObjects.continueOrNextButton);
   }
 
   async firstLoginPageHeaderIsDisplayed() {
-    return await util.elementIsDisplayed(loginObject.firstLoginPageHeader);
+    return await Utils.elementIsDisplayed(LoginObjects.firstLoginPageHeader);
   }
 
   async secondLoginPageHeaderIsDisplayed() {
-    return await util.elementIsDisplayed(loginObject.secondLoginPageHeader);
+    return await Utils.elementIsDisplayed(LoginObjects.secondLoginPageHeader);
   }
 
   async enterEmail(emailID) {
-    if (device.isMobileWeb() || device.isDesktop()) {
-      await util.setInputField(emailID, loginObject.emailField);
-    } else if (device.isAndroid) {
+    if (Device.isMobileWeb() || Device.isDesktop()) {
+      await Utils.setInputField(emailID, LoginObjects.emailField);
+    } else if (Device.isAndroid) {
       await console.log('Skipping enterEmail for Android');
     }
   }
 
   async clickStartExploring() {
     if (driver.isAndroid) {
-      await util.clickElement(loginObject.startExploring);
+      await Utils.clickElement(LoginObjects.startExploring);
     }
   }
 
   async scripBoxExclusiveBenifitsDisplayed() {
-    return (await util.elementIsDisplayed(loginObject.scripBoxExclusiveBenifits));
+    return (await Utils.elementIsDisplayed(LoginObjects.scripBoxExclusiveBenifits));
   }
 
   async enterPassword(password) {
-    await util.setInputField(password, loginObject.passwordField);
+    await Utils.setInputField(password, LoginObjects.passwordField);
   }
 
   async clickContinueLoginButton() {
-    await util.clickElement(loginObject.continueLoginButton);
+    await Utils.clickElement(LoginObjects.continueLoginButton);
   }
 
 }

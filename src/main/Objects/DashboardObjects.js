@@ -1,4 +1,4 @@
-class DashboardPageObjects {
+class DashboardObjects {
   helloUser = { web: '//div[text()="HELLO"]', app: '//*[@text="HELLO"]' };
 
   moreButton = {
@@ -18,4 +18,4 @@ class DashboardPageObjects {
   investMoreButton = { app: '//*[@text="Invest more"]' };
 }
 
-module.exports = new DashboardPageObjects();
+module.exports = new DashboardObjects();
