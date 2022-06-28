@@ -13,14 +13,15 @@ class LoginPage {
   }
 
   async secondLoginPageLaunched() {
-    return ((await loginPage.emailFieldIsDisplayed()) && (await loginPage.passwordFieldIsDisplayed())
-      && (await loginPage.continueLoginButtonIsDisplayed()));
+    return ((await loginPage.emailFieldIsDisplayed()) &&
+            (await loginPage.passwordFieldIsDisplayed()) &&
+            (await loginPage.continueLoginButtonIsDisplayed()));
   }
 
   async firstLoginPageLaunched() {
-    return ((await loginPage.firstLoginPageHeaderIsDisplayed())
-      && (await loginPage.userIdFieldIsDisplayed())
-      && (await loginPage.continueOrNextButtonIsDisplayed()));
+    return ((await loginPage.firstLoginPageHeaderIsDisplayed()) &&
+            (await loginPage.userIdFieldIsDisplayed()) &&
+            (await loginPage.continueOrNextButtonIsDisplayed()));
   }
 
   async loginWithUsername(username) {
