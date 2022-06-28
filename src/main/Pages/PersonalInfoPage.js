@@ -1,47 +1,40 @@
 const path = require('path');
 const { expect } = require('chai');
-const util = require('../../support/Utils/Utils');
-const personalInfoPageObject = require('../PageObjects/PersonalInfoPageObjects');
-const device = require('../../support/libraries/Device');
+const Utils = require('../../support/Utils/Utils');
+const PersonalInfoObjects = require('../Objects/PersonalInfoObjects');
+const Device = require('../../support/libraries/Device');
 
 class PersonalInfoPage {
-  async profileInfomationIsDisplayed() {
-    if (device.isMobileWeb() || device.isDesktop()) {
-      const url = await browser.getUrl();
-      await expect(url).to.contain.oneOf(['personal-info']);
-      return true;
-    }
-    if (device.isAndroidApp()) {
-      return await util.elementIsDisplayed(personalInfoPageObject.profileInfomationHeader);
-    }
+  async profileInfomationHeaderIsDisplayed() {
+    return await Utils.elementIsDisplayed(PersonalInfoObjects.profileInfomationHeader);
   }
 
   async clickUpdatePicture() {
-    await util.clickElement(personalInfoPageObject.updatePictureOption);
-    if (device.isAndroidApp()) {
+    await Utils.clickElement(PersonalInfoObjects.updatePictureOption);
+    if (Device.isAndroidApp()) {
       await console.log('Android: clickUpdatePicture');
-      expect(await util.elementIsDisplayed(personalInfoPageObject.alertForAllowCameraAccess)).to.be.true;
+      expect(await Utils.elementIsDisplayed(PersonalInfoObjects.alertForAllowCameraAccess)).to.be.true;
     }
   }
 
   async clickCameraPictureAndUpdate() {
-    if (device.isAndroidApp()) {
-      await util.clickElement(personalInfoPageObject.alertForAllowCameraAccess_whileUsingTheAppOption);
-      expect(await util.elementIsDisplayed(personalInfoPageObject.alertForAllowMediaAccess)).to.be.true;
-      await util.clickElement(personalInfoPageObject.alertForAllowMediaAccess_allowOption);
-      await util.clickElement(personalInfoPageObject.clickPictureButton);
-      expect(await util.elementIsDisplayed(personalInfoPageObject.donePictureButton)).to.be.true;
-      await util.clickElement(personalInfoPageObject.donePictureButton);
-      expect(await util.elementIsDisplayed(personalInfoPageObject.editPhotoHeader)).to.be.true;
-      await util.clickElement(personalInfoPageObject.doneCropButton);
+    if (Device.isAndroidApp()) {
+      await Utils.clickElement(PersonalInfoObjects.alertForAllowCameraAccess_whileUsingTheAppOption);
+      expect(await Utils.elementIsDisplayed(PersonalInfoObjects.alertForAllowMediaAccess)).to.be.true;
+      await Utils.clickElement(PersonalInfoObjects.alertForAllowMediaAccess_allowOption);
+      await Utils.clickElement(PersonalInfoObjects.clickPictureButton);
+      expect(await Utils.elementIsDisplayed(PersonalInfoObjects.donePictureButton)).to.be.true;
+      await Utils.clickElement(PersonalInfoObjects.donePictureButton);
+      expect(await Utils.elementIsDisplayed(PersonalInfoObjects.editPhotoHeader)).to.be.true;
+      await Utils.clickElement(PersonalInfoObjects.doneCropButton);
     }
   }
 
   async uploadFile() {
-    if (device.isMobileWeb() || device.isDesktop()) {
+    if (Device.isMobileWeb() || Device.isDesktop()) {
       await console.log('Web: uploadFile');
-      const localFilePath = path.join(__dirname, '../../test/data/desktop.jpg');
-      await util.uploadFile(localFilePath, personalInfoPageObject.fileInput, personalInfoPageObject.submitPictureButton);
+      const localFilePath = path.join(__dirname, '../../test/data/images/desktop.jpg');
+      await Utils.uploadFile(localFilePath, PersonalInfoObjects.fileInput, PersonalInfoObjects.submitPictureButton);
     }
   }
 }

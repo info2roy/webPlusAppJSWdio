@@ -1,14 +1,14 @@
-const { config } = require('./wdio.conf')
+const { config } = require('./wdio.conf');
 // const path = require('path');
 
 exports.config = {
-    ...config,
+  ...config,
 
-    ...{
+  ...{
     host: 'http://localhost',
     port: 4723,
     path: '/wd/hub',
-    services: ['chromedriver'], 
+    services: ['chromedriver'],
 
     // For mobile web platform
     capabilities: [{
@@ -17,5 +17,7 @@ exports.config = {
       acceptInsecureCerts: true
     }],
 
-    }
+    baseUrl: 'https://uat-andromeda-2-uat.scripbox.org'
+
+  }
 };

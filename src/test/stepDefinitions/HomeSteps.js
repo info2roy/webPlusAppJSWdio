@@ -1,31 +1,31 @@
 const { Given, When } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
-const homeFunc = require('../../main/PageFunctionalities/HomeFunctionality');
-const loginFunc = require('../../main/PageFunctionalities/LoginFunctionality');
-const device = require('../../support/libraries/Device');
-const util = require('../../support/Utils/Utils');
+const HomeFunctionality = require('../../main/Functionalities/HomeFunctionality');
+const LoginFunctionality = require('../../main/Functionalities/LoginFunctionality');
+const Device = require('../../support/libraries/Device');
+const Utils = require('../../support/Utils/Utils');
 
 Given(/^I am on the scripbox home page$/, async () => {
   await console.log('Given I am on the scripbox home page');
-  const platform = util.getPlatform();
-  device.setDevice(platform);
-  if (device.isMobileWeb() || device.isDesktop()) {
-    await console.log(`Launching web app mobileweb:${device.isMobileWeb()} desktop: ${device.isDesktop()}`);
-    await browser.url('https://uat-andromeda-2-uat.scripbox.org'); // This to be driven from a config file
-  } else if (device.isAndroidApp()) {
+  const platform = Utils.getPlatform();
+  Device.setDevice(platform);
+  if (Device.isMobileWeb() || Device.isDesktop()) {
+    await console.log(`Launching web app mobileweb:${Device.isMobileWeb()} desktop: ${Device.isDesktop()}`);
+    await browser.url('/');
+  } else if (Device.isAndroidApp()) {
     await console.log('Launching Android app');
-    expect(await homeFunc.androidHomePageLaunch()).to.be.true;
+    expect(await HomeFunctionality.androidHomePageLaunch()).to.be.true;
   }
 });
 
 When(/^I click on menu button$/, async () => {
   await console.log('When I click on menu button');
-  await homeFunc.clickMenuButton();
-  expect(await homeFunc.webHomePageLaunch()).to.be.true;
+  await HomeFunctionality.clickMenuButton();
+  expect(await HomeFunctionality.webHomePageLaunch()).to.be.true;
 });
 
 When(/^I click on login option$/, async () => {
   await console.log('When I click on login option');
-  await homeFunc.login();
-  expect(await loginFunc.firstLoginPageLaunched()).to.be.true;
+  await HomeFunctionality.login();
+  expect(await LoginFunctionality.firstLoginPageLaunched()).to.be.true;
 });

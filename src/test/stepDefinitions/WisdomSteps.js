@@ -1,12 +1,12 @@
 const { When } = require('@wdio/cucumber-framework');
-const wisdomFunc = require('../../main/PageFunctionalities/WisdomFunctionality');
+const WisdomFunctionality = require('../../main/Functionalities/WisdomFunctionality');
 
 When(/^I navigate to Wisdom page$/, async () => {
   // if (device.isMobileWeb()) {
 
   // } else if (driver.isAndroid) {
   //   expect(
-  await wisdomFunc.navigateToWisdomPage();
+  await WisdomFunctionality.navigateToWisdomPage();
   //   ).toBe.true;
   // }
 });
@@ -14,13 +14,13 @@ When(/^I navigate to Wisdom page$/, async () => {
 When(/^I scroll to see START CHECKPUP button$/, async () => {
   // if (device.isMobileWeb()) {
   // } else if (driver.isAndroid) {
-  await wisdomFunc.startCheckup();
+  await WisdomFunctionality.startCheckup();
   // }
 });
 
 When(/^I click on a BLOG$/, async () => {
   // if (device.isMobileWeb()) {
   // } else if (driver.isAndroid) {
-  await wisdomFunc.openFirstBlog();
+  await WisdomFunctionality.openFirstBlog();
   // }
 });

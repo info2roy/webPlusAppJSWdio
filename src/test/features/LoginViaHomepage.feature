@@ -7,4 +7,3 @@ Feature: Scripbox Login from home page
     When I login with username
     When I login with username and password
     Then I should see dashboard page loaded
-

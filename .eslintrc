@@ -197,6 +197,7 @@
     "operator-linebreak": [
       "error",
       "after"
-    ]
+    ],
+    "no-prototype-builtins" : "off"
   }
 }

@@ -1,39 +1,39 @@
-const util = require('../../support/Utils/Utils');
-const wisdomPageObject = require('../PageObjects/WisdomPageObjects');
+const Utils = require('../../support/Utils/Utils');
+const WisdomObjects = require('../Objects/WisdomObjects');
 
 class WisdomPage {
   async selectWisdomTab() {
-    await util.clickElement(wisdomPageObject.wisdomButton);
+    await Utils.clickElement(WisdomObjects.wisdomButton);
     // return this;
   }
 
   async checkIfWisdomPageIsDisplayed() {
-    await util.elementIsDisplayed(wisdomPageObject.newsThatMatters);
+    await Utils.elementIsDisplayed(WisdomObjects.newsThatMatters);
     return this;
   }
 
   async scrollToStartCheckup() {
-    await util.scrollUntilTextIntoView(wisdomPageObject.startCheckup);
+    await Utils.scrollUntilTextIntoView(WisdomObjects.startCheckup);
     return this;
   }
 
   async clickOnStartCheckup() {
-    await util.clickElement(wisdomPageObject.startCheckup);
+    await Utils.clickElement(WisdomObjects.startCheckup);
     return this;
   }
 
   async scrollToBlogs() {
-    await util.scrollUntilTextIntoView(wisdomPageObject.wisdomPageFirstBlog);
+    await Utils.scrollUntilTextIntoView(WisdomObjects.wisdomPageFirstBlog);
     return this;
   }
 
   async clickOnFirstBlog() {
-    await util.clickElement(wisdomPageObject.wisdomPageFirstBlog);
+    await Utils.clickElement(WisdomObjects.wisdomPageFirstBlog);
     return this;
   }
 
   async checkBlogIsOpen() {
-    return await util.elementIsDisplayed(wisdomPageObject.wisdomPageBlogSubscriptionMessage);
+    return await Utils.elementIsDisplayed(WisdomObjects.wisdomPageBlogSubscriptionMessage);
   }
 }
 

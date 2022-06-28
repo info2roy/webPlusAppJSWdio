@@ -1,21 +1,21 @@
-const util = require('../../support/Utils/Utils');
-const myWealthPageObject = require('../PageObjects/MyWealthPageObjects');
-const wisdomPageObject = require('../PageObjects/WisdomPageObjects');
+const Utils = require('../../support/Utils/Utils');
+const MyWealthObjects = require('../Objects/MyWealthObjects');
+const WisdomObjects = require('../Objects/WisdomObjects');
 
 class MyWealthPage {
   async selectWealthTab() {
-    await util.clickElement(myWealthPageObject.myWealthButton);
+    await Utils.clickElement(MyWealthObjects.myWealthButton);
     // return this;
   }
 
   async checkIfWealthPageIsDisplayed() {
-    await util.elementIsDisplayed(wisdomPageObject.newsThatMatters);
+    await Utils.elementIsDisplayed(WisdomObjects.newsThatMatters);
     return this;
   }
 
   async navigateToInvestmentStrategyTab() {
     await console.log('Navigating to other tabs in web view.');
-    await util.clickElement(myWealthPageObject.investmentStrategyTabInBlogs);
+    await Utils.clickElement(MyWealthObjects.investmentStrategyTabInBlogs);
   }
 }
 
