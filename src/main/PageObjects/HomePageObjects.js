@@ -6,8 +6,6 @@ class HomePageObjects {
   signupButton = { web: "a[data-action='menu signup']" };
 
   moreOptions = { androidapp: '//*[contains(@content-desc,"More")]' };
-
-  customerBanner = { androidapp: "//*[@text='Login']" };
 }
 
 module.exports = new HomePageObjects();

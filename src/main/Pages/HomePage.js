@@ -33,7 +33,7 @@ class HomePage {
   }
 
   async scripBoxCustomerbannerDisplayedAndroid() {
-    return await util.elementIsDisplayed(homePageObject.customerBanner);
+    return await util.elementIsDisplayed(homePageObject.loginButton);
   }
 }
 

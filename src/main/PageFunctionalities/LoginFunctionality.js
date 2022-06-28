@@ -3,7 +3,7 @@ const loginPage = require('../Pages/LoginPage');
 class LoginPage {
   async startExploring() {
     await loginPage.clickStartExploring();
-    return (loginPage.scripBoxExclusiveBenifitsDisplayed());
+    return (await loginPage.scripBoxExclusiveBenifitsDisplayed());
   }
 
   async loginWithUsernameAndPassword(username, password) {

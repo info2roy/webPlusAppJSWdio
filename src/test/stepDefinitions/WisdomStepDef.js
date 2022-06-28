@@ -14,13 +14,13 @@ When(/^I navigate to Wisdom page$/, async () => {
 When(/^I scroll to see START CHECKPUP button$/, async () => {
   // if (device.isMobileWeb()) {
   // } else if (driver.isAndroid) {
-    await wisdomFunc.startCheckup();
+  await wisdomFunc.startCheckup();
   // }
 });
 
 When(/^I click on a BLOG$/, async () => {
   // if (device.isMobileWeb()) {
   // } else if (driver.isAndroid) {
-    await wisdomFunc.openFirstBlog();
+  await wisdomFunc.openFirstBlog();
   // }
 });
