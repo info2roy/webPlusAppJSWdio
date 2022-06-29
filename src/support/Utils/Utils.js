@@ -61,7 +61,6 @@ class Utils {
         timeoutMsg: `${locator} Selector not displayed yet`,
       },
     );
-
     const isDisplayed = await $(locator).isDisplayed();
     console.log(`${locator} is displayed check --> ${isDisplayed}`);
     return isDisplayed;

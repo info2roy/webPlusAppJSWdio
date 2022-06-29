@@ -3,6 +3,7 @@ const { expect } = require('chai');
 const Utils = require('../../support/Utils/Utils');
 const PersonalInfoObjects = require('../Objects/PersonalInfoObjects');
 const Device = require('../../support/libraries/Device');
+const faker = require('@faker-js/faker');
 
 class PersonalInfoPage {
   async profileInfomationHeaderIsDisplayed() {
@@ -36,6 +37,48 @@ class PersonalInfoPage {
       const localFilePath = path.join(__dirname, '../../test/data/images/desktop.jpg');
       await Utils.uploadFile(localFilePath, PersonalInfoObjects.fileInput, PersonalInfoObjects.submitPictureButton);
     }
+  }
+
+  async clickEditFullName() {
+    await console.log('Starting edit full name');
+    await Utils.clickElement(PersonalInfoObjects.editFullNameButton);
+  }
+
+  async enterNewData(value) {
+    await console.log('Entering '+value.toString());
+    switch (value.toString()) {
+      case 'user email':
+        await Utils.setInputField(faker.internet.email(), PersonalInfoObjects.enterFullName);
+        break;
+      case 'mobile number':
+        await Utils.setInputField(faker.phone.phoneNumber('829#######'), PersonalInfoObjects.enterNewMobileNumber);
+        break;
+      case 'user name':
+        await Utils.setInputField(faker.name.firstName(), PersonalInfoObjects.enterNewMobileNumber);
+        break;
+      default:
+        await console.warn('Link type is not valid');
+    }
+  }
+
+  async clickUpdateButton() {
+    await console.log('Saving changes');
+    await Utils.clickElement(PersonalInfoObjects.updateChangesButton);
+  }
+
+  async checkEditHeader(value) {
+    await console.log('Checking header displayed of '+value.toString());
+    switch (value.toString()) {
+      case 'user email':
+        return await Utils.elementIsDisplayed(PersonalInfoObjects.changeEmailHeader);
+      case 'mobile number':
+        return await Utils.elementIsDisplayed(PersonalInfoObjects.changeMobileHeader);
+      case 'user name':
+        return await Utils.elementIsDisplayed(PersonalInfoObjects.changeNameHeader);
+      default:
+        await console.warn('Link type is not valid');
+    }
+    return this;
   }
 }
 module.exports = new PersonalInfoPage();

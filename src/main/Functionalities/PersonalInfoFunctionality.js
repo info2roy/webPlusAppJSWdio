@@ -10,5 +10,11 @@ class PersonalInfoFunctionality {
     await PersonalInfoPage.clickCameraPictureAndUpdate();
     await PersonalInfoPage.uploadFile();
   }
+
+  async updateProfileData(value) {
+    if(PersonalInfoPage.checkEditHeader(value)) {
+      PersonalInfoPage.enterNewData(value);
+    }
+  }
 }
 module.exports = new PersonalInfoFunctionality();

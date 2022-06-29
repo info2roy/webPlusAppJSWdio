@@ -9,3 +9,7 @@ When(/^I update the profile picture$/, async () => {
 Then(/^The picture is uploaded successfully$/, async () => {
   await console.log('Then The picture is uploaded successfully');
 });
+
+Then(/^I edit "([^"]*)?"$/, async (value) => {
+  await PersonalInfoFunctionality.updateProfileData(value);
+});

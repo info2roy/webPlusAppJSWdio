@@ -27,6 +27,30 @@ class PersonalInfoObjects {
   editPhotoHeader = { app: '//*[@text="Edit Photo"]' }; // The "Edit Photo Page"
 
   doneCropButton = { app: '~Crop' }; // the done Crop button
+
+  editFullNameButton = { web: '//div[contains(text(),"Full Name")]//following-sibling::span'};
+
+  editEmailButton = { web: '//div[contains(text(),"Email")]//following-sibling::span'};
+
+  editMobileNumberButton = { web: '//div[contains(text(),"obile Number")]//following-sibling::span'};
+
+  enterFullName = { web: '//input[@id="new-name"]'};
+
+  updateChangesButton = { web: '//button[@text="Update Changes"]'};
+
+  backButton = { web: '//span[@text="Back"]'};
+
+  enterNewEmail = { web: '//input[@id="new-email"]'};
+
+  confirmNewEmail = { web: '//input[@id="new-email-confirmation"]'};
+
+  enterNewMobileNumber = { web: '//input[@id="new-phone"]'};
+
+  changeNameHeader = {web: '//div[text()="Change Name"]'};
+
+  changeEmailHeader = {web: '//div[text()="Change Email"]'};
+
+  changeMobileHeader = {web: '//div[text()="Change Mobile Number"]'};
 }
 
 module.exports = new PersonalInfoObjects();
