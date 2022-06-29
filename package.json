@@ -12,6 +12,7 @@
     "@babel/core": "^7.6.0",
     "@babel/eslint-parser": "^7.18.2",
     "@babel/register": "^7.6.0",
+    "@faker-js/faker": "^7.3.0",
     "@wdio/allure-reporter": "^7.20.0",
     "@wdio/appium-service": "^7.20.1",
     "@wdio/cli": "^7.20.1",
