@@ -43,7 +43,11 @@ export emulator=$ANDROID_HOME/emulator
 Before running test follow below steps  
 1) cd to the project root directory  
 2) Run "source ~/.bash_profile"
-3) Run the commands explained in below section for the specific platform
+3) Use the correct feature file(s) in file wdio.conf.js for key specs as given below  
+  specs: [
+    './src/test/features/LoginViaHomepage.feature'
+  ],
+4) Run the commands explained in below section for the specific platform
 
 ## 3.1 Run test for Responsive Web
 ./node_modules/.bin/wdio wdio.resposive.conf.js
