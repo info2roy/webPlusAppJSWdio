@@ -2,6 +2,9 @@
 This is test framework for QA automation written in Javascript using webdriver.io (https://webdriver.io/) and cucumber (https://cucumber.io) framework.
 
 # 2 Setup Steps
+
+The following are setup steps on Macbook Pro.
+
 ## 2.1 Install Java
 Install Java version 11. The java version displayed should show java version 11 as below.
 
@@ -17,11 +20,38 @@ Install Node.js LTS version v16.15.1 from https://nodejs.org/en/download/
 This is required for Android App automation testing.
 Install Latest version of Android Studio from https://developer.android.com/studio
 
+## 2.4 Set Environment variables
+
+Put following lines to file ~/.bash_profile
+
+export JAVA_HOME=$(/usr/libexec/java_home)  
+export ANDROID_HOME=/Users/mahesh/Library/Android/sdk  
+export PATH=$PATH:/usr/local/git/bin:/usr/local/bin:  
+export PATH=$PATH:$ANDROID_HOME/platform-tools  
+export PATH=$PATH:$ANDROID_HOME/tools  
+export PATH=$PATH:$ANDROID_HOME/tools/bin  
+export PATH=$PATH:$ANDROID_HOME/emulator  
+export emulator=$ANDROID_HOME/emulator  
+
+# 3 Installation Steps
+
+1) Run "source ~/.bash_profile"  
+2) Run "npm install" from the project root directory.  
+
 # 3 How To Run Tests
+
+Before running test follow below steps  
+1) cd to the project root directory  
+2) Run "source ~/.bash_profile"
+3) Run the commands explained in below section for the specific platform
+
 ## 3.1 Run test for Responsive Web
 ./node_modules/.bin/wdio wdio.resposive.conf.js
 ## 3.2 Run test for Android App
 ./node_modules/.bin/wdio wdio.android.conf.js
+## 3.3 Run test for Desktop Web
+./node_modules/.bin/wdio wdio.desktop.conf.js
+
 
 # How to Contribute?
 This section explain how is this test framework structured. The same approach as below should be followed for adding new test features and scenarios.
