@@ -39,11 +39,12 @@ For example, the filename for Login feature should be LoginSteps.js. Refer src/t
 
 ## *Functionality.js
 The high level functionalities for the step definitions are defined in files with pattern *Functionality.js.
-For example, the filename for Login feature should be LoginFunctionality,js. Refer src/main/Functionalities/LoginFunctionality.js for more information.
+For example, the filename for Login feature should be LoginFunctionality.js. Refer src/main/Functionalities/LoginFunctionality.js for more information.  
 An example for high level functionality is loginWithUsernameAndPassword. This is high level functionality for the filling login form on the second login page. It involves three steps like below  
 1) Enter username  
 2) Enter password  
 3) Click Continue button  
+
 Each of these atomic steps are defined in *Page.js as explained in next subsection.
 
 ## *Page.js
@@ -56,13 +57,16 @@ Examples of atomic level operations are given below
 5) Any other UI element operations  
 
 For example, in the case of login flow, the filename should be LoginPage.js. For reference see the file at
-src/main/Pages/LoginPage.js.
+src/main/Pages/LoginPage.js. The atomic operations defined for login flow are as follows  
+1) enterEmail
+2) enterPassword
+3) clickContinueLoginButton  
 
-This file do the atomic level operations using functions inside Utils.js file (explain next) like setInputField, click
+This file does the atomic level operations using functions inside Utils.js file (explain next) like setInputField, click
 element, elementIsDisplayed etc.
 
 ## Utils.js
-This file is the utilities file for doing basic atomic operations on the UI elements on the pages and also other utilities.
+This file is the utilities file for doing basic atomic operations on the UI elements on the pages and also other utility functions.
 Examples of Utils functions are given below.
 1) setInputField => Used to set an input text box or password box  
 2) clickElement => Used to click an element or button  
@@ -73,4 +77,16 @@ Examples of Utils functions are given below.
 ## *Objects.js
 
 This file contains low level selectors for each of the UI element inside the pages.
+For example the file src/main/Objects/LoginObjects.js. The objects for login flow are given below.
 
+1) emailField = { web: 'input#user_email', app: this.loginCredentialsTextAndroid };  
+2) passwordField = { web: 'input#user_password', app: this.loginCredentialsTextAndroid };  
+3) continueLoginButton = { web: 'button#test-signup-next-button', app: '//*[@text="CONTINUE"]' };  
+
+The above objects are defined as javascript objects with following keys
+1) web => The common key for both **mobileweb** and **desktop** platforms  
+2) mobileweb => If key **mobileweb** is also present, then that will override value for **mobileweb** platform  
+3) desktop => If key **desktop** is also present, then that will override value for **desktop** platform  
+4) app => The common key for both **android** and **ios** app platforms  
+5) android => If key **android** is also present, then that will override value for **android** platform  
+6) ios => If key **ios** is also present, then that will override value for **ios** platform  
