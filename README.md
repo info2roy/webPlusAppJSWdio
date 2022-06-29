@@ -1,5 +1,5 @@
 # 1 Introduction
-This is test framework for QA automation written in Javascript using webdriver.io and cucumber framework.
+This is test framework for QA automation written in Javascript using webdriver.io (https://webdriver.io/) and cucumber (https://cucumber.io) framework.
 
 # 2 Setup Steps
 ## 2.1 Install Java
@@ -62,7 +62,7 @@ src/main/Pages/LoginPage.js. The atomic operations defined for login flow are as
 2) enterPassword
 3) clickContinueLoginButton  
 
-This file does the atomic level operations using functions inside Utils.js file (explain next) like setInputField, click
+This file does the atomic level operations using functions inside Utils.js file (explained next) like setInputField, click
 element, elementIsDisplayed etc.
 
 ## Utils.js
