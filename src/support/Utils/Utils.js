@@ -87,7 +87,7 @@ class Utils {
   }
 
   async scrollUntilTextIntoView(textToBeIntoView) {
-    await $(`android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView("${textToBeIntoView}")`);
+    await $(`android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView("${this.getLocator(textToBeIntoView)}")`);
   }
 }
 
