@@ -57,21 +57,21 @@ Before running test follow below steps
 ./node_modules/.bin/wdio wdio.desktop.conf.js
 
 
-# How to Contribute?
+# 4 How to Contribute?
 This section explain how is this test framework structured. The same approach as below should be followed for adding new test features and scenarios.
 
-## *.feature
+## 4.1 *.feature
 The cucumber feature file which has list of scenarios and list of steps for each scenario.
 For reference see https://cucumber.io/docs/cucumber/  
 This is more of english like description of test using Gherkin keywords Given, When, Then, And, But, Scenario, Scenario outline, Feature etc.
 
 For example, look src/test/features/LoginViaHomepage.feature.
 
-## *Steps.js
+## 4.2 *Steps.js
 Each step in *.feature file needs to have corresponding step definitions. Each such file has pattern *Steps.js. 
 For example, the filename for Login feature should be LoginSteps.js. Refer src/test/stepDefinitions/LoginSteps.js for more information.
 
-## *Functionality.js
+## 4.3 *Functionality.js
 The high level functionalities for the step definitions are defined in files with pattern *Functionality.js.
 For example, the filename for Login feature should be LoginFunctionality.js. Refer src/main/Functionalities/LoginFunctionality.js for more information.  
 An example for high level functionality is loginWithUsernameAndPassword. This is high level functionality for the filling login form on the second login page. It involves three steps like below  
@@ -81,7 +81,7 @@ An example for high level functionality is loginWithUsernameAndPassword. This is
 
 Each of these atomic steps are defined in *Page.js as explained in next subsection.
 
-## *Page.js
+## 4.4 *Page.js
 The atomic level operations on different page elements are defined in *Page.js. 
 Examples of atomic level operations are given below  
 1) Enter value in TextField or PasswordField  
@@ -99,7 +99,7 @@ src/main/Pages/LoginPage.js. The atomic operations defined for login flow are as
 This file does the atomic level operations using functions inside Utils.js file (explained next) like setInputField, click
 element, elementIsDisplayed etc.
 
-## Utils.js
+## 4.5 Utils.js
 This file is the utilities file for doing basic atomic operations on the UI elements on the pages and also other utility functions.
 Examples of Utils functions are given below.
 1) setInputField => Used to set an input text box or password box  
@@ -108,7 +108,7 @@ Examples of Utils functions are given below.
 4) uploadFile => Upload using an input filebox  
 5) scrollUntilTextIntoView => Scroll the page until a specific text comes into the view  
 
-## *Objects.js
+## 4.6 *Objects.js
 
 This file contains low level selectors for each of the UI element inside the pages.
 For example the file src/main/Objects/LoginObjects.js. The objects for login flow are given below.
@@ -124,3 +124,10 @@ The above objects are defined as javascript objects with following keys
 4) app => The common key for both **android** and **ios** app platforms  
 5) android => If key **android** is also present, then that will override value for **android** platform  
 6) ios => If key **ios** is also present, then that will override value for **ios** platform  
+
+# 5 Learning
+Udemy courses is a good start point learn about webdriver.io and appium. Some example udemy course are given below.
+1) Selenium: https://www.udemy.com/course/webdriverio-e2e-test-framework-from-scratch/   
+2) Selenium: https://www.udemy.com/course/webdriverio-tutorial-nodejs-javascript/  
+3) Appium: https://www.udemy.com/course/appium-webdriverio-mobile-automation/  
+4) Selenium: https://www.udemy.com/course/webdriverio-complete-beginner-course/  
