@@ -31,12 +31,26 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/tools  
 export PATH=$PATH:$ANDROID_HOME/tools/bin  
 export PATH=$PATH:$ANDROID_HOME/emulator  
-export emulator=$ANDROID_HOME/emulator  
+export emulator=$ANDROID_HOME/emulator
+
+
 
 # 3 Installation Steps
 
-1) Run "source ~/.bash_profile"  
-2) Run "npm install" from the project root directory.  
+1) Run "source ~/.bash_profile"   
+2) Run "npm install" from the project root directory.    
+
+## 3.1 Verify Appium Installation
+Appium is required for mobile app (Android and IOS) testing.
+
+Verify appium installation for both android and ios by fixing errors for **necessary** dependencies in below command outputs.
+1) appium-doctor --android  
+2) appium-doctor --ios  
+
+## 3.2 Install Appium Inspector
+Appium Inspector is needed to inspect mobile app pages to find selectors for various UI elements.
+
+Install latest version from https://github.com/appium/appium-inspector/releases.
 
 # 3 How To Run Tests
 
