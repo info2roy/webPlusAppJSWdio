@@ -135,5 +135,18 @@ class InvestmentObjects {
     app: '//*[@text="Funds Transfer Successful"]'
   };
 
+  homeButton = {
+    app: '//*[@text="HOME"]'
+  };
+
+  investmentSuccessMessage = {
+    web: '//div[text()="Investment successful"]',
+    app: '//*[@text="Investment successful"]'
+  };
+
+  goToDashboardButton = {
+    web: '//button[text()="Go to Dashboard"]',
+    app: '//*[@text="HOME"]'
+  };
 }
 module.exports = new InvestmentObjects();

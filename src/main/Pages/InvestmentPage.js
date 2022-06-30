@@ -113,6 +113,23 @@ class InvestmentPage {
   async fundTransferSuccessMessageIsDisplayed() {
     return (await Utils.elementIsDisplayed(InvestmentObjects.fundTransferSuccessMessage));
   }
+
+  async clickHomeButton() {
+    if(Device.isAndroidApp()) {
+      await Utils.clickElement(InvestmentObjects.homeButton);
+    }
+  }
+
+  async investmentSuccessMessageIsDisplayed() {
+    if(Device.isAndroidApp()) {
+      return (await Utils.elementIsDisplayed(InvestmentObjects.investmentSuccessMessage));
+    }
+    return true;
+  }
+
+  async clickGoToDashboardButton() {
+    await Utils.clickElement(InvestmentObjects.goToDashboardButton);
+  }
 }
 
 module.exports = new InvestmentPage();

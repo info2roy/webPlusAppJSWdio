@@ -84,3 +84,15 @@ Then(/^I should see fund transfer success message$/, async () => {
   expect(await InvestmentFunctionality.fundTransferIsSuccessful()).to.be.true;
 });
 
+Then(/^I should see investment success message$/, async () => {
+  await console.log('Then I should see investment success message');
+  await InvestmentFunctionality.goToHome();
+  expect(await InvestmentFunctionality.investmentIsSuccessful()).to.be.true;
+});
+
+Then(/^I go back to the dashboard page$/, async () => {
+  await console.log('Then I go back to the dashboard page');
+  await InvestmentFunctionality.goBackToDashboard();
+  await DashboardFunctionality.validate();
+});
+

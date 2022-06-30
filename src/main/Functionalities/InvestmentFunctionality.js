@@ -96,6 +96,18 @@ class InvestmentFunctionality {
   async fundTransferIsSuccessful() {
     return (await InvestmentPage.fundTransferSuccessMessageIsDisplayed());
   }
+
+  async goToHome() {
+    await InvestmentPage.clickHomeButton();
+  }
+
+  async investmentIsSuccessful() {
+    return (await InvestmentPage.investmentSuccessMessageIsDisplayed());
+  }
+
+  async goBackToDashboard() {
+    await InvestmentPage.clickGoToDashboardButton();
+  }
 }
 
 module.exports = new InvestmentFunctionality();
