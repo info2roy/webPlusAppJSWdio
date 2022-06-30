@@ -1,18 +1,19 @@
-const { Given, When } = require('@wdio/cucumber-framework');
+const { Given, When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const InvestmentFunctionality = require('../../main/Functionalities/InvestmentFunctionality');
+const DashboardFunctionality = require('../../main/Functionalities/DashboardFunctionality');
 //const Device = require('../../support/libraries/Device');
 //const Utils = require('../../support/Utils/Utils');
 
 Given(/^I am on the Investment Page$/, async () => {
   await console.log('Given I am on the Investment Page');
-  await InvestmentFunctionality.invest();
+  await DashboardFunctionality.invest();
   expect(await InvestmentFunctionality.investmentPageLaunched()).to.be.true;
 });
 
 Given(/^I am on the Mutual Funds Tab$/, async () => {
   await console.log('Given I am on the Mutual Funds Tab');
-  await InvestmentFunctionality.selectMutualFunds();
+  await InvestmentFunctionality.selectInvestmentTab('Mutual Funds');
   expect(await InvestmentFunctionality.mutualFundsPageLaunched()).to.be.true;
 });
 
@@ -23,9 +24,9 @@ When(/^I select portfolio (.+)$/, async (mutualFundPortfolio) => {
 });
 
 When(/^I Invest as per Scripbox Guided Path for (.+)$/, async (mutualFundPortfolio) => {
-  await console.log('When I select Invest as per Scripbox Guided Path');
+  await console.log(`When I select Invest as per Scripbox Guided Path for ${mutualFundPortfolio}`);
   await InvestmentFunctionality.investAsPerScripboxGuidedPath();
-  expect(await InvestmentFunctionality.mutualFundPortfolioPageLaunched(mutualFundPortfolio)).to.be.true;
+  expect(await InvestmentFunctionality.investmentFormPageLaunched()).to.be.true;
 });
 
 When(/^I fill form with agegroup (\d+s) and click NEXT$/, async (ageGroup) => {
@@ -49,15 +50,15 @@ When(/^I accept the recommended mutual fund allocation and click NEXT$/, async (
   await InvestmentFunctionality.acceptRecommendedFunds();
 });
 
-When(/^I select to MAKE PAYMENT NOW$/, async () => {
+When(/^I select to MAKE PAYMENT NOW for amount (\d+)$/, async (amount) => {
   await console.log('When I select to MAKE PAYMENT NOW');
   await InvestmentFunctionality.makePayment();
-  expect(await InvestmentFunctionality.setupInvestmentPageLaunched()).to.be.true;
+  expect(await InvestmentFunctionality.setupInvestmentPageLaunched(amount, 180)).to.be.true;
 });
 
 When(/^I select SIP duration in months as (\d+) and click NEXT$/, async (sipDurationInMonths) => {
   await console.log(`When I select SIP duration in months as ${sipDurationInMonths} and click NEXT`);
-  await InvestmentFunctionality.setupInvestment();
+  await InvestmentFunctionality.setupInvestment(sipDurationInMonths);
   expect(await InvestmentFunctionality.paymentInstrumentPageLaunched()).to.be.true;
 });
 
@@ -71,6 +72,15 @@ When(/^I go to Bank for Payment Instrument of type (.+)$/, async (paymentInstrum
   await console.log(`When I go to Bank for Payment Instrument of type ${paymentInstrumentType}`);
   await InvestmentFunctionality.goToBankForFundTransfer();
   expect(await InvestmentFunctionality.mockPaymentStatusPageLaunched()).to.be.true;
+});
 
+When(/^I select mock payment status as (Success|Failure)$/, async(paymentStatus) => {
+  await console.log(`When I select mock payment status as ${paymentStatus}`);
+  await InvestmentFunctionality.selectMockPaymentStatus(paymentStatus);
+});
+
+Then(/^I should see fund transfer success message$/, async () => {
+  await console.log('Then I should see fund transfer success message');
+  expect(await InvestmentFunctionality.fundTransferIsSuccessful()).to.be.true;
 });
 

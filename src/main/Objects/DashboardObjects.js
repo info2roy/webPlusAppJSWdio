@@ -16,6 +16,8 @@ class DashboardObjects {
   withdrawButton = { app: '//*[@text="Withdraw"]' };
 
   investMoreButton = { app: '//*[@text="Invest more"]' };
+
+  investTab = { web: '//div[text()="Invest"]', app: '//*[@text="Invest"]' };
 }
 
 module.exports = new DashboardObjects();

@@ -46,8 +46,8 @@ class Utils {
 
   async clickElement(selector) {
     const locator = this.getLocator(selector);
+    await this.elementIsDisplayed(selector);
     const myButton = await $(locator);
-    this.elementIsDisplayed(selector);
     await myButton.click();
   }
 
@@ -67,8 +67,8 @@ class Utils {
   }
 
   async setInputField(value, selector) {
+    await this.elementIsDisplayed(selector);
     const myButton = await $(this.getLocator(selector));
-    this.elementIsDisplayed(selector);
     await myButton.setValue(value);
   }
 
@@ -86,8 +86,14 @@ class Utils {
     await submitButton.click();
   }
 
-  async scrollUntilTextIntoView(textToBeIntoView) {
-    await $(`android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView("${this.getLocator(textToBeIntoView)}")`);
+  async scrollVerticalUntilTextIntoViewForAndroid(textToBeIntoView) {
+    const func = 'new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView';
+    await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
+  }
+
+  async scrollHorizontalUntilTextIntoViewForAndroid(textToBeIntoView) {
+    const func = 'new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollTextIntoView';
+    await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
   }
 }
 

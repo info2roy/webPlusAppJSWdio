@@ -1,15 +1,10 @@
 class InvestmentObjects {
-  investTab = { web: '//div[text()="Invest"]', app: '//*[@text="Invest"]' };
-
-  mutualFundsTab = {
-    web: '//div[text()="Mutual Funds"]',
-    app: '//*[@text="Mutual Funds"]'
-  };
-
-  fixedDepositTab = {
-    web: '//div[text()="Fixed Deposit"]',
-    app: '//*[@text="Fixed Deposit"]'
-  };
+  investmentTab(investmentType) { //investmentType belongs to ["Mutual Funds", "Fixed Deposit" , ..]
+    return {
+      web: `//div[text()="${investmentType}"]`,
+      app: `//*[@text="${investmentType}"]`
+    };
+  }
 
   mutualFundsPageHeader = {
     web: '//div[text()="Choose your plan"]',
@@ -29,7 +24,7 @@ class InvestmentObjects {
   };
 
   investAsPerScripboxGuidedPathButton = {
-    web: '//button[text()="Invest"]',
+    web: '//button/div[text()="Invest"]',
     app: '//*[@text="Invest"]'
   };
 
@@ -85,14 +80,18 @@ class InvestmentObjects {
   };
 
   makePaymentNowButton = {
-    web: '//button[text()="Automate Now"]',
-    app: `//*[text="${this.makePaymentNowText.web}"]`
+    web: `//button[text()="Make Payment Now"]`,
+    app: `//*[@text="${this.makePaymentNowText.app}"]`
   };
 
-  setupInvestmentPageHeader = {
-    web: '//div[text()="Core Mutual Fund Portfolio"]',
-    app: '//*[@text="Set-up Investment"]'
-  };
+  setupMFSipInvestmentPageHeader(amount, months) {
+    const amountStr = amount.toLocaleString('hi');
+    const monthsStr = months.toLocaleString('hi');
+    return {
+      web: `//div[text()="I would like to invest Rs ${amountStr} every month (SIP) for ${monthsStr} months"]`,
+      app: '//*[@text="Set-up Investment"]'
+    };
+  }
 
   sipDurationInMonthsField = {
     web: 'input#duration',
@@ -125,12 +124,15 @@ class InvestmentObjects {
     web: '//h3[text()="Select the mock payment status"]'
   };
 
-  mockPaymentSuccessButton = {
-    web: '//button[text()="Success"]'
-  };
+  mockPaymentStatusButton(status) {
+    return {
+      web: `//button[text()="${status}"]`
+    };
+  }
 
-  mockPaymentFailureButton = {
-    web: '//button[text()="Failure"]'
+  fundTransferSuccessMessage = {
+    web: '//div[text()="Investment successful"]',
+    app: '//*[@text="Funds Transfer Successful"]'
   };
 
 }

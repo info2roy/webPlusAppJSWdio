@@ -3,20 +3,12 @@ const Utils = require('../../support/Utils/Utils');
 const InvestmentObjects = require('../Objects/InvestmentObjects');
 
 class InvestmentPage {
-  async selectInvestOption() {
-    await Utils.clickElement(InvestmentObjects.investTab);
+  async selectInvestmentTab(investmentType) {
+    await Utils.clickElement(InvestmentObjects.investmentTab(investmentType));
   }
 
-  async selectMutualFundsTab() {
-    await Utils.clickElement(InvestmentObjects.mutualFundsTab);
-  }
-
-  async mutualFundsTabIsDisplayed() {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.mutualFundsTab));
-  }
-
-  async fixedDepositTabIsDisplayed() {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.fixedDepositTab));
+  async investmentTabIsDisplayed(investmentType) {
+    return (await Utils.elementIsDisplayed(InvestmentObjects.investmentTab(investmentType)));
   }
 
   async mutualFundsPageHeaderIsDisplayed() {
@@ -40,7 +32,7 @@ class InvestmentPage {
   }
 
   async scrollUntilAgegroupHeaderIsDisplayed() {
-    await Utils.scrollUntilTextIntoView(InvestmentObjects.ageGroupHeaderText);
+    await Utils.scrollVerticalUntilTextIntoViewForAndroid(InvestmentObjects.ageGroupHeaderText);
   }
 
   async selectAgeGroupTab(ageGroup) {
@@ -72,15 +64,17 @@ class InvestmentPage {
   }
 
   async scrollUntilMakePaymentNowIsDisplayed() {
-    await Utils.scrollUntilTextIntoView(InvestmentObjects.makePaymentNowText);
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(InvestmentObjects.makePaymentNowText);
+    }
   }
 
   async clickMakePaymentNowButton() {
     await Utils.clickElement(InvestmentObjects.makePaymentNowButton);
   }
 
-  async setupInvestmentPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.setupInvestmentPageHeader));
+  async setupInvestmentPageHeaderIsDisplayed(amount, months) {
+    return (await Utils.elementIsDisplayed(InvestmentObjects.setupMFSipInvestmentPageHeader(amount, months)));
   }
 
   async enterSipDurationInMonths(months) {
@@ -110,8 +104,14 @@ class InvestmentPage {
     return true;
   }
 
-  async clickMockPaymentSuccess() {
-    await Utils.clickElement(InvestmentObjects.mockPaymentSuccessButton);
+  async clickMockPaymentStatus(paymentStatus) {
+    if (Device.isWeb()) {
+      await Utils.clickElement(InvestmentObjects.mockPaymentStatusButton(paymentStatus));
+    }
+  }
+
+  async fundTransferSuccessMessageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(InvestmentObjects.fundTransferSuccessMessage));
   }
 }
 

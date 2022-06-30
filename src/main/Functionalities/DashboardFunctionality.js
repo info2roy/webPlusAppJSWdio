@@ -14,5 +14,9 @@ class DashboardFunctionality {
   async selectPersonalInformation() {
     await DashboardPage.selectPersonalInformation();
   }
+
+  async invest() {
+    await DashboardPage.selectInvestOption();
+  }
 }
 module.exports = new DashboardFunctionality();

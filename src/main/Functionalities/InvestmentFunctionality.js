@@ -1,16 +1,13 @@
 const InvestmentPage = require('../Pages/InvestmentPage');
 
 class InvestmentFunctionality {
-  async invest() {
-    await InvestmentPage.selectInvestOption();
-  }
-
   async investmentPageLaunched() {
-    return ((await InvestmentPage.mutualFundsTabIsDisplayed()) && (await InvestmentPage.fixedDepositTabIsDisplayed()));
+    return ((await InvestmentPage.investmentTabIsDisplayed('Mutual Funds')) &&
+      (await InvestmentPage.investmentTabIsDisplayed('Fixed Deposit')));
   }
 
-  async selectMutualFunds() {
-    await InvestmentPage.selectMutualFundsTab();
+  async selectInvestmentTab() {
+    await InvestmentPage.selectInvestmentTab('Mutual Funds');
   }
 
   async mutualFundsPageLaunched() {
@@ -63,8 +60,8 @@ class InvestmentFunctionality {
     await InvestmentPage.clickMakePaymentNowButton();
   }
 
-  async setupInvestmentPageLaunched() {
-    return (await InvestmentPage.setupInvestmentPageHeaderIsDisplayed());
+  async setupInvestmentPageLaunched(amount, months) {
+    return (await InvestmentPage.setupInvestmentPageHeaderIsDisplayed(amount, months));
   }
 
   async setupInvestment(months) {
@@ -77,7 +74,7 @@ class InvestmentFunctionality {
   }
 
   async selectPaymentInstrument(paymentInstrumentType) {
-    InvestmentPage.selectPaymentInstrument(paymentInstrumentType);
+    await InvestmentPage.clickOnPaymentInstrument(paymentInstrumentType);
   }
 
   async transferFundsPageLaunched() {
@@ -85,11 +82,19 @@ class InvestmentFunctionality {
   }
 
   async goToBankForFundTransfer() {
-    InvestmentPage.clickGoToBankButton();
+    await InvestmentPage.clickGoToBankButton();
   }
 
   async mockPaymentStatusPageLaunched() {
     return (await InvestmentPage.mockPaymentStatusPageHeaderIsDisplayed());
+  }
+
+  async selectMockPaymentStatus(paymentStatus) {
+    await InvestmentPage.clickMockPaymentStatus(paymentStatus);
+  }
+
+  async fundTransferIsSuccessful() {
+    return (await InvestmentPage.fundTransferSuccessMessageIsDisplayed());
   }
 }
 
