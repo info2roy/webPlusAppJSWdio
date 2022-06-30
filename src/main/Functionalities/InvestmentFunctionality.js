@@ -34,8 +34,9 @@ class InvestmentFunctionality {
   }
 
   async fillMutualFundPortfolioForm(ageGroup) {
-    await InvestmentPage.scrollUntilAgegroupHeaderIsDisplayed();
-    await InvestmentPage.selectAgeGroupTab(ageGroup);
+    //await InvestmentPage.scrollUntilAgegroupHeaderIsDisplayed();
+    //await InvestmentPage.selectAgeGroupTab(ageGroup);
+    await console.log(`fillMutualFundPortfolioForm ageGroup:${ageGroup}`);
     await InvestmentPage.clickNextButton();
   }
 
@@ -51,6 +52,44 @@ class InvestmentFunctionality {
 
   async recommendedFundsPageIsLaunched() {
     return (await InvestmentPage.recommendedFundPageHeaderIsDisplayed());
+  }
+
+  async acceptRecommendedFunds() {
+    await InvestmentPage.clickNextButton();
+  }
+
+  async makePayment() {
+    await InvestmentPage.scrollUntilMakePaymentNowIsDisplayed();
+    await InvestmentPage.clickMakePaymentNowButton();
+  }
+
+  async setupInvestmentPageLaunched() {
+    return (await InvestmentPage.setupInvestmentPageHeaderIsDisplayed());
+  }
+
+  async setupInvestment(months) {
+    await InvestmentPage.enterSipDurationInMonths(months);
+    await InvestmentPage.clickNextButton();
+  }
+
+  async paymentInstrumentPageLaunched() {
+    return (await InvestmentPage.paymentInstrumentPageHeaderIsDisplayed());
+  }
+
+  async selectPaymentInstrument(paymentInstrumentType) {
+    InvestmentPage.selectPaymentInstrument(paymentInstrumentType);
+  }
+
+  async transferFundsPageLaunched() {
+    return (await InvestmentPage.transferFundsPageHeaderIsDisplayed());
+  }
+
+  async goToBankForFundTransfer() {
+    InvestmentPage.clickGoToBankButton();
+  }
+
+  async mockPaymentStatusPageLaunched() {
+    return (await InvestmentPage.mockPaymentStatusPageHeaderIsDisplayed());
   }
 }
 

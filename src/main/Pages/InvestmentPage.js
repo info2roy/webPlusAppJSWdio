@@ -1,3 +1,4 @@
+const Device = require('../../support/libraries/Device');
 const Utils = require('../../support/Utils/Utils');
 const InvestmentObjects = require('../Objects/InvestmentObjects');
 
@@ -68,6 +69,49 @@ class InvestmentPage {
 
   async recommendedFundPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(InvestmentObjects.recommendedFundsPageHeader));
+  }
+
+  async scrollUntilMakePaymentNowIsDisplayed() {
+    await Utils.scrollUntilTextIntoView(InvestmentObjects.makePaymentNowText);
+  }
+
+  async clickMakePaymentNowButton() {
+    await Utils.clickElement(InvestmentObjects.makePaymentNowButton);
+  }
+
+  async setupInvestmentPageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(InvestmentObjects.setupInvestmentPageHeader));
+  }
+
+  async enterSipDurationInMonths(months) {
+    await Utils.setInputField(months, InvestmentObjects.sipDurationInMonthsField);
+  }
+
+  async paymentInstrumentPageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(InvestmentObjects.paymentInstrumentPageHeader));
+  }
+
+  async clickOnPaymentInstrument(paymentInstrumentType) {
+    await Utils.clickElement(InvestmentObjects.paymentInstrument(paymentInstrumentType));
+  }
+
+  async transferFundsPageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(InvestmentObjects.transferFundsPageHeader));
+  }
+
+  async clickGoToBankButton() {
+    await Utils.clickElement(InvestmentObjects.goToBankForFundTransferButton);
+  }
+
+  async mockPaymentStatusPageHeaderIsDisplayed() {
+    if (Device.isWeb()) {
+      return (await Utils.elementIsDisplayed(InvestmentObjects.mockPaymentStatusPageHeader));
+    }
+    return true;
+  }
+
+  async clickMockPaymentSuccess() {
+    await Utils.clickElement(InvestmentObjects.mockPaymentSuccessButton);
   }
 }
 

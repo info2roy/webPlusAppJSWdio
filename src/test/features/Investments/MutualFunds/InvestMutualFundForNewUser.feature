@@ -16,11 +16,13 @@ Feature: Scripbox Investment in Mutual Fund Portfolio for New User
     When I fill form with agegroup <ageGroup> and click NEXT
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
-    When I Select to AUTOMATE NOW
-
+    When I select to MAKE PAYMENT NOW
+    When I select SIP duration in months as <sipInMonths> and click NEXT
+    When I select Payment Instrument of type <paymentInstrumentType>
+    When I go to Bank for Payment Instrument of type <paymentInstrumentType>
     Examples:
-        | mutualFundPortfolio | ageGroup | investmentType | amount |
-        | Core Mutual | 30s  | Every month (SIP)  | 20000 |
-        #| Emergency Fund  | 40s  | Every month (SIP)  | 15000 |
-        #| Tax Saver Plan  | 50s  | One time  | 50000 |
+        | mutualFundPortfolio | ageGroup | investmentType | amount | sipInMonths | paymentInstrumentType |
+        | Core Mutual | 30s  | Every month (SIP)  | 20000 | 60 | Net Banking |
+        #| Emergency Fund  | 40s  | Every month (SIP)  | 15000 | 120 | UPI |
+        #| Tax Saver Plan  | 50s  | One time  | 50000 | 180 | UPI |
 

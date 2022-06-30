@@ -45,10 +45,32 @@ When(/^I select (Every month \(SIP\)|One time|STP) and fill (\d+) and click to s
 );
 
 When(/^I accept the recommended mutual fund allocation and click NEXT$/, async () => {
-  await console.log('When I select the recommended mutual fund allocation and click NEXT');
+  await console.log('When I accept the recommended mutual fund allocation and click NEXT');
+  await InvestmentFunctionality.acceptRecommendedFunds();
 });
 
-When(/^I Select to AUTOMATE NOW$/, async () => {
-  await console.log('When I Select to AUTOMATE NOW');
+When(/^I select to MAKE PAYMENT NOW$/, async () => {
+  await console.log('When I select to MAKE PAYMENT NOW');
+  await InvestmentFunctionality.makePayment();
+  expect(await InvestmentFunctionality.setupInvestmentPageLaunched()).to.be.true;
+});
+
+When(/^I select SIP duration in months as (\d+) and click NEXT$/, async (sipDurationInMonths) => {
+  await console.log(`When I select SIP duration in months as ${sipDurationInMonths} and click NEXT`);
+  await InvestmentFunctionality.setupInvestment();
+  expect(await InvestmentFunctionality.paymentInstrumentPageLaunched()).to.be.true;
+});
+
+When(/^I select Payment Instrument of type (.+)$/, async (paymentInstrumentType) => {
+  await console.log(`When I select Payment Instrument of type ${paymentInstrumentType}`);
+  await InvestmentFunctionality.selectPaymentInstrument(paymentInstrumentType);
+  expect(await InvestmentFunctionality.transferFundsPageLaunched()).to.be.true;
+});
+
+When(/^I go to Bank for Payment Instrument of type (.+)$/, async (paymentInstrumentType) => {
+  await console.log(`When I go to Bank for Payment Instrument of type ${paymentInstrumentType}`);
+  await InvestmentFunctionality.goToBankForFundTransfer();
+  expect(await InvestmentFunctionality.mockPaymentStatusPageLaunched()).to.be.true;
+
 });
 

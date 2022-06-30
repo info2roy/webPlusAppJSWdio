@@ -34,8 +34,8 @@ class InvestmentObjects {
   };
 
   ageGroupHeaderText = {
-    web: 'What this plan good for?',
-    app: 'What is this plan good for?'
+    web: '30s',
+    app: '30s'
   };
 
   ageGroupHeader = {
@@ -77,6 +77,60 @@ class InvestmentObjects {
   recommendedFundsPageHeader = {
     web: '//div[text()="Recommended Funds and Amounts"]',
     app: '//*[@text="Recommended Funds"]'
+  };
+
+  makePaymentNowText = {
+    web: 'MAKE PAYMENT NOW',
+    app: 'MAKE PAYMENT NOW'
+  };
+
+  makePaymentNowButton = {
+    web: '//button[text()="Automate Now"]',
+    app: `//*[text="${this.makePaymentNowText.web}"]`
+  };
+
+  setupInvestmentPageHeader = {
+    web: '//div[text()="Core Mutual Fund Portfolio"]',
+    app: '//*[@text="Set-up Investment"]'
+  };
+
+  sipDurationInMonthsField = {
+    web: 'input#duration',
+    app: '.android.widget.EditText'
+  };
+
+  paymentInstrumentPageHeader = {
+    web: '//div[text()="I would like to invest using"]',
+    app: '//*[@text="I would like to invest using"]'
+  };
+
+  paymentInstrument(paymentInstrumentType) {
+    return {
+      web: `//div[text()="${paymentInstrumentType}"]`,
+      app: `//*[@text="${paymentInstrumentType}"]`
+    };
+  }
+
+  transferFundsPageHeader = {
+    web: '//div[text()="Transfer Funds for your Investment With Net Banking"]',
+    app: '//*[@text="Transfer Funds for your Investment With Net Banking"]'
+  };
+
+  goToBankForFundTransferButton = {
+    web: '//button[text()="Go To Bank"]',
+    app: '//*[@text="GO TO BANK"]'
+  };
+
+  mockPaymentStatusPageHeader = {
+    web: '//h3[text()="Select the mock payment status"]'
+  };
+
+  mockPaymentSuccessButton = {
+    web: '//button[text()="Success"]'
+  };
+
+  mockPaymentFailureButton = {
+    web: '//button[text()="Failure"]'
   };
 
 }
