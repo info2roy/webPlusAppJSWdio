@@ -34,6 +34,10 @@ class Device {
   isMobileWeb() {
     return this.device === 'mobileweb';
   }
+
+  isWeb() {
+    return (this.isMobileWeb() || this.isDesktop());
+  }
 }
 
 module.exports = new Device();

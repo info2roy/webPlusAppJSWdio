@@ -8,11 +8,14 @@ class HomePage {
   }
 
   async loginOptionIsDisplayed() {
-    return (await Utils.elementIsDisplayed(HomeObjects.loginButton));
+    if (Device.isWeb()) {
+      return (await Utils.elementIsDisplayed(HomeObjects.loginButton));
+    }
+    return true;
   }
 
   async signupOptionIsDisplayed() {
-    if (Device.isMobileWeb() || Device.isDesktop()) {
+    if (Device.isWeb()) {
       return (await Utils.elementIsDisplayed(HomeObjects.signupButton));
     }
     return true;
