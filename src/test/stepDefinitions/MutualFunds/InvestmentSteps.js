@@ -92,6 +92,6 @@ Then(/^I should see investment success message$/, async () => {
 
 Then(/^I go back to the dashboard page$/, async () => {
   await console.log('Then I go back to the dashboard page');
-  await browser.url('scripbox://scripbox');
+  await DashboardFunctionality.open();
   await DashboardFunctionality.validate();
 });
