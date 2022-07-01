@@ -49,15 +49,16 @@ When(/^I accept the recommended mutual fund allocation and click NEXT$/, async (
   await InvestmentFunctionality.acceptRecommendedFunds();
 });
 
-When(/^I select to MAKE PAYMENT NOW for amount (\d+)$/, async (amount) => {
-  await console.log('When I select to MAKE PAYMENT NOW');
-  await InvestmentFunctionality.makePayment();
+When(/^I select Payment type as (Immediate|Scheduled) for amount (\d+)$/, async (paymentType, amount) => {
+  await console.log(`When I select Payment type as ${paymentType} for amount ${amount}`);
+  this.paymentType = paymentType;
+  await InvestmentFunctionality.makePayment(paymentType);
   expect(await InvestmentFunctionality.setupInvestmentPageLaunched(amount, 180)).to.be.true;
 });
 
 When(/^I select SIP duration in months as (\d+) and click NEXT$/, async (sipDurationInMonths) => {
-  await console.log(`When I select SIP duration in months as ${sipDurationInMonths} and click NEXT`);
-  await InvestmentFunctionality.setupInvestment(sipDurationInMonths);
+  await console.log(`When I select SIP duration in months as ${sipDurationInMonths} and click NEXT paymentType:${this.paymentType}`);
+  await InvestmentFunctionality.setupInvestment(sipDurationInMonths, this.paymentType);
   expect(await InvestmentFunctionality.paymentInstrumentPageLaunched()).to.be.true;
 });
 
@@ -91,6 +92,6 @@ Then(/^I should see investment success message$/, async () => {
 
 Then(/^I go back to the dashboard page$/, async () => {
   await console.log('Then I go back to the dashboard page');
-  await InvestmentFunctionality.goBackToDashboard();
+  await browser.url('scripbox://scripbox');
   await DashboardFunctionality.validate();
 });

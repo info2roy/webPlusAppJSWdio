@@ -1,3 +1,4 @@
+const InvestmentObjects = require('../../Objects/MutualFunds/InvestmentObjects');
 const InvestmentPage = require('../../Pages/MutualFunds/InvestmentPage');
 
 class InvestmentFunctionality {
@@ -43,25 +44,30 @@ class InvestmentFunctionality {
   }
 
   async acceptRecommendedFunds() {
-    await InvestmentPage.clickNextButton();
+    await InvestmentPage.clickOnlyNextButton();
   }
 
-  async makePayment() {
-    await InvestmentPage.scrollUntilMakePaymentNowIsDisplayed();
-    await InvestmentPage.clickMakePaymentNowButton();
+  async makePayment(paymentType) {
+    await InvestmentPage.scrollUntilInvestmentTypeTextIsDisplayed(paymentType);
+    await InvestmentPage.clickMakePaymentButton(paymentType);
   }
 
   async setupInvestmentPageLaunched(amount, months) {
     return (await InvestmentPage.setupInvestmentPageHeaderIsDisplayed(amount, months));
   }
 
-  async setupInvestment(months) {
+  async setupInvestment(months, paymentType) {
     await InvestmentPage.enterSipDurationInMonths(months);
-    await InvestmentPage.clickNextButton();
+    await InvestmentPage.clickNextButtonForPayment(paymentType);
   }
 
-  async paymentInstrumentPageLaunched() {
-    return (await InvestmentPage.paymentInstrumentPageHeaderIsDisplayed());
+  async paymentInstrumentPageLaunched(investmentType) {
+    if (investmentType === InvestmentObjects.PAYMENT_TYPE_IMMEDIATE) {
+      return (await InvestmentPage.paymentInstrumentPageHeaderIsDisplayed());
+    } else if (investmentType === InvestmentObjects.PAYMENT_TYPE_SCHEDULED) {
+      return (await InvestmentPage.investedScheduledSuccessfulPageHeaderIsDisplayed());
+    }
+    return true;
   }
 
   async selectPaymentInstrument(paymentInstrumentType) {

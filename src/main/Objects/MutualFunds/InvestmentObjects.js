@@ -39,6 +39,7 @@ class InvestmentObjects {
   }
 
   nextButton = { web: '//button[text()="Next"]', app: '//*[@text="NEXT"]' };
+  confirmButton = { web: '//button[text()="Confirm"]', app: '//*[@text="CONFIRM"]' };
 
   investmentFormPageHeader = {
     web: '//div[text()="I want to invest"]',
@@ -67,14 +68,21 @@ class InvestmentObjects {
     app: '//*[@text="Recommended Funds"]'
   };
 
-  makePaymentNowText = {
-    web: 'MAKE PAYMENT NOW',
-    app: 'MAKE PAYMENT NOW'
-  };
+  MAKE_PAYMENT_NOW_TEXT = { web: 'MAKE PAYMENT NOW', app: 'MAKE PAYMENT NOW' };
+
+  ONE_CLICK_INVEST_TEXT = { web: '1-CLICK INVEST', app: '1-CLICK INVEST' };
+
+  PAYMENT_TYPE_IMMEDIATE = 'Immediate';
+  PAYMENT_TYPE_SCHEDULED = 'Scheduled';
 
   makePaymentNowButton = {
     web: `//button[text()="Make Payment Now"]`,
-    app: `//*[@text="${this.makePaymentNowText.app}"]`
+    app: `//*[@text="${this.MAKE_PAYMENT_NOW_TEXT.app}"]`
+  };
+
+  oneClickInvestButton = {
+    web: `//button[text()="1-Click Invest"]`,
+    app: `//*[@text="${this.ONE_CLICK_INVEST_TEXT.app}"]`
   };
 
   setupMFSipInvestmentPageHeader(amount, months) {
@@ -93,6 +101,11 @@ class InvestmentObjects {
 
   paymentInstrumentPageHeader = {
     web: '//div[text()="I would like to invest using"]',
+    app: '//*[@text="I would like to invest using"]'
+  };
+
+  investmentScheduledSuccessPageHeader = {
+    web: '//div[text()="Investment scheduled successfully"]',
     app: '//*[@text="I would like to invest using"]'
   };
 
@@ -143,7 +156,7 @@ class InvestmentObjects {
   };
 
   backButton = {
-    web: '',
+    web: 'div.app-container-heading-back-icon-container',
     app: '.android.widget.TextView'
   };
 }

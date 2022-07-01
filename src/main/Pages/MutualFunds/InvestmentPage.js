@@ -31,8 +31,16 @@ class InvestmentPage {
     await Utils.clickElement(InvestmentObjects.ageGroupTab(ageGroup));
   }
 
-  async clickNextButton() {
+  async clickOnlyNextButton() {
     await Utils.clickElement(InvestmentObjects.nextButton);
+  }
+
+  async clickNextButtonForPayment(paymentType) {
+    if (paymentType === InvestmentObjects.PAYMENT_TYPE_IMMEDIATE) {
+      await Utils.clickElement(InvestmentObjects.nextButton);
+    } else if (paymentType === InvestmentObjects.PAYMENT_TYPE_SCHEDULED) {
+      await Utils.clickElement(InvestmentObjects.confirmButton);
+    }
   }
 
   async investmentFormPageHeaderIsDisplayed() {
@@ -55,14 +63,23 @@ class InvestmentPage {
     return (await Utils.elementIsDisplayed(InvestmentObjects.recommendedFundsPageHeader));
   }
 
-  async scrollUntilMakePaymentNowIsDisplayed() {
+  async scrollUntilInvestmentTypeTextIsDisplayed(paymentType) {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(InvestmentObjects.makePaymentNowText);
+      let investmentTypeText = InvestmentObjects.MAKE_PAYMENT_NOW_TEXT;
+      if (paymentType === InvestmentObjects.PAYMENT_TYPE_SCHEDULED) {
+        investmentTypeText = InvestmentObjects.ONE_CLICK_INVEST_TEXT;
+      }
+      console.log(`scrollUntilInvestmentTypeTextIsDisplayed: investmentTypeText: ${JSON.stringify(investmentTypeText)}`);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(investmentTypeText);
     }
   }
 
-  async clickMakePaymentNowButton() {
-    await Utils.clickElement(InvestmentObjects.makePaymentNowButton);
+  async clickMakePaymentButton(paymentType) {
+    if (paymentType === InvestmentObjects.PAYMENT_TYPE_IMMEDIATE) {
+      await Utils.clickElement(InvestmentObjects.makePaymentNowButton);
+    } else if(paymentType === InvestmentObjects.PAYMENT_TYPE_SCHEDULED) {
+      await Utils.clickElement(InvestmentObjects.oneClickInvestButton);
+    }
   }
 
   async setupInvestmentPageHeaderIsDisplayed(amount, months) {
@@ -75,6 +92,10 @@ class InvestmentPage {
 
   async paymentInstrumentPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(InvestmentObjects.paymentInstrumentPageHeader));
+  }
+
+  async investedScheduledSuccessfulPageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(InvestmentObjects.investmentScheduledSuccessPageHeader));
   }
 
   async clickOnPaymentInstrument(paymentInstrumentType) {
@@ -124,8 +145,14 @@ class InvestmentPage {
   }
 
   async clickBackButton() {
+    await console.log('clickBackButton : begin');
     const backButton = await Utils.getMatchingElementByIndex(InvestmentObjects.backButton, 0);
+    await console.log(`backButton : ${JSON.stringify(backButton)}`);
     await Utils.clickWebElement(backButton);
+    await console.log(`clicked backButton`);
+    if (Device.isWeb()) {
+      await Utils.clickWebElement(backButton);
+    }
   }
 }
 

@@ -23,7 +23,7 @@ exports.config = {
   port: 4723,
   // path: '/wd/hub',
   specs: [
-    './src/test/features/Investments/MutualFunds/InvestMutualFundForNewUser.feature'
+    './src/test/features/MutualFunds/InvestMutualFundSIPScheduled.feature'
   ],
   // Patterns to exclude.
   exclude: [
@@ -164,6 +164,7 @@ exports.config = {
   cucumberOpts: {
     require: [
       './src/test/stepDefinitions/*.js',
+      './src/test/stepDefinitions/*/*.js',
     ],
     backtrace: true,
     compiler: ['js:babel-core/register'],
