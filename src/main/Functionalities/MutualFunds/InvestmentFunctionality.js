@@ -1,4 +1,4 @@
-const InvestmentPage = require('../Pages/InvestmentPage');
+const InvestmentPage = require('../../Pages/MutualFunds/InvestmentPage');
 
 class InvestmentFunctionality {
   async investmentPageLaunched() {
@@ -107,6 +107,7 @@ class InvestmentFunctionality {
 
   async goBackToDashboard() {
     await InvestmentPage.clickGoToDashboardButton();
+    await InvestmentPage.clickBackButton();
   }
 }
 

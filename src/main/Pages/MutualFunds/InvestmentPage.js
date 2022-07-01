@@ -1,6 +1,6 @@
-const Device = require('../../support/libraries/Device');
-const Utils = require('../../support/Utils/Utils');
-const InvestmentObjects = require('../Objects/InvestmentObjects');
+const Device = require('../../../support/libraries/Device');
+const Utils = require('../../../support/Utils/Utils');
+const InvestmentObjects = require('../../Objects/MutualFunds/InvestmentObjects');
 
 class InvestmentPage {
   async selectInvestmentTab(investmentType) {
@@ -129,6 +129,11 @@ class InvestmentPage {
 
   async clickGoToDashboardButton() {
     await Utils.clickElement(InvestmentObjects.goToDashboardButton);
+  }
+
+  async clickBackButton() {
+    const backButton = await Utils.getMatchingElementByIndex(InvestmentObjects.backButton, 0);
+    await Utils.clickWebElement(backButton);
   }
 }
 

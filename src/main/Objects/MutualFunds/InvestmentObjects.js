@@ -148,5 +148,10 @@ class InvestmentObjects {
     web: '//button[text()="Go to Dashboard"]',
     app: '//*[@text="HOME"]'
   };
+
+  backButton = {
+    web: '',
+    app: '.android.widget.TextView'
+  };
 }
 module.exports = new InvestmentObjects();
