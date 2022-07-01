@@ -94,4 +94,3 @@ Then(/^I go back to the dashboard page$/, async () => {
   await InvestmentFunctionality.goBackToDashboard();
   await DashboardFunctionality.validate();
 });
-
