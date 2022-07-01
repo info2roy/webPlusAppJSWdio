@@ -51,6 +51,10 @@ class Utils {
     await myButton.click();
   }
 
+  async clickWebElement(webElement) {
+    await webElement.click();
+  }
+
   async elementIsDisplayed(selector) {
     const locator = this.getLocator(selector);
     // const element = await $(locator);
@@ -72,10 +76,13 @@ class Utils {
     await myButton.setValue(value);
   }
 
-  async setInputValueToAndroid(value, selector) {
-    const myButton = $(this.getLocator(selector));
-    expect(myButton).toBeDisplayed();
-    myButton.addValue(value);
+  async getMatchingElementByIndex(selector, index) {
+    const locator = this.getLocator(selector);
+    const elements = await $$(locator);
+    if (elements.length > index) {
+      return elements[index];
+    }
+    return null;
   }
 
   async uploadFile(localFilePath, fileInputSelector, submitButtonSelector) {

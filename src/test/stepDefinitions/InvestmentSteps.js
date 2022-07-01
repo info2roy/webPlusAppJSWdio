@@ -1,6 +1,6 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
-const InvestmentFunctionality = require('../../main/Functionalities/InvestmentFunctionality');
+const InvestmentFunctionality = require('../../main/Functionalities/MutualFunds/InvestmentFunctionality');
 const DashboardFunctionality = require('../../main/Functionalities/DashboardFunctionality');
 //const Device = require('../../support/libraries/Device');
 //const Utils = require('../../support/Utils/Utils');
