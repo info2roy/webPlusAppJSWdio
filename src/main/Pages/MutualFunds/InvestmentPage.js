@@ -3,14 +3,6 @@ const Utils = require('../../../support/Utils/Utils');
 const InvestmentObjects = require('../../Objects/MutualFunds/InvestmentObjects');
 
 class InvestmentPage {
-  async selectInvestmentTab(investmentType) {
-    await Utils.clickElement(InvestmentObjects.investmentTab(investmentType));
-  }
-
-  async investmentTabIsDisplayed(investmentType) {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.investmentTab(investmentType)));
-  }
-
   async mutualFundsPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(InvestmentObjects.mutualFundsPageHeader));
   }

@@ -1,11 +1,4 @@
 class InvestmentObjects {
-  investmentTab(investmentType) { //investmentType belongs to ["Mutual Funds", "Fixed Deposit" , ..]
-    return {
-      web: `//div[text()="${investmentType}"]`,
-      app: `//*[@text="${investmentType}"]`
-    };
-  }
-
   mutualFundsPageHeader = {
     web: '//div[text()="Choose your plan"]',
     app: '//*[@text="Choose your plan"]'

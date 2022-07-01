@@ -1,15 +1,6 @@
 const InvestmentPage = require('../../Pages/MutualFunds/InvestmentPage');
 
 class InvestmentFunctionality {
-  async investmentPageLaunched() {
-    return ((await InvestmentPage.investmentTabIsDisplayed('Mutual Funds')) &&
-      (await InvestmentPage.investmentTabIsDisplayed('Fixed Deposit')));
-  }
-
-  async selectInvestmentTab() {
-    await InvestmentPage.selectInvestmentTab('Mutual Funds');
-  }
-
   async mutualFundsPageLaunched() {
     return (await InvestmentPage.mutualFundsPageHeaderIsDisplayed());
   }
