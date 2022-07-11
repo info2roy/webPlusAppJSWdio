@@ -7,8 +7,8 @@ class CommonInvestmentFunctionality {
       (await CommonInvestmentPage.investmentTabIsDisplayed(Constants.INVESTMENT_INSTRUMENT_FIXED_DEPOSIT)));
   }
 
-  async selectInvestmentTab(investmentInstrument) {
-    await CommonInvestmentPage.selectInvestmentTab(investmentInstrument);
+  async selectInvestmentTab(investmentInstrumentType) {
+    await CommonInvestmentPage.selectInvestmentTab(investmentInstrumentType);
   }
 }
 module.exports = new CommonInvestmentFunctionality();
