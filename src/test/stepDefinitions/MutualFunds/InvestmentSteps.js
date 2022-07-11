@@ -3,6 +3,7 @@ const { expect } = require('chai');
 const InvestmentFunctionality = require('../../../main/Functionalities/MutualFunds/InvestmentFunctionality');
 const CommonInvestmentFunctionality = require('../../../main/Functionalities/Common/CommonInvestmentFunctionality');
 const DashboardFunctionality = require('../../../main/Functionalities/DashboardFunctionality');
+const Constants = require('../../../support/Constants/Constants');
 
 Given(/^I am on the Investment Page$/, async () => {
   await console.log('Given I am on the Investment Page');
@@ -12,12 +13,12 @@ Given(/^I am on the Investment Page$/, async () => {
 
 Given(/^I am on the Mutual Funds Tab$/, async () => {
   await console.log('Given I am on the Mutual Funds Tab');
-  await CommonInvestmentFunctionality.selectInvestmentTab('Mutual Funds');
+  await CommonInvestmentFunctionality.selectInvestmentTab(Constants.INVESTMENT_INSTRUMENT_MUTUAL_FUND);
   expect(await InvestmentFunctionality.mutualFundsPageLaunched()).to.be.true;
 });
 
 When(/^I select portfolio (.+)$/, async (mutualFundPortfolio) => {
-  await console.log(`When I select <mutualFundPortfolio>:${mutualFundPortfolio}`);
+  await console.log(`When I select portfolio ${mutualFundPortfolio}`);
   this.mutualFundPortfolio = mutualFundPortfolio;
   await InvestmentFunctionality.selectMutualFundPortfolio(mutualFundPortfolio);
   expect(await InvestmentFunctionality.scripBoxGuidedPathPageLaunched()).to.be.true;
