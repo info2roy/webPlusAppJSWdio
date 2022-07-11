@@ -12,7 +12,9 @@ class LoginPage {
   }
 
   async clickContinueWithPasswordButton() {
-    await Utils.clickElement(LoginObjects.continueWithPasswordButton);
+    if (Device.isWeb()) {
+      await Utils.clickElement(LoginObjects.continueWithPasswordButton);
+    }
   }
 
   async firstLoginPageHeaderIsDisplayed() {
