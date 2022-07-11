@@ -23,8 +23,8 @@ When(/^I select portfolio (.+)$/, async (mutualFundPortfolio) => {
   expect(await InvestmentFunctionality.scripBoxGuidedPathPageLaunched()).to.be.true;
 });
 
-When(/^I Invest as per Scripbox Guided Path$/, async () => {
-  await console.log(`When I select Invest as per Scripbox Guided Path for ${this.mutualFundPortfolio}`);
+When(/^I click on Invest as per Scripbox Guided Path$/, async () => {
+  await console.log(`When I click on Invest as per Scripbox Guided Path for ${this.mutualFundPortfolio}`);
   await InvestmentFunctionality.investAsPerScripboxGuidedPath();
   expect(await InvestmentFunctionality.investmentFormPageLaunched()).to.be.true;
 });

@@ -13,7 +13,7 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Given I am on the Investment Page
     Given I am on the Mutual Funds Tab
     When I select portfolio <mutualFundPortfolio>
-    When I Invest as per Scripbox Guided Path
+    When I click on Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
     When I select Payment type as <paymentType>
@@ -28,7 +28,7 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Given I am on the Investment Page
     Given I am on the Mutual Funds Tab
     When I select portfolio <mutualFundPortfolio>
-    When I Invest as per Scripbox Guided Path
+    When I click on Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
     When I select Payment type as <paymentType>
@@ -47,7 +47,7 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Given I am on the Investment Page
     Given I am on the Mutual Funds Tab
     When I select portfolio <mutualFundPortfolio>
-    When I Invest as per Scripbox Guided Path
+    When I click on Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
     When I select Payment type as <paymentType>
@@ -62,7 +62,7 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Given I am on the Investment Page
     Given I am on the Mutual Funds Tab
     When I select portfolio <mutualFundPortfolio>
-    When I Invest as per Scripbox Guided Path
+    When I click on Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
     When I select Payment type as <paymentType>
