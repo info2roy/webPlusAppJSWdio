@@ -11,6 +11,10 @@ class LoginPage {
     await Utils.clickElement(LoginObjects.continueOrNextButton);
   }
 
+  async clickContinueWithPasswordButton() {
+    await Utils.clickElement(LoginObjects.continueWithPasswordButton);
+  }
+
   async firstLoginPageHeaderIsDisplayed() {
     return await Utils.elementIsDisplayed(LoginObjects.firstLoginPageHeader);
   }
@@ -43,6 +47,13 @@ class LoginPage {
 
   async clickContinueLoginButton() {
     await Utils.clickElement(LoginObjects.continueLoginButton);
+  }
+
+  async enterOTPHeaderIsDisplayed() {
+    if (Device.isWeb()) {
+      return (await Utils.elementIsDisplayed(LoginObjects.enterOTPPageHeader));
+    }
+    return true;
   }
 
 }

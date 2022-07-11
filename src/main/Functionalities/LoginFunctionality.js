@@ -7,7 +7,7 @@ class LoginFunctionality {
   }
 
   async loginWithUsernameAndPassword(username, password) {
-    await LoginPage.enterEmail(username);
+    //await LoginPage.enterEmail(username);
     await LoginPage.enterPassword(password);
     await LoginPage.clickContinueLoginButton();
   }
@@ -18,6 +18,14 @@ class LoginFunctionality {
 
   async firstLoginPageLaunched() {
     return (await LoginPage.firstLoginPageHeaderIsDisplayed());
+  }
+
+  async loginViaOTPPageLaunched() {
+    return (await LoginPage.enterOTPHeaderIsDisplayed());
+  }
+
+  async continueWithPassword() {
+    await LoginPage.clickContinueWithPasswordButton();
   }
 
   async loginWithUsername(username) {

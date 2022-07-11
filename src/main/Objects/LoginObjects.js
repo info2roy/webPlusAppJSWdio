@@ -5,10 +5,16 @@ class LoginObjects {
 
   continueOrNextButton = { web: '#test-login-next-button', app: '//*[@text="NEXT"]' };
 
+  continueWithPasswordButton = { web: '//button[contains(text(),"Continue with password")]' };
+
   firstLoginPageHeader = { web: '//label[@class="signup-email-text"]',
     app: '//*[@text="Login / Signup"]' };
 
-  secondLoginPageHeader = { web: '#login-heading', app: '//*[@text="Enter Password"]' };
+  enterOTPPageHeader = {
+    web: '//span[text()="Enter OTP"]'
+  };
+
+  secondLoginPageHeader = { web: '//span[text()="Enter Password"]', app: '//*[@text="Enter Password"]' };
 
   emailField = { web: 'input#user_email', app: this.loginCredentialsTextAndroid };
 
