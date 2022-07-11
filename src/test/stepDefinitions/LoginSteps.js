@@ -9,8 +9,8 @@ When(/^I login with username$/, async () => {
   expect(await LoginFunctionality.loginViaOTPPageLaunched()).to.be.true;
 });
 
-When(/^I continue with password$/, async () => {
-  await console.log('When I continue with password');
+When(/^I click on continue with password$/, async () => {
+  await console.log('When I I click on continue with password');
   await LoginFunctionality.continueWithPassword();
   expect(await LoginFunctionality.secondLoginPageLaunched()).to.be.true;
 });
