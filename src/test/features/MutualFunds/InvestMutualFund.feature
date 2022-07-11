@@ -21,8 +21,8 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Then I should see investment scheduled successfully message
     Then I go back to the dashboard page
     Examples:
-        | mutualFundPortfolio | investmentType | amount | sipInMonths | paymentType | paymentStatus |
-        | Core Mutual | Every month (SIP)  | 30000 | 90 | Scheduled | Success |
+        | mutualFundPortfolio | investmentType | amount | sipInMonths | paymentType |
+        | Core Mutual | Every month (SIP)  | 30000 | 90 | Scheduled |
 
   Scenario Outline: As a logged in user, I am able to do immediate investment in mutual funds via Every month (SIP)
     Given I am on the Investment Page
@@ -55,8 +55,8 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Then I should see investment scheduled successfully message
     Then I go back to the dashboard page
     Examples:
-        | mutualFundPortfolio | investmentType | amount | paymentType | paymentStatus |
-        | Core Mutual | One time  | 50000 | Scheduled | Success |
+        | mutualFundPortfolio | investmentType | amount | paymentType |
+        | Core Mutual | One time  | 50000 | Scheduled |
 
   Scenario Outline: As a logged in user, I am able to do immediate investment in mutual funds via One Time Investment
     Given I am on the Investment Page
