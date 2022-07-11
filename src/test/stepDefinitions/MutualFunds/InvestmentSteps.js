@@ -71,13 +71,14 @@ When(/^I select scheduled investment date and click NEXT*/, async () => {
 
 When(/^I select Payment Instrument of type (.+)$/, async (paymentInstrumentType) => {
   await console.log(`When I select Payment Instrument of type ${paymentInstrumentType}`);
+  this.paymentInstrumentType = paymentInstrumentType;
   expect(await InvestmentFunctionality.paymentInstrumentPageLaunched(this.paymentType)).to.be.true;
   await InvestmentFunctionality.selectPaymentInstrument(paymentInstrumentType);
   expect(await InvestmentFunctionality.transferFundsPageLaunched()).to.be.true;
 });
 
-When(/^I go to Bank for Payment Instrument of type (.+)$/, async (paymentInstrumentType) => {
-  await console.log(`When I go to Bank for Payment Instrument of type ${paymentInstrumentType}`);
+When(/^I go for Payment via selected Payment Instrument\$/, async () => {
+  await console.log(`I go for Payment via selected Payment Instrument ${this.paymentInstrumentType}`);
   await InvestmentFunctionality.goToBankForFundTransfer();
   expect(await InvestmentFunctionality.mockPaymentStatusPageLaunched()).to.be.true;
 });

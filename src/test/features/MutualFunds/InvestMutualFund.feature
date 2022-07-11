@@ -34,7 +34,7 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     When I select Payment type as <paymentType>
     When I select SIP duration in months as <sipInMonths> and click NEXT
     When I select Payment Instrument of type <paymentInstrumentType>
-    When I go to Bank for Payment Instrument of type <paymentInstrumentType>
+    When I go for Payment via selected Payment Instrument
     When I select mock payment status as <paymentStatus>
     Then I should see fund transfer success message
     Then I should see investment success message
@@ -67,7 +67,7 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     When I accept the recommended mutual fund allocation and click NEXT
     When I select Payment type as <paymentType>
     When I select Payment Instrument of type <paymentInstrumentType>
-    When I go to Bank for Payment Instrument of type <paymentInstrumentType>
+    When I go for Payment via selected Payment Instrument
     When I select mock payment status as <paymentStatus>
     Then I should see fund transfer success message
     Then I should see investment success message
