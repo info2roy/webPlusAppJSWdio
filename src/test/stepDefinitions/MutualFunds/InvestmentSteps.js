@@ -88,13 +88,13 @@ When(/^I select mock payment status as (Success|Failure)$/, async(paymentStatus)
   await InvestmentFunctionality.selectMockPaymentStatus(paymentStatus);
 });
 
-Then(/^I should see fund transfer success message$/, async () => {
-  await console.log('Then I should see fund transfer success message');
+Then(/^I should see fund transfer success message and click on HOME/, async () => {
+  await console.log('Then I should see fund transfer success message and click on HOME');
   expect(await InvestmentFunctionality.fundTransferIsSuccessful()).to.be.true;
 });
 
-Then(/^I should see investment success message$/, async () => {
-  await console.log('Then I should see investment success message');
+Then(/^I should see investment success message and click on HOME$/, async () => {
+  await console.log('Then I should see investment success message and click on HOME');
   await InvestmentFunctionality.goToHome();
   expect(await InvestmentFunctionality.investmentIsSuccessful()).to.be.true;
 });

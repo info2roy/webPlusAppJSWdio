@@ -36,8 +36,8 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     When I select Payment Instrument of type <paymentInstrumentType>
     When I go for Payment via selected Payment Instrument
     When I select mock payment status as <paymentStatus>
-    Then I should see fund transfer success message
-    Then I should see investment success message
+    Then I should see fund transfer success message and click on HOME
+    Then I should see investment success message and click on HOME
     Then I go back to the dashboard page
     Examples:
       | mutualFundPortfolio | investmentType | amount | sipInMonths | paymentType | paymentInstrumentType | paymentStatus |
@@ -69,8 +69,8 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     When I select Payment Instrument of type <paymentInstrumentType>
     When I go for Payment via selected Payment Instrument
     When I select mock payment status as <paymentStatus>
-    Then I should see fund transfer success message
-    Then I should see investment success message
+    Then I should see fund transfer success message and click on HOME
+    Then I should see investment success message and click on HOME
     Then I go back to the dashboard page
     Examples:
         | mutualFundPortfolio | investmentType | amount | paymentType | paymentInstrumentType | paymentStatus |
