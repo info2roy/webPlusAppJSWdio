@@ -18,9 +18,10 @@ Feature: Scripbox Investment in Mutual Fund Portfolio for New User
     When I accept the recommended mutual fund allocation and click NEXT
     When I select Payment type as <paymentType> for amount <amount>
     When I select SIP duration in months as <sipInMonths> and click NEXT
-    Then I should see fund transfer success message
-    Then I should see investment success message
+    Then I should see investment scheduled successfully message
     Then I go back to the dashboard page
     Examples:
         | mutualFundPortfolio | investmentType | amount | sipInMonths | paymentType | paymentStatus |
         | Core Mutual | Every month (SIP)  | 30000 | 90 | Scheduled | Success |
+
+  

@@ -104,9 +104,9 @@ class InvestmentObjects {
     app: '//*[@text="I would like to invest using"]'
   };
 
-  investmentScheduledSuccessPageHeader = {
+  investmentScheduledSuccessfullyPageHeader = {
     web: '//div[text()="Investment scheduled successfully"]',
-    app: '//*[@text="I would like to invest using"]'
+    app: '//*[@text="Investment scheduled successfully"]'
   };
 
   paymentInstrument(paymentInstrumentType) {

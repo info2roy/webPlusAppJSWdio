@@ -94,8 +94,8 @@ class InvestmentPage {
     return (await Utils.elementIsDisplayed(InvestmentObjects.paymentInstrumentPageHeader));
   }
 
-  async investedScheduledSuccessfulPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.investmentScheduledSuccessPageHeader));
+  async investmentScheduledSuccessfulPageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(InvestmentObjects.investmentScheduledSuccessfullyPageHeader));
   }
 
   async clickOnPaymentInstrument(paymentInstrumentType) {

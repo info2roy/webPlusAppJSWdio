@@ -65,7 +65,7 @@ class InvestmentFunctionality {
     if (investmentType === InvestmentObjects.PAYMENT_TYPE_IMMEDIATE) {
       return (await InvestmentPage.paymentInstrumentPageHeaderIsDisplayed());
     } else if (investmentType === InvestmentObjects.PAYMENT_TYPE_SCHEDULED) {
-      return (await InvestmentPage.investedScheduledSuccessfulPageHeaderIsDisplayed());
+      return (await InvestmentPage.investmentScheduledSuccessfulPageHeaderIsDisplayed());
     }
     return true;
   }
@@ -100,6 +100,10 @@ class InvestmentFunctionality {
 
   async investmentIsSuccessful() {
     return (await InvestmentPage.investmentSuccessMessageIsDisplayed());
+  }
+
+  async investmentScheduledSuccessfully() {
+    return (await InvestmentPage.investmentScheduledSuccessfulPageHeaderIsDisplayed());
   }
 
   async goBackToDashboard() {

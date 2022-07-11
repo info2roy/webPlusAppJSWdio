@@ -90,6 +90,11 @@ Then(/^I should see investment success message$/, async () => {
   expect(await InvestmentFunctionality.investmentIsSuccessful()).to.be.true;
 });
 
+Then(/^I should see investment scheduled successfully message$/, async () => {
+  await console.log('I should see investment scheduled successfully message');
+  expect(await InvestmentFunctionality.investmentScheduledSuccessfully()).to.be.true;
+});
+
 Then(/^I go back to the dashboard page$/, async () => {
   await console.log('Then I go back to the dashboard page');
   await DashboardFunctionality.open();
