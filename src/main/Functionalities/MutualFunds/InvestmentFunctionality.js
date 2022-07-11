@@ -1,4 +1,4 @@
-const InvestmentObjects = require('../../Objects/MutualFunds/InvestmentObjects');
+const Constants = require('../../../support/Constants/Constants');
 const InvestmentPage = require('../../Pages/MutualFunds/InvestmentPage');
 
 class InvestmentFunctionality {
@@ -52,19 +52,21 @@ class InvestmentFunctionality {
     await InvestmentPage.clickMakePaymentButton(paymentType);
   }
 
-  async setupInvestmentPageLaunched(amount, months) {
-    return (await InvestmentPage.setupInvestmentPageHeaderIsDisplayed(amount, months));
+  async setupMFInvestmentPageLaunched(investmentType, amount, months) {
+    return (await InvestmentPage.setupMFInvestmentPageHeaderIsDisplayed(investmentType, amount, months));
   }
 
-  async setupInvestment(months, paymentType) {
-    await InvestmentPage.enterSipDurationInMonths(months);
+  async setupInvestment(months, paymentType, investmentType) {
+    if (investmentType == Constants.INVESTMENT_TYPE_SIP) {
+      await InvestmentPage.enterSipDurationInMonths(months);
+    }
     await InvestmentPage.clickNextButtonForPayment(paymentType);
   }
 
-  async paymentInstrumentPageLaunched(investmentType) {
-    if (investmentType === InvestmentObjects.PAYMENT_TYPE_IMMEDIATE) {
+  async paymentInstrumentPageLaunched(paymentType) {
+    if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
       return (await InvestmentPage.paymentInstrumentPageHeaderIsDisplayed());
-    } else if (investmentType === InvestmentObjects.PAYMENT_TYPE_SCHEDULED) {
+    } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
       return (await InvestmentPage.investmentScheduledSuccessfulPageHeaderIsDisplayed());
     }
     return true;

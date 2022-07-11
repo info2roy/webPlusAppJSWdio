@@ -1,5 +1,6 @@
 const Device = require('../../../support/libraries/Device');
 const Utils = require('../../../support/Utils/Utils');
+const Constants = require('../../../support/Constants/Constants');
 const InvestmentObjects = require('../../Objects/MutualFunds/InvestmentObjects');
 
 class InvestmentPage {
@@ -36,9 +37,9 @@ class InvestmentPage {
   }
 
   async clickNextButtonForPayment(paymentType) {
-    if (paymentType === InvestmentObjects.PAYMENT_TYPE_IMMEDIATE) {
+    if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
       await Utils.clickElement(InvestmentObjects.nextButton);
-    } else if (paymentType === InvestmentObjects.PAYMENT_TYPE_SCHEDULED) {
+    } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
       await Utils.clickElement(InvestmentObjects.confirmButton);
     }
   }
@@ -66,7 +67,7 @@ class InvestmentPage {
   async scrollUntilInvestmentTypeTextIsDisplayed(paymentType) {
     if (Device.isAndroidApp()) {
       let investmentTypeText = InvestmentObjects.MAKE_PAYMENT_NOW_TEXT;
-      if (paymentType === InvestmentObjects.PAYMENT_TYPE_SCHEDULED) {
+      if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
         investmentTypeText = InvestmentObjects.ONE_CLICK_INVEST_TEXT;
       }
       console.log(`scrollUntilInvestmentTypeTextIsDisplayed: investmentTypeText: ${JSON.stringify(investmentTypeText)}`);
@@ -75,15 +76,20 @@ class InvestmentPage {
   }
 
   async clickMakePaymentButton(paymentType) {
-    if (paymentType === InvestmentObjects.PAYMENT_TYPE_IMMEDIATE) {
+    if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
       await Utils.clickElement(InvestmentObjects.makePaymentNowButton);
-    } else if(paymentType === InvestmentObjects.PAYMENT_TYPE_SCHEDULED) {
+    } else if(paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
       await Utils.clickElement(InvestmentObjects.oneClickInvestButton);
     }
   }
 
-  async setupInvestmentPageHeaderIsDisplayed(amount, months) {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.setupMFSipInvestmentPageHeader(amount, months)));
+  async setupMFInvestmentPageHeaderIsDisplayed(investmentType, amount, months) {
+    if (investmentType == Constants.INVESTMENT_TYPE_SIP) {
+      return (await Utils.elementIsDisplayed(InvestmentObjects.setupMFSipInvestmentPageHeader(amount, months)));
+    } else if(investmentType == Constants.INVESTMENT_TYPE_ONETIME) {
+      return (await Utils.elementIsDisplayed(InvestmentObjects.setupMFOneTimeInvestmentPageHeader(amount)));
+    }
+    return true;
   }
 
   async enterSipDurationInMonths(months) {

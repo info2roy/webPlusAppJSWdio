@@ -37,6 +37,8 @@ When(/^I fill form with agegroup (\d+s) and click NEXT$/, async (ageGroup) => {
 
 When(/^I select (Every month \(SIP\)|One time|STP) and fill (\d+) and click to see recommended funds$/,
   async (investmentType, amount) => {
+    this.amount = amount;
+    this.investmentType = investmentType;
     await console.log(`When I select <investmentType>:${investmentType} and <amount>:${amount} and 
     click to see recommended funds`);
     await InvestmentFunctionality.fillInvestmentForm(investmentType, amount);
@@ -52,18 +54,24 @@ When(/^I accept the recommended mutual fund allocation and click NEXT$/, async (
 When(/^I select Payment type as (Immediate|Scheduled) for amount (\d+)$/, async (paymentType, amount) => {
   await console.log(`When I select Payment type as ${paymentType} for amount ${amount}`);
   this.paymentType = paymentType;
+  this.amount = amount;
   await InvestmentFunctionality.makePayment(paymentType);
-  expect(await InvestmentFunctionality.setupInvestmentPageLaunched(amount, 180)).to.be.true;
 });
 
 When(/^I select SIP duration in months as (\d+) and click NEXT$/, async (sipDurationInMonths) => {
   await console.log(`When I select SIP duration in months as ${sipDurationInMonths} and click NEXT paymentType:${this.paymentType}`);
-  await InvestmentFunctionality.setupInvestment(sipDurationInMonths, this.paymentType);
-  expect(await InvestmentFunctionality.paymentInstrumentPageLaunched()).to.be.true;
+  expect(await InvestmentFunctionality.setupMFInvestmentPageLaunched(this.investmentType, this.amount, 180)).to.be.true;
+  await InvestmentFunctionality.setupInvestment(sipDurationInMonths, this.paymentType, this.investmentType);
+});
+
+When(/^I select scheduled investment date and click NEXT*/, async () => {
+  expect(await InvestmentFunctionality.setupMFInvestmentPageLaunched(this.investmentType, this.amount, 0)).to.be.true;
+  await InvestmentFunctionality.setupInvestment(0, this.paymentType, this.investmentType);
 });
 
 When(/^I select Payment Instrument of type (.+)$/, async (paymentInstrumentType) => {
   await console.log(`When I select Payment Instrument of type ${paymentInstrumentType}`);
+  expect(await InvestmentFunctionality.paymentInstrumentPageLaunched(this.paymentType)).to.be.true;
   await InvestmentFunctionality.selectPaymentInstrument(paymentInstrumentType);
   expect(await InvestmentFunctionality.transferFundsPageLaunched()).to.be.true;
 });

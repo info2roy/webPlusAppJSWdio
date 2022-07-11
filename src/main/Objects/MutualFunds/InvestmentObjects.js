@@ -72,9 +72,6 @@ class InvestmentObjects {
 
   ONE_CLICK_INVEST_TEXT = { web: '1-CLICK INVEST', app: '1-CLICK INVEST' };
 
-  PAYMENT_TYPE_IMMEDIATE = 'Immediate';
-  PAYMENT_TYPE_SCHEDULED = 'Scheduled';
-
   makePaymentNowButton = {
     web: `//button[text()="Make Payment Now"]`,
     app: `//*[@text="${this.MAKE_PAYMENT_NOW_TEXT.app}"]`
@@ -91,6 +88,14 @@ class InvestmentObjects {
     return {
       web: `//div[text()="I would like to invest Rs ${amountStr} every month (SIP) for ${monthsStr} months"]`,
       app: '//*[@text="Set-up Investment"]'
+    };
+  }
+
+  setupMFOneTimeInvestmentPageHeader(amount) {
+    const amountStr = amount.toLocaleString('hi');
+    return {
+      web: `//div[text()="I would like to invest Rs ${amountStr} one time"]`,
+      app: `//*[contains(@text, "I would like to invest Rs ${amountStr} one time")]`
     };
   }
 
