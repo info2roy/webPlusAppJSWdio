@@ -77,7 +77,7 @@ When(/^I select Payment Instrument of type (.+)$/, async (paymentInstrumentType)
   expect(await InvestmentFunctionality.transferFundsPageLaunched()).to.be.true;
 });
 
-When(/^I go for Payment via selected Payment Instrument\$/, async () => {
+When(/^I go for Payment via selected Payment Instrument$/, async () => {
   await console.log(`I go for Payment via selected Payment Instrument ${this.paymentInstrumentType}`);
   await InvestmentFunctionality.goToBankForFundTransfer();
   expect(await InvestmentFunctionality.mockPaymentStatusPageLaunched()).to.be.true;

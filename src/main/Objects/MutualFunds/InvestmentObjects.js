@@ -87,7 +87,7 @@ class InvestmentObjects {
     const monthsStr = months.toLocaleString('hi');
     return {
       web: `//div[text()="I would like to invest Rs ${amountStr} every month (SIP) for ${monthsStr} months"]`,
-      app: '//*[@text="Set-up Investment"]'
+      app: `//*[@text="I would like to invest Rs ${amountStr} every month (SIP) for ${monthsStr} months"]`
     };
   }
 
