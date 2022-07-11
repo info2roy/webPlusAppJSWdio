@@ -46,7 +46,7 @@ class InvestmentObjects {
     app: '//*[@text="I want to invest"]'
   };
 
-  investmentTypeOption(investmentType) {
+  investmentTypeOption(investmentType) { // one of <Every month (SIP)|One time|STP>
     return {
       web: `//label[text()="${investmentType}"]`,
       app: `//*[@text="${investmentType}"]`

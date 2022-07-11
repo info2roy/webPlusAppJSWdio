@@ -39,10 +39,10 @@ When(/^I fill form with agegroup (\d+s) and click NEXT$/, async (ageGroup) => {
 
 When(/^I select (Every month \(SIP\)|One time|STP) and fill (\d+) and click to see recommended funds$/,
   async (investmentType, amount) => {
-    this.amount = amount;
-    this.investmentType = investmentType;
     await console.log(`When I select <investmentType>:${investmentType} and <amount>:${amount} and 
     click to see recommended funds`);
+    this.amount = amount;
+    this.investmentType = investmentType;
     await InvestmentFunctionality.fillInvestmentForm(investmentType, amount);
     expect(await InvestmentFunctionality.recommendedFundsPageIsLaunched()).to.be.true;
   }
@@ -54,7 +54,7 @@ When(/^I accept the recommended mutual fund allocation and click NEXT$/, async (
 });
 
 When(/^I select Payment type as (Immediate|Scheduled)$/, async (paymentType) => {
-  await console.log(`When I select Payment type as ${paymentType} for amount ${this.amount}`);
+  await console.log(`When I select Payment type as ${paymentType}`);
   this.paymentType = paymentType;
   await InvestmentFunctionality.makePayment(paymentType);
 });
