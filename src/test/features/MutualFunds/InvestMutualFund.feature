@@ -75,4 +75,3 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Examples:
         | mutualFundPortfolio | investmentType | amount | paymentType | paymentInstrumentType | paymentStatus |
         | Core Mutual  | One time  | 40000 | Immediate | Net Banking | Success |
-        #| Tax Saver Plan  | One time  | 50000 | Immediate | UPI | Success |
