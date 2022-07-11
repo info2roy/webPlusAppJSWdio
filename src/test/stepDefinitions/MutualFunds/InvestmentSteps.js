@@ -18,12 +18,13 @@ Given(/^I am on the Mutual Funds Tab$/, async () => {
 
 When(/^I select portfolio (.+)$/, async (mutualFundPortfolio) => {
   await console.log(`When I select <mutualFundPortfolio>:${mutualFundPortfolio}`);
+  this.mutualFundPortfolio = mutualFundPortfolio;
   await InvestmentFunctionality.selectMutualFundPortfolio(mutualFundPortfolio);
   expect(await InvestmentFunctionality.scripBoxGuidedPathPageLaunched()).to.be.true;
 });
 
-When(/^I Invest as per Scripbox Guided Path for (.+)$/, async (mutualFundPortfolio) => {
-  await console.log(`When I select Invest as per Scripbox Guided Path for ${mutualFundPortfolio}`);
+When(/^I Invest as per Scripbox Guided Path$/, async () => {
+  await console.log(`When I select Invest as per Scripbox Guided Path for ${this.mutualFundPortfolio}`);
   await InvestmentFunctionality.investAsPerScripboxGuidedPath();
   expect(await InvestmentFunctionality.investmentFormPageLaunched()).to.be.true;
 });
@@ -51,10 +52,9 @@ When(/^I accept the recommended mutual fund allocation and click NEXT$/, async (
   await InvestmentFunctionality.acceptRecommendedFunds();
 });
 
-When(/^I select Payment type as (Immediate|Scheduled) for amount (\d+)$/, async (paymentType, amount) => {
-  await console.log(`When I select Payment type as ${paymentType} for amount ${amount}`);
+When(/^I select Payment type as (Immediate|Scheduled)$/, async (paymentType) => {
+  await console.log(`When I select Payment type as ${paymentType} for amount ${this.amount}`);
   this.paymentType = paymentType;
-  this.amount = amount;
   await InvestmentFunctionality.makePayment(paymentType);
 });
 

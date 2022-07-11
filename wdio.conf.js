@@ -23,7 +23,7 @@ exports.config = {
   port: 4723,
   // path: '/wd/hub',
   specs: [
-    './src/test/features/MutualFunds/InvestMutualFundSIPScheduled.feature'
+    './src/test/features/MutualFunds/InvestMutualFund.feature'
   ],
   // Patterns to exclude.
   exclude: [

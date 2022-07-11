@@ -13,10 +13,10 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Given I am on the Investment Page
     Given I am on the Mutual Funds Tab
     When I select portfolio <mutualFundPortfolio>
-    When I Invest as per Scripbox Guided Path for <mutualFundPortfolio>
+    When I Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
-    When I select Payment type as <paymentType> for amount <amount>
+    When I select Payment type as <paymentType>
     When I select SIP duration in months as <sipInMonths> and click NEXT
     Then I should see investment scheduled successfully message
     Then I go back to the dashboard page
@@ -28,10 +28,10 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Given I am on the Investment Page
     Given I am on the Mutual Funds Tab
     When I select portfolio <mutualFundPortfolio>
-    When I Invest as per Scripbox Guided Path for <mutualFundPortfolio>
+    When I Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
-    When I select Payment type as <paymentType> for amount <amount>
+    When I select Payment type as <paymentType>
     When I select SIP duration in months as <sipInMonths> and click NEXT
     When I select Payment Instrument of type <paymentInstrumentType>
     When I go to Bank for Payment Instrument of type <paymentInstrumentType>
@@ -47,10 +47,10 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Given I am on the Investment Page
     Given I am on the Mutual Funds Tab
     When I select portfolio <mutualFundPortfolio>
-    When I Invest as per Scripbox Guided Path for <mutualFundPortfolio>
+    When I Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
-    When I select Payment type as <paymentType> for amount <amount>
+    When I select Payment type as <paymentType>
     When I select scheduled investment date and click NEXT
     Then I should see investment scheduled successfully message
     Then I go back to the dashboard page
@@ -62,10 +62,10 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Given I am on the Investment Page
     Given I am on the Mutual Funds Tab
     When I select portfolio <mutualFundPortfolio>
-    When I Invest as per Scripbox Guided Path for <mutualFundPortfolio>
+    When I Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
-    When I select Payment type as <paymentType> for amount <amount>
+    When I select Payment type as <paymentType>
     When I select Payment Instrument of type <paymentInstrumentType>
     When I go to Bank for Payment Instrument of type <paymentInstrumentType>
     When I select mock payment status as <paymentStatus>
