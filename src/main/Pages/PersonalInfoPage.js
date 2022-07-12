@@ -34,7 +34,7 @@ class PersonalInfoPage {
   async uploadFile() {
     if (Device.isMobileWeb() || Device.isDesktop()) {
       await console.log('Web: uploadFile');
-      const localFilePath = path.join(__dirname, '../../test/data/images/desktop.jpg');
+      const localFilePath = path.join(__dirname, '../../config/data/images/desktop.jpg');
       await Utils.uploadFile(localFilePath, PersonalInfoObjects.fileInput, PersonalInfoObjects.submitPictureButton);
     }
   }

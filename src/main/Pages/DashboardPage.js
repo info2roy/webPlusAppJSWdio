@@ -14,5 +14,9 @@ class DashboardPage {
     }
     await Utils.clickElement(DashboardObjects.personalInfoOption);
   }
+
+  async selectInvestOption() {
+    await Utils.clickElement(DashboardObjects.investTab);
+  }
 }
 module.exports = new DashboardPage();

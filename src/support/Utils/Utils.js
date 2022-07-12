@@ -46,9 +46,13 @@ class Utils {
 
   async clickElement(selector) {
     const locator = this.getLocator(selector);
+    await this.elementIsDisplayed(selector);
     const myButton = await $(locator);
-    this.elementIsDisplayed(selector);
     await myButton.click();
+  }
+
+  async clickWebElement(webElement) {
+    await webElement.click();
   }
 
   async elementIsDisplayed(selector) {
@@ -67,15 +71,18 @@ class Utils {
   }
 
   async setInputField(value, selector) {
+    await this.elementIsDisplayed(selector);
     const myButton = await $(this.getLocator(selector));
-    this.elementIsDisplayed(selector);
-    myButton.setValue(value);
+    await myButton.setValue(value);
   }
 
-  async setInputValueToAndroid(value, selector) {
-    const myButton = $(this.getLocator(selector));
-    expect(myButton).toBeDisplayed();
-    myButton.addValue(value);
+  async getMatchingElementByIndex(selector, index) {
+    const locator = this.getLocator(selector);
+    const elements = await $$(locator);
+    if (elements.length > index) {
+      return elements[index];
+    }
+    return null;
   }
 
   async uploadFile(localFilePath, fileInputSelector, submitButtonSelector) {
@@ -86,8 +93,14 @@ class Utils {
     await submitButton.click();
   }
 
-  async scrollUntilTextIntoView(textToBeIntoView) {
-    await $(`android=new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView("${textToBeIntoView}")`);
+  async scrollVerticalUntilTextIntoViewForAndroid(textToBeIntoView) {
+    const func = 'new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView';
+    await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
+  }
+
+  async scrollHorizontalUntilTextIntoViewForAndroid(textToBeIntoView) {
+    const func = 'new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollTextIntoView';
+    await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
   }
 }
 
