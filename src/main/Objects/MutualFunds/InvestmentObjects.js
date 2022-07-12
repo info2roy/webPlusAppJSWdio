@@ -17,7 +17,7 @@ class InvestmentObjects {
   };
 
   investAsPerScripboxGuidedPathButton = {
-    web: '//button/div[text()="Invest"]',
+    web: '//button[text()="Invest"]',
     app: '//*[@text="Invest"]'
   };
 
@@ -94,7 +94,7 @@ class InvestmentObjects {
   setupMFOneTimeInvestmentPageHeader(amount) {
     const amountStr = amount.toLocaleString('hi');
     return {
-      web: `//div[text()="I would like to invest Rs ${amountStr} one time"]`,
+      web: `//div[contains(text(), "I would like to invest Rs ${amountStr} one time")]`,
       app: `//*[contains(@text, "I would like to invest Rs ${amountStr} one time")]`
     };
   }
