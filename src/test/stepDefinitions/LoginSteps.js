@@ -1,7 +1,7 @@
 const { When } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const LoginFunctionality = require('../../main/Functionalities/LoginFunctionality');
-const LoginData = require('../data/structured/LoginData');
+const LoginData = require('../../config/data/structured/LoginData');
 
 When(/^I login with username$/, async () => {
   await console.log('When I login with username');
