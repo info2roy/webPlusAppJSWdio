@@ -2,7 +2,7 @@ const { setWorldConstructor } = require('@wdio/cucumber-framework');
 
 class CustomWorld {
   constructor() {
-    this.mutualFundPortfolio = ''; //Core Mutual|
+    this.mutualFundPortfolio = ''; //Core Mutual Fund Portfolio|Emergency Fund|Tax Saver Plan
     this.investmentType = ''; // Every month (SIP)|One time|STP
     this.paymentType = ''; //Immediate|Scheduled
     this.paymentInstrumentType = ''; //Net Banking|UPI

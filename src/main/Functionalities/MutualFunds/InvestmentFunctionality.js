@@ -56,9 +56,9 @@ class InvestmentFunctionality {
     return (await InvestmentPage.setupMFInvestmentPageHeaderIsDisplayed(investmentType, amount, months));
   }
 
-  async setupInvestment(months, paymentType, investmentType) {
+  async setupInvestment(sipDurationInMonths, paymentType, investmentType) {
     if (investmentType == Constants.INVESTMENT_TYPE_SIP) {
-      await InvestmentPage.enterSipDurationInMonths(months);
+      await InvestmentPage.enterSipDurationInMonths(sipDurationInMonths);
     }
     await InvestmentPage.clickNextButtonForPayment(paymentType);
   }
