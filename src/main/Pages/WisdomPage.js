@@ -13,7 +13,7 @@ class WisdomPage {
   }
 
   async scrollToStartCheckup() {
-    await Utils.scrollUntilTextIntoView(WisdomObjects.startCheckup);
+    await Utils.scrollVerticalUntilTextIntoViewForAndroid(WisdomObjects.startCheckup);
     return this;
   }
 
@@ -23,7 +23,7 @@ class WisdomPage {
   }
 
   async scrollToBlogs() {
-    await Utils.scrollUntilTextIntoView(WisdomObjects.wisdomPageFirstBlog);
+    await Utils.scrollVerticalUntilTextIntoViewForAndroid(WisdomObjects.wisdomPageFirstBlog);
     return this;
   }
 
