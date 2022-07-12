@@ -4,6 +4,7 @@ Feature: As customer I wish to read articles related to My Wealth
     Given I am on the scripbox home page
     When I click on login option
     When I login with username
+    When I click on continue with password
     When I login with username and password
     Then I should see dashboard page loaded
 
