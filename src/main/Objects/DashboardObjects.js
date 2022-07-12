@@ -13,6 +13,10 @@ class DashboardObjects {
     app: '//android.widget.TextView[@text="Personal information"]',
   };
 
+  personalInfoText = {
+    app: 'Personal information'
+  };
+
   withdrawButton = { app: '//*[@text="Withdraw"]' };
 
   investMoreButton = { app: '//*[@text="Invest more"]' };
