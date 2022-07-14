@@ -35,7 +35,7 @@ class DashboardFunctionality {
   }
 
   async invest() {
-    await DashboardPage.selectInvestOption();
+    await DashboardPage.selectDashboardTab(Constants.DASHBOARD_INVEST);
   }
 
   async home() {
