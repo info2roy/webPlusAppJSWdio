@@ -5,7 +5,8 @@ const PersonalInfoFunctionality = require('../../main/Functionalities/PersonalIn
 
 Then(/^I should see dashboard page loaded$/, async () => {
   await console.log('Then I should see dashboard page loaded');
-  a;
+  await DashboardFunctionality.home();
+  await DashboardFunctionality.validate();
 });
 
 Given(/^I open the profile dropdown$/, async () => {
@@ -29,4 +30,14 @@ When(/^ click on return to home$/, async () => {
   await console.log(' click on return to home');
   await DashboardFunctionality.selectReturnToHome();
   expect(await PersonalInfoFunctionality.profileInfoPageLaunched()).to.be.true;
+});
+
+Given(/^I am on the dashboard page$/, async () => {
+  await console.log('Given I am on the dashboard page');
+  await DashboardFunctionality.validate();
+});
+
+When(/^I select the "(Withdraw|Invest more)" option on dashboard page$/, async (dashboardOption) => {
+  await console.log(`When I select the ${dashboardOption} option on dashboard page`);
+  await DashboardFunctionality.selectWithdrawOrInvestMoreOption(dashboardOption);
 });

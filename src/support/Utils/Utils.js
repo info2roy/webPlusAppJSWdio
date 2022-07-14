@@ -76,11 +76,25 @@ class Utils {
     await myButton.setValue(value);
   }
 
+  async setInputWebElement(value, webElement) {
+    await webElement.waitForDisplayed({ timeout: 10000 });
+    await webElement.setValue(value);
+  }
+
   async getMatchingElementByIndex(selector, index) {
     const locator = this.getLocator(selector);
     const elements = await $$(locator);
     if (elements.length > index) {
       return elements[index];
+    }
+    return null;
+  }
+
+  async getLastMatchingElement(selector) {
+    const locator = this.getLocator(selector);
+    const elements = await $$(locator);
+    if (elements.length > 0) {
+      return elements[elements.length - 1];
     }
     return null;
   }

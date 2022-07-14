@@ -23,11 +23,18 @@ class DashboardObjects {
     app: 'Personal information'
   };
 
-  withdrawButton = { app: '//*[@text="Withdraw"]' };
+  withdrawButton = { web: '//button[text()="Withdraw"]', app: '//*[@text="Withdraw"]' };
 
-  investMoreButton = { app: '//*[@text="Invest more"]' };
+  investMoreButton = { web: '//button[text()="Invest more"]', app: '//*[@text="Invest more"]' };
 
   investTab = { web: '//div[text()="Invest"]', app: '//*[@text="Invest"]' };
+
+  dashboardTab(tabName) { //Dashboard tabs like Invest, Home, My Wealth, Statements etc.
+    return {
+      web: `//div[text()="${tabName}"]`,
+      app: `//*[@text="${tabName}"]`
+    };
+  }
 }
 
 module.exports = new DashboardObjects();

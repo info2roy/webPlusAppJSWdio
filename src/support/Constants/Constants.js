@@ -6,5 +6,9 @@ class Constants {
   INVESTMENT_TYPE_SIP = 'Every month (SIP)';
   INVESTMENT_TYPE_ONETIME = 'One time';
   INVESTMENT_TYPE_STP = 'STP';
+  DASHBOARD_WITHDRAW = 'Withdraw';
+  DASHBOARD_INVEST_MORE = 'Invest more';
+  DASHBOARD_HOME = 'Home';
+  DASHBOARD_INVEST = 'Invest';
 }
 module.exports = new Constants();
