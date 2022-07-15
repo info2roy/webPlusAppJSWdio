@@ -58,10 +58,6 @@ When(/^I click on button "(CONFIRM WITHDRAWAL|NO, STAY INVESTED|CANCEL)" for wit
   await WithdrawalFunctionality.takeFinalAction(action);
 });
 
-When(/^I click on Get OTP to verify with OTP$/, async () => {
-  await console.log('When I click on Get OTP to verify with OTP');
-});
-
 When(/^I enter OTP as (\d+) for withdrawal$/, async (otp) => {
   await console.log(`When I enter OTP as ${otp} for withdrawal`);
   expect(await WithdrawalFunctionality.verifyOTPPageLaunched()).to.be.true;
