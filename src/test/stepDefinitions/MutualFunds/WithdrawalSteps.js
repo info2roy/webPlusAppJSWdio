@@ -2,19 +2,6 @@ const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const WithdrawalFunctionality = require('../../../main/Functionalities/MutualFunds/WithdrawalFunctionality');
 
-When(/^I select a family member "([^"]*)?" for withdrawal$/, async (familyMember) => {
-  await console.log(`When I select a family member "${familyMember}" for withdrawal`);
-  expect(await WithdrawalFunctionality.selectFamilyMemberPageLaunched()).to.be.true;
-  await WithdrawalFunctionality.selectFamilyMember(familyMember);
-});
-
-When(/^I select "([^"]*)?" as financial product for withdrawal$/, async (financialProduct) => {
-  await console.log(`When I select "${financialProduct}" as financial product for withdrawal`);
-  expect(await WithdrawalFunctionality.selectFinancialProductPageLaunched()).to.be.true;
-  await WithdrawalFunctionality.selectFinancialProduct(financialProduct);
-  await browser.pause(5000);
-});
-
 When(/^I select for withdrawal the portfolio (.+)$/, async (mutualFundPortfolio) => {
   await console.log(`When I select for withdrawal the portfolio ${mutualFundPortfolio}`);
   this.mutualFundPortfolio = mutualFundPortfolio;
