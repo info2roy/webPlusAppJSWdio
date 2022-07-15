@@ -10,7 +10,7 @@ class DashboardPage {
   async selectPersonalInformation() {
     if (Device.isAndroidApp()) {
       await console.log('AndroidApp: click on Personal Infomation requires scrolling until it comes into view');
-      await Utils.scrollUntilTextIntoView('Personal information');
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(DashboardObjects.personalInfoText);
     }
     await Utils.clickElement(DashboardObjects.personalInfoOption);
   }

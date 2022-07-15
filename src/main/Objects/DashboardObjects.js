@@ -19,6 +19,10 @@ class DashboardObjects {
 
   returnToHome = {web: '//*[contains(text(),"Return to Home")]'};
 
+  personalInfoText = {
+    app: 'Personal information'
+  };
+
   withdrawButton = { app: '//*[@text="Withdraw"]' };
 
   investMoreButton = { app: '//*[@text="Invest more"]' };
