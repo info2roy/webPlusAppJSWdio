@@ -15,6 +15,14 @@ class DashboardPage {
     await Utils.clickElement(DashboardObjects.personalInfoOption);
   }
 
+  async selectAccountFamilyInformation() {
+    await Utils.clickElement(DashboardObjects.accountFamilyInformationOption);
+  }
+
+  async returnToHome() {
+    await Utils.clickElement(DashboardObjects.returnToHome);
+  }
+
   async selectInvestOption() {
     await Utils.clickElement(DashboardObjects.investTab);
   }

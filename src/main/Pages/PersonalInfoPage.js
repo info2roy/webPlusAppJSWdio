@@ -8,6 +8,10 @@ const faker = require('@faker-js/faker');
 class PersonalInfoPage {
   async profileInfomationHeaderIsDisplayed() {
     return await Utils.elementIsDisplayed(PersonalInfoObjects.profileInfomationHeader);
+  } accountFamilyInfoPageHeaderIsDisplayed
+
+  async accountFamilyInfoPageHeaderIsDisplayed() {
+    return await Utils.elementIsDisplayed(PersonalInfoObjects.accountFamilyInfoPageHeader);
   }
 
   async clickUpdatePicture() {
@@ -39,22 +43,50 @@ class PersonalInfoPage {
     }
   }
 
-  async clickEditFullName() {
-    await console.log('Starting edit full name');
-    await Utils.clickElement(PersonalInfoObjects.editFullNameButton);
+  async clickEditButton(value) {
+    await console.log('Clicking edit button for '+value.toString());
+    switch (value.toString()){
+      case 'user name':
+        await Utils.clickElement(PersonalInfoObjects.editFullNameButton);
+        break;
+      case 'nominee':
+        await Utils.clickElement(PersonalInfoObjects.editNomineeButton);
+        break;
+      case 'user email':
+        await Utils.clickElement(PersonalInfoObjects.editEmailButton);
+        break;
+      case 'mobile number':
+        await Utils.clickElement(PersonalInfoObjects.editMobileNumberButton);
+        break;
+      case 'bank':
+        await Utils.clickElement(PersonalInfoObjects.editBankButton);
+        break;
+      default:
+        await console.warn('Edit info type is not valid -->'+value.toString());
+    }
   }
 
   async enterNewData(value) {
     await console.log('Entering '+value.toString());
     switch (value.toString()) {
       case 'user email':
-        await Utils.setInputField(faker.internet.email(), PersonalInfoObjects.enterFullName);
+        await Utils.setInputField("abc@gmail.com", PersonalInfoObjects.enterNewEmail);
+        await Utils.setInputField("abc@gmail.com", PersonalInfoObjects.confirmNewEmail);
         break;
       case 'mobile number':
-        await Utils.setInputField(faker.phone.phoneNumber('829#######'), PersonalInfoObjects.enterNewMobileNumber);
+        await Utils.setInputField("9876543210", PersonalInfoObjects.enterNewMobileNumber);
         break;
       case 'user name':
-        await Utils.setInputField(faker.name.firstName(), PersonalInfoObjects.enterNewMobileNumber);
+        await Utils.setInputField("UserAB", PersonalInfoObjects.enterFullName);
+        // await Utils.setInputField(faker.name.firstName(), PersonalInfoObjects.enterNewMobileNumber);
+        break;
+      case 'bank':
+        await Utils.setInputField("12345678901", PersonalInfoObjects.accountNumber);
+        await Utils.setInputField("Test Name", PersonalInfoObjects.accountHolderName);
+        await Utils.setInputField("HDFC0001852", PersonalInfoObjects.bankIFSCCode);
+        break;
+      case 'nominee':
+        await Utils.setInputField("UserAB", PersonalInfoObjects.enterFullName);
         break;
       default:
         await console.warn('Link type is not valid');
@@ -73,6 +105,10 @@ class PersonalInfoPage {
         return await Utils.elementIsDisplayed(PersonalInfoObjects.changeEmailHeader);
       case 'mobile number':
         return await Utils.elementIsDisplayed(PersonalInfoObjects.changeMobileHeader);
+      case 'nominee':
+        return await Utils.elementIsDisplayed(PersonalInfoObjects.changeNomineeHeader);
+      case 'bank':
+        return await Utils.elementIsDisplayed(PersonalInfoObjects.changeBankHeader);
       case 'user name':
         return await Utils.elementIsDisplayed(PersonalInfoObjects.changeNameHeader);
       default:

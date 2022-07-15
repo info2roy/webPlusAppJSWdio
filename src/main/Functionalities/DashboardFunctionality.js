@@ -25,6 +25,14 @@ class DashboardFunctionality {
     await DashboardPage.selectPersonalInformation();
   }
 
+  async selectAccountFamilyInformation() {
+    await DashboardPage.selectAccountFamilyInformation();
+  }
+
+  async selectReturnToHome() {
+    await DashboardPage.returnToHome();
+  }
+
   async invest() {
     await DashboardPage.selectInvestOption();
   }
