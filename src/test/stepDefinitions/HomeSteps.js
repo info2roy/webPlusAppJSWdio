@@ -38,14 +38,19 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
   if (Device.isMobileWeb() || Device.isDesktop()){
     switch (env.toString()){
       case 'UAT38':
-      case 'myScripBox':
         await browser.url(envUrl.uat38);
-        await HomeFunctionality.performLogin(user);
+        await HomeFunctionality.performLogin(env, user);
+        break;
+      case 'MYSCRIPBOX':
+        await browser.url(envUrl.myScripBox);
+        await HomeFunctionality.performLogin(env, user);
         break;
       case 'STAGING':
         await browser.url(envUrl.stating);
+        await HomeFunctionality.performLogin(env, user)
       default:
-        await console.warn('Edit info type is not valid -->'+value.toString());
+        await console.warn('Environment is not defined in URL list --> '+env.toString());
+        break;
     }
   } else if (Device.isAndroidApp()) {
     expect(await HomeFunctionality.androidHomePageLaunch()).to.be.true;
