@@ -54,6 +54,10 @@ class WithdrawalPage {
     await Utils.clickElement(WithdrawalObjects.withdrawAmountNextButton);
   }
 
+  async clickSelectFundsButton() {
+    await Utils.clickElement(WithdrawalObjects.withdrawAmountSelectFundsButton);
+  }
+
   async selectFundsPageHeaderIsDisplayed(mutualFundPortfolio) {
     return (await Utils.elementIsDisplayed(WithdrawalObjects.selectFundsPageHeader(mutualFundPortfolio)));
   }
@@ -78,6 +82,9 @@ class WithdrawalPage {
 
   async clickOnMutualFund(fundName) {
     await Utils.clickElement(WithdrawalObjects.mutualFund(fundName));
+    if (Device.isAndroidApp()) {
+      await Utils.clickElement(WithdrawalObjects.mutualFund(fundName));
+    }
   }
 
   async enterWithdrawalAmountForFund(amount, index) {
@@ -88,6 +95,34 @@ class WithdrawalPage {
       const inputField = await Utils.getMatchingElementByIndex(WithdrawalObjects.mutualFundAmountFields, index - 1);
       await Utils.setInputWebElement(amount, inputField);
     }
+  }
+
+  async clickContiueWithFundAllocationButton(amount) {
+    await Utils.clickElement(WithdrawalObjects.continueWithFundAllocationButton(amount));
+  }
+
+  async confirmWithdrawalPageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(WithdrawalObjects.confirmWithdrawalPageHeader));
+  }
+
+  async clickOnWithdrawalFinalActionButton(buttonText) {
+    await Utils.clickElement(WithdrawalObjects.withdrawalFinalActionButton(buttonText));
+  }
+
+  async verifyWithOTPPageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(WithdrawalObjects.verifyWithOTPPageHeader));
+  }
+
+  async enterOTP(otp) {
+    await Utils.setInputField(otp, WithdrawalObjects.otpField);
+  }
+
+  async clickVerifyWithOTPButton() {
+    await Utils.clickElement(WithdrawalObjects.verifyOTPButton);
+  }
+
+  async withdrawScheduledPageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(WithdrawalObjects.withdrawScheduledPageHeader));
   }
 }
 

@@ -52,10 +52,34 @@ class WithdrawalFunctionality {
 
   async selectFund(mutualFundName, amount, index) {
     await WithdrawalPage.scrollUntilMutualFundNameIsDisplayed(mutualFundName);
-    await browser.pause(3000);
     await WithdrawalPage.clickOnMutualFund(mutualFundName);
-    await browser.pause(3000);
     await WithdrawalPage.enterWithdrawalAmountForFund(amount, index);
+  }
+
+  async continueWithFundAllocation(amount) {
+    await WithdrawalPage.clickContiueWithFundAllocationButton(amount);
+  }
+
+  async confirmWithdrawalPageLaunched() {
+    return (await WithdrawalPage.confirmWithdrawalPageHeaderIsDisplayed());
+  }
+
+  async takeFinalAction(actionText) {
+    // Either CONFIRM WITHDRAWAL or CANCEL|NO, STAY INVESTED
+    await WithdrawalPage.clickOnWithdrawalFinalActionButton(actionText);
+  }
+
+  async verifyOTPPageLaunched() {
+    return (await WithdrawalPage.verifyWithOTPPageHeaderIsDisplayed());
+  }
+
+  async verifyWithOTP(otp) {
+    await WithdrawalPage.enterOTP(otp);
+    await WithdrawalPage.clickVerifyWithOTPButton();
+  }
+
+  async withdrawalScheduledPageLaunched() {
+    return (await WithdrawalPage.withdrawScheduledPageHeaderIsDisplayed());
   }
 }
 

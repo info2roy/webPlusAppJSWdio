@@ -33,17 +33,23 @@ When(/^I enter withdrawal amount as (\d+)$/, async (withdrawalAmount) => {
   this.withdrawalAmount = withdrawalAmount;
   expect(await WithdrawalFunctionality.withdrawAmountPageLaunched(this.mutualFundPortfolio)).to.be.true;
   await WithdrawalFunctionality.fillWithdrawAmountForm(withdrawalAmount);
+  expect(await WithdrawalFunctionality.selectFundsPageLaunched(this.mutualFundPortfolio, this.withdrawalAmount)).to.be.true;
 });
 
 When(/^I select to withdraw half amount from fund "([^"]*)?" at index (\d+)$/, async (mutualFundName, index) => {
   await console.log(`When I select to withdraw half amount from fund ${mutualFundName} at index ${index}`);
-  expect(await WithdrawalFunctionality.selectFundsPageLaunched(this.mutualFundPortfolio, this.withdrawalAmount)).to.be.true;
   await WithdrawalFunctionality.selectFund(mutualFundName, this.withdrawalAmount / 2, index);
-  await browser.pause(5000);
 });
 
-When(/^I click on "(CONTINUE|CONFIRM WITHDRAWAL)" button for withdrawal$/, async (withdrawalButton) => {
-  await console.log(`When I click on ${withdrawalButton} button for withdrawal`);
+When(/^I click on "CONTINUE" button for withdrawal$/, async () => {
+  await console.log(`When I click on "CONTINUE" button for withdrawal`);
+  await WithdrawalFunctionality.continueWithFundAllocation(this.withdrawalAmount);
+});
+
+When(/^I click on button "(CONFIRM WITHDRAWAL|NO, STAY INVESTED|CANCEL)" for withdrawal$/, async (action) => {
+  await console.log(`When I click on "${action}" button for withdrawal`);
+  expect(await WithdrawalFunctionality.confirmWithdrawalPageLaunched()).to.be.true;
+  await WithdrawalFunctionality.takeFinalAction(action);
 });
 
 When(/^I click on Get OTP to verify with OTP$/, async () => {
@@ -52,8 +58,11 @@ When(/^I click on Get OTP to verify with OTP$/, async () => {
 
 When(/^I enter OTP as (\d+) for withdrawal$/, async (otp) => {
   await console.log(`When I enter OTP as ${otp} for withdrawal`);
+  expect(await WithdrawalFunctionality.verifyOTPPageLaunched()).to.be.true;
+  await WithdrawalFunctionality.verifyWithOTP(otp);
 });
 
 Then(/^I should see Withdrawal Scheduled success message$/, async () => {
   await console.log('Then I should see Withdrawal Scheduled success message');
+  expect(await WithdrawalFunctionality.withdrawalScheduledPageLaunched()).to.be.true;
 });

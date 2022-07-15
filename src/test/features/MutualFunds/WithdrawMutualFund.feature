@@ -20,10 +20,10 @@ Feature: Scripbox Withdraw for Mutual Fund
     When I select to withdraw half amount from fund "ICICI Prudential Bluechip Fund (G)" at index 1
     When I select to withdraw half amount from fund "Franklin India Feeder Franklin U S Opportunities Fund (G)" at index 2
     When I click on "CONTINUE" button for withdrawal
-    When I click on "CONFIRM WITHDRAWAL" button for withdrawal
+    When I click on button "CONFIRM WITHDRAWAL" for withdrawal
     When I click on Get OTP to verify with OTP
     When I enter OTP as 111111 for withdrawal
     Then I should see Withdrawal Scheduled success message
     Examples:
       | mutualFundPortfolio | withdrawalAmount |
-      | Core Mutual Fund Portfolio | 1000  |
+      | Core Mutual Fund Portfolio | 2000  |

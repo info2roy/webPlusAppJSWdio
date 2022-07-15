@@ -72,6 +72,11 @@ class WithdrawalObjects {
     app: '//*[@text="NEXT"]'
   };
 
+  withdrawAmountSelectFundsButton = {
+    web: '//button[text()="SELECT FUNDS"]',
+    app: '//*[@text="SELECT FUNDS"]'
+  };
+
   selectFundsPageHeader(portfolio) {
     return {
       web: `//div[text()="Withdraw from ${portfolio}"]`,
@@ -112,7 +117,46 @@ class WithdrawalObjects {
 
   mutualFundAmountFields = {
     web: '//input',
+    app: '//android.widget.EditText'
+  };
+
+  continueWithFundAllocationButton(amount) {
+    return {
+      web: '//button[contains(text(), "Continue")]',
+      app: `//*[@text="CONTINUE WITH RS ${amount.toLocaleString('hi')}"]`
+    };
+  }
+
+  confirmWithdrawalPageHeader = {
+    web: '//div[text()="Confirm your withdrawal"]',
+    app: '//*[@text="Confirm your withdrawal"]'
+  };
+
+  withdrawalFinalActionButton(buttonText) { //button for one of CONFIRM WITHDRAWAL|NO, STAY INVESTED|CANCEL
+    return {
+      web: `//button[text()="${buttonText}"]`,
+      app: `//*[@text="${buttonText}"]`
+    };
+  }
+
+  verifyWithOTPPageHeader = {
+    web: '//div[text()="Verify with OTP"]',
+    app: '//*[@text="Verify with OTP"]'
+  };
+
+  otpField = {
+    web: 'input#verify-otp',
     app: '.android.widget.EditText'
+  };
+
+  verifyOTPButton = {
+    web: '//div[text()="Verify"]',
+    app: '//*[@text="VERIFY"]'
+  };
+
+  withdrawScheduledPageHeader = {
+    web: '//div[text()="Withdrawal Scheduled"]',
+    app: '//*[@text="Withdrawal Scheduled"]'
   };
 
 }
