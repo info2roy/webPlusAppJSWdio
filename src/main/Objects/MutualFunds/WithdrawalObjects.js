@@ -1,7 +1,7 @@
 class WithdrawalObjects {
 
   selectFamilyMemberPageHeader = {
-    web: '//div[text()="Select family member"]',
+    web: '(//div[text()="Select family member"])[last()]',
     app: '//*[@text="Select family member"]'
   };
 
@@ -13,7 +13,7 @@ class WithdrawalObjects {
   }
 
   selectFinancialProductPageHeader = {
-    web: '//div[text()="Select financial product"]',
+    web: '(//div[text()="Select financial product"])[last()]',
     app: '//*[@text="Select financial product"]'
   };
 
@@ -25,7 +25,7 @@ class WithdrawalObjects {
   }
 
   selectMFPlanPageHeader = {
-    web: '//div[text()="Select plan"]',
+    web: '(//div[text()="Select plan"])[last()]',
     app: '//*[@text="Select Plan"]'
   };
 
@@ -50,8 +50,8 @@ class WithdrawalObjects {
 
   withdrawalBankOption(option) {
     return {
-      web: `//div[text()="${option}"]`,
-      app: `//*[@text="${option}"]`
+      web: `//button[text()="${option}"]`,
+      app: `//*[@text="${option.toUpperCase()}"]`
     };
   }
 
@@ -73,7 +73,7 @@ class WithdrawalObjects {
   };
 
   withdrawAmountSelectFundsButton = {
-    web: '//button[text()="SELECT FUNDS"]',
+    web: '//button[text()="Select funds"]',
     app: '//*[@text="SELECT FUNDS"]'
   };
 

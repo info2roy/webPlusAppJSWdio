@@ -22,7 +22,7 @@ When(/^I select for withdrawal the portfolio (.+)$/, async (mutualFundPortfolio)
   await WithdrawalFunctionality.selectMFPlan(mutualFundPortfolio);
 });
 
-When(/^I select withdrawal bank option as "(CONTINUE WITH SAME BANK|NO, STAY INVESTED)"$/, async (withdrawalBankOption) => {
+When(/^I select withdrawal bank option as "(Continue with same bank|NO, STAY INVESTED)"$/, async (withdrawalBankOption) => {
   await console.log(`When I select withdrawal bank option as ${withdrawalBankOption}`);
   expect(await WithdrawalFunctionality.confirmBankDetailsPageLaunched()).to.be.true;
   await WithdrawalFunctionality.selectWithdrawalBankOption(withdrawalBankOption);
@@ -33,7 +33,13 @@ When(/^I enter withdrawal amount as (\d+) and click "(Next|NEXT|SELECT FUNDS)" b
   this.withdrawalAmount = withdrawalAmount;
   expect(await WithdrawalFunctionality.withdrawAmountPageLaunched(this.mutualFundPortfolio)).to.be.true;
   await WithdrawalFunctionality.fillWithdrawAmountForm(withdrawalAmount, buttonText);
-  expect(await WithdrawalFunctionality.selectFundsPageLaunched(this.mutualFundPortfolio, this.withdrawalAmount)).to.be.true;
+  if (buttonText === 'SELECT FUNDS') {
+    expect(await WithdrawalFunctionality.selectFundsPageLaunched(this.mutualFundPortfolio, this.withdrawalAmount)).to.be.true;
+  } else {
+    expect(await WithdrawalFunctionality.taxOptimizedSelectedFundsPageLaunched(
+      this.mutualFundPortfolio,
+      this.withdrawalAmount)).to.be.true;
+  }
 });
 
 When(/^I select to withdraw half amount from fund "([^"]*)?" at index (\d+)$/, async (mutualFundName, index) => {

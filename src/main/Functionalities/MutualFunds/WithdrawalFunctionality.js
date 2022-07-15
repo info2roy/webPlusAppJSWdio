@@ -55,6 +55,12 @@ class WithdrawalFunctionality {
      (await WithdrawalPage.selectFundsPageSelectFundsIsDisplayed());
   }
 
+  async taxOptimizedSelectedFundsPageLaunched(mutualFundPortfolio, amount) {
+    return (await WithdrawalPage.selectFundsPageHeaderIsDisplayed(mutualFundPortfolio)) &&
+     (await WithdrawalPage.selectFundsPageSummaryIsDisplayed()) &&
+     (await WithdrawalPage.selectFundsPageAmountIsDisplayed(amount));
+  }
+
   async selectFund(mutualFundName, amount, index) {
     await WithdrawalPage.scrollUntilMutualFundNameIsDisplayed(mutualFundName);
     await WithdrawalPage.clickOnMutualFund(mutualFundName);
