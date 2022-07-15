@@ -47,7 +47,7 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
         break;
       case 'STAGING':
         await browser.url(envUrl.stating);
-        await HomeFunctionality.performLogin(env, user)
+        await HomeFunctionality.performLogin(env, user);
       default:
         await console.warn('Environment is not defined in URL list --> '+env.toString());
         break;
