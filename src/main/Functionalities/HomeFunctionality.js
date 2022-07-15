@@ -12,7 +12,7 @@ class HomeFunctionality {
 
   async performLogin(env, user) {
     console.log('testing for environment ' + env);
-    if (env === 'UAT38' || env === 'MYSCRIPBOX') {
+    if (env === 'UAT38' || env === 'ANDROMEDA') {
       await HomePage.clickMenuButton();
       await HomePage.selectLoginOption();
       switch (user.toString()) {
@@ -36,7 +36,7 @@ class HomeFunctionality {
       await LoginPage.enterPassword(loginData.password);
       await LoginPage.clickContinueLoginButton();
       await DashboardFunctionality.validate();
-    } else if (env == 'STAGING') {
+    } else if (env == 'STAGING' || env === 'MYSCRIPBOX') {
       switch (user.toString()) {
         case 'user189182':
           await Utils.setInputField(loginData.user189182, LoginObjects.stagingUserIdField);
