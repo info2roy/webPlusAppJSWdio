@@ -2,7 +2,7 @@ const HomePage = require('../Pages/HomePage');
 const LoginPage = require('../Pages/LoginPage');
 const loginData = require('../../config/data/structured/LoginData');
 const LoginObjects = require('../Objects/LoginObjects');
-const DashboardFunctionality = require('../../main/Functionalities/DashboardFunctionality');
+const DashboardFunctionality = require('../Functionalities/DashboardFunctionality');
 const Utils = require('../../support/Utils/Utils');
 
 class HomeFunctionality {
@@ -10,12 +10,12 @@ class HomeFunctionality {
     await HomePage.selectLoginOption();
   }
 
-  async performLogin(env, user){
-    console.log('testing for environment '+env);
-    if (env === 'UAT38' || env === 'MYSCRIPBOX'){
+  async performLogin(env, user) {
+    console.log('testing for environment ' + env);
+    if (env === 'UAT38' || env === 'MYSCRIPBOX') {
       await HomePage.clickMenuButton();
       await HomePage.selectLoginOption();
-      switch (user.toString()){
+      switch (user.toString()) {
         case 'user189182':
           await LoginPage.enterUserId(loginData.user189182);
           break;
@@ -36,8 +36,8 @@ class HomeFunctionality {
       await LoginPage.enterPassword(loginData.password);
       await LoginPage.clickContinueLoginButton();
       await DashboardFunctionality.validate();
-    } else if (env == 'STAGING'){
-      switch (user.toString()){
+    } else if (env == 'STAGING') {
+      switch (user.toString()) {
         case 'user189182':
           await Utils.setInputField(loginData.user189182, LoginObjects.stagingUserIdField);
           break;

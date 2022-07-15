@@ -38,7 +38,7 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
   if (Device.isMobileWeb() || Device.isDesktop()){
     switch (env.toString()){
       case 'UAT38':
-        await browser.url(envUrl.uat38);
+        await browser.url(envUrl.andromedaUat38);
         await HomeFunctionality.performLogin(env, user);
         break;
       case 'MYSCRIPBOX':
@@ -46,7 +46,7 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
         await HomeFunctionality.performLogin(env, user);
         break;
       case 'STAGING':
-        await browser.url(envUrl.stating);
+        await browser.url(envUrl.mockStaging);
         await HomeFunctionality.performLogin(env, user);
       default:
         await console.warn('Environment is not defined in URL list --> '+env.toString());

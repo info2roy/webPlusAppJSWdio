@@ -17,7 +17,6 @@ class PersonalInfoFunctionality {
 
   async updateChanges() {
     await PersonalInfoPage.clickUpdateButton();
-    await browser.pause(5000);
   }
 
   async updateProfileData(value) {

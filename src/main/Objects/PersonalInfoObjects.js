@@ -64,9 +64,9 @@ class PersonalInfoObjects {
 
   accountHolderName = {web: '//*[@id="account-holder-name"]'};
 
-  accountNumber = {web: '//*[@id="account-number"]'};
+  accountNumber = {web: '#account-number'};
 
-  bankIFSCCode = {web: '//*[@id="ifsc-code"]'};
+  bankIFSCCode = {web: '#ifsc-code'};
 
   returnToHome = {web: '//*[contains(text(),"Return to Home")]'};
 }
