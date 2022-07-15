@@ -10,5 +10,7 @@ class Constants {
   DASHBOARD_INVEST_MORE = 'Invest more';
   DASHBOARD_HOME = 'Home';
   DASHBOARD_INVEST = 'Invest';
+  WITHDRAW_SELECT_FUNDS_BUTTON = 'SELECT FUNDS';
+  WITHDRAW_NEXT_BUTTON = 'NEXT';
 }
 module.exports = new Constants();

@@ -28,11 +28,11 @@ When(/^I select withdrawal bank option as "(CONTINUE WITH SAME BANK|NO, STAY INV
   await WithdrawalFunctionality.selectWithdrawalBankOption(withdrawalBankOption);
 });
 
-When(/^I enter withdrawal amount as (\d+)$/, async (withdrawalAmount) => {
+When(/^I enter withdrawal amount as (\d+) and click "(Next|NEXT|SELECT FUNDS)" button$/, async (withdrawalAmount, buttonText) => {
   await console.log(`When I enter withdrawal amount as ${withdrawalAmount}`);
   this.withdrawalAmount = withdrawalAmount;
   expect(await WithdrawalFunctionality.withdrawAmountPageLaunched(this.mutualFundPortfolio)).to.be.true;
-  await WithdrawalFunctionality.fillWithdrawAmountForm(withdrawalAmount);
+  await WithdrawalFunctionality.fillWithdrawAmountForm(withdrawalAmount, buttonText);
   expect(await WithdrawalFunctionality.selectFundsPageLaunched(this.mutualFundPortfolio, this.withdrawalAmount)).to.be.true;
 });
 

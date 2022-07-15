@@ -1,3 +1,4 @@
+const Constants = require('../../../support/Constants/Constants');
 const WithdrawalPage = require('../../Pages/MutualFunds/WithdrawalPage');
 
 class WithdrawalFunctionality {
@@ -38,9 +39,13 @@ class WithdrawalFunctionality {
     return (await WithdrawalPage.withdrawAmountPageHeaderIsDisplayed(mutualFundPortfolio));
   }
 
-  async fillWithdrawAmountForm(amount) {
+  async fillWithdrawAmountForm(amount, buttonText) {
     await WithdrawalPage.enterWithdrawalAmount(amount);
-    await WithdrawalPage.clickNextButton();
+    if (buttonText === Constants.WITHDRAW_SELECT_FUNDS_BUTTON) {
+      await WithdrawalPage.clickSelectFundsButton();
+    } else if (buttonText.toUpperCase() == Constants.WITHDRAW_NEXT_BUTTON) {
+      await WithdrawalPage.clickNextButton();
+    }
   }
 
   async selectFundsPageLaunched(mutualFundPortfolio, amount) {

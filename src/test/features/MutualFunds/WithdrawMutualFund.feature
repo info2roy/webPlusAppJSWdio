@@ -16,12 +16,27 @@ Feature: Scripbox Withdraw for Mutual Fund
     When I select "Mutual Funds" as financial product for withdrawal
     When I select for withdrawal the portfolio <mutualFundPortfolio>
     When I select withdrawal bank option as "CONTINUE WITH SAME BANK"
-    When I enter withdrawal amount as <withdrawalAmount>
+    When I enter withdrawal amount as <withdrawalAmount> and click "SELECT FUNDS" button
     When I select to withdraw half amount from fund "ICICI Prudential Bluechip Fund (G)" at index 1
     When I select to withdraw half amount from fund "Franklin India Feeder Franklin U S Opportunities Fund (G)" at index 2
     When I click on "CONTINUE" button for withdrawal
     When I click on button "CONFIRM WITHDRAWAL" for withdrawal
-    When I click on Get OTP to verify with OTP
+    When I enter OTP as 111111 for withdrawal
+    Then I should see Withdrawal Scheduled success message
+    Examples:
+      | mutualFundPortfolio | withdrawalAmount |
+      | Core Mutual Fund Portfolio | 2000  |
+
+  Scenario Outline: As a logged in user, I am able to withdraw from mutual fund using Tax optimised withdrawal
+    Given I am on the dashboard page
+    When I select the "Withdraw" option on dashboard page
+    When I select a family member "Investor 947112 Upwardly" for withdrawal
+    When I select "Mutual Funds" as financial product for withdrawal
+    When I select for withdrawal the portfolio <mutualFundPortfolio>
+    When I select withdrawal bank option as "CONTINUE WITH SAME BANK"
+    When I enter withdrawal amount as <withdrawalAmount> and click "Next" button
+    When I click on "CONTINUE" button for withdrawal
+    When I click on button "CONFIRM WITHDRAWAL" for withdrawal
     When I enter OTP as 111111 for withdrawal
     Then I should see Withdrawal Scheduled success message
     Examples:
