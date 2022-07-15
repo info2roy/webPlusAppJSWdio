@@ -17,7 +17,7 @@ class DashboardObjects {
     web: '//div[text()="Account & Family Information"]'
   };
 
-  returnToHome = {web: '//*[contains(text(),"Return to Home")]'}
+  returnToHome = {web: '//*[contains(text(),"Return to Home")]'};
 
   withdrawButton = { app: '//*[@text="Withdraw"]' };
 

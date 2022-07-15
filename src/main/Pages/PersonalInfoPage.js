@@ -3,12 +3,12 @@ const { expect } = require('chai');
 const Utils = require('../../support/Utils/Utils');
 const PersonalInfoObjects = require('../Objects/PersonalInfoObjects');
 const Device = require('../../support/libraries/Device');
-const faker = require('@faker-js/faker');
+// const faker = require('@faker-js/faker');
 
 class PersonalInfoPage {
   async profileInfomationHeaderIsDisplayed() {
     return await Utils.elementIsDisplayed(PersonalInfoObjects.profileInfomationHeader);
-  } accountFamilyInfoPageHeaderIsDisplayed
+  }
 
   async accountFamilyInfoPageHeaderIsDisplayed() {
     return await Utils.elementIsDisplayed(PersonalInfoObjects.accountFamilyInfoPageHeader);
@@ -70,23 +70,23 @@ class PersonalInfoPage {
     await console.log('Entering '+value.toString());
     switch (value.toString()) {
       case 'user email':
-        await Utils.setInputField("abc@gmail.com", PersonalInfoObjects.enterNewEmail);
-        await Utils.setInputField("abc@gmail.com", PersonalInfoObjects.confirmNewEmail);
+        await Utils.setInputField('abc@gmail.com', PersonalInfoObjects.enterNewEmail);
+        await Utils.setInputField('abc@gmail.com', PersonalInfoObjects.confirmNewEmail);
         break;
       case 'mobile number':
-        await Utils.setInputField("9876543210", PersonalInfoObjects.enterNewMobileNumber);
+        await Utils.setInputField('9876543210', PersonalInfoObjects.enterNewMobileNumber);
         break;
       case 'user name':
-        await Utils.setInputField("UserAB", PersonalInfoObjects.enterFullName);
+        await Utils.setInputField('UserAB', PersonalInfoObjects.enterFullName);
         // await Utils.setInputField(faker.name.firstName(), PersonalInfoObjects.enterNewMobileNumber);
         break;
       case 'bank':
-        await Utils.setInputField("12345678901", PersonalInfoObjects.accountNumber);
-        await Utils.setInputField("Test Name", PersonalInfoObjects.accountHolderName);
-        await Utils.setInputField("HDFC0001852", PersonalInfoObjects.bankIFSCCode);
+        await Utils.setInputField('12345678901', PersonalInfoObjects.accountNumber);
+        await Utils.setInputField('Test Name', PersonalInfoObjects.accountHolderName);
+        await Utils.setInputField('HDFC0001852', PersonalInfoObjects.bankIFSCCode);
         break;
       case 'nominee':
-        await Utils.setInputField("UserAB", PersonalInfoObjects.enterFullName);
+        await Utils.setInputField('UserAB', PersonalInfoObjects.enterFullName);
         break;
       default:
         await console.warn('Link type is not valid');

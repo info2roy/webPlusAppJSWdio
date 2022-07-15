@@ -5,7 +5,7 @@ const PersonalInfoFunctionality = require('../../main/Functionalities/PersonalIn
 
 Then(/^I should see dashboard page loaded$/, async () => {
   await console.log('Then I should see dashboard page loaded');
-  await DashboardFunctionality.validate();
+  a;
 });
 
 Given(/^I open the profile dropdown$/, async () => {

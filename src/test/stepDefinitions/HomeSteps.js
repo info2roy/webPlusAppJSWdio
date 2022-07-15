@@ -46,7 +46,7 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
         await browser.url(envUrl.stating);
       default:
         await console.warn('Edit info type is not valid -->'+value.toString());
-    } 
+    }
   } else if (Device.isAndroidApp()) {
     expect(await HomeFunctionality.androidHomePageLaunch()).to.be.true;
   }

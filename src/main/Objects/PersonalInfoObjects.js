@@ -42,7 +42,7 @@ class PersonalInfoObjects {
 
   enterFullName = { web: '//input[@id="new-name"]'};
 
-  updateChangesButton = { web: '//button[contains(text(),"Update Changes")]'}; 
+  updateChangesButton = { web: '//button[contains(text(),"Update Changes")]'};
 
   backButton = { web: '//span[@text="Back"]'};
 
@@ -64,7 +64,7 @@ class PersonalInfoObjects {
 
   accountHolderName = {web: '//*[@id="account-holder-name"]'};
 
-  accountNumber = {web: '//*[@id="account-number"]'}
+  accountNumber = {web: '//*[@id="account-number"]'};
 
   bankIFSCCode = {web: '//*[@id="ifsc-code"]'};
 
