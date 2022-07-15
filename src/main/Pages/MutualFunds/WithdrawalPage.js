@@ -3,21 +3,6 @@ const Utils = require('../../../support/Utils/Utils');
 const WithdrawalObjects = require('../../Objects/MutualFunds/WithdrawalObjects');
 
 class WithdrawalPage {
-  async selectFamilyMemberPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(WithdrawalObjects.selectFamilyMemberPageHeader));
-  }
-
-  async clickOnFamilyMemberByName(familyMemberName) {
-    await Utils.clickElement(WithdrawalObjects.familyMember(familyMemberName));
-  }
-
-  async selectFinancialProductPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(WithdrawalObjects.selectFinancialProductPageHeader));
-  }
-
-  async clickOnFinancialProduct(productName) {
-    await Utils.clickElement(WithdrawalObjects.financialProduct(productName));
-  }
 
   async selectMFPlanPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(WithdrawalObjects.selectMFPlanPageHeader));

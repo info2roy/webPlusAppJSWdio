@@ -2,21 +2,6 @@ const Constants = require('../../../support/Constants/Constants');
 const WithdrawalPage = require('../../Pages/MutualFunds/WithdrawalPage');
 
 class WithdrawalFunctionality {
-  async selectFamilyMemberPageLaunched() {
-    return (await WithdrawalPage.selectFamilyMemberPageHeaderIsDisplayed());
-  }
-
-  async selectFamilyMember(familyMemberName) {
-    await WithdrawalPage.clickOnFamilyMemberByName(familyMemberName);
-  }
-
-  async selectFinancialProductPageLaunched() {
-    return (await WithdrawalPage.selectFinancialProductPageHeaderIsDisplayed());
-  }
-
-  async selectFinancialProduct(productName) {
-    await WithdrawalPage.clickOnFinancialProduct(productName);
-  }
 
   async selectMFPlanPageLaunched() {
     return (await WithdrawalPage.selectMFPlanPageHeaderIsDisplayed());
