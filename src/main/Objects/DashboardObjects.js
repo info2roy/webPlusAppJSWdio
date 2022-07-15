@@ -13,6 +13,12 @@ class DashboardObjects {
     app: '//android.widget.TextView[@text="Personal information"]',
   };
 
+  accountFamilyInformationOption = {
+    web: '//div[text()="Account & Family Information"]'
+  };
+
+  returnToHome = {web: '//*[contains(text(),"Return to Home")]'};
+
   personalInfoText = {
     app: 'Personal information'
   };

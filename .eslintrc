@@ -62,7 +62,7 @@
       }
     ],
     "space-before-blocks": [
-      "warn",
+      "error",
       "always"
     ],
     "no-undef": "off",

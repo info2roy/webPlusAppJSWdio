@@ -9,16 +9,18 @@ Feature: As customer I wish to update my account details
     Then I login with username and password
     And I should see dashboard page loaded
 
-  Scenario: As a logged in user I wish to update my User name
+  Scenario: As a logged in user I wish to update my Bank details
     When I open the profile dropdown
-    And I select personal information
-    Then I edit "user name"
+    And I select Account and Family Information
+    Then I edit "bank"
     And I update changes
+    And I click on return to home
+    And I should see dashboard page loaded
 
-  Scenario: As a logged in user I wish to update my User email
-    Then I edit "user email"
+  Scenario: As a logged in user I wish to update my nominee
+    When I open the profile dropdown
+    And I select Account and Family Information
+    Then I edit "nominee"
     And I update changes
-
-  Scenario: As a logged in user I wish to update my User mobile number
-    Then I edit "mobile number"
-    And I update changes
+    And I click on return to home
+    And I should see dashboard page loaded

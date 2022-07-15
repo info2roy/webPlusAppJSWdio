@@ -5,7 +5,7 @@ const PersonalInfoFunctionality = require('../../main/Functionalities/PersonalIn
 
 Then(/^I should see dashboard page loaded$/, async () => {
   await console.log('Then I should see dashboard page loaded');
-  await DashboardFunctionality.validate();
+  a;
 });
 
 Given(/^I open the profile dropdown$/, async () => {
@@ -16,5 +16,17 @@ Given(/^I open the profile dropdown$/, async () => {
 When(/^I select personal information$/, async () => {
   await console.log('When I select personal information');
   await DashboardFunctionality.selectPersonalInformation();
+  expect(await PersonalInfoFunctionality.profileInfoPageLaunched()).to.be.true;
+});
+
+When(/^I select Account and Family Information$/, async () => {
+  await console.log('I select Account and Family Information');
+  await DashboardFunctionality.selectAccountFamilyInformation();
+  expect(await PersonalInfoFunctionality.profileInfoPageLaunched()).to.be.true;
+});
+
+When(/^ click on return to home$/, async () => {
+  await console.log(' click on return to home');
+  await DashboardFunctionality.selectReturnToHome();
   expect(await PersonalInfoFunctionality.profileInfoPageLaunched()).to.be.true;
 });

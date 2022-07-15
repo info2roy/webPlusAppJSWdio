@@ -1,6 +1,12 @@
 class LoginObjects {
   loginCredentialsTextAndroid = '//*[@class="android.widget.EditText" and @package="com.scripbox.takecharge"]';
 
+  stagingUserIdField = { web: '.login-email' };
+
+  stagingPasswordField = { web: '#password'};
+
+  stagingLoginButton = { web: '(//button[@type="submit"])[2]'};
+
   userIdField = { web: '#test-email-input', app: this.loginCredentialsTextAndroid };
 
   continueOrNextButton = { web: '#test-login-next-button', app: '//*[@text="NEXT"]' };

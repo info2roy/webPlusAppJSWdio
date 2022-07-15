@@ -6,6 +6,8 @@ class PersonalInfoObjects {
   profileInfomationHeader = { web: '(//div[text()="Personal Information"])[4]',
     app: '//*[@text="Profile information"]' }; // profile information page
 
+  accountFamilyInfoPageHeader = { web: '(//div[text()="Account & Family Information"])[4]' };
+
   updatePictureOption = { web: '//div[text()="Update Picture"]',
     app: '//*[@text="Update picture"]' }; // update picture button
 
@@ -30,13 +32,17 @@ class PersonalInfoObjects {
 
   editFullNameButton = { web: '//div[contains(text(),"Full Name")]//following-sibling::span'};
 
+  editNomineeButton = { web: '//div[contains(text(),"Nominee")]//following-sibling::span'};
+
   editEmailButton = { web: '//div[contains(text(),"Email")]//following-sibling::span'};
 
   editMobileNumberButton = { web: '//div[contains(text(),"obile Number")]//following-sibling::span'};
 
+  editBankButton = { web: '//div[contains(text(),"Bank")]//following-sibling::span'};
+
   enterFullName = { web: '//input[@id="new-name"]'};
 
-  updateChangesButton = { web: '//button[@text="Update Changes"]'};
+  updateChangesButton = { web: '//button[contains(text(),"Update Changes")]'};
 
   backButton = { web: '//span[@text="Back"]'};
 
@@ -46,11 +52,23 @@ class PersonalInfoObjects {
 
   enterNewMobileNumber = { web: '//input[@id="new-phone"]'};
 
-  changeNameHeader = {web: '//div[text()="Change Name"]'};
+  changeNameHeader = {web: '//*[contains(text(),"Current Full Name")]'};
 
-  changeEmailHeader = {web: '//div[text()="Change Email"]'};
+  changeNomineeHeader = {web: '//*[contains(text(),"Nominee Full Name")]'};
 
-  changeMobileHeader = {web: '//div[text()="Change Mobile Number"]'};
+  changeBankHeader = {web: '//*[contains(text(),"Account Type")]'};
+
+  changeEmailHeader = {web: '//*[contains(text(),"Current Email")]'};
+
+  changeMobileHeader = {web: '//*[contains(text(),"Current Mobile Number")]'};
+
+  accountHolderName = {web: '//*[@id="account-holder-name"]'};
+
+  accountNumber = {web: '#account-number'};
+
+  bankIFSCCode = {web: '#ifsc-code'};
+
+  returnToHome = {web: '//*[contains(text(),"Return to Home")]'};
 }
 
 module.exports = new PersonalInfoObjects();
