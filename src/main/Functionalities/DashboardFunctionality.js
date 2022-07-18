@@ -3,7 +3,7 @@ const DashboardObjects = require('../Objects/DashboardObjects');
 const Utils = require('../../support/Utils/Utils');
 const Device = require('../../support/libraries/Device');
 const env = require('../../config/env');
-const Constants = require('../../support/Constants/Constants');
+const Constants = require('../../config/data/structured/Constants');
 
 class DashboardFunctionality {
 

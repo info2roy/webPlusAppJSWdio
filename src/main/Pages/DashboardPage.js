@@ -1,7 +1,7 @@
 const Utils = require('../../support/Utils/Utils');
 const DashboardObjects = require('../Objects/DashboardObjects');
 const Device = require('../../support/libraries/Device');
-const Constants = require('../../support/Constants/Constants');
+const Constants = require('../../config/data/structured/Constants');
 
 class DashboardPage {
   async openProfileDropdown() {
