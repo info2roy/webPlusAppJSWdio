@@ -10,7 +10,8 @@ Feature: Scripbox Withdraw for Mutual Fund
     When I select "Mutual Funds" as financial product for withdrawal
     When I select for withdrawal the portfolio <mutualFundPortfolio>
     When I select withdrawal bank option as "Continue with same bank"
-    When I enter withdrawal amount as <withdrawalAmount> and click "SELECT FUNDS" button
+    When I enter withdrawal amount as <withdrawalAmount>
+    When I select "CUSTOM_FUND_BASED_WITHDRAWAL" as strategy
     When I select to withdraw half amount from fund "Axis Liquid Fund (G)" at index 1
     When I select to withdraw half amount from fund "ICICI Prudential Savings Fund (G)" at index 2
     When I click on "CONTINUE" button for withdrawal
@@ -29,7 +30,8 @@ Feature: Scripbox Withdraw for Mutual Fund
     When I select "Mutual Funds" as financial product for withdrawal
     When I select for withdrawal the portfolio <mutualFundPortfolio>
     When I select withdrawal bank option as "Continue with same bank"
-    When I enter withdrawal amount as <withdrawalAmount> and click "Next" button
+    When I enter withdrawal amount as <withdrawalAmount>
+    When I select "TAX_OPTIMIZED_WITHDRAWAL" as strategy
     When I click on "CONTINUE" button for withdrawal
     When I click on button "CONFIRM WITHDRAWAL" for withdrawal
     When I enter OTP as 111111 for withdrawal

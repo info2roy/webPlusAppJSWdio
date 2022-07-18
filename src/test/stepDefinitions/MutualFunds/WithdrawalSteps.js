@@ -1,5 +1,6 @@
 const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
+const Constants = require('../../../config/data/structured/Constants');
 const WithdrawalFunctionality = require('../../../main/Functionalities/MutualFunds/WithdrawalFunctionality');
 
 When(/^I select for withdrawal the portfolio (.+)$/, async (mutualFundPortfolio) => {
@@ -15,17 +16,26 @@ When(/^I select withdrawal bank option as "(Continue with same bank|NO, STAY INV
   await WithdrawalFunctionality.selectWithdrawalBankOption(withdrawalBankOption);
 });
 
-When(/^I enter withdrawal amount as (\d+) and click "(Next|NEXT|SELECT FUNDS)" button$/, async (withdrawalAmount, buttonText) => {
+When(/^I enter withdrawal amount as (\d+)$/, async (withdrawalAmount) => {
   await console.log(`When I enter withdrawal amount as ${withdrawalAmount}`);
   this.withdrawalAmount = withdrawalAmount;
   expect(await WithdrawalFunctionality.withdrawAmountPageLaunched(this.mutualFundPortfolio)).to.be.true;
-  await WithdrawalFunctionality.fillWithdrawAmountForm(withdrawalAmount, buttonText);
-  if (buttonText === 'SELECT FUNDS') {
-    expect(await WithdrawalFunctionality.selectFundsPageLaunched(this.mutualFundPortfolio, this.withdrawalAmount)).to.be.true;
+  await WithdrawalFunctionality.fillWithdrawalAmount(withdrawalAmount);
+});
+
+When(/^I select "(CUSTOM_FUND_BASED_WITHDRAWAL|TAX_OPTIMIZED_WITHDRAWAL)" as strategy$/, async (withdrawalStrategy) => {
+  await console.log(`When I select ${withdrawalStrategy} as strategy`);
+  await WithdrawalFunctionality.selectWithdrawalStrategy(withdrawalStrategy);
+  if (withdrawalStrategy === Constants.WITHDRAW_CUSTOM_FUND_BASED_WITHDRAWAL) {
+    expect(await WithdrawalFunctionality.selectCustomFundsPageLaunched(
+      this.mutualFundPortfolio,
+      this.withdrawalAmount)
+    ).to.be.true;
   } else {
     expect(await WithdrawalFunctionality.taxOptimizedSelectedFundsPageLaunched(
       this.mutualFundPortfolio,
-      this.withdrawalAmount)).to.be.true;
+      this.withdrawalAmount)
+    ).to.be.true;
   }
 });
 

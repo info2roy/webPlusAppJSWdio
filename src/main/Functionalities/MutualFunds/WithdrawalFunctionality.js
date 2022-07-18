@@ -24,16 +24,19 @@ class WithdrawalFunctionality {
     return (await WithdrawalPage.withdrawAmountPageHeaderIsDisplayed(mutualFundPortfolio));
   }
 
-  async fillWithdrawAmountForm(amount, buttonText) {
+  async fillWithdrawalAmount(amount) {
     await WithdrawalPage.enterWithdrawalAmount(amount);
-    if (buttonText === Constants.WITHDRAW_SELECT_FUNDS_BUTTON) {
+  }
+
+  async selectWithdrawalStrategy(withdrawalStrategy) {
+    if (withdrawalStrategy === Constants.WITHDRAW_CUSTOM_FUND_BASED_WITHDRAWAL) {
       await WithdrawalPage.clickSelectFundsButton();
-    } else if (buttonText.toUpperCase() == Constants.WITHDRAW_NEXT_BUTTON) {
+    } else if (withdrawalStrategy == Constants.WITHDRAW_TAX_OPTIMIZED_WITHDRAWAL) {
       await WithdrawalPage.clickNextButton();
     }
   }
 
-  async selectFundsPageLaunched(mutualFundPortfolio, amount) {
+  async selectCustomFundsPageLaunched(mutualFundPortfolio, amount) {
     return (await WithdrawalPage.selectFundsPageHeaderIsDisplayed(mutualFundPortfolio)) &&
      (await WithdrawalPage.selectFundsPageSummaryIsDisplayed()) &&
      (await WithdrawalPage.selectFundsPageAmountIsDisplayed(amount)) &&

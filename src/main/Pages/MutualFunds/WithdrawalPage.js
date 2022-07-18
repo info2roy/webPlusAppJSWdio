@@ -68,12 +68,10 @@ class WithdrawalPage {
   }
 
   async clickOnMutualFund(fundName) {
-    await browser.pause(5000);
     await Utils.clickElement(WithdrawalObjects.mutualFund(fundName));
     if (Device.isAndroidApp()) {
       await Utils.clickElement(WithdrawalObjects.mutualFund(fundName));
     }
-    await browser.pause(5000);
   }
 
   async enterWithdrawalAmountForFund(amount, index) {
