@@ -112,6 +112,25 @@ class InvestmentFunctionality {
     await InvestmentPage.clickGoToDashboardButton();
     await InvestmentPage.clickBackButton();
   }
+
+  async navigateToMFPage(MfOpion) {
+    switch (MfOpion.toString()) {
+      case 'Fund holdings':
+        await InvestmentPage.navigateToMFStatementPage('Fund holdings');
+        return (await InvestmentPage.validateMFPageLoad('Fund holdings'));
+      case 'Investment history':
+        await InvestmentPage.navigateToMFStatementPage('Investment history');
+        return (await InvestmentPage.validateMFPageLoad('Investment history'));
+      case 'Tax statements':
+        await InvestmentPage.navigateToMFStatementPage('Tax statements');
+        return (await InvestmentPage.validateMFPageLoad('Tax statements'));
+      case 'Capital gains':
+        await InvestmentPage.navigateToMFStatementPage('Capital gains');
+        return (await InvestmentPage.validateMFPageLoad('Capital gains'));
+      default:
+        console.log("MF option not avilable")
+    }
+  }
 }
 
 module.exports = new InvestmentFunctionality();

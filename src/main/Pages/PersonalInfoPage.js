@@ -14,6 +14,10 @@ class PersonalInfoPage {
     return await Utils.elementIsDisplayed(PersonalInfoObjects.accountFamilyInfoPageHeader);
   }
 
+  async MFPageHeaderIsDisplayed() {
+    return await Utils.elementIsDisplayed(PersonalInfoObjects.statementsAndTaxReportsHeader);
+  }
+
   async clickUpdatePicture() {
     await Utils.clickElement(PersonalInfoObjects.updatePictureOption);
     if (Device.isAndroidApp()) {
@@ -44,8 +48,8 @@ class PersonalInfoPage {
   }
 
   async clickEditButton(value) {
-    await console.log('Clicking edit button for '+value.toString());
-    switch (value.toString()){
+    await console.log('Clicking edit button for ' + value.toString());
+    switch (value.toString()) {
       case 'user name':
         await Utils.clickElement(PersonalInfoObjects.editFullNameButton);
         break;
@@ -62,12 +66,12 @@ class PersonalInfoPage {
         await Utils.clickElement(PersonalInfoObjects.editBankButton);
         break;
       default:
-        await console.warn('Edit info type is not valid -->'+value.toString());
+        await console.warn('Edit info type is not valid -->' + value.toString());
     }
   }
 
   async enterNewData(value) {
-    await console.log('Entering '+value.toString());
+    await console.log('Entering ' + value.toString());
     switch (value.toString()) {
       case 'user email':
         await Utils.setInputField('abc@gmail.com', PersonalInfoObjects.enterNewEmail);
@@ -99,7 +103,7 @@ class PersonalInfoPage {
   }
 
   async checkEditHeader(value) {
-    await console.log('Checking header displayed of '+value.toString());
+    await console.log('Checking header displayed of ' + value.toString());
     switch (value.toString()) {
       case 'user email':
         return await Utils.elementIsDisplayed(PersonalInfoObjects.changeEmailHeader);

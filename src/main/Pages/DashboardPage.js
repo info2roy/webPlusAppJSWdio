@@ -19,6 +19,10 @@ class DashboardPage {
     await Utils.clickElement(DashboardObjects.accountFamilyInformationOption);
   }
 
+  async selectStatementsAndTaxReports(){
+    await Utils.clickElement(DashboardObjects.statementsAndTaxReports);
+  }
+
   async returnToHome() {
     await Utils.clickElement(DashboardObjects.returnToHome);
   }

@@ -25,8 +25,8 @@ When(/^I select Account and Family Information$/, async () => {
   expect(await PersonalInfoFunctionality.profileInfoPageLaunched()).to.be.true;
 });
 
-When(/^ click on return to home$/, async () => {
-  await console.log(' click on return to home');
+When(/^I click on return to home$/, async () => {
+  await console.log('I click on return to home');
   await DashboardFunctionality.selectReturnToHome();
   expect(await PersonalInfoFunctionality.profileInfoPageLaunched()).to.be.true;
 });

@@ -5,6 +5,10 @@ class PersonalInfoFunctionality {
     return (await PersonalInfoPage.profileInfomationHeaderIsDisplayed());
   }
 
+  async MFPageLaunched(){
+    return (await PersonalInfoPage.MFPageHeaderIsDisplayed());
+  }
+
   async accountFamilyInfoPageLaunched() {
     return (await PersonalInfoPage.accountFamilyInfoPageHeaderIsDisplayed());
   }

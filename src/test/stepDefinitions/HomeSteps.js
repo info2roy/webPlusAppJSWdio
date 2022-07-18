@@ -55,4 +55,5 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
   } else if (Device.isAndroidApp()) {
     expect(await HomeFunctionality.androidHomePageLaunch()).to.be.true;
   }
+  await browser.pause(2000);  // Adding this pause because we have to manually click on "retry error button" on UI
 });

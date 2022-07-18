@@ -78,7 +78,7 @@ class InvestmentPage {
   async clickMakePaymentButton(paymentType) {
     if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
       await Utils.clickElement(InvestmentObjects.makePaymentNowButton);
-    } else if(paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
+    } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
       await Utils.clickElement(InvestmentObjects.oneClickInvestButton);
     }
   }
@@ -86,7 +86,7 @@ class InvestmentPage {
   async setupMFInvestmentPageHeaderIsDisplayed(investmentType, amount, months) {
     if (investmentType == Constants.INVESTMENT_TYPE_SIP) {
       return (await Utils.elementIsDisplayed(InvestmentObjects.setupMFSipInvestmentPageHeader(amount, months)));
-    } else if(investmentType == Constants.INVESTMENT_TYPE_ONETIME) {
+    } else if (investmentType == Constants.INVESTMENT_TYPE_ONETIME) {
       return (await Utils.elementIsDisplayed(InvestmentObjects.setupMFOneTimeInvestmentPageHeader(amount)));
     }
     return true;
@@ -134,13 +134,13 @@ class InvestmentPage {
   }
 
   async clickHomeButton() {
-    if(Device.isAndroidApp()) {
+    if (Device.isAndroidApp()) {
       await Utils.clickElement(InvestmentObjects.homeButton);
     }
   }
 
   async investmentSuccessMessageIsDisplayed() {
-    if(Device.isAndroidApp()) {
+    if (Device.isAndroidApp()) {
       return (await Utils.elementIsDisplayed(InvestmentObjects.investmentSuccessMessage));
     }
     return true;
@@ -158,6 +158,50 @@ class InvestmentPage {
     await console.log(`clicked backButton`);
     if (Device.isWeb()) {
       await Utils.clickWebElement(backButton);
+    }
+  }
+
+  async navigateToMFStatementPage(MfOption) {
+    switch (MfOption.toString()) {
+      case 'Investment history':
+        await Utils.clickElement(InvestmentObjects.investmentHistoryTab);
+        break;
+      case 'Fund holdings':
+        await Utils.clickElement(InvestmentObjects.fundHoldingsTab);
+        break;
+      case 'Tax statements':
+        await Utils.clickElement(InvestmentObjects.taxStatementsTab);
+        break;
+      case 'Capital gains':
+        await Utils.clickElement(InvestmentObjects.capitalGainsTab);
+        break;
+      default:
+        console.log('Mf option not available');
+    }
+  }
+
+  async validateMFPageLoad(MfOption) {
+    switch (MfOption.toString()) {
+      case 'Investment history':
+        return (
+          await Utils.elementIsDisplayed(InvestmentObjects.investmentHistoryFundFoundHeader) &&
+          await Utils.elementIsDisplayed(InvestmentObjects.investmentHistoryEmailMe) &&
+          await Utils.elementIsDisplayed(InvestmentObjects.investmentHistoryDownload));
+      case 'Fund holdings':
+        return (
+          await Utils.elementIsDisplayed(InvestmentObjects.fundHoldingsCheckbox) &&
+          await Utils.elementIsDisplayed(InvestmentObjects.investmentHistoryEmailMe) &&
+          await Utils.elementIsDisplayed(InvestmentObjects.fundsCurrentvalue) &&
+          await Utils.elementIsDisplayed(InvestmentObjects.fundsSortingOption))
+      case 'Tax statements':
+        return (
+          await Utils.elementIsDisplayed(InvestmentObjects.emailIcon) &&
+          await Utils.elementIsDisplayed(InvestmentObjects.downloadAsPdf));
+      case 'Capital gains':
+        return (
+          await Utils.elementIsDisplayed(InvestmentObjects.emailIcon) &&
+          await Utils.elementIsDisplayed(InvestmentObjects.downloadIcon)
+          );
     }
   }
 }

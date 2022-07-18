@@ -29,6 +29,10 @@ class DashboardFunctionality {
     await DashboardPage.selectAccountFamilyInformation();
   }
 
+  async selectStatementsAndTaxReports() {
+    await DashboardPage.selectStatementsAndTaxReports();
+  }
+
   async selectReturnToHome() {
     await DashboardPage.returnToHome();
   }
