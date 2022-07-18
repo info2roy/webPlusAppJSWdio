@@ -68,19 +68,21 @@ class WithdrawalPage {
   }
 
   async clickOnMutualFund(fundName) {
+    await browser.pause(5000);
     await Utils.clickElement(WithdrawalObjects.mutualFund(fundName));
     if (Device.isAndroidApp()) {
       await Utils.clickElement(WithdrawalObjects.mutualFund(fundName));
     }
+    await browser.pause(5000);
   }
 
   async enterWithdrawalAmountForFund(amount, index) {
     if (Device.isAndroidApp()) {
       const inputField = await Utils.getLastMatchingElement(WithdrawalObjects.mutualFundAmountFields);
-      await Utils.setInputWebElement(amount, inputField);
+      await Utils.setTextObject(amount, inputField);
     } else if(Device.isWeb()) {
       const inputField = await Utils.getMatchingElementByIndex(WithdrawalObjects.mutualFundAmountFields, index - 1);
-      await Utils.setInputWebElement(amount, inputField);
+      await Utils.setTextObject(amount, inputField);
     }
   }
 

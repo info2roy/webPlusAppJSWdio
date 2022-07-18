@@ -76,7 +76,7 @@ class Utils {
     await myButton.setValue(value);
   }
 
-  async setInputWebElement(value, webElement) {
+  async setTextObject(value, webElement) {
     await webElement.waitForDisplayed({ timeout: 10000 });
     await webElement.setValue(value);
   }
