@@ -12,5 +12,4 @@ When(/^I select "([^"]*)?" as financial product for withdrawal$/, async (financi
   await console.log(`When I select "${financialProduct}" as financial product for withdrawal`);
   expect(await CommonWithdrawalFunctionality.selectFinancialProductPageLaunched()).to.be.true;
   await CommonWithdrawalFunctionality.selectFinancialProduct(financialProduct);
-  await browser.pause(5000);
 });
