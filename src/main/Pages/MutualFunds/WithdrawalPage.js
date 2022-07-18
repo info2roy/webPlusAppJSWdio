@@ -12,6 +12,8 @@ class WithdrawalPage {
     if (Device.isAndroidApp()) {
       await console.log(`scrollUntilMFPlanNameTextIsDisplayed ${planName}`);
       await Utils.scrollVerticalUntilTextIntoViewForAndroid(WithdrawalObjects.mutualFundPlanNameText(planName));
+    } else if (Device.isWeb()) {
+      await Utils.scrollAndMoveToElement(WithdrawalObjects.mutualFundPlan(planName));
     }
   }
 

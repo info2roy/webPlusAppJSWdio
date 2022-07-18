@@ -107,6 +107,26 @@ class Utils {
     await submitButton.click();
   }
 
+  //Scroll until element for a selector is into viewport and return the element
+  async scrollToElement(selector) {
+    const locator = this.getLocator(selector);
+    const element = await $(locator);
+    await element.scrollIntoView();
+    return element;
+  }
+
+  //Move the mouse to an element
+  async moveToElement(element) {
+    await element.waitForDisplayed({ timeout: 10000 });
+    await element.moveTo();
+  }
+
+  //Scroll until element by selector is into viewport and move mouse to the element
+  async scrollAndMoveToElement(selector) {
+    const element = await this.scrollToElement(selector);
+    await this.moveToElement(element);
+  }
+
   async scrollVerticalUntilTextIntoViewForAndroid(textToBeIntoView) {
     const func = 'new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView';
     await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
