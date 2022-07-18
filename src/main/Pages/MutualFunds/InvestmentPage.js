@@ -1,6 +1,6 @@
 const Device = require('../../../support/libraries/Device');
 const Utils = require('../../../support/Utils/Utils');
-const Constants = require('../../../support/Constants/Constants');
+const Constants = require('../../../config/data/structured/Constants');
 const InvestmentObjects = require('../../Objects/MutualFunds/InvestmentObjects');
 
 class InvestmentPage {

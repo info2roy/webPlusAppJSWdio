@@ -3,7 +3,7 @@ const { expect } = require('chai');
 const InvestmentFunctionality = require('../../../main/Functionalities/MutualFunds/InvestmentFunctionality');
 const CommonInvestmentFunctionality = require('../../../main/Functionalities/Common/CommonInvestmentFunctionality');
 const DashboardFunctionality = require('../../../main/Functionalities/DashboardFunctionality');
-const Constants = require('../../../support/Constants/Constants');
+const Constants = require('../../../config/data/structured/Constants');
 
 Given(/^I am on the Investment Page$/, async () => {
   await console.log('Given I am on the Investment Page');

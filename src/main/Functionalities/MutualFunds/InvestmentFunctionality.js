@@ -1,4 +1,4 @@
-const Constants = require('../../../support/Constants/Constants');
+const Constants = require('../../../config/data/structured/Constants');
 const InvestmentPage = require('../../Pages/MutualFunds/InvestmentPage');
 
 class InvestmentFunctionality {

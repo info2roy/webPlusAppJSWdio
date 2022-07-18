@@ -1,3 +1,5 @@
+const { sleepTimeInMsAfterEachStep } = require('./src/config/env');
+
 exports.config = {
   //
   // ====================
@@ -329,5 +331,68 @@ exports.config = {
     * @param {String} newSessionId session ID of the new session
     */
   // onReload: function(oldSessionId, newSessionId) {
+  // }
+
+  /**
+    * Cucumber Hooks
+    *
+    * Runs before a Cucumber Feature.
+    * @param {String}                   uri      path to feature file
+    * @param {GherkinDocument.IFeature} feature  Cucumber feature object
+    */
+  // beforeFeature: function (uri, feature) {
+  // },
+  /**
+    *
+    * Runs before a Cucumber Scenario.
+    * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
+    * @param {Object}                 context  Cucumber World object
+    */
+  // beforeScenario: function (world, context) {
+  // },
+  /**
+    *
+    * Runs before a Cucumber Step.
+    * @param {Pickle.IPickleStep} step     step data
+    * @param {IPickle}            scenario scenario pickle
+    * @param {Object}             context  Cucumber World object
+    */
+  // beforeStep: function (step, scenario, context) {
+  // },
+  /**
+    *
+    * Runs after a Cucumber Step.
+    * @param {Pickle.IPickleStep} step             step data
+    * @param {IPickle}            scenario         scenario pickle
+    * @param {Object}             result           results object containing scenario results
+    * @param {boolean}            result.passed    true if scenario has passed
+    * @param {string}             result.error     error stack if scenario failed
+    * @param {number}             result.duration  duration of scenario in milliseconds
+    * @param {Object}             context          Cucumber World object
+    */
+  async afterStep (step, scenario, result, context) {
+    if(step && scenario && result && context && sleepTimeInMsAfterEachStep > 0) {
+      await browser.pause(sleepTimeInMsAfterEachStep);
+    }
+  },
+  /**
+    *
+    * Runs after a Cucumber Scenario.
+    * @param {ITestCaseHookParameter} world            world object containing information on pickle and test step
+    * @param {Object}                 result           results object containing scenario results `{passed: boolean, error: string, duration: number}`
+    * @param {boolean}                result.passed    true if scenario has passed
+    * @param {string}                 result.error     error stack if scenario failed
+    * @param {number}                 result.duration  duration of scenario in milliseconds
+    * @param {Object}                 context          Cucumber World object
+    */
+  // afterScenario: function (world, result, context) {
+  // },
+  /**
+    *
+    * Runs after a Cucumber Feature.
+    * @param {String}                   uri      path to feature file
+    * @param {GherkinDocument.IFeature} feature  Cucumber feature object
+    */
+  // afterFeature: function (uri, feature) {
   // }
 };
