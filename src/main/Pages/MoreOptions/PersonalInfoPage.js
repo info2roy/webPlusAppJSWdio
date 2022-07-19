@@ -1,8 +1,8 @@
 const path = require('path');
 const { expect } = require('chai');
-const Utils = require('../../support/Utils/Utils');
-const PersonalInfoObjects = require('../Objects/PersonalInfoObjects');
-const Device = require('../../support/libraries/Device');
+const Utils = require('../../../support/Utils/Utils');
+const PersonalInfoObjects = require('../../Objects/MoreOptions/PersonalInfoObjects');
+const Device = require('../../../support/libraries/Device');
 // const faker = require('@faker-js/faker');
 
 class PersonalInfoPage {
