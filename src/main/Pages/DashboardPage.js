@@ -5,7 +5,7 @@ const Constants = require('../../config/data/structured/Constants');
 const InvestmentCalendarPage = require('./Reports/InvestmentCalendarPage');
 
 class DashboardPage {
-  async openProfileDropdown() {
+  async openMoreOptions() {
     await Utils.clickElement(DashboardObjects.moreButton);
   }
 

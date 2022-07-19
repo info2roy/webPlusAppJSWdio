@@ -10,7 +10,7 @@ Feature: As customer I wish to update my account details
     And I should see dashboard page loaded
 
   Scenario: As a logged in user I wish to update my Bank details
-    When I open the profile dropdown
+    When I open the more options
     And I select option "Account and Family Information"
     Then I edit "bank"
     And I update changes
@@ -18,7 +18,7 @@ Feature: As customer I wish to update my account details
     And I should see dashboard page loaded
 
   Scenario: As a logged in user I wish to update my nominee
-    When I open the profile dropdown
+    When I open the more options
     And I select option "Account and Family Information"
     Then I edit "nominee"
     And I update changes

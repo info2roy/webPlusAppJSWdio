@@ -10,9 +10,9 @@ Then(/^I should see dashboard page loaded$/, async () => {
   await DashboardFunctionality.validate();
 });
 
-Given(/^I open the profile dropdown$/, async () => {
-  await console.log('Given I open the profile dropdown');
-  await DashboardFunctionality.openProfileDropdown();
+Given(/^I open the more options$/, async () => {
+  await console.log('Given I open the more options');
+  await DashboardFunctionality.openMoreOptions();
 });
 
 When(/^I select personal information$/, async () => {

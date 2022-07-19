@@ -10,7 +10,7 @@ Feature: As customer I wish to update my account details
     And I should see dashboard page loaded
 
   Scenario: As a logged in user I wish to update my User name
-    When I open the profile dropdown
+    When I open the more options
     And I select personal information
     Then I edit "user name"
     And I update changes
