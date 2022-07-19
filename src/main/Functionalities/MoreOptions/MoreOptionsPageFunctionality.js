@@ -32,5 +32,9 @@ class MoreOptionsPageFunctionality {
   async selectAccountFamilyInformation() {
     await MoreOptionsPage.selectAccountFamilyInformation();
   }
+
+  async selectNotificationPreferences() {
+    await MoreOptionsPage.selectNotificationPreferences();
+  }
 }
 module.exports = new MoreOptionsPageFunctionality();

@@ -100,5 +100,9 @@ class MoreOptionsPage {
     await Utils.clickElement(MoreOptionsPageObjects.accountFamilyInformationOption);
   }
 
+  async selectNotificationPreferences() {
+    await Utils.clickElement(MoreOptionsPageObjects.notificationPreferencesOption);
+  }
+
 }
 module.exports = new MoreOptionsPage();
