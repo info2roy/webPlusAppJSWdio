@@ -1,5 +1,5 @@
 const { When, Then } = require('@wdio/cucumber-framework');
-const PersonalInfoFunctionality = require('../../../main/Functionalities/PersonalInfoFunctionality');
+const PersonalInfoFunctionality = require('../../../main/Functionalities/MoreOptions/PersonalInfoFunctionality');
 
 When(/^I update the profile picture$/, async () => {
   await console.log('When I update the profile picture');

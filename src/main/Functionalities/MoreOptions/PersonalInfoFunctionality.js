@@ -1,4 +1,4 @@
-const PersonalInfoPage = require('../Pages/PersonalInfoPage');
+const PersonalInfoPage = require('../../Pages/PersonalInfoPage');
 
 class PersonalInfoFunctionality {
   async profileInfoPageLaunched() {

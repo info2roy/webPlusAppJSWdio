@@ -1,7 +1,7 @@
 const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const MoreOptionsPageFunctionality = require('../../../main/Functionalities/MoreOptions/MoreOptionsPageFunctionality');
-const PersonalInfoFunctionality = require('../../../main/Functionalities/PersonalInfoFunctionality');
+const PersonalInfoFunctionality = require('../../../main/Functionalities/MoreOptions/PersonalInfoFunctionality');
 
 Then(/^I should see all of the more options$/, async () => {
   await console.log('Then I should see all of the more options');

@@ -1,8 +1,8 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const DashboardFunctionality = require('../../main/Functionalities/DashboardFunctionality');
-const PersonalInfoFunctionality = require('../../main/Functionalities/PersonalInfoFunctionality');
 const MfStatementfunctionality = require('../../main/Functionalities/MutualFunds/MFStatementFunctionality');
+const PersonalInfoFunctionality = require('../../main/Functionalities/MoreOptions/PersonalInfoFunctionality');
 
 Then(/^I should see dashboard page loaded$/, async () => {
   await console.log('Then I should see dashboard page loaded');
