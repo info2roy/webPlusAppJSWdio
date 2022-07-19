@@ -7,23 +7,7 @@ class DashboardObjects {
     app: '//android.widget.TextView[@text="More"]',
   };
 
-  personalInfoOption = {
-    web: '//div[text()="Personal Information"]',
-    desktop: 'span.test-personal-information',
-    app: '//android.widget.TextView[@text="Personal information"]',
-  };
-
-  accountFamilyInformationOption = {
-    web: '//div[text()="Account & Family Information"]'
-  };
-
-  statementsAndTaxReports = { web: '//div[text()="Statements & Tax Reports"]' };
-
   returnToHome = { web: '//*[contains(text(),"Return to Home")]' };
-
-  personalInfoText = {
-    app: 'Personal information'
-  };
 
   withdrawButton = { web: '//div[contains(@class,"dashboard-invest-withdraw-btn")]//*[text()="Withdraw"]', app: '//*[@text="Withdraw"]' };
 

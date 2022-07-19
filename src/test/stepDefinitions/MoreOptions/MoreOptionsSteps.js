@@ -5,6 +5,7 @@ const PersonalInfoFunctionality = require('../../../main/Functionalities/MoreOpt
 
 Then(/^I should see all of the more options$/, async () => {
   await console.log('Then I should see all of the more options');
+  expect(await MoreOptionsPageFunctionality.moreOptionsPageLaunched()).to.be.true;
 });
 
 When(/^I select personal information$/, async () => {
