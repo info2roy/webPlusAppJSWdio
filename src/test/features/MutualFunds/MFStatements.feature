@@ -1,7 +1,7 @@
 Feature: Feature to check basic navigations on MF statements screen
 
     Scenario: As a user, I can log into the scripbox via home page
-        Given I login to Scripbox in "UAT38" for "user189182"
+        Given I login to Scripbox in "STAGING" for "user189182"
 
     Scenario: I navigate to MF statement section
         When I open the profile dropdown

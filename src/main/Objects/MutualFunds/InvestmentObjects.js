@@ -190,5 +190,7 @@ class InvestmentObjects {
   investmentHistoryEmailMe = { web: '//*[text()="Email me"]'};
 
   investmentHistoryDownload = { web: '//*[text()="Download"]'};
+
+  statementsAndTaxReportsHeader = { web: '//div[contains(@class,"heading-sub-container")]//div[text()="Statements"]'};
 }
 module.exports = new InvestmentObjects();

@@ -30,8 +30,6 @@ class PersonalInfoObjects {
 
   doneCropButton = { app: '~Crop' }; // the done Crop button
 
-  statementsAndTaxReportsHeader = { web: '//div[contains(@class,"heading-sub-container")]//div[text()="Statements"]'};
-
   editFullNameButton = { web: '//div[contains(text(),"Full Name")]//following-sibling::span'};
 
   editNomineeButton = { web: '//div[contains(text(),"Nominee")]//following-sibling::span'};

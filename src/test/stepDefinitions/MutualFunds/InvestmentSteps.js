@@ -3,7 +3,6 @@ const { expect } = require('chai');
 const InvestmentFunctionality = require('../../../main/Functionalities/MutualFunds/InvestmentFunctionality');
 const CommonInvestmentFunctionality = require('../../../main/Functionalities/Common/CommonInvestmentFunctionality');
 const DashboardFunctionality = require('../../../main/Functionalities/DashboardFunctionality');
-const PersonalInfoFunctionality = require('../../../main/Functionalities/PersonalInfoFunctionality');
 const Constants = require('../../../support/Constants/Constants');
 
 Given(/^I am on the Investment Page$/, async () => {
@@ -110,45 +109,4 @@ Then(/^I go back to the dashboard page$/, async () => {
   await console.log('Then I go back to the dashboard page');
   await DashboardFunctionality.open();
   await DashboardFunctionality.validate();
-});
-
-When(/^I select option "([^"]*)?"$/, async (option) => {
-  console.log('Navigating to page --> ' + option.toString());
-  switch (option.toString()) {
-    case 'Statements and Tax Reports':
-      await DashboardFunctionality.selectStatementsAndTaxReports();
-      expect(await PersonalInfoFunctionality.MFPageLaunched()).to.be.true;
-      break;
-    case 'Account and Family Information':
-      await DashboardFunctionality.selectAccountFamilyInformation();
-      expect(await PersonalInfoFunctionality.profileInfoPageLaunched()).to.be.true;
-      break;
-    case 'personal information':
-      await DashboardFunctionality.selectPersonalInformation();
-      expect(await PersonalInfoFunctionality.profileInfoPageLaunched()).to.be.true;
-      break;
-    default:
-      console.log(option + ' Option not available');
-  }
-});
-
-When(/^I navigate to "([^"]*)?" page$/, async (option) => {
-  console.log('Navigating to MF page --> ' + option.toString());
-  switch (option.toString()) {
-    case 'Investment history':
-      expect(await InvestmentFunctionality.navigateToMFPage('Investment history')).to.be.true;
-      break;
-    case 'Fund holdings':
-      expect(await InvestmentFunctionality.navigateToMFPage('Fund holdings')).to.be.true;
-      break;
-    case 'Tax statements':
-      expect(await InvestmentFunctionality.navigateToMFPage('Tax statements')).to.be.true;
-      break;
-    case 'Capital gains':
-      expect(await InvestmentFunctionality.navigateToMFPage('Capital gains')).to.be.true;
-      break;
-    default:
-      console.log(option + ' Option not available');
-      expect(false).to.be.true;
-  }
 });
