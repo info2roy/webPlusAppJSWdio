@@ -76,11 +76,25 @@ class Utils {
     await myButton.setValue(value);
   }
 
+  async setTextObject(value, webElement) {
+    await webElement.waitForDisplayed({ timeout: 10000 });
+    await webElement.setValue(value);
+  }
+
   async getMatchingElementByIndex(selector, index) {
     const locator = this.getLocator(selector);
     const elements = await $$(locator);
     if (elements.length > index) {
       return elements[index];
+    }
+    return null;
+  }
+
+  async getLastMatchingElement(selector) {
+    const locator = this.getLocator(selector);
+    const elements = await $$(locator);
+    if (elements.length > 0) {
+      return elements[elements.length - 1];
     }
     return null;
   }
@@ -91,6 +105,26 @@ class Utils {
     const remoteFilePath = await browser.uploadFile(localFilePath);
     await fileInput.setValue(remoteFilePath);
     await submitButton.click();
+  }
+
+  //Scroll until element for a selector is into viewport and return the element
+  async scrollToElement(selector) {
+    const locator = this.getLocator(selector);
+    const element = await $(locator);
+    await element.scrollIntoView();
+    return element;
+  }
+
+  //Move the mouse to an element
+  async moveToElement(element) {
+    await element.waitForDisplayed({ timeout: 10000 });
+    await element.moveTo();
+  }
+
+  //Scroll until element by selector is into viewport and move mouse to the element
+  async scrollAndMoveToElement(selector) {
+    const element = await this.scrollToElement(selector);
+    await this.moveToElement(element);
   }
 
   async scrollVerticalUntilTextIntoViewForAndroid(textToBeIntoView) {

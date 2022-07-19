@@ -53,3 +53,13 @@ When(/^I select option "([^"]*)?"$/, async (option) => {
       console.log(option + ' Option not available');
   }
 });
+
+Given(/^I am on the dashboard page$/, async () => {
+  await console.log('Given I am on the dashboard page');
+  await DashboardFunctionality.validate();
+});
+
+When(/^I select the "(Withdraw|Invest more)" option on dashboard page$/, async (dashboardOption) => {
+  await console.log(`When I select the ${dashboardOption} option on dashboard page`);
+  await DashboardFunctionality.selectWithdrawOrInvestMoreOption(dashboardOption);
+});

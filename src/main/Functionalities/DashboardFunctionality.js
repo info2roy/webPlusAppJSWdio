@@ -3,6 +3,7 @@ const DashboardObjects = require('../Objects/DashboardObjects');
 const Utils = require('../../support/Utils/Utils');
 const Device = require('../../support/libraries/Device');
 const env = require('../../config/env');
+const Constants = require('../../config/data/structured/Constants');
 
 class DashboardFunctionality {
 
@@ -38,7 +39,15 @@ class DashboardFunctionality {
   }
 
   async invest() {
-    await DashboardPage.selectInvestOption();
+    await DashboardPage.selectDashboardTab(Constants.DASHBOARD_INVEST);
+  }
+
+  async home() {
+    await DashboardPage.selectDashboardTab(Constants.DASHBOARD_HOME);
+  }
+
+  async selectWithdrawOrInvestMoreOption(option) {
+    await DashboardPage.selectWithdrawOrInvestMoreOption(option);
   }
 }
 module.exports = new DashboardFunctionality();
