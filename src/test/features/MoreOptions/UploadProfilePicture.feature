@@ -10,7 +10,7 @@ Feature: Scripbox Login and update of profile picture
     Then I should see dashboard page loaded
 
   Scenario: As a logged in user I am able to open Personal Information Page
-    Given I open the more options
+    When I open the more options
     When I select personal information
     When I update the profile picture
     Then The picture is uploaded successfully

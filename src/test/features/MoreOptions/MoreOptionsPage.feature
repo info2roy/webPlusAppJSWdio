@@ -5,5 +5,5 @@ Feature: Scripbox More options page
 
   Scenario: As a logged in user, I can view More options page
     Given I am on the dashboard page
-    When I click on the More option
+    When I open the more options
     Then I should see all of the more options
