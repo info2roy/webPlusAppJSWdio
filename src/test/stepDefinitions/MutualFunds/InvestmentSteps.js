@@ -113,7 +113,7 @@ Then(/^I go back to the dashboard page$/, async () => {
 });
 
 When(/^I select option "([^"]*)?"$/, async (option) => {
-  console.log("Navigating to page --> " + option.toString())
+  console.log('Navigating to page --> ' + option.toString());
   switch (option.toString()) {
     case 'Statements and Tax Reports':
       await DashboardFunctionality.selectStatementsAndTaxReports();
@@ -133,7 +133,7 @@ When(/^I select option "([^"]*)?"$/, async (option) => {
 });
 
 When(/^I navigate to "([^"]*)?" page$/, async (option) => {
-  console.log("Navigating to MF page --> " + option.toString())
+  console.log('Navigating to MF page --> ' + option.toString());
   switch (option.toString()) {
     case 'Investment history':
       expect(await InvestmentFunctionality.navigateToMFPage('Investment history')).to.be.true;
@@ -152,6 +152,3 @@ When(/^I navigate to "([^"]*)?" page$/, async (option) => {
       expect(false).to.be.true;
   }
 });
-
-
-

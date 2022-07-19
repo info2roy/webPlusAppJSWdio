@@ -32,11 +32,11 @@ When(/^I click on login option$/, async () => {
 });
 
 When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => {
-  await console.log('Logging in to '+env+' for user '+user);
+  await console.log('Logging in to ' + env + ' for user ' + user);
   const platform = Utils.getPlatform();
   Device.setDevice(platform);
-  if (Device.isMobileWeb() || Device.isDesktop()){
-    switch (env.toString()){
+  if (Device.isMobileWeb() || Device.isDesktop()) {
+    switch (env.toString()) {
       case 'UAT38':
         await browser.url(envUrl.andromedaUat38);
         await HomeFunctionality.performLogin(env, user);
@@ -49,11 +49,11 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
         await browser.url(envUrl.mockStaging);
         await HomeFunctionality.performLogin(env, user);
       default:
-        await console.warn('Environment is not defined in URL list --> '+env.toString());
+        await console.warn('Environment is not defined in URL list --> ' + env.toString());
         break;
     }
   } else if (Device.isAndroidApp()) {
     expect(await HomeFunctionality.androidHomePageLaunch()).to.be.true;
   }
-  await browser.pause(2000);  // Adding this pause because we have to manually click on "retry error button" on UI
+  await browser.pause(2000); // Adding this pause because we have to manually click on "retry error button" on UI
 });

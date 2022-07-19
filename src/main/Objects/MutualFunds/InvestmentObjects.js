@@ -183,9 +183,9 @@ class InvestmentObjects {
 
   downloadIcon = { web: '(//div[@data-testid="financial-year-tile"]//div)[7]'};
 
-  fundsCurrentvalue = { web: '(//*[text()="Current value"])[1]'}
+  fundsCurrentvalue = { web: '(//*[text()="Current value"])[1]'};
 
-  fundsSortingOption = {web: '//img[contains(@src,"/sort.svg")]'}
+  fundsSortingOption = {web: '//img[contains(@src,"/sort.svg")]'};
 
   investmentHistoryEmailMe = { web: '//*[text()="Email me"]'};
 

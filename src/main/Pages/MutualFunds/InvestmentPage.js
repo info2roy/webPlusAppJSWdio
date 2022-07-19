@@ -192,7 +192,7 @@ class InvestmentPage {
           await Utils.elementIsDisplayed(InvestmentObjects.fundHoldingsCheckbox) &&
           await Utils.elementIsDisplayed(InvestmentObjects.investmentHistoryEmailMe) &&
           await Utils.elementIsDisplayed(InvestmentObjects.fundsCurrentvalue) &&
-          await Utils.elementIsDisplayed(InvestmentObjects.fundsSortingOption))
+          await Utils.elementIsDisplayed(InvestmentObjects.fundsSortingOption));
       case 'Tax statements':
         return (
           await Utils.elementIsDisplayed(InvestmentObjects.emailIcon) &&
@@ -200,8 +200,9 @@ class InvestmentPage {
       case 'Capital gains':
         return (
           await Utils.elementIsDisplayed(InvestmentObjects.emailIcon) &&
-          await Utils.elementIsDisplayed(InvestmentObjects.downloadIcon)
-          );
+          await Utils.elementIsDisplayed(InvestmentObjects.downloadIcon));
+      default:
+        console.log('Wrong type');
     }
   }
 }

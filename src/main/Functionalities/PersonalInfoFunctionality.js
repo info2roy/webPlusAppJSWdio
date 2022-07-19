@@ -5,7 +5,7 @@ class PersonalInfoFunctionality {
     return (await PersonalInfoPage.profileInfomationHeaderIsDisplayed());
   }
 
-  async MFPageLaunched(){
+  async MFPageLaunched() {
     return (await PersonalInfoPage.MFPageHeaderIsDisplayed());
   }
 

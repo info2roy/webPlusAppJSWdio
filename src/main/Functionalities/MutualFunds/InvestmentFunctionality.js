@@ -128,7 +128,7 @@ class InvestmentFunctionality {
         await InvestmentPage.navigateToMFStatementPage('Capital gains');
         return (await InvestmentPage.validateMFPageLoad('Capital gains'));
       default:
-        console.log("MF option not avilable")
+        console.log('MF option not avilable');
     }
   }
 }

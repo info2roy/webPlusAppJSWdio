@@ -1,4 +1,4 @@
-Feature: Scripbox Login from home page
+Feature: Feature to check basic navigations on MF statements screen
 
     Scenario: As a user, I can log into the scripbox via home page
         Given I login to Scripbox in "UAT38" for "user189182"
