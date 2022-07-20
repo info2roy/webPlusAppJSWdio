@@ -143,6 +143,11 @@ class Utils {
     const func = 'new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollTextIntoView';
     await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
   }
+
+  //get a random integer between 0(inclusive) and maxIntValue(exclusive)
+  getRandomInt(maxIntValue) {
+    return Math.floor(Math.random() * maxIntValue);
+  }
 }
 
 module.exports = new Utils();

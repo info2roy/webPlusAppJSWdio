@@ -91,5 +91,18 @@ class NotificationPreferenceObjects {
       }
     }
   };
+
+  updateChangesButton = {
+    web: '//button/div[text()="Update Changes"]'
+  };
+
+  updateSuccessMessage = {
+    web: '//div[text()="Notification preferences has been updated"]'
+  };
+
+  toggleScenarios = {
+    '/images/icons/misc/toggle-on.svg': '/images/icons/misc/toggle-off.svg',
+    '/images/icons/misc/toggle-off.svg': '/images/icons/misc/toggle-on.svg'
+  };
 }
 module.exports = new NotificationPreferenceObjects();

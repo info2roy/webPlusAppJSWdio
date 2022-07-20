@@ -5,5 +5,13 @@ class NotificationPreferencesFunctionality {
     return (await NotificationPreferencesPage.notificationPreferencesPageHeaderIsDisplayed()) &&
     (await NotificationPreferencesPage.notificationPreferenceControlsAreDisplayedAndAreCorrect());
   }
+
+  async testToggleScenario(controlName, channel) {
+    await NotificationPreferencesPage.notificationPreferencesControlsTestToggleScenario(controlName, channel);
+  }
+
+  async testRandomToggleScenarios() {
+    await NotificationPreferencesPage.notificationPreferenceControlsRandomToggleScenario();
+  }
 }
 module.exports = new NotificationPreferencesFunctionality();
