@@ -101,6 +101,11 @@ class MoreOptionsPage {
   }
 
   async selectNotificationPreferences() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.notificationPreferencesOptionText);
+    } else if(Device.isWeb()) {
+      await Utils.scrollAndMoveToElement(MoreOptionsPageObjects.notificationPreferencesOption);
+    }
     await Utils.clickElement(MoreOptionsPageObjects.notificationPreferencesOption);
   }
 

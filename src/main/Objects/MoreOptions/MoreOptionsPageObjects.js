@@ -53,6 +53,9 @@ class MoreOptionsPageObjects {
   notificationPreferencesOption = {
     web: '//div[text()="Notification Preferences"]'
   };
+  notificationPreferencesOptionText = {
+    app: 'Notification Preferences'
+  };
 
   whatsappNotificationsOption = {
     web: '//div[text()="Whatsapp Notifications"]'
