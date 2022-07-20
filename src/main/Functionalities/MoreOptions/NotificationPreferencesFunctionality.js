@@ -3,7 +3,7 @@ const NotificationPreferencesPage = require('../../Pages/MoreOptions/Notificatio
 class NotificationPreferencesFunctionality {
   async notificationPrefPageLaunched() {
     return (await NotificationPreferencesPage.notificationPreferencesPageHeaderIsDisplayed()) &&
-    (await NotificationPreferencesPage.notificationPreferenceControlsAreDisplayed());
+    (await NotificationPreferencesPage.notificationPreferenceControlsAreDisplayedAndAreCorrect());
   }
 }
 module.exports = new NotificationPreferencesFunctionality();

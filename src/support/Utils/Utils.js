@@ -71,6 +71,12 @@ class Utils {
     return isDisplayed;
   }
 
+  async getElementAttributeBySelector(selector, attribute) {
+    await this.elementIsDisplayed(selector);
+    const element = await $(this.getLocator(selector));
+    return (await element.getAttribute(attribute));
+  }
+
   async setInputField(value, selector) {
     await this.elementIsDisplayed(selector);
     const myButton = await $(this.getLocator(selector));
