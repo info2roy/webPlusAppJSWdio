@@ -9,6 +9,8 @@ class NotificationPreferencesPage {
 
   async notificationPreferenceControlsAreDisplayedAndAreCorrect() {
     let allDisplayed = true;
+    allDisplayed = allDisplayed && (await Utils.elementIsDisplayed(NotificationPreferencesObjects.emailHeader)) &&
+    (await Utils.elementIsDisplayed(NotificationPreferencesObjects.smsHeader));
     for (const [key, value] of Object.entries(NotificationPreferencesObjects.notificationPreferenceControls)) {
       allDisplayed = allDisplayed && (await Utils.elementIsDisplayed(
         NotificationPreferencesObjects.notificationPreferenceType(key))
