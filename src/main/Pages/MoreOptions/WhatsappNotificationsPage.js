@@ -1,6 +1,6 @@
 const Utils = require('../../../support/Utils/Utils');
 const WhatsappNotificationsObjects = require('../../Objects/MoreOptions/WhatsappNotificationsObjects');
-const MoreOptionsPageObjects = require('../../Objects/MoreOptions/MoreOptionsPageObjects');
+const MoreOptionsObjects = require('../../Objects/MoreOptions/MoreOptionsObjects');
 const { expect } = require('chai');
 
 class WhatsappNotificationsPage {
@@ -19,10 +19,10 @@ class WhatsappNotificationsPage {
     const initialSrc = await Utils.getElementAttributeBySelector(selector, 'src');
     await Utils.clickElement(selector);
     const firstToggleSrc = await Utils.getElementAttributeBySelector(selector, 'src');
-    expect(firstToggleSrc).to.be.equal(MoreOptionsPageObjects.communicationsToggleScenarios[initialSrc]);
+    expect(firstToggleSrc).to.be.equal(MoreOptionsObjects.communicationsToggleScenarios[initialSrc]);
     await Utils.clickElement(selector);
     const secondToggleSrc = await Utils.getElementAttributeBySelector(selector, 'src');
-    expect(secondToggleSrc).to.be.equal(MoreOptionsPageObjects.communicationsToggleScenarios[firstToggleSrc]);
+    expect(secondToggleSrc).to.be.equal(MoreOptionsObjects.communicationsToggleScenarios[firstToggleSrc]);
   }
 }
 module.exports = new WhatsappNotificationsPage();

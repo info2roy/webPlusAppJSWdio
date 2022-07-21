@@ -1,157 +1,157 @@
 const Utils = require('../../../support/Utils/Utils');
-const MoreOptionsPageObjects = require('../../Objects/MoreOptions/MoreOptionsPageObjects');
+const MoreOptionsObjects = require('../../Objects/MoreOptions/MoreOptionsObjects');
 const Device = require('../../../support/libraries/Device');
 
 class MoreOptionsPage {
 
   async scripboxImageIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.scripboxImage);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.scripboxImage);
   }
 
   async bellImageIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.bellImage);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.bellImage);
   }
 
   async supportImageIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.supportImage);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.supportImage);
   }
 
   async addAFamilyMemberButtonIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.addAFamilyMemberButton);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.addAFamilyMemberButton);
   }
 
   async yourProfileHeaderIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.yourProfileHeader);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.yourProfileHeader);
   }
 
   async yourProfileImageIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.yourProfileImage);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.yourProfileImage);
   }
 
   async personalInfoOptionIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.personalInfoOption);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.personalInfoOption);
   }
 
   async accountFamilyInformationOptionIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.accountFamilyInformationOption);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.accountFamilyInformationOption);
   }
 
   async statementsAndTaxReportsOptionIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.statementsAndTaxReportsOption);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.statementsAndTaxReportsOption);
   }
 
   async appSettingsHeaderIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.appSettingsHeader);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.appSettingsHeader);
   }
 
   async appSettingsImageIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.appSettingsImage);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.appSettingsImage);
   }
 
   async notificationPreferencesOptionIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.notificationPreferencesOption);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.notificationPreferencesOption);
   }
 
   async whatsappNotificationsOptionIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.whatsappNotificationsOption);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.whatsappNotificationsOption);
   }
 
   async aboutScripboxOptionIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.aboutScripboxOption);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxOption);
   }
 
   async referAFriendOptionIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.referAFriendOption);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.referAFriendOption);
   }
 
   async giveFeedbackOptionIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.giveFeedbackOption);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.giveFeedbackOption);
   }
 
   async logoutOptionIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.logoutOption);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.logoutOption);
   }
 
   async whatsappImageIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.whatsAppImage);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.whatsAppImage);
   }
 
   async linkedinImageIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.linkedInImage);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.linkedInImage);
   }
 
   async facebookImageIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.facebookImage);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.facebookImage);
   }
 
   async twitterImageIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsPageObjects.twitterImage);
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.twitterImage);
   }
 
   async selectPersonalInformation() {
     if (Device.isAndroidApp()) {
       await console.log('AndroidApp: click on Personal Infomation requires scrolling until it comes into view');
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.personalInfoText);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.personalInfoText);
     }
-    await Utils.clickElement(MoreOptionsPageObjects.personalInfoOption);
+    await Utils.clickElement(MoreOptionsObjects.personalInfoOption);
   }
 
   async selectAccountFamilyInformation() {
-    await Utils.clickElement(MoreOptionsPageObjects.accountFamilyInformationOption);
+    await Utils.clickElement(MoreOptionsObjects.accountFamilyInformationOption);
   }
 
   async selectNotificationPreferences() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.notificationPreferencesOptionText);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.notificationPreferencesOptionText);
     } else if(Device.isWeb()) {
-      await Utils.scrollAndMoveToElement(MoreOptionsPageObjects.notificationPreferencesOption);
+      await Utils.scrollAndMoveToElement(MoreOptionsObjects.notificationPreferencesOption);
     }
-    await Utils.clickElement(MoreOptionsPageObjects.notificationPreferencesOption);
+    await Utils.clickElement(MoreOptionsObjects.notificationPreferencesOption);
   }
 
   async selectWhatsappNotifications() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.whatsAppNotificationsOptionText);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.whatsAppNotificationsOptionText);
     } else if(Device.isWeb()) {
-      await Utils.scrollAndMoveToElement(MoreOptionsPageObjects.whatsappNotificationsOption);
+      await Utils.scrollAndMoveToElement(MoreOptionsObjects.whatsappNotificationsOption);
     }
-    await Utils.clickElement(MoreOptionsPageObjects.whatsappNotificationsOption);
+    await Utils.clickElement(MoreOptionsObjects.whatsappNotificationsOption);
   }
 
   async selectAboutScripbox() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.aboutScripboxOptionText);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.aboutScripboxOptionText);
     } else if(Device.isWeb()) {
-      await Utils.scrollAndMoveToElement(MoreOptionsPageObjects.aboutScripboxOption);
+      await Utils.scrollAndMoveToElement(MoreOptionsObjects.aboutScripboxOption);
     }
-    await Utils.clickElement(MoreOptionsPageObjects.aboutScripboxOption);
+    await Utils.clickElement(MoreOptionsObjects.aboutScripboxOption);
   }
 
   async selectReferAFriend() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.referAFriendOptionText);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.referAFriendOptionText);
     } else if(Device.isWeb()) {
-      await Utils.scrollAndMoveToElement(MoreOptionsPageObjects.referAFriendOption);
+      await Utils.scrollAndMoveToElement(MoreOptionsObjects.referAFriendOption);
     }
-    await Utils.clickElement(MoreOptionsPageObjects.referAFriendOption);
+    await Utils.clickElement(MoreOptionsObjects.referAFriendOption);
   }
 
   async selectGiveFeedback() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.giveFeedbackOptionText);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.giveFeedbackOptionText);
     } else if(Device.isWeb()) {
-      await Utils.scrollAndMoveToElement(MoreOptionsPageObjects.giveFeedbackOption);
+      await Utils.scrollAndMoveToElement(MoreOptionsObjects.giveFeedbackOption);
     }
-    await Utils.clickElement(MoreOptionsPageObjects.giveFeedbackOption);
+    await Utils.clickElement(MoreOptionsObjects.giveFeedbackOption);
   }
 
   async selectLogout() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.logoutOptionText);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.logoutOptionText);
     } else if(Device.isWeb()) {
-      await Utils.scrollAndMoveToElement(MoreOptionsPageObjects.logoutOption);
+      await Utils.scrollAndMoveToElement(MoreOptionsObjects.logoutOption);
     }
-    await Utils.clickElement(MoreOptionsPageObjects.logoutOption);
+    await Utils.clickElement(MoreOptionsObjects.logoutOption);
   }
 
 }
