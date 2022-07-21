@@ -196,6 +196,10 @@ class MoreOptionsPage {
     await Utils.clickElement(MoreOptionsObjects.giveFeedbackOption);
   }
 
+  async giveFeedbackPageHeaderIsDisplayed() {
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.giveFeedbackPageHeader);
+  }
+
   async selectLogout() {
     if (Device.isAndroidApp()) {
       await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.logoutOptionText);

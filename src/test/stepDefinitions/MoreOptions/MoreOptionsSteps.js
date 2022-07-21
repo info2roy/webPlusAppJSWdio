@@ -74,3 +74,13 @@ Then(/^I should see Refer a Friend Page loaded$/, async () => {
   await console.log('Then I should see Refer a Friend Page loaded');
   expect(await MoreOptionsFunctionality.referAFriendPageLaunched()).to.be.true;
 });
+
+When(/^I select Give Feedback$/, async () => {
+  await console.log('When I select Give Feedback');
+  await MoreOptionsFunctionality.selectGiveFeedback();
+});
+
+Then(/^I should see Give Feedback Page loaded$/, async () => {
+  await console.log('Then I should see Give Feedback Page loaded');
+  expect(await MoreOptionsFunctionality.giveFeedbackPageLaunched()).to.be.true;
+});

@@ -87,6 +87,10 @@ class MoreOptionsFunctionality {
     await MoreOptionsPage.selectGiveFeedback();
   }
 
+  async giveFeedbackPageLaunched() {
+    return (await MoreOptionsPage.giveFeedbackPageHeaderIsDisplayed());
+  }
+
   async selectLogout() {
     await MoreOptionsPage.selectLogout();
   }

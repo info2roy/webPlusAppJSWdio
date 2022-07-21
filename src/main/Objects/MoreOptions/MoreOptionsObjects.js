@@ -136,6 +136,10 @@ class MoreOptionsPageObjects {
     app: 'Give Feedback'
   };
 
+  giveFeedbackPageHeader = {
+    web: '//div[text()="Feedback on the new Scripbox experience"]'
+  };
+
   logoutOption = {
     web: '//div[text()="Logout"]'
   };
