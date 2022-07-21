@@ -1,5 +1,5 @@
 const MoreOptionsPage = require('../../Pages/MoreOptions/MoreOptionsPage');
-class MoreOptionsPageFunctionality {
+class MoreOptionsFunctionality {
 
   async moreOptionsPageLaunched() {
     return (await MoreOptionsPage.scripboxImageIsDisplayed()) &&
@@ -41,4 +41,4 @@ class MoreOptionsPageFunctionality {
     await MoreOptionsPage.selectWhatsappNotifications();
   }
 }
-module.exports = new MoreOptionsPageFunctionality();
+module.exports = new MoreOptionsFunctionality();
