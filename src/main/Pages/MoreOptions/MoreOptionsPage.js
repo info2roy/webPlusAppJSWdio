@@ -118,5 +118,41 @@ class MoreOptionsPage {
     await Utils.clickElement(MoreOptionsPageObjects.whatsappNotificationsOption);
   }
 
+  async selectAboutScripbox() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.aboutScripboxOptionText);
+    } else if(Device.isWeb()) {
+      await Utils.scrollAndMoveToElement(MoreOptionsPageObjects.aboutScripboxOption);
+    }
+    await Utils.clickElement(MoreOptionsPageObjects.aboutScripboxOption);
+  }
+
+  async selectReferAFriend() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.referAFriendOptionText);
+    } else if(Device.isWeb()) {
+      await Utils.scrollAndMoveToElement(MoreOptionsPageObjects.referAFriendOption);
+    }
+    await Utils.clickElement(MoreOptionsPageObjects.referAFriendOption);
+  }
+
+  async selectGiveFeedback() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.giveFeedbackOptionText);
+    } else if(Device.isWeb()) {
+      await Utils.scrollAndMoveToElement(MoreOptionsPageObjects.giveFeedbackOption);
+    }
+    await Utils.clickElement(MoreOptionsPageObjects.giveFeedbackOption);
+  }
+
+  async selectLogout() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.logoutOptionText);
+    } else if(Device.isWeb()) {
+      await Utils.scrollAndMoveToElement(MoreOptionsPageObjects.logoutOption);
+    }
+    await Utils.clickElement(MoreOptionsPageObjects.logoutOption);
+  }
+
 }
 module.exports = new MoreOptionsPage();

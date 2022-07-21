@@ -69,16 +69,32 @@ class MoreOptionsPageObjects {
     web: '//div[text()="About Scripbox"]'
   };
 
+  aboutScripboxOptionText = {
+    app: 'About Scripbox'
+  };
+
   referAFriendOption = {
     web: '//div[text()="Refer a Friend"]'
+  };
+
+  referAFriendOptionText = {
+    app: 'Refer a Friend'
   };
 
   giveFeedbackOption = {
     web: '//div[text()="Give Feedback"]'
   };
 
+  giveFeedbackOptionText = {
+    app: 'Give Feedback'
+  };
+
   logoutOption = {
     web: '//div[text()="Logout"]'
+  };
+
+  logoutOptionText = {
+    app: 'Logout'
   };
 
   whatsAppImage = {
