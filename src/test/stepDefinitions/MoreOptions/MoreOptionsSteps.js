@@ -29,3 +29,33 @@ When(/^I select Whatsapp Notifications$/, async () => {
   await console.log('When I select Whatsapp Notifications');
   await MoreOptionsFunctionality.selectWhatsappNotifications();
 });
+
+When(/^I select About Scripbox$/, async () => {
+  await console.log('When I select About Scripbox');
+  await MoreOptionsFunctionality.selectAboutScripbox();
+});
+
+When(/^I navigate to "Service Agreement" Page$/, async () => {
+  await console.log('When I navigate to "Service Agreement" Page');
+  await MoreOptionsFunctionality.selectAboutScripboxServiceAgreement();
+});
+
+Then(/^I should see "Service Agreement" Page loaded$/, async () => {
+  await console.log('Then I should see "Service Agreement" Page loaded');
+  expect(await MoreOptionsFunctionality.aboutScripboxServiceAgreementPageLaunched()).to.be.true;
+});
+
+Then(/^I go back to "About Scripbox" Page$/, async () => {
+  await console.log('Then I go back to "About Scripbox" Page');
+  await MoreOptionsFunctionality.goBackToPreviousPage();
+});
+
+When(/^I navigate to "Company" Page$/, async () => {
+  await console.log('When I navigate to "Company" Page');
+  await MoreOptionsFunctionality.selectAboutScripboxCompany();
+});
+
+Then(/^I should see "Company" Page loaded$/, async () => {
+  await console.log('Then I should see "Company" Page loaded');
+  expect(await MoreOptionsFunctionality.aboutScripboxCompanyPageLaunched()).to.be.true;
+});

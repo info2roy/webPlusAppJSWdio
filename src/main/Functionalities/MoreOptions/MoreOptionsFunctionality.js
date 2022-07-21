@@ -40,5 +40,50 @@ class MoreOptionsFunctionality {
   async selectWhatsappNotifications() {
     await MoreOptionsPage.selectWhatsappNotifications();
   }
+  //Begin About Scripbox
+  async selectAboutScripbox() {
+    await MoreOptionsPage.selectAboutScripbox();
+  }
+
+  async aboutScripboxPageLaunched() {
+    return (await MoreOptionsPage.aboutScripboxPageHeaderIsDisplayed()) &&
+    (await MoreOptionsPage.aboutScripboxPageBodyIsDisplayed());
+  }
+
+  async selectAboutScripboxServiceAgreement() {
+    await MoreOptionsPage.selectAboutScripboxServiceAgreement();
+  }
+
+  async aboutScripboxServiceAgreementPageLaunched() {
+    return (await MoreOptionsPage.aboutScripboxServiceAgreementPageHeaderIsDisplayed()) &&
+    (await MoreOptionsPage.aboutScripboxServiceAgreementPageAgreementNameIsDisplayed());
+  }
+
+  async goBackToPreviousPage() {
+    await MoreOptionsPage.pressBackButton();
+  }
+
+  async selectAboutScripboxCompany() {
+    await MoreOptionsPage.selectAboutScripboxCompany();
+  }
+
+  async aboutScripboxCompanyPageLaunched() {
+    return (await MoreOptionsPage.aboutScripboxCompanyPageHeaderIsDisplayed()) &&
+    (await MoreOptionsPage.aboutScripboxPageCompanyPageNameLabelIsDisplayed()) &&
+    (await MoreOptionsPage.aboutScripboxPageCompanyPageCompanyNameIsDisplayed());
+  }
+  //End About Scripbox
+
+  async selectReferAFriend() {
+    await MoreOptionsPage.selectReferAFriend();
+  }
+
+  async selectGiveFeedback() {
+    await MoreOptionsPage.selectGiveFeedback();
+  }
+
+  async selectLogout() {
+    await MoreOptionsPage.selectLogout();
+  }
 }
 module.exports = new MoreOptionsFunctionality();

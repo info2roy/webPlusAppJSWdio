@@ -118,6 +118,7 @@ class MoreOptionsPage {
     await Utils.clickElement(MoreOptionsObjects.whatsappNotificationsOption);
   }
 
+  //Begin About Scripbox
   async selectAboutScripbox() {
     if (Device.isAndroidApp()) {
       await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.aboutScripboxOptionText);
@@ -126,6 +127,48 @@ class MoreOptionsPage {
     }
     await Utils.clickElement(MoreOptionsObjects.aboutScripboxOption);
   }
+
+  async aboutScripboxPageHeaderIsDisplayed() {
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageHeader);
+  }
+
+  async aboutScripboxPageBodyIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageServiceAgreement)) &&
+      (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompany));
+  }
+
+  async selectAboutScripboxServiceAgreement() {
+    await Utils.clickElement(MoreOptionsObjects.aboutScripboxPageServiceAgreement);
+  }
+
+  async aboutScripboxServiceAgreementPageHeaderIsDisplayed() {
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageServiceAgreementPageHeader);
+  }
+
+  async aboutScripboxServiceAgreementPageAgreementNameIsDisplayed() {
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageServiceAgreementPageAgreementName);
+  }
+
+  async pressBackButton() {
+    await Utils.clickElement(MoreOptionsObjects.backButton);
+  }
+
+  async selectAboutScripboxCompany() {
+    await Utils.clickElement(MoreOptionsObjects.aboutScripboxPageCompany);
+  }
+
+  async aboutScripboxCompanyPageHeaderIsDisplayed() {
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageHeader);
+  }
+
+  async aboutScripboxPageCompanyPageNameLabelIsDisplayed() {
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageNameLabel);
+  }
+
+  async aboutScripboxPageCompanyPageCompanyNameIsDisplayed() {
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageCompanyName);
+  }
+  //End About Scripbox
 
   async selectReferAFriend() {
     if (Device.isAndroidApp()) {

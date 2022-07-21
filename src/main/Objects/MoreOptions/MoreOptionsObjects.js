@@ -64,7 +64,7 @@ class MoreOptionsPageObjects {
   whatsAppNotificationsOptionText = {
     app: 'Whatsapp Notifications'
   };
-
+  //Begin About Scripbox
   aboutScripboxOption = {
     web: '//div[text()="About Scripbox"]'
   };
@@ -72,6 +72,43 @@ class MoreOptionsPageObjects {
   aboutScripboxOptionText = {
     app: 'About Scripbox'
   };
+
+  aboutScripboxPageHeader = {
+    web: '//div[text()="About Scripbox"]'
+  };
+
+  aboutScripboxPageServiceAgreement = {
+    web: '//div[text()="Service Agreement"]'
+  };
+
+  aboutScripboxPageServiceAgreementPageHeader = {
+    web: '(//div[text()="Services Agreement"])[last()]'
+  };
+
+  aboutScripboxPageServiceAgreementPageAgreementName = {
+    web: '//div[text()="SCRIPBOX WEALTH MANAGEMENT SERVICES AGREEMENT"]'
+  };
+
+  backButton = {
+    web: '//i[text()="chevron_left"]'
+  };
+
+  aboutScripboxPageCompany = {
+    web: '//div[text()="Company"]'
+  };
+
+  aboutScripboxPageCompanyPageHeader = {
+    web: '(//div[text()="Company"])[last()]'
+  };
+
+  aboutScripboxPageCompanyPageNameLabel = {
+    web: '//td[text()="Name"]'
+  };
+
+  aboutScripboxPageCompanyPageCompanyName = {
+    web: '//td[text()="Scripbox.com India Private Limited"]'
+  };
+  //End About Scripbox
 
   referAFriendOption = {
     web: '//div[text()="Refer a Friend"]'
