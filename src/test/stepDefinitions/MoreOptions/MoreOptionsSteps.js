@@ -2,6 +2,7 @@ const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const MoreOptionsFunctionality = require('../../../main/Functionalities/MoreOptions/MoreOptionsFunctionality');
 const PersonalInfoFunctionality = require('../../../main/Functionalities/MoreOptions/PersonalInfoFunctionality');
+const HomeFunctionality = require('../../../main/Functionalities/HomeFunctionality');
 
 Then(/^I should see all of the more options$/, async () => {
   await console.log('Then I should see all of the more options');
@@ -83,4 +84,14 @@ When(/^I select Give Feedback$/, async () => {
 Then(/^I should see Give Feedback Page loaded$/, async () => {
   await console.log('Then I should see Give Feedback Page loaded');
   expect(await MoreOptionsFunctionality.giveFeedbackPageLaunched()).to.be.true;
+});
+
+When(/^I select Logout$/, async () => {
+  await console.log('When I select Logout');
+  await MoreOptionsFunctionality.selectLogout();
+});
+
+Then(/^I should see MyScripbox login page loaded$/, async () => {
+  await console.log('Then I should see MyScripbox login page loaded');
+  expect(await HomeFunctionality.myscripboxLoginPageLaunched()).to.be.true;
 });

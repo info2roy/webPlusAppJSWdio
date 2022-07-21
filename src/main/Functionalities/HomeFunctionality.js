@@ -74,6 +74,10 @@ class HomeFunctionality {
   async androidHomePageLaunch() {
     return ((await HomePage.loginButtonDisplayedAndroid()) && (await HomePage.scripBoxCustomerbannerDisplayedAndroid()));
   }
+
+  async myscripboxLoginPageLaunched() {
+    return await HomePage.myScripboxLoginPageIsDisplayed();
+  }
 }
 
 module.exports = new HomeFunctionality();
