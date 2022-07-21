@@ -179,6 +179,14 @@ class MoreOptionsPage {
     await Utils.clickElement(MoreOptionsObjects.referAFriendOption);
   }
 
+  async referAFriendPageHeaderIsDisplayed() {
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.referAFriendPageHeader);
+  }
+
+  async referAFriendPageSummaryIsDisplayed() {
+    return await Utils.elementIsDisplayed(MoreOptionsObjects.referAFriendPageSummary);
+  }
+
   async selectGiveFeedback() {
     if (Device.isAndroidApp()) {
       await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.giveFeedbackOptionText);

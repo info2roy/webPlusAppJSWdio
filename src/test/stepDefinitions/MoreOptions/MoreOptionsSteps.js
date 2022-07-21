@@ -64,3 +64,13 @@ Then(/^I should see "Company" Page loaded$/, async () => {
   await console.log('Then I should see "Company" Page loaded');
   expect(await MoreOptionsFunctionality.aboutScripboxCompanyPageLaunched()).to.be.true;
 });
+
+When(/^I select Refer a Friend$/, async () => {
+  await console.log('When I select Refer a Friend');
+  await MoreOptionsFunctionality.selectReferAFriend();
+});
+
+Then(/^I should see Refer a Friend Page loaded$/, async () => {
+  await console.log('Then I should see Refer a Friend Page loaded');
+  expect(await MoreOptionsFunctionality.referAFriendPageLaunched()).to.be.true;
+});

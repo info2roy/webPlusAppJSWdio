@@ -74,7 +74,7 @@ class MoreOptionsPageObjects {
   };
 
   aboutScripboxPageHeader = {
-    web: '//div[text()="About Scripbox"]'
+    web: '(//div[text()="About Scripbox"])[last()]'
   };
 
   aboutScripboxPageServiceAgreement = {
@@ -110,6 +110,7 @@ class MoreOptionsPageObjects {
   };
   //End About Scripbox
 
+  //Begin Refer A Friend
   referAFriendOption = {
     web: '//div[text()="Refer a Friend"]'
   };
@@ -117,6 +118,15 @@ class MoreOptionsPageObjects {
   referAFriendOptionText = {
     app: 'Refer a Friend'
   };
+
+  referAFriendPageHeader = {
+    web: '(//div[text()="Refer a Friend"])[last()]'
+  };
+
+  referAFriendPageSummary = {
+    web: '//h3[text()="Give your friends the gift of financial wellness."]'
+  };
+  //End Refer A Friend
 
   giveFeedbackOption = {
     web: '//div[text()="Give Feedback"]'

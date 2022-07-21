@@ -78,6 +78,11 @@ class MoreOptionsFunctionality {
     await MoreOptionsPage.selectReferAFriend();
   }
 
+  async referAFriendPageLaunched() {
+    return (await MoreOptionsPage.referAFriendPageHeaderIsDisplayed()) &&
+    (await MoreOptionsPage.referAFriendPageSummaryIsDisplayed());
+  }
+
   async selectGiveFeedback() {
     await MoreOptionsPage.selectGiveFeedback();
   }
