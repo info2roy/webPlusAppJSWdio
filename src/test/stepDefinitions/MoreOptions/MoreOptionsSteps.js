@@ -2,7 +2,6 @@ const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const MoreOptionsPageFunctionality = require('../../../main/Functionalities/MoreOptions/MoreOptionsPageFunctionality');
 const PersonalInfoFunctionality = require('../../../main/Functionalities/MoreOptions/PersonalInfoFunctionality');
-const NotificationPreferencesFunctionality = require('../../../main/Functionalities/MoreOptions/NotificationPreferencesFunctionality');
 
 Then(/^I should see all of the more options$/, async () => {
   await console.log('Then I should see all of the more options');
@@ -24,5 +23,9 @@ When(/^I select Account and Family Information$/, async () => {
 When(/^I select Notification Preferences$/, async () => {
   await console.log('When I select Notification Preferences');
   await MoreOptionsPageFunctionality.selectNotificationPreferences();
-  expect(await NotificationPreferencesFunctionality.notificationPrefPageLaunched()).to.be.true;
+});
+
+When(/^I select Whatsapp Notifications$/, async () => {
+  await console.log('When I select Whatsapp Notifications');
+  await MoreOptionsPageFunctionality.selectWhatsappNotifications();
 });

@@ -36,5 +36,9 @@ class MoreOptionsPageFunctionality {
   async selectNotificationPreferences() {
     await MoreOptionsPage.selectNotificationPreferences();
   }
+
+  async selectWhatsappNotifications() {
+    await MoreOptionsPage.selectWhatsappNotifications();
+  }
 }
 module.exports = new MoreOptionsPageFunctionality();

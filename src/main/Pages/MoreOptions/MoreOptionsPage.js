@@ -109,5 +109,14 @@ class MoreOptionsPage {
     await Utils.clickElement(MoreOptionsPageObjects.notificationPreferencesOption);
   }
 
+  async selectWhatsappNotifications() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsPageObjects.whatsAppNotificationsOptionText);
+    } else if(Device.isWeb()) {
+      await Utils.scrollAndMoveToElement(MoreOptionsPageObjects.whatsappNotificationsOption);
+    }
+    await Utils.clickElement(MoreOptionsPageObjects.whatsappNotificationsOption);
+  }
+
 }
 module.exports = new MoreOptionsPage();

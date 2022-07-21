@@ -61,6 +61,10 @@ class MoreOptionsPageObjects {
     web: '//div[text()="Whatsapp Notifications"]'
   };
 
+  whatsAppNotificationsOptionText = {
+    app: 'Whatsapp Notifications'
+  };
+
   aboutScripboxOption = {
     web: '//div[text()="About Scripbox"]'
   };
@@ -91,6 +95,11 @@ class MoreOptionsPageObjects {
 
   twitterImage = {
     web: '//img[@src="/images/icons/interactive-utility/black/twitter.svg"]'
+  };
+
+  communicationsToggleScenarios = {
+    '/images/icons/misc/toggle-on.svg': '/images/icons/misc/toggle-off.svg',
+    '/images/icons/misc/toggle-off.svg': '/images/icons/misc/toggle-on.svg'
   };
 }
 module.exports = new MoreOptionsPageObjects();
