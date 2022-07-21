@@ -3,6 +3,7 @@ const { expect } = require('chai');
 const MoreOptionsFunctionality = require('../../../main/Functionalities/MoreOptions/MoreOptionsFunctionality');
 const PersonalInfoFunctionality = require('../../../main/Functionalities/MoreOptions/PersonalInfoFunctionality');
 const HomeFunctionality = require('../../../main/Functionalities/HomeFunctionality');
+const DashboardFunctionality = require('../../../main/Functionalities/DashboardFunctionality');
 
 Then(/^I should see all of the more options$/, async () => {
   await console.log('Then I should see all of the more options');
@@ -94,4 +95,11 @@ When(/^I select Logout$/, async () => {
 Then(/^I should see MyScripbox login page loaded$/, async () => {
   await console.log('Then I should see MyScripbox login page loaded');
   expect(await HomeFunctionality.myscripboxLoginPageLaunched()).to.be.true;
+});
+
+Then(/^I logout of Scripbox$/, async () => {
+  await console.log('Then I logout of Scripbox');
+  await DashboardFunctionality.open();
+  await DashboardFunctionality.openMoreOptions();
+  await MoreOptionsFunctionality.selectLogout();
 });

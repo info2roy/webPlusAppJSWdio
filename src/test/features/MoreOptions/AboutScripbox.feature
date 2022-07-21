@@ -17,4 +17,5 @@ Feature: Scripbox About Scripbox Page
   Scenario: From About Scripbox Page, I can navigate to Company Page
     When I navigate to "Company" Page
     Then I should see "Company" Page loaded
+    Then I logout of Scripbox
     
