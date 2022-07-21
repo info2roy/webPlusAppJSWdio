@@ -35,6 +35,11 @@ When(/^I select About Scripbox$/, async () => {
   await MoreOptionsFunctionality.selectAboutScripbox();
 });
 
+Then(/^I should see About Scripbox Page loaded$/, async () => {
+  await console.log('Then I should see About Scripbox Page loaded');
+  expect(await MoreOptionsFunctionality.aboutScripboxPageLaunched()).to.be.true;
+});
+
 When(/^I navigate to "Service Agreement" Page$/, async () => {
   await console.log('When I navigate to "Service Agreement" Page');
   await MoreOptionsFunctionality.selectAboutScripboxServiceAgreement();
