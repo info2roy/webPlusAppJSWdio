@@ -161,8 +161,8 @@ class InvestmentPage {
     }
   }
 
-  async navigateToMFStatementPage(MfOption) {
-    switch (MfOption.toString()) {
+  async navigateToMFStatementPage(mfOption) {
+    switch (mfOption.toString()) {
       case 'Investment history':
         await Utils.clickElement(InvestmentObjects.investmentHistoryTab);
         break;
@@ -180,8 +180,8 @@ class InvestmentPage {
     }
   }
 
-  async validateMFPageLoad(MfOption) {
-    switch (MfOption.toString()) {
+  async validateMFPageLoad(mfOption) {
+    switch (mfOption.toString()) {
       case 'Investment history':
         return (
           await Utils.elementIsDisplayed(InvestmentObjects.investmentHistoryFundFoundHeader) &&
@@ -202,7 +202,7 @@ class InvestmentPage {
           await Utils.elementIsDisplayed(InvestmentObjects.emailIcon) &&
           await Utils.elementIsDisplayed(InvestmentObjects.downloadIcon));
       default:
-        console.log('Wrong type');
+        console.log('Wrong type MF type to assert. -> ' + mfOption.toString());
     }
   }
 }

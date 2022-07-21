@@ -1,5 +1,5 @@
-const DashboardPage = require('../Pages/DashboardPage');
-const DashboardObjects = require('../Objects/DashboardObjects');
+const dashboardPage = require('../Pages/DashboardPage');
+const dashboardObjects = require('../Objects/DashboardObjects');
 const Utils = require('../../support/Utils/Utils');
 const Device = require('../../support/libraries/Device');
 const env = require('../../config/env');
@@ -15,39 +15,49 @@ class DashboardFunctionality {
     }
   }
   async validate() {
-    expect(await Utils.elementIsDisplayed(DashboardObjects.helloUser)).toBe.true;
+    expect(await Utils.elementIsDisplayed(dashboardObjects.helloUser)).toBe.true;
   }
 
   async openProfileDropdown() {
-    await DashboardPage.openProfileDropdown();
+    await dashboardPage.openProfileDropdown();
   }
 
   async selectPersonalInformation() {
-    await DashboardPage.selectPersonalInformation();
+    await dashboardPage.selectPersonalInformation();
   }
 
   async selectAccountFamilyInformation() {
-    await DashboardPage.selectAccountFamilyInformation();
+    await dashboardPage.selectAccountFamilyInformation();
   }
 
   async selectStatementsAndTaxReports() {
-    await DashboardPage.selectStatementsAndTaxReports();
+    await dashboardPage.selectStatementsAndTaxReports();
   }
 
   async selectReturnToHome() {
-    await DashboardPage.returnToHome();
+    await dashboardPage.returnToHome();
   }
 
   async invest() {
-    await DashboardPage.selectDashboardTab(Constants.DASHBOARD_INVEST);
+    await dashboardPage.selectDashboardTab(Constants.DASHBOARD_INVEST);
   }
 
   async home() {
-    await DashboardPage.selectDashboardTab(Constants.DASHBOARD_HOME);
+    await dashboardPage.selectDashboardTab(Constants.DASHBOARD_HOME);
   }
 
   async selectWithdrawOrInvestMoreOption(option) {
-    await DashboardPage.selectWithdrawOrInvestMoreOption(option);
+    await dashboardPage.selectWithdrawOrInvestMoreOption(option);
+  }
+
+  async navigateToPageFromDashboard(pageOption) {
+    await dashboardPage.navigateToPage(pageOption);
+    return (await dashboardPage.validateNavigateToPage(pageOption.toString()));
+  }
+
+  async navigateToDashboard() {
+    await browser.back(); // Not creating a method for navigation back now. Will create if more use-case comes up
+    return (await this.validate());
   }
 }
 module.exports = new DashboardFunctionality();

@@ -11,7 +11,7 @@ Feature: As customer I wish to update my account details
 
   Scenario: As a logged in user I wish to update my Bank details
     When I open the profile dropdown
-    And I select Account and Family Information
+    And I select option "Account and Family Information"
     Then I edit "bank"
     And I update changes
     And I click on return to home
@@ -19,7 +19,7 @@ Feature: As customer I wish to update my account details
 
   Scenario: As a logged in user I wish to update my nominee
     When I open the profile dropdown
-    And I select Account and Family Information
+    And I select option "Account and Family Information"
     Then I edit "nominee"
     And I update changes
     And I click on return to home

@@ -25,7 +25,7 @@ class DashboardObjects {
     app: 'Personal information'
   };
 
-  withdrawButton = { web: '//button/div[text()="Withdraw"]', app: '//*[@text="Withdraw"]' };
+  withdrawButton = { web: '//div[contains(@class,"dashboard-invest-withdraw-btn")]//*[text()="Withdraw"]', app: '//*[@text="Withdraw"]' };
 
   investMoreButton = { web: '//button/div[text()="Invest more"]', app: '//*[@text="Invest more"]' };
 
@@ -35,6 +35,29 @@ class DashboardObjects {
       app: `//*[@text="${tabName}"]`
     };
   }
+
+  notifications = { web: '//img[contains(@src, "menu/notifications-unread")]'};
+
+  investmentCalenderHeader = { web: '(//*[text()="Investment Calendar"])[2]'};
+
+  wealthCalenderHeader = {web: '(//*[text()="Wealth Calendar"])[3]'};
+
+  notificationsHeaders = {Web: '(//*[text()="Notifications"])[2]'};
+
+  investNowHeader = {web: '(//*[text()="Select family member"])[2]'};
+
+  withdrawHeader = { web: '(//*[text()="Withdraw" or contains(text(),"Select family member")])[2]'};
+
+  viewInvestmentCalender = {web: '//div[@class="cursor-pointer"]//*[text()="View"]'};
+
+  manageExternalSIPs = {web: '//div[@class="cursor-pointer"]//*[text()="Manage"]'};
+
+  investNowButton = { web: '//div[contains(@class,"dashboard-invest-withdraw-btn")]//*[contains(text(),"Invest ")]'};
+
+  wealthCalenderNavigationButton = {web: '//div[contains(@class, "wealth-calendar")]//span[text()="chevron_right"]'};
+
+  backButton = {web: '//i[contains(@class,"back-button")]'};
+
 }
 
 module.exports = new DashboardObjects();
