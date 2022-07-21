@@ -1,4 +1,4 @@
-class NotificationPreferenceObjects {
+class NotificationPreferencesObjects {
   notificationPreferencesPageHeader = {
     web: '(//div[text()="Notification Preferences"])[last()]'
   };
@@ -100,4 +100,4 @@ class NotificationPreferenceObjects {
     web: '//div[text()="Notification preferences has been updated"]'
   };
 }
-module.exports = new NotificationPreferenceObjects();
+module.exports = new NotificationPreferencesObjects();
