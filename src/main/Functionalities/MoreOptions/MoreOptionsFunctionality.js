@@ -88,6 +88,7 @@ class MoreOptionsFunctionality {
   }
 
   async giveFeedbackPageLaunched() {
+    await browser.switchWindow('docs.google.com');
     return (await MoreOptionsPage.giveFeedbackPageHeaderIsDisplayed());
   }
 
