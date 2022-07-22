@@ -38,8 +38,6 @@ class DashboardObjects {
 
   notifications = { web: '//img[contains(@src, "menu/notifications-unread")]' };
 
-  investmentCalenderHeader = { web: '(//*[text()="Investment Calendar"])[2]' };
-
   wealthCalenderHeader = { web: '(//*[text()="Wealth Calendar"])[3]' };
 
   notificationsHeaders = { Web: '(//*[text()="Notifications"])[2]' };

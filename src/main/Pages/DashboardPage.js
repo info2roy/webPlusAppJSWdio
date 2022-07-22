@@ -2,6 +2,7 @@ const Utils = require('../../support/Utils/Utils');
 const DashboardObjects = require('../Objects/DashboardObjects');
 const Device = require('../../support/libraries/Device');
 const Constants = require('../../config/data/structured/Constants');
+const InvestmentCalendarPage = require('./Reports/InvestmentCalendarPage');
 
 class DashboardPage {
   async openProfileDropdown() {
@@ -70,7 +71,7 @@ class DashboardPage {
   async validateNavigateToPage(pageOption) {
     switch (pageOption.toString()) {
       case 'Investment Calender':
-        return (await Utils.elementIsDisplayed(DashboardObjects.investmentCalenderHeader));
+        return InvestmentCalendarPage.investmentCalendarPageLaunched();
       case 'Wealth Calender':
         return (await Utils.elementIsDisplayed(DashboardObjects.wealthCalenderHeader));
       case 'Withdraw':
