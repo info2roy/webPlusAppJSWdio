@@ -124,7 +124,7 @@ class MoreOptionsPageObjects {
   };
 
   referAFriendPageSummary = {
-    web: '//h3[text()="Give your friends the gift of financial wellness."]'
+    web: '//div/h3[text()="Give your friends the gift of financial wellness."]'
   };
   //End Refer A Friend
 
