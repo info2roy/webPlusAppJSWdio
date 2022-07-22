@@ -17,9 +17,9 @@ class DashboardObjects {
     web: '//div[text()="Account & Family Information"]'
   };
 
-  statementsAndTaxReports = { web: '//div[text()="Statements & Tax Reports"]'};
+  statementsAndTaxReports = { web: '//div[text()="Statements & Tax Reports"]' };
 
-  returnToHome = {web: '//*[contains(text(),"Return to Home")]'};
+  returnToHome = { web: '//*[contains(text(),"Return to Home")]' };
 
   personalInfoText = {
     app: 'Personal information'
