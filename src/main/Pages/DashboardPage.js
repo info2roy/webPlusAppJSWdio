@@ -1,46 +1,46 @@
 const Utils = require('../../support/Utils/Utils');
-const dashboardObjects = require('../Objects/DashboardObjects');
+const DashboardObjects = require('../Objects/DashboardObjects');
 const Device = require('../../support/libraries/Device');
 const Constants = require('../../config/data/structured/Constants');
 
 class DashboardPage {
   async openProfileDropdown() {
-    await Utils.clickElement(dashboardObjects.moreButton);
+    await Utils.clickElement(DashboardObjects.moreButton);
   }
 
   async selectPersonalInformation() {
     if (Device.isAndroidApp()) {
       await console.log('AndroidApp: click on Personal Infomation requires scrolling until it comes into view');
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(dashboardObjects.personalInfoText);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(DashboardObjects.personalInfoText);
     }
-    await Utils.clickElement(dashboardObjects.personalInfoOption);
+    await Utils.clickElement(DashboardObjects.personalInfoOption);
   }
 
   async selectAccountFamilyInformation() {
-    await Utils.clickElement(dashboardObjects.accountFamilyInformationOption);
+    await Utils.clickElement(DashboardObjects.accountFamilyInformationOption);
   }
 
   async selectStatementsAndTaxReports() {
-    await Utils.clickElement(dashboardObjects.statementsAndTaxReports);
+    await Utils.clickElement(DashboardObjects.statementsAndTaxReports);
   }
 
   async returnToHome() {
-    await Utils.clickElement(dashboardObjects.returnToHome);
+    await Utils.clickElement(DashboardObjects.returnToHome);
   }
 
   async selectInvestOption() {
-    await Utils.clickElement(dashboardObjects.investTab);
+    await Utils.clickElement(DashboardObjects.investTab);
   }
 
   async selectDashboardTab(tabName) {
-    await Utils.clickElement(dashboardObjects.dashboardTab(tabName));
+    await Utils.clickElement(DashboardObjects.dashboardTab(tabName));
   }
 
   async selectWithdrawOrInvestMoreOption(option) {
     if (option === Constants.DASHBOARD_WITHDRAW) {
-      await Utils.clickElement(dashboardObjects.withdrawButton);
+      await Utils.clickElement(DashboardObjects.withdrawButton);
     } else if (option === Constants.DASHBOARD_INVEST_MORE) {
-      await Utils.clickElement(dashboardObjects.investMoreButton);
+      await Utils.clickElement(DashboardObjects.investMoreButton);
     }
   }
 
@@ -48,19 +48,19 @@ class DashboardPage {
     await console.log('Navigating to ' + pageOption.toString());
     switch (pageOption.toString()) {
       case 'Investment Calender':
-        await Utils.clickElement(dashboardObjects.viewInvestmentCalender);
+        await Utils.clickElement(DashboardObjects.viewInvestmentCalender);
         break;
       case 'Wealth Calender':
-        await Utils.clickElement(dashboardObjects.wealthCalenderNavigationButton);
+        await Utils.clickElement(DashboardObjects.wealthCalenderNavigationButton);
         break;
       case 'Withdraw':
-        await Utils.clickElement(dashboardObjects.withdrawButton);
+        await Utils.clickElement(DashboardObjects.withdrawButton);
         break;
       case 'Invest Now':
-        await Utils.clickElement(dashboardObjects.investNowButton);
+        await Utils.clickElement(DashboardObjects.investNowButton);
         break;
       case 'Notifications':
-        await Utils.clickElement(dashboardObjects.notifications);
+        await Utils.clickElement(DashboardObjects.notifications);
         break;
       default:
         await console.log(pageOption.toString() + ' Option not available in Dashboard page');
@@ -70,21 +70,21 @@ class DashboardPage {
   async validateNavigateToPage(pageOption) {
     switch (pageOption.toString()) {
       case 'Investment Calender':
-        return (await Utils.elementIsDisplayed(dashboardObjects.investmentCalenderHeader));
+        return (await Utils.elementIsDisplayed(DashboardObjects.investmentCalenderHeader));
       case 'Wealth Calender':
-        return (await Utils.elementIsDisplayed(dashboardObjects.wealthCalenderHeader));
+        return (await Utils.elementIsDisplayed(DashboardObjects.wealthCalenderHeader));
       case 'Withdraw':
         return (
-          await Utils.elementIsDisplayed(dashboardObjects.withdrawHeader) &&
-          await Utils.elementIsDisplayed(dashboardObjects.backButton));
+          await Utils.elementIsDisplayed(DashboardObjects.withdrawHeader) &&
+          await Utils.elementIsDisplayed(DashboardObjects.backButton));
       case 'Invest Now':
-        return (await Utils.elementIsDisplayed(dashboardObjects.investNowHeader));
+        return (await Utils.elementIsDisplayed(DashboardObjects.investNowHeader));
       case 'Notifications':
         return (
-          await Utils.elementIsDisplayed(dashboardObjects.notificationsHeaders) &&
-          await Utils.elementIsDisplayed(dashboardObjects.backButton));
+          await Utils.elementIsDisplayed(DashboardObjects.notificationsHeaders) &&
+          await Utils.elementIsDisplayed(DashboardObjects.backButton));
       default:
-        await console.log('Wrong type');
+        await console.log('Wrong page type -> ' + pageOption.toString());
     }
   }
 }

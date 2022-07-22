@@ -1,5 +1,5 @@
-const dashboardPage = require('../Pages/DashboardPage');
-const dashboardObjects = require('../Objects/DashboardObjects');
+const DashboardPage = require('../Pages/DashboardPage');
+const DashboardObjects = require('../Objects/DashboardObjects');
 const Utils = require('../../support/Utils/Utils');
 const Device = require('../../support/libraries/Device');
 const env = require('../../config/env');
@@ -15,44 +15,44 @@ class DashboardFunctionality {
     }
   }
   async validate() {
-    expect(await Utils.elementIsDisplayed(dashboardObjects.helloUser)).toBe.true;
+    expect(await Utils.elementIsDisplayed(DashboardObjects.helloUser)).toBe.true;
   }
 
   async openProfileDropdown() {
-    await dashboardPage.openProfileDropdown();
+    await DashboardPage.openProfileDropdown();
   }
 
   async selectPersonalInformation() {
-    await dashboardPage.selectPersonalInformation();
+    await DashboardPage.selectPersonalInformation();
   }
 
   async selectAccountFamilyInformation() {
-    await dashboardPage.selectAccountFamilyInformation();
+    await DashboardPage.selectAccountFamilyInformation();
   }
 
   async selectStatementsAndTaxReports() {
-    await dashboardPage.selectStatementsAndTaxReports();
+    await DashboardPage.selectStatementsAndTaxReports();
   }
 
   async selectReturnToHome() {
-    await dashboardPage.returnToHome();
+    await DashboardPage.returnToHome();
   }
 
   async invest() {
-    await dashboardPage.selectDashboardTab(Constants.DASHBOARD_INVEST);
+    await DashboardPage.selectDashboardTab(Constants.DASHBOARD_INVEST);
   }
 
   async home() {
-    await dashboardPage.selectDashboardTab(Constants.DASHBOARD_HOME);
+    await DashboardPage.selectDashboardTab(Constants.DASHBOARD_HOME);
   }
 
   async selectWithdrawOrInvestMoreOption(option) {
-    await dashboardPage.selectWithdrawOrInvestMoreOption(option);
+    await DashboardPage.selectWithdrawOrInvestMoreOption(option);
   }
 
   async navigateToPageFromDashboard(pageOption) {
-    await dashboardPage.navigateToPage(pageOption);
-    return (await dashboardPage.validateNavigateToPage(pageOption.toString()));
+    await DashboardPage.navigateToPage(pageOption);
+    return (await DashboardPage.validateNavigateToPage(pageOption.toString()));
   }
 
   async navigateToDashboard() {

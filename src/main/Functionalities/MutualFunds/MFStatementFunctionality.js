@@ -1,14 +1,14 @@
-const mfStatementPage = require('../../Pages/MutualFunds/MFStatementPage');
+const MfStatementPage = require('../../Pages/MutualFunds/MFStatementPage');
 
 class MFStatementFunctionality {
 
   async navigateToMFPage(mfOption) {
-    await mfStatementPage.navigateToMFStatementPage(mfOption.toString());
-    return (await mfStatementPage.validateMFPageLoad(mfOption.toString()));
+    await MfStatementPage.navigateToMFStatementPage(mfOption.toString());
+    return (await MfStatementPage.validateMFPageLoad(mfOption.toString()));
   }
 
   async MFPageLaunched() {
-    return (await mfStatementPage.MFPageHeaderIsDisplayed());
+    return (await MfStatementPage.MFPageHeaderIsDisplayed());
   }
 }
 
