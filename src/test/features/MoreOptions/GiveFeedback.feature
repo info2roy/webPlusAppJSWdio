@@ -1,4 +1,4 @@
-Feature: Scripbox About Scripbox Page
+Feature: Scripbox Give Feedback Page
 
   Scenario: As a Scripbox user, I am logged in
     Given I login to Scripbox in "STAGING" for "user189182"
