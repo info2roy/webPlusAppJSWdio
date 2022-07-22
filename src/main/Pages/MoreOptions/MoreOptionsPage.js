@@ -184,7 +184,11 @@ class MoreOptionsPage {
   }
 
   async referAFriendPageSummaryIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsObjects.referAFriendPageSummary);
+    const iframe = await browser.$('//iframe');
+    await browser.switchToFrame(iframe);
+    const status = await Utils.elementIsDisplayed(MoreOptionsObjects.referAFriendPageSummary);
+    await browser.switchToParentFrame();
+    return status;
   }
 
   async selectGiveFeedback() {
