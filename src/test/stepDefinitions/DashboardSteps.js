@@ -11,7 +11,7 @@ Then(/^I should see dashboard page loaded$/, async () => {
 });
 
 When(/^I open the more options$/, async () => {
-  await console.log('Given I open the more options');
+  await console.log('When I open the more options');
   await DashboardFunctionality.openMoreOptions();
 });
 
