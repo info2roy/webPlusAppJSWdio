@@ -36,27 +36,27 @@ class DashboardObjects {
     };
   }
 
-  notifications = { web: '//img[contains(@src, "menu/notifications-unread")]'};
+  notifications = { web: '//img[contains(@src, "menu/notifications-unread")]' };
 
-  investmentCalenderHeader = { web: '(//*[text()="Investment Calendar"])[2]'};
+  investmentCalenderHeader = { web: '(//*[text()="Investment Calendar"])[2]' };
 
-  wealthCalenderHeader = {web: '(//*[text()="Wealth Calendar"])[3]'};
+  wealthCalenderHeader = { web: '(//*[text()="Wealth Calendar"])[3]' };
 
-  notificationsHeaders = {Web: '(//*[text()="Notifications"])[2]'};
+  notificationsHeaders = { Web: '(//*[text()="Notifications"])[2]' };
 
-  investNowHeader = {web: '(//*[text()="Select family member"])[2]'};
+  investNowHeader = { web: '(//*[text()="Select family member"])[2]' };
 
-  withdrawHeader = { web: '(//*[text()="Withdraw" or contains(text(),"Select family member")])[2]'};
+  withdrawHeader = { web: '(//*[text()="Withdraw" or contains(text(),"Select family member")])[2]' };
 
-  viewInvestmentCalender = {web: '//div[@class="cursor-pointer"]//*[text()="View"]'};
+  viewInvestmentCalender = { web: '//div[@class="cursor-pointer"]//*[text()="View"]' };
 
-  manageExternalSIPs = {web: '//div[@class="cursor-pointer"]//*[text()="Manage"]'};
+  manageExternalSIPs = { web: '//div[@class="cursor-pointer"]//*[text()="Manage"]' };
 
-  investNowButton = { web: '//div[contains(@class,"dashboard-invest-withdraw-btn")]//*[contains(text(),"Invest ")]'};
+  investNowButton = { web: '//div[contains(@class,"dashboard-invest-withdraw-btn")]//*[contains(text(),"Invest ")]' };
 
-  wealthCalenderNavigationButton = {web: '//div[contains(@class, "wealth-calendar")]//span[text()="chevron_right"]'};
+  wealthCalenderNavigationButton = { web: '//div[contains(@class, "wealth-calendar")]//span[text()="chevron_right"]' };
 
-  backButton = {web: '//i[contains(@class,"back-button")]'};
+  backButton = { web: '//i[contains(@class,"back-button")]' };
 
 }
 
