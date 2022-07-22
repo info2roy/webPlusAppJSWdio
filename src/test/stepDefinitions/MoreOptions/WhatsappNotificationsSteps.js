@@ -3,7 +3,7 @@ const WhatappNotificationsFunctionality = require('../../../main/Functionalities
 const { expect } = require('chai');
 
 Then(/^I should see Whatsapp Notifications Page loaded$/, async () => {
-  await console.log('Then I should see Whatsapp Notification Page loaded ');
+  await console.log('Then I should see Whatsapp Notification Page loaded');
   expect(await WhatappNotificationsFunctionality.whatsappNotificationsPageLaunched()).to.be.true;
 });
 

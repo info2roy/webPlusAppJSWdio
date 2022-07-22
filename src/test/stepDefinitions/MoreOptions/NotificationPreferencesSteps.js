@@ -8,7 +8,7 @@ Then(/^I should see Notification Preferences Page loaded$/, async () => {
 });
 
 Then(/^I can update control (.+) for channel (.+)$/, async (controlName, channel) => {
-  await console.log('Then I can update all notifications preference controls one by one');
+  await console.log(`I can update control ${controlName} for channel ${channel}`);
   NotificationPreferencesFunctionality.testToggleScenario(controlName, channel);
 });
 
