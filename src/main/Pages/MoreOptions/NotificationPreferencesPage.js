@@ -33,7 +33,6 @@ class NotificationPreferencesPage {
 
   async notificationPreferencesControlsTestToggleScenario(controlName, channel) {
     const selector = NotificationPreferencesObjects.notificationPreferenceControls[controlName][channel];
-    console.log(`${controlName}: ${JSON.stringify(selector)}`);
     const initialSrc = await Utils.getElementAttributeBySelector(selector, 'src');
     await Utils.clickElement(selector);
     const firstToggleSrc = await Utils.getElementAttributeBySelector(selector, 'src');
