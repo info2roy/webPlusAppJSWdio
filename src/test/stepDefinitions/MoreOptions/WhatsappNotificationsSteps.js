@@ -9,5 +9,5 @@ Then(/^I should see Whatsapp Notifications Page loaded$/, async () => {
 
 Then(/^I can update whatsapp notifications control$/, async () => {
   await console.log('Then I can update whatsapp notifications control');
-  WhatappNotificationsFunctionality.testToggleScenario();
+  await WhatappNotificationsFunctionality.testToggleScenario();
 });
