@@ -48,6 +48,7 @@ class Utils {
     const locator = this.getLocator(selector);
     await this.elementIsDisplayed(selector);
     const myButton = await $(locator);
+    await myButton.waitForClickable({ timeout: 10000 });
     await myButton.click();
   }
 
