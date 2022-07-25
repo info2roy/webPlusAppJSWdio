@@ -1,25 +1,25 @@
 const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
-const InvestmentFunctionality = require('../../../main/Functionalities/MutualFunds/InvestmentFunctionality');
+const MFInvestmentFunctionality = require('../../../main/Functionalities/MutualFunds/MFInvestmentFunctionality');
 const DashboardFunctionality = require('../../../main/Functionalities/DashboardFunctionality');
 
 When(/^I select portfolio (.+)$/, async (mutualFundPortfolio) => {
   await console.log(`When I select portfolio ${mutualFundPortfolio}`);
   this.mutualFundPortfolio = mutualFundPortfolio;
-  await InvestmentFunctionality.selectMutualFundPortfolio(mutualFundPortfolio);
-  expect(await InvestmentFunctionality.scripBoxGuidedPathPageLaunched()).to.be.true;
+  await MFInvestmentFunctionality.selectMutualFundPortfolio(mutualFundPortfolio);
+  expect(await MFInvestmentFunctionality.scripBoxGuidedPathPageLaunched()).to.be.true;
 });
 
 When(/^I click on Invest as per Scripbox Guided Path$/, async () => {
   await console.log(`When I click on Invest as per Scripbox Guided Path for ${this.mutualFundPortfolio}`);
-  await InvestmentFunctionality.investAsPerScripboxGuidedPath();
-  expect(await InvestmentFunctionality.investmentFormPageLaunched()).to.be.true;
+  await MFInvestmentFunctionality.investAsPerScripboxGuidedPath();
+  expect(await MFInvestmentFunctionality.investmentFormPageLaunched()).to.be.true;
 });
 
 When(/^I fill form with agegroup (\d+s) and click NEXT$/, async (ageGroup) => {
   await console.log(`When I select my <ageGroup>:${ageGroup} and click NEXT`);
-  await InvestmentFunctionality.fillMutualFundPortfolioForm(ageGroup);
-  expect(await InvestmentFunctionality.investmentFormPageLaunched()).to.be.true;
+  await MFInvestmentFunctionality.fillMutualFundPortfolioForm(ageGroup);
+  expect(await MFInvestmentFunctionality.investmentFormPageLaunched()).to.be.true;
 
 });
 
@@ -29,66 +29,66 @@ When(/^I select (Every month \(SIP\)|One time|STP) and fill (\d+) and click to s
     click to see recommended funds`);
     this.amount = amount;
     this.investmentType = investmentType;
-    await InvestmentFunctionality.fillInvestmentForm(investmentType, amount);
-    expect(await InvestmentFunctionality.recommendedFundsPageIsLaunched()).to.be.true;
+    await MFInvestmentFunctionality.fillInvestmentForm(investmentType, amount);
+    expect(await MFInvestmentFunctionality.recommendedFundsPageIsLaunched()).to.be.true;
   }
 );
 
 When(/^I accept the recommended mutual fund allocation and click NEXT$/, async () => {
   await console.log('When I accept the recommended mutual fund allocation and click NEXT');
-  await InvestmentFunctionality.acceptRecommendedFunds();
+  await MFInvestmentFunctionality.acceptRecommendedFunds();
 });
 
 When(/^I select Payment type as (Immediate|Scheduled)$/, async (paymentType) => {
   await console.log(`When I select Payment type as ${paymentType}`);
   this.paymentType = paymentType;
-  await InvestmentFunctionality.makePayment(paymentType);
+  await MFInvestmentFunctionality.makePayment(paymentType);
 });
 
 When(/^I select SIP duration in months as (\d+) and click NEXT$/, async (sipDurationInMonths) => {
   await console.log(`When I select SIP duration in months as ${sipDurationInMonths} and click NEXT paymentType:${this.paymentType}`);
-  expect(await InvestmentFunctionality.setupMFInvestmentPageLaunched(this.investmentType, this.amount, 180)).to.be.true;
-  await InvestmentFunctionality.setupInvestment(sipDurationInMonths, this.paymentType, this.investmentType);
+  expect(await MFInvestmentFunctionality.setupMFInvestmentPageLaunched(this.investmentType, this.amount, 180)).to.be.true;
+  await MFInvestmentFunctionality.setupInvestment(sipDurationInMonths, this.paymentType, this.investmentType);
 });
 
 When(/^I select scheduled investment date and click NEXT*/, async () => {
-  expect(await InvestmentFunctionality.setupMFInvestmentPageLaunched(this.investmentType, this.amount, 0)).to.be.true;
-  await InvestmentFunctionality.setupInvestment(0, this.paymentType, this.investmentType);
+  expect(await MFInvestmentFunctionality.setupMFInvestmentPageLaunched(this.investmentType, this.amount, 0)).to.be.true;
+  await MFInvestmentFunctionality.setupInvestment(0, this.paymentType, this.investmentType);
 });
 
 When(/^I select Payment Instrument of type (.+)$/, async (paymentInstrumentType) => {
   await console.log(`When I select Payment Instrument of type ${paymentInstrumentType}`);
   this.paymentInstrumentType = paymentInstrumentType;
-  expect(await InvestmentFunctionality.paymentInstrumentPageLaunched(this.paymentType)).to.be.true;
-  await InvestmentFunctionality.selectPaymentInstrument(paymentInstrumentType);
-  expect(await InvestmentFunctionality.transferFundsPageLaunched()).to.be.true;
+  expect(await MFInvestmentFunctionality.paymentInstrumentPageLaunched(this.paymentType)).to.be.true;
+  await MFInvestmentFunctionality.selectPaymentInstrument(paymentInstrumentType);
+  expect(await MFInvestmentFunctionality.transferFundsPageLaunched()).to.be.true;
 });
 
 When(/^I go for Payment via selected Payment Instrument$/, async () => {
   await console.log(`I go for Payment via selected Payment Instrument ${this.paymentInstrumentType}`);
-  await InvestmentFunctionality.goToBankForFundTransfer();
-  expect(await InvestmentFunctionality.mockPaymentStatusPageLaunched()).to.be.true;
+  await MFInvestmentFunctionality.goToBankForFundTransfer();
+  expect(await MFInvestmentFunctionality.mockPaymentStatusPageLaunched()).to.be.true;
 });
 
 When(/^I select mock payment status as (Success|Failure)$/, async (paymentStatus) => {
   await console.log(`When I select mock payment status as ${paymentStatus}`);
-  await InvestmentFunctionality.selectMockPaymentStatus(paymentStatus);
+  await MFInvestmentFunctionality.selectMockPaymentStatus(paymentStatus);
 });
 
 Then(/^I should see fund transfer success message and click on HOME/, async () => {
   await console.log('Then I should see fund transfer success message and click on HOME');
-  expect(await InvestmentFunctionality.fundTransferIsSuccessful()).to.be.true;
+  expect(await MFInvestmentFunctionality.fundTransferIsSuccessful()).to.be.true;
 });
 
 Then(/^I should see investment success message and click on HOME$/, async () => {
   await console.log('Then I should see investment success message and click on HOME');
-  await InvestmentFunctionality.goToHome();
-  expect(await InvestmentFunctionality.investmentIsSuccessful()).to.be.true;
+  await MFInvestmentFunctionality.goToHome();
+  expect(await MFInvestmentFunctionality.investmentIsSuccessful()).to.be.true;
 });
 
 Then(/^I should see investment scheduled successfully message$/, async () => {
   await console.log('I should see investment scheduled successfully message');
-  expect(await InvestmentFunctionality.investmentScheduledSuccessfully()).to.be.true;
+  expect(await MFInvestmentFunctionality.investmentScheduledSuccessfully()).to.be.true;
 });
 
 Then(/^I go back to the dashboard page$/, async () => {
