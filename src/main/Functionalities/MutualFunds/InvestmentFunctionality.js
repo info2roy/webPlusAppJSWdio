@@ -2,9 +2,6 @@ const Constants = require('../../../config/data/structured/Constants');
 const InvestmentPage = require('../../Pages/MutualFunds/InvestmentPage');
 
 class InvestmentFunctionality {
-  async mutualFundsPageLaunched() {
-    return (await InvestmentPage.mutualFundsPageHeaderIsDisplayed());
-  }
 
   async selectMutualFundPortfolio(portfolio) {
     await InvestmentPage.selectMutualFundPortfolio(portfolio);
@@ -69,7 +66,7 @@ class InvestmentFunctionality {
     } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
       return (await InvestmentPage.investmentScheduledSuccessfulPageHeaderIsDisplayed());
     }
-    return true;
+    return false;
   }
 
   async selectPaymentInstrument(paymentInstrumentType) {

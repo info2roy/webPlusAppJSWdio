@@ -9,6 +9,7 @@ class CommonInvestmentFunctionality {
 
   async selectInvestmentTab(investmentInstrumentType) {
     await CommonInvestmentPage.selectInvestmentTab(investmentInstrumentType);
+    return (await CommonInvestmentPage.validateNavigateToInvestmentTab(investmentInstrumentType));
   }
 }
 module.exports = new CommonInvestmentFunctionality();
