@@ -17,9 +17,9 @@ class DashboardObjects {
     web: '//div[text()="Account & Family Information"]'
   };
 
-  statementsAndTaxReports = { web: '//div[text()="Statements & Tax Reports"]'};
+  statementsAndTaxReports = { web: '//div[text()="Statements & Tax Reports"]' };
 
-  returnToHome = {web: '//*[contains(text(),"Return to Home")]'};
+  returnToHome = { web: '//*[contains(text(),"Return to Home")]' };
 
   personalInfoText = {
     app: 'Personal information'
@@ -37,8 +37,6 @@ class DashboardObjects {
   }
 
   notifications = { web: '//img[contains(@src, "menu/notifications-unread")]' };
-
-  investmentCalenderHeader = { web: '(//*[text()="Investment Calendar"])[2]' };
 
   wealthCalenderHeader = { web: '(//*[text()="Wealth Calendar"])[3]' };
 
