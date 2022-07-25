@@ -4,7 +4,7 @@ Feature: Feature to check basic navigations on MF statements screen
         Given I login to Scripbox in "STAGING" for "user189182"
 
     Scenario: I navigate to MF statement section
-        When I open the profile dropdown
+        When I open the more options
         And I select option "Statements and Tax Reports"
 
     Scenario: I navigate to Investment history page
