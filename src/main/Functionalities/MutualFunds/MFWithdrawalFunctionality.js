@@ -1,7 +1,7 @@
 const Constants = require('../../../config/data/structured/Constants');
 const MFWithdrawalPage = require('../../Pages/MutualFunds/MFWithdrawalPage');
 
-class WithdrawalFunctionality {
+class MFWithdrawalFunctionality {
 
   async selectMFPlanPageLaunched() {
     return (await MFWithdrawalPage.selectMFPlanPageHeaderIsDisplayed());
@@ -82,4 +82,4 @@ class WithdrawalFunctionality {
   }
 }
 
-module.exports = new WithdrawalFunctionality();
+module.exports = new MFWithdrawalFunctionality();
