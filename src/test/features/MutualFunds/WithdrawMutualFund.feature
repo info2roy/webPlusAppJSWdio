@@ -8,7 +8,7 @@ Feature: Scripbox Withdraw for Mutual Fund
     When I select the "Withdraw" option on dashboard page
     When I select a family member "User 161276" for withdrawal
     When I select "Mutual Funds" as financial product for withdrawal
-    When I select for withdrawal the portfolio <mutualFundPortfolio>
+    When I select for withdrawal the mutual fund portfolio <mutualFundPortfolio>
     When I select withdrawal bank option as "Continue with same bank"
     When I enter withdrawal amount as <withdrawalAmount>
     When I select "CUSTOM_FUND_BASED_WITHDRAWAL" as strategy
@@ -28,7 +28,7 @@ Feature: Scripbox Withdraw for Mutual Fund
     When I select the "Withdraw" option on dashboard page
     When I select a family member "User 161276" for withdrawal
     When I select "Mutual Funds" as financial product for withdrawal
-    When I select for withdrawal the portfolio <mutualFundPortfolio>
+    When I select for withdrawal the mutual fund portfolio <mutualFundPortfolio>
     When I select withdrawal bank option as "Continue with same bank"
     When I enter withdrawal amount as <withdrawalAmount>
     When I select "TAX_OPTIMIZED_WITHDRAWAL" as strategy

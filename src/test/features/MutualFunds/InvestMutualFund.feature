@@ -1,18 +1,12 @@
 Feature: Scripbox Investment in Mutual Fund Portfolio
 
   Scenario: As a Scripbox user, I am logged in
-    Given I am on the scripbox home page
-    When I click on menu button
-    When I click on login option
-    When I login with username
-    When I click on continue with password
-    When I login with username and password
-    Then I should see dashboard page loaded
+    Given I login to Scripbox in "UAT38" for "user180756"
 
   Scenario Outline: As a logged in user, I am able to schedule investment in mutual funds via Every month (SIP)
     Given I am on the Investment Page
-    Given I am on the Mutual Funds Tab
-    When I select portfolio <mutualFundPortfolio>
+    Given I am on the investment tab "Mutual Funds"
+    When I select mutual fund portfolio <mutualFundPortfolio>
     When I click on Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
@@ -22,12 +16,12 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Then I go back to the dashboard page
     Examples:
         | mutualFundPortfolio | investmentType | amount | sipInMonths | paymentType |
-        | Core Mutual Fund Portfolio | Every month (SIP)  | 30000 | 90 | Scheduled |
+        | Tax Saver Plan | Every month (SIP)  | 30000 | 90 | Scheduled |
 
   Scenario Outline: As a logged in user, I am able to do immediate investment in mutual funds via Every month (SIP)
     Given I am on the Investment Page
-    Given I am on the Mutual Funds Tab
-    When I select portfolio <mutualFundPortfolio>
+    Given I am on the investment tab "Mutual Funds"
+    When I select mutual fund portfolio <mutualFundPortfolio>
     When I click on Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
@@ -41,12 +35,12 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Then I go back to the dashboard page
     Examples:
       | mutualFundPortfolio | investmentType | amount | sipInMonths | paymentType | paymentInstrumentType | paymentStatus |
-      | Core Mutual Fund Portfolio | Every month (SIP)  | 20000 | 60 | Immediate | Net Banking | Success |
+      | Tax Saver Plan | Every month (SIP)  | 20000 | 60 | Immediate | Net Banking | Success |
   
   Scenario Outline: As a logged in user, I am able to schedule investment in mutual funds via One Time Investment
     Given I am on the Investment Page
-    Given I am on the Mutual Funds Tab
-    When I select portfolio <mutualFundPortfolio>
+    Given I am on the investment tab "Mutual Funds"
+    When I select mutual fund portfolio <mutualFundPortfolio>
     When I click on Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
@@ -56,12 +50,12 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Then I go back to the dashboard page
     Examples:
         | mutualFundPortfolio | investmentType | amount | paymentType |
-        | Core Mutual Fund Portfolio | One time  | 50000 | Scheduled |
+        | Tax Saver Plan | One time  | 50000 | Scheduled |
 
   Scenario Outline: As a logged in user, I am able to do immediate investment in mutual funds via One Time Investment
     Given I am on the Investment Page
-    Given I am on the Mutual Funds Tab
-    When I select portfolio <mutualFundPortfolio>
+    Given I am on the investment tab "Mutual Funds"
+    When I select mutual fund portfolio <mutualFundPortfolio>
     When I click on Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
@@ -74,4 +68,4 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
     Then I go back to the dashboard page
     Examples:
         | mutualFundPortfolio | investmentType | amount | paymentType | paymentInstrumentType | paymentStatus |
-        | Core Mutual Fund Portfolio  | One time  | 40000 | Immediate | Net Banking | Success |
+        | Tax Saver Plan  | One time  | 40000 | Immediate | Net Banking | Success |

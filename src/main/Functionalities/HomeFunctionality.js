@@ -16,6 +16,9 @@ class HomeFunctionality {
       await HomePage.clickMenuButton();
       await HomePage.selectLoginOption();
       switch (user.toString()) {
+        case 'user180756':
+          await LoginPage.enterUserId(loginData.user180756);
+          break;
         case 'user189182':
           await LoginPage.enterUserId(loginData.user189182);
           break;
@@ -38,6 +41,9 @@ class HomeFunctionality {
       await DashboardFunctionality.validate();
     } else if (env == 'STAGING' || env === 'MYSCRIPBOX') {
       switch (user.toString()) {
+        case 'user180756':
+          await Utils.setInputField(loginData.user180756, LoginObjects.stagingUserIdField);
+          break;
         case 'user189182':
           await Utils.setInputField(loginData.user189182, LoginObjects.stagingUserIdField);
           break;
