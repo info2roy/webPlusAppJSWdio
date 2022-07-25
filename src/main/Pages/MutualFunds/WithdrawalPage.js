@@ -1,115 +1,115 @@
 const Device = require('../../../support/libraries/Device');
 const Utils = require('../../../support/Utils/Utils');
-const WithdrawalObjects = require('../../Objects/MutualFunds/WithdrawalObjects');
+const MFWithdrawalObjects = require('../../Objects/MutualFunds/MFWithdrawalObjects');
 
 class WithdrawalPage {
 
   async selectMFPlanPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(WithdrawalObjects.selectMFPlanPageHeader));
+    return (await Utils.elementIsDisplayed(MFWithdrawalObjects.selectMFPlanPageHeader));
   }
 
   async scrollUntilMFPlanNameTextIsDisplayed(planName) {
     if (Device.isAndroidApp()) {
       await console.log(`scrollUntilMFPlanNameTextIsDisplayed ${planName}`);
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(WithdrawalObjects.mutualFundPlanNameText(planName));
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MFWithdrawalObjects.mutualFundPlanNameText(planName));
     } else if (Device.isWeb()) {
-      await Utils.scrollAndMoveToElement(WithdrawalObjects.mutualFundPlan(planName));
+      await Utils.scrollAndMoveToElement(MFWithdrawalObjects.mutualFundPlan(planName));
     }
   }
 
   async clickOnMFPlan(planName) {
-    await Utils.clickElement(WithdrawalObjects.mutualFundPlan(planName));
+    await Utils.clickElement(MFWithdrawalObjects.mutualFundPlan(planName));
   }
 
   async confirmBankDetailsPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(WithdrawalObjects.confirmBankDetailsPageHeader));
+    return (await Utils.elementIsDisplayed(MFWithdrawalObjects.confirmBankDetailsPageHeader));
   }
 
   async clickOnWithdrawalBankOption(option) {
-    await Utils.clickElement(WithdrawalObjects.withdrawalBankOption(option));
+    await Utils.clickElement(MFWithdrawalObjects.withdrawalBankOption(option));
   }
 
   async withdrawAmountPageHeaderIsDisplayed(mutualFundPortfolio) {
-    return (await Utils.elementIsDisplayed(WithdrawalObjects.withdrawAmountPageHeader(mutualFundPortfolio)));
+    return (await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawAmountPageHeader(mutualFundPortfolio)));
   }
 
   async enterWithdrawalAmount(amount) {
-    await Utils.setInputField(amount, WithdrawalObjects.withdrawAmountField);
+    await Utils.setInputField(amount, MFWithdrawalObjects.withdrawAmountField);
   }
 
   async clickNextButton() {
-    await Utils.clickElement(WithdrawalObjects.withdrawAmountNextButton);
+    await Utils.clickElement(MFWithdrawalObjects.withdrawAmountNextButton);
   }
 
   async clickSelectFundsButton() {
-    await Utils.clickElement(WithdrawalObjects.withdrawAmountSelectFundsButton);
+    await Utils.clickElement(MFWithdrawalObjects.withdrawAmountSelectFundsButton);
   }
 
   async selectFundsPageHeaderIsDisplayed(mutualFundPortfolio) {
-    return (await Utils.elementIsDisplayed(WithdrawalObjects.selectFundsPageHeader(mutualFundPortfolio)));
+    return (await Utils.elementIsDisplayed(MFWithdrawalObjects.selectFundsPageHeader(mutualFundPortfolio)));
   }
 
   async selectFundsPageSummaryIsDisplayed() {
-    return (await Utils.elementIsDisplayed(WithdrawalObjects.selectFundsPageSummary));
+    return (await Utils.elementIsDisplayed(MFWithdrawalObjects.selectFundsPageSummary));
   }
 
   async selectFundsPageAmountIsDisplayed(amount) {
-    return (await Utils.elementIsDisplayed(WithdrawalObjects.selectFundsPageAmount(amount)));
+    return (await Utils.elementIsDisplayed(MFWithdrawalObjects.selectFundsPageAmount(amount)));
   }
 
   async selectFundsPageSelectFundsIsDisplayed() {
-    return (await Utils.elementIsDisplayed(WithdrawalObjects.selectFundsPageSelectFunds));
+    return (await Utils.elementIsDisplayed(MFWithdrawalObjects.selectFundsPageSelectFunds));
   }
 
   async scrollUntilMutualFundNameIsDisplayed(fundName) {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(WithdrawalObjects.mutualFundNameText(fundName));
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MFWithdrawalObjects.mutualFundNameText(fundName));
     }
   }
 
   async clickOnMutualFund(fundName) {
-    await Utils.clickElement(WithdrawalObjects.mutualFund(fundName));
+    await Utils.clickElement(MFWithdrawalObjects.mutualFund(fundName));
     if (Device.isAndroidApp()) {
-      await Utils.clickElement(WithdrawalObjects.mutualFund(fundName));
+      await Utils.clickElement(MFWithdrawalObjects.mutualFund(fundName));
     }
   }
 
   async enterWithdrawalAmountForFund(amount, index) {
     if (Device.isAndroidApp()) {
-      const inputField = await Utils.getLastMatchingElement(WithdrawalObjects.mutualFundAmountFields);
+      const inputField = await Utils.getLastMatchingElement(MFWithdrawalObjects.mutualFundAmountFields);
       await Utils.setTextObject(amount, inputField);
     } else if(Device.isWeb()) {
-      const inputField = await Utils.getMatchingElementByIndex(WithdrawalObjects.mutualFundAmountFields, index - 1);
+      const inputField = await Utils.getMatchingElementByIndex(MFWithdrawalObjects.mutualFundAmountFields, index - 1);
       await Utils.setTextObject(amount, inputField);
     }
   }
 
   async clickContiueWithFundAllocationButton(amount) {
-    await Utils.clickElement(WithdrawalObjects.continueWithFundAllocationButton(amount));
+    await Utils.clickElement(MFWithdrawalObjects.continueWithFundAllocationButton(amount));
   }
 
   async confirmWithdrawalPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(WithdrawalObjects.confirmWithdrawalPageHeader));
+    return (await Utils.elementIsDisplayed(MFWithdrawalObjects.confirmWithdrawalPageHeader));
   }
 
   async clickOnWithdrawalFinalActionButton(buttonText) {
-    await Utils.clickElement(WithdrawalObjects.withdrawalFinalActionButton(buttonText));
+    await Utils.clickElement(MFWithdrawalObjects.withdrawalFinalActionButton(buttonText));
   }
 
   async verifyWithOTPPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(WithdrawalObjects.verifyWithOTPPageHeader));
+    return (await Utils.elementIsDisplayed(MFWithdrawalObjects.verifyWithOTPPageHeader));
   }
 
   async enterOTP(otp) {
-    await Utils.setInputField(otp, WithdrawalObjects.otpField);
+    await Utils.setInputField(otp, MFWithdrawalObjects.otpField);
   }
 
   async clickVerifyWithOTPButton() {
-    await Utils.clickElement(WithdrawalObjects.verifyOTPButton);
+    await Utils.clickElement(MFWithdrawalObjects.verifyOTPButton);
   }
 
   async withdrawScheduledPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(WithdrawalObjects.withdrawScheduledPageHeader));
+    return (await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawScheduledPageHeader));
   }
 }
 
