@@ -30,6 +30,10 @@ class DashboardFunctionality {
     await DashboardPage.selectAccountFamilyInformation();
   }
 
+  async selectStatementsAndTaxReports() {
+    await DashboardPage.selectStatementsAndTaxReports();
+  }
+
   async selectReturnToHome() {
     await DashboardPage.returnToHome();
   }
@@ -44,6 +48,16 @@ class DashboardFunctionality {
 
   async selectWithdrawOrInvestMoreOption(option) {
     await DashboardPage.selectWithdrawOrInvestMoreOption(option);
+  }
+
+  async navigateToPageFromDashboard(pageOption) {
+    await DashboardPage.navigateToPage(pageOption);
+    return (await DashboardPage.validateNavigateToPage(pageOption.toString()));
+  }
+
+  async navigateToDashboard() {
+    await browser.back(); // Not creating a method for navigation back now. Will create if more use-case comes up
+    return (await this.validate());
   }
 }
 module.exports = new DashboardFunctionality();

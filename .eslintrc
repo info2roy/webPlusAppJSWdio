@@ -87,7 +87,7 @@
       "error",
       "always"
     ],
-    "consistent-return": "error",
+    "consistent-return": "warn",
     "no-duplicate-imports": "error",
     "no-useless-computed-key": "error",
     "no-useless-rename": "error",

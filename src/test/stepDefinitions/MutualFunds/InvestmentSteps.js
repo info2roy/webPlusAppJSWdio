@@ -84,7 +84,7 @@ When(/^I go for Payment via selected Payment Instrument$/, async () => {
   expect(await InvestmentFunctionality.mockPaymentStatusPageLaunched()).to.be.true;
 });
 
-When(/^I select mock payment status as (Success|Failure)$/, async(paymentStatus) => {
+When(/^I select mock payment status as (Success|Failure)$/, async (paymentStatus) => {
   await console.log(`When I select mock payment status as ${paymentStatus}`);
   await InvestmentFunctionality.selectMockPaymentStatus(paymentStatus);
 });

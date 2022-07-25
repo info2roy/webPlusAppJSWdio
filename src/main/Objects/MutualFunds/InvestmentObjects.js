@@ -164,5 +164,6 @@ class InvestmentObjects {
     web: 'div.app-container-heading-back-icon-container',
     app: '.android.widget.TextView'
   };
+
 }
 module.exports = new InvestmentObjects();

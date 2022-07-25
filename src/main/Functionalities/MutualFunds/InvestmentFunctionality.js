@@ -112,6 +112,7 @@ class InvestmentFunctionality {
     await InvestmentPage.clickGoToDashboardButton();
     await InvestmentPage.clickBackButton();
   }
+
 }
 
 module.exports = new InvestmentFunctionality();
