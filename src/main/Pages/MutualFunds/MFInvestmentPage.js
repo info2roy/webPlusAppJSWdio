@@ -64,6 +64,15 @@ class InvestmentPage {
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.recommendedFundsPageHeader));
   }
 
+  async selectPaymentTypePageHeaderIsDisplayed(investmentType, amount) {
+    if (investmentType == Constants.INVESTMENT_TYPE_SIP) {
+      return (await Utils.elementIsDisplayed(MFInvestmentObjects.selectMFSipPaymentTypePageHeader(amount)));
+    } else if (investmentType == Constants.INVESTMENT_TYPE_ONETIME) {
+      return (await Utils.elementIsDisplayed(MFInvestmentObjects.selectMFOneTimePaymentTypePageHeader(amount)));
+    }
+    return false;
+  }
+
   async scrollUntilInvestmentTypeTextIsDisplayed(paymentType) {
     if (Device.isAndroidApp()) {
       let investmentTypeText = MFInvestmentObjects.MAKE_PAYMENT_NOW_TEXT;
@@ -89,7 +98,7 @@ class InvestmentPage {
     } else if (investmentType == Constants.INVESTMENT_TYPE_ONETIME) {
       return (await Utils.elementIsDisplayed(MFInvestmentObjects.setupMFOneTimeInvestmentPageHeader(amount)));
     }
-    return true;
+    return false;
   }
 
   async enterSipDurationInMonths(months) {

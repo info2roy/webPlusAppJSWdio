@@ -10,20 +10,6 @@ class InvestmentFunctionality {
 
   async investAsPerScripboxGuidedPath() {
     await MFInvestmentPage.clickInvestAsPerScripboxGuidedPathButton();
-  }
-
-  async mutualFundPortfolioPageLaunched(portfolio) {
-    return (await MFInvestmentPage.mutualFundPortfolioHeaderIsDisplayed(portfolio));
-  }
-
-  async fillMutualFundPortfolioForm(ageGroup) {
-    //await InvestmentPage.scrollUntilAgegroupHeaderIsDisplayed();
-    //await InvestmentPage.selectAgeGroupTab(ageGroup);
-    await console.log(`fillMutualFundPortfolioForm ageGroup:${ageGroup}`);
-    await MFInvestmentPage.clickNextButton();
-  }
-
-  async investmentFormPageLaunched() {
     return (await MFInvestmentPage.investmentFormPageHeaderIsDisplayed());
   }
 
@@ -31,14 +17,12 @@ class InvestmentFunctionality {
     await MFInvestmentPage.selectInvestmentType(investmentType);
     await MFInvestmentPage.enterInvestmentAmount(amount);
     await MFInvestmentPage.clickSeeRecommendedFundsButton();
-  }
-
-  async recommendedFundsPageIsLaunched() {
     return (await MFInvestmentPage.recommendedFundPageHeaderIsDisplayed());
   }
 
-  async acceptRecommendedFunds() {
+  async acceptRecommendedFunds(investmentType, amount) {
     await MFInvestmentPage.clickOnlyNextButton();
+    return (await MFInvestmentPage.selectPaymentTypePageHeaderIsDisplayed(investmentType, amount));
   }
 
   async makePayment(paymentType) {

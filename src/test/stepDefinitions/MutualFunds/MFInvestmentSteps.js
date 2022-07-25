@@ -11,15 +11,7 @@ When(/^I select mutual fund portfolio (.+)$/, async (mutualFundPortfolio) => {
 
 When(/^I click on Invest as per Scripbox Guided Path$/, async () => {
   await console.log(`When I click on Invest as per Scripbox Guided Path for ${this.mutualFundPortfolio}`);
-  await MFInvestmentFunctionality.investAsPerScripboxGuidedPath();
-  expect(await MFInvestmentFunctionality.investmentFormPageLaunched()).to.be.true;
-});
-
-When(/^I fill form with agegroup (\d+s) and click NEXT$/, async (ageGroup) => {
-  await console.log(`When I select my <ageGroup>:${ageGroup} and click NEXT`);
-  await MFInvestmentFunctionality.fillMutualFundPortfolioForm(ageGroup);
-  expect(await MFInvestmentFunctionality.investmentFormPageLaunched()).to.be.true;
-
+  expect(await MFInvestmentFunctionality.investAsPerScripboxGuidedPath()).to.be.true;
 });
 
 When(/^I select (Every month \(SIP\)|One time|STP) and fill (\d+) and click to see recommended funds$/,
@@ -28,14 +20,13 @@ When(/^I select (Every month \(SIP\)|One time|STP) and fill (\d+) and click to s
     click to see recommended funds`);
     this.amount = amount;
     this.investmentType = investmentType;
-    await MFInvestmentFunctionality.fillInvestmentForm(investmentType, amount);
-    expect(await MFInvestmentFunctionality.recommendedFundsPageIsLaunched()).to.be.true;
+    expect(await MFInvestmentFunctionality.fillInvestmentForm(investmentType, amount)).to.be.true;
   }
 );
 
 When(/^I accept the recommended mutual fund allocation and click NEXT$/, async () => {
   await console.log('When I accept the recommended mutual fund allocation and click NEXT');
-  await MFInvestmentFunctionality.acceptRecommendedFunds();
+  expect(await MFInvestmentFunctionality.acceptRecommendedFunds(this.investmentType, this.amount)).to.be.true;
 });
 
 When(/^I select Payment type as (Immediate|Scheduled)$/, async (paymentType) => {

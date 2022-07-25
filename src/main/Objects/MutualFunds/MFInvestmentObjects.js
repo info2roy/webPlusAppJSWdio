@@ -68,6 +68,22 @@ class InvestmentObjects {
     app: '//*[@text="Recommended Funds"]'
   };
 
+  selectMFSipPaymentTypePageHeader(amount) {
+    const amountStr = amount.toLocaleString('hi');
+    return {
+      web: `//div[text()="I would like to invest Rs ${amountStr} every month (SIP)"]`,
+      app: `//*[@text="I would like to invest Rs ${amountStr} every month (SIP)"]`
+    };
+  }
+
+  selectMFOneTimePaymentTypePageHeader(amount) {
+    const amountStr = amount.toLocaleString('hi');
+    return {
+      web: `//div[text()="I would like to make a one-time investment of Rs ${amountStr}"]`,
+      app: `//*[@text="I would like to make a one-time investment of Rs ${amountStr}"]`
+    };
+  }
+
   MAKE_PAYMENT_NOW_TEXT = { web: 'MAKE PAYMENT NOW', app: 'MAKE PAYMENT NOW' };
 
   ONE_CLICK_INVEST_TEXT = { web: '1-CLICK INVEST', app: '1-CLICK INVEST' };
