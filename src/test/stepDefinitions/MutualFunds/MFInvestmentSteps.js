@@ -39,25 +39,24 @@ When(/^I select SIP duration in months as (\d+) and click NEXT$/, async (sipDura
   await console.log(`When I select SIP duration in months as ${sipDurationInMonths} and click NEXT paymentType:${this.paymentType}`);
   expect(await MFInvestmentFunctionality.setupMFInvestmentPageLaunched(this.investmentType, this.amount, 180)).to.be.true;
   await MFInvestmentFunctionality.setupInvestment(sipDurationInMonths, this.paymentType, this.investmentType);
+  expect(await MFInvestmentFunctionality.paymentInstrumentPageLaunched(this.paymentType)).to.be.true;
 });
 
 When(/^I select scheduled investment date and click NEXT*/, async () => {
   expect(await MFInvestmentFunctionality.setupMFInvestmentPageLaunched(this.investmentType, this.amount, 0)).to.be.true;
   await MFInvestmentFunctionality.setupInvestment(0, this.paymentType, this.investmentType);
+  expect(await MFInvestmentFunctionality.paymentInstrumentPageLaunched(this.paymentType)).to.be.true;
 });
 
 When(/^I select Payment Instrument of type (.+)$/, async (paymentInstrumentType) => {
   await console.log(`When I select Payment Instrument of type ${paymentInstrumentType}`);
   this.paymentInstrumentType = paymentInstrumentType;
-  expect(await MFInvestmentFunctionality.paymentInstrumentPageLaunched(this.paymentType)).to.be.true;
-  await MFInvestmentFunctionality.selectPaymentInstrument(paymentInstrumentType);
-  expect(await MFInvestmentFunctionality.transferFundsPageLaunched()).to.be.true;
+  expect(await MFInvestmentFunctionality.selectPaymentInstrument(paymentInstrumentType)).to.be.true;
 });
 
 When(/^I go for Payment via selected Payment Instrument$/, async () => {
   await console.log(`I go for Payment via selected Payment Instrument ${this.paymentInstrumentType}`);
-  await MFInvestmentFunctionality.goToBankForFundTransfer();
-  expect(await MFInvestmentFunctionality.mockPaymentStatusPageLaunched()).to.be.true;
+  expect(await MFInvestmentFunctionality.goToBankForFundTransfer()).to.be.true;
 });
 
 When(/^I select mock payment status as (Success|Failure)$/, async (paymentStatus) => {

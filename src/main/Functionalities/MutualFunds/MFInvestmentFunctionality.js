@@ -1,7 +1,7 @@
 const Constants = require('../../../config/data/structured/Constants');
 const MFInvestmentPage = require('../../Pages/MutualFunds/MFInvestmentPage');
 
-class InvestmentFunctionality {
+class MFInvestmentFunctionality {
 
   async selectMutualFundPortfolio(portfolio) {
     await MFInvestmentPage.selectMutualFundPortfolio(portfolio);
@@ -52,17 +52,11 @@ class InvestmentFunctionality {
 
   async selectPaymentInstrument(paymentInstrumentType) {
     await MFInvestmentPage.clickOnPaymentInstrument(paymentInstrumentType);
-  }
-
-  async transferFundsPageLaunched() {
     return (await MFInvestmentPage.transferFundsPageHeaderIsDisplayed());
   }
 
   async goToBankForFundTransfer() {
     await MFInvestmentPage.clickGoToBankButton();
-  }
-
-  async mockPaymentStatusPageLaunched() {
     return (await MFInvestmentPage.mockPaymentStatusPageHeaderIsDisplayed());
   }
 
@@ -93,4 +87,4 @@ class InvestmentFunctionality {
 
 }
 
-module.exports = new InvestmentFunctionality();
+module.exports = new MFInvestmentFunctionality();

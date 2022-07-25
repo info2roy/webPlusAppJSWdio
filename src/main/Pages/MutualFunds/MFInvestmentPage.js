@@ -3,7 +3,7 @@ const Utils = require('../../../support/Utils/Utils');
 const Constants = require('../../../config/data/structured/Constants');
 const MFInvestmentObjects = require('../../Objects/MutualFunds/MFInvestmentObjects');
 
-class InvestmentPage {
+class MFInvestmentPage {
   async mutualFundsPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.mutualFundsPageHeader));
   }
@@ -216,4 +216,4 @@ class InvestmentPage {
   }
 }
 
-module.exports = new InvestmentPage();
+module.exports = new MFInvestmentPage();
