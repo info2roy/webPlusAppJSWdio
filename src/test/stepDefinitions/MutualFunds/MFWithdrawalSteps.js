@@ -3,8 +3,8 @@ const { expect } = require('chai');
 const Constants = require('../../../config/data/structured/Constants');
 const MFWithdrawalFunctionality = require('../../../main/Functionalities/MutualFunds/MFWithdrawalFunctionality');
 
-When(/^I select for withdrawal the portfolio (.+)$/, async (mutualFundPortfolio) => {
-  await console.log(`When I select for withdrawal the portfolio ${mutualFundPortfolio}`);
+When(/^I select for withdrawal the mutual fund portfolio (.+)$/, async (mutualFundPortfolio) => {
+  await console.log(`When I select for withdrawal the mutual fund portfolio ${mutualFundPortfolio}`);
   this.mutualFundPortfolio = mutualFundPortfolio;
   expect(await MFWithdrawalFunctionality.selectMFPlanPageLaunched()).to.be.true;
   await MFWithdrawalFunctionality.selectMFPlan(mutualFundPortfolio);
