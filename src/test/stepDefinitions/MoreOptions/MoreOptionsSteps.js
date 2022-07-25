@@ -4,22 +4,29 @@ const MoreOptionsFunctionality = require('../../../main/Functionalities/MoreOpti
 const PersonalInfoFunctionality = require('../../../main/Functionalities/MoreOptions/PersonalInfoFunctionality');
 const HomeFunctionality = require('../../../main/Functionalities/HomeFunctionality');
 const DashboardFunctionality = require('../../../main/Functionalities/DashboardFunctionality');
+const MfStatementfunctionality = require('../../../main/Functionalities/MutualFunds/MFStatementFunctionality');
 
 Then(/^I should see all of the more options$/, async () => {
   await console.log('Then I should see all of the more options');
   expect(await MoreOptionsFunctionality.moreOptionsPageLaunched()).to.be.true;
 });
 
-When(/^I select personal information$/, async () => {
-  await console.log('When I select personal information');
+When(/^I select option "Personal Information"$/, async () => {
+  await console.log('When I select option "Personal Information');
   await MoreOptionsFunctionality.selectPersonalInformation();
   expect(await PersonalInfoFunctionality.profileInfoPageLaunched()).to.be.true;
 });
 
-When(/^I select Account and Family Information$/, async () => {
-  await console.log('I select Account and Family Information');
+When(/^I select option "Account and Family Information"$/, async () => {
+  await console.log('I select option "Account and Family Information"');
   await MoreOptionsFunctionality.selectAccountFamilyInformation();
   expect(await PersonalInfoFunctionality.accountFamilyInfoPageLaunched()).to.be.true;
+});
+
+When(/^I select option "Statements and Tax Reports"$/, async () => {
+  await console.log('When I select option "Statements and Tax Reports"');
+  await DashboardFunctionality.selectStatementsAndTaxReports();
+  expect(await MfStatementfunctionality.MFPageLaunched()).to.be.true;
 });
 
 When(/^I select Notification Preferences$/, async () => {

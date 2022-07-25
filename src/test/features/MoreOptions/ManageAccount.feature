@@ -11,7 +11,7 @@ Feature: As customer I wish to update my account details
 
   Scenario: As a logged in user I wish to update my User name
     When I open the more options
-    And I select personal information
+    And I select option "Personal Information"
     Then I edit "user name"
     And I update changes
 
