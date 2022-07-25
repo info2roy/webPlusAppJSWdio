@@ -9,5 +9,5 @@ Feature: Scripbox Whatsapp Notifications Page
     When I select Whatsapp Notifications
     Then I should see Whatsapp Notifications Page loaded
 
-  Scenario: On the Notifications Preferences page, I can update the controls one at a time
+  Scenario: On the Whatsapp Notifications page, I can update the controls one at a time
     Then I can update whatsapp notifications control
