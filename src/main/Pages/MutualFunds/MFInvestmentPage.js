@@ -1,74 +1,74 @@
 const Device = require('../../../support/libraries/Device');
 const Utils = require('../../../support/Utils/Utils');
 const Constants = require('../../../config/data/structured/Constants');
-const InvestmentObjects = require('../../Objects/MutualFunds/InvestmentObjects');
+const MFInvestmentObjects = require('../../Objects/MutualFunds/MFInvestmentObjects');
 
 class InvestmentPage {
   async mutualFundsPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.mutualFundsPageHeader));
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.mutualFundsPageHeader));
   }
 
   async selectMutualFundPortfolio(portfolio) {
-    await Utils.clickElement(InvestmentObjects.mutualFundPortfolioOption(portfolio));
+    await Utils.clickElement(MFInvestmentObjects.mutualFundPortfolioOption(portfolio));
   }
 
   async scripboxGuidedPathHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.scripboxGuidedPathHeader));
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.scripboxGuidedPathHeader));
   }
 
   async clickInvestAsPerScripboxGuidedPathButton() {
-    await Utils.clickElement(InvestmentObjects.investAsPerScripboxGuidedPathButton);
+    await Utils.clickElement(MFInvestmentObjects.investAsPerScripboxGuidedPathButton);
   }
 
   async mutualFundPortfolioHeaderIsDisplayed(portfolio) {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.mutualFundPortfolioOption(portfolio)));
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.mutualFundPortfolioOption(portfolio)));
   }
 
   async scrollUntilAgegroupHeaderIsDisplayed() {
-    await Utils.scrollVerticalUntilTextIntoViewForAndroid(InvestmentObjects.ageGroupHeaderText);
+    await Utils.scrollVerticalUntilTextIntoViewForAndroid(MFInvestmentObjects.ageGroupHeaderText);
   }
 
   async selectAgeGroupTab(ageGroup) {
-    await Utils.clickElement(InvestmentObjects.ageGroupTab(ageGroup));
+    await Utils.clickElement(MFInvestmentObjects.ageGroupTab(ageGroup));
   }
 
   async clickOnlyNextButton() {
-    await Utils.clickElement(InvestmentObjects.nextButton);
+    await Utils.clickElement(MFInvestmentObjects.nextButton);
   }
 
   async clickNextButtonForPayment(paymentType) {
     if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
-      await Utils.clickElement(InvestmentObjects.nextButton);
+      await Utils.clickElement(MFInvestmentObjects.nextButton);
     } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
-      await Utils.clickElement(InvestmentObjects.confirmButton);
+      await Utils.clickElement(MFInvestmentObjects.confirmButton);
     }
   }
 
   async investmentFormPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.investmentFormPageHeader));
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.investmentFormPageHeader));
   }
 
   async selectInvestmentType(investmentType) {
-    await Utils.clickElement(InvestmentObjects.investmentTypeOption(investmentType));
+    await Utils.clickElement(MFInvestmentObjects.investmentTypeOption(investmentType));
   }
 
   async enterInvestmentAmount(amount) {
-    await Utils.setInputField(amount, InvestmentObjects.investmentAmountField);
+    await Utils.setInputField(amount, MFInvestmentObjects.investmentAmountField);
   }
 
   async clickSeeRecommendedFundsButton() {
-    await Utils.clickElement(InvestmentObjects.seeRecommendedFundsButton);
+    await Utils.clickElement(MFInvestmentObjects.seeRecommendedFundsButton);
   }
 
   async recommendedFundPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.recommendedFundsPageHeader));
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.recommendedFundsPageHeader));
   }
 
   async scrollUntilInvestmentTypeTextIsDisplayed(paymentType) {
     if (Device.isAndroidApp()) {
-      let investmentTypeText = InvestmentObjects.MAKE_PAYMENT_NOW_TEXT;
+      let investmentTypeText = MFInvestmentObjects.MAKE_PAYMENT_NOW_TEXT;
       if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
-        investmentTypeText = InvestmentObjects.ONE_CLICK_INVEST_TEXT;
+        investmentTypeText = MFInvestmentObjects.ONE_CLICK_INVEST_TEXT;
       }
       console.log(`scrollUntilInvestmentTypeTextIsDisplayed: investmentTypeText: ${JSON.stringify(investmentTypeText)}`);
       await Utils.scrollVerticalUntilTextIntoViewForAndroid(investmentTypeText);
@@ -77,82 +77,82 @@ class InvestmentPage {
 
   async clickMakePaymentButton(paymentType) {
     if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
-      await Utils.clickElement(InvestmentObjects.makePaymentNowButton);
+      await Utils.clickElement(MFInvestmentObjects.makePaymentNowButton);
     } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
-      await Utils.clickElement(InvestmentObjects.oneClickInvestButton);
+      await Utils.clickElement(MFInvestmentObjects.oneClickInvestButton);
     }
   }
 
   async setupMFInvestmentPageHeaderIsDisplayed(investmentType, amount, months) {
     if (investmentType == Constants.INVESTMENT_TYPE_SIP) {
-      return (await Utils.elementIsDisplayed(InvestmentObjects.setupMFSipInvestmentPageHeader(amount, months)));
+      return (await Utils.elementIsDisplayed(MFInvestmentObjects.setupMFSipInvestmentPageHeader(amount, months)));
     } else if (investmentType == Constants.INVESTMENT_TYPE_ONETIME) {
-      return (await Utils.elementIsDisplayed(InvestmentObjects.setupMFOneTimeInvestmentPageHeader(amount)));
+      return (await Utils.elementIsDisplayed(MFInvestmentObjects.setupMFOneTimeInvestmentPageHeader(amount)));
     }
     return true;
   }
 
   async enterSipDurationInMonths(months) {
-    await Utils.setInputField(months, InvestmentObjects.sipDurationInMonthsField);
+    await Utils.setInputField(months, MFInvestmentObjects.sipDurationInMonthsField);
   }
 
   async paymentInstrumentPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.paymentInstrumentPageHeader));
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.paymentInstrumentPageHeader));
   }
 
   async investmentScheduledSuccessfulPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.investmentScheduledSuccessfullyPageHeader));
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.investmentScheduledSuccessfullyPageHeader));
   }
 
   async clickOnPaymentInstrument(paymentInstrumentType) {
-    await Utils.clickElement(InvestmentObjects.paymentInstrument(paymentInstrumentType));
+    await Utils.clickElement(MFInvestmentObjects.paymentInstrument(paymentInstrumentType));
   }
 
   async transferFundsPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.transferFundsPageHeader));
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.transferFundsPageHeader));
   }
 
   async clickGoToBankButton() {
-    await Utils.clickElement(InvestmentObjects.goToBankForFundTransferButton);
+    await Utils.clickElement(MFInvestmentObjects.goToBankForFundTransferButton);
   }
 
   async mockPaymentStatusPageHeaderIsDisplayed() {
     if (Device.isWeb()) {
-      return (await Utils.elementIsDisplayed(InvestmentObjects.mockPaymentStatusPageHeader));
+      return (await Utils.elementIsDisplayed(MFInvestmentObjects.mockPaymentStatusPageHeader));
     }
     return true;
   }
 
   async clickMockPaymentStatus(paymentStatus) {
     if (Device.isWeb()) {
-      await Utils.clickElement(InvestmentObjects.mockPaymentStatusButton(paymentStatus));
+      await Utils.clickElement(MFInvestmentObjects.mockPaymentStatusButton(paymentStatus));
     }
   }
 
   async fundTransferSuccessMessageIsDisplayed() {
-    return (await Utils.elementIsDisplayed(InvestmentObjects.fundTransferSuccessMessage));
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.fundTransferSuccessMessage));
   }
 
   async clickHomeButton() {
     if (Device.isAndroidApp()) {
-      await Utils.clickElement(InvestmentObjects.homeButton);
+      await Utils.clickElement(MFInvestmentObjects.homeButton);
     }
   }
 
   async investmentSuccessMessageIsDisplayed() {
     if (Device.isAndroidApp()) {
-      return (await Utils.elementIsDisplayed(InvestmentObjects.investmentSuccessMessage));
+      return (await Utils.elementIsDisplayed(MFInvestmentObjects.investmentSuccessMessage));
     }
     return true;
   }
 
   async clickGoToDashboardButton() {
-    await Utils.clickElement(InvestmentObjects.goToDashboardButton);
+    await Utils.clickElement(MFInvestmentObjects.goToDashboardButton);
   }
 
   async clickBackButton() {
     await console.log('clickBackButton : begin');
-    const backButton = await Utils.getMatchingElementByIndex(InvestmentObjects.backButton, 0);
+    const backButton = await Utils.getMatchingElementByIndex(MFInvestmentObjects.backButton, 0);
     await console.log(`backButton : ${JSON.stringify(backButton)}`);
     await Utils.clickWebElement(backButton);
     await console.log(`clicked backButton`);
@@ -164,16 +164,16 @@ class InvestmentPage {
   async navigateToMFStatementPage(mfOption) {
     switch (mfOption.toString()) {
       case 'Investment history':
-        await Utils.clickElement(InvestmentObjects.investmentHistoryTab);
+        await Utils.clickElement(MFInvestmentObjects.investmentHistoryTab);
         break;
       case 'Fund holdings':
-        await Utils.clickElement(InvestmentObjects.fundHoldingsTab);
+        await Utils.clickElement(MFInvestmentObjects.fundHoldingsTab);
         break;
       case 'Tax statements':
-        await Utils.clickElement(InvestmentObjects.taxStatementsTab);
+        await Utils.clickElement(MFInvestmentObjects.taxStatementsTab);
         break;
       case 'Capital gains':
-        await Utils.clickElement(InvestmentObjects.capitalGainsTab);
+        await Utils.clickElement(MFInvestmentObjects.capitalGainsTab);
         break;
       default:
         console.log('Mf option not available');
@@ -184,23 +184,23 @@ class InvestmentPage {
     switch (mfOption.toString()) {
       case 'Investment history':
         return (
-          await Utils.elementIsDisplayed(InvestmentObjects.investmentHistoryFundFoundHeader) &&
-          await Utils.elementIsDisplayed(InvestmentObjects.investmentHistoryEmailMe) &&
-          await Utils.elementIsDisplayed(InvestmentObjects.investmentHistoryDownload));
+          await Utils.elementIsDisplayed(MFInvestmentObjects.investmentHistoryFundFoundHeader) &&
+          await Utils.elementIsDisplayed(MFInvestmentObjects.investmentHistoryEmailMe) &&
+          await Utils.elementIsDisplayed(MFInvestmentObjects.investmentHistoryDownload));
       case 'Fund holdings':
         return (
-          await Utils.elementIsDisplayed(InvestmentObjects.fundHoldingsCheckbox) &&
-          await Utils.elementIsDisplayed(InvestmentObjects.investmentHistoryEmailMe) &&
-          await Utils.elementIsDisplayed(InvestmentObjects.fundsCurrentvalue) &&
-          await Utils.elementIsDisplayed(InvestmentObjects.fundsSortingOption));
+          await Utils.elementIsDisplayed(MFInvestmentObjects.fundHoldingsCheckbox) &&
+          await Utils.elementIsDisplayed(MFInvestmentObjects.investmentHistoryEmailMe) &&
+          await Utils.elementIsDisplayed(MFInvestmentObjects.fundsCurrentvalue) &&
+          await Utils.elementIsDisplayed(MFInvestmentObjects.fundsSortingOption));
       case 'Tax statements':
         return (
-          await Utils.elementIsDisplayed(InvestmentObjects.emailIcon) &&
-          await Utils.elementIsDisplayed(InvestmentObjects.downloadAsPdf));
+          await Utils.elementIsDisplayed(MFInvestmentObjects.emailIcon) &&
+          await Utils.elementIsDisplayed(MFInvestmentObjects.downloadAsPdf));
       case 'Capital gains':
         return (
-          await Utils.elementIsDisplayed(InvestmentObjects.emailIcon) &&
-          await Utils.elementIsDisplayed(InvestmentObjects.downloadIcon));
+          await Utils.elementIsDisplayed(MFInvestmentObjects.emailIcon) &&
+          await Utils.elementIsDisplayed(MFInvestmentObjects.downloadIcon));
       default:
         console.log('Wrong type MF type to assert. -> ' + mfOption.toString());
     }
