@@ -3,7 +3,10 @@ const InvestmentCalendarObjects = require('../../Objects/Reports/InvestmentCalen
 
 class InvestmentCalendarPage {
   async investmentCalendarPageLaunched() {
-    return (await Utils.elementIsDisplayed(InvestmentCalendarObjects.investmentCalendarPageHeader));
+    return (await Utils.elementIsDisplayed(InvestmentCalendarObjects.investmentCalendarPageHeader)) &&
+    (await Utils.elementIsDisplayed(InvestmentCalendarObjects.monthlySummaryHeader)) &&
+    (await Utils.elementIsDisplayed(InvestmentCalendarObjects.upcomingInvestmentCalendarHeader)) &&
+    (await Utils.elementIsDisplayed(InvestmentCalendarObjects.completedInvestmentCalendarHeader));
   }
 }
 module.exports = new InvestmentCalendarPage();
