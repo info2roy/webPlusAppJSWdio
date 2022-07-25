@@ -5,9 +5,6 @@ class InvestmentFunctionality {
 
   async selectMutualFundPortfolio(portfolio) {
     await MFInvestmentPage.selectMutualFundPortfolio(portfolio);
-  }
-
-  async scripBoxGuidedPathPageLaunched() {
     return (await MFInvestmentPage.scripboxGuidedPathHeaderIsDisplayed());
   }
 

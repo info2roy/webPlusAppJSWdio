@@ -1,12 +1,12 @@
 Feature: Scripbox Investment in Mutual Fund Portfolio
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "UAT38" for "user189182"
+    Given I login to Scripbox in "UAT38" for "user180756"
 
   Scenario Outline: As a logged in user, I am able to schedule investment in mutual funds via Every month (SIP)
     Given I am on the Investment Page
     Given I am on the investment tab "Mutual Funds"
-    When I select portfolio <mutualFundPortfolio>
+    When I select mutual fund portfolio <mutualFundPortfolio>
     When I click on Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
@@ -21,7 +21,7 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
   Scenario Outline: As a logged in user, I am able to do immediate investment in mutual funds via Every month (SIP)
     Given I am on the Investment Page
     Given I am on the investment tab "Mutual Funds"
-    When I select portfolio <mutualFundPortfolio>
+    When I select mutual fund portfolio <mutualFundPortfolio>
     When I click on Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
@@ -40,7 +40,7 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
   Scenario Outline: As a logged in user, I am able to schedule investment in mutual funds via One Time Investment
     Given I am on the Investment Page
     Given I am on the investment tab "Mutual Funds"
-    When I select portfolio <mutualFundPortfolio>
+    When I select mutual fund portfolio <mutualFundPortfolio>
     When I click on Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT
@@ -55,7 +55,7 @@ Feature: Scripbox Investment in Mutual Fund Portfolio
   Scenario Outline: As a logged in user, I am able to do immediate investment in mutual funds via One Time Investment
     Given I am on the Investment Page
     Given I am on the investment tab "Mutual Funds"
-    When I select portfolio <mutualFundPortfolio>
+    When I select mutual fund portfolio <mutualFundPortfolio>
     When I click on Invest as per Scripbox Guided Path
     When I select <investmentType> and fill <amount> and click to see recommended funds
     When I accept the recommended mutual fund allocation and click NEXT

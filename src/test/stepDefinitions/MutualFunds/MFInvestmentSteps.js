@@ -3,11 +3,10 @@ const { expect } = require('chai');
 const MFInvestmentFunctionality = require('../../../main/Functionalities/MutualFunds/MFInvestmentFunctionality');
 const DashboardFunctionality = require('../../../main/Functionalities/DashboardFunctionality');
 
-When(/^I select portfolio (.+)$/, async (mutualFundPortfolio) => {
-  await console.log(`When I select portfolio ${mutualFundPortfolio}`);
+When(/^I select mutual fund portfolio (.+)$/, async (mutualFundPortfolio) => {
+  await console.log(`When I select mutual fund portfolio ${mutualFundPortfolio}`);
   this.mutualFundPortfolio = mutualFundPortfolio;
-  await MFInvestmentFunctionality.selectMutualFundPortfolio(mutualFundPortfolio);
-  expect(await MFInvestmentFunctionality.scripBoxGuidedPathPageLaunched()).to.be.true;
+  expect(await MFInvestmentFunctionality.selectMutualFundPortfolio(mutualFundPortfolio)).to.be.true;
 });
 
 When(/^I click on Invest as per Scripbox Guided Path$/, async () => {
