@@ -1,113 +1,113 @@
 const Constants = require('../../../config/data/structured/Constants');
-const InvestmentPage = require('../../Pages/MutualFunds/InvestmentPage');
+const MFInvestmentPage = require('../../Pages/MutualFunds/MFInvestmentPage');
 
 class InvestmentFunctionality {
 
   async selectMutualFundPortfolio(portfolio) {
-    await InvestmentPage.selectMutualFundPortfolio(portfolio);
+    await MFInvestmentPage.selectMutualFundPortfolio(portfolio);
   }
 
   async scripBoxGuidedPathPageLaunched() {
-    return (await InvestmentPage.scripboxGuidedPathHeaderIsDisplayed());
+    return (await MFInvestmentPage.scripboxGuidedPathHeaderIsDisplayed());
   }
 
   async investAsPerScripboxGuidedPath() {
-    await InvestmentPage.clickInvestAsPerScripboxGuidedPathButton();
+    await MFInvestmentPage.clickInvestAsPerScripboxGuidedPathButton();
   }
 
   async mutualFundPortfolioPageLaunched(portfolio) {
-    return (await InvestmentPage.mutualFundPortfolioHeaderIsDisplayed(portfolio));
+    return (await MFInvestmentPage.mutualFundPortfolioHeaderIsDisplayed(portfolio));
   }
 
   async fillMutualFundPortfolioForm(ageGroup) {
     //await InvestmentPage.scrollUntilAgegroupHeaderIsDisplayed();
     //await InvestmentPage.selectAgeGroupTab(ageGroup);
     await console.log(`fillMutualFundPortfolioForm ageGroup:${ageGroup}`);
-    await InvestmentPage.clickNextButton();
+    await MFInvestmentPage.clickNextButton();
   }
 
   async investmentFormPageLaunched() {
-    return (await InvestmentPage.investmentFormPageHeaderIsDisplayed());
+    return (await MFInvestmentPage.investmentFormPageHeaderIsDisplayed());
   }
 
   async fillInvestmentForm(investmentType, amount) {
-    await InvestmentPage.selectInvestmentType(investmentType);
-    await InvestmentPage.enterInvestmentAmount(amount);
-    await InvestmentPage.clickSeeRecommendedFundsButton();
+    await MFInvestmentPage.selectInvestmentType(investmentType);
+    await MFInvestmentPage.enterInvestmentAmount(amount);
+    await MFInvestmentPage.clickSeeRecommendedFundsButton();
   }
 
   async recommendedFundsPageIsLaunched() {
-    return (await InvestmentPage.recommendedFundPageHeaderIsDisplayed());
+    return (await MFInvestmentPage.recommendedFundPageHeaderIsDisplayed());
   }
 
   async acceptRecommendedFunds() {
-    await InvestmentPage.clickOnlyNextButton();
+    await MFInvestmentPage.clickOnlyNextButton();
   }
 
   async makePayment(paymentType) {
-    await InvestmentPage.scrollUntilInvestmentTypeTextIsDisplayed(paymentType);
-    await InvestmentPage.clickMakePaymentButton(paymentType);
+    await MFInvestmentPage.scrollUntilInvestmentTypeTextIsDisplayed(paymentType);
+    await MFInvestmentPage.clickMakePaymentButton(paymentType);
   }
 
   async setupMFInvestmentPageLaunched(investmentType, amount, months) {
-    return (await InvestmentPage.setupMFInvestmentPageHeaderIsDisplayed(investmentType, amount, months));
+    return (await MFInvestmentPage.setupMFInvestmentPageHeaderIsDisplayed(investmentType, amount, months));
   }
 
   async setupInvestment(sipDurationInMonths, paymentType, investmentType) {
     if (investmentType == Constants.INVESTMENT_TYPE_SIP) {
-      await InvestmentPage.enterSipDurationInMonths(sipDurationInMonths);
+      await MFInvestmentPage.enterSipDurationInMonths(sipDurationInMonths);
     }
-    await InvestmentPage.clickNextButtonForPayment(paymentType);
+    await MFInvestmentPage.clickNextButtonForPayment(paymentType);
   }
 
   async paymentInstrumentPageLaunched(paymentType) {
     if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
-      return (await InvestmentPage.paymentInstrumentPageHeaderIsDisplayed());
+      return (await MFInvestmentPage.paymentInstrumentPageHeaderIsDisplayed());
     } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
-      return (await InvestmentPage.investmentScheduledSuccessfulPageHeaderIsDisplayed());
+      return (await MFInvestmentPage.investmentScheduledSuccessfulPageHeaderIsDisplayed());
     }
     return false;
   }
 
   async selectPaymentInstrument(paymentInstrumentType) {
-    await InvestmentPage.clickOnPaymentInstrument(paymentInstrumentType);
+    await MFInvestmentPage.clickOnPaymentInstrument(paymentInstrumentType);
   }
 
   async transferFundsPageLaunched() {
-    return (await InvestmentPage.transferFundsPageHeaderIsDisplayed());
+    return (await MFInvestmentPage.transferFundsPageHeaderIsDisplayed());
   }
 
   async goToBankForFundTransfer() {
-    await InvestmentPage.clickGoToBankButton();
+    await MFInvestmentPage.clickGoToBankButton();
   }
 
   async mockPaymentStatusPageLaunched() {
-    return (await InvestmentPage.mockPaymentStatusPageHeaderIsDisplayed());
+    return (await MFInvestmentPage.mockPaymentStatusPageHeaderIsDisplayed());
   }
 
   async selectMockPaymentStatus(paymentStatus) {
-    await InvestmentPage.clickMockPaymentStatus(paymentStatus);
+    await MFInvestmentPage.clickMockPaymentStatus(paymentStatus);
   }
 
   async fundTransferIsSuccessful() {
-    return (await InvestmentPage.fundTransferSuccessMessageIsDisplayed());
+    return (await MFInvestmentPage.fundTransferSuccessMessageIsDisplayed());
   }
 
   async goToHome() {
-    await InvestmentPage.clickHomeButton();
+    await MFInvestmentPage.clickHomeButton();
   }
 
   async investmentIsSuccessful() {
-    return (await InvestmentPage.investmentSuccessMessageIsDisplayed());
+    return (await MFInvestmentPage.investmentSuccessMessageIsDisplayed());
   }
 
   async investmentScheduledSuccessfully() {
-    return (await InvestmentPage.investmentScheduledSuccessfulPageHeaderIsDisplayed());
+    return (await MFInvestmentPage.investmentScheduledSuccessfulPageHeaderIsDisplayed());
   }
 
   async goBackToDashboard() {
-    await InvestmentPage.clickGoToDashboardButton();
-    await InvestmentPage.clickBackButton();
+    await MFInvestmentPage.clickGoToDashboardButton();
+    await MFInvestmentPage.clickBackButton();
   }
 
 }

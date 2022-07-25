@@ -1,6 +1,6 @@
 const Utils = require('../../../support/Utils/Utils');
 const CommonInvestmentObjects = require('../../Objects/Common/CommonInvestmentObjects');
-const MFInvestmentPage = require('../MutualFunds/InvestmentPage');
+const MFInvestmentPage = require('../MutualFunds/MFInvestmentPage');
 const Constants = require('../../../config/data/structured/Constants');
 
 class CommonInvestmentPage {
