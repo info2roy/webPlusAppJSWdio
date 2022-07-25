@@ -1,14 +1,7 @@
-const { Given, When, Then } = require('@wdio/cucumber-framework');
+const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const InvestmentFunctionality = require('../../../main/Functionalities/MutualFunds/InvestmentFunctionality');
-const CommonInvestmentFunctionality = require('../../../main/Functionalities/Common/CommonInvestmentFunctionality');
 const DashboardFunctionality = require('../../../main/Functionalities/DashboardFunctionality');
-
-Given(/^I am on the Investment Page$/, async () => {
-  await console.log('Given I am on the Investment Page');
-  await DashboardFunctionality.invest();
-  expect(await CommonInvestmentFunctionality.investmentPageLaunched()).to.be.true;
-});
 
 When(/^I select portfolio (.+)$/, async (mutualFundPortfolio) => {
   await console.log(`When I select portfolio ${mutualFundPortfolio}`);

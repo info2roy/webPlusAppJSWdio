@@ -1,7 +1,7 @@
 Feature: Scripbox Investment in Mutual Fund Portfolio
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "UAT38" for "user180756"
+    Given I login to Scripbox in "UAT38" for "user189182"
 
   Scenario Outline: As a logged in user, I am able to schedule investment in mutual funds via Every month (SIP)
     Given I am on the Investment Page
