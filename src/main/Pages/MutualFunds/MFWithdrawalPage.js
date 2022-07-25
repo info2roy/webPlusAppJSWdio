@@ -2,7 +2,7 @@ const Device = require('../../../support/libraries/Device');
 const Utils = require('../../../support/Utils/Utils');
 const MFWithdrawalObjects = require('../../Objects/MutualFunds/MFWithdrawalObjects');
 
-class WithdrawalPage {
+class MFWithdrawalPage {
 
   async selectMFPlanPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFWithdrawalObjects.selectMFPlanPageHeader));
@@ -113,4 +113,4 @@ class WithdrawalPage {
   }
 }
 
-module.exports = new WithdrawalPage();
+module.exports = new MFWithdrawalPage();

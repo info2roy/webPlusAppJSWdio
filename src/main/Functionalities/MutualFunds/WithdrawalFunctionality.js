@@ -1,84 +1,84 @@
 const Constants = require('../../../config/data/structured/Constants');
-const WithdrawalPage = require('../../Pages/MutualFunds/WithdrawalPage');
+const MFWithdrawalPage = require('../../Pages/MutualFunds/MFWithdrawalPage');
 
 class WithdrawalFunctionality {
 
   async selectMFPlanPageLaunched() {
-    return (await WithdrawalPage.selectMFPlanPageHeaderIsDisplayed());
+    return (await MFWithdrawalPage.selectMFPlanPageHeaderIsDisplayed());
   }
 
   async selectMFPlan(planName) {
-    await WithdrawalPage.scrollUntilMFPlanNameTextIsDisplayed(planName);
-    await WithdrawalPage.clickOnMFPlan(planName);
+    await MFWithdrawalPage.scrollUntilMFPlanNameTextIsDisplayed(planName);
+    await MFWithdrawalPage.clickOnMFPlan(planName);
   }
 
   async confirmBankDetailsPageLaunched() {
-    return (await WithdrawalPage.confirmBankDetailsPageHeaderIsDisplayed());
+    return (await MFWithdrawalPage.confirmBankDetailsPageHeaderIsDisplayed());
   }
 
   async selectWithdrawalBankOption(option) {
-    await WithdrawalPage.clickOnWithdrawalBankOption(option);
+    await MFWithdrawalPage.clickOnWithdrawalBankOption(option);
   }
 
   async withdrawAmountPageLaunched(mutualFundPortfolio) {
-    return (await WithdrawalPage.withdrawAmountPageHeaderIsDisplayed(mutualFundPortfolio));
+    return (await MFWithdrawalPage.withdrawAmountPageHeaderIsDisplayed(mutualFundPortfolio));
   }
 
   async fillWithdrawalAmount(amount) {
-    await WithdrawalPage.enterWithdrawalAmount(amount);
+    await MFWithdrawalPage.enterWithdrawalAmount(amount);
   }
 
   async selectWithdrawalStrategy(withdrawalStrategy) {
     if (withdrawalStrategy === Constants.WITHDRAW_CUSTOM_FUND_BASED_WITHDRAWAL) {
-      await WithdrawalPage.clickSelectFundsButton();
+      await MFWithdrawalPage.clickSelectFundsButton();
     } else if (withdrawalStrategy == Constants.WITHDRAW_TAX_OPTIMIZED_WITHDRAWAL) {
-      await WithdrawalPage.clickNextButton();
+      await MFWithdrawalPage.clickNextButton();
     }
   }
 
   async selectCustomFundsPageLaunched(mutualFundPortfolio, amount) {
-    return (await WithdrawalPage.selectFundsPageHeaderIsDisplayed(mutualFundPortfolio)) &&
-     (await WithdrawalPage.selectFundsPageSummaryIsDisplayed()) &&
-     (await WithdrawalPage.selectFundsPageAmountIsDisplayed(amount)) &&
-     (await WithdrawalPage.selectFundsPageSelectFundsIsDisplayed());
+    return (await MFWithdrawalPage.selectFundsPageHeaderIsDisplayed(mutualFundPortfolio)) &&
+     (await MFWithdrawalPage.selectFundsPageSummaryIsDisplayed()) &&
+     (await MFWithdrawalPage.selectFundsPageAmountIsDisplayed(amount)) &&
+     (await MFWithdrawalPage.selectFundsPageSelectFundsIsDisplayed());
   }
 
   async taxOptimizedSelectedFundsPageLaunched(mutualFundPortfolio, amount) {
-    return (await WithdrawalPage.selectFundsPageHeaderIsDisplayed(mutualFundPortfolio)) &&
-     (await WithdrawalPage.selectFundsPageSummaryIsDisplayed()) &&
-     (await WithdrawalPage.selectFundsPageAmountIsDisplayed(amount));
+    return (await MFWithdrawalPage.selectFundsPageHeaderIsDisplayed(mutualFundPortfolio)) &&
+     (await MFWithdrawalPage.selectFundsPageSummaryIsDisplayed()) &&
+     (await MFWithdrawalPage.selectFundsPageAmountIsDisplayed(amount));
   }
 
   async selectFund(mutualFundName, amount, index) {
-    await WithdrawalPage.scrollUntilMutualFundNameIsDisplayed(mutualFundName);
-    await WithdrawalPage.clickOnMutualFund(mutualFundName);
-    await WithdrawalPage.enterWithdrawalAmountForFund(amount, index);
+    await MFWithdrawalPage.scrollUntilMutualFundNameIsDisplayed(mutualFundName);
+    await MFWithdrawalPage.clickOnMutualFund(mutualFundName);
+    await MFWithdrawalPage.enterWithdrawalAmountForFund(amount, index);
   }
 
   async continueWithFundAllocation(amount) {
-    await WithdrawalPage.clickContiueWithFundAllocationButton(amount);
+    await MFWithdrawalPage.clickContiueWithFundAllocationButton(amount);
   }
 
   async confirmWithdrawalPageLaunched() {
-    return (await WithdrawalPage.confirmWithdrawalPageHeaderIsDisplayed());
+    return (await MFWithdrawalPage.confirmWithdrawalPageHeaderIsDisplayed());
   }
 
   async takeFinalAction(actionText) {
     // Either CONFIRM WITHDRAWAL or CANCEL|NO, STAY INVESTED
-    await WithdrawalPage.clickOnWithdrawalFinalActionButton(actionText);
+    await MFWithdrawalPage.clickOnWithdrawalFinalActionButton(actionText);
   }
 
   async verifyOTPPageLaunched() {
-    return (await WithdrawalPage.verifyWithOTPPageHeaderIsDisplayed());
+    return (await MFWithdrawalPage.verifyWithOTPPageHeaderIsDisplayed());
   }
 
   async verifyWithOTP(otp) {
-    await WithdrawalPage.enterOTP(otp);
-    await WithdrawalPage.clickVerifyWithOTPButton();
+    await MFWithdrawalPage.enterOTP(otp);
+    await MFWithdrawalPage.clickVerifyWithOTPButton();
   }
 
   async withdrawalScheduledPageLaunched() {
-    return (await WithdrawalPage.withdrawScheduledPageHeaderIsDisplayed());
+    return (await MFWithdrawalPage.withdrawScheduledPageHeaderIsDisplayed());
   }
 }
 
