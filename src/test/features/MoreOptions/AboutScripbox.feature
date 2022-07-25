@@ -6,8 +6,8 @@ Feature: Scripbox About Scripbox Page
   Scenario: As a logged in user, I can view About Scripbox Page
     Given I am on the dashboard page
     When I open the more options
-    When I select About Scripbox
-    Then I should see About Scripbox Page loaded
+    When I select option "About Scripbox"
+    Then I should see "About Scripbox" Page loaded
 
   Scenario: From About Scripbox Page, I can navigate to Service Agreement Page
     When I navigate to "Service Agreement" Page
