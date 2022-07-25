@@ -1,4 +1,4 @@
-class InvestmentObjects {
+class MFInvestmentObjects {
   mutualFundsPageHeader = {
     web: '//div[text()="Choose your plan"]',
     app: '//*[@text="Choose your plan"]'
@@ -182,4 +182,4 @@ class InvestmentObjects {
   };
 
 }
-module.exports = new InvestmentObjects();
+module.exports = new MFInvestmentObjects();
