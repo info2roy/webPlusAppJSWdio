@@ -1,4 +1,4 @@
-class InvestmentObjects {
+class MFInvestmentObjects {
   mutualFundsPageHeader = {
     web: '//div[text()="Choose your plan"]',
     app: '//*[@text="Choose your plan"]'
@@ -17,7 +17,7 @@ class InvestmentObjects {
   };
 
   investAsPerScripboxGuidedPathButton = {
-    web: '//button[text()="Invest"]',
+    web: '//button/div[text()="Invest"]',
     app: '//*[@text="Invest"]'
   };
 
@@ -67,6 +67,22 @@ class InvestmentObjects {
     web: '//div[text()="Recommended Funds and Amounts"]',
     app: '//*[@text="Recommended Funds"]'
   };
+
+  selectMFSipPaymentTypePageHeader(amount) {
+    const amountStr = amount.toLocaleString('hi');
+    return {
+      web: `//div[text()="I would like to invest Rs ${amountStr} every month (SIP)"]`,
+      app: `//*[@text="I would like to invest Rs ${amountStr} every month (SIP)"]`
+    };
+  }
+
+  selectMFOneTimePaymentTypePageHeader(amount) {
+    const amountStr = amount.toLocaleString('hi');
+    return {
+      web: `//div[text()="I would like to make a one-time investment of Rs ${amountStr}"]`,
+      app: `//*[@text="I would like to make a one-time investment of Rs ${amountStr}"]`
+    };
+  }
 
   MAKE_PAYMENT_NOW_TEXT = { web: 'MAKE PAYMENT NOW', app: 'MAKE PAYMENT NOW' };
 
@@ -166,4 +182,4 @@ class InvestmentObjects {
   };
 
 }
-module.exports = new InvestmentObjects();
+module.exports = new MFInvestmentObjects();

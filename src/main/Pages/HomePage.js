@@ -1,6 +1,7 @@
 const Utils = require('../../support/Utils/Utils');
 const HomeObjects = require('../Objects/HomeObjects');
 const Device = require('../../support/libraries/Device');
+const env = require('../../config/env');
 
 class HomePage {
   async selectLoginOption() {
@@ -37,6 +38,10 @@ class HomePage {
 
   async scripBoxCustomerbannerDisplayedAndroid() {
     return await Utils.elementIsDisplayed(HomeObjects.customerBanner);
+  }
+
+  async myScripboxLoginPageIsDisplayed() {
+    return (await browser.getUrl()) === `${env.myScripBox}login`;
   }
 }
 

@@ -1,8 +1,8 @@
 const path = require('path');
 const { expect } = require('chai');
-const Utils = require('../../support/Utils/Utils');
-const PersonalInfoObjects = require('../Objects/PersonalInfoObjects');
-const Device = require('../../support/libraries/Device');
+const Utils = require('../../../support/Utils/Utils');
+const PersonalInfoObjects = require('../../Objects/MoreOptions/PersonalInfoObjects');
+const Device = require('../../../support/libraries/Device');
 // const faker = require('@faker-js/faker');
 
 class PersonalInfoPage {
@@ -42,7 +42,7 @@ class PersonalInfoPage {
   async uploadFile() {
     if (Device.isMobileWeb() || Device.isDesktop()) {
       await console.log('Web: uploadFile');
-      const localFilePath = path.join(__dirname, '../../config/data/images/desktop.jpg');
+      const localFilePath = path.join(__dirname, '../../../config/data/images/desktop.jpg');
       await Utils.uploadFile(localFilePath, PersonalInfoObjects.fileInput, PersonalInfoObjects.submitPictureButton);
     }
   }

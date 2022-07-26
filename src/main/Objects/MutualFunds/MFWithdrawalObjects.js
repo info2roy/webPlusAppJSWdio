@@ -1,4 +1,4 @@
-class WithdrawalObjects {
+class MFWithdrawalObjects {
 
   selectMFPlanPageHeader = {
     web: '(//div[text()="Select plan"])[last()]',
@@ -136,4 +136,4 @@ class WithdrawalObjects {
   };
 
 }
-module.exports = new WithdrawalObjects();
+module.exports = new MFWithdrawalObjects();

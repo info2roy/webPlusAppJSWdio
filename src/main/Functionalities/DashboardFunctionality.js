@@ -18,8 +18,8 @@ class DashboardFunctionality {
     expect(await Utils.elementIsDisplayed(DashboardObjects.helloUser)).toBe.true;
   }
 
-  async openProfileDropdown() {
-    await DashboardPage.openProfileDropdown();
+  async openMoreOptions() {
+    await DashboardPage.openMoreOptions();
   }
 
   async selectPersonalInformation() {
