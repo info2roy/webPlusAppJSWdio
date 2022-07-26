@@ -6,11 +6,10 @@ Feature: Scripbox Notification Preferences Page
   Scenario: As a logged in user, I can view Notifications Preferences Page
     Given I am on the dashboard page
     When I open the more options
-    When I select option "Notification Preferences"
-    Then I should see "Notification Preferences" Page loaded
+    When I navigate to "Notification Preferences" Page from More Options Page
 
   Scenario Outline: On the Notifications Preferences page, I can update the controls one at a time
-    Then I can update control <controlName> for channel <channel> 
+    Then I can update notifications preference control <controlName> for channel <channel> 
     Examples:
         | controlName | channel |
         | Scheduled investment reminder (3 days prior) | email  |
@@ -33,4 +32,4 @@ Feature: Scripbox Notification Preferences Page
         | Quaterly Rebalance trigger | sms  |
   
   Scenario: Scenario: On the Notifications Preferences page, I can update the random group of controls
-    Then I can update random group of controls
+    Then I can update random group of notifications preference controls
