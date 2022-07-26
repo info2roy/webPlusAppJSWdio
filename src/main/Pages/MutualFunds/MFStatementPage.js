@@ -3,7 +3,7 @@ const MFStatementObjects = require('../../Objects/MutualFunds/MfStatementObjects
 
 class MFStatementPage {
 
-  async MFPageHeaderIsDisplayed() {
+  async mFPageHeaderIsDisplayed() {
     return await Utils.elementIsDisplayed(MFStatementObjects.statementsAndTaxReportsHeader);
   }
 

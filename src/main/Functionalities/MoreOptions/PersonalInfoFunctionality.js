@@ -1,13 +1,6 @@
 const PersonalInfoPage = require('../../Pages/MoreOptions/PersonalInfoPage');
 
 class PersonalInfoFunctionality {
-  async profileInfoPageLaunched() {
-    return (await PersonalInfoPage.profileInfomationHeaderIsDisplayed());
-  }
-
-  async accountFamilyInfoPageLaunched() {
-    return (await PersonalInfoPage.accountFamilyInfoPageHeaderIsDisplayed());
-  }
 
   async updateProfilePicture() {
     await PersonalInfoPage.clickUpdatePicture();

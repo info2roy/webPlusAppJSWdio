@@ -46,8 +46,16 @@ class MoreOptionsPageObjects {
     web: '//div[text()="Account & Family Information"]'
   };
 
+  accountFamilyInformationOptionText = {
+    app: 'Account & Family Information'
+  };
+
   statementsAndTaxReportsOption = {
     web: '//div[text()="Statements & Tax Reports"]'
+  };
+
+  statementsAndTaxReportsOptionText = {
+    app: 'Statements & Tax Reports'
   };
 
   notificationPreferencesOption = {
