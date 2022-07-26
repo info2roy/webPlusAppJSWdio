@@ -214,6 +214,10 @@ class MFInvestmentPage {
         console.log('Wrong type MF type to assert. -> ' + mfOption.toString());
     }
   }
+
+  async clickOnAddNewPlan() {
+    Utils.clickElement(MFInvestmentObjects.addNewPlan);
+  }
 }
 
 module.exports = new MFInvestmentPage();

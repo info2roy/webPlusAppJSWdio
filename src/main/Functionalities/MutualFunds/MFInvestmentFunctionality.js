@@ -85,6 +85,9 @@ class MFInvestmentFunctionality {
     await MFInvestmentPage.clickBackButton();
   }
 
+  async addNewPlan() {
+    await MFInvestmentPage.clickOnAddNewPlan();
+  }
 }
 
 module.exports = new MFInvestmentFunctionality();

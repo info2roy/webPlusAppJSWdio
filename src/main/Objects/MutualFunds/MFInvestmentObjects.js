@@ -181,5 +181,12 @@ class MFInvestmentObjects {
     app: '.android.widget.TextView'
   };
 
+  addNewPlan = {
+    web: '//div[text()="Add new plan"]'
+  };
+
+  lifeGoalScrollRight = {
+    web: '//i[text()="keyboard_arrow_right"]'
+  };
 }
 module.exports = new MFInvestmentObjects();
