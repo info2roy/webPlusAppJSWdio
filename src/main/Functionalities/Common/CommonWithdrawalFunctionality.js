@@ -7,14 +7,12 @@ class CommonWithdrawalFunctionality {
 
   async selectFamilyMember(familyMemberName) {
     await CommonWithdrawalPage.clickOnFamilyMemberByName(familyMemberName);
-  }
-
-  async selectFinancialProductPageLaunched() {
     return (await CommonWithdrawalPage.selectFinancialProductPageHeaderIsDisplayed());
   }
 
   async selectFinancialProduct(productName) {
     await CommonWithdrawalPage.clickOnFinancialProduct(productName);
+    return CommonWithdrawalPage.validateFinancialProductPage(productName);
   }
 }
 module.exports = new CommonWithdrawalFunctionality();

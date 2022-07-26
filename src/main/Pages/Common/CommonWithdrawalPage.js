@@ -1,5 +1,7 @@
+const Constants = require('../../../config/data/structured/Constants');
 const Utils = require('../../../support/Utils/Utils');
 const CommonWithdrawalObjects = require('../../Objects/Common/CommonWithdrawalObjects');
+const MFWithdrawalPage = require('../../Pages/MutualFunds/MFWithdrawalPage');
 
 class CommonWithdrawalPage {
   async selectFamilyMemberPageHeaderIsDisplayed() {
@@ -16,6 +18,16 @@ class CommonWithdrawalPage {
 
   async clickOnFinancialProduct(productName) {
     await Utils.clickElement(CommonWithdrawalObjects.financialProduct(productName));
+  }
+
+  async validateFinancialProductPage(productName) {
+    switch(productName.toString()) {
+      case Constants.INVESTMENT_INSTRUMENT_MUTUAL_FUND:
+        return (await MFWithdrawalPage.selectMFPlanPageHeaderIsDisplayed());
+      default:
+        await console.log(`unsupported product ${productName}`);
+        return false;
+    }
   }
 }
 

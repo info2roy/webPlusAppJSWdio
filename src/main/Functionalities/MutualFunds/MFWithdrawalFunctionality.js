@@ -3,24 +3,14 @@ const MFWithdrawalPage = require('../../Pages/MutualFunds/MFWithdrawalPage');
 
 class MFWithdrawalFunctionality {
 
-  async selectMFPlanPageLaunched() {
-    return (await MFWithdrawalPage.selectMFPlanPageHeaderIsDisplayed());
-  }
-
   async selectMFPlan(planName) {
     await MFWithdrawalPage.scrollUntilMFPlanNameTextIsDisplayed(planName);
     await MFWithdrawalPage.clickOnMFPlan(planName);
-  }
-
-  async confirmBankDetailsPageLaunched() {
     return (await MFWithdrawalPage.confirmBankDetailsPageHeaderIsDisplayed());
   }
 
-  async selectWithdrawalBankOption(option) {
+  async selectWithdrawalBankOption(option, mutualFundPortfolio) {
     await MFWithdrawalPage.clickOnWithdrawalBankOption(option);
-  }
-
-  async withdrawAmountPageLaunched(mutualFundPortfolio) {
     return (await MFWithdrawalPage.withdrawAmountPageHeaderIsDisplayed(mutualFundPortfolio));
   }
 
@@ -28,11 +18,17 @@ class MFWithdrawalFunctionality {
     await MFWithdrawalPage.enterWithdrawalAmount(amount);
   }
 
-  async selectWithdrawalStrategy(withdrawalStrategy) {
+  async selectWithdrawalStrategy(withdrawalStrategy, mutualFundPortfolio, withdrawalAmount) {
     if (withdrawalStrategy === Constants.WITHDRAW_CUSTOM_FUND_BASED_WITHDRAWAL) {
       await MFWithdrawalPage.clickSelectFundsButton();
+      return (await this.selectCustomFundsPageLaunched(
+        mutualFundPortfolio,
+        withdrawalAmount));
     } else if (withdrawalStrategy == Constants.WITHDRAW_TAX_OPTIMIZED_WITHDRAWAL) {
       await MFWithdrawalPage.clickNextButton();
+      return (await this.taxOptimizedSelectedFundsPageLaunched(
+        mutualFundPortfolio,
+        withdrawalAmount));
     }
   }
 
@@ -57,18 +53,12 @@ class MFWithdrawalFunctionality {
 
   async continueWithFundAllocation(amount) {
     await MFWithdrawalPage.clickContiueWithFundAllocationButton(amount);
-  }
-
-  async confirmWithdrawalPageLaunched() {
     return (await MFWithdrawalPage.confirmWithdrawalPageHeaderIsDisplayed());
   }
 
   async takeFinalAction(actionText) {
     // Either CONFIRM WITHDRAWAL or CANCEL|NO, STAY INVESTED
     await MFWithdrawalPage.clickOnWithdrawalFinalActionButton(actionText);
-  }
-
-  async verifyOTPPageLaunched() {
     return (await MFWithdrawalPage.verifyWithOTPPageHeaderIsDisplayed());
   }
 
