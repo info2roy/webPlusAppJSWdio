@@ -5,7 +5,7 @@ Feature: As customer I wish to read articles related to My Wealth
     When I click on login option
     When I login with username
     When I click on continue with password
-    When I login with username and password
+    When I login with password
     Then I should see dashboard page loaded
 
   Scenario Outline: As a logged in user I navigate to Wisdom page to start checkup
