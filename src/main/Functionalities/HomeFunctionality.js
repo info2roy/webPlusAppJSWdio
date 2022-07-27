@@ -12,7 +12,7 @@ class HomeFunctionality {
 
   async performLogin(env, user) {
     console.log('testing for environment ' + env);
-    if (env === 'UAT38' || env === 'ANDROMEDA') {
+    if (env === 'UAT38' || env === 'UAT2' || env === 'ANDROMEDA') {
       await HomePage.clickMenuButton();
       await HomePage.selectLoginOption();
       switch (user.toString()) {
