@@ -1,4 +1,5 @@
 const device = require('../libraries/Device');
+const { expect } = require('chai');
 
 class Utils {
   getLocator(object) {
@@ -142,6 +143,23 @@ class Utils {
   async scrollHorizontalUntilTextIntoViewForAndroid(textToBeIntoView) {
     const func = 'new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollTextIntoView';
     await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
+  }
+
+  //Choose a Select tag option by Visible Text
+  async chooseSelectOptionByVisibleText(selector, visibleText) {
+    const locator = this.getLocator(selector);
+    await this.elementIsDisplayed(selector);
+    const select = await $(locator);
+    await select.selectByVisibleText(visibleText);
+  }
+
+  //Choose a Select tag option by Attribute
+  async chooseSelectOptionByAttribute(selector, attribute, value) {
+    const locator = this.getLocator(selector);
+    await this.elementIsDisplayed(selector);
+    const select = await $(locator);
+    await select.selectByAttribute(attribute, value);
+    expect(await select.getValue()).to.equal(value);
   }
 
   //get a random integer between 0(inclusive) and maxIntValue(exclusive)

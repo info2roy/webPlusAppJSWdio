@@ -88,6 +88,11 @@ class MFInvestmentFunctionality {
   async addNewPlan() {
     await MFInvestmentPage.clickOnAddNewPlan();
   }
-}
 
+  async addNewPlanPageLaunched() {
+    return (await MFInvestmentPage.addNewPlanPageHeaderIsDisplayed()) &&
+      (await MFInvestmentPage.addNewPlanPageInvestmentStrategiesHeaderIsDisplayed()) &&
+      (await MFInvestmentPage.addNewPlanPageAchieveLifeGoalsHeaderIsDisplayed());
+  }
+}
 module.exports = new MFInvestmentFunctionality();

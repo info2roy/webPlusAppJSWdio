@@ -86,11 +86,8 @@ Then(/^I go back to the dashboard page$/, async () => {
   await DashboardFunctionality.validate();
 });
 
-When(/^I click on "Add new plan"$/, async () => {
-  await console.log('When I click on "Add new plan"');
-  await InvestmentFunctionality.addNewPlan();
-});
-
-When(/^I select life goal as "([^"]*)?"$/, async (lifeGoal) => {
-  await console.log(`I select life goal as ${lifeGoal}`);
+When(/^I click on "Add new plan" for mutual funds$/, async () => {
+  await console.log('When I click on "Add new plan" for mutual funds');
+  await MFInvestmentFunctionality.addNewPlan();
+  expect(await MFInvestmentFunctionality.addNewPlanPageLaunched()).to.be.true;
 });

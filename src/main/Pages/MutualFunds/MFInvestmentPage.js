@@ -218,6 +218,17 @@ class MFInvestmentPage {
   async clickOnAddNewPlan() {
     Utils.clickElement(MFInvestmentObjects.addNewPlan);
   }
-}
 
+  async addNewPlanPageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageHeader));
+  }
+
+  async addNewPlanPageInvestmentStrategiesHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageInvestmentStrategiesHeader));
+  }
+
+  async addNewPlanPageAchieveLifeGoalsHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageAchieveLifeGoalsHeader));
+  }
+}
 module.exports = new MFInvestmentPage();

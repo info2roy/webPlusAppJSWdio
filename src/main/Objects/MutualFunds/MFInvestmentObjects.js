@@ -185,8 +185,16 @@ class MFInvestmentObjects {
     web: '//div[text()="Add new plan"]'
   };
 
-  lifeGoalScrollRight = {
-    web: '//i[text()="keyboard_arrow_right"]'
+  addNewPlanPageHeader = {
+    web: '//div[text()="Add new plan"]'
+  };
+
+  addNewPlanPageInvestmentStrategiesHeader = {
+    web: '//div[text()="Investment Strategies"]'
+  };
+
+  addNewPlanPageAchieveLifeGoalsHeader = {
+    web: '//div[text()="Achieve life goals"]'
   };
 }
 module.exports = new MFInvestmentObjects();

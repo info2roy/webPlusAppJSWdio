@@ -9,6 +9,7 @@ class CustomWorld {
     this.amount = 0; //a value greater than zero
     this.sipDurationInMonths = 0; //no of months for SIP duration
     this.withdrawalAmount = 0; //amount to be withdrawn
+    this.lifeGoal = ''; //life goal like Retire Confident|Premier Education
   }
 }
 setWorldConstructor(CustomWorld);
