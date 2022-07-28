@@ -49,6 +49,14 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
         await browser.url(envUrl.myScripBox);
         await HomeFunctionality.performLogin(env, user);
         break;
+      case 'MYSCRIPBOX38':
+        await browser.url(envUrl.myScripboxUat38);
+        await HomeFunctionality.performLogin(env, user);
+        break;
+      case 'MYSCRIPBOX2':
+        await browser.url(envUrl.myScripboxUat2);
+        await HomeFunctionality.performLogin(env, user);
+        break;
       case 'STAGING':
         await browser.url(envUrl.mockStaging);
         await HomeFunctionality.performLogin(env, user);

@@ -39,7 +39,7 @@ class HomeFunctionality {
       await LoginPage.enterPassword(loginData.password);
       await LoginPage.clickContinueLoginButton();
       await DashboardFunctionality.validate();
-    } else if (env == 'STAGING' || env === 'MYSCRIPBOX') {
+    } else if (env == 'STAGING' || env === 'MYSCRIPBOX' || env === 'MYSCRIPBOX38' || env === 'MYSCRIPBOX2') {
       switch (user.toString()) {
         case 'user180756':
           await Utils.setInputField(loginData.user180756, LoginObjects.stagingUserIdField);
