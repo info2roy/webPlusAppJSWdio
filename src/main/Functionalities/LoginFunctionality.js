@@ -7,7 +7,6 @@ class LoginFunctionality {
   }
 
   async loginWithPassword(password) {
-    //await LoginPage.enterEmail(username);
     await LoginPage.enterPassword(password);
     await LoginPage.clickContinueLoginButton();
   }

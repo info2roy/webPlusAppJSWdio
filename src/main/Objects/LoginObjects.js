@@ -35,6 +35,10 @@ class LoginObjects {
   startExploring = { app: '//*[@text="Start exploring"]' };
 
   scripBoxExclusiveBenifits = { app: '//*[@text="Scripbox exclusive benefits"]' };
+
+  loginYourAccountToContinueHeader = {
+    web: '//label[contains(text(),"Login your account to continue")]'
+  };
 }
 
 module.exports = new LoginObjects();

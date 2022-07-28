@@ -47,3 +47,51 @@ When(/^I click on "CREATE PLAN" for retirement$/, async () => {
   expect(await MFGoalsFunctionality.createPlanForRetirement()).to.be.true;
 });
 
+When(/^I fill "Premier Education" form with (\d+)$/, async (classOfChild) => {
+  await console.log(`I fill "Premier Education" form with ${classOfChild}`);
+  this.classOfChild = classOfChild;
+  expect(await MFGoalsFunctionality.selectClassOfChild(classOfChild)).to.be.true;
+});
+
+When(/^I select "Premier Education" plan for college type (Government Colleges|Private Colleges|Premier Private Colleges)$/,
+  async(collegeType) => {
+    await console.log(`I select "Premier Education" plan for college type ${collegeType}`);
+    expect(await MFGoalsFunctionality.selectPremierEducationCollegeType(collegeType)).to.be.true;
+  }
+);
+
+When(/^I click "CONTINUE" to explore plan for "Premier Education"$/, async() => {
+  await console.log('I click "CONTINUE" to explore plan for "Premier Education"');
+  expect(await MFGoalsFunctionality.continueWithPremierEducationPlan()).to.be.true;
+});
+
+When(/^I fill "Premier Education" second form with (.+), (\d+)$/, async(childname, yearlyFees) => {
+  await console.log(`I fill "Premier Education" second form with ${childname}, ${yearlyFees}`);
+  this.childname = childname;
+  expect(await MFGoalsFunctionality.fillPremierEducationForm(childname, yearlyFees, this.classOfChild)).to.be.true;
+});
+
+When(/^I click "CONTINUE" on the yearly fees breakup Goal page$/, async() => {
+  await console.log('I click "CONTINUE" on the yearly fees breakup Goal page');
+  expect(await MFGoalsFunctionality.continueOnYearlyFeesBreakupGoalPage()).to.be.true;
+});
+
+When(/^I click "SHOW PLAN FOR" on the yearly fees breakup Plan page$/, async() => {
+  await console.log('I click "SHOW PLAN FOR" on the yearly fees breakup Plan page');
+  expect(await MFGoalsFunctionality.showPlanForPremierEducation()).to.be.true;
+});
+
+When(/^I click "START WITH" for "Premier Education" working plan$/, async() => {
+  await console.log('I click "START WITH" for "Premier Education" working plan');
+  expect(await MFGoalsFunctionality.startWithWorkingPlanForPremierEducation()).to.be.true;
+});
+
+When(/^I click "CONTINUE" on the "Premier Education" suggested plan$/, async() => {
+  await console.log('I click "CONTINUE" on the "Premier Education" suggested plan');
+  expect(await MFGoalsFunctionality.continueInvestForPremierEducation()).to.be.true;
+});
+
+When(/^I click on "SIGNUP OR LOGIN" for "Premier Education" plan$/, async() => {
+  await console.log('I click on "SIGNUP OR LOGIN" for "Premier Education" plan');
+  expect(await MFGoalsFunctionality.signupOrLoginForPremierEducationPlan()).to.be.true;
+});

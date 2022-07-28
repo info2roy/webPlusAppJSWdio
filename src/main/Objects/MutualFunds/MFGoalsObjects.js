@@ -129,6 +129,120 @@ class MFGoalsObjects {
   activateRetirementPlanHeader = {
     web: '//span[text()="Activate Plan"]'
   };
+
+  //Premier Education
+  classOfChildField = {
+    web: 'input.education-plan-age-input'
+  };
+
+  childInPreschoolOrNotInSchoolCheckbox = {
+    web: '//input[@type="checkbox"]'
+  };
+
+  childLikelyToStartCollegeInYearHeader = {
+    web: '//div[contains(text(),"Your child is likely to start college in")]'
+  };
+
+  getStartCollegeYear(classOfChild) {
+    if (classOfChild === 0) {
+      return (new Date().getFullYear() + 13);
+    } else if (classOfChild > 0) {
+      return (new Date().getFullYear() + 13 - classOfChild);
+    }
+    return undefined;
+  }
+
+  childLikelyToStartCollegeInYear(classOfChild) {
+    return {
+      web: `//span[contains(text(),"${this.getStartCollegeYear(classOfChild)}")]`
+    };
+  }
+
+  premierEducationCollegeTypeToIndex = {
+    'Government Colleges': 1,
+    'Private Colleges': 2,
+    'Premier Private Colleges': 3
+  };
+
+  personaliseThisPlanButtonForCollegeType(collegeType) {
+    const index = this.premierEducationCollegeTypeToIndex[collegeType];
+    return {
+      web: `(//a[contains(text(),"Personalise this plan")])[${index}]`
+    };
+  }
+
+  premierEducationPlanPageHeader = {
+    web: '//p[contains(text(),"Quick plan for your child\'s")]'
+  };
+
+  continueButtonForPremierEducationPlan(index) {
+    return {
+      web: `(//a[contains(text(),"Continue")])[${index}]`
+    };
+  }
+
+  premierEducationFormHeader = {
+    web: '//label[contains(text(),"This plan is for")]'
+  };
+
+  childNameField = {
+    web: 'input.gef-name-input'
+  };
+
+  yearlyFeesField = {
+    web: 'input.plan-goal-amount-input'
+  };
+
+  seeYearlyBreakupButton = {
+    web: '//div[contains(text(),"See yearly breakup")]'
+  };
+
+  yearlyBreakupPageGoal = {
+    web: '//div[contains(text(),"Goal")]'
+  };
+
+  yearlyBreakupPageGoalHeader = {
+    web: `//div[contains(text(),"Estimated yearly fees in")]`
+  };
+
+  yearlyBreakupPagePlan = {
+    web: '//div[contains(text(),"Plan")]'
+  };
+
+  yearlyBreakupPagePlanChildName(childname) {
+    return {
+      web: `//span[contains(text(),"${childname}")]`
+    };
+  }
+
+  yearlyBreakupPagePlanHeader = {
+    web: '//div/span[contains(text(),"\'s college education plan")]'
+  };
+
+  yearlyBreakupPageShowPlanButton = {
+    web: '//a[contains(text(),"Show plan for")]'
+  };
+
+  premierEducationWorkingPlanHeader1 = {
+    web: '//div[contains(text(),"Here is a working plan for")]'
+  };
+
+  premierEducationWorkingPlanHeader2 = {
+    web: '//div/span[contains(text(),"\'s education")]'
+  };
+
+  premierEducationWorkingPlanStartWithButton = {
+    web: '//a[contains(text(),"Start With")]'
+  };
+
+  premierEducationInvestPageHeader = {
+    web: '//p[contains(text(),"\'s College Education Plan")]'
+  };
+
+  signupOrLoginButton = {
+    web: '//a[contains(text(),"Signup / Login")]'
+  };
+
 }
 module.exports = new MFGoalsObjects();
 

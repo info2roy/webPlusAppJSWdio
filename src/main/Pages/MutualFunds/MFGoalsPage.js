@@ -131,5 +131,93 @@ class MFGoalsPage {
   async activateRetirementPlanHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.activateRetirementPlanHeader));
   }
+
+  async enterClassOfChild(classOfChild) {
+    if(classOfChild === 0) {
+      await Utils.setCheckBox(MFGoalsObjects.childInPreschoolOrNotInSchoolCheckbox, true);
+    } else if (classOfChild > 0) {
+      await Utils.setInputField(classOfChild, MFGoalsObjects.classOfChildField);
+    } else {
+      console.log(`Invalid child class ${classOfChild}`);
+    }
+  }
+
+  async childLikelyToStartCollegeInYearHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.childLikelyToStartCollegeInYearHeader));
+  }
+
+  async childLikelyToStartCollegeInYearIsDisplayed(classOfChild) {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.childLikelyToStartCollegeInYear(classOfChild)));
+  }
+
+  async clickPersonaliseThisPlanForCollegeType(collegeType) {
+    if (Device.isWeb()) {
+      Utils.scrollAndMoveToElement(MFGoalsObjects.personaliseThisPlanButtonForCollegeType(collegeType));
+    }
+    await Utils.clickElement(MFGoalsObjects.personaliseThisPlanButtonForCollegeType(collegeType));
+  }
+
+  async premierEducationPlanPageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.premierEducationPlanPageHeader));
+  }
+
+  async clickContinueButtonForPremierEducationPlan(index) {
+    if (Device.isWeb()) {
+      Utils.scrollAndMoveToElement(MFGoalsObjects.continueButtonForPremierEducationPlan(index));
+    }
+    await Utils.clickElement(MFGoalsObjects.continueButtonForPremierEducationPlan(index));
+  }
+
+  async premierEducationFormHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.premierEducationFormHeader));
+  }
+
+  async enterChildName(childname) {
+    await Utils.setInputField(childname, MFGoalsObjects.childNameField);
+  }
+
+  async enterYearlyFees(yearlyFees) {
+    await Utils.setInputField(yearlyFees, MFGoalsObjects.yearlyFeesField);
+  }
+
+  async clickSeeYearlyBreakupButton() {
+    await Utils.clickElement(MFGoalsObjects.seeYearlyBreakupButton);
+  }
+
+  async yearlyBreakupGoalPageIsDisplayed(classOfChild) {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.yearlyBreakupPageGoal)) &&
+      (await Utils.elementIsDisplayed(MFGoalsObjects.yearlyBreakupPageGoalHeader)) &&
+      (await Utils.elementIsDisplayed(MFGoalsObjects.childLikelyToStartCollegeInYear(classOfChild)));
+  }
+
+  async yearlyBreakupPlanPageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.yearlyBreakupPagePlan)) &&
+      (await Utils.elementIsDisplayed(MFGoalsObjects.yearlyBreakupPagePlanHeader));
+  }
+
+  async clickYearlyBreakupPageShowPlanButton() {
+    await Utils.clickElement(MFGoalsObjects.yearlyBreakupPageShowPlanButton);
+  }
+
+  async premierEducationWorkingPlanPageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.premierEducationWorkingPlanHeader1)) &&
+      (await Utils.elementIsDisplayed(MFGoalsObjects.premierEducationWorkingPlanHeader2));
+  }
+
+  async clickPremierEducationWorkingPlanStartWithButton() {
+    await Utils.clickElement(MFGoalsObjects.premierEducationWorkingPlanStartWithButton);
+  }
+
+  async premierEducationPlanInvestPageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.premierEducationInvestPageHeader));
+  }
+
+  async signupOrLoginButtonIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.signupOrLoginButton));
+  }
+
+  async clickSignupOrLoginButton() {
+    await Utils.clickElement(MFGoalsObjects.signupOrLoginButton);
+  }
 }
 module.exports = new MFGoalsPage();

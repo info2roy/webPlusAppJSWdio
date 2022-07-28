@@ -1,4 +1,5 @@
 const MFGoalsPage = require('../../Pages/MutualFunds/MFGoalsPage');
+const LoginPage = require('../../Pages/LoginPage');
 
 class MFGoalsFunctionality {
   async selectLifeGoal(lifeGoal) {
@@ -44,6 +45,55 @@ class MFGoalsFunctionality {
   async createPlanForRetirement() {
     await MFGoalsPage.clickCreateRetirementPlanFinalButton();
     return (await MFGoalsPage.activateRetirementPlanHeaderIsDisplayed());
+  }
+
+  //Premier Education
+  async selectClassOfChild(classOfChild) {
+    await MFGoalsPage.enterClassOfChild(classOfChild);
+    return (await MFGoalsPage.childLikelyToStartCollegeInYearHeaderIsDisplayed()) &&
+      (await MFGoalsPage.childLikelyToStartCollegeInYearIsDisplayed(classOfChild));
+  }
+
+  async selectPremierEducationCollegeType(collegeType) {
+    await MFGoalsPage.clickPersonaliseThisPlanForCollegeType(collegeType);
+    return (await MFGoalsPage.premierEducationPlanPageHeaderIsDisplayed());
+  }
+
+  async continueWithPremierEducationPlan() {
+    await MFGoalsPage.clickContinueButtonForPremierEducationPlan(1);
+    return (await MFGoalsPage.premierEducationFormHeaderIsDisplayed());
+  }
+
+  async fillPremierEducationForm(childname, yearlyFees, classOfChild) {
+    await MFGoalsPage.enterChildName(childname);
+    await MFGoalsPage.enterYearlyFees(yearlyFees);
+    await MFGoalsPage.clickSeeYearlyBreakupButton();
+    return (await MFGoalsPage.yearlyBreakupGoalPageIsDisplayed(classOfChild));
+  }
+
+  async continueOnYearlyFeesBreakupGoalPage() {
+    await MFGoalsPage.clickContinueButtonForPremierEducationPlan(1);
+    return (await MFGoalsPage.yearlyBreakupPlanPageIsDisplayed());
+  }
+
+  async showPlanForPremierEducation() {
+    await MFGoalsPage.clickYearlyBreakupPageShowPlanButton();
+    return (await MFGoalsPage.premierEducationWorkingPlanPageIsDisplayed());
+  }
+
+  async startWithWorkingPlanForPremierEducation() {
+    await MFGoalsPage.clickPremierEducationWorkingPlanStartWithButton();
+    return (await MFGoalsPage.premierEducationPlanInvestPageIsDisplayed());
+  }
+
+  async continueInvestForPremierEducation() {
+    await MFGoalsPage.clickContinueButtonForPremierEducationPlan(2);
+    return (await MFGoalsPage.signupOrLoginButtonIsDisplayed());
+  }
+
+  async signupOrLoginForPremierEducationPlan() {
+    await MFGoalsPage.clickSignupOrLoginButton();
+    return (await LoginPage.loginYourAccountToContinueHeaderIsDisplayed());
   }
 }
 module.exports = new MFGoalsFunctionality();

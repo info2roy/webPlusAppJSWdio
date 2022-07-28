@@ -162,6 +162,16 @@ class Utils {
     expect(await select.getValue()).to.equal(value);
   }
 
+  //status should be true or false indicating whether the checkbox should be selected or not
+  async setCheckBox(selector, status) {
+    const locator = this.getLocator(selector);
+    const checkbox = await $(locator);
+    const isSelected = await checkbox.isSelected();
+    if (isSelected != status) {
+      await checkbox.click();
+    }
+  }
+
   //get a random integer between 0(inclusive) and maxIntValue(exclusive)
   getRandomInt(maxIntValue) {
     return Math.floor(Math.random() * maxIntValue);
