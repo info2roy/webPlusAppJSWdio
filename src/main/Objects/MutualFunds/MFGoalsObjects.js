@@ -243,6 +243,22 @@ class MFGoalsObjects {
     web: '//a[contains(text(),"Signup / Login")]'
   };
 
+  createPlanButton = {
+    web: '//a[contains(text(),"Create Plan")]'
+  };
+
+  investEveryMonthButton = {
+    web: '//button[text()="INVEST EVERY MONTH"]'
+  };
+
+  amountPlannedWithScripboxHeader = {
+    web: '//p[text()="Amount Planned With Scripbox:"]'
+  };
+
+  continueWithRetireConfidentInvestmentButton = {
+    web: '//button[contains(text(),"Continue")]'
+  };
+
 }
 module.exports = new MFGoalsObjects();
 

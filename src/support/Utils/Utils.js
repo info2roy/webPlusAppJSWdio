@@ -57,6 +57,13 @@ class Utils {
     await webElement.click();
   }
 
+  async elementIsDisplayedNow(selector) {
+    const locator = this.getLocator(selector);
+    const isDisplayed = await $(locator).isDisplayed();
+    console.log(`${locator} is displayed now check --> ${isDisplayed}`);
+    return isDisplayed;
+  }
+
   async elementIsDisplayed(selector) {
     const locator = this.getLocator(selector);
     // const element = await $(locator);

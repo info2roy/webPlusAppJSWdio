@@ -91,7 +91,17 @@ When(/^I click "CONTINUE" on the "Premier Education" suggested plan$/, async() =
   expect(await MFGoalsFunctionality.continueInvestForPremierEducation()).to.be.true;
 });
 
-When(/^I click on "SIGNUP OR LOGIN" for "Premier Education" plan$/, async() => {
-  await console.log('I click on "SIGNUP OR LOGIN" for "Premier Education" plan');
-  expect(await MFGoalsFunctionality.signupOrLoginForPremierEducationPlan()).to.be.true;
+When(/^I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Mutual Fund Goal Plan$/, async() => {
+  await console.log('I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Mutual Fund Goal Plan');
+  expect(await MFGoalsFunctionality.createAPlanOrSignupOrLoginForMutualFundGoalPlan()).to.be.true;
+});
+
+When(/^I click on "INVEST EVERY MONTH" for life goal$/, async() => {
+  await console.log('I click on "INVEST EVERY MONTH" for life goal');
+  expect(await MFGoalsFunctionality.investEveryMonth()).to.be.true;
+});
+
+When(/^I click "CONTINUE" on the "Retire Confident" plan$/, async() => {
+  await console.log('I click "CONTINUE" on the "Retire Confident" plan');
+  expect(await MFGoalsFunctionality.continueWithRetireConfidentInvestment()).to.be.true;
 });

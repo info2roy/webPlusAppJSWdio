@@ -213,11 +213,31 @@ class MFGoalsPage {
   }
 
   async signupOrLoginButtonIsDisplayed() {
-    return (await Utils.elementIsDisplayed(MFGoalsObjects.signupOrLoginButton));
+    return (await Utils.elementIsDisplayedNow(MFGoalsObjects.signupOrLoginButton));
   }
 
   async clickSignupOrLoginButton() {
     await Utils.clickElement(MFGoalsObjects.signupOrLoginButton);
+  }
+
+  async createPlanButtonIsDisplayed() {
+    return (await Utils.elementIsDisplayedNow(MFGoalsObjects.createPlanButton));
+  }
+
+  async clickCreatePlanButton() {
+    await Utils.clickElement(MFGoalsObjects.createPlanButton);
+  }
+
+  async clickInvestEveryMonthButton() {
+    await Utils.clickElement(MFGoalsObjects.investEveryMonthButton);
+  }
+
+  async amountPlannedWithScripboxHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.amountPlannedWithScripboxHeader));
+  }
+
+  async clickContinueWithRetireConfidentInvestmentButton() {
+    await Utils.clickElement(MFGoalsObjects.continueWithRetireConfidentInvestmentButton);
   }
 }
 module.exports = new MFGoalsPage();

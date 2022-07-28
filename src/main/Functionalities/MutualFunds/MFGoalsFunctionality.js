@@ -1,5 +1,7 @@
 const MFGoalsPage = require('../../Pages/MutualFunds/MFGoalsPage');
 const LoginPage = require('../../Pages/LoginPage');
+const { expect } = require('chai');
+const LoginData = require('../../../config/data/structured/LoginData');
 
 class MFGoalsFunctionality {
   async selectLifeGoal(lifeGoal) {
@@ -88,12 +90,39 @@ class MFGoalsFunctionality {
 
   async continueInvestForPremierEducation() {
     await MFGoalsPage.clickContinueButtonForPremierEducationPlan(2);
-    return (await MFGoalsPage.signupOrLoginButtonIsDisplayed());
   }
 
-  async signupOrLoginForPremierEducationPlan() {
-    await MFGoalsPage.clickSignupOrLoginButton();
-    return (await LoginPage.loginYourAccountToContinueHeaderIsDisplayed());
+  async createAPlanOrSignupOrLoginForMutualFundGoalPlan() {
+    const signupOrLoginButtonIsDisplayed = await MFGoalsPage.signupOrLoginButtonIsDisplayed();
+    const createPlanButtonIsDisplayed = await MFGoalsPage.createPlanButtonIsDisplayed();
+    if(signupOrLoginButtonIsDisplayed) {
+      await MFGoalsPage.clickSignupOrLoginButton();
+      expect(await LoginPage.loginYourAccountToContinueHeaderIsDisplayed()).to.be.true;
+      await LoginPage.enterUserId(LoginData.username);
+      await LoginPage.clickContinueOrNextButton();
+      await LoginPage.clickContinueWithPasswordButton();
+      await LoginPage.enterPassword(LoginData.password);
+      await LoginPage.clickContinueLoginButton();
+      return true;
+    } else if(createPlanButtonIsDisplayed) {
+      await MFGoalsPage.clickCreatePlanButton();
+      await LoginPage.clickContinueWithPasswordButton();
+      await LoginPage.enterPassword(LoginData.username);
+      await LoginPage.clickContinueLoginButton();
+      return true;
+    }
+    console.log('None of CREATE A PLAN OR SIGNUP OR LOGIN button are displayed');
+    return false;
+  }
+
+  async investEveryMonth() {
+    await MFGoalsPage.clickInvestEveryMonthButton();
+    return (await MFGoalsPage.amountPlannedWithScripboxHeaderIsDisplayed());
+  }
+
+  async continueWithRetireConfidentInvestment() {
+    await MFGoalsPage.clickContinueWithRetireConfidentInvestmentButton();
+    return true;
   }
 }
 module.exports = new MFGoalsFunctionality();

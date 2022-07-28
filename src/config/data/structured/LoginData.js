@@ -1,5 +1,5 @@
 module.exports = {
-  username: 'test+180756@scripbox.io',
+  username: 'test+189182@scripbox.io',
   password: 'folio334!cues',
   user180756: 'test+180756@scripbox.io',
   user189182: 'test+189182@scripbox.io',
