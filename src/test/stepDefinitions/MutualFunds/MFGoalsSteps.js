@@ -42,11 +42,6 @@ When(/^I click on CONTINUE with retirement plan$/, async () => {
   expect(await MFGoalsFunctionality.continueWithRetirementPlan()).to.be.true;
 });
 
-When(/^I click on "CREATE PLAN" for retirement$/, async () => {
-  await console.log('I click on "CREATE PLAN" for retirement');
-  expect(await MFGoalsFunctionality.createPlanForRetirement()).to.be.true;
-});
-
 When(/^I fill "Premier Education" form with (\d+)$/, async (classOfChild) => {
   await console.log(`I fill "Premier Education" form with ${classOfChild}`);
   this.classOfChild = classOfChild;
