@@ -5,9 +5,12 @@ exports.config = {
 
   ...{
     host: 'http://localhost',
-    port: 4723,
+    // port: 4723,
+    port: 4444,
     path: '/wd/hub',
-    services: ['chromedriver'],
+    // services: ['chromedriver'],
+    services: ['docker'],
+
 
     // For mobile web platform
     capabilities: [{

@@ -23,9 +23,10 @@ exports.config = {
   // will be called from there.
   //
   port: 4723,
+  // port: 52033,
   // path: '/wd/hub',
   specs: [
-    './src/test/features/DashboardTests.feature'
+    './src/test/features/LoginViaHomepage.feature'
   ],
   // Patterns to exclude.
   exclude: [
