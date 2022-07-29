@@ -60,9 +60,7 @@ class DashboardPage {
       case 'Invest Now':
         return (await Utils.elementIsDisplayed(DashboardObjects.investNowHeader));
       case 'Notifications':
-        return (
-          await Utils.elementIsDisplayed(DashboardObjects.notificationsHeaders) &&
-          await Utils.elementIsDisplayed(DashboardObjects.backButton));
+        return (await browser.getUrl()).includes('/notifications?');
       default:
         await console.log('Wrong page type -> ' + pageOption.toString());
     }
