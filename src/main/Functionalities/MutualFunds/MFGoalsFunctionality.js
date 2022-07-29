@@ -1,5 +1,6 @@
 const MFGoalsPage = require('../../Pages/MutualFunds/MFGoalsPage');
 const LoginPage = require('../../Pages/LoginPage');
+const LoginFunctionality = require('../../Functionalities/LoginFunctionality');
 const { expect } = require('chai');
 const LoginData = require('../../../config/data/structured/LoginData');
 
@@ -98,17 +99,14 @@ class MFGoalsFunctionality {
     if(signupOrLoginButtonIsDisplayed) {
       await MFGoalsPage.clickSignupOrLoginButton();
       expect(await LoginPage.loginYourAccountToContinueHeaderIsDisplayed()).to.be.true;
-      await LoginPage.enterUserId(LoginData.username);
-      await LoginPage.clickContinueOrNextButton();
-      await LoginPage.clickContinueWithPasswordButton();
-      await LoginPage.enterPassword(LoginData.password);
-      await LoginPage.clickContinueLoginButton();
+      await LoginFunctionality.loginWithUsername(LoginData.username);
+      await LoginFunctionality.continueWithPassword();
+      await LoginFunctionality.loginWithPassword(LoginData.password);
       return true;
     } else if(createPlanButtonIsDisplayed) {
       await MFGoalsPage.clickCreatePlanButton();
-      await LoginPage.clickContinueWithPasswordButton();
-      await LoginPage.enterPassword(LoginData.username);
-      await LoginPage.clickContinueLoginButton();
+      await LoginFunctionality.continueWithPassword();
+      await LoginFunctionality.loginWithPassword(LoginData.password);
       return true;
     }
     console.log('None of CREATE A PLAN OR SIGNUP OR LOGIN button are displayed');
