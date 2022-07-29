@@ -8,8 +8,16 @@ exports.config = {
     // port: 4723,
     port: 4444,
     path: '/wd/hub',
+    /*
+    Enable chromedriver service to execute tests in local. 
+    Command to execute: ./node_modules/.bin/wdio wdio.responsive.conf.js
+    */
     // services: ['chromedriver'],
-    services: ['docker'],
+    /*
+    Enable docker service to execute tests in docker. 
+    Command to execute: npm test
+    */
+    services: ['docker'], 
 
 
     // For mobile web platform
