@@ -120,7 +120,16 @@ class MFGoalsFunctionality {
 
   async continueWithRetireConfidentInvestment() {
     await MFGoalsPage.clickContinueWithRetireConfidentInvestmentButton();
-    return true;
+    return (await MFGoalsPage.fundListHeaderIsDisplayed());
+  }
+
+  async continueToInvestWithRetireConfidentInvestment() {
+    await MFGoalsPage.clickContinueToInvestWithRetireConfidentInvestmentButton();
+    return (await MFGoalsPage.paymentTypePageForRetireConfidentHeaderIsDisplayed());
+  }
+
+  async confirmToInvestWithRetireConfidentInvestment() {
+    await MFGoalsPage.clickConfirmToInvestWithRetireConfidentInvestmentButton();
   }
 }
 module.exports = new MFGoalsFunctionality();

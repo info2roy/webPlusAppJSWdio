@@ -242,5 +242,21 @@ class MFGoalsPage {
   async clickContinueWithRetireConfidentInvestmentButton() {
     await Utils.clickElement(MFGoalsObjects.continueWithRetireConfidentInvestmentButton);
   }
+
+  async fundListHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.fundListHeader));
+  }
+
+  async clickContinueToInvestWithRetireConfidentInvestmentButton() {
+    await Utils.clickElement(MFGoalsObjects.continueToInvestWithRetireConfidentInvestmentButton);
+  }
+
+  async paymentTypePageForRetireConfidentHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.paymentTypePageForRetireConfidentHeader));
+  }
+
+  async clickConfirmToInvestWithRetireConfidentInvestmentButton() {
+    await Utils.clickElement(MFGoalsObjects.confirmToInvestWithRetireConfidentInvestmentButton);
+  }
 }
 module.exports = new MFGoalsPage();

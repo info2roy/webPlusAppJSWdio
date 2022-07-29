@@ -1,7 +1,7 @@
 Feature: Scripbox Investment in Mutual Fund Goals
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "MYSCRIPBOX2" for "user189182"
+    Given I login to Scripbox in "MYSCRIPBOX38" for "user189182"
 
   Scenario Outline: As a logged in user, I am able to invest in mutual fund goal "Retire Confident"
     Given I am on the Investment Page
@@ -16,11 +16,15 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Mutual Fund Goal Plan
     When I click on "INVEST EVERY MONTH" for life goal
     When I click "CONTINUE" on the "Retire Confident" plan
+    When I click "CONTINUE TO INVEST" on the "Retire Confident" plan
+    When I select Payment type as <paymentType>
+    When I click "CONFIRM" on the "Retire Confident" investment
+    Then I should see investment scheduled successfully message
     Examples:
-      | age | monthlyExpenses | retireAtAge | retirementEndAge | existingSavingsAmount | existingSavingsGrowthRate | futureMonthlyIncomeFromOtherSources | inflationPercent |
-      | 30  | 25000  | 60 | 80 | 200000 | 8 | 10000 | 7 |
-      #| 35  | 50K  | 50 | 70 | 100000 | 8 | 10000 | 4 |
-      #| 41  | 40000  | 65 | 90 | 100000 | 8 | 10000 | 5 |
+      | age | monthlyExpenses | retireAtAge | retirementEndAge | existingSavingsAmount | existingSavingsGrowthRate | futureMonthlyIncomeFromOtherSources | inflationPercent | paymentType | 
+      | 30  | 25000  | 60 | 80 | 200000 | 8 | 10000 | 7 | Scheduled |
+      #| 35  | 50K  | 50 | 70 | 100000 | 8 | 10000 | 4 | Scheduled |
+      #| 41  | 40000  | 65 | 90 | 100000 | 8 | 10000 | 5 | Scheduled |
 
   # Scenario Outline: As a logged in user, I am able to invest in mutual fund goal "Premier Education"
   #   Given I am on the Investment Page

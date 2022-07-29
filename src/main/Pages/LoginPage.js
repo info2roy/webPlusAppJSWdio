@@ -66,6 +66,5 @@ class LoginPage {
   async loginYourAccountToContinueHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(LoginObjects.loginYourAccountToContinueHeader));
   }
-
 }
 module.exports = new LoginPage();

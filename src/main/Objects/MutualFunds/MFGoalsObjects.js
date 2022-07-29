@@ -259,6 +259,21 @@ class MFGoalsObjects {
     web: '//button[contains(text(),"Continue")]'
   };
 
+  fundListHeader = {
+    web: '//div[text()="Fund list"]'
+  };
+
+  continueToInvestWithRetireConfidentInvestmentButton = {
+    web: '//button[contains(text(),"Continue to invest")]'
+  };
+
+  paymentTypePageForRetireConfidentHeader = {
+    web: '//div[contains(text(),"I would like to invest Rs")]'
+  };
+
+  confirmToInvestWithRetireConfidentInvestmentButton = {
+    web: '//button[contains(text(),"Confirm")]'
+  };
 }
 module.exports = new MFGoalsObjects();
 

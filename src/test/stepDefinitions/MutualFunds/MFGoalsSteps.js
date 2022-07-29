@@ -100,3 +100,13 @@ When(/^I click "CONTINUE" on the "Retire Confident" plan$/, async() => {
   await console.log('I click "CONTINUE" on the "Retire Confident" plan');
   expect(await MFGoalsFunctionality.continueWithRetireConfidentInvestment()).to.be.true;
 });
+
+When(/^I click "CONTINUE TO INVEST" on the "Retire Confident" plan$/, async() => {
+  await console.log('I click "CONTINUE TO INVEST" on the "Retire Confident" plan');
+  expect(await MFGoalsFunctionality.continueToInvestWithRetireConfidentInvestment()).to.be.true;
+});
+
+When(/^I click "CONFIRM" on the "Retire Confident" investment$/, async() => {
+  await console.log('I click "CONFIRM" on the "Retire Confident" investment');
+  await MFGoalsFunctionality.confirmToInvestWithRetireConfidentInvestment();
+});

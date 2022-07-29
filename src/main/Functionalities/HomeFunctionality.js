@@ -25,6 +25,9 @@ class HomeFunctionality {
         case 'user120405':
           await LoginPage.enterUserId(loginData.user120405);
           break;
+        case 'user120406':
+          await LoginPage.enterUserId(loginData.user120406);
+          break;
         case 'user120409':
           await LoginPage.enterUserId(loginData.user120409);
           break;
@@ -49,6 +52,9 @@ class HomeFunctionality {
           break;
         case 'user120405':
           await Utils.setInputField(loginData.user120405, LoginObjects.stagingUserIdField);
+          break;
+        case 'user120406':
+          await Utils.setInputField(loginData.user120406, LoginObjects.stagingUserIdField);
           break;
         case 'user120409':
           await Utils.setInputField(loginData.user120409, LoginObjects.stagingUserIdField);
