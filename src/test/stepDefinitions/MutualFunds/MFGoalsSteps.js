@@ -88,7 +88,7 @@ When(/^I click "START WITH" for "Premier Education" working plan$/, async() => {
 
 When(/^I click "CONTINUE" on the "Premier Education" suggested plan$/, async() => {
   await console.log('I click "CONTINUE" on the "Premier Education" suggested plan');
-  expect(await MFGoalsFunctionality.continueInvestForPremierEducation()).to.be.true;
+  await MFGoalsFunctionality.continueInvestForPremierEducation();
 });
 
 When(/^I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Mutual Fund Goal Plan$/, async() => {
