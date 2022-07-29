@@ -8,7 +8,6 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I navigate to the investment tab "Mutual Funds"
     When I click on "Add new plan" for mutual funds
     When I select mutual funds life goal as "Retire Confident"
-    #When I select mutual funds life goal as "Premier Education"
     When I click on "SHOW ME HOW" for life goal
     When I fill "Retire Confident" form with <age>, <monthlyExpenses>, <retireAtAge>, <retirementEndAge>
     When I fill Existing Savings form with <existingSavingsAmount>, <existingSavingsGrowthRate>, <futureMonthlyIncomeFromOtherSources>

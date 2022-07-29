@@ -104,6 +104,9 @@ class MFGoalsPage {
   }
 
   async clickShowDetailedPlanButton() {
+    if (Device.isWeb()) {
+      Utils.scrollAndMoveToElement(MFGoalsObjects.showDetailedPlanButton);
+    }
     await Utils.clickElement(MFGoalsObjects.showDetailedPlanButton);
   }
 
