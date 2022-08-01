@@ -10,6 +10,12 @@ class MFGoalsFunctionality {
     return (await MFGoalsPage.validateNavigationToLifeGoalPage(lifeGoal));
   }
 
+  async selectExistingPlanForLifeGoal(lifeGoal) {
+    await MFGoalsPage.clickOnExistingPlanForLifeGoal(lifeGoal);
+    return MFGoalsPage.lifeGoalElementIsDisplayed(lifeGoal) &&
+      MFGoalsPage.investmentCalendarHeaderIsDisplayed();
+  }
+
   async selectShowMeHow(lifeGoal) {
     await MFGoalsPage.clickOnShowMeHowButton();
     return (await MFGoalsPage.validateNavigationToLifeGoalSection(lifeGoal));
@@ -116,6 +122,11 @@ class MFGoalsFunctionality {
   async investEveryMonth() {
     await MFGoalsPage.clickInvestEveryMonthButton();
     return (await MFGoalsPage.amountPlannedWithScripboxHeaderIsDisplayed());
+  }
+
+  async investOneTime() {
+    await MFGoalsPage.clickInvestOneTimeButton();
+    return (await MFGoalsPage.howWouldYouLikeYourMoneyToGrowHeaderIsDisplayed());
   }
 
   async continueWithRetireConfidentInvestment() {

@@ -53,6 +53,13 @@ class Utils {
     await myButton.click();
   }
 
+  async getText(selector) {
+    const locator = this.getLocator(selector);
+    await this.elementIsDisplayed(selector);
+    const element = await $(locator);
+    return (await element.getText());
+  }
+
   async clickWebElement(webElement) {
     await webElement.click();
   }

@@ -8,6 +8,12 @@ When(/^I select mutual funds life goal as "([^"]*)?"$/, async (lifeGoal) => {
   expect(await MFGoalsFunctionality.selectLifeGoal(lifeGoal)).to.be.true;
 });
 
+When(/^I select existing plan for mutual funds life goal "([^"]*)?"$/, async (lifeGoal) => {
+  await console.log(`I select existing plan for mutual funds life goal ${lifeGoal}`);
+  this.lifeGoal = lifeGoal;
+  expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal(lifeGoal)).to.be.true;
+});
+
 When(/^I click on "SHOW ME HOW" for life goal$/, async () => {
   await console.log(`I click on "SHOW ME HOW" for life goal`);
   expect(await MFGoalsFunctionality.selectShowMeHow(this.lifeGoal)).to.be.true;
@@ -94,6 +100,11 @@ When(/^I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Mutual Fund Goal Plan$/
 When(/^I click on "INVEST EVERY MONTH" for life goal$/, async() => {
   await console.log('I click on "INVEST EVERY MONTH" for life goal');
   expect(await MFGoalsFunctionality.investEveryMonth()).to.be.true;
+});
+
+When(/^I click on "INVEST ONE TIME" for life goal$/, async() => {
+  await console.log('I click on "INVEST ONE TIME" for life goal');
+  expect(await MFGoalsFunctionality.investOneTime()).to.be.true;
 });
 
 When(/^I click "CONTINUE" on the "Retire Confident" plan$/, async() => {

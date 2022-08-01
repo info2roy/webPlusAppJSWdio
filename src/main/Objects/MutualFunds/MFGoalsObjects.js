@@ -14,6 +14,20 @@ class MFGoalsObjects {
     web: '//h1[contains(text(),"Are you investing enough for your child\'s college education?")]'
   };
 
+  lifeGoalExistingPlanElement(lifeGoal) {
+    return {
+      web: `//div[text()="${lifeGoal}"]/following-sibling::div/following-sibling::div`
+    };
+  }
+
+  yourExistingPlansHeader = {
+    web: '//div[contains(text(),"Your existing plans")]'
+  };
+
+  investmentCalendarHeader = {
+    web: '//div[text()="Investment Calendar"]'
+  };
+
   showMeHowButton = {
     web: '//button[contains(text(),"Show me how")]'
   };
@@ -251,8 +265,16 @@ class MFGoalsObjects {
     web: '//button[text()="INVEST EVERY MONTH"]'
   };
 
+  investOneTimeButton = {
+    web: '//button[text()="INVEST ONE TIME"]'
+  };
+
   amountPlannedWithScripboxHeader = {
     web: '//p[text()="Amount Planned With Scripbox:"]'
+  };
+
+  howWouldYouLikeYourMoneyToGrowHeader = {
+    web: '//div[text()="How would you like your money to grow?"]'
   };
 
   continueWithRetireConfidentInvestmentButton = {

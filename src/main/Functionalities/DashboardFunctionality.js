@@ -26,6 +26,11 @@ class DashboardFunctionality {
     await DashboardPage.returnToHome();
   }
 
+  async goToHome() {
+    await DashboardPage.clickHomeButton();
+    await this.validate();
+  }
+
   async invest() {
     await DashboardPage.selectDashboardTab(Constants.DASHBOARD_INVEST);
   }

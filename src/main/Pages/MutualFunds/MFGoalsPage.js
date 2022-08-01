@@ -13,6 +13,10 @@ class MFGoalsPage {
     await Utils.clickElement(MFGoalsObjects.lifeGoalElement(lifeGoal));
   }
 
+  async lifeGoalElementIsDisplayed(lifeGoal) {
+    return Utils.elementIsDisplayed(MFGoalsObjects.lifeGoalElement(lifeGoal));
+  }
+
   async validateNavigationToLifeGoalPage(lifeGoal) {
     switch(lifeGoal) {
       case 'Retire Confident':
@@ -23,6 +27,22 @@ class MFGoalsPage {
         console.log(`Unsupported life goal ${lifeGoal}`);
         return false;
     }
+  }
+
+  async clickOnExistingPlanForLifeGoal(lifeGoal) {
+    const existingPlanText = await Utils.getText(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
+    expect(existingPlanText).to.equal('1 · existing plan');
+    if(Device.isWeb()) {
+      await Utils.scrollAndMoveToElement(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
+    }
+    await Utils.clickElement(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
+    expect(await Utils.elementIsDisplayed(MFGoalsObjects.yourExistingPlansHeader)).to.be.true;
+    const lifeGoalExistingPlan = await Utils.getMatchingElementByIndex(MFGoalsObjects.lifeGoalElement(lifeGoal), 0);
+    await Utils.clickWebElement(lifeGoalExistingPlan);
+  }
+
+  async investmentCalendarHeaderIsDisplayed() {
+    return Utils.elementIsDisplayed(MFGoalsObjects.investmentCalendarHeader);
   }
 
   async clickOnShowMeHowButton() {
@@ -237,6 +257,14 @@ class MFGoalsPage {
 
   async amountPlannedWithScripboxHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.amountPlannedWithScripboxHeader));
+  }
+
+  async clickInvestOneTimeButton() {
+    await Utils.clickElement(MFGoalsObjects.investOneTimeButton);
+  }
+
+  async howWouldYouLikeYourMoneyToGrowHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.howWouldYouLikeYourMoneyToGrowHeader));
   }
 
   async clickContinueWithRetireConfidentInvestmentButton() {
