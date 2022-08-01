@@ -144,6 +144,38 @@ class MFGoalsObjects {
     web: '//span[text()="Activate Plan"]'
   };
 
+  investMoreForGoalPlanButton = {
+    web: '//button[text()="Invest more"]'
+  };
+
+  otherActionsForGoalPlanButton = {
+    web: '//button[text()="Other actions"]'
+  };
+
+  investMorePageHeader = {
+    web: '//div[text()="I want to invest"]'
+  };
+
+  startANewSIPHeader = {
+    web: '//div[text()="Start a new SIP"]'
+  };
+
+  investOneTimeHeader = {
+    web: '//div[text()="Invest one-time"]'
+  };
+
+  retireConfidentSIP(amount) {
+    return {
+      web: `//div[text()="Retire Confident SIP"]/parent::div/following-sibling::div[text()="${amount.toLocaleString('hi')}"]`
+    };
+  }
+
+  retireConfidentOneTime(amount) {
+    return {
+      web: `//div[text()="Retire Confident"]/parent::div/following-sibling::div/div[text()="${amount.toLocaleString('hi')}"]`
+    };
+  }
+
   //Premier Education
   classOfChildField = {
     web: 'input.education-plan-age-input'

@@ -56,6 +56,29 @@ class MFGoalsFunctionality {
     return (await MFGoalsPage.activateRetirementPlanHeaderIsDisplayed());
   }
 
+  async investMoreForGoalPlan() {
+    await MFGoalsPage.clickInvestMoreButtonForGoalPlan();
+    return (await MFGoalsPage.investMorePageHeaderIsDisplayed());
+  }
+
+  async doOtherActionForGoalPlan(actionType) {
+    console.log(`actionType: ${actionType}`);
+  }
+
+  async otherActionsForGoalPlan() {
+    await MFGoalsPage.clickInvestMoreButtonForGoalPlan();
+    return (await MFGoalsPage.startANewSIPHeaderIsDisplayed()) &&
+      (await MFGoalsPage.investOneTimeHeaderIsDisplayed());
+  }
+
+  async validateRetireConfidentSIP(amount) {
+    return (await MFGoalsPage.retireConfidentSIPIsDisplayed(amount));
+  }
+
+  async validateRetireConfidentOneTime(amount) {
+    return (await MFGoalsPage.retireConfidentOneTimeIsDisplayed(amount));
+  }
+
   //Premier Education
   async selectClassOfChild(classOfChild) {
     await MFGoalsPage.enterClassOfChild(classOfChild);

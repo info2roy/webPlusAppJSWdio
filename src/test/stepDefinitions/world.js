@@ -12,6 +12,7 @@ class CustomWorld {
     this.lifeGoal = ''; //life goal like Retire Confident|Premier Education
     this.classOfChild = 0; //the class of the child
     this.childname = ''; //the name of the child
+    this.uat = 0; //the uat id , either 2 or 38
   }
 }
 setWorldConstructor(CustomWorld);

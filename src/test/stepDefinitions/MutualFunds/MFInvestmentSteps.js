@@ -1,7 +1,6 @@
 const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const MFInvestmentFunctionality = require('../../../main/Functionalities/MutualFunds/MFInvestmentFunctionality');
-const DashboardFunctionality = require('../../../main/Functionalities/DashboardFunctionality');
 
 When(/^I select mutual fund portfolio (.+)$/, async (mutualFundPortfolio) => {
   await console.log(`When I select mutual fund portfolio ${mutualFundPortfolio}`);
@@ -20,7 +19,17 @@ When(/^I select (Every month \(SIP\)|One time|STP) and fill (\d+) and click to s
     click to see recommended funds`);
     this.amount = amount;
     this.investmentType = investmentType;
-    expect(await MFInvestmentFunctionality.fillInvestmentForm(investmentType, amount)).to.be.true;
+    expect(await MFInvestmentFunctionality.fillInvestmentForm(investmentType, amount, true)).to.be.true;
+  }
+);
+
+When(/^I have already selected (Every month \(SIP\)|One time|STP) and fill (\d+) and click to see recommended funds$/,
+  async (investmentType, amount) => {
+    await console.log(`When I have already selected <investmentType>:${investmentType} and <amount>:${amount} and 
+    click to see recommended funds`);
+    this.amount = amount;
+    this.investmentType = investmentType;
+    expect(await MFInvestmentFunctionality.fillInvestmentForm(investmentType, amount, false)).to.be.true;
   }
 );
 
@@ -37,7 +46,6 @@ When(/^I select Payment type as (Immediate|Scheduled)$/, async (paymentType) => 
 
 When(/^I select SIP duration in months as (\d+) and click NEXT$/, async (sipDurationInMonths) => {
   await console.log(`When I select SIP duration in months as ${sipDurationInMonths} and click NEXT paymentType:${this.paymentType}`);
-  expect(await MFInvestmentFunctionality.setupMFInvestmentPageLaunched(this.investmentType, this.amount, 180)).to.be.true;
   await MFInvestmentFunctionality.setupInvestment(sipDurationInMonths, this.paymentType, this.investmentType);
   expect(await MFInvestmentFunctionality.paymentInstrumentPageLaunched(this.paymentType)).to.be.true;
 });
@@ -80,14 +88,13 @@ Then(/^I should see investment scheduled successfully message$/, async () => {
   expect(await MFInvestmentFunctionality.investmentScheduledSuccessfully()).to.be.true;
 });
 
-Then(/^I go back to the dashboard page$/, async () => {
-  await console.log('Then I go back to the dashboard page');
-  await DashboardFunctionality.open();
-  await DashboardFunctionality.validate();
-});
-
 When(/^I click on "Add new plan" for mutual funds$/, async () => {
   await console.log('When I click on "Add new plan" for mutual funds');
   await MFInvestmentFunctionality.addNewPlan();
   expect(await MFInvestmentFunctionality.addNewPlanPageLaunched()).to.be.true;
+});
+
+When(/^I click on "VIEW INVESTMENTS" button$/, async () => {
+  await console.log('When I click on "VIEW INVESTMENTS" button');
+  expect(await MFInvestmentFunctionality.viewInvestments()).to.be.true;
 });

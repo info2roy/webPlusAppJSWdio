@@ -1,5 +1,6 @@
 const device = require('../libraries/Device');
 const { expect } = require('chai');
+const env = require('../../config/env');
 
 class Utils {
   getLocator(object) {
@@ -189,6 +190,28 @@ class Utils {
   //get a random integer between 0(inclusive) and maxIntValue(exclusive)
   getRandomInt(maxIntValue) {
     return Math.floor(Math.random() * maxIntValue);
+  }
+
+  getUAT(environment) {
+    switch(environment) {
+      case 'UAT2':
+      case 'MYSCRIPBOX2':
+        return 2;
+      case 'UAT38':
+      case 'MYSCRIPBOX38':
+        return 38;
+      default:
+        return undefined;
+    }
+  }
+
+  getMyScripbox(uat) {
+    if (uat === 38) {
+      return env.myScripboxUat38;
+    } else if(uat === 2) {
+      return env.myScripboxUat2;
+    }
+    return undefined;
   }
 }
 

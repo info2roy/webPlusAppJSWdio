@@ -16,6 +16,10 @@ class DashboardPage {
     await Utils.clickElement(DashboardObjects.homeButton);
   }
 
+  async clickGoToDashboardButton() {
+    await Utils.clickElement(DashboardObjects.goToDashboardButton);
+  }
+
   async selectDashboardTab(tabName) {
     await Utils.clickElement(DashboardObjects.dashboardTab(tabName));
   }

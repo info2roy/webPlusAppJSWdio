@@ -1,4 +1,4 @@
-const { When } = require('@wdio/cucumber-framework');
+const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const MFGoalsFunctionality = require('../../../main/Functionalities/MutualFunds/MFGoalsFunctionality');
 
@@ -46,6 +46,31 @@ When(/^I select inflation rate as (\d+)%$/,
 When(/^I click on CONTINUE with retirement plan$/, async () => {
   await console.log('When I click on CONTINUE with retirement plan');
   expect(await MFGoalsFunctionality.continueWithRetirementPlan()).to.be.true;
+});
+
+When(/^I invest more for the existing plan for life goal "Retire Confident"$/, async () => {
+  await console.log('I invest more for the existing plan for life goal "Retire Confident"');
+  expect(await MFGoalsFunctionality.investMoreForGoalPlan()).to.be.true;
+});
+
+When(/^I click on "Other actions" for the existing plan for life goal "Retire Confident"$/, async () => {
+  await console.log('I click on "Other actions" for the existing plan for life goal "Retire Confident"');
+  expect(await MFGoalsFunctionality.otherActionsForGoalPlan()).to.be.true;
+});
+
+When(/^I click on "Other actions" -> "(Start a new SIP|Invest one-time)" for life goal "Retire Confident"$/, async(actionType) => {
+  await console.log(`I click on "Other actions" -> "${actionType}" for life goal "Retire Confident"`);
+  expect(await MFGoalsFunctionality.doOtherActionForGoalPlan(actionType)).to.be.true;
+});
+
+Then(/^I should see extra "Retire Confident SIP" for (\d+) to be present in the investments list$/, async(amount) => {
+  await console.log(`I should see extra "Retire Confident SIP" for ${amount} to be present in the investments list`);
+  expect(await MFGoalsFunctionality.validateRetireConfidentSIP(amount)).to.be.true;
+});
+
+Then(/^I should see extra "Retire Confident OneTime" for (\d+) to be present in the investments list$/, async(amount) => {
+  await console.log(`I should see extra "Retire Confident OneTime" for ${amount} to be present in the investments list`);
+  expect(await MFGoalsFunctionality.validateRetireConfidentOneTime(amount)).to.be.true;
 });
 
 When(/^I fill "Premier Education" form with (\d+)$/, async (classOfChild) => {

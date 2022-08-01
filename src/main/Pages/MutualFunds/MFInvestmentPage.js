@@ -230,5 +230,21 @@ class MFInvestmentPage {
   async addNewPlanPageAchieveLifeGoalsHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageAchieveLifeGoalsHeader));
   }
+
+  async clickOnViewInvestmentsButton() {
+    Utils.clickElement(MFInvestmentObjects.viewInvestmentsButton);
+  }
+
+  async sipsAndStpsHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.sipsAndStpsHeader));
+  }
+
+  async externalSipsHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.externalSipsHeader));
+  }
+
+  async monthlySummaryHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.monthlySummaryHeader));
+  }
 }
 module.exports = new MFInvestmentPage();

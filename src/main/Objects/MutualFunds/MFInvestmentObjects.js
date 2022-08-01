@@ -196,5 +196,21 @@ class MFInvestmentObjects {
   addNewPlanPageAchieveLifeGoalsHeader = {
     web: '//div[text()="Achieve life goals"]'
   };
+
+  viewInvestmentsButton = {
+    web: '//button[text()="View investments"]'
+  };
+
+  sipsAndStpsHeader = {
+    web: '//div[text()="SIP(s) and STP(s)"]'
+  };
+
+  externalSipsHeader = {
+    web: '//div[text()="External SIPs"]'
+  };
+
+  monthlySummaryHeader = {
+    web: '//div[text()="Monthly Summary"]'
+  };
 }
 module.exports = new MFInvestmentObjects();

@@ -1,7 +1,8 @@
-const { Given, When } = require('@wdio/cucumber-framework');
+const { Given, When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const HomeFunctionality = require('../../main/Functionalities/HomeFunctionality');
 const LoginFunctionality = require('../../main/Functionalities/LoginFunctionality');
+const DashboardFunctionality = require('../../main/Functionalities/DashboardFunctionality');
 const Device = require('../../support/libraries/Device');
 const Utils = require('../../support/Utils/Utils');
 const envUrl = require('../../config/env');
@@ -34,6 +35,8 @@ When(/^I click on login option$/, async () => {
 When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => {
   await console.log('Logging in to ' + env + ' for user ' + user);
   const platform = Utils.getPlatform();
+  this.uat = Utils.getUAT(env.toString());
+  console.log(`UAT = ${this.uat}`);
   Device.setDevice(platform);
   if (Device.isMobileWeb() || Device.isDesktop()) {
     switch (env.toString()) {
@@ -69,4 +72,11 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
     await HomeFunctionality.performLoginApp(user);
   }
   await browser.pause(4000); // Adding this pause because we have to manually click on "retry error button" on UI
+});
+
+Then(/^I go back to the dashboard page$/, async () => {
+  await console.log('Then I go back to the dashboard page');
+  console.log(`this.uat = ${this.uat}`);
+  await DashboardFunctionality.open(this.uat); //this.uat is coming from world.js
+  await DashboardFunctionality.validate();
 });

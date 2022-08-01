@@ -155,6 +155,34 @@ class MFGoalsPage {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.activateRetirementPlanHeader));
   }
 
+  async clickInvestMoreButtonForGoalPlan() {
+    await Utils.clickElement(MFGoalsObjects.investMoreForGoalPlanButton);
+  }
+
+  async clickOtherActionsButtonForGoalPlan() {
+    await Utils.clickElement(MFGoalsObjects.otherActionsForGoalPlanButton);
+  }
+
+  async investMorePageHeaderIsDisplayed() {
+    return (Utils.elementIsDisplayed(MFGoalsObjects.investMorePageHeader));
+  }
+
+  async startANewSIPHeaderIsDisplayed() {
+    return (Utils.elementIsDisplayed(MFGoalsObjects.startANewSIPHeader));
+  }
+
+  async investOneTimeHeaderIsDisplayed() {
+    return (Utils.elementIsDisplayed(MFGoalsObjects.investOneTimeHeader));
+  }
+
+  async retireConfidentSIPIsDisplayed(amount) {
+    return (Utils.elementIsDisplayed(MFGoalsObjects.retireConfidentSIP(amount)));
+  }
+
+  async retireConfidentOneTimeIsDisplayed(amount) {
+    return (Utils.elementIsDisplayed(MFGoalsObjects.retireConfidentOneTime(amount)));
+  }
+
   async enterClassOfChild(classOfChild) {
     if(classOfChild === 0) {
       await Utils.setCheckBox(MFGoalsObjects.childInPreschoolOrNotInSchoolCheckbox, true);
