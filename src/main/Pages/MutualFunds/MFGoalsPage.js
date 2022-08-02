@@ -346,6 +346,37 @@ class MFGoalsPage {
     await Utils.clickElement(MFGoalsObjects.otherActionsButton);
   }
 
+  async clickEditPlanButton() {
+    await Utils.clickElement(MFGoalsObjects.editPlanButton);
+  }
+
+  async clickOtherActionsOrEditPlanButton(buttonText) {
+    switch(buttonText) {
+      case 'OTHER ACTIONS':
+        await this.clickOtherActionsButton();
+        break;
+      case 'EDIT PLAN':
+        await this.clickEditPlanButton();
+        break;
+      default:
+        console.log(`Unsupported action ${buttonText}`);
+    }
+  }
+
+  async validateNavigationToOtherActionsOrEditPlanButton(buttonText) {
+    switch(buttonText) {
+      case 'OTHER ACTIONS':
+        return (await this.moveMoneyHeaderIsDisplayed()) &&
+          (await this.stopAllInvestmentsHeaderIsDisplayed()) &&
+          (await this.closePlanHeaderIsDisplayed());
+      case 'EDIT PLAN':
+        return (await this.replanStep1HeaderIsDisplayed());
+      default:
+        console.log(`Unsupported action ${buttonText}`);
+        return false;
+    }
+  }
+
   async moveMoneyHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.moveMoneyHeader));
   }
@@ -356,6 +387,10 @@ class MFGoalsPage {
 
   async closePlanHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.closePlanHeader));
+  }
+
+  async replanStep1HeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.replanStep1Header));
   }
 
   async clickOnOtherAction(otherAction) {

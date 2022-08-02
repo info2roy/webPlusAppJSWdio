@@ -161,9 +161,9 @@ When(/^I click on ">" to see plan details for "Retire Confident" plan$/, async()
   expect(await MFGoalsFunctionality.seeRetireConfidentPlanDetails()).to.be.true;
 });
 
-When(/^I click on "OTHER ACTIONS" button for "Retire Confident" plan$/, async() => {
-  await console.log('I click on "OTHER ACTIONS" button for "Retire Confident" plan');
-  expect(await MFGoalsFunctionality.otherActions()).to.be.true;
+When(/^I click on "(OTHER ACTIONS|EDIT PLAN)" button for "Retire Confident" plan$/, async(buttonText) => {
+  await console.log(`I click on "${buttonText}" button for "Retire Confident" plan`);
+  expect(await MFGoalsFunctionality.otherActionsOrEditPlan(buttonText)).to.be.true;
 });
 
 When(/^I click on "(Move Money|Stop All Investments|Close Plan)" from "OTHER ACTIONS" for "Retire Confident" plan$/, async(otherAction) => {

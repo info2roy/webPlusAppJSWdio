@@ -177,11 +177,9 @@ class MFGoalsFunctionality {
     return (await MFGoalsPage.planDetailsHeaderIsDisplayed());
   }
 
-  async otherActions() {
-    await MFGoalsPage.clickOtherActionsButton();
-    return (await MFGoalsPage.moveMoneyHeaderIsDisplayed()) &&
-      (await MFGoalsPage.stopAllInvestmentsHeaderIsDisplayed()) &&
-      (await MFGoalsPage.closePlanHeaderIsDisplayed());
+  async otherActionsOrEditPlan(buttonText) {
+    await MFGoalsPage.clickOtherActionsOrEditPlanButton(buttonText);
+    return (await MFGoalsPage.validateNavigationToOtherActionsOrEditPlanButton(buttonText));
   }
 
   async doOtherAction(otherAction) {

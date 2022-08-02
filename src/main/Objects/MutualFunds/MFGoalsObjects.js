@@ -363,6 +363,14 @@ class MFGoalsObjects {
     web: '//div[text()="Close Plan"]'
   };
 
+  replanStep1Header = {
+    web: '//div[text()="REPLAN - STEP 1 OF 3"]'
+  };
+
+  editPlanButton = {
+    web: '//button[text()="Edit Plan"]'
+  };
+
   moveMoneyWarningMessage = {
     web: '//div[text()="Oops. You currently do not have any investments to re-allocate."]'
   };
@@ -377,6 +385,38 @@ class MFGoalsObjects {
 
   planCancelledMessage = {
     web: '//p[text()="Your plan has been cancelled"]'
+  };
+
+  editRetirementAgeButton = {
+    web: '//div[text()="I want to retire at the age of"]/parent::div/following-sibling::div/div'
+  };
+
+  replanRetirementAgeField = {
+    web: 'input#retirement-age-input'
+  };
+
+  okayButton = {
+    web: '//button[text()="Okay"]'
+  };
+
+  replanRetirementEndAgeField = {
+    web: 'input#retirement-planned-till-input'
+  };
+
+  replanCurrentMonthlyExpensesField = {
+    web: 'input#goal-amount-input'
+  };
+
+  editRetirementEndAgeButton = {
+    web: '//div[text()="Retirement planned until the age of"]/parent::div/following-sibling::div/div'
+  };
+
+  editCurrentMonthlyExpensesButton = {
+    web: '//div[text()="My current monthly expenses are"]/parent::div/following-sibling::div/div'
+  };
+
+  editExpensesIncreaseRateButton = {
+    web: '//div[text()="Your expenses will increase every year by"]/parent::div/following-sibling::div/div'
   };
 }
 module.exports = new MFGoalsObjects();
