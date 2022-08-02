@@ -58,17 +58,18 @@ class MFGoalsFunctionality {
 
   async investMoreForGoalPlan() {
     await MFGoalsPage.clickInvestMoreButtonForGoalPlan();
-    return (await MFGoalsPage.investMorePageHeaderIsDisplayed());
-  }
-
-  async doOtherActionForGoalPlan(actionType) {
-    console.log(`actionType: ${actionType}`);
+    return (await MFGoalsPage.iWantToInvestHeaderIsDisplayed());
   }
 
   async otherActionsForGoalPlan() {
-    await MFGoalsPage.clickInvestMoreButtonForGoalPlan();
+    await MFGoalsPage.clickOtherActionsButtonForGoalPlan();
     return (await MFGoalsPage.startANewSIPHeaderIsDisplayed()) &&
       (await MFGoalsPage.investOneTimeHeaderIsDisplayed());
+  }
+
+  async doOtherActionForGoalPlan(actionType) {
+    await MFGoalsPage.clickOnOtherActionForGoalPlan(actionType);
+    return (await MFGoalsPage.validateNavigationToOtherActionForGoalPlan(actionType));
   }
 
   async validateRetireConfidentSIP(amount) {
@@ -152,7 +153,12 @@ class MFGoalsFunctionality {
     return (await MFGoalsPage.howWouldYouLikeYourMoneyToGrowHeaderIsDisplayed());
   }
 
-  async continueWithRetireConfidentInvestment() {
+  async continueWithOneTimeRetireConfidentInvestment() {
+    await MFGoalsPage.clickContinueWithRetireConfidentInvestmentButton();
+    return (await MFGoalsPage.iWouldLikeToInvestOneTimeHeaderIsDisplayed());
+  }
+
+  async continueWithEveryMonthRetireConfidentInvestment() {
     await MFGoalsPage.clickContinueWithRetireConfidentInvestmentButton();
     return (await MFGoalsPage.fundListHeaderIsDisplayed());
   }
@@ -164,6 +170,28 @@ class MFGoalsFunctionality {
 
   async confirmToInvestWithRetireConfidentInvestment() {
     await MFGoalsPage.clickConfirmToInvestWithRetireConfidentInvestmentButton();
+  }
+
+  async seeRetireConfidentPlanDetails() {
+    await MFGoalsPage.clickToSeeRetireConfidentPlanDetails();
+    return (await MFGoalsPage.planDetailsHeaderIsDisplayed());
+  }
+
+  async otherActions() {
+    await MFGoalsPage.clickOtherActionsButton();
+    return (await MFGoalsPage.moveMoneyHeaderIsDisplayed()) &&
+      (await MFGoalsPage.stopAllInvestmentsHeaderIsDisplayed()) &&
+      (await MFGoalsPage.closePlanHeaderIsDisplayed());
+  }
+
+  async doOtherAction(otherAction) {
+    await MFGoalsPage.clickOnOtherAction(otherAction);
+    return (await MFGoalsPage.validateNavigateToOtherAction(otherAction));
+  }
+
+  async confirmStopAllInvestments() {
+    await MFGoalsPage.clickConfirmButton();
+    return (await MFGoalsPage.planCancelMessageIsDisplayed());
   }
 }
 module.exports = new MFGoalsFunctionality();

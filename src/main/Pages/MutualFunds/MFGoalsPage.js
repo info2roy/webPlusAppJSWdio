@@ -163,8 +163,23 @@ class MFGoalsPage {
     await Utils.clickElement(MFGoalsObjects.otherActionsForGoalPlanButton);
   }
 
-  async investMorePageHeaderIsDisplayed() {
-    return (Utils.elementIsDisplayed(MFGoalsObjects.investMorePageHeader));
+  async clickOnOtherActionForGoalPlan(actionType) {
+    await Utils.clickElement(MFGoalsObjects.otherActionForGoalPlan(actionType));
+  }
+
+  async validateNavigationToOtherActionForGoalPlan(actionType) {
+    switch(actionType) {
+      case 'Start a new SIP':
+        return (await this.iWantToInvestHeaderIsDisplayed());
+      case 'Invest one-time':
+        return (await this.iWantToInvestHeaderIsDisplayed());
+      default:
+        console.log(`Unsupported other action ${actionType} for Goal Plan`);
+    }
+  }
+
+  async iWantToInvestHeaderIsDisplayed() {
+    return (Utils.elementIsDisplayed(MFGoalsObjects.iWantToInvestHeader));
   }
 
   async startANewSIPHeaderIsDisplayed() {
@@ -295,6 +310,10 @@ class MFGoalsPage {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.howWouldYouLikeYourMoneyToGrowHeader));
   }
 
+  async iWouldLikeToInvestOneTimeHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.iWouldLikeToInvestOneTimeHeader));
+  }
+
   async clickContinueWithRetireConfidentInvestmentButton() {
     await Utils.clickElement(MFGoalsObjects.continueWithRetireConfidentInvestmentButton);
   }
@@ -312,7 +331,70 @@ class MFGoalsPage {
   }
 
   async clickConfirmToInvestWithRetireConfidentInvestmentButton() {
-    await Utils.clickElement(MFGoalsObjects.confirmToInvestWithRetireConfidentInvestmentButton);
+    await Utils.clickElement(MFGoalsObjects.confirmButton);
+  }
+
+  async clickToSeeRetireConfidentPlanDetails() {
+    await Utils.clickElement(MFGoalsObjects.rightAngleBracketButton);
+  }
+
+  async planDetailsHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.planDetailsHeader));
+  }
+
+  async clickOtherActionsButton() {
+    await Utils.clickElement(MFGoalsObjects.otherActionsButton);
+  }
+
+  async moveMoneyHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.moveMoneyHeader));
+  }
+
+  async stopAllInvestmentsHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.stopAllInvestmentsHeader));
+  }
+
+  async closePlanHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.closePlanHeader));
+  }
+
+  async clickOnOtherAction(otherAction) {
+    switch(otherAction) {
+      case 'Move Money':
+        await Utils.clickElement(MFGoalsObjects.moveMoneyHeader);
+        break;
+      case 'Stop All Investments':
+        await Utils.clickElement(MFGoalsObjects.stopAllInvestmentsHeader);
+        break;
+      case 'Close Plan':
+        await Utils.clickElement(MFGoalsObjects.closePlanHeader);
+        break;
+      default:
+        console.log(`Unsupported Other Action ${otherAction}`);
+    }
+  }
+
+  async validateNavigateToOtherAction(otherAction) {
+    switch(otherAction) {
+      case 'Move Money':
+        return (await Utils.elementIsDisplayed(MFGoalsObjects.moveMoneyWarningMessage));
+      case 'Stop All Investments':
+        return (await Utils.elementIsDisplayed(MFGoalsObjects.stopAllInvestmentsMessage));
+      case 'Close Plan':
+        return (await Utils.elementIsDisplayed(MFGoalsObjects.closePlanHeader)) &&
+          (await Utils.elementIsDisplayed(MFGoalsObjects.closePlanMessage));
+      default:
+        console.log(`Unsupported Other Action ${otherAction}`);
+        return false;
+    }
+  }
+
+  async clickConfirmButton() {
+    await Utils.clickElement(MFGoalsObjects.confirmButton);
+  }
+
+  async planCancelMessageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.planCancelledMessage));
   }
 }
 module.exports = new MFGoalsPage();

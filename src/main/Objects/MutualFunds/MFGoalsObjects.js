@@ -152,7 +152,13 @@ class MFGoalsObjects {
     web: '//button[text()="Other actions"]'
   };
 
-  investMorePageHeader = {
+  otherActionForGoalPlan(actionType) {
+    return {
+      web: `//div[text()="${actionType}"]`
+    };
+  }
+
+  iWantToInvestHeader = {
     web: '//div[text()="I want to invest"]'
   };
 
@@ -309,6 +315,10 @@ class MFGoalsObjects {
     web: '//div[text()="How would you like your money to grow?"]'
   };
 
+  iWouldLikeToInvestOneTimeHeader = {
+    web: '//div[text()="I would like to invest one time"]'
+  };
+
   continueWithRetireConfidentInvestmentButton = {
     web: '//button[contains(text(),"Continue")]'
   };
@@ -325,8 +335,48 @@ class MFGoalsObjects {
     web: '//div[contains(text(),"I would like to invest Rs")]'
   };
 
-  confirmToInvestWithRetireConfidentInvestmentButton = {
+  confirmButton = {
     web: '//button[contains(text(),"Confirm")]'
+  };
+
+  rightAngleBracketButton = {
+    web: '//span[text()="chevron_right"]'
+  };
+
+  planDetailsHeader = {
+    web: '//p[text()="PLAN DETAILS"]'
+  };
+
+  otherActionsButton = {
+    web: '//button[text()="Other Actions"]'
+  };
+
+  moveMoneyHeader = {
+    web: '//div[text()="Move Money"]'
+  };
+
+  stopAllInvestmentsHeader = {
+    web: '//div[text()="Stop All Investments"]'
+  };
+
+  closePlanHeader = {
+    web: '//div[text()="Close Plan"]'
+  };
+
+  moveMoneyWarningMessage = {
+    web: '//div[text()="Oops. You currently do not have any investments to re-allocate."]'
+  };
+
+  stopAllInvestmentsMessage = {
+    web: '//p[text()="Cancelling this plan will cancel all running SIPs."]'
+  };
+
+  closePlanMessage = {
+    web: '//div[text()="If you think you have reached your goal, or if this is no longer needed, you can close the plan by following these steps."]'
+  };
+
+  planCancelledMessage = {
+    web: '//p[text()="Your plan has been cancelled"]'
   };
 }
 module.exports = new MFGoalsObjects();

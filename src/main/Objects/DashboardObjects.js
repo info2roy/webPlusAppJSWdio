@@ -9,7 +9,7 @@ class DashboardObjects {
 
   returnToHome = { web: '//*[contains(text(),"Return to Home")]' };
 
-  homeButton = { web: '//button[contains(text(),"HOME")]' };
+  homeButton = { web: '//button[text()="Home"]' };
 
   goToDashboardButton = { web: '//button[text()="Go to Dashboard"]' };
 
