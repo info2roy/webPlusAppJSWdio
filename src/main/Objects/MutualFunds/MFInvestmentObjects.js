@@ -88,6 +88,8 @@ class MFInvestmentObjects {
 
   ONE_CLICK_INVEST_TEXT = { web: '1-CLICK INVEST', app: '1-CLICK INVEST' };
 
+  AUTOMATE_NOW_TEXT = { web: 'AUTOMATE NOW', app: 'AUTOMATE NOW' };
+
   makePaymentNowButton = {
     web: `//button[text()="Make Payment Now"]`,
     app: `//*[@text="${this.MAKE_PAYMENT_NOW_TEXT.app}"]`
@@ -96,6 +98,11 @@ class MFInvestmentObjects {
   oneClickInvestButton = {
     web: `//button[text()="1-Click Invest"]`,
     app: `//*[@text="${this.ONE_CLICK_INVEST_TEXT.app}"]`
+  };
+
+  automateNowButton = {
+    web: `//button[text()="Automate Now"]`,
+    app: `//*[@text="${this.AUTOMATE_NOW_TEXT.app}"]`
   };
 
   setupMFSipInvestmentPageHeader(amount, months) {

@@ -39,7 +39,7 @@ class MFInvestmentPage {
   async clickNextButtonForPayment(paymentType) {
     if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
       await Utils.clickElement(MFInvestmentObjects.nextButton);
-    } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
+    } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED_ONE_CLICK_INVEST) {
       await Utils.clickElement(MFInvestmentObjects.confirmButton);
     }
   }
@@ -76,8 +76,10 @@ class MFInvestmentPage {
   async scrollUntilInvestmentTypeTextIsDisplayed(paymentType) {
     if (Device.isAndroidApp()) {
       let investmentTypeText = MFInvestmentObjects.MAKE_PAYMENT_NOW_TEXT;
-      if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
+      if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED_ONE_CLICK_INVEST) {
         investmentTypeText = MFInvestmentObjects.ONE_CLICK_INVEST_TEXT;
+      } else if(paymentType === Constants.PAYMENT_TYPE_SCHEDULED_AUTOMATE_NOW) {
+        investmentTypeText = MFInvestmentObjects.AUTOMATE_NOW_TEXT;
       }
       console.log(`scrollUntilInvestmentTypeTextIsDisplayed: investmentTypeText: ${JSON.stringify(investmentTypeText)}`);
       await Utils.scrollVerticalUntilTextIntoViewForAndroid(investmentTypeText);
@@ -87,8 +89,10 @@ class MFInvestmentPage {
   async clickMakePaymentButton(paymentType) {
     if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
       await Utils.clickElement(MFInvestmentObjects.makePaymentNowButton);
-    } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
+    } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED_ONE_CLICK_INVEST) {
       await Utils.clickElement(MFInvestmentObjects.oneClickInvestButton);
+    } else if(paymentType === Constants.PAYMENT_TYPE_SCHEDULED_AUTOMATE_NOW) {
+      await Utils.clickElement(MFInvestmentObjects.automateNowButton);
     }
   }
 

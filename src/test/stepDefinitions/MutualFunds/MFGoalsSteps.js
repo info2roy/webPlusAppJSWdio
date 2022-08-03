@@ -154,6 +154,7 @@ When(/^I click "CONFIRM" on the "Retire Confident" investment$/, async() => {
 
 When(/^I fill "INVEST ONE TIME" (\d+) and click "CONTINUE" on the "Retire Confident" plan$/, async(oneTimeAmount) => {
   await console.log(`I fill "INVEST ONE TIME" ${oneTimeAmount} and click "CONTINUE" on the "Retire Confident" plan`);
+  expect(await MFGoalsFunctionality.investOneTimeFillAmountAndContinue(oneTimeAmount)).to.be.true;
 });
 
 When(/^I click on ">" to see plan details for "Retire Confident" plan$/, async() => {

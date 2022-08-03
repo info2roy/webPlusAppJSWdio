@@ -124,11 +124,11 @@ class MFGoalsObjects {
     web: '//span[text()="Your Retirement Plan"]'
   };
 
-  continueWithRetirementPlanButton = {
+  continueButton = {
     web: '//a[contains(text(),"Continue")]'
   };
 
-  continueWithRetirementPlanButtonText = {
+  continueButtonText = {
     app: 'CONTINUE'
   };
 
@@ -417,6 +417,10 @@ class MFGoalsObjects {
 
   editExpensesIncreaseRateButton = {
     web: '//div[text()="Your expenses will increase every year by"]/parent::div/following-sibling::div/div'
+  };
+
+  investOneTimeAmountField = {
+    web: 'input#investment-amount'
   };
 }
 module.exports = new MFGoalsObjects();

@@ -23,9 +23,9 @@ Feature: Scripbox Investment in Mutual Fund Goals
   #   Then I click on "HOME" button
   #   Examples:
   #     | age | monthlyExpenses | retireAtAge | retirementEndAge | existingSavingsAmount | existingSavingsGrowthRate | futureMonthlyIncomeFromOtherSources | inflationPercent | paymentType | 
-  #     | 30  | 25000  | 60 | 80 | 200000 | 8 | 10000 | 7 | Scheduled |
-  #     #| 35  | 50K  | 50 | 70 | 100000 | 8 | 10000 | 4 | Scheduled |
-  #     #| 41  | 40000  | 65 | 90 | 100000 | 8 | 10000 | 5 | Scheduled |
+  #     | 30  | 25000  | 60 | 80 | 200000 | 8 | 10000 | 7 | ScheduledOneClickInvest |
+  #     #| 35  | 50K  | 50 | 70 | 100000 | 8 | 10000 | 4 | ScheduledOneClickInvest |
+  #     #| 41  | 40000  | 65 | 90 | 100000 | 8 | 10000 | 5 | ScheduledOneClickInvest |
 
   # Scenario Outline: As a logged in user, I am able to add new SIPs (scheduled payment) to existing mutual fund goal "Retire Confident"
   #   Given I am on the Investment Page
@@ -44,8 +44,8 @@ Feature: Scripbox Investment in Mutual Fund Goals
   #   Then I go back to the dashboard page
   #   Examples:
   #     | investmentType | amount | paymentType | sipInMonths |
-  #     | Every month (SIP) | 6000 | Scheduled | 0 |
-  #     | Every month (SIP) | 7000 | Scheduled | 60 |
+  #     | Every month (SIP) | 6000 | ScheduledOneClickInvest | 0 |
+  #     | Every month (SIP) | 7000 | ScheduledOneClickInvest | 60 |
 
   # Scenario Outline: As a logged in user, I am able to add new OneTime investments (scheduled payment) to existing mutual fund goal "Retire Confident"
   #   Given I am on the Investment Page
@@ -63,7 +63,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
   #   Then I go back to the dashboard page
   #   Examples:
   #     | investmentType | amount | paymentType |
-  #     | One time | 20000 | Scheduled |
+  #     | One time | 20000 | ScheduledOneClickInvest |
 
   # Scenario Outline: As a logged in user, I am able to add new SIPs (Immediate payment) to existing mutual fund goal "Retire Confident"
   #   Given I am on the Investment Page
@@ -128,8 +128,8 @@ Feature: Scripbox Investment in Mutual Fund Goals
   #   Then I go back to the dashboard page
   #   Examples:
   #     | investmentType | amount | paymentType | sipInMonths |
-  #     | Every month (SIP) | 8000 | Scheduled | 0 |
-  #     | Every month (SIP) | 9000 | Scheduled | 60 |
+  #     | Every month (SIP) | 8000 | ScheduledOneClickInvest | 0 |
+  #     | Every month (SIP) | 9000 | ScheduledOneClickInvest | 60 |
 
   # Scenario Outline: As a logged in user, I am able to do "Other Actions -> Start a new SIP" (immediate payment) to existing mutual fund goal "Retire Confident"
   #   Given I am on the Investment Page
@@ -173,7 +173,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
   #   Then I go back to the dashboard page
   #   Examples:
   #     | investmentType | amount | paymentType |
-  #     | One time | 28500 | Scheduled |
+  #     | One time | 28500 | ScheduledOneClickInvest |
 
   # Scenario Outline: As a logged in user, I am able to do "Other Actions -> Invest one-time" (immediate payment) to existing mutual fund goal "Retire Confident"
   #   Given I am on the Investment Page

@@ -47,7 +47,7 @@ class MFGoalsFunctionality {
   }
 
   async continueWithRetirementPlan() {
-    await MFGoalsPage.clickContinueWithRetirementPlanButton();
+    await MFGoalsPage.clickContinueButton();
     return (await MFGoalsPage.congratulationsPageHeaderIsDisplayed());
   }
 
@@ -156,6 +156,12 @@ class MFGoalsFunctionality {
   async continueWithOneTimeRetireConfidentInvestment() {
     await MFGoalsPage.clickContinueWithRetireConfidentInvestmentButton();
     return (await MFGoalsPage.iWouldLikeToInvestOneTimeHeaderIsDisplayed());
+  }
+
+  async investOneTimeFillAmountAndContinue(amount) {
+    await MFGoalsPage.enterInvestOneTimeAmount(amount);
+    await MFGoalsPage.clickContinueButton();
+    return (await MFGoalsPage.fundListHeaderIsDisplayed());
   }
 
   async continueWithEveryMonthRetireConfidentInvestment() {

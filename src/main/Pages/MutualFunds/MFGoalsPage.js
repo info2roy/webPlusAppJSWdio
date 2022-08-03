@@ -134,13 +134,13 @@ class MFGoalsPage {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.yourRetirementPlanPageHeader));
   }
 
-  async clickContinueWithRetirementPlanButton() {
+  async clickContinueButton() {
     if (Device.isWeb()) {
-      Utils.scrollAndMoveToElement(MFGoalsObjects.continueWithRetirementPlanButton);
+      Utils.scrollAndMoveToElement(MFGoalsObjects.continueButton);
     } else if(Device.isAndroidApp()) {
-      Utils.scrollVerticalUntilTextIntoViewForAndroid(MFGoalsObjects.continueWithRetirementPlanButtonText);
+      Utils.scrollVerticalUntilTextIntoViewForAndroid(MFGoalsObjects.continueButtonText);
     }
-    await Utils.clickElement(MFGoalsObjects.continueWithRetirementPlanButton);
+    await Utils.clickElement(MFGoalsObjects.continueButton);
   }
 
   async congratulationsPageHeaderIsDisplayed() {
@@ -430,6 +430,10 @@ class MFGoalsPage {
 
   async planCancelMessageIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.planCancelledMessage));
+  }
+
+  async enterInvestOneTimeAmount(amount) {
+    await Utils.setInputField(amount, MFGoalsObjects.investOneTimeAmountField);
   }
 }
 module.exports = new MFGoalsPage();

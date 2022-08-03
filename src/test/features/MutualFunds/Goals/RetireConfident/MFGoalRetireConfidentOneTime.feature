@@ -17,11 +17,13 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I click on "INVEST ONE TIME" for life goal
     When I click "CONTINUE" for "INVEST ONE TIME" on the "Retire Confident" plan
     When I fill "INVEST ONE TIME" <oneTimeAmount> and click "CONTINUE" on the "Retire Confident" plan
+    When I click "CONTINUE TO INVEST" on the "Retire Confident" plan
     When I select Payment type as <paymentType>
     When I click "CONFIRM" on the "Retire Confident" investment
     Then I should see investment scheduled successfully message
+    Then I click on "HOME" button
     Examples:
       | age | monthlyExpenses | retireAtAge | retirementEndAge | existingSavingsAmount | existingSavingsGrowthRate | futureMonthlyIncomeFromOtherSources | inflationPercent | oneTimeAmount | paymentType | 
-      | 30  | 25000  | 60 | 80 | 200000 | 8 | 10000 | 7 | 50000 | Scheduled |
-      #| 35  | 50K  | 50 | 70 | 100000 | 8 | 10000 | 4 | 100000 | Scheduled |
-      #| 41  | 40000  | 65 | 90 | 100000 | 8 | 10000 | 5 | 100000 | Scheduled |
+      | 30  | 25000  | 60 | 80 | 200000 | 8 | 10000 | 7 | 50000 | ScheduledOneClickInvest |
+      #| 35  | 50K  | 50 | 70 | 100000 | 8 | 10000 | 4 | 100000 | ScheduledOneClickInvest |
+      #| 41  | 40000  | 65 | 90 | 100000 | 8 | 10000 | 5 | 100000 | ScheduledOneClickInvest |
