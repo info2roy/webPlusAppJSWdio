@@ -12,7 +12,7 @@ stages:
   - Build
   - Deploy
 
-.staging-build-common: &staging-build-common
+.automation-build-common: &automation-build-common
   <<: *shared-runner
   image: $STAGING_ECR_AP_SOUTH/devops/build-image:${BUILD_IMAGE_VERSION}
   stage: Build
@@ -37,11 +37,11 @@ stages:
   services: []
   dependencies: []
 
-staging:image:
-  <<: *staging-build-common
+automation:image:
+  <<: *automation-build-common
   when: manual
 
-staging:deploy:
+automation:
   <<: *shared-runner
   stage: Deploy
   image: $STAGING_ECR_AP_SOUTH/devops/deploy-chart:${DEPLOY_CHART_VERSION}
@@ -56,6 +56,7 @@ staging:deploy:
     - yq write --inplace $VALUES_FILE myscripbox.myscripbox.testCases.global.image.tag "sha-$CI_COMMIT_SHA"
   script:
     - deploy.sh
+    - helm test $RELEASE_NAME --logs --namespace $NAMESPACE
   artifacts:
     name: logs
     expire_in: 3d
