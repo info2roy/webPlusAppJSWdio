@@ -38,5 +38,4 @@ stages:
 
 staging:image:
   <<: *staging-build-common
-  <<: *feature-branches
   when: manual

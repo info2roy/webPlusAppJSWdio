@@ -16,6 +16,6 @@ RUN yarn install --pure-lockfile
 
 COPY . ./
 
-RUN npm run build
+RUN npm install
 
 CMD ["node_modules/.bin/wdio", "wdio.responsive.conf.js"]
