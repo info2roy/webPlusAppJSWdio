@@ -12,8 +12,6 @@ WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN yarn install --pure-lockfile
-
 COPY . ./
 
 RUN npm install
