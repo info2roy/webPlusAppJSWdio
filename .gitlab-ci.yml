@@ -1,0 +1,42 @@
+.shared-runner: &shared-runner
+  tags:
+    - shared
+    - runner
+
+variables:
+  BUILD_CHART_VERSION: v-master
+  BUILD_IMAGE_VERSION: v-master
+  DEPLOY_CHART_VERSION: v-master
+
+stages:
+  - Build
+
+.staging-build-common: &staging-build-common
+  <<: *shared-runner
+  image: $STAGING_ECR_AP_SOUTH/devops/build-image:${BUILD_IMAGE_VERSION}
+  stage: Build
+  variables:
+    DOCKER_HOST: $STAGING_BUILD_ENGINE
+    DOCKER_BUILDKIT: 1
+    KUBERNETES_MEMORY_REQUEST: "2Gi"
+    KUBERNETES_MEMORY_LIMIT: "2Gi"
+  before_script:
+    - aws ecr get-login --region ap-south-1 --no-include-email | sh
+  script:
+    - |
+      cat <<EOF > /tmp/build-image.yaml
+      builds:
+      - context: .
+        repositories:
+          - $STAGING_ECR_AP_SOUTH/qaautomation
+      EOF
+    - cat /tmp/build-image.yaml
+    - build-images /tmp/build-image.yaml
+  cache: {}
+  services: []
+  dependencies: []
+
+staging:image:
+  <<: *staging-build-common
+  <<: *feature-branches
+  when: manual
