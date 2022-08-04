@@ -5,7 +5,7 @@ config.key= 'obEaBaJdQRn6wxxQmWxj';
 exports.config = {
   ...config,
   ...{
-    
+
     services: ['browserstack'],
 
     capabilities: [{
@@ -14,7 +14,7 @@ exports.config = {
       'appium:platformVersion': '9.0',
       'appium:automationName': 'UIAutomator2',
       'appium:app': 'bs://3e33908996a8458b7616d5f32618d3b15119ea96',
-      "appium:autoGrantPermissions": true
+      'appium:autoGrantPermissions': true
     }],
   }
 };
