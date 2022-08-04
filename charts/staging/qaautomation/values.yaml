@@ -10,16 +10,3 @@ global:
       hostname: stag-myscripbox-1-master
     qaautomation:
       hostname: auto-qaautomation-211-master
-
-qaautomation:
-  hub:
-    tag: "4.3.0-20220706"
-    ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: nginx-internal
-      hosts:
-        - "{{ .Values.global.services.qaautomation.hostname }}.{{ .Values.global.accountDomain }}"
-  chrome:
-    enabled: true
-    tag: "4.3.0-20220706"
