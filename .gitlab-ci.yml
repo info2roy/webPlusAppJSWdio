@@ -12,10 +12,10 @@ stages:
   - Build
   - Deploy
 
-build charts:
+gcharts:
   <<: *shared-runner
   stage: Build
-  image: $REGISTRY/devops/build-chart:${BUILD_CHART_VERSION}
+  image: $STAGING_ECR_AP_SOUTH/devops/build-chart:${BUILD_CHART_VERSION}
   variables:
     TILLER_NAMESPACE: $STAG_APP_TILLER_NS
     CI_KUBECONFIG: $CI_STAGING_KUBECONFIG
@@ -53,7 +53,6 @@ build charts:
 
 automation:image:
   <<: *automation-build-common
-  when: manual
 
 automation:
   <<: *shared-runner
@@ -77,4 +76,3 @@ automation:
     when: always
     paths:
       - deploylogs/
-  when: manual
