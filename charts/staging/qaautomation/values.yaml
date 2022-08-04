@@ -1,0 +1,12 @@
+qaautomation:
+  hub:
+    tag: "4.3.0-20220706"
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx-internal
+      hosts:
+        - selenium-hub.local
+  chrome:
+    enabled: true
+    tag: "4.3.0-20220706"

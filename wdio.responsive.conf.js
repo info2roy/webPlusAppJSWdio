@@ -6,17 +6,16 @@ exports.config = {
   ...{
     host: 'http://localhost',
     /*
-    Enable chromedriver service to execute tests in local. 
+    Enable chromedriver service to execute tests in local.
     Command to execute: ./node_modules/.bin/wdio wdio.responsive.conf.js
     */
     services: ['chromedriver'],
     /*
-    Enable docker service and port to execute tests in docker. 
+    Enable docker service and port to execute tests in docker.
     Command to execute: npm test
     */
-    // port: 4444,
-    // services: ['docker'], 
-
+    port: 4444,
+    services: ['docker'],
 
     // For mobile web platform
     capabilities: [{
@@ -34,6 +33,5 @@ exports.config = {
 
     baseUrl: 'https://uat-andromeda-38-uat.scripbox.org'
     // baseUrl: 'https://stag-myscripbox-2-feature-qa-automation.scripbox.org/'
-
   }
 };

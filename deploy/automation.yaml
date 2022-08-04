@@ -18,6 +18,11 @@ global:
       version: 3.0.*
       repo: apps/andromeda
       branch: master
+    qaautomation:
+      chart: stable/qaautomation
+      version: 3.0.*
+      repo: apps/qaautomation
+      branch: master
 
 myscripbox:
   myscripbox:
