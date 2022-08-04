@@ -4,7 +4,7 @@ exports.config = {
   ...config,
 
   ...{
-    host: process.env.SELENIUM_HUB_URL || '',
+    host: process.env.SELENIUM_HUB_URL || 'http://localhost-testonly',
     /*
     Enable chromedriver service to execute tests in local.
     Command to execute: ./node_modules/.bin/wdio wdio.responsive.conf.js

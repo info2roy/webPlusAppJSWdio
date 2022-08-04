@@ -9,7 +9,7 @@ global:
     myscripbox:
       hostname: stag-myscripbox-1-master
     qaautomation:
-      hostname: auto-qaauto-211-master
+      hostname: auto-qaautomation-211-master
 
 qaautomation:
   hub:
