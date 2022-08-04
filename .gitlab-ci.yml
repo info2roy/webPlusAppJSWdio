@@ -12,7 +12,7 @@ stages:
   - Build
   - Deploy
 
-gcharts:
+charts:
   <<: *shared-runner
   stage: Build
   image: $STAGING_ECR_AP_SOUTH/devops/build-chart:${BUILD_CHART_VERSION}

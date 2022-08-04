@@ -24,6 +24,11 @@ global:
       repo: apps/qaautomation
       branch: master
 
+qaautomation:
+  hub:
+    hosts:
+      - auto-qaauto-211-master.scripbox.org
+
 myscripbox:
   myscripbox:
     testCases:
