@@ -19,7 +19,7 @@ global:
       repo: apps/andromeda
       branch: master
     qaautomation:
-      chart: stable/qaautomation
+      chart: staging/qaautomation
       version: 3.0.*
       repo: qaautomation
       branch: feature/ci-cd-qa

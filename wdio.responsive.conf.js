@@ -4,17 +4,17 @@ exports.config = {
   ...config,
 
   ...{
-    host: 'http://localhost',
+    host: process.env.SELENIUM_HUB_URL || '',
     /*
     Enable chromedriver service to execute tests in local.
     Command to execute: ./node_modules/.bin/wdio wdio.responsive.conf.js
     */
-    services: ['chromedriver'],
+    // services: ['chromedriver'],
     /*
     Enable docker service and port to execute tests in docker.
     Command to execute: npm test
     */
-    port: 4444,
+    port: 443,
     services: ['docker'],
 
     // For mobile web platform
