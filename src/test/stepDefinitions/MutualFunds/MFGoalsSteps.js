@@ -176,3 +176,37 @@ When(/^I click on "CONFIRM" to "Stop All Investments" for "Retire Confident" pla
   await console.log('I click on "CONFIRM" to "Stop All Investments" for "Retire Confident" plan');
   expect(await MFGoalsFunctionality.confirmStopAllInvestments()).to.be.true;
 });
+
+When(/^I update "(Retirement Age|Retirement End Age|Current Monthly Expenses|Inflation Percent)" to (\d+) for "Retire Confident" plan$/, async(property, value) => {
+  await console.log(`I update "${property}" to ${value} for "Retire Confident" plan`);
+  await MFGoalsFunctionality.updateRetireConfidentGoalProperty(property, value);
+});
+
+When(/^I click "CONTINUE" to replan for "Retire Confident" plan$/, async() => {
+  await console.log('I click "CONFIRM" to replan for "Retire Confident" plan');
+  expect(await MFGoalsFunctionality.continueReplanForRetireConfident()).to.be.true;
+});
+
+When(/^I update to replan Existing Savings with (\d+), (\d+), (\d+)$/,
+  async(newFutureMonthlyIncomeFromOtherSources, newExistingSavingsAmount, newExistingSavingsGrowthRate) => {
+    await console.log(`I update to replan Existing Savings with ${newFutureMonthlyIncomeFromOtherSources}, ${newExistingSavingsAmount}, ${newExistingSavingsGrowthRate}`);
+    expect(await MFGoalsFunctionality.fillReplanExistingSavingsForm(
+      newFutureMonthlyIncomeFromOtherSources, newExistingSavingsAmount, newExistingSavingsGrowthRate
+    )).to.be.true;
+  }
+);
+
+When(/^I click "CONTINUE" after step 3 of replan for "Retire Confident" plan$/, async() => {
+  await console.log('I click "CONTINUE" after step 3 of replan for "Retire Confident" plan');
+  expect(await MFGoalsFunctionality.continueReplanStep3()).to.be.true;
+});
+
+When(/^I click "CONTINUE" at final step of replan for "([^"]*)?" plan$/, async(lifeGoal) => {
+  await console.log('I click "CONTINUE" after step 3 of replan for "Retire Confident" plan');
+  expect(await MFGoalsFunctionality.continueReplanFinalStep(lifeGoal)).to.be.true;
+});
+
+Then(/^I should see message "Replan completed successfully"$/, async() => {
+  await console.log('I should see message "Replan completed successfully');
+  expect(await MFInvestmentFunctionality.replanCompletedSuccessfully()).to.be.true;
+});

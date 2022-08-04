@@ -393,6 +393,14 @@ class MFGoalsPage {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.replanStep1Header));
   }
 
+  async replanStep2HeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.replanStep2Header));
+  }
+
+  async replanStep3HeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.replanStep3Header));
+  }
+
   async clickOnOtherAction(otherAction) {
     switch(otherAction) {
       case 'Move Money':
@@ -435,5 +443,101 @@ class MFGoalsPage {
   async enterInvestOneTimeAmount(amount) {
     await Utils.setInputField(amount, MFGoalsObjects.investOneTimeAmountField);
   }
+
+  async updateRetireConfidentGoalProperty(property, value) {
+    switch(property) {
+      case 'Retirement Age':
+        await Utils.clickElement(MFGoalsObjects.editRetirementAgeButton);
+        expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanRetirementAgeLabel)).to.be.true;
+        await Utils.setInputField(value, MFGoalsObjects.replanRetirementAgeField);
+        await Utils.clickElement(MFGoalsObjects.okayButton);
+        break;
+      case 'Retirement End Age':
+        await Utils.clickElement(MFGoalsObjects.editRetirementEndAgeButton);
+        expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanRetirementEndAgeLabel)).to.be.true;
+        await Utils.setInputField(value, MFGoalsObjects.replanRetirementEndAgeField);
+        await Utils.clickElement(MFGoalsObjects.okayButton);
+        break;
+      case 'Current Monthly Expenses':
+        await Utils.clickElement(MFGoalsObjects.editCurrentMonthlyExpensesButton);
+        expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanCurrentMonthlyExpensesLabel)).to.be.true;
+        await Utils.setInputField(value, MFGoalsObjects.replanCurrentMonthlyExpensesField);
+        await Utils.clickElement(MFGoalsObjects.okayButton);
+        break;
+      case 'Inflation Percent':
+        await Utils.clickElement(MFGoalsObjects.editExpensesIncreaseRateButton);
+        expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanExpensesIncreaseRateLabel)).to.be.true;
+        await Utils.setInputField(value, MFGoalsObjects.replanExpensesIncreaseRateField);
+        await Utils.clickElement(MFGoalsObjects.okayButton);
+        break;
+      default:
+        console.log(`Unsupported Retire Confident property ${property}`);
+    }
+  }
+
+  async clickOkayButton() {
+    await Utils.clickElement(MFGoalsObjects.okayButton);
+  }
+
+  async clickContinueReplanButton() {
+    await Utils.clickElement(MFGoalsObjects.continueReplanButton);
+  }
+
+  async clickEditFutureMonthlyIncomeFromOtherSourcesButton() {
+    await Utils.clickElement(MFGoalsObjects.editFutureMonthlyIncomeFromOtherSourcesButton);
+  }
+
+  async replanFutureMonthlyIncomeFromOtherSourcesLabelIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.replanFutureMonthlyIncomeFromOtherSourcesLabel));
+  }
+
+  async enterReplanFutureMonthlyIncomeFromOtherSources(amount) {
+    await Utils.setInputField(amount, MFGoalsObjects.replanCurrentMonthlyExpensesField);
+  }
+
+  async clickEditExternalSavingsForGoalButton() {
+    await Utils.clickElement(MFGoalsObjects.editExternalSavingsForGoalButton);
+  }
+
+  async replanExternalSavingsForGoalLabelIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.replanExternalSavingsForGoalLabel));
+  }
+
+  async enterReplanExternalSavingsForGoal(amount) {
+    await Utils.setInputField(amount, MFGoalsObjects.replanExternalSavingsForGoalField);
+  }
+
+  async enterReplanExternalSavingForGoalGrowthRate(rate) {
+    await Utils.setInputField(rate, MFGoalsObjects.replanExternalSavingForGoalGrowthRateField);
+  }
+
+  async clickEditSipIncreasePercentButton() {
+    await Utils.clickElement(MFGoalsObjects.editSipIncreasePercentButton);
+  }
+
+  async replanSipIncreasePercentLabelIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.replanSipIncreasePercentLabel));
+  }
+
+  async enterReplanSipIncreasePercent(percent) {
+    await Utils.setInputField(percent, MFGoalsObjects.replanSipIncreasePercentField);
+  }
+
+  async clickShowPlanDetailsButton() {
+    await Utils.clickElement(MFGoalsObjects.showDetailedPlanButton);
+  }
+
+  async replanSummaryHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.replanSummaryHeader));
+  }
+
+  async additionalInvestingNeededForHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.additionalInvestingNeededForHeader));
+  }
+
+  async replanCompletedSuccessfullyHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.replanCompletedSuccessfullyHeader));
+  }
 }
+
 module.exports = new MFGoalsPage();

@@ -391,6 +391,10 @@ class MFGoalsObjects {
     web: '//div[text()="I want to retire at the age of"]/parent::div/following-sibling::div/div'
   };
 
+  replanRetirementAgeLabel = {
+    web: '//div[text()="What is your retirement age?"]'
+  };
+
   replanRetirementAgeField = {
     web: 'input#retirement-age-input'
   };
@@ -399,29 +403,114 @@ class MFGoalsObjects {
     web: '//button[text()="Okay"]'
   };
 
-  replanRetirementEndAgeField = {
-    web: 'input#retirement-planned-till-input'
-  };
-
-  replanCurrentMonthlyExpensesField = {
-    web: 'input#goal-amount-input'
-  };
-
   editRetirementEndAgeButton = {
     web: '//div[text()="Retirement planned until the age of"]/parent::div/following-sibling::div/div'
+  };
+
+  replanRetirementEndAgeLabel = {
+    web: '//div[text()="Retirement planned until the age of"]'
+  };
+
+  replanRetirementEndAgeField = {
+    web: 'input#retirement-planned-till-input'
   };
 
   editCurrentMonthlyExpensesButton = {
     web: '//div[text()="My current monthly expenses are"]/parent::div/following-sibling::div/div'
   };
 
+  replanCurrentMonthlyExpensesLabel = {
+    web: '//div[text()="How much is your current monthly expenses?"]'
+  };
+
+  replanCurrentMonthlyExpensesField = {
+    web: 'input#goal-amount-input'
+  };
+
   editExpensesIncreaseRateButton = {
     web: '//div[text()="Your expenses will increase every year by"]/parent::div/following-sibling::div/div'
+  };
+
+  replanExpensesIncreaseRateLabel = {
+    web: '//div[text()="Annual increase in expenses?"]'
+  };
+
+  replanExpensesIncreaseRateField = {
+    web: '//div[text()="Annual increase in expenses?"]/following-sibling::div/div/input'
+  };
+
+  replanStep2Header = {
+    web: '//div[text()="REPLAN - STEP 2 OF 3"]'
   };
 
   investOneTimeAmountField = {
     web: 'input#investment-amount'
   };
+
+  editFutureMonthlyIncomeFromOtherSourcesButton = {
+    web: '//div[text()="Monthly contribution during the course of your retirement"]/parent::div/following-sibling::div/div'
+  };
+
+  replanFutureMonthlyIncomeFromOtherSourcesLabel = {
+    web: '//div[text()="How much can you contribute every month during the course of your retirement?"]'
+  };
+
+  replanFutureMonthlyIncomeFromOtherSourcesField = {
+    web: 'input#annual-contribution-input'
+  };
+
+  editExternalSavingsForGoalButton = {
+    web: '//div[text()="External savings for this goal"]/parent::div/following-sibling::div/div'
+  };
+
+  replanExternalSavingsForGoalLabel = {
+    web: '//div[text()="How much have you saved for this goal?"]'
+  };
+
+  replanExternalSavingsForGoalField = {
+    web: 'input#total-savings-input'
+  };
+
+  replanExternalSavingForGoalGrowthRateField = {
+    web: 'input#growth-rate-input'
+  };
+
+  continueReplanButton = {
+    web: '//button[text()="Continue"]'
+  };
+
+  replanStep3Header = {
+    web: '//div[text()="REPLAN - STEP 3 OF 3"]'
+  };
+
+  editSipIncreasePercentButton = {
+    web: '//div[text()="Increase SIP every year by"]/parent::div/following-sibling::div/div'
+  };
+
+  replanSipIncreasePercentLabel = {
+    web: '//div[text()="SIP Assumptions"]'
+  };
+
+  replanSipIncreasePercentField = {
+    web: 'input#grade-input"]'
+  };
+
+  showPlanDetailsButton = {
+    web: '//button[text()="SHOW PLAN DETAILS"]'
+  };
+
+  replanSummaryHeader = {
+    web: '//div[contains(text(),"Total need by")]'
+  };
+
+  additionalInvestingNeededForHeader = {
+    web: '//p[text()="Additional investing needed for"]'
+  };
+
+  replanCompletedSuccessfullyHeader = {
+    web: '//div[text()="Replan completed successfully"]'
+  };
+
 }
 module.exports = new MFGoalsObjects();
 

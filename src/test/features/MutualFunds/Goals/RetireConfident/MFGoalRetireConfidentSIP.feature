@@ -1,7 +1,7 @@
 Feature: Scripbox Investment in Mutual Fund Goals
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "UAT38" for "user189182"
+    Given I login to Scripbox in "MYSCRIPBOX38" for "user189182"
 
   # Scenario Outline: As a logged in user, I am able to INVEST EVERY MONTH in mutual fund goal "Retire Confident"
   #   Given I am on the Investment Page
@@ -206,6 +206,22 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I select existing plan for mutual funds life goal "Retire Confident"
     When I click on ">" to see plan details for "Retire Confident" plan
     When I click on "EDIT PLAN" button for "Retire Confident" plan
+    When I update "Retirement Age" to <newRetireAtAge> for "Retire Confident" plan
+    When I update "Retirement End Age" to <newRetirementEndAge> for "Retire Confident" plan
+    When I update "Current Monthly Expenses" to <newMonthlyExpenses> for "Retire Confident" plan
+    When I update "Inflation Percent" to <newInflationPercent> for "Retire Confident" plan
+    When I click "CONTINUE" to replan for "Retire Confident" plan
+    When I update to replan Existing Savings with <newFutureMonthlyIncomeFromOtherSources>, <newExistingSavingsAmount>, <newExistingSavingsGrowthRate>
+    When I click "CONTINUE" after step 3 of replan for "Retire Confident" plan
+    When I click "CONTINUE" at final step of replan for "Retire Confident" plan
+    When I click "CONTINUE TO INVEST" on the "Retire Confident" plan
+    When I select Payment type as <paymentType>
+    When I click "CONFIRM" on the "Retire Confident" investment
+    Then I should see message "Replan completed successfully"
+    Then I click on "HOME" button
+    Examples:
+      | newRetireAtAge | newRetirementEndAge | newMonthlyExpenses | newInflationPercent | newFutureMonthlyIncomeFromOtherSources | newExistingSavingsAmount | newExistingSavingsGrowthRate | paymentType |
+      | 65 | 85 | 30000 | 5 | 20000 | 300000 | 10 | ScheduledOneClickInvest |
 
   Scenario Outline: As a logged in user, I am able close an existing mutual fund goal "Retire Confident"
     Given I am on the Investment Page
@@ -224,3 +240,4 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I click on ">" to see plan details for "Retire Confident" plan
     When I click on "OTHER ACTIONS" button for "Retire Confident" plan
     When I click on "Close Plan" from "OTHER ACTIONS" for "Retire Confident" plan
+  

@@ -197,5 +197,52 @@ class MFGoalsFunctionality {
     await MFGoalsPage.clickConfirmButton();
     return (await MFGoalsPage.planCancelMessageIsDisplayed());
   }
+
+  async updateRetireConfidentGoalProperty(property, value) {
+    await MFGoalsPage.updateRetireConfidentGoalProperty(property, value);
+  }
+
+  async continueReplanForRetireConfident() {
+    await MFGoalsPage.clickContinueReplanButton();
+    return (await MFGoalsPage.replanStep2HeaderIsDisplayed());
+  }
+
+  async fillReplanExistingSavingsForm(newFutureMonthlyIncomeFromOtherSources, newExistingSavingsAmount, newExistingSavingsGrowthRate) {
+    await MFGoalsPage.clickEditFutureMonthlyIncomeFromOtherSourcesButton();
+    expect(await MFGoalsPage.replanFutureMonthlyIncomeFromOtherSourcesLabelIsDisplayed()).to.be.true;
+    await MFGoalsPage.enterReplanFutureMonthlyIncomeFromOtherSources(newFutureMonthlyIncomeFromOtherSources);
+    await MFGoalsPage.clickOkayButton();
+    await MFGoalsPage.clickEditExternalSavingsForGoalButton();
+    expect(await MFGoalsPage.replanExternalSavingsForGoalLabelIsDisplayed()).to.be.true;
+    await MFGoalsPage.enterReplanExternalSavingsForGoal(newExistingSavingsAmount);
+    await MFGoalsPage.enterReplanExternalSavingForGoalGrowthRate(newExistingSavingsGrowthRate);
+    await MFGoalsPage.clickOkayButton();
+    await MFGoalsPage.clickContinueReplanButton();
+    return (await MFGoalsPage.replanStep3HeaderIsDisplayed());
+  }
+
+  async fillReplanSipIncreasePercent(percent) {
+    await MFGoalsPage.clickEditSipIncreasePercentButton();
+    expect(await MFGoalsPage.replanSipIncreasePercentLabelIsDisplayed()).to.be.true;
+    await MFGoalsPage.enterReplanSipIncreasePercent(percent);
+    await MFGoalsPage.clickOkayButton();
+    await MFGoalsPage.clickShowDetailedPlanButton();
+    return (await MFGoalsPage.replanSummaryHeaderIsDisplayed());
+  }
+
+  async continueReplanStep3() {
+    await MFGoalsPage.clickContinueReplanButton();
+    return (await MFGoalsPage.additionalInvestingNeededForHeaderIsDisplayed());
+  }
+
+  async continueReplanFinalStep(lifeGoal) {
+    await MFGoalsPage.clickContinueReplanButton();
+    return (await MFGoalsPage.lifeGoalElementIsDisplayed(lifeGoal));
+  }
+
+  async replanCompletedSuccessfully() {
+    return (await MFGoalsPage.replanCompletedSuccessfullyHeaderIsDisplayed());
+  }
+
 }
 module.exports = new MFGoalsFunctionality();
