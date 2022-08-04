@@ -1,3 +1,17 @@
+global:
+  environment: staging
+  accountDomain: scripbox.org
+  dbForceRecreate: "false"
+  services:
+    andromeda:
+      hostname: stag-andromeda-1-master
+    myscripboxapi:
+      hostname: stag-myscripbox-api-1-master
+    myscripbox:
+      hostname: stag-myscripbox-1-master
+    qaautomation:
+      hostname: auto-qaauto-211-master
+
 qaautomation:
   hub:
     tag: "4.3.0-20220706"
@@ -6,7 +20,7 @@ qaautomation:
       annotations:
         kubernetes.io/ingress.class: nginx-internal
       hosts:
-        - selenium-hub.local
+        - "{{ .Values.global.services.qaautomation.hostname }}.{{ .Values.global.accountDomain }}"
   chrome:
     enabled: true
     tag: "4.3.0-20220706"

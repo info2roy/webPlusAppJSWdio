@@ -1,5 +1,5 @@
 charts:
   - path: charts/staging/qaautomation
     repo: staging
-    skipTest: false
-    forcePush: false
+    skipTest: true
+    forcePush: true
