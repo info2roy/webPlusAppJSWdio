@@ -18,8 +18,6 @@ qaautomation:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: nginx-internal
-      hosts:
-        - "{{ .Values.global.services.qaautomation.hostname }}.{{ .Values.global.accountDomain }}"
   chrome:
     enabled: true
     tag: "4.3.0-20220706"
