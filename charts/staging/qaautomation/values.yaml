@@ -1,7 +1,6 @@
 global:
   environment: staging
   accountDomain: scripbox.org
-  dbForceRecreate: "false"
   services:
     andromeda:
       hostname: stag-andromeda-1-master

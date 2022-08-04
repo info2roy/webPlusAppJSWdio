@@ -21,13 +21,8 @@ global:
     qaautomation:
       chart: stable/qaautomation
       version: 3.0.*
-      repo: apps/qaautomation
-      branch: master
-
-# qaautomation:
-#   hub:
-#     hosts:
-#       - auto-qaauto-211-master.scripbox.org
+      repo: qaautomation
+      branch: feature/ci-cd-qa
 
 myscripbox:
   myscripbox:
