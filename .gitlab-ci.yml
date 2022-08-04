@@ -67,7 +67,6 @@ automation:
   before_script:
     - entrypoint.sh
     - yq write --inplace $VALUES_FILE myscripbox.myscripbox.testCases.global.image.tag "sha-$CI_COMMIT_SHA"
-    - yq write --inplace $VALUES_FILE qaautomation.hub.ingress.hosts[0] "https://auto-qaautomation-211-$CI_COMMIT_REF_SLUG.scripbox.org"
   script:
     - deploy.sh
     - helm test $RELEASE_NAME --logs --namespace $NAMESPACE
