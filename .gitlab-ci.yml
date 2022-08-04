@@ -12,6 +12,20 @@ stages:
   - Build
   - Deploy
 
+build charts:
+  <<: *shared-runner
+  stage: Build
+  image: $REGISTRY/devops/build-chart:${BUILD_CHART_VERSION}
+  variables:
+    TILLER_NAMESPACE: $STAG_APP_TILLER_NS
+    CI_KUBECONFIG: $CI_STAGING_KUBECONFIG
+  before_script:
+    - entrypoint.sh
+  script:
+    - build-chart.sh
+  dependencies: []
+  cache: {}
+
 .automation-build-common: &automation-build-common
   <<: *shared-runner
   image: $STAGING_ECR_AP_SOUTH/devops/build-image:${BUILD_IMAGE_VERSION}
