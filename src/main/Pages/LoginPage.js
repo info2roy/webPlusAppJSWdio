@@ -18,6 +18,10 @@ class LoginPage {
     await Utils.clickElement(LoginObjects.continueWithPasswordButton);
   }
 
+  async continueWithPasswordButtonIsDisplayed() {
+    return (await Utils.elementIsDisplayed(LoginObjects.continueWithPasswordButton));
+  }
+
   async firstLoginPageHeaderIsDisplayed() {
     return await Utils.elementIsDisplayed(LoginObjects.firstLoginPageHeader);
   }

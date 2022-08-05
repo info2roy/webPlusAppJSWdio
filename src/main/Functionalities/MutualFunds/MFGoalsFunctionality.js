@@ -135,8 +135,11 @@ class MFGoalsFunctionality {
       return true;
     } else if(createPlanButtonIsDisplayed) {
       await MFGoalsPage.clickCreatePlanButton();
-      await LoginFunctionality.continueWithPassword();
-      await LoginFunctionality.loginWithPassword(LoginData.password);
+      const continueWithPassword = await LoginFunctionality.continueWithPasswordButtonIsDisplayed();
+      if (continueWithPassword) {
+        await LoginFunctionality.continueWithPassword();
+        await LoginFunctionality.loginWithPassword(LoginData.password);
+      }
       return true;
     }
     console.log('None of CREATE A PLAN OR SIGNUP OR LOGIN button are displayed');

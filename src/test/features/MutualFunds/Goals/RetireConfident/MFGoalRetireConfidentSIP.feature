@@ -24,8 +24,6 @@ Feature: Scripbox Investment in Mutual Fund Goals
   #   Examples:
   #     | age | monthlyExpenses | retireAtAge | retirementEndAge | existingSavingsAmount | existingSavingsGrowthRate | futureMonthlyIncomeFromOtherSources | inflationPercent | paymentType | 
   #     | 30  | 25000  | 60 | 80 | 200000 | 8 | 10000 | 7 | ScheduledOneClickInvest |
-  #     #| 35  | 50K  | 50 | 70 | 100000 | 8 | 10000 | 4 | ScheduledOneClickInvest |
-  #     #| 41  | 40000  | 65 | 90 | 100000 | 8 | 10000 | 5 | ScheduledOneClickInvest |
 
   # Scenario Outline: As a logged in user, I am able to add new SIPs (scheduled payment) to existing mutual fund goal "Retire Confident"
   #   Given I am on the Investment Page

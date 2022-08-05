@@ -279,7 +279,7 @@ class MFGoalsPage {
   }
 
   async signupOrLoginButtonIsDisplayed() {
-    return (await Utils.elementIsDisplayedNow(MFGoalsObjects.signupOrLoginButton));
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.signupOrLoginButton));
   }
 
   async clickSignupOrLoginButton() {
@@ -287,7 +287,7 @@ class MFGoalsPage {
   }
 
   async createPlanButtonIsDisplayed() {
-    return (await Utils.elementIsDisplayedNow(MFGoalsObjects.createPlanButton));
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.createPlanButton));
   }
 
   async clickCreatePlanButton() {
@@ -492,7 +492,7 @@ class MFGoalsPage {
   }
 
   async enterReplanFutureMonthlyIncomeFromOtherSources(amount) {
-    await Utils.setInputField(amount, MFGoalsObjects.replanCurrentMonthlyExpensesField);
+    await Utils.setInputField(amount, MFGoalsObjects.replanFutureMonthlyIncomeFromOtherSourcesField);
   }
 
   async clickEditExternalSavingsForGoalButton() {

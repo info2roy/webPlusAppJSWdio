@@ -223,6 +223,18 @@ class MFInvestmentPage {
     Utils.clickElement(MFInvestmentObjects.addNewPlan);
   }
 
+  async addNewPlanIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlan));
+  }
+
+  async clickOnExploreOtherPlans() {
+    Utils.clickElement(MFInvestmentObjects.exploreOtherPlans);
+  }
+
+  async exploreOtherPlansIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.exploreOtherPlans));
+  }
+
   async addNewPlanPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageHeader));
   }

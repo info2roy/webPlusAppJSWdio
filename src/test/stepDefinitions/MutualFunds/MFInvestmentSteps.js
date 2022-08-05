@@ -90,7 +90,7 @@ Then(/^I should see investment scheduled successfully message$/, async () => {
 
 When(/^I click on "Add new plan" for mutual funds$/, async () => {
   await console.log('When I click on "Add new plan" for mutual funds');
-  await MFInvestmentFunctionality.addNewPlan();
+  await MFInvestmentFunctionality.addNewPlanOrExploreOtherPlans();
   expect(await MFInvestmentFunctionality.addNewPlanPageLaunched()).to.be.true;
 });
 

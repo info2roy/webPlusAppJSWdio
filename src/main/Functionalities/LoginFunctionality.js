@@ -27,6 +27,10 @@ class LoginFunctionality {
     await LoginPage.clickContinueWithPasswordButton();
   }
 
+  async continueWithPasswordButtonIsDisplayed() {
+    return (await LoginPage.continueWithPasswordButtonIsDisplayed());
+  }
+
   async loginWithUsername(username) {
     await LoginPage.enterUserId(username);
     await LoginPage.clickContinueOrNextButton();

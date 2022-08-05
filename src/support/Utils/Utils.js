@@ -65,23 +65,21 @@ class Utils {
     await webElement.click();
   }
 
-  async elementIsDisplayedNow(selector) {
-    const locator = this.getLocator(selector);
-    const isDisplayed = await $(locator).isDisplayed();
-    console.log(`${locator} is displayed now check --> ${isDisplayed}`);
-    return isDisplayed;
-  }
-
   async elementIsDisplayed(selector) {
     const locator = this.getLocator(selector);
     // const element = await $(locator);
-    await browser.waitUntil(
-      async () => await $(locator).isDisplayed(),
-      {
-        timeout: 30000,
-        timeoutMsg: `${locator} Selector not displayed yet`,
-      },
-    );
+    try {
+      await browser.waitUntil(
+        async () => await $(locator).isDisplayed(),
+        {
+          timeout: 15000,
+          timeoutMsg: `${locator} Selector not displayed yet`,
+          interval: 2000
+        },
+      );
+    } catch(err) {
+      console.log(err.message);
+    }
     const isDisplayed = await $(locator).isDisplayed();
     console.log(`${locator} is displayed check --> ${isDisplayed}`);
     return isDisplayed;
@@ -94,7 +92,7 @@ class Utils {
   }
 
   async setInputField(value, selector) {
-    await this.elementIsDisplayed(selector);
+    await this.clickElement(selector);
     const myButton = await $(this.getLocator(selector));
     await myButton.setValue(value);
   }
