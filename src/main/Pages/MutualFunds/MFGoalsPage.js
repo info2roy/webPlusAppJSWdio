@@ -14,15 +14,15 @@ class MFGoalsPage {
   }
 
   async lifeGoalElementIsDisplayed(lifeGoal) {
-    return Utils.elementIsDisplayed(MFGoalsObjects.lifeGoalElement(lifeGoal));
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.lifeGoalElement(lifeGoal)));
   }
 
   async validateNavigationToLifeGoalPage(lifeGoal) {
     switch(lifeGoal) {
       case 'Retire Confident':
-        return Utils.elementIsDisplayed(MFGoalsObjects.retireConfidentGoalPageHeader);
+        return (await Utils.elementIsDisplayed(MFGoalsObjects.retireConfidentGoalPageHeader));
       case 'Premier Education':
-        return Utils.elementIsDisplayed(MFGoalsObjects.premierEducationGoalPageHeader);
+        return (await Utils.elementIsDisplayed(MFGoalsObjects.premierEducationGoalPageHeader));
       default:
         console.log(`Unsupported life goal ${lifeGoal}`);
         return false;
@@ -42,7 +42,7 @@ class MFGoalsPage {
   }
 
   async investmentCalendarHeaderIsDisplayed() {
-    return Utils.elementIsDisplayed(MFGoalsObjects.investmentCalendarHeader);
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.investmentCalendarHeader));
   }
 
   async clickOnShowMeHowButton() {
@@ -52,9 +52,9 @@ class MFGoalsPage {
   async validateNavigationToLifeGoalSection(lifeGoal) {
     switch(lifeGoal) {
       case 'Retire Confident':
-        return Utils.elementIsDisplayed(MFGoalsObjects.retireConfidentGoalSectionHeader);
+        return (await Utils.elementIsDisplayed(MFGoalsObjects.retireConfidentGoalSectionHeader));
       case 'Premier Education':
-        return Utils.elementIsDisplayed(MFGoalsObjects.premierEducationGoalSectionHeader);
+        return (await Utils.elementIsDisplayed(MFGoalsObjects.premierEducationGoalSectionHeader));
       default:
         console.log(`Unsupported life goal ${lifeGoal}`);
         return false;
@@ -82,16 +82,16 @@ class MFGoalsPage {
     await Utils.setInputField(retirementEndAge, MFGoalsObjects.retirementEndAgeField);
   }
 
-  async clickOnCreateRetirementPlanButton() {
-    await Utils.clickElement(MFGoalsObjects.createRetirementPlanButton);
+  async clickOnCreateAPlanLink() {
+    await Utils.clickElement(MFGoalsObjects.createAPlanLink);
   }
 
   async existingSavingsAndPlansPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.existingSavingsAndPlansPageHeader));
   }
 
-  async clickAddExistingSavingsButton() {
-    await Utils.clickElement(MFGoalsObjects.addAlreadySavedAmountButton);
+  async clickAddExistingSavingsLink() {
+    await Utils.clickElement(MFGoalsObjects.addExistingSavingsLink);
     expect(await Utils.elementIsDisplayed(MFGoalsObjects.myExistingSavingsHeader)).to.be.true;
   }
 
@@ -111,8 +111,8 @@ class MFGoalsPage {
     await Utils.setInputField(amount, MFGoalsObjects.futureMonthlyIncomeFromOtherSourcesField);
   }
 
-  async clickCalculateMyNeedsButton() {
-    await Utils.clickElement(MFGoalsObjects.calculateMyNeedsButton);
+  async clickCalculateMyNeedLink() {
+    await Utils.clickElement(MFGoalsObjects.calculateMyNeedLink);
   }
 
   async whatYouNeedToRetireHeaderIsDisplayed() {
@@ -123,79 +123,76 @@ class MFGoalsPage {
     await Utils.chooseSelectOptionByAttribute(MFGoalsObjects.inflationPercentSelectOption, 'value', inflationPercent.toString());
   }
 
-  async clickShowDetailedPlanButton() {
+  async clickShowDetailedPlanLink() {
     if (Device.isWeb()) {
-      Utils.scrollAndMoveToElement(MFGoalsObjects.showDetailedPlanButton);
+      await Utils.scrollAndMoveToElement(MFGoalsObjects.showDetailedPlanLink);
     }
-    await Utils.clickElement(MFGoalsObjects.showDetailedPlanButton);
+    await Utils.clickElement(MFGoalsObjects.showDetailedPlanLink);
   }
 
   async yourRetirementPlanPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.yourRetirementPlanPageHeader));
   }
 
-  async clickContinueButton() {
+  async clickContinueLink() {
     if (Device.isWeb()) {
-      Utils.scrollAndMoveToElement(MFGoalsObjects.continueButton);
+      await Utils.scrollAndMoveToElement(MFGoalsObjects.continueLink);
     } else if(Device.isAndroidApp()) {
-      Utils.scrollVerticalUntilTextIntoViewForAndroid(MFGoalsObjects.continueButtonText);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MFGoalsObjects.continueLinkText);
     }
-    await Utils.clickElement(MFGoalsObjects.continueButton);
+    await Utils.clickElement(MFGoalsObjects.continueLink);
   }
 
   async congratulationsPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.congratulationsPageHeader));
   }
 
-  async clickCreateRetirementPlanFinalButton() {
-    await Utils.clickElement(MFGoalsObjects.createRetirementPlanFinalButton);
+  async clickCreatePlanFinalButton() {
+    await Utils.clickElement(MFGoalsObjects.createPlanFinalButton);
   }
 
-  async activateRetirementPlanHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(MFGoalsObjects.activateRetirementPlanHeader));
+  async activatePlanHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.activatePlanHeader));
   }
 
-  async clickInvestMoreButtonForGoalPlan() {
-    await Utils.clickElement(MFGoalsObjects.investMoreForGoalPlanButton);
-  }
-
-  async clickOtherActionsButtonForGoalPlan() {
-    await Utils.clickElement(MFGoalsObjects.otherActionsForGoalPlanButton);
+  async clickInvestMoreButton() {
+    await Utils.clickElement(MFGoalsObjects.investMoreButton);
   }
 
   async clickOnOtherActionForGoalPlan(actionType) {
     await Utils.clickElement(MFGoalsObjects.otherActionForGoalPlan(actionType));
   }
 
+  async iWantToInvestHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.iWantToInvestHeader));
+  }
+
   async validateNavigationToOtherActionForGoalPlan(actionType) {
     switch(actionType) {
       case 'Start a new SIP':
-        return (await this.iWantToInvestHeaderIsDisplayed());
+        return (await Utils.elementIsDisplayed(MFGoalsObjects.iWantToInvestHeader));
       case 'Invest one-time':
-        return (await this.iWantToInvestHeaderIsDisplayed());
+        return (await Utils.elementIsDisplayed(MFGoalsObjects.iWantToInvestHeader));
       default:
         console.log(`Unsupported other action ${actionType} for Goal Plan`);
+        return false;
     }
   }
 
-  async iWantToInvestHeaderIsDisplayed() {
-    return (Utils.elementIsDisplayed(MFGoalsObjects.iWantToInvestHeader));
-  }
-
   async startANewSIPHeaderIsDisplayed() {
-    return (Utils.elementIsDisplayed(MFGoalsObjects.startANewSIPHeader));
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.startANewSIPHeader));
   }
 
   async investOneTimeHeaderIsDisplayed() {
-    return (Utils.elementIsDisplayed(MFGoalsObjects.investOneTimeHeader));
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.investOneTimeHeader));
   }
 
   async retireConfidentSIPIsDisplayed(amount) {
-    return (Utils.elementIsDisplayed(MFGoalsObjects.retireConfidentSIP(amount)));
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.retireConfidentSIP(amount)));
   }
 
   async retireConfidentOneTimeIsDisplayed(amount) {
-    return (Utils.elementIsDisplayed(MFGoalsObjects.retireConfidentOneTime(amount)));
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.retireConfidentOneTime(amount)));
   }
 
   async enterClassOfChild(classOfChild) {
@@ -218,9 +215,9 @@ class MFGoalsPage {
 
   async clickPersonaliseThisPlanForCollegeType(collegeType) {
     if (Device.isWeb()) {
-      Utils.scrollAndMoveToElement(MFGoalsObjects.personaliseThisPlanButtonForCollegeType(collegeType));
+      await Utils.scrollAndMoveToElement(MFGoalsObjects.personaliseThisPlanLinkForCollegeType(collegeType));
     }
-    await Utils.clickElement(MFGoalsObjects.personaliseThisPlanButtonForCollegeType(collegeType));
+    await Utils.clickElement(MFGoalsObjects.personaliseThisPlanLinkForCollegeType(collegeType));
   }
 
   async premierEducationPlanPageHeaderIsDisplayed() {
@@ -229,7 +226,7 @@ class MFGoalsPage {
 
   async clickContinueButtonForPremierEducationPlan(index) {
     if (Device.isWeb()) {
-      Utils.scrollAndMoveToElement(MFGoalsObjects.continueButtonForPremierEducationPlan(index));
+      await Utils.scrollAndMoveToElement(MFGoalsObjects.continueButtonForPremierEducationPlan(index));
     }
     await Utils.clickElement(MFGoalsObjects.continueButtonForPremierEducationPlan(index));
   }
@@ -314,23 +311,23 @@ class MFGoalsPage {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.iWouldLikeToInvestOneTimeHeader));
   }
 
-  async clickContinueWithRetireConfidentInvestmentButton() {
-    await Utils.clickElement(MFGoalsObjects.continueWithRetireConfidentInvestmentButton);
+  async clickContinueButton() {
+    await Utils.clickElement(MFGoalsObjects.continueButton);
   }
 
   async fundListHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.fundListHeader));
   }
 
-  async clickContinueToInvestWithRetireConfidentInvestmentButton() {
-    await Utils.clickElement(MFGoalsObjects.continueToInvestWithRetireConfidentInvestmentButton);
+  async clickContinueToInvestButton() {
+    await Utils.clickElement(MFGoalsObjects.continueToInvestButton);
   }
 
-  async paymentTypePageForRetireConfidentHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(MFGoalsObjects.paymentTypePageForRetireConfidentHeader));
+  async paymentTypePageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.paymentTypePageHeader));
   }
 
-  async clickConfirmToInvestWithRetireConfidentInvestmentButton() {
+  async clickConfirmButton() {
     await Utils.clickElement(MFGoalsObjects.confirmButton);
   }
 
@@ -342,21 +339,13 @@ class MFGoalsPage {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.planDetailsHeader));
   }
 
-  async clickOtherActionsButton() {
-    await Utils.clickElement(MFGoalsObjects.otherActionsButton);
-  }
-
-  async clickEditPlanButton() {
-    await Utils.clickElement(MFGoalsObjects.editPlanButton);
-  }
-
   async clickOtherActionsOrEditPlanButton(buttonText) {
     switch(buttonText) {
       case 'OTHER ACTIONS':
-        await this.clickOtherActionsButton();
+        await Utils.clickElement(MFGoalsObjects.otherActionsButton);
         break;
       case 'EDIT PLAN':
-        await this.clickEditPlanButton();
+        await Utils.clickElement(MFGoalsObjects.editPlanButton);
         break;
       default:
         console.log(`Unsupported action ${buttonText}`);
@@ -366,31 +355,15 @@ class MFGoalsPage {
   async validateNavigationToOtherActionsOrEditPlanButton(buttonText) {
     switch(buttonText) {
       case 'OTHER ACTIONS':
-        return (await this.moveMoneyHeaderIsDisplayed()) &&
-          (await this.stopAllInvestmentsHeaderIsDisplayed()) &&
-          (await this.closePlanHeaderIsDisplayed());
+        return (await Utils.elementIsDisplayed(MFGoalsObjects.moveMoneyHeader)) &&
+          (await Utils.elementIsDisplayed(MFGoalsObjects.stopAllInvestmentsHeader)) &&
+          (await Utils.elementIsDisplayed(MFGoalsObjects.closePlanHeader));
       case 'EDIT PLAN':
-        return (await this.replanStep1HeaderIsDisplayed());
+        return (await Utils.elementIsDisplayed(MFGoalsObjects.replanStep1Header));
       default:
         console.log(`Unsupported action ${buttonText}`);
         return false;
     }
-  }
-
-  async moveMoneyHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(MFGoalsObjects.moveMoneyHeader));
-  }
-
-  async stopAllInvestmentsHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(MFGoalsObjects.stopAllInvestmentsHeader));
-  }
-
-  async closePlanHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(MFGoalsObjects.closePlanHeader));
-  }
-
-  async replanStep1HeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(MFGoalsObjects.replanStep1Header));
   }
 
   async replanStep2HeaderIsDisplayed() {
@@ -432,10 +405,6 @@ class MFGoalsPage {
     }
   }
 
-  async clickConfirmButton() {
-    await Utils.clickElement(MFGoalsObjects.confirmButton);
-  }
-
   async planCancelMessageIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.planCancelledMessage));
   }
@@ -447,27 +416,33 @@ class MFGoalsPage {
   async updateRetireConfidentGoalProperty(property, value) {
     switch(property) {
       case 'Retirement Age':
-        await Utils.clickElement(MFGoalsObjects.editRetirementAgeButton);
+        await Utils.clickElement(MFGoalsObjects.editRetirementAgeLink);
         expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanRetirementAgeLabel)).to.be.true;
         await Utils.setInputField(value, MFGoalsObjects.replanRetirementAgeField);
         await Utils.clickElement(MFGoalsObjects.okayButton);
         break;
       case 'Retirement End Age':
-        await Utils.clickElement(MFGoalsObjects.editRetirementEndAgeButton);
+        await Utils.clickElement(MFGoalsObjects.editRetirementEndAgeLink);
         expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanRetirementEndAgeLabel)).to.be.true;
         await Utils.setInputField(value, MFGoalsObjects.replanRetirementEndAgeField);
         await Utils.clickElement(MFGoalsObjects.okayButton);
         break;
       case 'Current Monthly Expenses':
-        await Utils.clickElement(MFGoalsObjects.editCurrentMonthlyExpensesButton);
+        await Utils.clickElement(MFGoalsObjects.editCurrentMonthlyExpensesLink);
         expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanCurrentMonthlyExpensesLabel)).to.be.true;
         await Utils.setInputField(value, MFGoalsObjects.replanCurrentMonthlyExpensesField);
         await Utils.clickElement(MFGoalsObjects.okayButton);
         break;
       case 'Inflation Percent':
-        await Utils.clickElement(MFGoalsObjects.editExpensesIncreaseRateButton);
+        await Utils.clickElement(MFGoalsObjects.editExpensesIncreaseRateLink);
         expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanExpensesIncreaseRateLabel)).to.be.true;
         await Utils.setInputField(value, MFGoalsObjects.replanExpensesIncreaseRateField);
+        await Utils.clickElement(MFGoalsObjects.okayButton);
+        break;
+      case 'SIP Increase Percent':
+        await Utils.clickElement(MFGoalsObjects.editSipIncreasePercentLink);
+        expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanSipIncreasePercentLabel)).to.be.true;
+        await Utils.setInputField(value, MFGoalsObjects.replanSipIncreasePercentField);
         await Utils.clickElement(MFGoalsObjects.okayButton);
         break;
       default:
@@ -483,8 +458,12 @@ class MFGoalsPage {
     await Utils.clickElement(MFGoalsObjects.continueReplanButton);
   }
 
-  async clickEditFutureMonthlyIncomeFromOtherSourcesButton() {
-    await Utils.clickElement(MFGoalsObjects.editFutureMonthlyIncomeFromOtherSourcesButton);
+  async clickShowPlanDetailsButton() {
+    await Utils.clickElement(MFGoalsObjects.showPlanDetailsButton);
+  }
+
+  async clickEditFutureMonthlyIncomeFromOtherSourcesLink() {
+    await Utils.clickElement(MFGoalsObjects.editFutureMonthlyIncomeFromOtherSourcesLink);
   }
 
   async replanFutureMonthlyIncomeFromOtherSourcesLabelIsDisplayed() {
@@ -495,8 +474,8 @@ class MFGoalsPage {
     await Utils.setInputField(amount, MFGoalsObjects.replanFutureMonthlyIncomeFromOtherSourcesField);
   }
 
-  async clickEditExternalSavingsForGoalButton() {
-    await Utils.clickElement(MFGoalsObjects.editExternalSavingsForGoalButton);
+  async clickEditExternalSavingsForGoalLink() {
+    await Utils.clickElement(MFGoalsObjects.editExternalSavingsForGoalLink);
   }
 
   async replanExternalSavingsForGoalLabelIsDisplayed() {
@@ -511,8 +490,8 @@ class MFGoalsPage {
     await Utils.setInputField(rate, MFGoalsObjects.replanExternalSavingForGoalGrowthRateField);
   }
 
-  async clickEditSipIncreasePercentButton() {
-    await Utils.clickElement(MFGoalsObjects.editSipIncreasePercentButton);
+  async clickEditSipIncreasePercentLink() {
+    await Utils.clickElement(MFGoalsObjects.editSipIncreasePercentLink);
   }
 
   async replanSipIncreasePercentLabelIsDisplayed() {
@@ -521,10 +500,6 @@ class MFGoalsPage {
 
   async enterReplanSipIncreasePercent(percent) {
     await Utils.setInputField(percent, MFGoalsObjects.replanSipIncreasePercentField);
-  }
-
-  async clickShowPlanDetailsButton() {
-    await Utils.clickElement(MFGoalsObjects.showDetailedPlanButton);
   }
 
   async replanSummaryHeaderIsDisplayed() {

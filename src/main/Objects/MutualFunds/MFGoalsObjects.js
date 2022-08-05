@@ -72,7 +72,7 @@ class MFGoalsObjects {
     web: 'input.ff-retirment-end-age-js'
   };
 
-  createRetirementPlanButton = {
+  createAPlanLink = {
     web: '//a[contains(text(),"Create a plan")]'
   };
 
@@ -80,7 +80,7 @@ class MFGoalsObjects {
     web: '//span[text()="Existing savings and plans"]'
   };
 
-  addAlreadySavedAmountButton = {
+  addExistingSavingsLink = {
     web: '//a[text()="Add"]'
   };
 
@@ -104,7 +104,7 @@ class MFGoalsObjects {
     web: 'input.ff-plan-savings-amount-custom-js'
   };
 
-  calculateMyNeedsButton = {
+  calculateMyNeedLink = {
     web: '//a[contains(text(),"Calculate My Need")]'
   };
 
@@ -116,7 +116,7 @@ class MFGoalsObjects {
     web: 'select.ff-plan-inflation'
   };
 
-  showDetailedPlanButton = {
+  showDetailedPlanLink = {
     web: '//a[contains(text(),"Show Detailed Plan")]'
   };
 
@@ -124,11 +124,11 @@ class MFGoalsObjects {
     web: '//span[text()="Your Retirement Plan"]'
   };
 
-  continueButton = {
+  continueLink = {
     web: '//a[contains(text(),"Continue")]'
   };
 
-  continueButtonText = {
+  continueLinkText = {
     app: 'CONTINUE'
   };
 
@@ -136,19 +136,19 @@ class MFGoalsObjects {
     web: '//span[text()="Congratulations!"]'
   };
 
-  createRetirementPlanFinalButton = {
+  createPlanFinalButton = {
     web: '//a[contains(text(),"Create Plan")]'
   };
 
-  activateRetirementPlanHeader = {
+  activatePlanHeader = {
     web: '//span[text()="Activate Plan"]'
   };
 
-  investMoreForGoalPlanButton = {
+  investMoreButton = {
     web: '//button[text()="Invest more"]'
   };
 
-  otherActionsForGoalPlanButton = {
+  otherActionsButton = {
     web: '//button[text()="Other actions"]'
   };
 
@@ -216,7 +216,7 @@ class MFGoalsObjects {
     'Premier Private Colleges': 3
   };
 
-  personaliseThisPlanButtonForCollegeType(collegeType) {
+  personaliseThisPlanLinkForCollegeType(collegeType) {
     const index = this.premierEducationCollegeTypeToIndex[collegeType];
     return {
       web: `(//a[contains(text(),"Personalise this plan")])[${index}]`
@@ -319,7 +319,7 @@ class MFGoalsObjects {
     web: '//div[text()="I would like to invest one time"]'
   };
 
-  continueWithRetireConfidentInvestmentButton = {
+  continueButton = {
     web: '//button[contains(text(),"Continue")]'
   };
 
@@ -327,11 +327,11 @@ class MFGoalsObjects {
     web: '//div[text()="Fund list"]'
   };
 
-  continueToInvestWithRetireConfidentInvestmentButton = {
+  continueToInvestButton = {
     web: '//button[contains(text(),"Continue to invest")]'
   };
 
-  paymentTypePageForRetireConfidentHeader = {
+  paymentTypePageHeader = {
     web: '//div[contains(text(),"I would like to invest Rs")]'
   };
 
@@ -345,10 +345,6 @@ class MFGoalsObjects {
 
   planDetailsHeader = {
     web: '//p[text()="PLAN DETAILS"]'
-  };
-
-  otherActionsButton = {
-    web: '//button[text()="Other Actions"]'
   };
 
   moveMoneyHeader = {
@@ -387,7 +383,7 @@ class MFGoalsObjects {
     web: '//p[text()="Your plan has been cancelled"]'
   };
 
-  editRetirementAgeButton = {
+  editRetirementAgeLink = {
     web: '//div[text()="I want to retire at the age of"]/parent::div/following-sibling::div/div'
   };
 
@@ -403,7 +399,7 @@ class MFGoalsObjects {
     web: '//button[text()="Okay"]'
   };
 
-  editRetirementEndAgeButton = {
+  editRetirementEndAgeLink = {
     web: '//div[text()="Retirement planned until the age of"]/parent::div/following-sibling::div/div'
   };
 
@@ -415,7 +411,7 @@ class MFGoalsObjects {
     web: 'input#retirement-planned-till-input'
   };
 
-  editCurrentMonthlyExpensesButton = {
+  editCurrentMonthlyExpensesLink = {
     web: '//div[text()="My current monthly expenses are"]/parent::div/following-sibling::div/div'
   };
 
@@ -427,7 +423,7 @@ class MFGoalsObjects {
     web: 'input#goal-amount-input'
   };
 
-  editExpensesIncreaseRateButton = {
+  editExpensesIncreaseRateLink = {
     web: '//div[text()="Your expenses will increase every year by"]/parent::div/following-sibling::div/div'
   };
 
@@ -447,7 +443,7 @@ class MFGoalsObjects {
     web: 'input#investment-amount'
   };
 
-  editFutureMonthlyIncomeFromOtherSourcesButton = {
+  editFutureMonthlyIncomeFromOtherSourcesLink = {
     web: '//div[text()="Monthly contribution during the course of your retirement"]/parent::div/following-sibling::div/div'
   };
 
@@ -459,7 +455,7 @@ class MFGoalsObjects {
     web: 'input#annual-contribution-input'
   };
 
-  editExternalSavingsForGoalButton = {
+  editExternalSavingsForGoalLink = {
     web: '//div[text()="External savings for this goal"]/parent::div/following-sibling::div/div'
   };
 
@@ -483,7 +479,7 @@ class MFGoalsObjects {
     web: '//div[text()="REPLAN - STEP 3 OF 3"]'
   };
 
-  editSipIncreasePercentButton = {
+  editSipIncreasePercentLink = {
     web: '//div[text()="Increase SIP every year by"]/parent::div/following-sibling::div/div'
   };
 
@@ -492,7 +488,7 @@ class MFGoalsObjects {
   };
 
   replanSipIncreasePercentField = {
-    web: 'input#grade-input"]'
+    web: 'input#grade-input'
   };
 
   showPlanDetailsButton = {
@@ -513,4 +509,3 @@ class MFGoalsObjects {
 
 }
 module.exports = new MFGoalsObjects();
-

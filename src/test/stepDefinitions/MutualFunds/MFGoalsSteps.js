@@ -3,25 +3,25 @@ const { expect } = require('chai');
 const MFGoalsFunctionality = require('../../../main/Functionalities/MutualFunds/MFGoalsFunctionality');
 
 When(/^I select mutual funds life goal as "([^"]*)?"$/, async (lifeGoal) => {
-  await console.log(`I select mutual funds life goal as ${lifeGoal}`);
+  await console.log(`When I select mutual funds life goal as ${lifeGoal}`);
   this.lifeGoal = lifeGoal;
   expect(await MFGoalsFunctionality.selectLifeGoal(lifeGoal)).to.be.true;
 });
 
 When(/^I select existing plan for mutual funds life goal "([^"]*)?"$/, async (lifeGoal) => {
-  await console.log(`I select existing plan for mutual funds life goal ${lifeGoal}`);
+  await console.log(`When I select existing plan for mutual funds life goal ${lifeGoal}`);
   this.lifeGoal = lifeGoal;
   expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal(lifeGoal)).to.be.true;
 });
 
-When(/^I click on "SHOW ME HOW" for life goal$/, async () => {
-  await console.log(`I click on "SHOW ME HOW" for life goal`);
+When(/^I click on "SHOW ME HOW" for Life Goal Plan$/, async () => {
+  await console.log(`When I click on "SHOW ME HOW" for Life Goal Plan`);
   expect(await MFGoalsFunctionality.selectShowMeHow(this.lifeGoal)).to.be.true;
 });
 
 When(/^I fill "Retire Confident" form with (\d+), (\d+), (\d+), (\d+)$/,
   async(age, monthlyExpenses, retireAtAge, retirementEndAge) => {
-    await console.log(`I fill "Retire Confident" form with ${age}, ${monthlyExpenses}, ${retireAtAge}, ${retirementEndAge}`);
+    await console.log(`When I fill "Retire Confident" form with ${age}, ${monthlyExpenses}, ${retireAtAge}, ${retirementEndAge}`);
     expect(await MFGoalsFunctionality.fillRetireConfidentForm(age,
       monthlyExpenses, retireAtAge, retirementEndAge)).to.be.true;
   }
@@ -29,7 +29,7 @@ When(/^I fill "Retire Confident" form with (\d+), (\d+), (\d+), (\d+)$/,
 
 When(/^I fill Existing Savings form with (\d+), (\d+), (\d+)+$/,
   async(existingSavingsAmount, existingSavingsGrowthRate, futureMonthlyIncomeFromOtherSources) => {
-    await console.log(`I fill Existing Savings form with ${existingSavingsAmount}, ${existingSavingsGrowthRate}, ${futureMonthlyIncomeFromOtherSources}`);
+    await console.log(`When I fill Existing Savings form with ${existingSavingsAmount}, ${existingSavingsGrowthRate}, ${futureMonthlyIncomeFromOtherSources}`);
     expect(await MFGoalsFunctionality.fillExistingSavingsForm(
       existingSavingsAmount, existingSavingsGrowthRate, futureMonthlyIncomeFromOtherSources
     )).to.be.true;
@@ -43,170 +43,175 @@ When(/^I select inflation rate as (\d+)%$/,
   }
 );
 
-When(/^I click on CONTINUE with retirement plan$/, async () => {
+When(/^I click on CONTINUE with retirement Plan$/, async () => {
   await console.log('When I click on CONTINUE with retirement plan');
   expect(await MFGoalsFunctionality.continueWithRetirementPlan()).to.be.true;
 });
 
-When(/^I invest more for the existing plan for life goal "Retire Confident"$/, async () => {
-  await console.log('I invest more for the existing plan for life goal "Retire Confident"');
+When(/^I click on "Invest More" for the existing plan for Life Goal "Retire Confident"$/, async () => {
+  await console.log('When I click on "Invest More" for the existing plan for Life Goal "Retire Confident"');
   expect(await MFGoalsFunctionality.investMoreForGoalPlan()).to.be.true;
 });
 
-When(/^I click on "Other actions" for the existing plan for life goal "Retire Confident"$/, async () => {
-  await console.log('I click on "Other actions" for the existing plan for life goal "Retire Confident"');
+When(/^I click on "Other actions" for the existing plan for Life Goal "Retire Confident"$/, async () => {
+  await console.log('When I click on "Other actions" for the existing plan for Life Goal "Retire Confident"');
   expect(await MFGoalsFunctionality.otherActionsForGoalPlan()).to.be.true;
 });
 
-When(/^I click on "Other actions" -> "(Start a new SIP|Invest one-time)" for life goal "Retire Confident"$/, async(actionType) => {
-  await console.log(`I click on "Other actions" -> "${actionType}" for life goal "Retire Confident"`);
+When(/^I click on "Other actions" -> "(Start a new SIP|Invest one-time)" for Life Goal "Retire Confident"$/, async(actionType) => {
+  await console.log(`When I click on "Other actions" -> "${actionType}" for Life Goal "Retire Confident"`);
   expect(await MFGoalsFunctionality.doOtherActionForGoalPlan(actionType)).to.be.true;
 });
 
 Then(/^I should see extra "Retire Confident SIP" for (\d+) to be present in the investments list$/, async(amount) => {
-  await console.log(`I should see extra "Retire Confident SIP" for ${amount} to be present in the investments list`);
+  await console.log(`Then I should see extra "Retire Confident SIP" for ${amount} to be present in the investments list`);
   expect(await MFGoalsFunctionality.validateRetireConfidentSIP(amount)).to.be.true;
 });
 
 Then(/^I should see extra "Retire Confident OneTime" for (\d+) to be present in the investments list$/, async(amount) => {
-  await console.log(`I should see extra "Retire Confident OneTime" for ${amount} to be present in the investments list`);
+  await console.log(`Then I should see extra "Retire Confident OneTime" for ${amount} to be present in the investments list`);
   expect(await MFGoalsFunctionality.validateRetireConfidentOneTime(amount)).to.be.true;
 });
 
 When(/^I fill "Premier Education" form with (\d+)$/, async (classOfChild) => {
-  await console.log(`I fill "Premier Education" form with ${classOfChild}`);
+  await console.log(`When I fill "Premier Education" form with ${classOfChild}`);
   this.classOfChild = classOfChild;
   expect(await MFGoalsFunctionality.selectClassOfChild(classOfChild)).to.be.true;
 });
 
 When(/^I select "Premier Education" plan for college type (Government Colleges|Private Colleges|Premier Private Colleges)$/,
   async(collegeType) => {
-    await console.log(`I select "Premier Education" plan for college type ${collegeType}`);
+    await console.log(`When I select "Premier Education" plan for college type ${collegeType}`);
     expect(await MFGoalsFunctionality.selectPremierEducationCollegeType(collegeType)).to.be.true;
   }
 );
 
 When(/^I click "CONTINUE" to explore plan for "Premier Education"$/, async() => {
-  await console.log('I click "CONTINUE" to explore plan for "Premier Education"');
+  await console.log('When I click "CONTINUE" to explore plan for "Premier Education"');
   expect(await MFGoalsFunctionality.continueWithPremierEducationPlan()).to.be.true;
 });
 
 When(/^I fill "Premier Education" second form with (.+), (\d+)$/, async(childname, yearlyFees) => {
-  await console.log(`I fill "Premier Education" second form with ${childname}, ${yearlyFees}`);
+  await console.log(`When I fill "Premier Education" second form with ${childname}, ${yearlyFees}`);
   this.childname = childname;
   expect(await MFGoalsFunctionality.fillPremierEducationForm(childname, yearlyFees, this.classOfChild)).to.be.true;
 });
 
-When(/^I click "CONTINUE" on the yearly fees breakup Goal page$/, async() => {
-  await console.log('I click "CONTINUE" on the yearly fees breakup Goal page');
+When(/^I click "CONTINUE" on the Yearly Fees Breakup Goal Page$/, async() => {
+  await console.log('When I click "CONTINUE" on the Yearly Fees Breakup Goal Page');
   expect(await MFGoalsFunctionality.continueOnYearlyFeesBreakupGoalPage()).to.be.true;
 });
 
-When(/^I click "SHOW PLAN FOR" on the yearly fees breakup Plan page$/, async() => {
-  await console.log('I click "SHOW PLAN FOR" on the yearly fees breakup Plan page');
+When(/^I click "SHOW PLAN FOR" on the Yearly Fees Breakup Plan Page$/, async() => {
+  await console.log('When I click "SHOW PLAN FOR" on the Yearly Fees Breakup Plan Page');
   expect(await MFGoalsFunctionality.showPlanForPremierEducation()).to.be.true;
 });
 
-When(/^I click "START WITH" for "Premier Education" working plan$/, async() => {
-  await console.log('I click "START WITH" for "Premier Education" working plan');
+When(/^I click "START WITH" for "Premier Education" Working Plan$/, async() => {
+  await console.log('When I click "START WITH" for "Premier Education" Working Plan');
   expect(await MFGoalsFunctionality.startWithWorkingPlanForPremierEducation()).to.be.true;
 });
 
-When(/^I click "CONTINUE" on the "Premier Education" suggested plan$/, async() => {
-  await console.log('I click "CONTINUE" on the "Premier Education" suggested plan');
+When(/^I click "CONTINUE" on the "Premier Education" Suggested Plan$/, async() => {
+  await console.log('When I click "CONTINUE" on the "Premier Education" Suggested Plan');
   await MFGoalsFunctionality.continueInvestForPremierEducation();
 });
 
-When(/^I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Mutual Fund Goal Plan$/, async() => {
-  await console.log('I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Mutual Fund Goal Plan');
-  expect(await MFGoalsFunctionality.createAPlanOrSignupOrLoginForMutualFundGoalPlan()).to.be.true;
+When(/^I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan$/, async() => {
+  await console.log('When I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan');
+  expect(await MFGoalsFunctionality.createAPlanOrSignupOrLoginForLifeGoalPlan()).to.be.true;
 });
 
-When(/^I click on "INVEST EVERY MONTH" for life goal$/, async() => {
-  await console.log('I click on "INVEST EVERY MONTH" for life goal');
+When(/^I click on "INVEST EVERY MONTH" for Life Goal Plan$/, async() => {
+  await console.log('When I click on "INVEST EVERY MONTH" for Life Goal Plan');
   expect(await MFGoalsFunctionality.investEveryMonth()).to.be.true;
 });
 
-When(/^I click on "INVEST ONE TIME" for life goal$/, async() => {
-  await console.log('I click on "INVEST ONE TIME" for life goal');
+When(/^I click on "INVEST ONE TIME" for Life Goal Plan$/, async() => {
+  await console.log('When I click on "INVEST ONE TIME" for Life Goal Plan');
   expect(await MFGoalsFunctionality.investOneTime()).to.be.true;
 });
 
-When(/^I click "CONTINUE" for "INVEST EVERY MONTH" on the "Retire Confident" plan$/, async() => {
-  await console.log('I click "CONTINUE" for "INVEST EVERY MONTH" on the "Retire Confident" plan');
-  expect(await MFGoalsFunctionality.continueWithEveryMonthRetireConfidentInvestment()).to.be.true;
+When(/^I click "CONTINUE" for "INVEST EVERY MONTH" on the "Retire Confident" Plan$/, async() => {
+  await console.log('When I click "CONTINUE" for "INVEST EVERY MONTH" on the "Retire Confident" Plan');
+  expect(await MFGoalsFunctionality.continueWithEveryMonthInvestment()).to.be.true;
 });
 
-When(/^I click "CONTINUE" for "INVEST ONE TIME" on the "Retire Confident" plan$/, async() => {
-  await console.log('I click "CONTINUE" for "INVEST ONE TIME" on the "Retire Confident" plan');
-  expect(await MFGoalsFunctionality.continueWithOneTimeRetireConfidentInvestment()).to.be.true;
+When(/^I click "CONTINUE" for "INVEST ONE TIME" on the "Retire Confident" Plan$/, async() => {
+  await console.log('When I click "CONTINUE" for "INVEST ONE TIME" on the "Retire Confident" Plan');
+  expect(await MFGoalsFunctionality.continueWithOneTimeInvestment()).to.be.true;
 });
 
-When(/^I click "CONTINUE TO INVEST" on the "Retire Confident" plan$/, async() => {
-  await console.log('I click "CONTINUE TO INVEST" on the "Retire Confident" plan');
-  expect(await MFGoalsFunctionality.continueToInvestWithRetireConfidentInvestment()).to.be.true;
+When(/^I click "CONTINUE TO INVEST" on the "Retire Confident" Plan$/, async() => {
+  await console.log('When I click "CONTINUE TO INVEST" on the "Retire Confident" Plan');
+  expect(await MFGoalsFunctionality.continueToInvest()).to.be.true;
 });
 
 When(/^I click "CONFIRM" on the "Retire Confident" investment$/, async() => {
-  await console.log('I click "CONFIRM" on the "Retire Confident" investment');
-  await MFGoalsFunctionality.confirmToInvestWithRetireConfidentInvestment();
+  await console.log('When I click "CONFIRM" on the "Retire Confident" investment');
+  await MFGoalsFunctionality.confirmToInvest();
 });
 
-When(/^I fill "INVEST ONE TIME" (\d+) and click "CONTINUE" on the "Retire Confident" plan$/, async(oneTimeAmount) => {
-  await console.log(`I fill "INVEST ONE TIME" ${oneTimeAmount} and click "CONTINUE" on the "Retire Confident" plan`);
+When(/^I fill "INVEST ONE TIME" (\d+) and click "CONTINUE" on the "Retire Confident" Plan$/, async(oneTimeAmount) => {
+  await console.log(`When I fill "INVEST ONE TIME" ${oneTimeAmount} and click "CONTINUE" on the "Retire Confident" Plan`);
   expect(await MFGoalsFunctionality.investOneTimeFillAmountAndContinue(oneTimeAmount)).to.be.true;
 });
 
-When(/^I click on ">" to see plan details for "Retire Confident" plan$/, async() => {
-  await console.log('I click on ">" to see plan details for "Retire Confident" plan');
+When(/^I click on ">" to see plan details for "Retire Confident" Plan$/, async() => {
+  await console.log('When I click on ">" to see plan details for "Retire Confident" Plan');
   expect(await MFGoalsFunctionality.seeRetireConfidentPlanDetails()).to.be.true;
 });
 
-When(/^I click on "(OTHER ACTIONS|EDIT PLAN)" button for "Retire Confident" plan$/, async(buttonText) => {
-  await console.log(`I click on "${buttonText}" button for "Retire Confident" plan`);
+When(/^I click on "(OTHER ACTIONS|EDIT PLAN)" button for "Retire Confident" Plan$/, async(buttonText) => {
+  await console.log(`When I click on "${buttonText}" button for "Retire Confident" Plan`);
   expect(await MFGoalsFunctionality.otherActionsOrEditPlan(buttonText)).to.be.true;
 });
 
-When(/^I click on "(Move Money|Stop All Investments|Close Plan)" from "OTHER ACTIONS" for "Retire Confident" plan$/, async(otherAction) => {
-  await console.log('I click on "Close Plan" among "OTHER ACTIONS" for "Retire Confident" plan');
+When(/^I click on "(Move Money|Stop All Investments|Close Plan)" from "OTHER ACTIONS" for "Retire Confident" Plan$/, async(otherAction) => {
+  await console.log('When I click on "Close Plan" among "OTHER ACTIONS" for "Retire Confident" Plan');
   expect(await MFGoalsFunctionality.doOtherAction(otherAction)).to.be.true;
 });
 
-When(/^I click on "CONFIRM" to "Stop All Investments" for "Retire Confident" plan$/, async() => {
-  await console.log('I click on "CONFIRM" to "Stop All Investments" for "Retire Confident" plan');
+When(/^I click on "CONFIRM" to "Stop All Investments" for "Retire Confident" Plan$/, async() => {
+  await console.log('When I click on "CONFIRM" to "Stop All Investments" for "Retire Confident" Plan');
   expect(await MFGoalsFunctionality.confirmStopAllInvestments()).to.be.true;
 });
 
-When(/^I update "(Retirement Age|Retirement End Age|Current Monthly Expenses|Inflation Percent)" to (\d+) for "Retire Confident" plan$/, async(property, value) => {
-  await console.log(`I update "${property}" to ${value} for "Retire Confident" plan`);
+When(/^I update "(Retirement Age|Retirement End Age|Current Monthly Expenses|Inflation Percent|SIP Increase Percent)" to (\d+) for "Retire Confident" Plan$/, async(property, value) => {
+  await console.log(`When I update "${property}" to ${value} for "Retire Confident" Plan`);
   await MFGoalsFunctionality.updateRetireConfidentGoalProperty(property, value);
 });
 
-When(/^I click "CONTINUE" to replan for "Retire Confident" plan$/, async() => {
-  await console.log('I click "CONFIRM" to replan for "Retire Confident" plan');
+When(/^I click "CONTINUE" to Replan for "Retire Confident" Plan$/, async() => {
+  await console.log('When I click "CONFIRM" to Replan for "Retire Confident" Plan');
   expect(await MFGoalsFunctionality.continueReplanForRetireConfident()).to.be.true;
 });
 
-When(/^I update to replan Existing Savings with (\d+), (\d+), (\d+)$/,
+When(/^I update to Replan Existing Savings with (\d+), (\d+), (\d+)$/,
   async(newFutureMonthlyIncomeFromOtherSources, newExistingSavingsAmount, newExistingSavingsGrowthRate) => {
-    await console.log(`I update to replan Existing Savings with ${newFutureMonthlyIncomeFromOtherSources}, ${newExistingSavingsAmount}, ${newExistingSavingsGrowthRate}`);
+    await console.log(`When I update to Replan Existing Savings with ${newFutureMonthlyIncomeFromOtherSources}, ${newExistingSavingsAmount}, ${newExistingSavingsGrowthRate}`);
     expect(await MFGoalsFunctionality.fillReplanExistingSavingsForm(
       newFutureMonthlyIncomeFromOtherSources, newExistingSavingsAmount, newExistingSavingsGrowthRate
     )).to.be.true;
   }
 );
 
-When(/^I click "CONTINUE" after step 3 of replan for "Retire Confident" plan$/, async() => {
-  await console.log('I click "CONTINUE" after step 3 of replan for "Retire Confident" plan');
+When(/^I click "SHOW PLAN DETAILS" after step 3 of Replan for "Retire Confident" Plan$/, async() => {
+  await console.log('When I click "SHOW PLAN DETAILS" after step 3 of Replan for "Retire Confident" Plan');
+  expect(await MFGoalsFunctionality.showPlanDetails()).to.be.true;
+});
+
+When(/^I click "CONTINUE" with SIP amount for Replan for "Retire Confident" Plan$/, async() => {
+  await console.log('When I click "CONTINUE" with SIP amount for Replan for "Retire Confident" Plan');
   expect(await MFGoalsFunctionality.continueReplanStep3()).to.be.true;
 });
 
-When(/^I click "CONTINUE" at final step of replan for "([^"]*)?" plan$/, async(lifeGoal) => {
-  await console.log('I click "CONTINUE" after step 3 of replan for "Retire Confident" plan');
+When(/^I click "CONTINUE" with Growth Strategy for Replan for "([^"]*)?" Plan$/, async(lifeGoal) => {
+  await console.log('When I click "CONTINUE" with Growth Strategy for Replan for "Retire Confident" Plan');
   expect(await MFGoalsFunctionality.continueReplanFinalStep(lifeGoal)).to.be.true;
 });
 
 Then(/^I should see message "Replan completed successfully"$/, async() => {
-  await console.log('I should see message "Replan completed successfully');
+  await console.log('Then I should see message "Replan completed successfully');
   expect(await MFInvestmentFunctionality.replanCompletedSuccessfully()).to.be.true;
 });

@@ -12,8 +12,8 @@ class MFGoalsFunctionality {
 
   async selectExistingPlanForLifeGoal(lifeGoal) {
     await MFGoalsPage.clickOnExistingPlanForLifeGoal(lifeGoal);
-    return MFGoalsPage.lifeGoalElementIsDisplayed(lifeGoal) &&
-      MFGoalsPage.investmentCalendarHeaderIsDisplayed();
+    return (await MFGoalsPage.lifeGoalElementIsDisplayed(lifeGoal)) &&
+      (await MFGoalsPage.investmentCalendarHeaderIsDisplayed());
   }
 
   async selectShowMeHow(lifeGoal) {
@@ -26,43 +26,43 @@ class MFGoalsFunctionality {
     await MFGoalsPage.enterCurrentMonthlyExpenses(monthlyExpenses);
     await MFGoalsPage.enterRetireAtAge(retireAtAge);
     await MFGoalsPage.enterRetirementEndAge(retirementEndAge);
-    await MFGoalsPage.clickOnCreateRetirementPlanButton();
+    await MFGoalsPage.clickOnCreateAPlanLink();
     return (await MFGoalsPage.existingSavingsAndPlansPageHeaderIsDisplayed());
   }
 
   async fillExistingSavingsForm(existingSavingsAmount, existingSavingsGrowthRate, futureMonthlyIncomeFromOtherSources) {
-    await MFGoalsPage.clickAddExistingSavingsButton();
+    await MFGoalsPage.clickAddExistingSavingsLink();
     await MFGoalsPage.enterExistingSavingsAmount(existingSavingsAmount);
     await MFGoalsPage.enterExistingSavingsAmountGrowthRate(existingSavingsGrowthRate);
     await MFGoalsPage.clickSaveExistingSavingsDetailsButton();
     await MFGoalsPage.enterFutureMonthlyIncomeFromOtherSources(futureMonthlyIncomeFromOtherSources);
-    await MFGoalsPage.clickCalculateMyNeedsButton();
+    await MFGoalsPage.clickCalculateMyNeedLink();
     return (await MFGoalsPage.whatYouNeedToRetireHeaderIsDisplayed());
   }
 
   async fillInflationPercent(inflationPercent) {
     await MFGoalsPage.selectInflationPercent(inflationPercent);
-    await MFGoalsPage.clickShowDetailedPlanButton();
+    await MFGoalsPage.clickShowDetailedPlanLink();
     return (await MFGoalsPage.yourRetirementPlanPageHeaderIsDisplayed());
   }
 
   async continueWithRetirementPlan() {
-    await MFGoalsPage.clickContinueButton();
+    await MFGoalsPage.clickContinueLink();
     return (await MFGoalsPage.congratulationsPageHeaderIsDisplayed());
   }
 
   async createPlanForRetirement() {
-    await MFGoalsPage.clickCreateRetirementPlanFinalButton();
-    return (await MFGoalsPage.activateRetirementPlanHeaderIsDisplayed());
+    await MFGoalsPage.clickCreatePlanFinalButton();
+    return (await MFGoalsPage.activatePlanHeaderIsDisplayed());
   }
 
   async investMoreForGoalPlan() {
-    await MFGoalsPage.clickInvestMoreButtonForGoalPlan();
+    await MFGoalsPage.clickInvestMoreButton();
     return (await MFGoalsPage.iWantToInvestHeaderIsDisplayed());
   }
 
   async otherActionsForGoalPlan() {
-    await MFGoalsPage.clickOtherActionsButtonForGoalPlan();
+    await MFGoalsPage.clickOtherActionsOrEditPlanButton('OTHER ACTIONS');
     return (await MFGoalsPage.startANewSIPHeaderIsDisplayed()) &&
       (await MFGoalsPage.investOneTimeHeaderIsDisplayed());
   }
@@ -123,17 +123,15 @@ class MFGoalsFunctionality {
     await MFGoalsPage.clickContinueButtonForPremierEducationPlan(2);
   }
 
-  async createAPlanOrSignupOrLoginForMutualFundGoalPlan() {
-    const signupOrLoginButtonIsDisplayed = await MFGoalsPage.signupOrLoginButtonIsDisplayed();
-    const createPlanButtonIsDisplayed = await MFGoalsPage.createPlanButtonIsDisplayed();
-    if(signupOrLoginButtonIsDisplayed) {
+  async createAPlanOrSignupOrLoginForLifeGoalPlan() {
+    if(await MFGoalsPage.signupOrLoginButtonIsDisplayed()) {
       await MFGoalsPage.clickSignupOrLoginButton();
       expect(await LoginPage.loginYourAccountToContinueHeaderIsDisplayed()).to.be.true;
       await LoginFunctionality.loginWithUsername(LoginData.username);
       await LoginFunctionality.continueWithPassword();
       await LoginFunctionality.loginWithPassword(LoginData.password);
       return true;
-    } else if(createPlanButtonIsDisplayed) {
+    } else if(await MFGoalsPage.createPlanButtonIsDisplayed()) {
       await MFGoalsPage.clickCreatePlanButton();
       const continueWithPassword = await LoginFunctionality.continueWithPasswordButtonIsDisplayed();
       if (continueWithPassword) {
@@ -156,29 +154,29 @@ class MFGoalsFunctionality {
     return (await MFGoalsPage.howWouldYouLikeYourMoneyToGrowHeaderIsDisplayed());
   }
 
-  async continueWithOneTimeRetireConfidentInvestment() {
-    await MFGoalsPage.clickContinueWithRetireConfidentInvestmentButton();
+  async continueWithOneTimeInvestment() {
+    await MFGoalsPage.clickContinueButton();
     return (await MFGoalsPage.iWouldLikeToInvestOneTimeHeaderIsDisplayed());
   }
 
   async investOneTimeFillAmountAndContinue(amount) {
     await MFGoalsPage.enterInvestOneTimeAmount(amount);
+    await MFGoalsPage.clickContinueLink();
+    return (await MFGoalsPage.fundListHeaderIsDisplayed());
+  }
+
+  async continueWithEveryMonthInvestment() {
     await MFGoalsPage.clickContinueButton();
     return (await MFGoalsPage.fundListHeaderIsDisplayed());
   }
 
-  async continueWithEveryMonthRetireConfidentInvestment() {
-    await MFGoalsPage.clickContinueWithRetireConfidentInvestmentButton();
-    return (await MFGoalsPage.fundListHeaderIsDisplayed());
+  async continueToInvest() {
+    await MFGoalsPage.clickContinueToInvestButton();
+    return (await MFGoalsPage.paymentTypePageHeaderIsDisplayed());
   }
 
-  async continueToInvestWithRetireConfidentInvestment() {
-    await MFGoalsPage.clickContinueToInvestWithRetireConfidentInvestmentButton();
-    return (await MFGoalsPage.paymentTypePageForRetireConfidentHeaderIsDisplayed());
-  }
-
-  async confirmToInvestWithRetireConfidentInvestment() {
-    await MFGoalsPage.clickConfirmToInvestWithRetireConfidentInvestmentButton();
+  async confirmToInvest() {
+    await MFGoalsPage.clickConfirmButton();
   }
 
   async seeRetireConfidentPlanDetails() {
@@ -211,11 +209,11 @@ class MFGoalsFunctionality {
   }
 
   async fillReplanExistingSavingsForm(newFutureMonthlyIncomeFromOtherSources, newExistingSavingsAmount, newExistingSavingsGrowthRate) {
-    await MFGoalsPage.clickEditFutureMonthlyIncomeFromOtherSourcesButton();
+    await MFGoalsPage.clickEditFutureMonthlyIncomeFromOtherSourcesLink();
     expect(await MFGoalsPage.replanFutureMonthlyIncomeFromOtherSourcesLabelIsDisplayed()).to.be.true;
     await MFGoalsPage.enterReplanFutureMonthlyIncomeFromOtherSources(newFutureMonthlyIncomeFromOtherSources);
     await MFGoalsPage.clickOkayButton();
-    await MFGoalsPage.clickEditExternalSavingsForGoalButton();
+    await MFGoalsPage.clickEditExternalSavingsForGoalLink();
     expect(await MFGoalsPage.replanExternalSavingsForGoalLabelIsDisplayed()).to.be.true;
     await MFGoalsPage.enterReplanExternalSavingsForGoal(newExistingSavingsAmount);
     await MFGoalsPage.enterReplanExternalSavingForGoalGrowthRate(newExistingSavingsGrowthRate);
@@ -224,12 +222,8 @@ class MFGoalsFunctionality {
     return (await MFGoalsPage.replanStep3HeaderIsDisplayed());
   }
 
-  async fillReplanSipIncreasePercent(percent) {
-    await MFGoalsPage.clickEditSipIncreasePercentButton();
-    expect(await MFGoalsPage.replanSipIncreasePercentLabelIsDisplayed()).to.be.true;
-    await MFGoalsPage.enterReplanSipIncreasePercent(percent);
-    await MFGoalsPage.clickOkayButton();
-    await MFGoalsPage.clickShowDetailedPlanButton();
+  async showPlanDetails() {
+    await MFGoalsPage.clickShowPlanDetailsButton();
     return (await MFGoalsPage.replanSummaryHeaderIsDisplayed());
   }
 
