@@ -6,6 +6,12 @@ class MFGoalsObjects {
     };
   }
 
+  replanSummaryLifeGoalElement(lifeGoal) {
+    return {
+      web: `//p[text()="${lifeGoal}"]`
+    };
+  }
+
   retireConfidentGoalPageHeader = {
     web: '//h1[contains(text(),"Will you be able to maintain your lifestyle in retirement?")]'
   };
@@ -149,7 +155,7 @@ class MFGoalsObjects {
   };
 
   otherActionsButton = {
-    web: '//button[text()="Other actions"]'
+    web: '//button[text()="Other actions"] | //button[text()="Other Actions"]'
   };
 
   otherActionForGoalPlan(actionType) {

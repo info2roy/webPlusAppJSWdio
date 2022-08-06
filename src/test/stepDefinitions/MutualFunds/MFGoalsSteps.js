@@ -11,7 +11,13 @@ When(/^I select mutual funds life goal as "([^"]*)?"$/, async (lifeGoal) => {
 When(/^I select existing plan for mutual funds life goal "([^"]*)?"$/, async (lifeGoal) => {
   await console.log(`When I select existing plan for mutual funds life goal ${lifeGoal}`);
   this.lifeGoal = lifeGoal;
-  expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal(lifeGoal)).to.be.true;
+  expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal(lifeGoal, true)).to.be.true;
+});
+
+When(/^I select for closure the existing plan for mutual funds life goal "([^"]*)?"$/, async (lifeGoal) => {
+  await console.log(`When I select for closure the existing plan for mutual funds life goal ${lifeGoal}`);
+  this.lifeGoal = lifeGoal;
+  expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal(lifeGoal, false)).to.be.true;
 });
 
 When(/^I click on "SHOW ME HOW" for Life Goal Plan$/, async () => {
@@ -213,5 +219,5 @@ When(/^I click "CONTINUE" with Growth Strategy for Replan for "([^"]*)?" Plan$/,
 
 Then(/^I should see message "Replan completed successfully"$/, async() => {
   await console.log('Then I should see message "Replan completed successfully');
-  expect(await MFInvestmentFunctionality.replanCompletedSuccessfully()).to.be.true;
+  expect(await MFGoalsFunctionality.replanCompletedSuccessfully()).to.be.true;
 });

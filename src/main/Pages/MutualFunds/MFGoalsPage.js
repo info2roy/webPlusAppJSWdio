@@ -17,6 +17,10 @@ class MFGoalsPage {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.lifeGoalElement(lifeGoal)));
   }
 
+  async replanSummaryLifeGoalElementIsDisplayed(lifeGoal) {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.replanSummaryLifeGoalElement(lifeGoal)));
+  }
+
   async validateNavigationToLifeGoalPage(lifeGoal) {
     switch(lifeGoal) {
       case 'Retire Confident':

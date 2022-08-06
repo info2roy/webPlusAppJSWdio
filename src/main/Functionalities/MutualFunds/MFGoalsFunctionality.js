@@ -10,10 +10,13 @@ class MFGoalsFunctionality {
     return (await MFGoalsPage.validateNavigationToLifeGoalPage(lifeGoal));
   }
 
-  async selectExistingPlanForLifeGoal(lifeGoal) {
+  async selectExistingPlanForLifeGoal(lifeGoal, investmentCalendarDisplayed = true) {
     await MFGoalsPage.clickOnExistingPlanForLifeGoal(lifeGoal);
-    return (await MFGoalsPage.lifeGoalElementIsDisplayed(lifeGoal)) &&
-      (await MFGoalsPage.investmentCalendarHeaderIsDisplayed());
+    let status = (await MFGoalsPage.lifeGoalElementIsDisplayed(lifeGoal));
+    if (investmentCalendarDisplayed) {
+      status = status && (await MFGoalsPage.investmentCalendarHeaderIsDisplayed());
+    }
+    return status;
   }
 
   async selectShowMeHow(lifeGoal) {
@@ -234,7 +237,7 @@ class MFGoalsFunctionality {
 
   async continueReplanFinalStep(lifeGoal) {
     await MFGoalsPage.clickContinueReplanButton();
-    return (await MFGoalsPage.lifeGoalElementIsDisplayed(lifeGoal));
+    return (await MFGoalsPage.replanSummaryLifeGoalElementIsDisplayed(lifeGoal));
   }
 
   async replanCompletedSuccessfully() {

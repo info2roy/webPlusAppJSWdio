@@ -12,7 +12,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
   #   When I fill "Retire Confident" form with <age>, <monthlyExpenses>, <retireAtAge>, <retirementEndAge>
   #   When I fill Existing Savings form with <existingSavingsAmount>, <existingSavingsGrowthRate>, <futureMonthlyIncomeFromOtherSources>
   #   When I select inflation rate as <inflationPercent>%
-  #   When I click on CONTINUE with retirementPlan
+  #   When I click on CONTINUE with retirement Plan
   #   When I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan
   #   When I click on "INVEST EVERY MONTH" for Life Goal Plan
   #   When I click "CONTINUE" for "INVEST EVERY MONTH" on the "Retire Confident" Plan
@@ -197,31 +197,31 @@ Feature: Scripbox Investment in Mutual Fund Goals
   #     | One time | 32000 | Immediate | Net Banking | Success |
 
 
-  Scenario Outline: As a logged in user, I am able to do Replan an existing mutual fund goal "Retire Confident"
-    Given I am on the Investment Page
-    When I navigate to the investment tab "Mutual Funds"
-    When I click on "Add new plan" for mutual funds
-    When I select existing plan for mutual funds life goal "Retire Confident"
-    When I click on ">" to see plan details for "Retire Confident" Plan
-    When I click on "EDIT PLAN" button for "Retire Confident" Plan
-    When I update "Retirement Age" to <newRetireAtAge> for "Retire Confident" Plan
-    When I update "Retirement End Age" to <newRetirementEndAge> for "Retire Confident" Plan
-    When I update "Current Monthly Expenses" to <newMonthlyExpenses> for "Retire Confident" Plan
-    When I update "Inflation Percent" to <newInflationPercent> for "Retire Confident" Plan
-    When I click "CONTINUE" to Replan for "Retire Confident" Plan
-    When I update to Replan Existing Savings with <newFutureMonthlyIncomeFromOtherSources>, <newExistingSavingsAmount>, <newExistingSavingsGrowthRate>
-    When I update "SIP Increase Percent" to <sipIncreasePercent> for "Retire Confident" Plan
-    When I click "SHOW PLAN DETAILS" after step 3 of Replan for "Retire Confident" Plan
-    When I click "CONTINUE" with SIP amount for Replan for "Retire Confident" Plan
-    When I click "CONTINUE" with Growth Strategy for Replan for "Retire Confident" Plan
-    When I click "CONTINUE TO INVEST" on the "Retire Confident" Plan
-    When I select Payment type as <paymentType>
-    When I click "CONFIRM" on the "Retire Confident" investment
-    Then I should see message "Replan completed successfully"
-    Then I click on "HOME" button
-    Examples:
-      | newRetireAtAge | newRetirementEndAge | newMonthlyExpenses | newInflationPercent | newFutureMonthlyIncomeFromOtherSources | newExistingSavingsAmount | newExistingSavingsGrowthRate | sipIncreasePercent | paymentType |
-      | 65 | 85 | 30000 | 5 | 20000 | 300000 | 10 | 7 | ScheduledOneClickInvest |
+  # Scenario Outline: As a logged in user, I am able to do Replan an existing mutual fund goal "Retire Confident"
+  #   Given I am on the Investment Page
+  #   When I navigate to the investment tab "Mutual Funds"
+  #   When I click on "Add new plan" for mutual funds
+  #   When I select existing plan for mutual funds life goal "Retire Confident"
+  #   When I click on ">" to see plan details for "Retire Confident" Plan
+  #   When I click on "EDIT PLAN" button for "Retire Confident" Plan
+  #   When I update "Retirement Age" to <newRetireAtAge> for "Retire Confident" Plan
+  #   When I update "Retirement End Age" to <newRetirementEndAge> for "Retire Confident" Plan
+  #   When I update "Current Monthly Expenses" to <newMonthlyExpenses> for "Retire Confident" Plan
+  #   When I update "Inflation Percent" to <newInflationPercent> for "Retire Confident" Plan
+  #   When I click "CONTINUE" to Replan for "Retire Confident" Plan
+  #   When I update to Replan Existing Savings with <newFutureMonthlyIncomeFromOtherSources>, <newExistingSavingsAmount>, <newExistingSavingsGrowthRate>
+  #   When I update "SIP Increase Percent" to <sipIncreasePercent> for "Retire Confident" Plan
+  #   When I click "SHOW PLAN DETAILS" after step 3 of Replan for "Retire Confident" Plan
+  #   When I click "CONTINUE" with SIP amount for Replan for "Retire Confident" Plan
+  #   When I click "CONTINUE" with Growth Strategy for Replan for "Retire Confident" Plan
+  #   When I click "CONTINUE TO INVEST" on the "Retire Confident" Plan
+  #   When I select Payment type as <paymentType>
+  #   When I click "CONFIRM" on the "Retire Confident" investment
+  #   Then I should see message "Replan completed successfully"
+  #   Then I click on "HOME" button
+  #   Examples:
+  #     | newRetireAtAge | newRetirementEndAge | newMonthlyExpenses | newInflationPercent | newFutureMonthlyIncomeFromOtherSources | newExistingSavingsAmount | newExistingSavingsGrowthRate | sipIncreasePercent | paymentType |
+  #     | 65 | 85 | 30000 | 5 | 20000 | 300000 | 10 | 7 | ScheduledOneClickInvest |
 
   Scenario Outline: As a logged in user, I am able close an existing mutual fund goal "Retire Confident"
     Given I am on the Investment Page
@@ -236,7 +236,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
     Given I am on the Investment Page
     When I navigate to the investment tab "Mutual Funds"
     When I click on "Add new plan" for mutual funds
-    When I select existing plan for mutual funds life goal "Retire Confident"
+    When I select for closure the existing plan for mutual funds life goal "Retire Confident"
     When I click on ">" to see plan details for "Retire Confident" Plan
     When I click on "OTHER ACTIONS" button for "Retire Confident" Plan
     When I click on "Close Plan" from "OTHER ACTIONS" for "Retire Confident" Plan
