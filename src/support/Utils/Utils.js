@@ -152,7 +152,7 @@ class Utils {
 
   async scrollVerticalUntilTextIntoViewForAndroid(textToBeIntoView) {
     const func = 'new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView';
-    await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
+    return (await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`));
   }
 
   async scrollHorizontalUntilTextIntoViewForAndroid(textToBeIntoView) {

@@ -219,20 +219,22 @@ class MFInvestmentPage {
     }
   }
 
-  async clickOnAddNewPlan() {
-    Utils.clickElement(MFInvestmentObjects.addNewPlan);
+  async clickOnAddNewPlanOrExploreOtherPlans() {
+    if (Device.isAndroidApp()) {
+      const addNewPlanFound = await Utils.scrollVerticalUntilTextIntoViewForAndroid(MFInvestmentObjects.addNewPlanText);
+      if (!addNewPlanFound) {
+        const exploreOtherPlansFound = await Utils.scrollVerticalUntilTextIntoViewForAndroid(
+          MFInvestmentObjects.exploreOtherPlansText);
+        if (!exploreOtherPlansFound) {
+          throw 'One of "Add New Plan" or "Explore Other Plans" should be present';
+        }
+      }
+    }
+    Utils.clickElement(MFInvestmentObjects.addNewPlanOrExploreOtherPlans);
   }
 
-  async addNewPlanIsDisplayed() {
-    return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlan));
-  }
-
-  async clickOnExploreOtherPlans() {
-    Utils.clickElement(MFInvestmentObjects.exploreOtherPlans);
-  }
-
-  async exploreOtherPlansIsDisplayed() {
-    return (await Utils.elementIsDisplayed(MFInvestmentObjects.exploreOtherPlans));
+  async addNewPlanOrExploreOtherPlansIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanOrExploreOtherPlans));
   }
 
   async addNewPlanPageHeaderIsDisplayed() {

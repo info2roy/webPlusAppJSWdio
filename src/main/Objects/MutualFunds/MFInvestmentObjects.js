@@ -188,12 +188,17 @@ class MFInvestmentObjects {
     app: '.android.widget.TextView'
   };
 
-  addNewPlan = {
-    web: '//div[text()="Add new plan"]'
+  addNewPlanText = {
+    app: 'Add new plan'
   };
 
-  exploreOtherPlans = {
-    web: '//div[text()="Explore other plans"]'
+  exploreOtherPlansText = {
+    app: 'Explore other plans'
+  };
+
+  addNewPlanOrExploreOtherPlans = {
+    web: '//div[text()="Add new plan"] | //div[text()="Explore other plans"]',
+    app: '//div[text()="Add new plan"] | //div[text()="Explore other plans"]'
   };
 
   addNewPlanPageHeader = {
