@@ -341,6 +341,10 @@ class MFGoalsObjects {
     web: '//div[contains(text(),"I would like to invest Rs")]'
   };
 
+  noInvestmentsToCancelMessage = {
+    web: '//p[text(),"There are no investments to cancel in this plan."]'
+  };
+
   confirmButton = {
     web: '//button[contains(text(),"Confirm")]'
   };

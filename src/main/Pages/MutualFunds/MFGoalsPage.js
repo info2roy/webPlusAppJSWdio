@@ -331,6 +331,10 @@ class MFGoalsPage {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.paymentTypePageHeader));
   }
 
+  async noInvestmentsToCancelMessageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.noInvestmentsToCancelMessage));
+  }
+
   async clickConfirmButton() {
     await Utils.clickElement(MFGoalsObjects.confirmButton);
   }

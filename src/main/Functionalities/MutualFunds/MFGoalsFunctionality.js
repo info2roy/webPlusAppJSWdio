@@ -198,8 +198,10 @@ class MFGoalsFunctionality {
   }
 
   async confirmStopAllInvestments() {
-    await MFGoalsPage.clickConfirmButton();
-    return (await MFGoalsPage.planCancelMessageIsDisplayed());
+    if(!(await MFGoalsPage.noInvestmentsToCancelMessageIsDisplayed())) {
+      await MFGoalsPage.clickConfirmButton();
+      return (await MFGoalsPage.planCancelMessageIsDisplayed());
+    }
   }
 
   async updateRetireConfidentGoalProperty(property, value) {
