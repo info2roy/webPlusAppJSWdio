@@ -106,7 +106,7 @@ class HomeFunctionality {
       default:
         await console.log(user + ' User not available to add. Please add in login data to proceed');
     }
-    await HomePage.selectLoginOption();
+    await LoginPage.clickContinueOrNextButton();
     await LoginPage.clickContinueWithPasswordButton();
     await LoginPage.enterPassword(loginData.password);
     await LoginPage.clickContinueLoginButton();
