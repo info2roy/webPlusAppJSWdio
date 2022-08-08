@@ -5,6 +5,9 @@ const Device = require('../../support/libraries/Device');
 class LoginPage {
   async enterUserId(emailID) {
     await Utils.setInputField(emailID, LoginObjects.userIdField);
+    if (Device.isAndroidApp()) {
+      await Utils.clickElement(LoginObjects.loginPageBanner);
+    }
   }
 
   async clickContinueOrNextButton() {
@@ -12,9 +15,7 @@ class LoginPage {
   }
 
   async clickContinueWithPasswordButton() {
-    if (Device.isWeb()) {
-      await Utils.clickElement(LoginObjects.continueWithPasswordButton);
-    }
+    await Utils.clickElement(LoginObjects.continueWithPasswordButton);
   }
 
   async firstLoginPageHeaderIsDisplayed() {
@@ -45,6 +46,10 @@ class LoginPage {
 
   async enterPassword(password) {
     await Utils.setInputField(password, LoginObjects.passwordField);
+    await browser.pause(2000); // App slow to react. Added 2 secs pause.
+    if (Device.isAndroidApp()) {
+      await Utils.clickElement(LoginObjects.PasswordPageBanner);
+    }
   }
 
   async clickContinueLoginButton() {

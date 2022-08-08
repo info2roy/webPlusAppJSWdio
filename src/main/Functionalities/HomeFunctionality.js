@@ -84,6 +84,34 @@ class HomeFunctionality {
   async myscripboxLoginPageLaunched() {
     return await HomePage.myScripboxLoginPageIsDisplayed();
   }
+
+  async performLoginApp(user) {
+    await HomePage.selectLoginOption();
+    switch (user.toString()) {
+      case 'user180756':
+        await LoginPage.enterUserId(loginData.user180756);
+        break;
+      case 'user189182':
+        await LoginPage.enterUserId(loginData.user189182);
+        break;
+      case 'user120405':
+        await LoginPage.enterUserId(loginData.user120405);
+        break;
+      case 'user120409':
+        await LoginPage.enterUserId(loginData.user120409);
+        break;
+      case 'user123473':
+        await LoginPage.enterUserId(loginData.user123473);
+        break;
+      default:
+        await console.log(user + ' User not available to add. Please add in login data to proceed');
+    }
+    await LoginPage.clickContinueOrNextButton();
+    await LoginPage.clickContinueWithPasswordButton();
+    await LoginPage.enterPassword(loginData.password);
+    await LoginPage.clickContinueLoginButton();
+    await DashboardFunctionality.validate();
+  }
 }
 
 module.exports = new HomeFunctionality();
