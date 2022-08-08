@@ -26,7 +26,7 @@ exports.config = {
   // port: 52033,
   // path: '/wd/hub',
   specs: [
-    './src/test/features/MyWealthPage.feature'
+    './src/test/features/MutualFunds/Goals/RetireConfident/MFGoalRetireConfidentSIP.feature'
   ],
   // Patterns to exclude.
   exclude: [

@@ -1,25 +1,25 @@
-const device = require('../libraries/Device');
+const Device = require('../libraries/Device');
 const { expect } = require('chai');
 const env = require('../../config/env');
 
 class Utils {
   getLocator(object) {
-    if (device.isMobileWeb()) {
+    if (Device.isMobileWeb()) {
       if (object.hasOwnProperty('mobileweb')) {
         return object.mobileweb;
       }
       return object.web;
-    } else if (device.isDesktop()) {
+    } else if (Device.isDesktop()) {
       if (object.hasOwnProperty('desktop')) {
         return object.desktop;
       }
       return object.web;
-    } else if (device.isAndroidApp()) {
+    } else if (Device.isAndroidApp()) {
       if (object.hasOwnProperty('android')) {
         return object.android;
       }
       return object.app;
-    } else if (device.isiOSApp()) {
+    } else if (Device.isiOSApp()) {
       if (object.hasOwnProperty('ios')) {
         return object.ios;
       }
