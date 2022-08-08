@@ -13,7 +13,7 @@ class LoginObjects {
 
   userIdField = { web: '#test-email-input', app: this.loginCredentialsTextAndroid };
 
-  continueOrNextButton = { web: '#test-login-next-button', app: '//*[@text="NEXT"]' };
+  continueOrNextButton = { web: '#test-login-next-button', app: '//*[@text="Login"]' };
 
   continueWithPasswordButton = { web: '//button[contains(text(),"Continue with password")]', app: '//*[@text="Continue with Password"]' };
 
