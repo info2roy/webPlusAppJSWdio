@@ -4,18 +4,18 @@ exports.config = {
   ...config,
 
   ...{
-    host: process.env.SELENIUM_HUB_URL || 'http://localhost-testonly',
+    host: process.env.SELENIUM_HUB_URL || '',
     /*
     Enable chromedriver service to execute tests in local.
     Command to execute: ./node_modules/.bin/wdio wdio.responsive.conf.js
     */
-    // services: ['chromedriver'],
+    services: ['chromedriver'],
     /*
     Enable docker service and port to execute tests in docker.
     Command to execute: npm test
     */
-    port: 443,
-    services: ['docker'],
+    // port: 443,
+    // services: ['docker'],
 
     // For mobile web platform
     capabilities: [{
@@ -31,7 +31,6 @@ exports.config = {
       },
     }],
 
-    baseUrl: 'https://uat-andromeda-38-uat.scripbox.org'
     // baseUrl: 'https://stag-myscripbox-2-feature-qa-automation.scripbox.org/'
   }
 };
