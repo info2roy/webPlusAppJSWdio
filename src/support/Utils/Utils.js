@@ -80,8 +80,7 @@ class Utils {
   async setInputField(value, selector) {
     await this.elementIsDisplayed(selector);
     const myButton = await $(this.getLocator(selector));
-    await myButton.addValue(value);
-    // await myButton.setValue(value);
+    await myButton.setValue(value);
   }
 
   async setTextObject(value, webElement) {
