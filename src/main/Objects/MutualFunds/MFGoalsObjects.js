@@ -2,22 +2,26 @@ class MFGoalsObjects {
 
   lifeGoalElement(lifeGoal) {
     return {
-      web: `//div[text()="${lifeGoal}"]`
+      web: `//div[text()="${lifeGoal}"]`,
+      app: `//*[text()="${lifeGoal}"]`,
     };
   }
 
   replanSummaryLifeGoalElement(lifeGoal) {
     return {
-      web: `//p[text()="${lifeGoal}"]`
+      web: `//p[text()="${lifeGoal}"]`,
+      app: `//*[text()="${lifeGoal}"]`
     };
   }
 
   retireConfidentGoalPageHeader = {
-    web: '//h1[contains(text(),"Will you be able to maintain your lifestyle in retirement?")]'
+    web: '//h1[contains(text(),"Will you be able to maintain your lifestyle in retirement?")]',
+    app: '//*[contains(text(),"Will you be able to maintain your lifestyle in retirement?")]'
   };
 
   premierEducationGoalPageHeader = {
-    web: '//h1[contains(text(),"Are you investing enough for your child\'s college education?")]'
+    web: '//h1[contains(text(),"Are you investing enough for your child\'s college education?")]',
+    app: '//*[contains(text(),"Are you investing enough for your child\'s college education?")]'
   };
 
   lifeGoalExistingPlanElement(lifeGoal) {
