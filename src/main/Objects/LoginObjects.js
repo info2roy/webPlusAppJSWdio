@@ -1,6 +1,10 @@
 class LoginObjects {
   loginCredentialsTextAndroid = '//*[@class="android.widget.EditText" and @package="com.scripbox.takecharge"]';
 
+  loginPageBanner = { app: '//*[@text="All things good for your wealth, under one roof."]' };
+
+  PasswordPageBanner = { app: '//*[@text="Enter Password"]' };
+
   stagingUserIdField = { web: '.login-email' };
 
   stagingPasswordField = { web: '#password'};
@@ -11,7 +15,7 @@ class LoginObjects {
 
   continueOrNextButton = { web: '#test-login-next-button', app: '//*[@text="NEXT"]' };
 
-  continueWithPasswordButton = { web: '//button[contains(text(),"Continue with password")]' };
+  continueWithPasswordButton = { web: '//button[contains(text(),"Continue with password")]', app: '//*[@text="Continue with Password"]' };
 
   firstLoginPageHeader = { web: '//label[@class="signup-email-text"]',
     app: '//*[@text="Login / Signup"]' };
@@ -26,7 +30,7 @@ class LoginObjects {
 
   passwordField = { web: 'input#user_password', app: this.loginCredentialsTextAndroid };
 
-  continueLoginButton = { web: 'button#test-signup-next-button', app: '//*[@text="CONTINUE"]' };
+  continueLoginButton = { web: 'button#test-signup-next-button', app: '//*[@text="Continue"]' };
 
   startExploring = { app: '//*[@text="Start exploring"]' };
 
