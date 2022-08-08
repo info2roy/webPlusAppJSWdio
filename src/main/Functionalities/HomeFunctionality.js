@@ -103,6 +103,9 @@ class HomeFunctionality {
       case 'user120405':
         await LoginPage.enterUserId(loginData.user120405);
         break;
+      case 'user120406':
+        await LoginPage.enterUserId(loginData.user120406);
+        break;
       case 'user120409':
         await LoginPage.enterUserId(loginData.user120409);
         break;
