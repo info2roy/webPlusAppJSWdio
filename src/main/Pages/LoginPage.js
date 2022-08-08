@@ -52,7 +52,7 @@ class LoginPage {
     await Utils.setInputField(password, LoginObjects.passwordField);
     await browser.pause(2000); // App slow to react. Added 2 secs pause.
     if (Device.isAndroidApp()) {
-      await Utils.clickElement(LoginObjects.PasswordPageBanner);
+      await Utils.clickElement(LoginObjects.passwordPageBanner);
     }
   }
 

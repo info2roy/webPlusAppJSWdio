@@ -3,7 +3,7 @@ class LoginObjects {
 
   loginPageBanner = { app: '//*[@text="All things good for your wealth, under one roof."]' };
 
-  PasswordPageBanner = { app: '//*[@text="Enter Password"]' };
+  passwordPageBanner = { app: '//*[@text="Enter Password"] | //*[@text="Welcome back"]' };
 
   stagingUserIdField = { web: '.login-email' };
 
