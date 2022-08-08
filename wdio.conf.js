@@ -22,11 +22,11 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  port: 4723,
+  // port: 4723,
   // port: 52033,
   // path: '/wd/hub',
   specs: [
-    './src/test/features/LoginViaHomepage.feature'
+    './src/test/features/MyWealthPage.feature'
   ],
   // Patterns to exclude.
   exclude: [
