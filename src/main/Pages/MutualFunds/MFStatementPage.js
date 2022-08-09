@@ -11,25 +11,25 @@ class MFStatementPage {
   async navigateToMFStatementPage(mfOption) {
     switch (mfOption.toString()) {
       case 'Investment history':
-        if(Device.isAndroidApp()){
+        if (Device.isAndroidApp()) {
           Utils.scrollHorizontalUntilTextIntoViewForAndroid(MFStatementObjects.investmentHistoryTab);
         }
         await Utils.clickElement(MFStatementObjects.investmentHistoryTab);
         break;
       case 'Fund holdings':
-        if(Device.isAndroidApp()){
+        if (Device.isAndroidApp()) {
           Utils.scrollHorizontalUntilTextIntoViewForAndroid(MFStatementObjects.fundHoldingsTab);
         }
         await Utils.clickElement(MFStatementObjects.fundHoldingsTab);
         break;
       case 'Tax statements':
-        if(Device.isAndroidApp()){
+        if (Device.isAndroidApp()) {
           Utils.scrollHorizontalUntilTextIntoViewForAndroid(MFStatementObjects.taxStatementsTab);
         }
         await Utils.clickElement(MFStatementObjects.taxStatementsTab);
         break;
       case 'Capital gains':
-        if(Device.isAndroidApp()){
+        if (Device.isAndroidApp()) {
           Utils.scrollHorizontalUntilTextIntoViewForAndroid(MFStatementObjects.capitalGainsTab);
         }
         await Utils.clickElement(MFStatementObjects.capitalGainsTab);

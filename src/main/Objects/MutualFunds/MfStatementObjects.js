@@ -8,8 +8,10 @@ class MfStatementObjects {
 
   capitalGainsTab = { web: '//*[text()="Capital gains"]', app: '//*[@text="Capital gains"]' };
 
-  investmentHistoryFundFoundHeader = { web: '//*[contains(text(),"funds found") or contains(text(),"fund found")]', 
-    app: '//*[@text="Start investing" or @text="No investments to show"]' };
+  investmentHistoryFundFoundHeader = {
+    web: '//*[contains(text(),"funds found") or contains(text(),"fund found")]',
+    app: '//*[@text="Start investing" or @text="No investments to show"]'
+  };
 
   fundHoldingsCheckbox = { web: '//*[text()="With empty holdings"]' };
 
@@ -27,6 +29,9 @@ class MfStatementObjects {
 
   investmentHistoryDownload = { web: '//*[text()="Download"]' };
 
-  statementsAndTaxReportsHeader = { web: '//div[contains(@class,"heading-sub-container")]//div[text()="Statements"]', app: '//*[@text="Tax statements"]' };
+  statementsAndTaxReportsHeader = {
+    web: '//div[contains(@class,"heading-sub-container")]//div[text()="Statements"]',
+    app: '//*[@text="Tax statements"]'
+  };
 }
 module.exports = new MfStatementObjects();
