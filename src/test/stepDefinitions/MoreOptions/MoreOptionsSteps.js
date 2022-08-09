@@ -25,8 +25,8 @@ When(/^I select option "Account and Family Information"$/, async () => {
 
 When(/^I select option "Statements and Tax Reports"$/, async () => {
   await console.log('When I select option "Statements and Tax Reports"');
-  await DashboardFunctionality.selectStatementsAndTaxReports();
-  expect(await MfStatementfunctionality.MFPageLaunched()).to.be.true;
+  await MoreOptionsFunctionality.selectStatementsAndTaxReports();
+  expect(await MfStatementfunctionality.statementsAndTaxReportPageLaunched()).to.be.true;
 });
 
 When(/^I select option "Notification Preferences"$/, async () => {

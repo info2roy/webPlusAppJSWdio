@@ -33,6 +33,10 @@ class MoreOptionsFunctionality {
     await MoreOptionsPage.selectAccountFamilyInformation();
   }
 
+  async selectStatementsAndTaxReports() {
+    await MoreOptionsPage.navigateToStatementsAndReports();
+  }
+
   async selectNotificationPreferences() {
     await MoreOptionsPage.selectNotificationPreferences();
   }

@@ -7,8 +7,8 @@ class MFStatementFunctionality {
     return (await MfStatementPage.validateMFPageLoad(mfOption.toString()));
   }
 
-  async MFPageLaunched() {
-    return (await MfStatementPage.MFPageHeaderIsDisplayed());
+  async statementsAndTaxReportPageLaunched() {
+    return (await MfStatementPage.statementsAndTaxReportPageHeaderIsDisplayed());
   }
 }
 

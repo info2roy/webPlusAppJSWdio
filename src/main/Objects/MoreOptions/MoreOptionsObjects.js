@@ -46,8 +46,9 @@ class MoreOptionsPageObjects {
     web: '//div[text()="Account & Family Information"]'
   };
 
-  statementsAndTaxReportsOption = {
-    web: '//div[text()="Statements & Tax Reports"]'
+  statementsAndTaxReportsOption = { 
+    web: '//div[text()="Statements & Tax Reports"]', 
+    app: '//android.widget.TextView[@text="Statements & reports"]'
   };
 
   notificationPreferencesOption = {

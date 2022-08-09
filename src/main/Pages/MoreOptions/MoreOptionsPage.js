@@ -88,6 +88,14 @@ class MoreOptionsPage {
     return await Utils.elementIsDisplayed(MoreOptionsObjects.twitterImage);
   }
 
+  async navigateToStatementsAndReports() {
+    if (Device.isAndroidApp()) {
+      await console.log('Scrolling to Statements & Reports section');
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.statementsAndTaxReportsOption);
+    }
+    await Utils.clickElement(MoreOptionsObjects.statementsAndTaxReportsOption);
+  }
+
   async selectPersonalInformation() {
     if (Device.isAndroidApp()) {
       await console.log('AndroidApp: click on Personal Infomation requires scrolling until it comes into view');
