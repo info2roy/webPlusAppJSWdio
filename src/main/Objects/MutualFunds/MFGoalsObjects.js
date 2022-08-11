@@ -556,5 +556,42 @@ class MFGoalsObjects {
     web: '//div[text()="Replan completed successfully"]'
   };
 
+  editCollegeStartYearLink = {
+    web: '//div[text()="College will begin in"]/parent::div/following-sibling::div/div'
+  };
+
+  replanCollegeStartYearLabel = {
+    web: '//div[contains(text(),"When will") and contains(text(),"go to") and contains(text(),"college")]'
+  };
+
+  replanCollegeStartYearField = {
+    web: 'input#grade-input'
+  };
+
+  editCurrentYearFeesLink(collegeType) {
+    return {
+      web: `//div[text()="Planning for a '${collegeType}' with current year's fees of"]/parent::div/following-sibling::div/div[1]`
+    };
+  }
+
+  replanCurrentYearFeesLabel = {
+    web: '//div[contains(text(),"Current year college fees?")]'
+  };
+
+  replanCurrentYearFeesField = {
+    web: 'input#grade-input'
+  };
+
+  editAnnualFeesIncreasePercentLink = {
+    web: `//div[text()="Annual increase in college fees"]/parent::div/following-sibling::div/div[1]`
+  };
+
+  replanAnnualFeesIncreasePercentLabel = {
+    web: '//div[contains(text(),"Annual increase in college fees")]'
+  };
+
+  replanAnnualFeesIncreasePercentField = {
+    web: '//input'
+  };
 }
 module.exports = new MFGoalsObjects();

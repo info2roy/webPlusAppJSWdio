@@ -257,5 +257,9 @@ class MFGoalsFunctionality {
     return (await MFGoalsPage.replanCompletedSuccessfullyHeaderIsDisplayed());
   }
 
+  async updatePremierEducationGoalProperty(property, value) {
+    await MFGoalsPage.updatePremierEducationGoalProperty(property, value);
+  }
+
 }
 module.exports = new MFGoalsFunctionality();

@@ -30,6 +30,17 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I click on "Add new plan" for mutual funds
     When I select existing plan for mutual funds life goal "Premier Education"
     When I click on ">" to see plan details for "Premier Education" Plan
+    When I click on "EDIT PLAN" button for "Premier Education" Plan
+    When I update "College Start Year" to <newCollegeStartYear> for "Premier Education" Plan
+    When I update "Current Year Fees" to <newCurrentYearFees> for "Premier Education" Plan
+    When I update "Annual Fees Increase Percent" to <newAnnualFeesIncreasePercent> for "Premier Education" Plan
+    When I click "CONTINUE" to Replan for "Premier Education" Plan
+
+    Given I am on the Investment Page
+    When I navigate to the investment tab "Mutual Funds"
+    When I click on "Add new plan" for mutual funds
+    When I select existing plan for mutual funds life goal "Premier Education"
+    When I click on ">" to see plan details for "Premier Education" Plan
     When I click on "OTHER ACTIONS" button for "Premier Education" Plan
     When I click on "Stop All Investments" from "OTHER ACTIONS" for "Premier Education" Plan
     When I click on "CONFIRM" to "Stop All Investments" for "Premier Education" Plan
@@ -44,7 +55,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I click on "CLOSE THIS PLAN" button for "Premier Education" Plan
     Then I click on "GO TO DASHBOARD" button
     Examples:
-      | class | collegeType | childname | yearlyFees | paymentType |
-      #| 1  | Government Colleges  | child1 | 100000 | ScheduledOneClickInvest |
-      | 2  | Private Colleges  | child2 | 200000 | ScheduledOneClickInvest |
-      #| 3  | Premier Private Colleges  | child3 | 300000 | ScheduledOneClickInvest |
+      | class | collegeType | childname | yearlyFees | paymentType | newCollegeStartYear | newCurrentYearFees | newAnnualFeesIncreasePercent |
+      #| 1  | Government Colleges  | child1 | 100000 | ScheduledOneClickInvest | 2035 | 150000 | 9 |
+      | 2  | Private Colleges  | child2 | 200000 | ScheduledOneClickInvest | 2035 | 250000 | 8 |
+      #| 3  | Premier Private Colleges  | child3 | 300000 | ScheduledOneClickInvest | 2035 | 350000 | 7 | 

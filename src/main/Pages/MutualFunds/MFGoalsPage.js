@@ -544,6 +544,31 @@ class MFGoalsPage {
   async replanCompletedSuccessfullyHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.replanCompletedSuccessfullyHeader));
   }
+
+  async updatePremierEducationGoalProperty(property, value) {
+    switch(property) {
+      case 'College Start Year':
+        await Utils.clickElement(MFGoalsObjects.editCollegeStartYearLink);
+        expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanCollegeStartYearField)).to.be.true;
+        await Utils.setInputField(value, MFGoalsObjects.replanCollegeStartYearField);
+        await Utils.clickElement(MFGoalsObjects.okayButton);
+        break;
+      case 'Current Year Fees':
+        await Utils.clickElement(MFGoalsObjects.editCurrentYearFeesLink);
+        expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanCurrentYearFeesLabel)).to.be.true;
+        await Utils.setInputField(value, MFGoalsObjects.replanCurrentYearFeesField);
+        await Utils.clickElement(MFGoalsObjects.okayButton);
+        break;
+      case 'Annual Fees Increase Percent':
+        await Utils.clickElement(MFGoalsObjects.editAnnualFeesIncreasePercentLink);
+        expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanAnnualFeesIncreasePercentLabel)).to.be.true;
+        await Utils.setInputField(value, MFGoalsObjects.replanAnnualFeesIncreasePercentField);
+        await Utils.clickElement(MFGoalsObjects.okayButton);
+        break;
+      default:
+        console.log(`Unsupported Premier Education property ${property}`);
+    }
+  }
 }
 
 module.exports = new MFGoalsPage();

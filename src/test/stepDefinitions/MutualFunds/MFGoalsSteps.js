@@ -226,3 +226,8 @@ Then(/^I should see message "Replan completed successfully"$/, async() => {
   await console.log('Then I should see message "Replan completed successfully');
   expect(await MFGoalsFunctionality.replanCompletedSuccessfully()).to.be.true;
 });
+
+When(/^I update "(College Start Year|Current Year Fees|Annual Fees Increase Percent)" to (\d+) for "Premium Education" Plan$/, async(property, value) => {
+  await console.log(`When I update "${property}" to ${value} for "Premium Education" Plan`);
+  await MFGoalsFunctionality.updatePremierEducationGoalProperty(property, value);
+});
