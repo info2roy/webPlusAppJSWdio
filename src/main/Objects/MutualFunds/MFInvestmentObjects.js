@@ -198,7 +198,7 @@ class MFInvestmentObjects {
 
   addNewPlanOrExploreOtherPlans = {
     web: '//div[text()="Add new plan"] | //div[text()="Explore other plans"]',
-    app: '//div[text()="Add new plan"] | //div[text()="Explore other plans"]'
+    app: '//*[@text="Add new plan"] | //*[@text="Explore other plans"]'
   };
 
   addNewPlanPageHeader = {

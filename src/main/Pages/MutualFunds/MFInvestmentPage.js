@@ -233,10 +233,6 @@ class MFInvestmentPage {
     Utils.clickElement(MFInvestmentObjects.addNewPlanOrExploreOtherPlans);
   }
 
-  async addNewPlanOrExploreOtherPlansIsDisplayed() {
-    return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanOrExploreOtherPlans));
-  }
-
   async addNewPlanPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageHeader));
   }

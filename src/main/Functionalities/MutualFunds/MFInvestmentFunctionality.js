@@ -88,11 +88,7 @@ class MFInvestmentFunctionality {
   }
 
   async addNewPlanOrExploreOtherPlans() {
-    if (await MFInvestmentPage.addNewPlanOrExploreOtherPlansIsDisplayed()) {
-      await MFInvestmentPage.clickOnAddNewPlanOrExploreOtherPlans();
-    } else {
-      throw 'One of "Add New Plan" or "Explore Other Plans" should be present';
-    }
+    await MFInvestmentPage.clickOnAddNewPlanOrExploreOtherPlans();
   }
 
   async addNewPlanPageLaunched() {

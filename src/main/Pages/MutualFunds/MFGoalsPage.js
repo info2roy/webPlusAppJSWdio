@@ -51,6 +51,9 @@ class MFGoalsPage {
   }
 
   async clickOnShowMeHowButton() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MFGoalsObjects.showMeHowText);
+    }
     await Utils.clickElement(MFGoalsObjects.showMeHowButton);
   }
 
@@ -80,7 +83,12 @@ class MFGoalsPage {
   }
 
   async enterRetireAtAge(retireAtAge) {
-    await Utils.setInputField(retireAtAge, MFGoalsObjects.retireAtAgeField);
+    const selector = MFGoalsObjects.retireAtAgeOption(retireAtAge);
+    if (selector == undefined) {
+      await Utils.setInputField(retireAtAge, MFGoalsObjects.retireAtAgeField);
+    } else {
+      await Utils.clickElement(selector);
+    }
   }
 
   async enterRetirementEndAge(retirementEndAge) {

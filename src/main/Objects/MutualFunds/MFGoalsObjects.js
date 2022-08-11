@@ -3,25 +3,25 @@ class MFGoalsObjects {
   lifeGoalElement(lifeGoal) {
     return {
       web: `//div[text()="${lifeGoal}"]`,
-      app: `//*[text()="${lifeGoal}"]`,
+      app: `//*[@text="${lifeGoal}"]`,
     };
   }
 
   replanSummaryLifeGoalElement(lifeGoal) {
     return {
       web: `//p[text()="${lifeGoal}"]`,
-      app: `//*[text()="${lifeGoal}"]`
+      app: `//*[@text="${lifeGoal}"]`
     };
   }
 
   retireConfidentGoalPageHeader = {
     web: '//h1[contains(text(),"Will you be able to maintain your lifestyle in retirement?")]',
-    app: '//*[contains(text(),"Will you be able to maintain your lifestyle in retirement?")]'
+    app: '//*[contains(@text,"Will you be able to maintain your lifestyle in retirement?")]'
   };
 
   premierEducationGoalPageHeader = {
     web: '//h1[contains(text(),"Are you investing enough for your child\'s college education?")]',
-    app: '//*[contains(text(),"Are you investing enough for your child\'s college education?")]'
+    app: '//*[contains(@text,"Are you investing enough for your child\'s college education?")]'
   };
 
   lifeGoalExistingPlanElement(lifeGoal) {
@@ -38,20 +38,28 @@ class MFGoalsObjects {
     web: '//div[text()="Investment Calendar"]'
   };
 
+  showMeHowText = {
+    app: 'SHOW ME HOW'
+  };
+
   showMeHowButton = {
-    web: '//button[contains(text(),"Show me how")]'
+    web: '//button[contains(text(),"Show me how")]',
+    app: '//android.widget.Button[@text="SHOW ME HOW"]'
   };
 
   retireConfidentGoalSectionHeader = {
-    web: '//p[contains(text(),"Scripbox Retire Confident")]'
+    web: '//p[contains(text(),"Scripbox Retire Confident")]',
+    app: '//*[@text="Scripbox Retire Confident"]'
   };
 
   premierEducationGoalSectionHeader = {
-    web: '//p[contains(text(),"My child\'s education fund")]'
+    web: '//p[contains(text(),"My child\'s education fund")]',
+    app: '//*[@text="My child\'s education fund"]'
   };
 
   myAgeField = {
-    web: 'input.my-age-js'
+    web: 'input.my-age-js',
+    app: '(//android.widget.EditText)[1]'
   };
 
   monthlyExpensesOption(value) {
@@ -66,13 +74,32 @@ class MFGoalsObjects {
       return undefined;
     }
     return {
-      web: `//span[contains(text(),"${amountCode}")]`
+      web: `//span[contains(text(),"${amountCode}")]`,
+      app: `//android.widget.RadioButton[@text="${amountCode.toUpperCase()}"]`
     };
   }
 
   currentMonthlyExpensesField = {
-    web: 'input.ff-current-monthly-expenses-js'
+    web: 'input.ff-current-monthly-expenses-js',
+    app: '(//android.widget.EditText)[2]'
   };
+
+  retireAtAgeOption(value) {
+    const ageToShortCode = {
+      60: '60',
+      65: '65',
+      70: '70',
+      75: '75'
+    };
+    const ageCode = ageToShortCode[value];
+    if (ageCode == undefined) {
+      return undefined;
+    }
+    return {
+      web: `//input[@type="radio" and @name="ff-retirment-age" and @value="${ageCode}"]/parent::label`,
+      app: `//android.widget.RadioButton[@text="${ageCode.toUpperCase()}"]`
+    };
+  }
 
   retireAtAgeField = {
     web: 'input.ff-retirement-age-js'
