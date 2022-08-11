@@ -14,7 +14,10 @@ class MFGoalsPage {
     await Utils.clickElement(MFGoalsObjects.lifeGoalElement(lifeGoal));
   }
 
-  async lifeGoalElementIsDisplayed(lifeGoal) {
+  async lifeGoalElementIsDisplayed(lifeGoal, childname = '') {
+    if (childname.length > 0) {
+      lifeGoal = `${lifeGoal} for ${childname}`;
+    }
     return (await Utils.elementIsDisplayed(MFGoalsObjects.lifeGoalElement(lifeGoal)));
   }
 
@@ -34,7 +37,7 @@ class MFGoalsPage {
     }
   }
 
-  async clickOnExistingPlanForLifeGoal(lifeGoal) {
+  async clickOnExistingPlanForLifeGoal(lifeGoal, childname = '') {
     const existingPlanText = await Utils.getText(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
     expect(existingPlanText).to.equal('1 · existing plan');
     if(Device.isWeb()) {
@@ -42,6 +45,9 @@ class MFGoalsPage {
     }
     await Utils.clickElement(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
     expect(await Utils.elementIsDisplayed(MFGoalsObjects.yourExistingPlansHeader)).to.be.true;
+    if (childname.length > 0) {
+      lifeGoal = `${lifeGoal} for ${childname}`;
+    }
     const lifeGoalExistingPlan = await Utils.getMatchingElementByIndex(MFGoalsObjects.lifeGoalElement(lifeGoal), 0);
     await Utils.clickWebElement(lifeGoalExistingPlan);
   }
@@ -348,7 +354,7 @@ class MFGoalsPage {
     await Utils.clickElement(MFGoalsObjects.confirmButton);
   }
 
-  async clickToSeeRetireConfidentPlanDetails() {
+  async clickToSeeLifeGoalPlanDetails() {
     await Utils.clickElement(MFGoalsObjects.rightAngleBracketButton);
   }
 
@@ -381,6 +387,14 @@ class MFGoalsPage {
         console.log(`Unsupported action ${buttonText}`);
         return false;
     }
+  }
+
+  async clickCloseThisPlanButton() {
+    await Utils.clickElement(MFGoalsObjects.closeThisPlanButton);
+  }
+
+  async planClosedMessageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.planClosedMessage));
   }
 
   async replanStep2HeaderIsDisplayed() {

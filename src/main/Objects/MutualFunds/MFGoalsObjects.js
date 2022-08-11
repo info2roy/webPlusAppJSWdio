@@ -373,7 +373,7 @@ class MFGoalsObjects {
   };
 
   noInvestmentsToCancelMessage = {
-    web: '//p[text(),"There are no investments to cancel in this plan."]'
+    web: '//p[text()="There are no investments to cancel in this plan."]'
   };
 
   confirmButton = {
@@ -398,6 +398,14 @@ class MFGoalsObjects {
 
   closePlanHeader = {
     web: '//div[text()="Close Plan"]'
+  };
+
+  closeThisPlanButton = {
+    web: '//button[text()="CLOSE THIS PLAN"]'
+  };
+
+  planClosedMessage = {
+    web: '//p[text()="Your plan has been closed"]'
   };
 
   replanStep1Header = {

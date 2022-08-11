@@ -10,9 +10,9 @@ class MFGoalsFunctionality {
     return (await MFGoalsPage.validateNavigationToLifeGoalPage(lifeGoal));
   }
 
-  async selectExistingPlanForLifeGoal(lifeGoal, investmentCalendarDisplayed = true) {
-    await MFGoalsPage.clickOnExistingPlanForLifeGoal(lifeGoal);
-    let status = (await MFGoalsPage.lifeGoalElementIsDisplayed(lifeGoal));
+  async selectExistingPlanForLifeGoal(lifeGoal, investmentCalendarDisplayed = true, childname = '') {
+    await MFGoalsPage.clickOnExistingPlanForLifeGoal(lifeGoal, childname);
+    let status = (await MFGoalsPage.lifeGoalElementIsDisplayed(lifeGoal, childname));
     if (investmentCalendarDisplayed) {
       status = status && (await MFGoalsPage.investmentCalendarHeaderIsDisplayed());
     }
@@ -188,8 +188,8 @@ class MFGoalsFunctionality {
     await MFGoalsPage.clickConfirmButton();
   }
 
-  async seeRetireConfidentPlanDetails() {
-    await MFGoalsPage.clickToSeeRetireConfidentPlanDetails();
+  async seeLifeGoalPlanDetails() {
+    await MFGoalsPage.clickToSeeLifeGoalPlanDetails();
     return (await MFGoalsPage.planDetailsHeaderIsDisplayed());
   }
 
@@ -208,6 +208,11 @@ class MFGoalsFunctionality {
       await MFGoalsPage.clickConfirmButton();
       return (await MFGoalsPage.planCancelMessageIsDisplayed());
     }
+  }
+
+  async closeThePlan() {
+    await MFGoalsPage.clickCloseThisPlanButton();
+    return (await MFGoalsPage.planClosedMessageIsDisplayed());
   }
 
   async updateRetireConfidentGoalProperty(property, value) {
