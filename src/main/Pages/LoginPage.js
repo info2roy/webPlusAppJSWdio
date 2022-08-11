@@ -70,5 +70,10 @@ class LoginPage {
   async loginYourAccountToContinueHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(LoginObjects.loginYourAccountToContinueHeader));
   }
+
+  async enterOTPDigit(index, digit) {
+    await Utils.setInputField(digit, LoginObjects.otpField(index));
+  }
+
 }
 module.exports = new LoginPage();

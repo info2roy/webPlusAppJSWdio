@@ -39,6 +39,12 @@ class LoginObjects {
   loginYourAccountToContinueHeader = {
     web: '//label[contains(text(),"Login your account to continue")]'
   };
+
+  otpField(index) {
+    return {
+      web: `//input[@id="user_otp${index + 1}"]`
+    };
+  }
 }
 
 module.exports = new LoginObjects();

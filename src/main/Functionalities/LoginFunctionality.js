@@ -35,6 +35,12 @@ class LoginFunctionality {
     await LoginPage.enterUserId(username);
     await LoginPage.clickContinueOrNextButton();
   }
+
+  async enterOTP(otpDigits) {
+    for (let index = 0; index < otpDigits.length; index++) {
+      await LoginPage.enterOTPDigit(index, otpDigits[index]);
+    }
+  }
 }
 
 module.exports = new LoginFunctionality();

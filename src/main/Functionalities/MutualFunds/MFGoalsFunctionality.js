@@ -131,14 +131,20 @@ class MFGoalsFunctionality {
       await MFGoalsPage.clickSignupOrLoginButton();
       expect(await LoginPage.loginYourAccountToContinueHeaderIsDisplayed()).to.be.true;
       await LoginFunctionality.loginWithUsername(LoginData.username);
-      await LoginFunctionality.continueWithPassword();
       await LoginFunctionality.loginWithPassword(LoginData.password);
       return true;
     } else if(await MFGoalsPage.createPlanButtonIsDisplayed()) {
       await MFGoalsPage.clickCreatePlanButton();
+      const loginViaOTP = await LoginFunctionality.loginViaOTPPageLaunched();
       const continueWithPassword = await LoginFunctionality.continueWithPasswordButtonIsDisplayed();
-      if (continueWithPassword) {
-        await LoginFunctionality.continueWithPassword();
+      if (loginViaOTP) {
+        if(continueWithPassword) {
+          await LoginFunctionality.continueWithPassword();
+          await LoginFunctionality.loginWithPassword(LoginData.password);
+        } else {
+          await LoginFunctionality.enterOTP([1, 1, 1, 1, 1, 1]);
+        }
+      } else {
         await LoginFunctionality.loginWithPassword(LoginData.password);
       }
       return true;
