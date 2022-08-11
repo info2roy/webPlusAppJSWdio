@@ -91,7 +91,7 @@ class MoreOptionsPage {
   async navigateToStatementsAndReports() {
     if (Device.isAndroidApp()) {
       await console.log('Scrolling to Statements & Reports section');
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.statementsAndTaxReportsOption);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.statementsAndTaxReportsText);
     }
     await Utils.clickElement(MoreOptionsObjects.statementsAndTaxReportsOption);
   }
