@@ -240,4 +240,5 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I click on ">" to see plan details for "Retire Confident" Plan
     When I click on "OTHER ACTIONS" button for "Retire Confident" Plan
     When I click on "Close Plan" from "OTHER ACTIONS" for "Retire Confident" Plan
+    When I click on "CLOSE THIS PLAN" button for "Retire Confident" Plan
   
