@@ -11,7 +11,7 @@ class DashboardObjects {
 
   homeButton = { web: '//button[text()="Home"]' };
 
-  goToDashboardButton = { web: '//button[text()="Go to Dashboard"]' };
+  goToDashboardButton = { web: '//button[text()="Go to Dashboard"] | //button[text()="GO TO DASHBOARD"]' };
 
   withdrawButton = { web: '//div[contains(@class,"dashboard-invest-withdraw-btn")]//*[text()="Withdraw"]', app: '//*[@text="Withdraw"]' };
 
