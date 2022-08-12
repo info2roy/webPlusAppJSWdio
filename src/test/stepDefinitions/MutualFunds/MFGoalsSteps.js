@@ -14,10 +14,22 @@ When(/^I select existing plan for mutual funds life goal "(Retire Confident|Prem
   expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal(lifeGoal, true, this.childname)).to.be.true;
 });
 
+When(/^I select existing plan for mutual funds life goal "Premier Education" for child (.+)$/, async (childname) => {
+  await console.log(`When I select existing plan for mutual funds life goal "Premier Education" for child ${childname}`);
+  this.childname = childname;
+  expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal(lifeGoal, true, childname)).to.be.true;
+});
+
 When(/^I select for closure the existing plan for mutual funds life goal "(Retire Confident|Premier Education)"$/, async (lifeGoal) => {
   await console.log(`When I select for closure the existing plan for mutual funds life goal ${lifeGoal}`);
   this.lifeGoal = lifeGoal;
   expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal(lifeGoal, false, this.childname)).to.be.true;
+});
+
+When(/^I select for closure the existing plan for mutual funds life goal "Premier Education" for child (.+)$/, async (childname) => {
+  await console.log(`When I select for closure the existing plan for mutual funds life goal "Premier Education" for child ${childname}`);
+  this.childname = childname;
+  expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal(lifeGoal, false, childname)).to.be.true;
 });
 
 When(/^I click on "SHOW ME HOW" for Life Goal Plan$/, async () => {

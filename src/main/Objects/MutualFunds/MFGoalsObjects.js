@@ -2,8 +2,8 @@ class MFGoalsObjects {
 
   lifeGoalElement(lifeGoal) {
     return {
-      web: `//div[text()="${lifeGoal}"]`,
-      app: `//*[@text="${lifeGoal}"]`,
+      web: `(//div[text()="${lifeGoal}"])[1]`,
+      app: `(//*[@text="${lifeGoal}"])[1]`,
     };
   }
 
