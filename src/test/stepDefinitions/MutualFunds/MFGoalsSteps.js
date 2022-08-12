@@ -220,18 +220,18 @@ When(/^I update to Replan Existing Savings with (\d+), (\d+), (\d+)$/,
   }
 );
 
-When(/^I click "SHOW PLAN DETAILS" after step 3 of Replan for "Retire Confident" Plan$/, async() => {
-  await console.log('When I click "SHOW PLAN DETAILS" after step 3 of Replan for "Retire Confident" Plan');
+When(/^I click "SHOW PLAN DETAILS" after step 3 of Replan for "(Retire Confident|Premier Education)" Plan$/, async(lifeGoal) => {
+  await console.log(`When I click "SHOW PLAN DETAILS" after step 3 of Replan for "${lifeGoal}" Plan`);
   expect(await MFGoalsFunctionality.showPlanDetails()).to.be.true;
 });
 
-When(/^I click "CONTINUE" with SIP amount for Replan for "Retire Confident" Plan$/, async() => {
-  await console.log('When I click "CONTINUE" with SIP amount for Replan for "Retire Confident" Plan');
+When(/^I click "CONTINUE" with SIP amount for Replan for "(Retire Confident|Premier Education)" Plan$/, async(lifeGoal) => {
+  await console.log(`When I click "CONTINUE" with SIP amount for Replan for "${lifeGoal}" Plan`);
   expect(await MFGoalsFunctionality.continueReplanStep3()).to.be.true;
 });
 
-When(/^I click "CONTINUE" with Growth Strategy for Replan for "([^"]*)?" Plan$/, async(lifeGoal) => {
-  await console.log('When I click "CONTINUE" with Growth Strategy for Replan for "Retire Confident" Plan');
+When(/^I click "CONTINUE" with Growth Strategy for Replan for "(Retire Confident|Premier Education)" Plan$/, async(lifeGoal) => {
+  await console.log(`When I click "CONTINUE" with Growth Strategy for Replan for "${lifeGoal}" Plan`);
   expect(await MFGoalsFunctionality.continueReplanFinalStep(lifeGoal)).to.be.true;
 });
 
@@ -240,7 +240,16 @@ Then(/^I should see message "Replan completed successfully"$/, async() => {
   expect(await MFGoalsFunctionality.replanCompletedSuccessfully()).to.be.true;
 });
 
-When(/^I update "(College Start Year|Current Year Fees|Annual Fees Increase Percent)" to (\d+) for "Premier Education" Plan$/, async(property, value) => {
+When(/^I update "(College Start Year|Current Year Fees|Annual Fees Increase Percent|Annual Contribution While In College|SIP Increase Percent)" to (\d+) for "Premier Education" Plan$/, async(property, value) => {
   await console.log(`When I update "${property}" to ${value} for "Premier Education" Plan`);
   await MFGoalsFunctionality.updatePremierEducationGoalProperty('Private College', property, value);
 });
+
+When(/^I fill External Savings form with (\d+), (\d+)+$/,
+  async(externalSavingsAmount, externalSavingsGrowthRate) => {
+    await console.log(`When I fill External Savings form with ${externalSavingsAmount}, ${externalSavingsGrowthRate}`);
+    expect(await MFGoalsFunctionality.fillReplanExternalSavingsForm(
+      externalSavingsAmount, externalSavingsGrowthRate
+    )).to.be.true;
+  }
+);

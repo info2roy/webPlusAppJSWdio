@@ -35,6 +35,16 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I update "Current Year Fees" to <newCurrentYearFees> for "Premier Education" Plan
     When I update "Annual Fees Increase Percent" to <newAnnualFeesIncreasePercent> for "Premier Education" Plan
     When I click "CONTINUE" to Replan for "Premier Education" Plan
+    When I update "Annual Contribution While In College" to <newAnnualContributionWhileInCollege> for "Premier Education" Plan
+    When I fill External Savings form with <externalSavingsAmount>, <externalSavingsGrowthRate>
+    When I click "SHOW PLAN DETAILS" after step 3 of Replan for "Premier Education" Plan
+    When I click "CONTINUE" with SIP amount for Replan for "Premier Education" Plan
+    When I click "CONTINUE" with Growth Strategy for Replan for "Premier Education" Plan
+    When I click "CONTINUE TO INVEST" on the "Premier Education" Plan
+    When I select Payment type as <paymentType>
+    When I click "CONFIRM" on the "Premier Education" investment
+    Then I should see message "Replan completed successfully"
+    Then I click on "HOME" button
 
     Given I am on the Investment Page
     When I navigate to the investment tab "Mutual Funds"
@@ -55,7 +65,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I click on "CLOSE THIS PLAN" button for "Premier Education" Plan
     Then I click on "GO TO DASHBOARD" button
     Examples:
-      | class | collegeType | childname | yearlyFees | paymentType | newCollegeStartYear | newCurrentYearFees | newAnnualFeesIncreasePercent |
-      #| 1  | Government Colleges  | child2 | 100000 | ScheduledOneClickInvest | 2035 | 150000 | 9 |
-      | 2  | Private Colleges  | child1 | 200000 | ScheduledOneClickInvest | 2035 | 250000 | 8 |
-      #| 3  | Premier Private Colleges  | child3 | 300000 | ScheduledOneClickInvest | 2035 | 350000 | 7 | 
+      | class | collegeType | childname | yearlyFees | paymentType | newCollegeStartYear | newCurrentYearFees | newAnnualFeesIncreasePercent | newAnnualContributionWhileInCollege | externalSavingsAmount | externalSavingsGrowthRate |
+      #| 1  | Government Colleges  | child2 | 100000 | ScheduledOneClickInvest | 2035 | 150000 | 9 | 50000 | 70000 | 10 |
+      | 2  | Private Colleges  | child1 | 200000 | ScheduledOneClickInvest | 2035 | 250000 | 8 | 100000 | 150000 | 8 |
+      #| 3  | Premier Private Colleges  | child3 | 300000 | ScheduledOneClickInvest | 2035 | 350000 | 7 | 120000 | 120000 | 7 |

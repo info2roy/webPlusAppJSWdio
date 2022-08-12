@@ -565,6 +565,18 @@ class MFGoalsPage {
         await Utils.setInputField(value, MFGoalsObjects.replanAnnualFeesIncreasePercentField);
         await Utils.clickElement(MFGoalsObjects.okayButton);
         break;
+      case 'Annual Contribution While In College':
+        await Utils.clickElement(MFGoalsObjects.editAnnualContributionWhileInCollegeLink);
+        expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanAnnualContributionWhileInCollegeLabel)).to.be.true;
+        await Utils.setInputField(value, MFGoalsObjects.replanAnnualContributionWhileInCollegeField);
+        await Utils.clickElement(MFGoalsObjects.okayButton);
+        break;
+      case 'SIP Increase Percent':
+        await Utils.clickElement(MFGoalsObjects.editSipIncreasePercentLink);
+        expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanSipIncreasePercentLabel)).to.be.true;
+        await Utils.setInputField(value, MFGoalsObjects.replanSipIncreasePercentField);
+        await Utils.clickElement(MFGoalsObjects.okayButton);
+        break;
       default:
         console.log(`Unsupported Premier Education property ${property}`);
     }

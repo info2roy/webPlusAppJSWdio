@@ -545,7 +545,7 @@ class MFGoalsObjects {
   };
 
   replanSummaryHeader = {
-    web: '//div[contains(text(),"Total need by")]'
+    web: '//div[contains(text(),"Additional investing needed for")]'
   };
 
   additionalInvestingNeededForHeader = {
@@ -592,6 +592,18 @@ class MFGoalsObjects {
 
   replanAnnualFeesIncreasePercentField = {
     web: '//input'
+  };
+
+  editAnnualContributionWhileInCollegeLink = {
+    web: `//div[text()="Annual contribution while in college"]/parent::div/following-sibling::div/div[1]`
+  };
+
+  replanAnnualContributionWhileInCollegeLabel = {
+    web: '//div[contains(text(),"How much will you contribute annually during the course?")]'
+  };
+
+  replanAnnualContributionWhileInCollegeField = {
+    web: 'input#annual-contribution-input'
   };
 }
 module.exports = new MFGoalsObjects();

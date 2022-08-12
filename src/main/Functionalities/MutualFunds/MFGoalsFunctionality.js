@@ -261,5 +261,14 @@ class MFGoalsFunctionality {
     await MFGoalsPage.updatePremierEducationGoalProperty(collegeType, property, value);
   }
 
+  async fillReplanExternalSavingsForm(newExternalSavingsAmount, newExternalSavingsGrowthRate) {
+    await MFGoalsPage.clickEditExternalSavingsForGoalLink();
+    expect(await MFGoalsPage.replanExternalSavingsForGoalLabelIsDisplayed()).to.be.true;
+    await MFGoalsPage.enterReplanExternalSavingsForGoal(newExternalSavingsAmount);
+    await MFGoalsPage.enterReplanExternalSavingForGoalGrowthRate(newExternalSavingsGrowthRate);
+    await MFGoalsPage.clickOkayButton();
+    await MFGoalsPage.clickContinueReplanButton();
+    return (await MFGoalsPage.replanStep3HeaderIsDisplayed());
+  }
 }
 module.exports = new MFGoalsFunctionality();
