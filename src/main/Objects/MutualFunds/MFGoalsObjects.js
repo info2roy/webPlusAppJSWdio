@@ -575,7 +575,7 @@ class MFGoalsObjects {
   }
 
   replanCurrentYearFeesLabel = {
-    web: '//div[contains(text(),"Current year college fees?")]'
+    web: '//div[contains(text(),"Current year")]'
   };
 
   replanCurrentYearFeesField = {
@@ -587,7 +587,7 @@ class MFGoalsObjects {
   };
 
   replanAnnualFeesIncreasePercentLabel = {
-    web: '//div[contains(text(),"Annual increase in college fees")]'
+    web: '//div[contains(text(),"Annual increase in")]'
   };
 
   replanAnnualFeesIncreasePercentField = {

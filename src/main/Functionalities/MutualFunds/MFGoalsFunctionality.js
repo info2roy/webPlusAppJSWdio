@@ -257,8 +257,8 @@ class MFGoalsFunctionality {
     return (await MFGoalsPage.replanCompletedSuccessfullyHeaderIsDisplayed());
   }
 
-  async updatePremierEducationGoalProperty(property, value) {
-    await MFGoalsPage.updatePremierEducationGoalProperty(property, value);
+  async updatePremierEducationGoalProperty(collegeType, property, value) {
+    await MFGoalsPage.updatePremierEducationGoalProperty(collegeType, property, value);
   }
 
 }

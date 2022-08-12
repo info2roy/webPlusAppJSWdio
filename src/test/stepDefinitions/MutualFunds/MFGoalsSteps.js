@@ -17,7 +17,7 @@ When(/^I select existing plan for mutual funds life goal "(Retire Confident|Prem
 When(/^I select existing plan for mutual funds life goal "Premier Education" for child (.+)$/, async (childname) => {
   await console.log(`When I select existing plan for mutual funds life goal "Premier Education" for child ${childname}`);
   this.childname = childname;
-  expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal(lifeGoal, true, childname)).to.be.true;
+  expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal('Premier Education', true, childname)).to.be.true;
 });
 
 When(/^I select for closure the existing plan for mutual funds life goal "(Retire Confident|Premier Education)"$/, async (lifeGoal) => {
@@ -29,7 +29,7 @@ When(/^I select for closure the existing plan for mutual funds life goal "(Retir
 When(/^I select for closure the existing plan for mutual funds life goal "Premier Education" for child (.+)$/, async (childname) => {
   await console.log(`When I select for closure the existing plan for mutual funds life goal "Premier Education" for child ${childname}`);
   this.childname = childname;
-  expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal(lifeGoal, false, childname)).to.be.true;
+  expect(await MFGoalsFunctionality.selectExistingPlanForLifeGoal('Premier Education', false, childname)).to.be.true;
 });
 
 When(/^I click on "SHOW ME HOW" for Life Goal Plan$/, async () => {
@@ -99,6 +99,7 @@ When(/^I fill "Premier Education" form with (\d+)$/, async (classOfChild) => {
 
 When(/^I select "Premier Education" plan for college type (Government Colleges|Private Colleges|Premier Private Colleges)$/,
   async(collegeType) => {
+    this.collegeType = collegeType;
     await console.log(`When I select "Premier Education" plan for college type ${collegeType}`);
     expect(await MFGoalsFunctionality.selectPremierEducationCollegeType(collegeType)).to.be.true;
   }
@@ -239,7 +240,7 @@ Then(/^I should see message "Replan completed successfully"$/, async() => {
   expect(await MFGoalsFunctionality.replanCompletedSuccessfully()).to.be.true;
 });
 
-When(/^I update "(College Start Year|Current Year Fees|Annual Fees Increase Percent)" to (\d+) for "Premium Education" Plan$/, async(property, value) => {
-  await console.log(`When I update "${property}" to ${value} for "Premium Education" Plan`);
-  await MFGoalsFunctionality.updatePremierEducationGoalProperty(property, value);
+When(/^I update "(College Start Year|Current Year Fees|Annual Fees Increase Percent)" to (\d+) for "Premier Education" Plan$/, async(property, value) => {
+  await console.log(`When I update "${property}" to ${value} for "Premier Education" Plan`);
+  await MFGoalsFunctionality.updatePremierEducationGoalProperty('Private College', property, value);
 });

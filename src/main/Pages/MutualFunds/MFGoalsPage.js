@@ -16,7 +16,7 @@ class MFGoalsPage {
 
   async lifeGoalElementIsDisplayed(lifeGoal, childname = '') {
     if (childname.length > 0) {
-      lifeGoal = `${lifeGoal} for ${childname}`;
+      lifeGoal = `${lifeGoal} for ${Utils.capitalizeFirstLetter(childname)}`;
     }
     return (await Utils.elementIsDisplayed(MFGoalsObjects.lifeGoalElement(lifeGoal)));
   }
@@ -46,7 +46,7 @@ class MFGoalsPage {
     await Utils.clickElement(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
     expect(await Utils.elementIsDisplayed(MFGoalsObjects.yourExistingPlansHeader)).to.be.true;
     if (childname.length > 0) {
-      lifeGoal = `${lifeGoal} for ${childname}`;
+      lifeGoal = `${lifeGoal} for ${Utils.capitalizeFirstLetter(childname)}`;
     }
     const lifeGoalExistingPlan = await Utils.getMatchingElementByIndex(MFGoalsObjects.lifeGoalElement(lifeGoal), 0);
     await Utils.clickWebElement(lifeGoalExistingPlan);
@@ -545,7 +545,7 @@ class MFGoalsPage {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.replanCompletedSuccessfullyHeader));
   }
 
-  async updatePremierEducationGoalProperty(property, value) {
+  async updatePremierEducationGoalProperty(collegeType, property, value) {
     switch(property) {
       case 'College Start Year':
         await Utils.clickElement(MFGoalsObjects.editCollegeStartYearLink);
@@ -554,7 +554,7 @@ class MFGoalsPage {
         await Utils.clickElement(MFGoalsObjects.okayButton);
         break;
       case 'Current Year Fees':
-        await Utils.clickElement(MFGoalsObjects.editCurrentYearFeesLink);
+        await Utils.clickElement(MFGoalsObjects.editCurrentYearFeesLink(collegeType));
         expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanCurrentYearFeesLabel)).to.be.true;
         await Utils.setInputField(value, MFGoalsObjects.replanCurrentYearFeesField);
         await Utils.clickElement(MFGoalsObjects.okayButton);
