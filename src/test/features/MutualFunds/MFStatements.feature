@@ -5,7 +5,7 @@ Feature: Feature to check basic navigations on MF statements screen
 
     Scenario: I navigate to MF statement section
         When I open the more options
-        And I select option "Statements and Tax Reports"
+        When I navigate to "Statements and Tax Reports" Page from More Options Page
 
     Scenario: I navigate to Investment history page
         Then I navigate to "Investment history" page

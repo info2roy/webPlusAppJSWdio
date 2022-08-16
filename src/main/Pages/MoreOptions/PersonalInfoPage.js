@@ -14,7 +14,7 @@ class PersonalInfoPage {
     return await Utils.elementIsDisplayed(PersonalInfoObjects.accountFamilyInfoPageHeader);
   }
 
-  async MFPageHeaderIsDisplayed() {
+  async mFPageHeaderIsDisplayed() {
     return await Utils.elementIsDisplayed(PersonalInfoObjects.statementsAndTaxReportsHeader);
   }
 

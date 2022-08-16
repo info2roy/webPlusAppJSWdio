@@ -5,7 +5,7 @@ Feature: As customer I wish to update my account details
 
   Scenario: As a logged in user I wish to update my Bank details
     When I open the more options
-    And I select option "Account and Family Information"
+    When I navigate to "Account and Family Information" Page from More Options Page
     Then I edit "bank"
     And I update changes
     And I click on return to home
@@ -13,7 +13,7 @@ Feature: As customer I wish to update my account details
 
   Scenario: As a logged in user I wish to update my nominee
     When I open the more options
-    And I select option "Account and Family Information"
+    When I navigate to "Account and Family Information" Page from More Options Page
     Then I edit "nominee"
     And I update changes
     And I click on return to home

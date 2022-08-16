@@ -1,6 +1,11 @@
 const Utils = require('../../../support/Utils/Utils');
 const MoreOptionsObjects = require('../../Objects/MoreOptions/MoreOptionsObjects');
 const Device = require('../../../support/libraries/Device');
+const PersonalInfoPage = require('./PersonalInfoPage');
+const MfStatementPage = require('../MutualFunds/MFStatementPage');
+const NotificationPreferencesPage = require('./NotificationPreferencesPage');
+const WhatsappNotificationsPage = require('./WhatsappNotificationsPage');
+const HomePage = require('../HomePage');
 
 class MoreOptionsPage {
 
@@ -98,14 +103,23 @@ class MoreOptionsPage {
 
   async selectPersonalInformation() {
     if (Device.isAndroidApp()) {
-      await console.log('AndroidApp: click on Personal Infomation requires scrolling until it comes into view');
       await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.personalInfoText);
     }
     await Utils.clickElement(MoreOptionsObjects.personalInfoOption);
   }
 
   async selectAccountFamilyInformation() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.accountFamilyInformationOptionText);
+    }
     await Utils.clickElement(MoreOptionsObjects.accountFamilyInformationOption);
+  }
+
+  async selectStatementsAndTaxReports() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.statementsAndTaxReportsOptionText);
+    }
+    await Utils.clickElement(MoreOptionsObjects.statementsAndTaxReportsOption);
   }
 
   async selectNotificationPreferences() {
@@ -145,36 +159,100 @@ class MoreOptionsPage {
       (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompany));
   }
 
-  async selectAboutScripboxServiceAgreement() {
-    await Utils.clickElement(MoreOptionsObjects.aboutScripboxPageServiceAgreement);
+  async navigateToPage(pageName) {
+    switch (pageName) {
+      case 'Personal Information':
+        await this.selectPersonalInformation();
+        break;
+      case 'Account and Family Information':
+        await this.selectAccountFamilyInformation();
+        break;
+      case 'Statements and Tax Reports':
+        await this.selectStatementsAndTaxReports();
+        break;
+      case 'Notification Preferences':
+        await this.selectNotificationPreferences();
+        break;
+      case 'Whatsapp Notifications':
+        await this.selectWhatsappNotifications();
+        break;
+      case 'About Scripbox':
+        await this.selectAboutScripbox();
+        break;
+      case 'Give Feedback':
+        await this.selectGiveFeedback();
+        break;
+      case 'Refer a Friend':
+        await this.selectReferAFriend();
+        break;
+      case 'Logout':
+        await this.selectLogout();
+        break;
+      default:
+        console.log(`unsupported page ${pageName} from More Options Page`);
+    }
   }
 
-  async aboutScripboxServiceAgreementPageHeaderIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageServiceAgreementPageHeader);
+  async validateNavigateToPage(pageName) {
+    switch (pageName) {
+      case 'Personal Information':
+        return (await PersonalInfoPage.profileInfomationHeaderIsDisplayed());
+      case 'Account and Family Information':
+        return (await PersonalInfoPage.accountFamilyInfoPageHeaderIsDisplayed());
+      case 'Statements and Tax Reports':
+        return (await MfStatementPage.mFPageHeaderIsDisplayed());
+      case 'Notification Preferences':
+        return (await NotificationPreferencesPage.notificationPreferencesPageHeaderIsDisplayed()) &&
+          (await NotificationPreferencesPage.notificationPreferenceControlsAreDisplayedAndAreCorrect());
+      case 'Whatsapp Notifications':
+        return (await WhatsappNotificationsPage.whatsappNotificationsPageHeaderIsDisplayed()) &&
+          (await WhatsappNotificationsPage.whatsappNotificationsPageBodyIsDisplayed());
+      case 'About Scripbox':
+        return (await this.aboutScripboxPageHeaderIsDisplayed()) &&
+          (await this.aboutScripboxPageBodyIsDisplayed());
+      case 'Give Feedback':
+        return (this.giveFeedbackPageHeaderIsDisplayed());
+      case 'Refer a Friend':
+        return (await this.referAFriendPageHeaderIsDisplayed()) &&
+          (await this.referAFriendPageSummaryIsDisplayed());
+      case 'Logout':
+        return await HomePage.myScripboxLoginPageIsDisplayed();
+      default:
+        console.log(`unsupported page ${pageName} from More Options Page`);
+        return false;
+    }
   }
 
-  async aboutScripboxServiceAgreementPageAgreementNameIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageServiceAgreementPageAgreementName);
+  async navigateToPageFromAboutScripboxPage(pageName) {
+    switch(pageName) {
+      case 'Service Agreement':
+        await Utils.clickElement(MoreOptionsObjects.aboutScripboxPageServiceAgreement);
+        break;
+      case 'Company':
+        await Utils.clickElement(MoreOptionsObjects.aboutScripboxPageCompany);
+        break;
+      default:
+        console.log(`unsupported page ${pageName} from About Scripbox Page`);
+    }
+  }
+
+  async validateNavigateToPageFromAboutScripboxPage(pageName) {
+    switch(pageName) {
+      case 'Service Agreement':
+        return (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageServiceAgreementPageHeader)) &&
+         (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageServiceAgreementPageAgreementName));
+      case 'Company':
+        return (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageHeader)) &&
+          (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageNameLabel)) &&
+          (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageCompanyName));
+      default:
+        console.log(`unsupported page ${pageName} from About Scripbox Page`);
+        return false;
+    }
   }
 
   async pressBackButton() {
     await Utils.clickElement(MoreOptionsObjects.backButton);
-  }
-
-  async selectAboutScripboxCompany() {
-    await Utils.clickElement(MoreOptionsObjects.aboutScripboxPageCompany);
-  }
-
-  async aboutScripboxCompanyPageHeaderIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageHeader);
-  }
-
-  async aboutScripboxPageCompanyPageNameLabelIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageNameLabel);
-  }
-
-  async aboutScripboxPageCompanyPageCompanyNameIsDisplayed() {
-    return await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageCompanyName);
   }
   //End About Scripbox
 
@@ -209,6 +287,7 @@ class MoreOptionsPage {
   }
 
   async giveFeedbackPageHeaderIsDisplayed() {
+    await browser.switchWindow('docs.google.com');
     return await Utils.elementIsDisplayed(MoreOptionsObjects.giveFeedbackPageHeader);
   }
 

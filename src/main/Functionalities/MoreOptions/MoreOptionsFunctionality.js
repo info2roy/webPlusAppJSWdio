@@ -25,8 +25,9 @@ class MoreOptionsFunctionality {
     (await MoreOptionsPage.twitterImageIsDisplayed());
   }
 
-  async selectPersonalInformation() {
-    await MoreOptionsPage.selectPersonalInformation();
+  async navigateToPage(pageName) {
+    await MoreOptionsPage.navigateToPage(pageName);
+    return (await MoreOptionsPage.validateNavigateToPage(pageName));
   }
 
   async selectAccountFamilyInformation() {
@@ -62,38 +63,14 @@ class MoreOptionsFunctionality {
     return (await MoreOptionsPage.aboutScripboxServiceAgreementPageHeaderIsDisplayed()) &&
     (await MoreOptionsPage.aboutScripboxServiceAgreementPageAgreementNameIsDisplayed());
   }
+  
+  async navigateToPageFromAboutScripboxPage(pageName) {
+    await MoreOptionsPage.navigateToPageFromAboutScripboxPage(pageName);
+    return (await MoreOptionsPage.validateNavigateToPageFromAboutScripboxPage(pageName));
+  }
 
   async goBackToPreviousPage() {
     await MoreOptionsPage.pressBackButton();
-  }
-
-  async selectAboutScripboxCompany() {
-    await MoreOptionsPage.selectAboutScripboxCompany();
-  }
-
-  async aboutScripboxCompanyPageLaunched() {
-    return (await MoreOptionsPage.aboutScripboxCompanyPageHeaderIsDisplayed()) &&
-    (await MoreOptionsPage.aboutScripboxPageCompanyPageNameLabelIsDisplayed()) &&
-    (await MoreOptionsPage.aboutScripboxPageCompanyPageCompanyNameIsDisplayed());
-  }
-  //End About Scripbox
-
-  async selectReferAFriend() {
-    await MoreOptionsPage.selectReferAFriend();
-  }
-
-  async referAFriendPageLaunched() {
-    return (await MoreOptionsPage.referAFriendPageHeaderIsDisplayed()) &&
-    (await MoreOptionsPage.referAFriendPageSummaryIsDisplayed());
-  }
-
-  async selectGiveFeedback() {
-    await MoreOptionsPage.selectGiveFeedback();
-  }
-
-  async giveFeedbackPageLaunched() {
-    await browser.switchWindow('docs.google.com');
-    return (await MoreOptionsPage.giveFeedbackPageHeaderIsDisplayed());
   }
 
   async selectLogout() {

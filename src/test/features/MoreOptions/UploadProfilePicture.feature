@@ -5,6 +5,6 @@ Feature: Scripbox Login and update of profile picture
 
   Scenario: As a logged in user I am able to open Personal Information Page
     When I open the more options
-    When I select option "Personal Information"
+    When I navigate to "Personal Information" Page from More Options Page
     When I update the profile picture
     Then The picture is uploaded successfully

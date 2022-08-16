@@ -1,10 +1,9 @@
 const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const MoreOptionsFunctionality = require('../../../main/Functionalities/MoreOptions/MoreOptionsFunctionality');
-const PersonalInfoFunctionality = require('../../../main/Functionalities/MoreOptions/PersonalInfoFunctionality');
-const HomeFunctionality = require('../../../main/Functionalities/HomeFunctionality');
 const DashboardFunctionality = require('../../../main/Functionalities/DashboardFunctionality');
-const MfStatementfunctionality = require('../../../main/Functionalities/MutualFunds/MFStatementFunctionality');
+const NotificationPreferencesFunctionality = require('../../../main/Functionalities/MoreOptions/NotificationPreferencesFunctionality');
+const WhatappNotificationsFunctionality = require('../../../main/Functionalities/MoreOptions/WhatappNotificationsFunctionality');
 
 Then(/^I should see all of the more options$/, async () => {
   await console.log('Then I should see all of the more options');
@@ -64,44 +63,14 @@ Then(/^I go back to "About Scripbox" Page$/, async () => {
   await MoreOptionsFunctionality.goBackToPreviousPage();
 });
 
-When(/^I navigate to "Company" Page$/, async () => {
-  await console.log('When I navigate to "Company" Page');
-  await MoreOptionsFunctionality.selectAboutScripboxCompany();
+When(/^I navigate to "([^"]*)?" Page from More Options Page$/, async (pageName) => {
+  await console.log(`When I navigate to "${pageName}" Page from More Options Page`);
+  expect(await MoreOptionsFunctionality.navigateToPage(pageName)).to.be.true;
 });
 
-Then(/^I should see "Company" Page loaded$/, async () => {
-  await console.log('Then I should see "Company" Page loaded');
-  expect(await MoreOptionsFunctionality.aboutScripboxCompanyPageLaunched()).to.be.true;
-});
-
-When(/^I select option "Refer a Friend"$/, async () => {
-  await console.log('When I select option "Refer a Friend"');
-  await MoreOptionsFunctionality.selectReferAFriend();
-});
-
-Then(/^I should see "Refer a Friend" Page loaded$/, async () => {
-  await console.log('Then I should see "Refer a Friend" Page loaded');
-  expect(await MoreOptionsFunctionality.referAFriendPageLaunched()).to.be.true;
-});
-
-When(/^I select option "Give Feedback"$/, async () => {
-  await console.log('When I select option "Give Feedback"');
-  await MoreOptionsFunctionality.selectGiveFeedback();
-});
-
-Then(/^I should see "Give Feedback" Page loaded$/, async () => {
-  await console.log('Then I should see "Give Feedback" Page loaded');
-  expect(await MoreOptionsFunctionality.giveFeedbackPageLaunched()).to.be.true;
-});
-
-When(/^I select option "Logout"$/, async () => {
-  await console.log('When I select option "Logout"');
-  await MoreOptionsFunctionality.selectLogout();
-});
-
-Then(/^I should see "MyScripbox login" page loaded$/, async () => {
-  await console.log('Then I should see "MyScripbox login" page loaded');
-  expect(await HomeFunctionality.myscripboxLoginPageLaunched()).to.be.true;
+When(/^I navigate to "(Service Agreement|Company)" Page from About Scripbox Page$/, async (pageName) => {
+  await console.log(`When I navigate to "${pageName}" Page from About Scripbox Page`);
+  expect(await MoreOptionsFunctionality.navigateToPageFromAboutScripboxPage(pageName)).to.be.true;
 });
 
 Then(/^I logout of Scripbox$/, async () => {
@@ -109,4 +78,19 @@ Then(/^I logout of Scripbox$/, async () => {
   await DashboardFunctionality.open();
   await DashboardFunctionality.openMoreOptions();
   await MoreOptionsFunctionality.selectLogout();
+});
+
+Then(/^I can update notifications preference control (.+) for channel (.+)$/, async (controlName, channel) => {
+  await console.log(`I can update control ${controlName} for channel ${channel}`);
+  NotificationPreferencesFunctionality.testToggleScenario(controlName, channel);
+});
+
+Then(/^I can update random group of notifications preference controls$/, async () => {
+  await console.log('Then I can update random group of notifications preference controls');
+  NotificationPreferencesFunctionality.testRandomToggleScenarios();
+});
+
+Then(/^I can update whatsapp notifications control$/, async () => {
+  await console.log('Then I can update whatsapp notifications control');
+  await WhatappNotificationsFunctionality.testToggleScenario();
 });
