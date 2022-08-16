@@ -63,7 +63,7 @@ class MoreOptionsFunctionality {
     return (await MoreOptionsPage.aboutScripboxServiceAgreementPageHeaderIsDisplayed()) &&
     (await MoreOptionsPage.aboutScripboxServiceAgreementPageAgreementNameIsDisplayed());
   }
-  
+
   async navigateToPageFromAboutScripboxPage(pageName) {
     await MoreOptionsPage.navigateToPageFromAboutScripboxPage(pageName);
     return (await MoreOptionsPage.validateNavigateToPageFromAboutScripboxPage(pageName));

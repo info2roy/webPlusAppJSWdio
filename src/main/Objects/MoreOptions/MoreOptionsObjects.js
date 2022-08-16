@@ -49,7 +49,7 @@ class MoreOptionsPageObjects {
   statementsAndTaxReportsText = {
     app: 'Statements & reports'
   };
-  
+
   accountFamilyInformationOptionText = {
     app: 'Account & Family Information'
   };
