@@ -7,6 +7,11 @@ class MFGoalsObjects {
     };
   }
 
+  createANewPlanHeader = {
+    web: '//div[contains(text(),"Create a new plan")]',
+    app: '//*[contains(text(),"Create a new plan")]'
+  };
+
   replanSummaryLifeGoalElement(lifeGoal) {
     return {
       web: `//p[text()="${lifeGoal}"]`,

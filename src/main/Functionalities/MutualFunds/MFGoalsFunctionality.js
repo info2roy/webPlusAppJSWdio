@@ -10,7 +10,14 @@ class MFGoalsFunctionality {
     return (await MFGoalsPage.validateNavigationToLifeGoalPage(lifeGoal));
   }
 
+  async canAddAnotherLifeGoal(lifeGoal) {
+    await MFGoalsPage.clickOn1ExistingPlan(lifeGoal);
+    return (await MFGoalsPage.createANewPlanHeaderIsDisplayed()) &&
+      (await MFGoalsPage.lifeGoalElementIsDisplayed(lifeGoal));
+  }
+
   async selectExistingPlanForLifeGoal(lifeGoal, investmentCalendarDisplayed = true, childname = '') {
+    await MFGoalsPage.clickOn1ExistingPlan(lifeGoal);
     await MFGoalsPage.clickOnExistingPlanForLifeGoal(lifeGoal, childname);
     let status = (await MFGoalsPage.lifeGoalElementIsDisplayed(lifeGoal, childname));
     if (investmentCalendarDisplayed) {

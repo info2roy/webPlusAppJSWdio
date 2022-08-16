@@ -8,6 +8,12 @@ When(/^I select mutual funds life goal as "(Retire Confident|Premier Education)"
   expect(await MFGoalsFunctionality.selectLifeGoal(lifeGoal)).to.be.true;
 });
 
+Then(/^I can add another mutual funds life goal as "(Premier Education)"$/, async (lifeGoal) => {
+  await console.log(`Then I can add another mutual funds life goal as ${lifeGoal}`);
+  this.lifeGoal = lifeGoal;
+  expect(await MFGoalsFunctionality.canAddAnotherLifeGoal(lifeGoal)).to.be.true;
+});
+
 When(/^I select existing plan for mutual funds life goal "(Retire Confident|Premier Education)"$/, async (lifeGoal) => {
   await console.log(`When I select existing plan for mutual funds life goal ${lifeGoal}`);
   this.lifeGoal = lifeGoal;

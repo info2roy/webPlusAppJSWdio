@@ -14,6 +14,10 @@ class MFGoalsPage {
     await Utils.clickElement(MFGoalsObjects.lifeGoalElement(lifeGoal));
   }
 
+  async createANewPlanHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.createANewPlanHeader));
+  }
+
   async lifeGoalElementIsDisplayed(lifeGoal, childname = '') {
     if (childname.length > 0) {
       lifeGoal = `${lifeGoal} for ${Utils.capitalizeFirstLetter(childname)}`;
@@ -37,7 +41,7 @@ class MFGoalsPage {
     }
   }
 
-  async clickOnExistingPlanForLifeGoal(lifeGoal, childname = '') {
+  async clickOn1ExistingPlan(lifeGoal) {
     const existingPlanText = await Utils.getText(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
     expect(existingPlanText).to.equal('1 · existing plan');
     if(Device.isWeb()) {
@@ -45,6 +49,9 @@ class MFGoalsPage {
     }
     await Utils.clickElement(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
     expect(await Utils.elementIsDisplayed(MFGoalsObjects.yourExistingPlansHeader)).to.be.true;
+  }
+
+  async clickOnExistingPlanForLifeGoal(lifeGoal, childname = '') {
     if (childname.length > 0) {
       lifeGoal = `${lifeGoal} for ${Utils.capitalizeFirstLetter(childname)}`;
     }
