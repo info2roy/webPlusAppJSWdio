@@ -545,7 +545,7 @@ class MFGoalsPage {
     return (await Utils.elementIsDisplayed(MFGoalsObjects.replanCompletedSuccessfullyHeader));
   }
 
-  async updatePremierEducationGoalProperty(collegeType, property, value) {
+  async updatePremierEducationGoalProperty(property, value) {
     switch(property) {
       case 'College Start Year':
         await Utils.clickElement(MFGoalsObjects.editCollegeStartYearLink);
@@ -554,7 +554,7 @@ class MFGoalsPage {
         await Utils.clickElement(MFGoalsObjects.okayButton);
         break;
       case 'Current Year Fees':
-        await Utils.clickElement(MFGoalsObjects.editCurrentYearFeesLink(collegeType));
+        await Utils.clickElement(MFGoalsObjects.editCurrentYearFeesLink);
         expect(await Utils.elementIsDisplayed(MFGoalsObjects.replanCurrentYearFeesLabel)).to.be.true;
         await Utils.setInputField(value, MFGoalsObjects.replanCurrentYearFeesField);
         await Utils.clickElement(MFGoalsObjects.okayButton);

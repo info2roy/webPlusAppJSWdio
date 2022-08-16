@@ -568,11 +568,9 @@ class MFGoalsObjects {
     web: 'input#grade-input'
   };
 
-  editCurrentYearFeesLink(collegeType) {
-    return {
-      web: `//div[text()="Planning for a '${collegeType}' with current year's fees of"]/parent::div/following-sibling::div/div[1]`
-    };
-  }
+  editCurrentYearFeesLink = {
+    web: `//div[text()="Planning with current year's fees of"]/parent::div/following-sibling::div/div[1]`
+  };
 
   replanCurrentYearFeesLabel = {
     web: '//div[contains(text(),"Current year")]'

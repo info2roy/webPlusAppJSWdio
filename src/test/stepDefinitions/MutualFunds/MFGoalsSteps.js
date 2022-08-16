@@ -242,7 +242,7 @@ Then(/^I should see message "Replan completed successfully"$/, async() => {
 
 When(/^I update "(College Start Year|Current Year Fees|Annual Fees Increase Percent|Annual Contribution While In College|SIP Increase Percent)" to (\d+) for "Premier Education" Plan$/, async(property, value) => {
   await console.log(`When I update "${property}" to ${value} for "Premier Education" Plan`);
-  await MFGoalsFunctionality.updatePremierEducationGoalProperty('Private College', property, value);
+  await MFGoalsFunctionality.updatePremierEducationGoalProperty(property, value);
 });
 
 When(/^I fill External Savings form with (\d+), (\d+)+$/,

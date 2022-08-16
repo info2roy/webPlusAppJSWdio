@@ -257,8 +257,8 @@ class MFGoalsFunctionality {
     return (await MFGoalsPage.replanCompletedSuccessfullyHeaderIsDisplayed());
   }
 
-  async updatePremierEducationGoalProperty(collegeType, property, value) {
-    await MFGoalsPage.updatePremierEducationGoalProperty(collegeType, property, value);
+  async updatePremierEducationGoalProperty(property, value) {
+    await MFGoalsPage.updatePremierEducationGoalProperty(property, value);
   }
 
   async fillReplanExternalSavingsForm(newExternalSavingsAmount, newExternalSavingsGrowthRate) {
