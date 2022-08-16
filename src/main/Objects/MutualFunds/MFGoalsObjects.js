@@ -20,7 +20,7 @@ class MFGoalsObjects {
   };
 
   premierEducationGoalPageHeader = {
-    web: '//h1[contains(text(),"Are you investing enough for your child\'s college education?")]',
+    web: '(//h1[contains(text(),"Are you investing enough for your child\'s college education?")])[last()]',
     app: '//*[contains(@text,"Are you investing enough for your child\'s college education?")]'
   };
 
