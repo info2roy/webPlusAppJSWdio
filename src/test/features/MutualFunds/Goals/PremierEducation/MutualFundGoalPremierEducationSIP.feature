@@ -1,4 +1,4 @@
-Feature: Scripbox Investment in Mutual Fund Goals
+Feature: Scripbox Investment in Mutual Fund Goal of Premier Education
 
   Scenario: As a Scripbox user, I am logged in
     Given I login to Scripbox in "MYSCRIPBOX38" for "user189182"

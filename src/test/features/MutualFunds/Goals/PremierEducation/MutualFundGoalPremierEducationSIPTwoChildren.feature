@@ -3,7 +3,7 @@ Feature: Scripbox Investment in Mutual Fund Goal for Premier Education
   Scenario: As a Scripbox user, I am logged in
     Given I login to Scripbox in "MYSCRIPBOX38" for "user189182"
 
-  Scenario Outline: As a logged in user, I am able to invest in mutual fund goal "Premier Education" for two children
+  Scenario Outline: As a logged in user, I am able to invest in mutual fund goal "Premier Education" for two children and then close the goal
     Given I am on the Investment Page
     When I navigate to the investment tab "Mutual Funds"
     When I click on "Add new plan" for mutual funds
