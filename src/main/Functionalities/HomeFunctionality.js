@@ -35,6 +35,9 @@ class HomeFunctionality {
         case 'user123473':
           await LoginPage.enterUserId(loginData.user123473);
           break;
+        case 'user124148':
+          await LoginPage.enterUserId(loginData.user124148);
+          break;
         default:
           await console.log(user + ' User not available to add. Please add in login data to proceed');
       }
@@ -66,6 +69,9 @@ class HomeFunctionality {
           break;
         case 'user123473':
           await Utils.setInputField(loginData.user123473, LoginObjects.stagingUserIdField);
+          break;
+        case 'user124148':
+          await Utils.setInputField(loginData.user124148, LoginObjects.stagingUserIdField);
           break;
         default:
           await console.log(user + ' User not available to add. Please add in login data to proceed');
@@ -116,6 +122,9 @@ class HomeFunctionality {
         break;
       case 'user123473':
         await LoginPage.enterUserId(loginData.user123473);
+        break;
+      case 'user124148':
+        await LoginPage.enterUserId(loginData.user124148);
         break;
       default:
         await console.log(user + ' User not available to add. Please add in login data to proceed');

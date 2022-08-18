@@ -1,7 +1,7 @@
 Feature: Scripbox Investment in Mutual Fund Goals
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "MYSCRIPBOX2" for "user120405"
+    Given I login to Scripbox in "MYSCRIPBOX2" for "user124148"
 
   Scenario Outline: As a logged in user, I am able to INVEST EVERY MONTH in mutual fund goal "Retire Confident"
     Given I am on the Investment Page
@@ -13,7 +13,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I fill Existing Savings form with <existingSavingsAmount>, <existingSavingsGrowthRate>, <futureMonthlyIncomeFromOtherSources>
     When I select inflation rate as <inflationPercent>%
     When I click on CONTINUE with retirement Plan
-    When I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan for user "user120405"
+    When I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan for user "user124148"
     When I click on "INVEST EVERY MONTH" for Life Goal Plan
     When I click "CONTINUE" for "INVEST EVERY MONTH" on the "Retire Confident" Plan
     When I click "CONTINUE TO INVEST" on the "Retire Confident" Plan
