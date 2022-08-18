@@ -88,14 +88,21 @@ class MFInvestmentObjects {
 
   ONE_CLICK_INVEST_TEXT = { web: '1-CLICK INVEST', app: '1-CLICK INVEST' };
 
+  AUTOMATE_NOW_TEXT = { web: 'AUTOMATE NOW', app: 'AUTOMATE NOW' };
+
   makePaymentNowButton = {
     web: `//button[text()="Make Payment Now"]`,
     app: `//*[@text="${this.MAKE_PAYMENT_NOW_TEXT.app}"]`
   };
 
   oneClickInvestButton = {
-    web: `//button[text()="1-Click Invest"]`,
+    web: `//button[text()="1-Click Invest"] | //button[text()="Schedule Now"] | //button[text()="Automate Now"]`,
     app: `//*[@text="${this.ONE_CLICK_INVEST_TEXT.app}"]`
+  };
+
+  automateNowButton = {
+    web: `//button[text()="Automate Now"]`,
+    app: `//*[@text="${this.AUTOMATE_NOW_TEXT.app}"]`
   };
 
   setupMFSipInvestmentPageHeader(amount, months) {
@@ -181,5 +188,45 @@ class MFInvestmentObjects {
     app: '.android.widget.TextView'
   };
 
+  addNewPlanText = {
+    app: 'Add new plan'
+  };
+
+  exploreOtherPlansText = {
+    app: 'Explore other plans'
+  };
+
+  addNewPlanOrExploreOtherPlans = {
+    web: '//div[text()="Add new plan"] | //div[text()="Explore other plans"]',
+    app: '//*[@text="Add new plan"] | //*[@text="Explore other plans"]'
+  };
+
+  addNewPlanPageHeader = {
+    web: '//div[text()="Add new plan"]'
+  };
+
+  addNewPlanPageInvestmentStrategiesHeader = {
+    web: '//div[text()="Investment Strategies"]'
+  };
+
+  addNewPlanPageAchieveLifeGoalsHeader = {
+    web: '//div[text()="Achieve life goals"]'
+  };
+
+  viewInvestmentsButton = {
+    web: '//button[text()="View investments"]'
+  };
+
+  sipsAndStpsHeader = {
+    web: '//div[text()="SIP(s) and STP(s)"]'
+  };
+
+  externalSipsHeader = {
+    web: '//div[text()="External SIPs"]'
+  };
+
+  monthlySummaryHeader = {
+    web: '//div[text()="Monthly Summary"]'
+  };
 }
 module.exports = new MFInvestmentObjects();

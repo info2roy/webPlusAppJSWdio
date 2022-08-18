@@ -1,23 +1,25 @@
-const device = require('../libraries/Device');
+const Device = require('../libraries/Device');
+const { expect } = require('chai');
+const env = require('../../config/env');
 
 class Utils {
   getLocator(object) {
-    if (device.isMobileWeb()) {
+    if (Device.isMobileWeb()) {
       if (object.hasOwnProperty('mobileweb')) {
         return object.mobileweb;
       }
       return object.web;
-    } else if (device.isDesktop()) {
+    } else if (Device.isDesktop()) {
       if (object.hasOwnProperty('desktop')) {
         return object.desktop;
       }
       return object.web;
-    } else if (device.isAndroidApp()) {
+    } else if (Device.isAndroidApp()) {
       if (object.hasOwnProperty('android')) {
         return object.android;
       }
       return object.app;
-    } else if (device.isiOSApp()) {
+    } else if (Device.isiOSApp()) {
       if (object.hasOwnProperty('ios')) {
         return object.ios;
       }
@@ -48,8 +50,17 @@ class Utils {
     const locator = this.getLocator(selector);
     await this.elementIsDisplayed(selector);
     const myButton = await $(locator);
-    await myButton.waitForClickable({ timeout: 10000 });
+    if (Device.isWeb()) {
+      await myButton.waitForClickable({ timeout: 10000 });
+    }
     await myButton.click();
+  }
+
+  async getText(selector) {
+    const locator = this.getLocator(selector);
+    await this.elementIsDisplayed(selector);
+    const element = await $(locator);
+    return (await element.getText());
   }
 
   async clickWebElement(webElement) {
@@ -59,13 +70,18 @@ class Utils {
   async elementIsDisplayed(selector) {
     const locator = this.getLocator(selector);
     // const element = await $(locator);
-    await browser.waitUntil(
-      async () => await $(locator).isDisplayed(),
-      {
-        timeout: 30000,
-        timeoutMsg: `${locator} Selector not displayed yet`,
-      },
-    );
+    try {
+      await browser.waitUntil(
+        async () => await $(locator).isDisplayed(),
+        {
+          timeout: 15000,
+          timeoutMsg: `${locator} Selector not displayed yet`,
+          interval: 2000
+        },
+      );
+    } catch(err) {
+      console.log(err.message);
+    }
     const isDisplayed = await $(locator).isDisplayed();
     console.log(`${locator} is displayed check --> ${isDisplayed}`);
     return isDisplayed;
@@ -78,7 +94,7 @@ class Utils {
   }
 
   async setInputField(value, selector) {
-    await this.elementIsDisplayed(selector);
+    await this.clickElement(selector);
     const myButton = await $(this.getLocator(selector));
     await myButton.setValue(value);
   }
@@ -144,9 +160,62 @@ class Utils {
     await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
   }
 
+  //Choose a Select tag option by Visible Text
+  async chooseSelectOptionByVisibleText(selector, visibleText) {
+    const locator = this.getLocator(selector);
+    await this.elementIsDisplayed(selector);
+    const select = await $(locator);
+    await select.selectByVisibleText(visibleText);
+  }
+
+  //Choose a Select tag option by Attribute
+  async chooseSelectOptionByAttribute(selector, attribute, value) {
+    const locator = this.getLocator(selector);
+    await this.elementIsDisplayed(selector);
+    const select = await $(locator);
+    await select.selectByAttribute(attribute, value);
+    expect(await select.getValue()).to.equal(value);
+  }
+
+  //status should be true or false indicating whether the checkbox should be selected or not
+  async setCheckBox(selector, status) {
+    const locator = this.getLocator(selector);
+    const checkbox = await $(locator);
+    const isSelected = await checkbox.isSelected();
+    if (isSelected != status) {
+      await checkbox.click();
+    }
+  }
+
   //get a random integer between 0(inclusive) and maxIntValue(exclusive)
   getRandomInt(maxIntValue) {
     return Math.floor(Math.random() * maxIntValue);
+  }
+
+  getUAT(environment) {
+    switch(environment) {
+      case 'UAT2':
+      case 'MYSCRIPBOX2':
+        return 2;
+      case 'UAT38':
+      case 'MYSCRIPBOX38':
+        return 38;
+      default:
+        return undefined;
+    }
+  }
+
+  getMyScripbox(uat) {
+    if (uat === 38) {
+      return env.myScripboxUat38;
+    } else if(uat === 2) {
+      return env.myScripboxUat2;
+    }
+    return undefined;
+  }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 }
 

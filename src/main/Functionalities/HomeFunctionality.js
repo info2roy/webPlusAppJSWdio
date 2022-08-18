@@ -3,6 +3,7 @@ const LoginPage = require('../Pages/LoginPage');
 const loginData = require('../../config/data/structured/LoginData');
 const LoginObjects = require('../Objects/LoginObjects');
 const DashboardFunctionality = require('../Functionalities/DashboardFunctionality');
+const LoginFunctionality = require('../Functionalities/LoginFunctionality');
 const Utils = require('../../support/Utils/Utils');
 
 class HomeFunctionality {
@@ -12,7 +13,7 @@ class HomeFunctionality {
 
   async performLogin(env, user) {
     console.log('testing for environment ' + env);
-    if (env === 'UAT38' || env === 'ANDROMEDA') {
+    if (env === 'UAT38' || env === 'UAT2' || env === 'ANDROMEDA') {
       await HomePage.clickMenuButton();
       await HomePage.selectLoginOption();
       switch (user.toString()) {
@@ -25,21 +26,31 @@ class HomeFunctionality {
         case 'user120405':
           await LoginPage.enterUserId(loginData.user120405);
           break;
+        case 'user120406':
+          await LoginPage.enterUserId(loginData.user120406);
+          break;
         case 'user120409':
           await LoginPage.enterUserId(loginData.user120409);
           break;
         case 'user123473':
           await LoginPage.enterUserId(loginData.user123473);
           break;
+        case 'user124148':
+          await LoginPage.enterUserId(loginData.user124148);
+          break;
         default:
           await console.log(user + ' User not available to add. Please add in login data to proceed');
       }
       await LoginPage.clickContinueOrNextButton();
-      await LoginPage.clickContinueWithPasswordButton();
-      await LoginPage.enterPassword(loginData.password);
+      if (await LoginPage.continueWithPasswordButtonIsDisplayed()) {
+        await LoginPage.clickContinueWithPasswordButton();
+        await LoginPage.enterPassword(loginData.password);
+      } else {
+        await LoginFunctionality.enterOTP([1, 1, 1, 1, 1, 1]);
+      }
       await LoginPage.clickContinueLoginButton();
       await DashboardFunctionality.validate();
-    } else if (env == 'STAGING' || env === 'MYSCRIPBOX') {
+    } else if (env == 'STAGING' || env === 'MYSCRIPBOX' || env === 'MYSCRIPBOX38' || env === 'MYSCRIPBOX2') {
       switch (user.toString()) {
         case 'user180756':
           await Utils.setInputField(loginData.user180756, LoginObjects.stagingUserIdField);
@@ -50,11 +61,17 @@ class HomeFunctionality {
         case 'user120405':
           await Utils.setInputField(loginData.user120405, LoginObjects.stagingUserIdField);
           break;
+        case 'user120406':
+          await Utils.setInputField(loginData.user120406, LoginObjects.stagingUserIdField);
+          break;
         case 'user120409':
           await Utils.setInputField(loginData.user120409, LoginObjects.stagingUserIdField);
           break;
         case 'user123473':
           await Utils.setInputField(loginData.user123473, LoginObjects.stagingUserIdField);
+          break;
+        case 'user124148':
+          await Utils.setInputField(loginData.user124148, LoginObjects.stagingUserIdField);
           break;
         default:
           await console.log(user + ' User not available to add. Please add in login data to proceed');
@@ -97,11 +114,17 @@ class HomeFunctionality {
       case 'user120405':
         await LoginPage.enterUserId(loginData.user120405);
         break;
+      case 'user120406':
+        await LoginPage.enterUserId(loginData.user120406);
+        break;
       case 'user120409':
         await LoginPage.enterUserId(loginData.user120409);
         break;
       case 'user123473':
         await LoginPage.enterUserId(loginData.user123473);
+        break;
+      case 'user124148':
+        await LoginPage.enterUserId(loginData.user124148);
         break;
       default:
         await console.log(user + ' User not available to add. Please add in login data to proceed');

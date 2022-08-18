@@ -18,6 +18,10 @@ class LoginPage {
     await Utils.clickElement(LoginObjects.continueWithPasswordButton);
   }
 
+  async continueWithPasswordButtonIsDisplayed() {
+    return (await Utils.elementIsDisplayed(LoginObjects.continueWithPasswordButton));
+  }
+
   async firstLoginPageHeaderIsDisplayed() {
     return await Utils.elementIsDisplayed(LoginObjects.firstLoginPageHeader);
   }
@@ -48,7 +52,7 @@ class LoginPage {
     await Utils.setInputField(password, LoginObjects.passwordField);
     await browser.pause(2000); // App slow to react. Added 2 secs pause.
     if (Device.isAndroidApp()) {
-      await Utils.clickElement(LoginObjects.PasswordPageBanner);
+      await Utils.clickElement(LoginObjects.passwordPageBanner);
     }
   }
 
@@ -61,6 +65,14 @@ class LoginPage {
       return (await Utils.elementIsDisplayed(LoginObjects.enterOTPPageHeader));
     }
     return true;
+  }
+
+  async loginYourAccountToContinueHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(LoginObjects.loginYourAccountToContinueHeader));
+  }
+
+  async enterOTPDigit(index, digit) {
+    await Utils.setInputField(digit, LoginObjects.otpField(index));
   }
 
 }

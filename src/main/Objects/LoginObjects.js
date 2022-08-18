@@ -3,7 +3,7 @@ class LoginObjects {
 
   loginPageBanner = { app: '//*[@text="All things good for your wealth, under one roof."]' };
 
-  PasswordPageBanner = { app: '//*[@text="Enter Password"]' };
+  passwordPageBanner = { app: '//*[@text="Enter Password"] | //*[@text="Welcome back"]' };
 
   stagingUserIdField = { web: '.login-email' };
 
@@ -35,6 +35,16 @@ class LoginObjects {
   startExploring = { app: '//*[@text="Start exploring"]' };
 
   scripBoxExclusiveBenifits = { app: '//*[@text="Scripbox exclusive benefits"]' };
+
+  loginYourAccountToContinueHeader = {
+    web: '//label[contains(text(),"Login your account to continue")]'
+  };
+
+  otpField(index) {
+    return {
+      web: `//input[@id="user_otp${index + 1}"]`
+    };
+  }
 }
 
 module.exports = new LoginObjects();
