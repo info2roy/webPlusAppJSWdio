@@ -30,6 +30,40 @@ class MoreOptionsFunctionality {
     return (await MoreOptionsPage.validateNavigateToPage(pageName));
   }
 
+  async selectAccountFamilyInformation() {
+    await MoreOptionsPage.selectAccountFamilyInformation();
+  }
+
+  async selectStatementsAndTaxReports() {
+    await MoreOptionsPage.navigateToStatementsAndReports();
+  }
+
+  async selectNotificationPreferences() {
+    await MoreOptionsPage.selectNotificationPreferences();
+  }
+
+  async selectWhatsappNotifications() {
+    await MoreOptionsPage.selectWhatsappNotifications();
+  }
+  //Begin About Scripbox
+  async selectAboutScripbox() {
+    await MoreOptionsPage.selectAboutScripbox();
+  }
+
+  async aboutScripboxPageLaunched() {
+    return (await MoreOptionsPage.aboutScripboxPageHeaderIsDisplayed()) &&
+    (await MoreOptionsPage.aboutScripboxPageBodyIsDisplayed());
+  }
+
+  async selectAboutScripboxServiceAgreement() {
+    await MoreOptionsPage.selectAboutScripboxServiceAgreement();
+  }
+
+  async aboutScripboxServiceAgreementPageLaunched() {
+    return (await MoreOptionsPage.aboutScripboxServiceAgreementPageHeaderIsDisplayed()) &&
+    (await MoreOptionsPage.aboutScripboxServiceAgreementPageAgreementNameIsDisplayed());
+  }
+
   async navigateToPageFromAboutScripboxPage(pageName) {
     await MoreOptionsPage.navigateToPageFromAboutScripboxPage(pageName);
     return (await MoreOptionsPage.validateNavigateToPageFromAboutScripboxPage(pageName));
