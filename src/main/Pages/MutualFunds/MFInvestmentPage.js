@@ -39,7 +39,7 @@ class MFInvestmentPage {
   async clickNextButtonForPayment(paymentType) {
     if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
       await Utils.clickElement(MFInvestmentObjects.nextButton);
-    } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED_ONE_CLICK_INVEST) {
+    } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
       await Utils.clickElement(MFInvestmentObjects.confirmButton);
     }
   }

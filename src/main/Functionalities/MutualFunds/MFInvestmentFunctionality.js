@@ -46,7 +46,7 @@ class MFInvestmentFunctionality {
   async paymentInstrumentPageLaunched(paymentType) {
     if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
       return (await MFInvestmentPage.paymentInstrumentPageHeaderIsDisplayed());
-    } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED_ONE_CLICK_INVEST) {
+    } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
       return (await MFInvestmentPage.investmentScheduledSuccessfulPageHeaderIsDisplayed());
     }
     return false;
