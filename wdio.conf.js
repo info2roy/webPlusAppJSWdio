@@ -1,4 +1,4 @@
-const { sleepTimeInMsAfterEachStep } = require('./src/config/env');
+const { SLEEP_TIME_IN_MS_AFTER_EACH_STEP } = require('./src/config/env');
 
 exports.config = {
   //
@@ -372,8 +372,8 @@ exports.config = {
     * @param {Object}             context          Cucumber World object
     */
   async afterStep (step, scenario, result, context) {
-    if(step && scenario && result && context && sleepTimeInMsAfterEachStep > 0) {
-      await browser.pause(sleepTimeInMsAfterEachStep);
+    if(step && scenario && result && context && SLEEP_TIME_IN_MS_AFTER_EACH_STEP > 0) {
+      await browser.pause(SLEEP_TIME_IN_MS_AFTER_EACH_STEP);
     }
   },
   /**
