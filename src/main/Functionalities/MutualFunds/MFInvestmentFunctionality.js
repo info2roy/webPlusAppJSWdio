@@ -37,7 +37,7 @@ class MFInvestmentFunctionality {
   }
 
   async setupInvestment(sipDurationInMonths, paymentType, investmentType) {
-    if (investmentType == Constants.INVESTMENT_TYPE_SIP && sipDurationInMonths > 0) {
+    if (investmentType === Constants.INVESTMENT_TYPE_SIP && sipDurationInMonths > 0) {
       await MFInvestmentPage.enterSipDurationInMonths(sipDurationInMonths);
     }
     await MFInvestmentPage.clickNextButtonForPayment(paymentType);
