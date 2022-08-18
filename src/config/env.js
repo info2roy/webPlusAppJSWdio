@@ -6,5 +6,5 @@ module.exports = {
   myScripboxUat38: 'https://uat-myscripbox-38-uat.scripbox.org',
   myScripboxUat2: 'https://uat-myscripbox-2-uat.scripbox.org',
   mockStaging: 'https://stag-myscripbox-2-feature-qa-automation.scripbox.org/',
-  sleepTimeInMsAfterEachStep: 2000
+  sleepTimeInMsAfterEachStep: 0
 };
