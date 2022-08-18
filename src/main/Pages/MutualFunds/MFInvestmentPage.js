@@ -75,19 +75,16 @@ class MFInvestmentPage {
 
   async scrollUntilInvestmentTypeTextIsDisplayed(paymentType) {
     if (Device.isAndroidApp()) {
-      let investmentTypeText = MFInvestmentObjects.MAKE_PAYMENT_NOW_TEXT;
-      if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
-        investmentTypeText = MFInvestmentObjects.ONE_CLICK_INVEST_TEXT;
+      if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
+        await Utils.scrollVerticalUntilTextIntoViewForAndroid(MFInvestmentObjects.MAKE_PAYMENT_NOW_TEXT);
       }
-      console.log(`scrollUntilInvestmentTypeTextIsDisplayed: investmentTypeText: ${JSON.stringify(investmentTypeText)}`);
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(investmentTypeText);
     }
   }
 
   async clickMakePaymentButton(paymentType) {
     if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
       await Utils.clickElement(MFInvestmentObjects.makePaymentNowButton);
-    } else if (paymentType === Constants.PAYMENT_TYPE_SCHEDULED) {
+    } else {
       await Utils.clickElement(MFInvestmentObjects.oneClickInvestButton);
     }
   }
@@ -214,6 +211,47 @@ class MFInvestmentPage {
         console.log('Wrong type MF type to assert. -> ' + mfOption.toString());
     }
   }
-}
 
+  async clickOnAddNewPlanOrExploreOtherPlans() {
+    if (Device.isAndroidApp()) {
+      const addNewPlanFound = await Utils.scrollVerticalUntilTextIntoViewForAndroid(MFInvestmentObjects.addNewPlanText);
+      if (!addNewPlanFound) {
+        const exploreOtherPlansFound = await Utils.scrollVerticalUntilTextIntoViewForAndroid(
+          MFInvestmentObjects.exploreOtherPlansText);
+        if (!exploreOtherPlansFound) {
+          throw 'One of "Add New Plan" or "Explore Other Plans" should be present';
+        }
+      }
+    }
+    Utils.clickElement(MFInvestmentObjects.addNewPlanOrExploreOtherPlans);
+  }
+
+  async addNewPlanPageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageHeader));
+  }
+
+  async addNewPlanPageInvestmentStrategiesHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageInvestmentStrategiesHeader));
+  }
+
+  async addNewPlanPageAchieveLifeGoalsHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageAchieveLifeGoalsHeader));
+  }
+
+  async clickOnViewInvestmentsButton() {
+    Utils.clickElement(MFInvestmentObjects.viewInvestmentsButton);
+  }
+
+  async sipsAndStpsHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.sipsAndStpsHeader));
+  }
+
+  async externalSipsHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.externalSipsHeader));
+  }
+
+  async monthlySummaryHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.monthlySummaryHeader));
+  }
+}
 module.exports = new MFInvestmentPage();

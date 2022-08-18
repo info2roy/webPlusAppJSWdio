@@ -6,8 +6,7 @@ class LoginFunctionality {
     return (await LoginPage.scripBoxExclusiveBenifitsDisplayed());
   }
 
-  async loginWithUsernameAndPassword(username, password) {
-    //await LoginPage.enterEmail(username);
+  async loginWithPassword(password) {
     await LoginPage.enterPassword(password);
     await LoginPage.clickContinueLoginButton();
   }
@@ -28,9 +27,20 @@ class LoginFunctionality {
     await LoginPage.clickContinueWithPasswordButton();
   }
 
+  async continueWithPasswordButtonIsDisplayed() {
+    return (await LoginPage.continueWithPasswordButtonIsDisplayed());
+  }
+
   async loginWithUsername(username) {
     await LoginPage.enterUserId(username);
     await LoginPage.clickContinueOrNextButton();
+  }
+
+  async enterOTP(otpDigits) {
+    for (let index = 0; index < otpDigits.length; index++) {
+      await LoginPage.enterOTPDigit(index, otpDigits[index]);
+    }
+    await LoginPage.clickContinueLoginButton();
   }
 }
 

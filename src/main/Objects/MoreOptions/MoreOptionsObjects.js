@@ -46,12 +46,17 @@ class MoreOptionsPageObjects {
     web: '//div[text()="Account & Family Information"]'
   };
 
+  statementsAndTaxReportsText = {
+    app: 'Statements & reports'
+  };
+
   accountFamilyInformationOptionText = {
     app: 'Account & Family Information'
   };
 
   statementsAndTaxReportsOption = {
-    web: '//div[text()="Statements & Tax Reports"]'
+    web: '//div[text()="Statements & Tax Reports"]',
+    app: '//android.widget.TextView[@text="Statements & reports"]'
   };
 
   statementsAndTaxReportsOptionText = {
@@ -61,6 +66,7 @@ class MoreOptionsPageObjects {
   notificationPreferencesOption = {
     web: '//div[text()="Notification Preferences"]'
   };
+
   notificationPreferencesOptionText = {
     app: 'Notification Preferences'
   };
