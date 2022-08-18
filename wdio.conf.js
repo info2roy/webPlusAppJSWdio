@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { SLEEP_TIME_IN_MS_AFTER_EACH_STEP } = require('./src/config/env');
 
 exports.config = {

@@ -4,7 +4,8 @@ const HomeFunctionality = require('../../main/Functionalities/HomeFunctionality'
 const LoginFunctionality = require('../../main/Functionalities/LoginFunctionality');
 const Device = require('../../support/libraries/Device');
 const Utils = require('../../support/Utils/Utils');
-const envUrl = require('../../config/env');
+require('dotenv').config();
+const { ANDROMEDA, MYSCRIPBOX, MOCKAPI } = require('../../config/env');
 
 Given(/^I am on the scripbox home page$/, async () => {
   await console.log('Given I am on the scripbox home page');
@@ -38,16 +39,16 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
   if (Device.isMobileWeb() || Device.isDesktop()) {
     switch (env.toString()) {
       case 'MYSCRIPBOX':
-        await browser.url(envUrl.MYSCRIPBOX);
+        await browser.url(MYSCRIPBOX);
         await HomeFunctionality.performLogin(env, user);
         break;
       case 'ANDROMEDA':
-        console.log(`url ${envUrl.ANDROMEDA}`);
-        await browser.url(envUrl.ANDROMEDA);
+        console.log(`url ${ANDROMEDA}`);
+        await browser.url(ANDROMEDA);
         await HomeFunctionality.performLogin(env, user);
         break;
       case 'STAGING':
-        await browser.url(envUrl.MOCKAPI);
+        await browser.url(MOCKAPI);
         await HomeFunctionality.performLogin(env, user);
       default:
         await console.warn('Environment is not defined in URL list --> ' + env.toString());
