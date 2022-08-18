@@ -1,7 +1,8 @@
-const { Given, When } = require('@wdio/cucumber-framework');
+const { Given, When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const HomeFunctionality = require('../../main/Functionalities/HomeFunctionality');
 const LoginFunctionality = require('../../main/Functionalities/LoginFunctionality');
+const DashboardFunctionality = require('../../main/Functionalities/DashboardFunctionality');
 const Device = require('../../support/libraries/Device');
 const Utils = require('../../support/Utils/Utils');
 require('dotenv').config();
@@ -43,9 +44,7 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
         await HomeFunctionality.performLogin(env, user);
         break;
       case 'ANDROMEDA':
-        console.log(`url ${ANDROMEDA}`);
         await browser.url(ANDROMEDA);
-        await HomeFunctionality.performLogin(env, user);
         break;
       case 'STAGING':
         await browser.url(MOCKAPI);
@@ -56,6 +55,13 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
     }
   } else if (Device.isAndroidApp()) {
     expect(await HomeFunctionality.androidHomePageLaunch()).to.be.true;
+    await HomeFunctionality.performLoginApp(user);
   }
   await browser.pause(4000); // Adding this pause because we have to manually click on "retry error button" on UI
+});
+
+Then(/^I go back to the dashboard page$/, async () => {
+  await console.log('Then I go back to the dashboard page');
+  await DashboardFunctionality.open(); //this.uat is coming from world.js
+  await DashboardFunctionality.validate();
 });

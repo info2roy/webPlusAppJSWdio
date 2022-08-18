@@ -1,31 +1,44 @@
 const Utils = require('../../../support/Utils/Utils');
 const MFStatementObjects = require('../../Objects/MutualFunds/MfStatementObjects');
+const Device = require('../../../support/libraries/Device');
 
 class MFStatementPage {
 
-  async mFPageHeaderIsDisplayed() {
+  async statementsAndTaxReportPageHeaderIsDisplayed() {
     return await Utils.elementIsDisplayed(MFStatementObjects.statementsAndTaxReportsHeader);
   }
 
   async navigateToMFStatementPage(mfOption) {
     switch (mfOption.toString()) {
       case 'Investment history':
+        if (Device.isAndroidApp()) {
+          Utils.scrollHorizontalUntilTextIntoViewForAndroid(MFStatementObjects.investmentHistoryTabText);
+        }
         await Utils.clickElement(MFStatementObjects.investmentHistoryTab);
         break;
       case 'Fund holdings':
+        if (Device.isAndroidApp()) {
+          Utils.scrollHorizontalUntilTextIntoViewForAndroid(MFStatementObjects.fundHoldingsTabText);
+        }
         await Utils.clickElement(MFStatementObjects.fundHoldingsTab);
         break;
       case 'Tax statements':
+        if (Device.isAndroidApp()) {
+          Utils.scrollHorizontalUntilTextIntoViewForAndroid(MFStatementObjects.taxStatementsTabText);
+        }
         await Utils.clickElement(MFStatementObjects.taxStatementsTab);
         break;
       case 'Capital gains':
+        if (Device.isAndroidApp()) {
+          Utils.scrollHorizontalUntilTextIntoViewForAndroid(MFStatementObjects.capitalGainsTabText);
+        }
         await Utils.clickElement(MFStatementObjects.capitalGainsTab);
         break;
       default:
         console.log('Mf option not available');
     }
   }
-
+  // MF page validation not done for Android. No data avilable.
   async validateMFPageLoad(mfOption) {
     switch (mfOption.toString()) {
       case 'Investment history':

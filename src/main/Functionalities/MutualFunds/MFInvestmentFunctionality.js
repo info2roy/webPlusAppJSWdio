@@ -13,8 +13,10 @@ class MFInvestmentFunctionality {
     return (await MFInvestmentPage.investmentFormPageHeaderIsDisplayed());
   }
 
-  async fillInvestmentForm(investmentType, amount) {
-    await MFInvestmentPage.selectInvestmentType(investmentType);
+  async fillInvestmentForm(investmentType, amount, selectInvestmentType = true) {
+    if (selectInvestmentType) {
+      await MFInvestmentPage.selectInvestmentType(investmentType);
+    }
     await MFInvestmentPage.enterInvestmentAmount(amount);
     await MFInvestmentPage.clickSeeRecommendedFundsButton();
     return (await MFInvestmentPage.recommendedFundPageHeaderIsDisplayed());
@@ -35,7 +37,7 @@ class MFInvestmentFunctionality {
   }
 
   async setupInvestment(sipDurationInMonths, paymentType, investmentType) {
-    if (investmentType == Constants.INVESTMENT_TYPE_SIP) {
+    if (investmentType === Constants.INVESTMENT_TYPE_SIP && sipDurationInMonths > 0) {
       await MFInvestmentPage.enterSipDurationInMonths(sipDurationInMonths);
     }
     await MFInvestmentPage.clickNextButtonForPayment(paymentType);
@@ -85,6 +87,21 @@ class MFInvestmentFunctionality {
     await MFInvestmentPage.clickBackButton();
   }
 
-}
+  async addNewPlanOrExploreOtherPlans() {
+    await MFInvestmentPage.clickOnAddNewPlanOrExploreOtherPlans();
+  }
 
+  async addNewPlanPageLaunched() {
+    return (await MFInvestmentPage.addNewPlanPageHeaderIsDisplayed()) &&
+      (await MFInvestmentPage.addNewPlanPageInvestmentStrategiesHeaderIsDisplayed()) &&
+      (await MFInvestmentPage.addNewPlanPageAchieveLifeGoalsHeaderIsDisplayed());
+  }
+
+  async viewInvestments() {
+    await MFInvestmentPage.clickOnViewInvestmentsButton();
+    return (await MFInvestmentPage.sipsAndStpsHeaderIsDisplayed()) &&
+      (await MFInvestmentPage.externalSipsHeaderIsDisplayed()) &&
+      (await MFInvestmentPage.monthlySummaryHeaderIsDisplayed());
+  }
+}
 module.exports = new MFInvestmentFunctionality();

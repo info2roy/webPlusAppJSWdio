@@ -40,3 +40,13 @@ When(/^I navigate back to Dashboard$/, async () => {
   await DashboardFunctionality.navigateToDashboard();
   await DashboardFunctionality.validate();
 });
+
+Then(/^I click on "HOME" button$/, async () => {
+  await console.log('Then I click on "HOME" button');
+  await DashboardFunctionality.goToHome();
+});
+
+Then(/^I click on "GO TO DASHBOARD" button$/, async () => {
+  await console.log('I click on "GO TO DASHBOARD" button');
+  await DashboardFunctionality.goToDashboard();
+});

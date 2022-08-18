@@ -15,8 +15,8 @@ When(/^I click on continue with password$/, async () => {
   expect(await LoginFunctionality.secondLoginPageLaunched()).to.be.true;
 });
 
-When(/^I login with username and password$/, async () => {
-  await console.log('When I login with username and password');
-  await LoginFunctionality.loginWithUsernameAndPassword(LoginData.username, LoginData.password);
+When(/^I login with password$/, async () => {
+  await console.log('When I login with password');
+  await LoginFunctionality.loginWithPassword(LoginData.password);
   await console.log('Filled username and password');
 });

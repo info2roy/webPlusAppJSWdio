@@ -15,6 +15,7 @@ class DashboardFunctionality {
       await browser.url('scripbox://scripbox');
     }
   }
+
   async validate() {
     expect(await Utils.elementIsDisplayed(DashboardObjects.helloUser)).toBe.true;
   }
@@ -25,6 +26,16 @@ class DashboardFunctionality {
 
   async selectReturnToHome() {
     await DashboardPage.returnToHome();
+  }
+
+  async goToHome() {
+    await DashboardPage.clickHomeButton();
+    await this.validate();
+  }
+
+  async goToDashboard() {
+    await DashboardPage.clickGoToDashboardButton();
+    await this.validate();
   }
 
   async invest() {

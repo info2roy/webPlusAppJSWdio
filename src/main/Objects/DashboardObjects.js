@@ -9,6 +9,10 @@ class DashboardObjects {
 
   returnToHome = { web: '//*[contains(text(),"Return to Home")]' };
 
+  homeButton = { web: '//button[text()="Home"]' };
+
+  goToDashboardButton = { web: '//button[text()="Go to Dashboard"] | //button[text()="GO TO DASHBOARD"]' };
+
   withdrawButton = { web: '//div[contains(@class,"dashboard-invest-withdraw-btn")]//*[text()="Withdraw"]', app: '//*[@text="Withdraw"]' };
 
   investMoreButton = { web: '//button/div[text()="Invest more"]', app: '//*[@text="Invest more"]' };
