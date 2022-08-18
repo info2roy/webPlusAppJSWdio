@@ -10,4 +10,4 @@ Feature: Scripbox Login from home page
     # Then I should see dashboard page loaded
 
   Scenario: As a user, I can log into the scripbox in specific environment
-    Given I login to Scripbox in "STAGING" for "user189182"
+    Given I login to Scripbox in "ANDROMEDA" for "user189182"

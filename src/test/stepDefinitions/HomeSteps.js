@@ -42,6 +42,7 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
         await HomeFunctionality.performLogin(env, user);
         break;
       case 'ANDROMEDA':
+        console.log(`url ${envUrl.ANDROMEDA}`);
         await browser.url(envUrl.ANDROMEDA);
         await HomeFunctionality.performLogin(env, user);
         break;
