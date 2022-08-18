@@ -42,12 +42,7 @@ class HomeFunctionality {
           await console.log(user + ' User not available to add. Please add in login data to proceed');
       }
       await LoginPage.clickContinueOrNextButton();
-      if (await LoginPage.continueWithPasswordButtonIsDisplayed()) {
-        await LoginPage.clickContinueWithPasswordButton();
-        await LoginPage.enterPassword(loginData.password);
-      } else {
-        await LoginFunctionality.enterOTP([1, 1, 1, 1, 1, 1]);
-      }
+      await LoginPage.enterPassword(loginData.password);
       await LoginPage.clickContinueLoginButton();
       await DashboardFunctionality.validate();
     } else if (env === 'STAGING' || env === 'MYSCRIPBOX') {
