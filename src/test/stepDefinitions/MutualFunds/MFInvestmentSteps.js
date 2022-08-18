@@ -38,7 +38,7 @@ When(/^I accept the recommended mutual fund allocation and click NEXT$/, async (
   expect(await MFInvestmentFunctionality.acceptRecommendedFunds(this.investmentType, this.amount)).to.be.true;
 });
 
-When(/^I select Payment type as (Immediate|ScheduledOneClickInvest|ScheduledAutomateNow)$/, async (paymentType) => {
+When(/^I select Payment type as (Immediate|Scheduled)$/, async (paymentType) => {
   await console.log(`When I select Payment type as ${paymentType}`);
   this.paymentType = paymentType;
   await MFInvestmentFunctionality.makePayment(paymentType);

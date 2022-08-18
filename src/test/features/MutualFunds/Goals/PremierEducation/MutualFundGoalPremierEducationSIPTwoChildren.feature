@@ -50,5 +50,5 @@ Feature: Scripbox Investment in Mutual Fund Goal for Premier Education
     Then I click on "GO TO DASHBOARD" button
     Examples:
       | child1Class | child1CollegeType | child1Name | child1YearlyFees | child1PaymentType |
-      | 1  | Government Colleges  | child1 | 100000 | ScheduledOneClickInvest |
+      | 1  | Government Colleges  | child1 | 100000 | Scheduled |
       

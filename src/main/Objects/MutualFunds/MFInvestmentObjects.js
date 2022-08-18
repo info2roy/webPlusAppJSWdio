@@ -96,7 +96,7 @@ class MFInvestmentObjects {
   };
 
   oneClickInvestButton = {
-    web: `//button[text()="1-Click Invest"]`,
+    web: `//button[text()="1-Click Invest"] | //button[text()="Schedule Now"] | //button[text()="Automate Now"]`,
     app: `//*[@text="${this.ONE_CLICK_INVEST_TEXT.app}"]`
   };
 

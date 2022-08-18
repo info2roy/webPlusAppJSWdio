@@ -3,6 +3,7 @@ const LoginPage = require('../Pages/LoginPage');
 const loginData = require('../../config/data/structured/LoginData');
 const LoginObjects = require('../Objects/LoginObjects');
 const DashboardFunctionality = require('../Functionalities/DashboardFunctionality');
+const LoginFunctionality = require('../Functionalities/LoginFunctionality');
 const Utils = require('../../support/Utils/Utils');
 
 class HomeFunctionality {
@@ -38,8 +39,12 @@ class HomeFunctionality {
           await console.log(user + ' User not available to add. Please add in login data to proceed');
       }
       await LoginPage.clickContinueOrNextButton();
-      await LoginPage.clickContinueWithPasswordButton();
-      await LoginPage.enterPassword(loginData.password);
+      if (await LoginPage.continueWithPasswordButtonIsDisplayed()) {
+        await LoginPage.clickContinueWithPasswordButton();
+        await LoginPage.enterPassword(loginData.password);
+      } else {
+        await LoginFunctionality.enterOTP([1, 1, 1, 1, 1, 1]);
+      }
       await LoginPage.clickContinueLoginButton();
       await DashboardFunctionality.validate();
     } else if (env == 'STAGING' || env === 'MYSCRIPBOX' || env === 'MYSCRIPBOX38' || env === 'MYSCRIPBOX2') {

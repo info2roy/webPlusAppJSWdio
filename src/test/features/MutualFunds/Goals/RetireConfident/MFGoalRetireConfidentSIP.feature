@@ -1,7 +1,7 @@
 Feature: Scripbox Investment in Mutual Fund Goals
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "MYSCRIPBOX2" for "user189182"
+    Given I login to Scripbox in "MYSCRIPBOX2" for "user120405"
 
   Scenario Outline: As a logged in user, I am able to INVEST EVERY MONTH in mutual fund goal "Retire Confident"
     Given I am on the Investment Page
@@ -13,7 +13,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I fill Existing Savings form with <existingSavingsAmount>, <existingSavingsGrowthRate>, <futureMonthlyIncomeFromOtherSources>
     When I select inflation rate as <inflationPercent>%
     When I click on CONTINUE with retirement Plan
-    When I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan
+    When I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan for user "user120405"
     When I click on "INVEST EVERY MONTH" for Life Goal Plan
     When I click "CONTINUE" for "INVEST EVERY MONTH" on the "Retire Confident" Plan
     When I click "CONTINUE TO INVEST" on the "Retire Confident" Plan
@@ -23,7 +23,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
     Then I click on "HOME" button
     Examples:
       | age | monthlyExpenses | retireAtAge | retirementEndAge | existingSavingsAmount | existingSavingsGrowthRate | futureMonthlyIncomeFromOtherSources | inflationPercent | paymentType | 
-      | 30  | 25000  | 60 | 80 | 200000 | 8 | 10000 | 7 | ScheduledOneClickInvest |
+      | 30  | 25000  | 60 | 80 | 200000 | 8 | 10000 | 7 | Scheduled |
 
   Scenario Outline: As a logged in user, I am able to add new SIPs (scheduled payment) to existing mutual fund goal "Retire Confident"
     Given I am on the Investment Page
@@ -42,8 +42,8 @@ Feature: Scripbox Investment in Mutual Fund Goals
     Then I go back to the dashboard page
     Examples:
       | investmentType | amount | paymentType | sipInMonths |
-      | Every month (SIP) | 6000 | ScheduledOneClickInvest | 0 |
-      | Every month (SIP) | 7000 | ScheduledOneClickInvest | 60 |
+      | Every month (SIP) | 6000 | Scheduled | 0 |
+      | Every month (SIP) | 7000 | Scheduled | 60 |
 
   Scenario Outline: As a logged in user, I am able to add new OneTime investments (scheduled payment) to existing mutual fund goal "Retire Confident"
     Given I am on the Investment Page
@@ -61,7 +61,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
     Then I go back to the dashboard page
     Examples:
       | investmentType | amount | paymentType |
-      | One time | 20000 | ScheduledOneClickInvest |
+      | One time | 20000 | Scheduled |
 
   Scenario Outline: As a logged in user, I am able to add new SIPs (Immediate payment) to existing mutual fund goal "Retire Confident"
     Given I am on the Investment Page
@@ -126,8 +126,8 @@ Feature: Scripbox Investment in Mutual Fund Goals
     Then I go back to the dashboard page
     Examples:
       | investmentType | amount | paymentType | sipInMonths |
-      | Every month (SIP) | 8000 | ScheduledOneClickInvest | 0 |
-      | Every month (SIP) | 9000 | ScheduledOneClickInvest | 60 |
+      | Every month (SIP) | 8000 | Scheduled | 0 |
+      | Every month (SIP) | 9000 | Scheduled | 60 |
 
   Scenario Outline: As a logged in user, I am able to do "Other Actions -> Start a new SIP" (immediate payment) to existing mutual fund goal "Retire Confident"
     Given I am on the Investment Page
@@ -171,7 +171,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
     Then I go back to the dashboard page
     Examples:
       | investmentType | amount | paymentType |
-      | One time | 28500 | ScheduledOneClickInvest |
+      | One time | 28500 | Scheduled |
 
   Scenario Outline: As a logged in user, I am able to do "Other Actions -> Invest one-time" (immediate payment) to existing mutual fund goal "Retire Confident"
     Given I am on the Investment Page
@@ -221,7 +221,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
     Then I click on "HOME" button
     Examples:
       | newRetireAtAge | newRetirementEndAge | newMonthlyExpenses | newInflationPercent | newFutureMonthlyIncomeFromOtherSources | newExistingSavingsAmount | newExistingSavingsGrowthRate | sipIncreasePercent | paymentType |
-      | 65 | 85 | 30000 | 5 | 20000 | 300000 | 10 | 7 | ScheduledOneClickInvest |
+      | 65 | 85 | 30000 | 5 | 20000 | 300000 | 10 | 7 | Scheduled |
 
   Scenario Outline: As a logged in user, I am able close an existing mutual fund goal "Retire Confident"
     Given I am on the Investment Page

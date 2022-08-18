@@ -142,9 +142,9 @@ When(/^I click "CONTINUE" on the "Premier Education" Suggested Plan$/, async() =
   await MFGoalsFunctionality.continueInvestForPremierEducation();
 });
 
-When(/^I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan$/, async() => {
+When(/^I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan for user "([^"]*)?"$/, async(username) => {
   await console.log('When I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan');
-  expect(await MFGoalsFunctionality.createAPlanOrSignupOrLoginForLifeGoalPlan()).to.be.true;
+  expect(await MFGoalsFunctionality.createAPlanOrSignupOrLoginForLifeGoalPlan(username)).to.be.true;
 });
 
 When(/^I click on "INVEST EVERY MONTH" for Life Goal Plan$/, async() => {

@@ -40,6 +40,7 @@ class LoginFunctionality {
     for (let index = 0; index < otpDigits.length; index++) {
       await LoginPage.enterOTPDigit(index, otpDigits[index]);
     }
+    await LoginPage.clickContinueLoginButton();
   }
 }
 

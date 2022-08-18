@@ -133,12 +133,16 @@ class MFGoalsFunctionality {
     await MFGoalsPage.clickContinueButtonForPremierEducationPlan(2);
   }
 
-  async createAPlanOrSignupOrLoginForLifeGoalPlan() {
+  async createAPlanOrSignupOrLoginForLifeGoalPlan(username) {
     if(await MFGoalsPage.signupOrLoginButtonIsDisplayed()) {
       await MFGoalsPage.clickSignupOrLoginButton();
       expect(await LoginPage.loginYourAccountToContinueHeaderIsDisplayed()).to.be.true;
-      await LoginFunctionality.loginWithUsername(LoginData.username);
-      await LoginFunctionality.loginWithPassword(LoginData.password);
+      await LoginFunctionality.loginWithUsername(LoginData[username]);
+      if (await LoginPage.enterOTPHeaderIsDisplayed()) {
+        await LoginFunctionality.enterOTP([1, 1, 1, 1, 1, 1]);
+      } else {
+        await LoginFunctionality.loginWithPassword(LoginData.password);
+      }
       return true;
     } else if(await MFGoalsPage.createPlanButtonIsDisplayed()) {
       await MFGoalsPage.clickCreatePlanButton();

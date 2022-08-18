@@ -13,7 +13,7 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I fill Existing Savings form with <existingSavingsAmount>, <existingSavingsGrowthRate>, <futureMonthlyIncomeFromOtherSources>
     When I select inflation rate as <inflationPercent>%
     When I click on CONTINUE with retirementPlan
-    When I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan
+    When I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan for user "user189182"
     When I click on "INVEST ONE TIME" for Life Goal Plan
     When I click "CONTINUE" for "INVEST ONE TIME" on the "Retire Confident" Plan
     When I fill "INVEST ONE TIME" <oneTimeAmount> and click "CONTINUE" on the "Retire Confident" Plan
@@ -41,6 +41,6 @@ Feature: Scripbox Investment in Mutual Fund Goals
     When I click on "CLOSE THIS PLAN" button for "Retire Confident" Plan
     Examples:
       | age | monthlyExpenses | retireAtAge | retirementEndAge | existingSavingsAmount | existingSavingsGrowthRate | futureMonthlyIncomeFromOtherSources | inflationPercent | oneTimeAmount | paymentType | 
-      | 30  | 25000  | 60 | 80 | 200000 | 8 | 10000 | 7 | 50000 | ScheduledOneClickInvest |
-      #| 35  | 50K  | 50 | 70 | 100000 | 8 | 10000 | 4 | 100000 | ScheduledOneClickInvest |
-      #| 41  | 40000  | 65 | 90 | 100000 | 8 | 10000 | 5 | 100000 | ScheduledOneClickInvest |
+      | 30  | 25000  | 60 | 80 | 200000 | 8 | 10000 | 7 | 50000 | Scheduled |
+      #| 35  | 50K  | 50 | 70 | 100000 | 8 | 10000 | 4 | 100000 | Scheduled |
+      #| 41  | 40000  | 65 | 90 | 100000 | 8 | 10000 | 5 | 100000 | Scheduled |

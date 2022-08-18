@@ -65,6 +65,6 @@ Feature: Scripbox Investment in Mutual Fund Goal of Premier Education
     Then I click on "GO TO DASHBOARD" button
     Examples:
       | class | collegeType | childname | yearlyFees | paymentType | newCollegeStartYear | newCurrentYearFees | newAnnualFeesIncreasePercent | newAnnualContributionWhileInCollege | externalSavingsAmount | externalSavingsGrowthRate |
-      #| 1  | Government Colleges  | child2 | 100000 | ScheduledOneClickInvest | 2035 | 150000 | 9 | 50000 | 70000 | 10 |
-      | 2  | Private Colleges  | child1 | 200000 | ScheduledOneClickInvest | 2035 | 250000 | 8 | 100000 | 150000 | 8 |
-      #| 3  | Premier Private Colleges  | child3 | 300000 | ScheduledOneClickInvest | 2035 | 350000 | 7 | 120000 | 120000 | 7 |
+      #| 1  | Government Colleges  | child2 | 100000 | Scheduled | 2035 | 150000 | 9 | 50000 | 70000 | 10 |
+      | 2  | Private Colleges  | child1 | 200000 | Scheduled | 2035 | 250000 | 8 | 100000 | 150000 | 8 |
+      #| 3  | Premier Private Colleges  | child3 | 300000 | Scheduled | 2035 | 350000 | 7 | 120000 | 120000 | 7 |
