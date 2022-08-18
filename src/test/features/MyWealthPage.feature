@@ -8,7 +8,7 @@ Feature: As customer I wish to read articles related to My Wealth
     When I login with password
     Then I should see dashboard page loaded
 
-  Scenario Outline: As a logged in user I navigate to Wisdom page to start checkup
+  Scenario Outline: As a logged in user I navigate to My Wealth page to start checkup
     Given I navigate to My Wealth page
     When I click on a BLOG
     When I want to navigate to Investment strategy tab
