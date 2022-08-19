@@ -27,7 +27,8 @@ exports.config = {
       'goog:chromeOptions': {
         args: [
           '--headless',
-          '--window-size=400,960'
+          '--window-size=400,960',
+          '--disable-dev-shm-usage'
           // '--window-size=250,700'
         ],
       },
