@@ -15,7 +15,8 @@ exports.config = {
     Command to execute: npm test
     */
     hostname: process.env.SELENIUM_HUB_URL || 'localhost',
-    port: 4444,
+    protocol: 'https',
+    port: '',
     path: '/',
     services: ['docker'],
 
