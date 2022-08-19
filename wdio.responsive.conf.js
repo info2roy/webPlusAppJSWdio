@@ -16,6 +16,7 @@ exports.config = {
     */
     hostname: process.env.SELENIUM_HUB_URL || 'localhost',
     protocol: 'https',
+    port: 443,
     path: '/',
     services: ['docker'],
 

@@ -32,7 +32,7 @@ myscripbox:
         image:
           tag: v-master
         envs:
-          SELENIUM_HUB_URL: https://{{ .Values.global.services.qaautomation.hostname }}.{{ .Values.global.accountDomain }}
+          SELENIUM_HUB_URL: '{{ .Values.global.services.qaautomation.hostname }}.{{ .Values.global.accountDomain }}'
           ANDROMEDA_URL: https://{{ .Values.global.services.andromeda.hostname }}.{{ .Values.global.accountDomain }}
           MYSCRIPBOX_URL: https://{{ .Values.global.services.myscripbox.hostname }}.{{ .Values.global.accountDomain }}
           MYSCRIPBOX_API_URL: https://{{ .Values.global.services.myscripboxapi.hostname }}.{{ .Values.global.accountDomain }}
