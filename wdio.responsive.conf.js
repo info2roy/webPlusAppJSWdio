@@ -18,7 +18,7 @@ exports.config = {
     protocol: 'https',
     port: 443,
     path: '/',
-    services: ['docker'],
+    services: ['chromedriver'],
 
     // For mobile web platform
     capabilities: [{
