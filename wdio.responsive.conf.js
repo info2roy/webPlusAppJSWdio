@@ -9,13 +9,13 @@ exports.config = {
     Enable chromedriver service to execute tests in local.
     Command to execute: ./node_modules/.bin/wdio wdio.responsive.conf.js
     */
-    services: ['chromedriver'],
+    // services: ['chromedriver'],
     /*
     Enable docker service and port to execute tests in docker.
     Command to execute: npm test
     */
-    // port: 443,
-    // services: ['docker'],
+    port: 4444,
+    services: ['docker'],
 
     // For mobile web platform
     capabilities: [{
@@ -24,7 +24,7 @@ exports.config = {
       acceptInsecureCerts: true,
       'goog:chromeOptions': {
         args: [
-          "--headless",
+          '--headless',
           '--window-size=400,960'
           // '--window-size=250,700'
         ],
