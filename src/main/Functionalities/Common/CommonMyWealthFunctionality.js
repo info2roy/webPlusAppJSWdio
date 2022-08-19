@@ -1,0 +1,16 @@
+const Constants = require('../../../config/data/structured/Constants');
+const CommonMyWealthPage = require('../../Pages/Common/CommonMyWealthPage');
+
+class CommonMyWealthFunctionality {
+  async myWealthPageLaunched() {
+    return (await CommonMyWealthPage.myWealthHeaderIsDisplayed()) &&
+      (await CommonMyWealthPage.myWealthTabIsDisplayed(Constants.MY_WEALTH_INVESTMENTS)) &&
+      (await CommonMyWealthPage.myWealthTabIsDisplayed(Constants.MY_WEALTH_INVESTMENTS));
+  }
+
+  async selectMyWealthTab(wealthType) {
+    await CommonMyWealthPage.selectMyWealthTab(wealthType);
+    return (await CommonMyWealthPage.validateNavigateToMyWealthTab(wealthType));
+  }
+}
+module.exports = new CommonMyWealthFunctionality();

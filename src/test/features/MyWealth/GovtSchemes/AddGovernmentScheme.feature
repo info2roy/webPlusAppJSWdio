@@ -4,5 +4,6 @@ Feature: Scripbox MyWealth: Add a Government Scheme
     Given I login to Scripbox in "UAT38" for "user180756"
 
   Scenario Outline: As a logged in user, I am able to add a Government Scheme to "My Wealth"
-  Given I am on the Investment Page
-  When I navigate to the investment tab "Mutual Funds"
+  Given I am on the MyWealth Page
+  When I navigate to the MyWealth tab "Investments"
+  When I navigate to the MyWealth Investments type "Govt. Schemes"

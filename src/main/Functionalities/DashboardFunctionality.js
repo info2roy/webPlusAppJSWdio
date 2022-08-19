@@ -44,6 +44,10 @@ class DashboardFunctionality {
     await DashboardPage.selectDashboardTab(Constants.DASHBOARD_HOME);
   }
 
+  async myWealth() {
+    await DashboardPage.selectDashboardTab(Constants.DASHBOARD_MYWEALTH);
+  }
+
   async selectWithdrawOrInvestMoreOption(option) {
     await DashboardPage.selectWithdrawOrInvestMoreOption(option);
   }
