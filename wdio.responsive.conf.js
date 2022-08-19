@@ -14,7 +14,9 @@ exports.config = {
     Enable docker service and port to execute tests in docker.
     Command to execute: npm test
     */
+    hostname: process.env.SELENIUM_HUB_URL || 'localhost',
     port: 4444,
+    path: '/',
     services: ['docker'],
 
     // For mobile web platform
