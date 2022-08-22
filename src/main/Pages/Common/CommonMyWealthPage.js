@@ -1,6 +1,7 @@
 const Utils = require('../../../support/Utils/Utils');
 const CommonMyWealthObjects = require('../../Objects/Common/CommonMyWealthObjects');
 const Constants = require('../../../config/data/structured/Constants');
+const Device = require('../../../support/libraries/Device');
 
 class CommonMyWealthPage {
 
@@ -40,15 +41,20 @@ class CommonMyWealthPage {
   }
 
   async selectMyWealthInvestmentType(investmentType) {
-    await Utils.clickElement(CommonMyWealthObjects.selectMyWealthInvestmentType(investmentType));
+    if (Device.isWeb()) {
+      await Utils.scrollAndMoveToElement(CommonMyWealthObjects.myWealthInvestmentType(investmentType));
+    }
+    await Utils.clickElement(CommonMyWealthObjects.myWealthInvestmentType(investmentType));
+  }
+
+  async myWealthInvestmentGovtSchemePageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(CommonMyWealthObjects.myWealthInvestmentGovtSchemesHeader));
   }
 
   async validateNavigateToMyWealthInvestmentTypePage(investmentType) {
     switch(investmentType.toString()) {
-      case Constants.MY_WEALTH_INVESTMENTS:
-        return (await this.myWealthInvestmentsPageIsDisplayed());
-      case Constants.MY_WEALTH_INSURANCE:
-        return (await this.myWealthInsurancePageIsDisplayed());
+      case Constants.MY_WEALTH_INVESTMENTS_GOVT_SCHEMES:
+        return (await this.myWealthInvestmentGovtSchemePageIsDisplayed());
       default:
         await console.log('Unsupported investmentType type -> ' + investmentType.toString());
         return false;

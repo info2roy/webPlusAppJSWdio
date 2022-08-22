@@ -12,5 +12,10 @@ class CommonMyWealthFunctionality {
     await CommonMyWealthPage.selectMyWealthTab(wealthType);
     return (await CommonMyWealthPage.validateNavigateToMyWealthTab(wealthType));
   }
+
+  async selectMyWealthInvestmentType(investmentType) {
+    await CommonMyWealthPage.selectMyWealthInvestmentType(investmentType);
+    return (await CommonMyWealthPage.validateNavigateToMyWealthInvestmentTypePage(investmentType));
+  }
 }
 module.exports = new CommonMyWealthFunctionality();

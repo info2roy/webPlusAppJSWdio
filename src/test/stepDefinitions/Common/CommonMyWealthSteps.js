@@ -16,5 +16,5 @@ When(/^I navigate to the MyWealth tab "(Investments|Insurance)"$/, async (wealth
 
 When(/^I navigate to the MyWealth Investments type "(Mutual Funds|Stocks|US Stocks|Fixed Deposits|Real Estate|Govt. Schemes|Other Investments)"$/, async(investmentType) => {
   await console.log(`I navigate to the MyWealth Investments type ${investmentType}`);
-  expect(await CommonMyWealthFunctionality(wealthType)).to.be.true;
+  expect(await CommonMyWealthFunctionality.selectMyWealthInvestmentType(investmentType)).to.be.true;
 });

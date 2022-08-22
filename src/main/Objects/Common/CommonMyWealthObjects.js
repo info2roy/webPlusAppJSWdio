@@ -25,5 +25,10 @@ class CommonMyWealthObjects {
       app: `//*[@text="${insuranceType}"]`
     };
   }
+
+  myWealthInvestmentGovtSchemesHeader = {
+    web: '(//div[text()="Government Schemes"])[last()]',
+    app: '(//*[@text="Government Schemes"])[last()]'
+  };
 }
 module.exports = new CommonMyWealthObjects();
