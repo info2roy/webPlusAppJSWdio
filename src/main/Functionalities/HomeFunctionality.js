@@ -13,7 +13,7 @@ class HomeFunctionality {
 
   async performLogin(env, user) {
     console.log('testing for environment ' + env);
-    if (env === 'UAT38' || env === 'UAT2' || env === 'ANDROMEDA') {
+    if (env === 'ANDROMEDA') {
       await HomePage.clickMenuButton();
       await HomePage.selectLoginOption();
       switch (user.toString()) {
@@ -42,15 +42,10 @@ class HomeFunctionality {
           await console.log(user + ' User not available to add. Please add in login data to proceed');
       }
       await LoginPage.clickContinueOrNextButton();
-      if (await LoginPage.continueWithPasswordButtonIsDisplayed()) {
-        await LoginPage.clickContinueWithPasswordButton();
-        await LoginPage.enterPassword(loginData.password);
-      } else {
-        await LoginFunctionality.enterOTP([1, 1, 1, 1, 1, 1]);
-      }
+      await LoginPage.enterPassword(loginData.password);
       await LoginPage.clickContinueLoginButton();
       await DashboardFunctionality.validate();
-    } else if (env == 'STAGING' || env === 'MYSCRIPBOX' || env === 'MYSCRIPBOX38' || env === 'MYSCRIPBOX2') {
+    } else if (env === 'STAGING' || env === 'MYSCRIPBOX') {
       switch (user.toString()) {
         case 'user180756':
           await Utils.setInputField(loginData.user180756, LoginObjects.stagingUserIdField);

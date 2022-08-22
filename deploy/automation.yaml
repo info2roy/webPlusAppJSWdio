@@ -1,0 +1,42 @@
+global:
+  dbForceRecreate: "false"
+  environment: automation
+  accountDomain: scripbox.org
+  services:
+    myscripbox:
+      chart: staging/myscripbox
+      version: 3.0.*
+      repo: apps/myscripbox
+      branch: master
+    myscripboxapi:
+      chart: staging/myscripbox-api
+      version: 3.0.*
+      repo: apps/myscripbox-api
+      branch: master
+    andromeda:
+      chart: staging/andromeda
+      version: 3.0.*
+      repo: apps/andromeda
+      branch: master
+    qaautomation:
+      chart: staging/qaautomation
+      version: 3.0.*
+      repo: qaautomation
+      branch: feature/ci-cd-qa
+
+myscripbox:
+  myscripbox:
+    testCases:
+      enabled: true
+      global:
+        image:
+          tag: v-master
+        envs:
+          SELENIUM_HUB_URL: '{{ .Values.global.services.qaautomation.hostname }}.{{ .Values.global.accountDomain }}'
+          ANDROMEDA_URL: https://{{ .Values.global.services.andromeda.hostname }}.{{ .Values.global.accountDomain }}
+          MYSCRIPBOX_URL: https://{{ .Values.global.services.myscripbox.hostname }}.{{ .Values.global.accountDomain }}
+          MYSCRIPBOX_API_URL: https://{{ .Values.global.services.myscripboxapi.hostname }}.{{ .Values.global.accountDomain }}
+      cases:
+        - name: qa-automation
+          image:
+            repository: 826048892410.dkr.ecr.ap-south-1.amazonaws.com/qaautomation

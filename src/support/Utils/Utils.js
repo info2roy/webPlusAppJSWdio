@@ -192,28 +192,6 @@ class Utils {
     return Math.floor(Math.random() * maxIntValue);
   }
 
-  getUAT(environment) {
-    switch(environment) {
-      case 'UAT2':
-      case 'MYSCRIPBOX2':
-        return 2;
-      case 'UAT38':
-      case 'MYSCRIPBOX38':
-        return 38;
-      default:
-        return undefined;
-    }
-  }
-
-  getMyScripbox(uat) {
-    if (uat === 38) {
-      return env.myScripboxUat38;
-    } else if(uat === 2) {
-      return env.myScripboxUat2;
-    }
-    return undefined;
-  }
-
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }

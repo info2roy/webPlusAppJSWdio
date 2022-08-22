@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: 3.0.0
+dependencies:
+- alias: qaautomation
+  name: selenium
+  repository: https://scripbox-charts.scripbox.io/devops
+  version: 1.2.3
+description: A Helm chart for qaautomation project
+name: qaautomation
+version: 3.0.1
