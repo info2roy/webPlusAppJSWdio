@@ -3,8 +3,8 @@ const CommonObjects = require('../../Objects/Common/CommonObjects');
 
 class CommonPage {
 
-  async selectFamilyMemberPageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(CommonObjects.selectFamilyMemberPageHeader));
+  async selectFamilyMemberPageHeaderIsDisplayed(timeoutMS = 15000) {
+    return (await Utils.elementIsDisplayed(CommonObjects.selectFamilyMemberPageHeader, timeoutMS));
   }
 
   async clickOnFamilyMemberByName(familyMemberName) {

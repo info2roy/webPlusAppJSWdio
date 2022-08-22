@@ -20,5 +20,13 @@ class Constants {
   MY_WEALTH_INVESTMENTS_US_STOCKS = 'US Stocks';
   MY_WEALTH_INVESTMENTS_FIXED_DEPOSITS = 'Fixed Deposits';
   MY_WEALTH_INVESTMENTS_GOVT_SCHEMES = 'Govt. Schemes';
+  GOVT_SCHEME_NPS_TIER1 = 'National Pension Scheme Tier1';
+  GOVT_SCHEME_NPS_TIER2 = 'National Pension Scheme Tier2';
+  GOVT_SCHEME_EPF = 'Employee Provident Fund';
+  GOVT_SCHEME_PPF = 'Public Provident Fund';
+  GOVT_SCHEME_GPF = 'General Provident Fund';
+  GOVT_SCHEME_SSY = 'Sukanya Samridhi Yojna';
+  GOVT_SCHEME_NSC = 'National Saving Certificate';
+  GOVT_SCHEME_SCSS = 'Senior Citizen Saving Scheme';
 }
 module.exports = new Constants();

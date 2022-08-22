@@ -67,14 +67,14 @@ class Utils {
     await webElement.click();
   }
 
-  async elementIsDisplayed(selector) {
+  async elementIsDisplayed(selector, timeoutMS = 15000) {
     const locator = this.getLocator(selector);
     // const element = await $(locator);
     try {
       await browser.waitUntil(
         async () => await $(locator).isDisplayed(),
         {
-          timeout: 15000,
+          timeout: timeoutMS,
           timeoutMsg: `${locator} Selector not displayed yet`,
           interval: 2000
         },

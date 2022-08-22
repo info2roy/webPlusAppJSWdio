@@ -7,8 +7,8 @@ class CommonObjects {
 
   familyMember(familyMemberName) {
     return {
-      web: `//div[contains(text(),"${familyMemberName}")]`,
-      app: `//*[contains(@text,"${familyMemberName}")]`
+      web: `(//div[contains(text(),"${familyMemberName}")])[last()]`,
+      app: `(//*[contains(@text,"${familyMemberName}")])[last()]`
     };
   }
 
