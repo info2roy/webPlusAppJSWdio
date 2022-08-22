@@ -22,5 +22,9 @@ class CommonPage {
   async selectASchemePageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(CommonObjects.selectASchemePageHeader));
   }
+
+  async clickBackButton() {
+    await Utils.clickElement(CommonObjects.backButton);
+  }
 }
 module.exports = new CommonPage();

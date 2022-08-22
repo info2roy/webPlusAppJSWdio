@@ -5,5 +5,9 @@ class CommonFunctionality {
     return (await CommonPage.selectFamilyMemberPageHeaderIsDisplayed());
   }
 
+  async goBackToPreviousPage() {
+    await CommonPage.clickBackButton();
+  }
+
 }
 module.exports = new CommonFunctionality();

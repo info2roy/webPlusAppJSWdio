@@ -13,6 +13,8 @@ class CustomWorld {
     this.classOfChild = 0; //the class of the child
     this.childname = ''; //the name of the child
     this.uat = 0; //the uat id , either 2 or 38
+    this.govtSchemesInvestedAmount = 0; //the total invested amount for Govt Schemes
+    this.govtSchemePercentAndAmount = []; //array containing two values [percent, amount]
   }
 }
 setWorldConstructor(CustomWorld);

@@ -47,5 +47,16 @@ class GovtSchemesObjects {
       web: `//div[text()="${this.schemeNameToCode[schemeName]} data updated successfully"]`
     };
   }
+
+  totalInvestedAmount = {
+    web: '//div[text()="INVESTED AMOUNT"]/parent::div/following-sibling::div'
+  };
+
+  totalAmountForScheme(schemeName) {
+    const schemeCode = this.schemeNameToCode[schemeName];
+    return {
+      web: `//div[contains(text(),${schemeCode})]/parent::span/following-sibling::span/div`
+    };
+  }
 }
 module.exports = new GovtSchemesObjects();

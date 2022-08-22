@@ -29,5 +29,15 @@ class GovtSchemesFunctionality {
     await GovtSchemesPage.saveOrUpdateAmount();
     return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(schemename));
   }
+
+  async getTotalInvestedAmount() {
+    await GovtSchemesPage.clickExpandMoreButton();
+    await CommonPage.clickOnFamilyMemberByName('All family members');
+    return (await GovtSchemesPage.getTotalInvestedAmount());
+  }
+
+  async getSchemePercentAndAmount(schemeName) {
+    return (await GovtSchemesPage.getSchemePercentAndAmount(schemeName));
+  }
 }
 module.exports = new GovtSchemesFunctionality();

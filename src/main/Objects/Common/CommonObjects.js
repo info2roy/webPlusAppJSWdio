@@ -28,5 +28,9 @@ class CommonObjects {
     web: '//div[text()="Select a scheme"]',
     app: '//*[@text="Select a scheme"]'
   };
+
+  backButton = {
+    web: '//i[text()="chevron_left"]'
+  };
 }
 module.exports = new CommonObjects();

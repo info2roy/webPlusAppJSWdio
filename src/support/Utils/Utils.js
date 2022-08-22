@@ -217,6 +217,34 @@ class Utils {
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+  /**
+   * Convert abbriviated string representation of a number to absolute value
+   * @param  {string} abbrStr the abbriviated string like 10.0 K, 23 k, 12.4 L, 1.2 l, 4 M, 5.4 m etc
+   * @returns '10.0 K' -> 10000.0, '23 k' -> 23000.0, '12.4 L' -> 1240000.0, 1.2 l -> 120000.0, '4 M' -> 4000000.0, '5.4 m' -> 5400000
+   */
+  numberAbbriviationToAbsoluteValue(abbrStr) {
+    const parts = abbrStr.split(' ');
+    let abbrChar = '';
+    if (parts.length == 2) {
+      abbrChar = parts[1];
+    } else {
+      abbrChar = abbrStr.at(-1);
+      parts[0] = parts[0].slice(0, -1);
+    }
+    switch(abbrChar) {
+      case 'K':
+      case 'k':
+        return (parseFloat(parts[0]) * 1000);
+      case 'L':
+      case 'l':
+        return (parseFloat(parts[0]) * 100000);
+      case 'M':
+      case 'm':
+        return (parseFloat(parts[0]) * 1000000);
+      default:
+        throw `invalid number string ${abbrStr}`;
+    }
+  }
 }
 
 module.exports = new Utils();

@@ -1,6 +1,7 @@
 const Constants = require('../../../config/data/structured/Constants');
 const Utils = require('../../../support/Utils/Utils');
 const GovtSchemesObjects = require('../../Objects/GovtSchemes/GovtSchemesObjects');
+const { expect } = require('chai');
 
 class GovtSchemesPage {
   async clickAddGovtSchemeButton() {
@@ -57,6 +58,27 @@ class GovtSchemesPage {
 
   async amountUpdateSuccessMessageIsDisplayed(schemeName) {
     return (await Utils.elementIsDisplayed(GovtSchemesObjects.amountUpdateSuccessMessage(schemeName)));
+  }
+
+  async getTotalInvestedAmount() {
+    return Utils.numberAbbriviationToAbsoluteValue(await Utils.getText(GovtSchemesObjects.totalInvestedAmount));
+  }
+
+  async totalAmountForSchemeIsDisplayed(schemeName) {
+    return (await Utils.elementIsDisplayed(GovtSchemesObjects.totalAmountForScheme(schemeName), 2000));
+  }
+
+  async getSchemePercentAndAmount(schemeName) {
+    if(await this.totalAmountForSchemeIsDisplayed(schemeName)) {
+      const value = await Utils.getText(GovtSchemesObjects.totalAmountForScheme(schemeName));
+      const parts = value.split('|');
+      expect(parts.length).to.equal(2);
+      const percent = parseFloat(parts[0]);
+      const total = Utils.numberAbbriviationToAbsoluteValue(parts[1].trim());
+      return [percent, total];
+    } else {
+      return [0, 0];
+    }
   }
 }
 module.exports = new GovtSchemesPage();
