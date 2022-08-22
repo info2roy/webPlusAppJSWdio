@@ -8,3 +8,4 @@ Feature: Scripbox MyWealth: Add a Government Scheme
   When I navigate to the MyWealth tab "Investments"
   When I navigate to the MyWealth Investments type "Govt. Schemes"
   When I click on "Add Govt. Scheme" button
+  When I select a family member "Investor 156012" for Govt Schemes
