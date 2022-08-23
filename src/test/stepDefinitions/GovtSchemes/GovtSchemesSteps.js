@@ -6,14 +6,21 @@ When(/^I select Govt Scheme (National Pension Scheme Tier1|National Pension Sche
   async (schemeName, familyMember) => {
     await console.log(`When I select Govt Scheme "${schemeName}" for family member "${familyMember}"`);
     this.familyMemberName = familyMember;
+
     expect(await GovtSchemesFunctionality.selectFamilyMember('All family members')).to.be.true;
     this.govtSchemesTotalInvestedAmount = await GovtSchemesFunctionality.getTotalInvestedAmount();
     this.singleGovtSchemePercentAndAmount = await GovtSchemesFunctionality.getSchemePercentAndAmount(schemeName);
-    console.log(`govtSchemesTotalInvestedAmount ${this.govtSchemesTotalInvestedAmount} singleGovtSchemePercentAndAmount ${this.singleGovtSchemePercentAndAmount}`);
+    this.singleGovtSchemeAbsoluteAmount = await GovtSchemesFunctionality.getSchemeAbsoluteAmount(schemeName);
+    console.log(`MYWEALTH govtSchemesTotalInvestedAmount ${this.govtSchemesTotalInvestedAmount} singleGovtSchemePercentAndAmount ${this.singleGovtSchemePercentAndAmount}`);
+    console.log(`MYWEALTH singleGovtSchemeAbsoluteAmount ${this.singleGovtSchemeAbsoluteAmount}`);
+
     expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
     this.govtSchemesTotalInvestedAmountForMember = await GovtSchemesFunctionality.getTotalInvestedAmount();
     this.singleGovtSchemePercentAndAmountForMember = await GovtSchemesFunctionality.getSchemePercentAndAmount(schemeName);
-    console.log(`govtSchemesTotalInvestedAmountForMember ${this.govtSchemesTotalInvestedAmountForMember} singleGovtSchemePercentAndAmountForMember ${this.singleGovtSchemePercentAndAmountForMember}`);
+    this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getSchemeAbsoluteAmount(schemeName);
+    console.log(`MYWEALTH govtSchemesTotalInvestedAmountForMember ${this.govtSchemesTotalInvestedAmountForMember} singleGovtSchemePercentAndAmountForMember ${this.singleGovtSchemePercentAndAmountForMember}`);
+    console.log(`MYWEALTH singleGovtSchemeAbsoluteAmountForMember ${this.singleGovtSchemeAbsoluteAmountForMember}`);
+
     expect(await GovtSchemesFunctionality.addGovtScheme()).to.be.true;
     expect(await GovtSchemesFunctionality.selectGovtScheme(schemeName)).to.be.true;
   }
@@ -30,30 +37,15 @@ When(/^I set amount as (\d+) for Govt Scheme (Employee Provident Fund|Public Pro
 
 Then(/^Total invested amount should get updated$/, async () => {
 
-  //First do validations for member level total amount for all schemes and single scheme
+  //First do validations for member level, total amount for all schemes and single scheme
+  await GovtSchemesFunctionality.doGovtSchemeValidations(this.schemeName, this.familyMemberName, this.amount,
+    this.govtSchemesTotalInvestedAmountForMember, this.singleGovtSchemeAbsoluteAmountForMember,
+    this.singleGovtSchemePercentAndAmountForMember[1]);
 
-  const newInvestedAmountForMember = await GovtSchemesFunctionality.getTotalInvestedAmount();
-  const newSingleGovtSchemePercentAndAmountForMember = await GovtSchemesFunctionality.getSchemePercentAndAmount(this.schemeName);
-  const incrementInTotalAmountForMember = newInvestedAmountForMember - this.govtSchemesTotalInvestedAmountForMember;
-  const expectedIncrementInTotalAmountForMember = this.amount - this.singleGovtSchemePercentAndAmountForMember[1];
-  console.log(`newInvestedAmountForMember ${newInvestedAmountForMember} newSingleGovtSchemePercentAndAmountForMember ${newSingleGovtSchemePercentAndAmountForMember}`);
-  console.log(`incrementInTotalAmountForMember ${incrementInTotalAmountForMember} expectedIncrementInTotalAmountForMember ${expectedIncrementInTotalAmountForMember}`);
-  expect(incrementInTotalAmountForMember).to.equal(expectedIncrementInTotalAmountForMember);
-  const incrementInSchemeWiseTotalAmountForMember = newSingleGovtSchemePercentAndAmountForMember[1] - this.singleGovtSchemePercentAndAmountForMember[1];
-  console.log(`incrementInSchemeWiseTotalAmountForMember ${incrementInSchemeWiseTotalAmountForMember}`);
-  expect(incrementInSchemeWiseTotalAmountForMember).to.equal(expectedIncrementInTotalAmountForMember);
-
-  //Now do validations for all members total amount for all schemes and single scheme
+  //Now do validations for all members, total amount for all schemes and single scheme
   expect(await GovtSchemesFunctionality.selectFamilyMember('All family members')).to.be.true;
 
-  const newInvestedAmountForAllMembers = await GovtSchemesFunctionality.getTotalInvestedAmount();
-  const newSingleGovtSchemePercentAndAmountForAllMembers = await GovtSchemesFunctionality.getSchemePercentAndAmount(this.schemeName);
-  const incrementInTotalAmountForAllMembers = newInvestedAmountForAllMembers - this.govtSchemesTotalInvestedAmount;
-  const expectedIncrementInTotalAmountForAllMembers = this.amount - this.singleGovtSchemePercentAndAmount[1];
-  console.log(`newInvestedAmountForAllMembers ${newInvestedAmountForAllMembers} newSingleGovtSchemePercentAndAmountForAllMembers ${newSingleGovtSchemePercentAndAmountForAllMembers}`);
-  console.log(`incrementInTotalAmountForMember ${incrementInTotalAmountForMember} expectedIncrementInTotalAmountForMember ${expectedIncrementInTotalAmountForMember}`);
-  expect(incrementInTotalAmountForAllMembers).to.equal(expectedIncrementInTotalAmountForAllMembers);
-  const incrementInSchemeWiseTotalAmountForAllMembers = newSingleGovtSchemePercentAndAmountForAllMembers[1] - this.singleGovtSchemePercentAndAmount[1];
-  console.log(`incrementInSchemeWiseTotalAmountForAllMembers ${incrementInSchemeWiseTotalAmountForAllMembers}`);
-  expect(incrementInSchemeWiseTotalAmountForAllMembers).to.equal(expectedIncrementInTotalAmountForAllMembers);
+  await GovtSchemesFunctionality.doGovtSchemeValidations(this.schemeName, 'All family members', this.amount,
+    this.govtSchemesTotalInvestedAmount, this.singleGovtSchemeAbsoluteAmount,
+    this.singleGovtSchemePercentAndAmount[1]);
 });

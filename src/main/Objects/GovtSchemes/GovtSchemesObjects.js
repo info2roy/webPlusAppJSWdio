@@ -56,10 +56,16 @@ class GovtSchemesObjects {
     web: '//div[text()="INVESTED AMOUNT"]/parent::div/following-sibling::div'
   };
 
-  totalAmountForScheme(schemeName) {
+  totalAmountForSchemePieChart(schemeName) {
     const schemeCode = this.schemeNameToCode[schemeName];
     return {
       web: `//div[contains(text(),"${schemeCode}")]/parent::span/following-sibling::span/div`
+    };
+  }
+
+  totalAbsoluteAmountForScheme(schemeName) {
+    return {
+      web: `//div[contains(text(),"${schemeName}")]/parent::div/parent::div/parent::div/following-sibling::div/div/div`
     };
   }
 }

@@ -60,17 +60,17 @@ class GovtSchemesPage {
     return Utils.numberAbbriviationToAbsoluteValue(await Utils.getText(GovtSchemesObjects.totalInvestedAmount));
   }
 
-  async totalAmountForSchemeIsDisplayed(schemeName) {
-    return (await Utils.elementIsDisplayed(GovtSchemesObjects.totalAmountForScheme(schemeName), 2000));
+  async totalAmountForSchemePieChartIsDisplayed(schemeName) {
+    return (await Utils.elementIsDisplayed(GovtSchemesObjects.totalAmountForSchemePieChart(schemeName), 2000));
   }
 
   async investedAmountHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(GovtSchemesObjects.investedAmountHeader));
   }
 
-  async getSchemePercentAndAmount(schemeName) {
-    if(await this.totalAmountForSchemeIsDisplayed(schemeName)) {
-      const value = await Utils.getText(GovtSchemesObjects.totalAmountForScheme(schemeName));
+  async getSchemePercentAndAmountPieChart(schemeName) {
+    if(await this.totalAmountForSchemePieChartIsDisplayed(schemeName)) {
+      const value = await Utils.getText(GovtSchemesObjects.totalAmountForSchemePieChart(schemeName));
       const parts = value.split('|');
       expect(parts.length).to.equal(2);
       const percent = parseFloat(parts[0]);
@@ -78,6 +78,19 @@ class GovtSchemesPage {
       return [percent, total];
     } else {
       return [0, 0];
+    }
+  }
+
+  async totalAmountForSchemeAbsoluteIsDisplayed(schemeName) {
+    return (await Utils.elementIsDisplayed(GovtSchemesObjects.totalAbsoluteAmountForScheme(schemeName), 2000));
+  }
+
+  async getSchemeAbsoluteAmount(schemeName) {
+    if(await this.totalAmountForSchemeAbsoluteIsDisplayed(schemeName)) {
+      const value = await Utils.getText(GovtSchemesObjects.totalAbsoluteAmountForScheme(schemeName));
+      return Utils.numberAbbriviationToAbsoluteValue(value.trim());
+    } else {
+      return 0;
     }
   }
 }
