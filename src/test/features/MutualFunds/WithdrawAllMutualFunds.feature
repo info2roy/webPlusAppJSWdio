@@ -10,3 +10,5 @@ Feature: Scripbox Withdraw for Mutual Fund
     When I select "Mutual Funds" as financial product for withdrawal
     When I select for withdrawal the mutual fund portfolio <mutualFundPortfolio>
     When I select withdrawal bank option as "Continue with same bank"
+    When I land on selecting fund <fund name> screen
+    Then 
