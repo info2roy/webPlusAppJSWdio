@@ -3,9 +3,9 @@ const CommonMyWealthPage = require('../../Pages/Common/CommonMyWealthPage');
 
 class CommonMyWealthFunctionality {
   async myWealthPageLaunched() {
-    return (await CommonMyWealthPage.myWealthHeaderIsDisplayed()) &&
+    return (await CommonMyWealthPage.yourWealthHeaderIsDisplayed()) &&
       (await CommonMyWealthPage.myWealthTabIsDisplayed(Constants.MY_WEALTH_INVESTMENTS)) &&
-      (await CommonMyWealthPage.myWealthTabIsDisplayed(Constants.MY_WEALTH_INVESTMENTS));
+      (await CommonMyWealthPage.myWealthTabIsDisplayed(Constants.MY_WEALTH_INSURANCE));
   }
 
   async selectMyWealthTab(wealthType) {

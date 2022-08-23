@@ -13,8 +13,11 @@ class CustomWorld {
     this.classOfChild = 0; //the class of the child
     this.childname = ''; //the name of the child
     this.uat = 0; //the uat id , either 2 or 38
-    this.govtSchemesInvestedAmount = 0; //the total invested amount for Govt Schemes
-    this.govtSchemePercentAndAmount = []; //array containing two values [percent, amount]
+    this.familyMemberName = ''; //name of the family member
+    this.govtSchemesTotalInvestedAmount = 0; //the total invested amount for Govt Schemes
+    this.singleGovtSchemePercentAndAmount = []; //array containing two values [percent, amount] for all family member for Govt Schemes
+    this.govtSchemesTotalInvestedAmountForMember = 0; //the total invested amount for Govt Schemes for a given Family Member
+    this.singleGovtSchemePercentAndAmountForMember = []; //array containing two values [percent, amount] for single family member for Govt Schemes
   }
 }
 setWorldConstructor(CustomWorld);

@@ -21,11 +21,6 @@ class GovtSchemesObjects {
     app: '//*[@text="Enter Scheme details"]'
   };
 
-  expandMoreButton = {
-    web: '//i[text()="expand_more"]',
-    app: '//*[@text="expand_more"]'
-  };
-
   amountField = {
     web: 'input#current_value'
   };
@@ -47,6 +42,11 @@ class GovtSchemesObjects {
       web: `//div[text()="${this.schemeNameToCode[schemeName]} data updated successfully"]`
     };
   }
+
+  investedAmountHeader = {
+    web: '//div[text()="INVESTED AMOUNT"]',
+    app: '//*[@text="INVESTED AMOUNT"]'
+  };
 
   totalInvestedAmount = {
     web: '//div[text()="INVESTED AMOUNT"]/parent::div/following-sibling::div'

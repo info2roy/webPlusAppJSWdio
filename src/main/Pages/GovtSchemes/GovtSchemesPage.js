@@ -12,14 +12,6 @@ class GovtSchemesPage {
     return (await Utils.elementIsDisplayed(GovtSchemesObjects.addGovtSchemePageHeader));
   }
 
-  async expandMoreButtonIsDisplayed() {
-    return (await Utils.elementIsDisplayed(GovtSchemesObjects.expandMoreButton));
-  }
-
-  async clickExpandMoreButton() {
-    await Utils.clickElement(GovtSchemesObjects.expandMoreButton);
-  }
-
   async selectGovtScheme(schemeName) {
     switch(schemeName) {
       case Constants.GOVT_SCHEME_EPF:
@@ -66,6 +58,10 @@ class GovtSchemesPage {
 
   async totalAmountForSchemeIsDisplayed(schemeName) {
     return (await Utils.elementIsDisplayed(GovtSchemesObjects.totalAmountForScheme(schemeName), 2000));
+  }
+
+  async investedAmountHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(GovtSchemesObjects.investedAmountHeader));
   }
 
   async getSchemePercentAndAmount(schemeName) {

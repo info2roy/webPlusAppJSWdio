@@ -26,5 +26,13 @@ class CommonPage {
   async clickBackButton() {
     await Utils.clickElement(CommonObjects.backButton);
   }
+
+  async clickExpandMoreButton() {
+    await Utils.clickElement(CommonObjects.expandMoreButton);
+  }
+
+  async expandMoreButtonIsDisplayed() {
+    return (await Utils.elementIsDisplayed(CommonObjects.expandMoreButton));
+  }
 }
 module.exports = new CommonPage();

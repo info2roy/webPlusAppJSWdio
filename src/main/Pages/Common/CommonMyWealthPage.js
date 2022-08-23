@@ -5,8 +5,8 @@ const Device = require('../../../support/libraries/Device');
 
 class CommonMyWealthPage {
 
-  async myWealthHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(CommonMyWealthObjects.myWealthPageHeader));
+  async yourWealthHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(CommonMyWealthObjects.yourWealthPageHeader));
   }
 
   async myWealthTabIsDisplayed(wealthType) {

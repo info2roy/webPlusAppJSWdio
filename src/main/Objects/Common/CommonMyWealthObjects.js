@@ -1,8 +1,8 @@
 class CommonMyWealthObjects {
 
-  myWealthPageHeader = {
-    web: '//div[text()="MY WEALTH"]',
-    app: '//*[@text="MY WEALTH"]'
+  yourWealthPageHeader = {
+    web: '//div[text()="YOUR WEALTH"]',
+    app: '//*[@text="YOUR WEALTH"]'
   };
 
   myWealthTab(wealthType) { //wealthType belongs to ["Investments", "Insurance"]

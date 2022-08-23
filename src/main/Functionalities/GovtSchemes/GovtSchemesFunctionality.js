@@ -2,21 +2,21 @@ const CommonPage = require('../../Pages/Common/CommonPage');
 const GovtSchemesPage = require('../../Pages/GovtSchemes/GovtSchemesPage');
 
 class GovtSchemesFunctionality {
-  async addGovtScheme(familyMemberName) {
-    if(await GovtSchemesPage.expandMoreButtonIsDisplayed()) {
-      await GovtSchemesPage.clickExpandMoreButton();
-      await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-    }
+  async addGovtScheme() {
     await GovtSchemesPage.clickAddGovtSchemeButton();
     return (await GovtSchemesPage.addGovtSchemePageHeaderIsDisplayed());
   }
 
   async selectFamilyMember(familyMemberName) {
-    if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
+    if(await CommonPage.expandMoreButtonIsDisplayed()) {
+      await CommonPage.clickExpandMoreButton();
+      await CommonPage.clickOnFamilyMemberByName(familyMemberName);
+      return (await GovtSchemesPage.investedAmountHeaderIsDisplayed());
+    } else if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
       await CommonPage.clickOnFamilyMemberByName(familyMemberName);
       return (await CommonPage.selectASchemePageHeaderIsDisplayed());
     }
-    return true;
+    return false;
   }
 
   async selectGovtScheme(schemeName) {
@@ -31,8 +31,6 @@ class GovtSchemesFunctionality {
   }
 
   async getTotalInvestedAmount() {
-    await GovtSchemesPage.clickExpandMoreButton();
-    await CommonPage.clickOnFamilyMemberByName('All family members');
     return (await GovtSchemesPage.getTotalInvestedAmount());
   }
 

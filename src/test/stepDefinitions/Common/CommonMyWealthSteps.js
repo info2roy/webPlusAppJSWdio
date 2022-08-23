@@ -4,7 +4,7 @@ const DashboardFunctionality = require('../../../main/Functionalities/DashboardF
 const { expect } = require('chai');
 
 Given(/^I navigate to the MyWealth "(Investments|Insurance)" type "(Mutual Funds|Stocks|US Stocks|Fixed Deposits|Real Estate|Govt. Schemes|Other Investments)"$/, async(wealthType, investmentType) => {
-  await console.log(`I navigate to the MyWealth ${wealthType} type ${investmentType}`);
+  await console.log(`I navigate to the MyWealth "${wealthType}" type "${investmentType}"`);
   await DashboardFunctionality.myWealth();
   expect(await CommonMyWealthFunctionality.myWealthPageLaunched()).to.be.true;
   expect(await CommonMyWealthFunctionality.selectMyWealthTab(wealthType)).to.be.true;

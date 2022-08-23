@@ -32,5 +32,10 @@ class CommonObjects {
   backButton = {
     web: '//i[text()="chevron_left"]'
   };
+
+  expandMoreButton = {
+    web: '//i[text()="expand_more"]',
+    app: '//*[@text="expand_more"]'
+  };
 }
 module.exports = new CommonObjects();
