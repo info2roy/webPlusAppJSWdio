@@ -17,12 +17,16 @@ class GovtSchemesObjects {
   }
 
   enterSchemeDetailsHeader = {
-    web: '//div[text()="Enter Scheme details"]',
-    app: '//*[@text="Enter Scheme details"]'
+    web: '//div[text()="Enter Scheme details" or text()="Enter Scheme Details"]',
+    app: '//*[@text="Enter Scheme details" or @text="Enter Scheme Details"]'
   };
 
   amountField = {
     web: 'input#current_value'
+  };
+
+  amountFieldSCSS = {
+    web: 'input#value'
   };
 
   saveOrUpdateButton = {
@@ -39,7 +43,7 @@ class GovtSchemesObjects {
 
   amountUpdateSuccessMessage(schemeName) {
     return {
-      web: `//div[text()="${this.schemeNameToCode[schemeName]} data updated successfully"]`
+      web: `//div[text()="${this.schemeNameToCode[schemeName]} data updated successfully" or text()="${this.schemeNameToCode[schemeName]} data added successfully"]`
     };
   }
 
@@ -55,7 +59,7 @@ class GovtSchemesObjects {
   totalAmountForScheme(schemeName) {
     const schemeCode = this.schemeNameToCode[schemeName];
     return {
-      web: `//div[contains(text(),${schemeCode})]/parent::span/following-sibling::span/div`
+      web: `//div[contains(text(),"${schemeCode}")]/parent::span/following-sibling::span/div`
     };
   }
 }

@@ -40,8 +40,12 @@ class GovtSchemesPage {
     }
   }
 
-  async setAmount(amount) {
-    await Utils.setInputField(amount, GovtSchemesObjects.amountField);
+  async setAmount(amount, schemeName) {
+    if (schemeName == Constants.GOVT_SCHEME_SCSS) {
+      await Utils.setInputField(amount, GovtSchemesObjects.amountFieldSCSS);
+    } else {
+      await Utils.setInputField(amount, GovtSchemesObjects.amountField);
+    }
   }
 
   async saveOrUpdateAmount() {

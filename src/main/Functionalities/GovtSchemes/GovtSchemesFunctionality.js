@@ -24,10 +24,10 @@ class GovtSchemesFunctionality {
     return (await GovtSchemesPage.validateNavigateToGovtSchemePage(schemeName));
   }
 
-  async setAmountForGovtScheme(amount, schemename) {
-    await GovtSchemesPage.setAmount(amount);
+  async setAmountForGovtScheme(amount, schemeName) {
+    await GovtSchemesPage.setAmount(amount, schemeName);
     await GovtSchemesPage.saveOrUpdateAmount();
-    return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(schemename));
+    return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(schemeName));
   }
 
   async getTotalInvestedAmount() {
