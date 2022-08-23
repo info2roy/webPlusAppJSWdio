@@ -2,13 +2,15 @@ const DashboardPage = require('../Pages/DashboardPage');
 const DashboardObjects = require('../Objects/DashboardObjects');
 const Utils = require('../../support/Utils/Utils');
 const Device = require('../../support/libraries/Device');
+require('dotenv').config();
+const { MYSCRIPBOX } = require('../../config/env');
 const Constants = require('../../config/data/structured/Constants');
 
 class DashboardFunctionality {
 
-  async open(uat) {
+  async open() {
     if (Device.isWeb()) {
-      await browser.url(`${Utils.getMyScripbox(uat)}/dashboard`);
+      await browser.url(`${MYSCRIPBOX}dashboard`);
     } else if (Device.isAndroidApp()) {
       await browser.url('scripbox://scripbox');
     }
