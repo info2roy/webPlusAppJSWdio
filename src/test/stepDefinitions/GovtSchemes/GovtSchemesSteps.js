@@ -2,7 +2,7 @@ const { When, Then } = require('@wdio/cucumber-framework');
 const GovtSchemesFunctionality = require('../../../main/Functionalities/GovtSchemes/GovtSchemesFunctionality');
 const { expect } = require('chai');
 
-When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2|Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|National Saving Certificate|Senior Citizen Saving Scheme)" for family member "([^"]*)?"$/,
+When(/^I select Govt Scheme (National Pension Scheme Tier1|National Pension Scheme Tier2|Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|National Saving Certificate|Senior Citizen Saving Scheme) for family member "([^"]*)?"$/,
   async (schemeName, familyMember) => {
     await console.log(`When I select Govt Scheme "${schemeName}" for family member "${familyMember}"`);
     this.familyMemberName = familyMember;
@@ -17,7 +17,7 @@ When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Sch
   }
 );
 
-When(/^I set amount as (\d+) for Govt Scheme "(Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|Senior Citizen Saving Scheme)"$/,
+When(/^I set amount as (\d+) for Govt Scheme (Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|Senior Citizen Saving Scheme)$/,
   async(amount, schemeName) => {
     this.amount = amount;
     this.schemeName = schemeName;
