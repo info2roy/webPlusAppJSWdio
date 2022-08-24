@@ -85,5 +85,15 @@ class GovtSchemesFunctionality {
       expect(incrementInSchemeWiseTotalAmountAbsolute).to.equal(expectedIncrementInTotalAmount);
     }
   }
+
+  async fillNPSForm(npsFundName, npsEquityAmount, npsGovtSecurityAmount, npsCorpDebtAmount, npsAltInvestmentFundsAmount, npsType) {
+    await GovtSchemesPage.setNPSFundName(npsFundName);
+    await GovtSchemesPage.setNPSEquityAmount(npsEquityAmount);
+    await GovtSchemesPage.setNPSGovtSecurityAmount(npsGovtSecurityAmount);
+    await GovtSchemesPage.setNPSCorpDebtAmount(npsCorpDebtAmount);
+    await GovtSchemesPage.setNPSAltInvestmentFunds(npsAltInvestmentFundsAmount);
+    await GovtSchemesPage.saveOrUpdateAmount();
+    return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(npsType));
+  }
 }
 module.exports = new GovtSchemesFunctionality();

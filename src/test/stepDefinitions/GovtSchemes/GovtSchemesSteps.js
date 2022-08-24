@@ -79,3 +79,10 @@ When(/^I delete Govt Scheme$/, async() => {
   console.log('When I delete Govt Scheme');
   await GovtSchemesFunctionality.deleteGovtScheme();
 });
+
+When(/^I fill form with (.+), (\d+), (\d+), (\d+), (\d+) for Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2)"$/,
+  async(npsFundName, npsEquityAmount, npsGovtSecurityAmount, npsCorpDebtAmount, npsAltInvestmentFundsAmount, npsType) => {
+    console.log(`I fill form with ${npsFundName}, ${npsEquityAmount}, ${npsGovtSecurityAmount}, ${npsCorpDebtAmount}, ${npsAltInvestmentFundsAmount} for Govt Scheme "${npsType}"`);
+    await GovtSchemesFunctionality.fillNPSForm(npsFundName, npsEquityAmount, npsGovtSecurityAmount, npsCorpDebtAmount, npsAltInvestmentFundsAmount, npsType);
+  }
+);

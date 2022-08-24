@@ -17,8 +17,8 @@ class GovtSchemesObjects {
 
   govtScheme(schemaName) {
     return {
-      web: `//div[text()="${schemaName}"]`,
-      app: `//*[@text="${schemaName}"]`
+      web: `//div[contains(text(),"${schemaName}")]`,
+      app: `//*[contains(@text,"${schemaName}")]`
     };
   }
 
@@ -49,7 +49,9 @@ class GovtSchemesObjects {
     'Public Provident Fund': 'PPF',
     'General Provident Fund': 'GPF',
     'Sukanya Samridhi Yojna': 'SSY',
-    'Senior Citizen Saving Scheme': 'SCSS'
+    'Senior Citizen Saving Scheme': 'SCSS',
+    'National Pension Scheme Tier1': 'NPS',
+    'National Pension Scheme Tier2': 'NPS'
   };
 
   amountUpdateSuccessMessage(schemeName) {
@@ -88,6 +90,31 @@ class GovtSchemesObjects {
   govtSchemeDeleteMessage = {
     web: '//div[text()="Govt Scheme deleted successfully"]',
     app: '//*[@text="Govt Scheme deleted successfully"]'
+  };
+
+  npsFundNameField = {
+    web: 'input#fund'
+  };
+
+  npsFundNameOption(fundName) {
+    return {
+      web: `//li[text()="${fundName}"]`
+    };
+  }
+  npsEquityAmountField = {
+    web: 'input#value1'
+  };
+
+  npsGovtSecurityAmountField = {
+    web: 'input#value2'
+  };
+
+  npsCorpDebtAmountField = {
+    web: 'input#value3'
+  };
+
+  npsAltInvestmentFundsAmountField = {
+    web: 'input#value4'
   };
 }
 module.exports = new GovtSchemesObjects();

@@ -26,6 +26,9 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_SCSS:
         await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
         break;
+      case Constants.GOVT_SCHEME_NPS_TIER1:
+        await Utils.clickElement(GovtSchemesObjects.govtScheme('Tier 1'));
+        break;
       default:
         await console.log(`unsupported Govt Scheme ${schemeName}`);
     }
@@ -38,6 +41,7 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_GPF:
       case Constants.GOVT_SCHEME_SSY:
       case Constants.GOVT_SCHEME_SCSS:
+      case Constants.GOVT_SCHEME_NPS_TIER1:
         return (await Utils.elementIsDisplayed(GovtSchemesObjects.enterSchemeDetailsHeader));
       default:
         await console.log(`unsupported Govt Scheme ${schemeName}`);
@@ -52,13 +56,13 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_GPF:
       case Constants.GOVT_SCHEME_SSY:
       case Constants.GOVT_SCHEME_SCSS:
+      case Constants.GOVT_SCHEME_NPS_TIER1:
         return (await Utils.elementIsDisplayed(GovtSchemesObjects.currentValueHeader));
       default:
         await console.log(`unsupported Govt Scheme ${schemeName}`);
         return false;
     }
   }
-
 
   async setAmount(amount, schemeName) {
     if (schemeName == Constants.GOVT_SCHEME_SCSS) {
@@ -121,5 +125,29 @@ class GovtSchemesPage {
   async govtSchemeDeleteMessageIsDisplayed() {
     return (await Utils.elementIsDisplayed(GovtSchemesObjects.govtSchemeDeleteMessage));
   }
+
+  async setNPSFundName(npsFundName) {
+    await Utils.clickElement(GovtSchemesObjects.npsFundNameField);
+    await Utils.clickElement(GovtSchemesObjects.npsFundNameOption(npsFundName));
+    const selectedFundName = await Utils.getValue(GovtSchemesObjects.npsFundNameField);
+    expect(selectedFundName).to.equal(npsFundName);
+  }
+
+  async setNPSEquityAmount(npsEquityAmount) {
+    await Utils.setInputField(npsEquityAmount, GovtSchemesObjects.npsEquityAmountField);
+  }
+
+  async setNPSGovtSecurityAmount(npsGovtSecurityAmount) {
+    await Utils.setInputField(npsGovtSecurityAmount, GovtSchemesObjects.npsGovtSecurityAmountField);
+  }
+
+  async setNPSCorpDebtAmount(npsCorpDebtAmount) {
+    await Utils.setInputField(npsCorpDebtAmount, GovtSchemesObjects.npsCorpDebtAmountField);
+  }
+
+  async setNPSAltInvestmentFunds(npsAltInvestmentFundsAmount) {
+    await Utils.setInputField(npsAltInvestmentFundsAmount, GovtSchemesObjects.npsAltInvestmentFundsAmountField);
+  }
+
 }
 module.exports = new GovtSchemesPage();

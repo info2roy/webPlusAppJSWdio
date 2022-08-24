@@ -56,11 +56,20 @@ class Utils {
     await myButton.click();
   }
 
+  //Get the text of an element found by given selector.
   async getText(selector) {
     const locator = this.getLocator(selector);
     await this.elementIsDisplayed(selector);
     const element = await $(locator);
     return (await element.getText());
+  }
+
+  //Get the value of a <textarea>, <select> or text <input> found by given selector.
+  async getValue(selector) {
+    const locator = this.getLocator(selector);
+    await this.elementIsDisplayed(selector);
+    const element = await $(locator);
+    return (await element.getValue());
   }
 
   async clickWebElement(webElement) {
