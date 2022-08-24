@@ -1,7 +1,7 @@
 Feature: Scripbox MyWealth: Add a Government Scheme
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "MYSCRIPBOX38" for "user180756"
+    Given I login to Scripbox in "MYSCRIPBOX2" for "user180756"
 
   Scenario Outline: As a logged in user, I am able to add a Government Scheme "General Provident Fund" to "My Wealth"
     Given I navigate to the MyWealth "Investments" type "Govt. Schemes"

@@ -4,6 +4,11 @@ const GovtSchemesObjects = require('../../Objects/GovtSchemes/GovtSchemesObjects
 const { expect } = require('chai');
 
 class GovtSchemesPage {
+
+  async govtSchemesInitialPageHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(GovtSchemesObjects.govtSchemesInitialPageHeader, 2000));
+  }
+
   async clickAddGovtSchemeButton() {
     await Utils.clickElement(GovtSchemesObjects.addGovtSchemesButton);
   }

@@ -1,16 +1,20 @@
-const Constants = require('../../../config/data/structured/Constants');
 const CommonPage = require('../../Pages/Common/CommonPage');
 const GovtSchemesPage = require('../../Pages/GovtSchemes/GovtSchemesPage');
 const { expect } = require('chai');
 
 class GovtSchemesFunctionality {
+
+  async govtSchemesInitialPageLaunched() {
+    return (await GovtSchemesPage.govtSchemesInitialPageHeaderIsDisplayed());
+  }
+
   async addGovtScheme() {
     await GovtSchemesPage.clickAddGovtSchemeButton();
     return (await GovtSchemesPage.addGovtSchemePageHeaderIsDisplayed());
   }
 
   async selectFamilyMember(familyMemberName) {
-    if(await CommonPage.expandMoreButtonIsDisplayed()) {
+    if(await CommonPage.expandMoreButtonIsDisplayed(2000)) {
       await CommonPage.clickExpandMoreButton();
       await CommonPage.clickOnFamilyMemberByName(familyMemberName);
       return (await GovtSchemesPage.investedAmountHeaderIsDisplayed());

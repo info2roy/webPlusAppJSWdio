@@ -15,10 +15,10 @@ class CustomWorld {
     this.uat = 0; //the uat id , either 2 or 38
     this.familyMemberName = ''; //name of the family member
     this.govtSchemesTotalInvestedAmount = 0; //the total invested amount for Govt Schemes
-    this.singleGovtSchemePercentAndAmount = []; //array containing two values [percent, amount] for all family member for Single Govt Scheme
+    this.singleGovtSchemePercentAndAmount = [0, 0]; //array containing two values [percent, amount] for all family member for Single Govt Scheme
     this.singleGovtSchemeAbsoluteAmount = 0; //the abosolute amount for all family members, for a Single Govt Scheme
     this.govtSchemesTotalInvestedAmountForMember = 0; //the total invested amount for a given single Family Member for Single Govt Scheme
-    this.singleGovtSchemePercentAndAmountForMember = []; //array containing two values [percent, amount] for a given single family member for Single Govt Scheme
+    this.singleGovtSchemePercentAndAmountForMember = [0, 0]; //array containing two values [percent, amount] for a given single family member for Single Govt Scheme
     this.singleGovtSchemeAbsoluteAmountForMember = 0; //the abosolute amount for a given single family member, for a Single Govt Scheme
   }
 }

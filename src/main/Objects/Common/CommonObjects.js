@@ -1,8 +1,8 @@
 class CommonObjects {
 
   selectFamilyMemberPageHeader = {
-    web: '(//div[text()="Select family member"])[last()]',
-    app: '//*[@text="Select family member"]'
+    web: '(//div[text()="Select family member" or text()="Select an account"])[last()]',
+    app: '//*[@text="Select family member" or @text="Select an account"]'
   };
 
   familyMember(familyMemberName) {

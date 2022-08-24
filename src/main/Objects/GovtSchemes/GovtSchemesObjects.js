@@ -1,4 +1,10 @@
 class GovtSchemesObjects {
+
+  govtSchemesInitialPageHeader = {
+    web: '//div[text()="One place to track all your Govt. Schemes"]',
+    app: '//*[@text="One place to track all your Govt. Schemes"]'
+  };
+
   addGovtSchemesButton = {
     web: '//button[text()="Add Govt. Scheme" or text()="Add Government Scheme"]',
     app: '//*[@text="Add Govt. Scheme" or @text="Add Government Scheme"]'
