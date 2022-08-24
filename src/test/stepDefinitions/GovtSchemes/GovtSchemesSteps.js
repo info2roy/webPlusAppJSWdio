@@ -3,7 +3,7 @@ const GovtSchemesFunctionality = require('../../../main/Functionalities/GovtSche
 const { expect } = require('chai');
 const CommonFunctionality = require('../../../main/Functionalities/Common/CommonFunctionality');
 
-When(/^I select Govt Scheme (National Pension Scheme Tier1|National Pension Scheme Tier2|Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|National Saving Certificate|Senior Citizen Saving Scheme) for family member "([^"]*)?"$/,
+When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2|Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|National Saving Certificate|Senior Citizen Saving Scheme)" for family member "([^"]*)?"$/,
   async (schemeName, familyMember) => {
     await console.log(`When I select Govt Scheme "${schemeName}" for family member "${familyMember}"`);
     this.familyMemberName = familyMember;
@@ -46,11 +46,11 @@ When(/^I select Govt Scheme (National Pension Scheme Tier1|National Pension Sche
   }
 );
 
-When(/^I set amount as (\d+) for Govt Scheme (Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|Senior Citizen Saving Scheme)$/,
+When(/^I set amount as (\d+) for Govt Scheme "(Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|Senior Citizen Saving Scheme)"$/,
   async(amount, schemeName) => {
     this.amount = amount;
     this.schemeName = schemeName;
-    console.log(`When I add amount as ${amount} for Govt Scheme ${schemeName}`);
+    console.log(`When I add amount as ${amount} for Govt Scheme "${schemeName}"`);
     expect(await GovtSchemesFunctionality.setAmountForGovtScheme(amount, schemeName)).to.be.true;
   }
 );
@@ -70,8 +70,8 @@ Then(/^Total invested amount should get updated$/, async () => {
   // }
 });
 
-When(/^I select Govt Scheme (National Pension Scheme Tier1|National Pension Scheme Tier2|Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|National Saving Certificate|Senior Citizen Saving Scheme) tile$/, async (schemeName) => {
-  console.log(`I select Govt Scheme ${schemeName} tile`);
+When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2|Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|National Saving Certificate|Senior Citizen Saving Scheme)" tile$/, async (schemeName) => {
+  console.log(`I select Govt Scheme "${schemeName}" tile`);
   await GovtSchemesFunctionality.selectGovtSchemeTile(schemeName);
 });
 
