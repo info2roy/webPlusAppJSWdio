@@ -5,7 +5,8 @@ const LoginFunctionality = require('../../main/Functionalities/LoginFunctionalit
 const DashboardFunctionality = require('../../main/Functionalities/DashboardFunctionality');
 const Device = require('../../support/libraries/Device');
 const Utils = require('../../support/Utils/Utils');
-const envUrl = require('../../config/env');
+require('dotenv').config();
+const { ANDROMEDA, MYSCRIPBOX, MOCKAPI } = require('../../config/env');
 
 Given(/^I am on the scripbox home page$/, async () => {
   await console.log('Given I am on the scripbox home page');
@@ -35,33 +36,19 @@ When(/^I click on login option$/, async () => {
 When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => {
   await console.log('Logging in to ' + env + ' for user ' + user);
   const platform = Utils.getPlatform();
-  this.uat = Utils.getUAT(env.toString());
-  console.log(`UAT = ${this.uat}`);
   Device.setDevice(platform);
   if (Device.isMobileWeb() || Device.isDesktop()) {
     switch (env.toString()) {
-      case 'UAT38':
-        await browser.url(envUrl.andromedaUat38);
-        await HomeFunctionality.performLogin(env, user);
-        break;
-      case 'UAT2':
-        await browser.url(envUrl.andromedaUat2);
-        await HomeFunctionality.performLogin(env, user);
-        break;
       case 'MYSCRIPBOX':
-        await browser.url(envUrl.myScripBox);
+        await browser.url(MYSCRIPBOX);
         await HomeFunctionality.performLogin(env, user);
         break;
-      case 'MYSCRIPBOX38':
-        await browser.url(envUrl.myScripboxUat38);
-        await HomeFunctionality.performLogin(env, user);
-        break;
-      case 'MYSCRIPBOX2':
-        await browser.url(envUrl.myScripboxUat2);
+      case 'ANDROMEDA':
+        await browser.url(ANDROMEDA);
         await HomeFunctionality.performLogin(env, user);
         break;
       case 'STAGING':
-        await browser.url(envUrl.mockStaging);
+        await browser.url(MOCKAPI);
         await HomeFunctionality.performLogin(env, user);
       default:
         await console.warn('Environment is not defined in URL list --> ' + env.toString());
@@ -76,7 +63,6 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
 
 Then(/^I go back to the dashboard page$/, async () => {
   await console.log('Then I go back to the dashboard page');
-  console.log(`this.uat = ${this.uat}`);
-  await DashboardFunctionality.open(this.uat); //this.uat is coming from world.js
+  await DashboardFunctionality.open(); //this.uat is coming from world.js
   await DashboardFunctionality.validate();
 });

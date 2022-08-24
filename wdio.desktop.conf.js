@@ -17,7 +17,6 @@ exports.config = {
       acceptInsecureCerts: true
     }],
 
-    baseUrl: 'https://uat-andromeda-2-uat.scripbox.org'
-
+    baseUrl: process.env.ANDROMEDA_URL || '',
   }
 };

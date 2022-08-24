@@ -1,0 +1,64 @@
+.shared-runner: &shared-runner
+  tags:
+    - shared
+    - runner
+
+variables:
+  BUILD_CHART_VERSION: v-master
+  BUILD_IMAGE_VERSION: v-master
+  DEPLOY_CHART_VERSION: v-master
+
+stages:
+  - Build
+  - Deploy
+
+.automation-build-common: &automation-build-common
+  <<: *shared-runner
+  image: $STAGING_ECR_AP_SOUTH/devops/build-image:${BUILD_IMAGE_VERSION}
+  stage: Build
+  variables:
+    DOCKER_HOST: $STAGING_BUILD_ENGINE
+    DOCKER_BUILDKIT: 1
+    KUBERNETES_MEMORY_REQUEST: "2Gi"
+    KUBERNETES_MEMORY_LIMIT: "2Gi"
+  before_script:
+    - aws ecr get-login --region ap-south-1 --no-include-email | sh
+  script:
+    - |
+      cat <<EOF > /tmp/build-image.yaml
+      builds:
+      - context: .
+        repositories:
+          - $STAGING_ECR_AP_SOUTH/qaautomation
+      EOF
+    - cat /tmp/build-image.yaml
+    - build-images /tmp/build-image.yaml
+  cache: {}
+  services: []
+  dependencies: []
+
+automation:image:
+  <<: *automation-build-common
+
+automation:
+  <<: *shared-runner
+  stage: Deploy
+  image: $STAGING_ECR_AP_SOUTH/devops/deploy-chart:${DEPLOY_CHART_VERSION}
+  variables:
+    GENERATE_CHART: "true"
+    NAMESPACE: automation
+    RELEASE_NAME: auto-qaauto-$CI_COMMIT_REF_SLUG
+    VALUES_FILE: deploy/automation.yaml
+    CI_KUBECONFIG: $CI_STAGING_KUBECONFIG
+  before_script:
+    - entrypoint.sh
+    - yq write --inplace $VALUES_FILE myscripbox.myscripbox.testCases.global.image.tag "sha-$CI_COMMIT_SHA"
+  script:
+    - deploy.sh
+    - helm test $RELEASE_NAME --logs --namespace $NAMESPACE
+  artifacts:
+    name: logs
+    expire_in: 3d
+    when: always
+    paths:
+      - deploylogs/
