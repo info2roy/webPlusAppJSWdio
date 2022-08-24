@@ -10,7 +10,7 @@ class DashboardFunctionality {
 
   async open() {
     if (Device.isWeb()) {
-      await browser.url(`${MYSCRIPBOX}dashboard`);
+      await browser.url(`${MYSCRIPBOX}/dashboard`);
     } else if (Device.isAndroidApp()) {
       await browser.url('scripbox://scripbox');
     }

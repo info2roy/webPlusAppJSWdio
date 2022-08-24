@@ -42,7 +42,7 @@ class HomePage {
   }
 
   async myScripboxLoginPageIsDisplayed() {
-    return (await browser.getUrl()) === `${MYSCRIPBOX}login`;
+    return (await browser.getUrl()) === `${MYSCRIPBOX}/login`;
   }
 }
 
