@@ -1,7 +1,7 @@
 Feature: Feature to check basic functionalities of Dashboard page
 
     Scenario: As a user, I can log into the scripbox via home page
-        Given I login to Scripbox in "UAT38" for "user189182"
+        Given I login to Scripbox in "ANDROMEDA" for "user189182"
         When I am on the dashboard page
 
     Scenario: I navigate to Investment Calender page
