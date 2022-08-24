@@ -45,6 +45,21 @@ class GovtSchemesPage {
     }
   }
 
+  async validateNavigateToGovtSchemeStatusPage(schemeName) {
+    switch(schemeName) {
+      case Constants.GOVT_SCHEME_EPF:
+      case Constants.GOVT_SCHEME_PPF:
+      case Constants.GOVT_SCHEME_GPF:
+      case Constants.GOVT_SCHEME_SSY:
+      case Constants.GOVT_SCHEME_SCSS:
+        return (await Utils.elementIsDisplayed(GovtSchemesObjects.currentValueHeader));
+      default:
+        await console.log(`unsupported Govt Scheme ${schemeName}`);
+        return false;
+    }
+  }
+
+
   async setAmount(amount, schemeName) {
     if (schemeName == Constants.GOVT_SCHEME_SCSS) {
       await Utils.setInputField(amount, GovtSchemesObjects.amountFieldSCSS);
@@ -97,6 +112,14 @@ class GovtSchemesPage {
     } else {
       return 0;
     }
+  }
+
+  async clickDeleteSchemeButton() {
+    await Utils.clickElement(GovtSchemesObjects.deleteSchemeButton);
+  }
+
+  async govtSchemeDeleteMessageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(GovtSchemesObjects.govtSchemeDeleteMessage));
   }
 }
 module.exports = new GovtSchemesPage();

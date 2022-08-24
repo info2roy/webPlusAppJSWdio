@@ -16,8 +16,11 @@ class GovtSchemesFunctionality {
   async selectFamilyMember(familyMemberName) {
     if(await CommonPage.expandMoreButtonIsDisplayed(2000)) {
       await CommonPage.clickExpandMoreButton();
-      await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-      return (await GovtSchemesPage.investedAmountHeaderIsDisplayed());
+      if (await CommonPage.familyMemberNameIsDisplayed(familyMemberName, 2000)) {
+        await CommonPage.clickOnFamilyMemberByName(familyMemberName);
+        return (await GovtSchemesPage.investedAmountHeaderIsDisplayed());
+      }
+      return false;
     } else if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
       await CommonPage.clickOnFamilyMemberByName(familyMemberName);
       return (await CommonPage.selectASchemePageHeaderIsDisplayed());
@@ -28,6 +31,16 @@ class GovtSchemesFunctionality {
   async selectGovtScheme(schemeName) {
     await GovtSchemesPage.selectGovtScheme(schemeName);
     return (await GovtSchemesPage.validateNavigateToGovtSchemePage(schemeName));
+  }
+
+  async selectGovtSchemeTile(schemeName) {
+    await GovtSchemesPage.selectGovtScheme(schemeName);
+    return (await GovtSchemesPage.validateNavigateToGovtSchemeStatusPage(schemeName));
+  }
+
+  async deleteGovtScheme() {
+    await GovtSchemesPage.clickDeleteSchemeButton();
+    return (await GovtSchemesPage.govtSchemeDeleteMessageIsDisplayed());
   }
 
   async setAmountForGovtScheme(amount, schemeName) {

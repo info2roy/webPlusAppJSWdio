@@ -27,6 +27,11 @@ class GovtSchemesObjects {
     app: '//*[@text="Enter Scheme details" or @text="Enter Scheme Details"]'
   };
 
+  currentValueHeader = {
+    web: '//div[text()="CURRENT VALUE"]',
+    app: '//*[@text="CURRENT VALUE"]'
+  };
+
   amountField = {
     web: 'input#current_value'
   };
@@ -74,5 +79,15 @@ class GovtSchemesObjects {
       web: `//div[contains(text(),"${schemeName}")]/parent::div/parent::div/parent::div/following-sibling::div/div/div`
     };
   }
+
+  deleteSchemeButton = {
+    web: '//div[text()="Delete"]',
+    app: '//*[@text="Delete"]'
+  };
+
+  govtSchemeDeleteMessage = {
+    web: '//div[text()="Govt Scheme deleted successfully"]',
+    app: '//*[@text="Govt Scheme deleted successfully"]'
+  };
 }
 module.exports = new GovtSchemesObjects();

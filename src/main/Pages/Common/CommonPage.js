@@ -7,6 +7,10 @@ class CommonPage {
     return (await Utils.elementIsDisplayed(CommonObjects.selectFamilyMemberPageHeader, timeoutMS));
   }
 
+  async familyMemberNameIsDisplayed(familyMemberName, timeoutMS = 15000) {
+    return (await Utils.elementIsDisplayed(CommonObjects.familyMember(familyMemberName), timeoutMS));
+  }
+
   async clickOnFamilyMemberByName(familyMemberName) {
     await Utils.clickElement(CommonObjects.familyMember(familyMemberName));
   }
@@ -19,8 +23,8 @@ class CommonPage {
     await Utils.clickElement(CommonObjects.financialProduct(productName));
   }
 
-  async selectASchemePageHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(CommonObjects.selectASchemePageHeader));
+  async selectASchemePageHeaderIsDisplayed(timeoutMS = 15000) {
+    return (await Utils.elementIsDisplayed(CommonObjects.selectASchemePageHeader, timeoutMS));
   }
 
   async clickBackButton() {
