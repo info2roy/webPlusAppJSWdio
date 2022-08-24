@@ -1,7 +1,7 @@
 Feature: Scripbox MyWealth: Add a Government Scheme
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "MYSCRIPBOX38" for "user123473"
+    Given I login to Scripbox in "MYSCRIPBOX" for "user123473"
 
   Scenario: As a logged in user, I can navigate to Government Schemes page
     Given I navigate to the MyWealth "Investments" type "Govt. Schemes"
