@@ -197,8 +197,8 @@ class Utils {
   }
   /**
    * Convert abbriviated string representation of a number to absolute value
-   * @param  {string} abbrStr the abbriviated string like 10.0 K, 23 k, 12.4 L, 1.2 l, 4 M, 5.4 m etc
-   * @returns '10.0 K' -> 10000.0, '23 k' -> 23000.0, '12.4 L' -> 1240000.0, 1.2 l -> 120000.0, '4 M' -> 4000000.0, '5.4 m' -> 5400000
+   * @param  {string} abbrStr the abbriviated string like 10.0 K, 10.0K, 23 k, 23k, 12.4 L, 12.4L, 1.2 l, 1.2l, 4 M, 4M, 5.4 m, 5.4m etc
+   * @returns '10.0 K' OR '10.0K'-> 10000.0, '23 k' OR '23k' -> 23000.0, '12.4 L' OR '12.4L' -> 1240000.0, '1.2 l' OR '1.2l' -> 120000.0, '4 M' or '4M' -> 4000000.0, '5.4 m' or '5.4m ' -> 5400000
    */
   numberAbbriviationToAbsoluteValue(abbrStr) {
     const parts = abbrStr.split(' ');
