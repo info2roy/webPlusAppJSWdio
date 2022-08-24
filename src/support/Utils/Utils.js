@@ -209,16 +209,17 @@ class Utils {
       abbrChar = abbrStr.at(-1);
       parts[0] = parts[0].slice(0, -1);
     }
+    console.log(`parts ${parts} abbrChar ${abbrChar}`);
     switch(abbrChar) {
       case 'K':
       case 'k':
-        return (parseFloat(parts[0]) * 1000);
+        return Math.round(parseFloat(parts[0]) * 1000);
       case 'L':
       case 'l':
-        return (parseFloat(parts[0]) * 100000);
+        return Math.round(parseFloat(parts[0]) * 100000);
       case 'M':
       case 'm':
-        return (parseFloat(parts[0]) * 1000000);
+        return Math.round(parseFloat(parts[0]) * 1000000);
       default:
         throw `invalid number string ${abbrStr}`;
     }
