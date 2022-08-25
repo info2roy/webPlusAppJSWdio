@@ -29,6 +29,9 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_NPS_TIER1:
         await Utils.clickElement(GovtSchemesObjects.govtScheme('Tier 1'));
         break;
+      case Constants.GOVT_SCHEME_NPS_TIER2:
+        await Utils.clickElement(GovtSchemesObjects.govtScheme('Tier 2'));
+        break;
       default:
         await console.log(`unsupported Govt Scheme ${schemeName}`);
     }
@@ -46,6 +49,9 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_NPS_TIER1:
         await this.clickNPSSchemeTile('Tier 1');
         break;
+      case Constants.GOVT_SCHEME_NPS_TIER2:
+        await this.clickNPSSchemeTile('Tier 2');
+        break;
       default:
         await console.log(`unsupported Govt Scheme ${schemeName}`);
     }
@@ -59,6 +65,7 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_SSY:
       case Constants.GOVT_SCHEME_SCSS:
       case Constants.GOVT_SCHEME_NPS_TIER1:
+      case Constants.GOVT_SCHEME_NPS_TIER2:
         return (await Utils.elementIsDisplayed(GovtSchemesObjects.enterSchemeDetailsHeader));
       default:
         await console.log(`unsupported Govt Scheme ${schemeName}`);
@@ -74,6 +81,7 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_SSY:
       case Constants.GOVT_SCHEME_SCSS:
       case Constants.GOVT_SCHEME_NPS_TIER1:
+      case Constants.GOVT_SCHEME_NPS_TIER2:
         return (await Utils.elementIsDisplayed(GovtSchemesObjects.currentValueHeader));
       default:
         await console.log(`unsupported Govt Scheme ${schemeName}`);
