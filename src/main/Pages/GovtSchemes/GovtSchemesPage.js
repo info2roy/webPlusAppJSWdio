@@ -198,5 +198,12 @@ class GovtSchemesPage {
     await Utils.setInputField(npsAltInvestmentFundsAmount, GovtSchemesObjects.npsAltInvestmentFundsAmountField);
   }
 
+  async npsSchemeGetStringAttribute(attrName) {
+    return (await Utils.getText(GovtSchemesObjects.npsSchemeDetailsAttribute(attrName)));
+  }
+
+  async npsSchemeGetNumericAttribute(attrName) {
+    return parseFloat((await Utils.getText(GovtSchemesObjects.npsSchemeDetailsAttribute(attrName))).replace(/,/g, ''));
+  }
 }
 module.exports = new GovtSchemesPage();

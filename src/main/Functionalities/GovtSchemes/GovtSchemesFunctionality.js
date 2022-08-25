@@ -125,5 +125,14 @@ class GovtSchemesFunctionality {
     await GovtSchemesPage.saveOrUpdateAmount();
     return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(npsType));
   }
+
+  async validateNPSSchemeDetails(npsFundName, npsEquityAmount, npsGovtSecurityAmount, npsCorpDebtAmount, npsAltInvestmentFundsAmount, npsType) {
+    expect(await GovtSchemesPage.npsSchemeGetStringAttribute(Constants.NPS_SCHEME_ATTR_TYPE)).to.equal(this.getNPSTier(npsType));
+    expect(await GovtSchemesPage.npsSchemeGetStringAttribute(Constants.NPS_SCHEME_ATTR_FUNDNAME)).to.equal(npsFundName);
+    expect(await GovtSchemesPage.npsSchemeGetNumericAttribute(Constants.NPS_SCHEME_ATTR_E)).to.equal(npsEquityAmount);
+    expect(await GovtSchemesPage.npsSchemeGetNumericAttribute(Constants.NPS_SCHEME_ATTR_G)).to.equal(npsGovtSecurityAmount);
+    expect(await GovtSchemesPage.npsSchemeGetNumericAttribute(Constants.NPS_SCHEME_ATTR_C)).to.equal(npsCorpDebtAmount);
+    expect(await GovtSchemesPage.npsSchemeGetNumericAttribute(Constants.NPS_SCHEME_ATTR_A)).to.equal(npsAltInvestmentFundsAmount);
+  }
 }
 module.exports = new GovtSchemesFunctionality();

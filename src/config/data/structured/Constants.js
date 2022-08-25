@@ -28,5 +28,11 @@ class Constants {
   GOVT_SCHEME_SSY = 'Sukanya Samridhi Yojna';
   GOVT_SCHEME_NSC = 'National Saving Certificate';
   GOVT_SCHEME_SCSS = 'Senior Citizen Saving Scheme';
+  NPS_SCHEME_ATTR_TYPE = 'Type';
+  NPS_SCHEME_ATTR_FUNDNAME = 'Fund Name';
+  NPS_SCHEME_ATTR_E = 'Scheme E - Equity';
+  NPS_SCHEME_ATTR_G = 'Scheme G - Government securities';
+  NPS_SCHEME_ATTR_A = 'Scheme A - Alternative Investment Funds';
+  NPS_SCHEME_ATTR_C = 'Scheme C - Corporate Debt';
 }
 module.exports = new Constants();

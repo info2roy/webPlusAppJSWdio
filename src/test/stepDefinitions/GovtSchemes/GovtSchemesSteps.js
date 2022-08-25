@@ -90,7 +90,7 @@ When(/^I set amount as (\d+) for Govt Scheme "(Employee Provident Fund|Public Pr
 );
 
 Then(/^Total invested amount should get updated$/, async () => {
-  console.log('Total invested amount should get updated');
+  console.log('Then Total invested amount should get updated');
   //First do validations for member level, total amount for all schemes and single scheme
   expect(await GovtSchemesFunctionality.selectFamilyMember(this.familyMemberName)).to.be.true;
   let totalInvestedAmount = 0;
@@ -112,9 +112,15 @@ Then(/^Total invested amount should get updated$/, async () => {
 });
 
 When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2|Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|National Saving Certificate|Senior Citizen Saving Scheme)" tile for family member "([^"]*)"?$/, async (schemeName, familyMemberName) => {
-  console.log(`I select Govt Scheme "${schemeName}" tile for family member "${familyMemberName}"`);
+  console.log(`When I select Govt Scheme "${schemeName}" tile for family member "${familyMemberName}"`);
   expect(await GovtSchemesFunctionality.selectFamilyMember(this.familyMemberName)).to.be.true;
   await GovtSchemesFunctionality.selectGovtSchemeTile(schemeName);
+});
+
+Then(/^NPS Scheme details are shown correctly for Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2)"$/, async(npsSchemeName) => {
+  console.log(`Then NPS Scheme details are shown correctly for Govt Scheme "${npsSchemeName}"`);
+  await GovtSchemesFunctionality.validateNPSSchemeDetails(this.npsFundName, this.npsEquityAmount,
+    this.npsGovtSecurityAmount, this.npsCorpDebtAmount, this.npsAltInvestmentFundsAmount, npsSchemeName);
 });
 
 When(/^I delete Govt Scheme$/, async() => {
@@ -124,7 +130,8 @@ When(/^I delete Govt Scheme$/, async() => {
 
 When(/^I fill form with (.+), (\d+), (\d+), (\d+), (\d+) for Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2)"$/,
   async(npsFundName, npsEquityAmount, npsGovtSecurityAmount, npsCorpDebtAmount, npsAltInvestmentFundsAmount, npsType) => {
-    console.log(`I fill form with ${npsFundName}, ${npsEquityAmount}, ${npsGovtSecurityAmount}, ${npsCorpDebtAmount}, ${npsAltInvestmentFundsAmount} for Govt Scheme "${npsType}"`);
+    console.log(`When I fill form with ${npsFundName}, ${npsEquityAmount}, ${npsGovtSecurityAmount}, ${npsCorpDebtAmount}, ${npsAltInvestmentFundsAmount} for Govt Scheme "${npsType}"`);
+    this.npsFundName = npsFundName;
     this.npsEquityAmount = npsEquityAmount;
     this.npsGovtSecurityAmount = npsGovtSecurityAmount;
     this.npsCorpDebtAmount = npsCorpDebtAmount;

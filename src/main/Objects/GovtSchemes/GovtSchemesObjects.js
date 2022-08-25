@@ -126,5 +126,12 @@ class GovtSchemesObjects {
   npsAltInvestmentFundsAmountField = {
     web: 'input#value4'
   };
+
+  //For NPS Scheme details attributes Type, Fund Name, Scheme E - Equity, Scheme G - Government securities, Scheme A - Alternative Investment Funds or Scheme C - Corporate Debt
+  npsSchemeDetailsAttribute(attribute) {
+    return {
+      web: `//div[text()="${attribute}"]/following-sibling::div`
+    };
+  }
 }
 module.exports = new GovtSchemesObjects();
