@@ -12,7 +12,9 @@ Feature: Scripbox MyWealth: Add a Government Scheme
     Then I go back to the dashboard page
     Examples:
       | npsFundName | npsEquityAmount | npsGovtSecurityAmount | npsCorpDebtAmount | npsAltInvestmentFundsAmount |
-      | Aditya Birla Sun Life Pension Management Fund | 13425 | 23452 | 100000 | 20000 | 
+      | Aditya Birla Sun Life Pension Management Fund | 13425 | 23452 | 100000 | 20000 |
+      | Aditya Birla Sun Life Pension Management Fund | 14425 | 25452 | 200000 | 30000 |
+      | HDFC Pension Management Company Limited | 14425 | 25452 | 200000 | 30000 | 
 
   Scenario Outline: I delete the investment and logout
     Given I navigate to the MyWealth "Investments" type "Govt. Schemes"
@@ -31,6 +33,8 @@ Feature: Scripbox MyWealth: Add a Government Scheme
     Examples:
       | npsFundName | npsEquityAmount | npsGovtSecurityAmount | npsCorpDebtAmount | npsAltInvestmentFundsAmount |
       | Aditya Birla Sun Life Pension Management Fund | 13425 | 23452 | 100000 | 20000 |
+      | Aditya Birla Sun Life Pension Management Fund | 14425 | 25452 | 200000 | 30000 |
+      | HDFC Pension Management Company Limited | 14425 | 25452 | 200000 | 30000 |
 
   Scenario Outline: I delete the investment and logout
     When I select Govt Scheme "National Pension Scheme Tier1" tile for family member "Investor 156012"
