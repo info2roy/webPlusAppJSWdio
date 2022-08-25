@@ -82,6 +82,16 @@ class GovtSchemesObjects {
     };
   }
 
+  npsSchemeTile = {
+    web: '//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))]'
+  };
+
+  totalAbsoluteAmountForNPSScheme(index) {
+    return {
+      web: `(//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))])[${index+1}]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div/div`
+    };
+  }
+
   deleteSchemeButton = {
     web: '//div[text()="Delete"]',
     app: '//*[@text="Delete"]'

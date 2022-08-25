@@ -34,6 +34,23 @@ class GovtSchemesPage {
     }
   }
 
+  async selectGovtSchemeTile(schemeName) {
+    switch(schemeName) {
+      case Constants.GOVT_SCHEME_EPF:
+      case Constants.GOVT_SCHEME_PPF:
+      case Constants.GOVT_SCHEME_GPF:
+      case Constants.GOVT_SCHEME_SSY:
+      case Constants.GOVT_SCHEME_SCSS:
+        await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
+        break;
+      case Constants.GOVT_SCHEME_NPS_TIER1:
+        await this.clickNPSSchemeTile('Tier 1');
+        break;
+      default:
+        await console.log(`unsupported Govt Scheme ${schemeName}`);
+    }
+  }
+
   async validateNavigateToGovtSchemePage(schemeName) {
     switch(schemeName) {
       case Constants.GOVT_SCHEME_EPF:
@@ -84,6 +101,10 @@ class GovtSchemesPage {
     return Utils.numberAbbriviationToAbsoluteValue(await Utils.getText(GovtSchemesObjects.totalInvestedAmount));
   }
 
+  async getTotalInvestedAmountStr() {
+    return await Utils.getText(GovtSchemesObjects.totalInvestedAmount);
+  }
+
   async totalAmountForSchemePieChartIsDisplayed(schemeName) {
     return (await Utils.elementIsDisplayed(GovtSchemesObjects.totalAmountForSchemePieChart(schemeName), 2000));
   }
@@ -115,6 +136,34 @@ class GovtSchemesPage {
       return Utils.numberAbbriviationToAbsoluteValue(value.trim());
     } else {
       return 0;
+    }
+  }
+
+  async getNPSAbsoluteAmountStr(npsTier) {
+    const index = await Utils.findMatchingElementIndexWithGivenText(GovtSchemesObjects.npsSchemeTile, `NPS | ${npsTier}`);
+    console.log(`index = ${index}`);
+    if(index >= 0) {
+      return await Utils.getText(GovtSchemesObjects.totalAbsoluteAmountForNPSScheme(index));
+    } else {
+      return '';
+    }
+  }
+
+  async getNPSAbsoluteAmount(npsTier) {
+    const index = await Utils.findMatchingElementIndexWithGivenText(GovtSchemesObjects.npsSchemeTile, `NPS | ${npsTier}`);
+    console.log(`index = ${index}`);
+    if(index >= 0) {
+      const value = await Utils.getText(GovtSchemesObjects.totalAbsoluteAmountForNPSScheme(index));
+      return Utils.numberAbbriviationToAbsoluteValue(value.trim());
+    } else {
+      return 0;
+    }
+  }
+
+  async clickNPSSchemeTile(npsTier) {
+    const element = await Utils.findMatchingElementWithGivenText(GovtSchemesObjects.npsSchemeTile, `NPS | ${npsTier}`);
+    if (element != undefined) {
+      await Utils.clickWebElement(element);
     }
   }
 

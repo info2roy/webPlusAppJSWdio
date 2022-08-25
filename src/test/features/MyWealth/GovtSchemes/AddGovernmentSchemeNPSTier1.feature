@@ -16,7 +16,7 @@ Feature: Scripbox MyWealth: Add a Government Scheme
 
   Scenario Outline: I delete the investment and logout
     Given I navigate to the MyWealth "Investments" type "Govt. Schemes"
-    When I select Govt Scheme "National Pension Scheme Tier1" tile
+    When I select Govt Scheme "National Pension Scheme Tier1" tile for family member "Investor 156012"
     When I delete Govt Scheme 
     Then I go back to the dashboard page
 
@@ -33,7 +33,7 @@ Feature: Scripbox MyWealth: Add a Government Scheme
       | Aditya Birla Sun Life Pension Management Fund | 13425 | 23452 | 100000 | 20000 |
 
   Scenario Outline: I delete the investment and logout
-    When I select Govt Scheme "National Pension Scheme Tier1" tile
+    When I select Govt Scheme "National Pension Scheme Tier1" tile for family member "Investor 156012"
     When I delete Govt Scheme 
     Then I go back to the dashboard page
     Then I logout of Scripbox

@@ -20,6 +20,10 @@ class CustomWorld {
     this.govtSchemesTotalInvestedAmountForMember = 0; //the total invested amount for a given single Family Member for Single Govt Scheme
     this.singleGovtSchemePercentAndAmountForMember = [0, 0]; //array containing two values [percent, amount] for a given single family member for Single Govt Scheme
     this.singleGovtSchemeAbsoluteAmountForMember = 0; //the abosolute amount for a given single family member, for a Single Govt Scheme
+    this.npsEquityAmount = 0; //the NPS equity Investment amount
+    this.npsGovtSecurityAmount = 0; //the NPS Govt Securities Investment amount
+    this.npsCorpDebtAmount = 0; //the NPS Corp. Debt Investment amount
+    this.npsAltInvestmentFundsAmount = 0; //this NPS Alternate Investment Funds amount
   }
 }
 setWorldConstructor(CustomWorld);

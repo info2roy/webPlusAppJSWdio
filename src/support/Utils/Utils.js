@@ -64,6 +64,44 @@ class Utils {
     return (await element.getText());
   }
 
+  /**
+   * Return the matching element index for a given selector which matches input text
+   * @param  {string} selector The selector representing multiple matching elements
+   * @param  {string} text The text which should be matched with element's enclosing text
+   * @returns the element index whose text matches input text
+   */
+  async findMatchingElementIndexWithGivenText(selector, text) {
+    const locator = this.getLocator(selector);
+    const elements = await $$(locator);
+    for (let index = 0; index < elements.length; index ++) {
+      const value = await elements[index].getText();
+      console.log(`index ${index} value ${value}`);
+      if (value === text) {
+        return index;
+      }
+    }
+    return -1;
+  }
+
+  /**
+   * Return the matching element for a given selector which matches input text
+   * @param  {string} selector The selector representing multiple matching elements
+   * @param  {string} text The text which should be matched with element's enclosing text
+   * @returns the element whose text matches input text
+   */
+  async findMatchingElementWithGivenText(selector, text) {
+    const locator = this.getLocator(selector);
+    const elements = await $$(locator);
+    for (let index = 0; index < elements.length; index ++) {
+      const value = await elements[index].getText();
+      console.log(`index ${index} value ${value}`);
+      if (value === text) {
+        return elements[index];
+      }
+    }
+    return undefined;
+  }
+
   //Get the value of a <textarea>, <select> or text <input> found by given selector.
   async getValue(selector) {
     const locator = this.getLocator(selector);
@@ -230,7 +268,17 @@ class Utils {
       case 'm':
         return Math.round(parseFloat(parts[0]) * 1000000);
       default:
-        throw `invalid number string ${abbrStr}`;
+        return Math.round(parseFloat(abbrStr));
+    }
+  }
+
+  absoluteValueToNumberAbbriviation(number) {
+    if (number > 100000) {
+      const lacs = number / 100000;
+      return `${lacs.toFixed(2)}L`;
+    } else if (number > 1000) {
+      const thousands = number / 1000;
+      return `${thousands.toFixed(2)}K`;
     }
   }
 }

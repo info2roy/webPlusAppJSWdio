@@ -1,6 +1,8 @@
 const CommonPage = require('../../Pages/Common/CommonPage');
 const GovtSchemesPage = require('../../Pages/GovtSchemes/GovtSchemesPage');
 const { expect } = require('chai');
+const Constants = require('../../../config/data/structured/Constants');
+const Utils = require('../../../support/Utils/Utils');
 
 class GovtSchemesFunctionality {
 
@@ -34,7 +36,7 @@ class GovtSchemesFunctionality {
   }
 
   async selectGovtSchemeTile(schemeName) {
-    await GovtSchemesPage.selectGovtScheme(schemeName);
+    await GovtSchemesPage.selectGovtSchemeTile(schemeName);
     return (await GovtSchemesPage.validateNavigateToGovtSchemeStatusPage(schemeName));
   }
 
@@ -53,6 +55,10 @@ class GovtSchemesFunctionality {
     return (await GovtSchemesPage.getTotalInvestedAmount());
   }
 
+  async getTotalInvestedAmountStr() {
+    return (await GovtSchemesPage.getTotalInvestedAmountStr());
+  }
+
   async getSchemePercentAndAmount(schemeName) {
     return (await GovtSchemesPage.getSchemePercentAndAmountPieChart(schemeName));
   }
@@ -61,13 +67,37 @@ class GovtSchemesFunctionality {
     return (await GovtSchemesPage.getSchemeAbsoluteAmount(schemeName));
   }
 
+  async getNPSAbsoluteAmount(npsTier) {
+    return (await GovtSchemesPage.getNPSAbsoluteAmount(npsTier));
+  }
+
+  async getNPSAbsoluteAmountStr(npsTier) {
+    return (await GovtSchemesPage.getNPSAbsoluteAmountStr(npsTier));
+  }
+
+  getNPSTier(schemeName) {
+    if (schemeName === Constants.GOVT_SCHEME_NPS_TIER1) {
+      return 'Tier 1';
+    } else if (schemeName === Constants.GOVT_SCHEME_NPS_TIER2) {
+      return 'Tier 2';
+    } else {
+      throw `Unknown NPS scheme ${schemeName}`;
+    }
+  }
+
   async doGovtSchemeValidations(schemeName, familyMemberName, currentAmount, previousInvestedTotalAmount, previousInvestedTotalAmountForSingleGovtScheme, previousInvestedTotalAmountForSingleGovtSchemeOnPieChart) {
     const newInvestedTotalAmount = await this.getTotalInvestedAmount();
-    const newSingleGovtSchemePercentAndAmount = await this.getSchemePercentAndAmount(schemeName);
-    const newSingleGovtSchemeAbsoluteAmount = await this.getSchemeAbsoluteAmount(schemeName);
+    // const newSingleGovtSchemePercentAndAmount = await this.getSchemePercentAndAmount(schemeName);
+    let newSingleGovtSchemeAbsoluteAmount = 0;
+    if ([Constants.GOVT_SCHEME_NPS_TIER1, Constants.GOVT_SCHEME_NPS_TIER2].includes(schemeName)) {
+      newSingleGovtSchemeAbsoluteAmount = await this.getNPSAbsoluteAmount(this.getNPSTier(schemeName));
+    } else {
+      newSingleGovtSchemeAbsoluteAmount = await this.getSchemeAbsoluteAmount(schemeName);
+    }
     const incrementInTotalAmount = newInvestedTotalAmount - previousInvestedTotalAmount;
-    const expectedIncrementInTotalAmount = currentAmount - previousInvestedTotalAmountForSingleGovtScheme;
-    console.log(`MYWEALTH ${schemeName} ${familyMemberName} newInvestedTotalAmount ${newInvestedTotalAmount} newSingleGovtSchemePercentAndAmount ${newSingleGovtSchemePercentAndAmount}`);
+    const currentAmountApprox = Utils.numberAbbriviationToAbsoluteValue(Utils.absoluteValueToNumberAbbriviation(currentAmount));
+    const expectedIncrementInTotalAmount = currentAmountApprox - previousInvestedTotalAmountForSingleGovtScheme;
+    console.log(`MYWEALTH ${schemeName} ${familyMemberName} newInvestedTotalAmount ${newInvestedTotalAmount} currentAmount ${currentAmount} currentAmountApprox ${currentAmountApprox}`);
     console.log(`MYWEALTH ${schemeName} ${familyMemberName} newSingleGovtSchemeAbsoluteAmount ${newSingleGovtSchemeAbsoluteAmount}`);
     console.log(`MYWEALTH ${schemeName} ${familyMemberName} incrementInTotalAmount ${incrementInTotalAmount} expectedIncrementInTotalAmount ${expectedIncrementInTotalAmount}`);
     expect(incrementInTotalAmount).to.equal(expectedIncrementInTotalAmount);
