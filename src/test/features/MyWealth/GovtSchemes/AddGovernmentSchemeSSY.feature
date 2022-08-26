@@ -1,4 +1,4 @@
-Feature: Scripbox MyWealth: Add a Government Scheme
+Feature: Scripbox MyWealth: Add a Government Scheme "Sukanya Samridhi Yojna"
 
   Scenario: As a Scripbox user, I am logged in
     Given I login to Scripbox in "MYSCRIPBOX" for "user180756"

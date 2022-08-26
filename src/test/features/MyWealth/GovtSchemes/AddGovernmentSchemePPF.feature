@@ -1,4 +1,4 @@
-Feature: Scripbox MyWealth: Add a Government Scheme
+Feature: Scripbox MyWealth: Add a Government Scheme "Public Provident Fund"
 
   Scenario: As a Scripbox user, I am logged in
     Given I login to Scripbox in "MYSCRIPBOX" for "user180756"
