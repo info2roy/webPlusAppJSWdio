@@ -27,6 +27,11 @@ class GovtSchemesObjects {
     app: '//*[@text="Enter Scheme details" or @text="Enter Scheme Details"]'
   };
 
+  enterInvestmentDetailsHeader = {
+    web: '//div[text()="Enter Investment details"]',
+    app: '//*[@text="Enter Investment details"]'
+  };
+
   currentValueHeader = {
     web: '//div[text()="CURRENT VALUE"]',
     app: '//*[@text="CURRENT VALUE"]'
@@ -129,6 +134,47 @@ class GovtSchemesObjects {
 
   //For NPS Scheme details attributes Type, Fund Name, Scheme E - Equity, Scheme G - Government securities, Scheme A - Alternative Investment Funds or Scheme C - Corporate Debt
   npsSchemeDetailsAttribute(attribute) {
+    return {
+      web: `//div[text()="${attribute}"]/following-sibling::div`
+    };
+  }
+
+  nscInvestedAmountField = {
+    web: 'input#invested_val'
+  };
+
+  nscInterestPercentField = {
+    web: 'input#interest'
+  };
+
+  nscStartDateField = {
+    web: 'input#start_date'
+  };
+
+  nscMaturityDateField = {
+    web: 'input#my_date'
+  };
+
+  previousYearButton = {
+    web: 'button.react-datepicker__navigation--previous'
+  };
+
+  nextYearButton = {
+    web: 'button.react-datepicker__navigation--next'
+  };
+
+  nscPickedYear = {
+    web: 'div.react-datepicker-year-header'
+  };
+
+  nscMonthPicker(month) {
+    return {
+      web: `//div[text()="${month}"]`
+    };
+  }
+
+  //For NSC Scheme details attributes Interest, Start, Maturity
+  nscSchemeDetailsAttribute(attribute) {
     return {
       web: `//div[text()="${attribute}"]/following-sibling::div`
     };

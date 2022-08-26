@@ -134,5 +134,19 @@ class GovtSchemesFunctionality {
     expect(await GovtSchemesPage.npsSchemeGetNumericAttribute(Constants.NPS_SCHEME_ATTR_C)).to.equal(npsCorpDebtAmount);
     expect(await GovtSchemesPage.npsSchemeGetNumericAttribute(Constants.NPS_SCHEME_ATTR_A)).to.equal(npsAltInvestmentFundsAmount);
   }
+
+  async fillNSCForm(nscInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth, schemeName) {
+    await GovtSchemesPage.setNSCInvestedAmount(nscInvestedAmount);
+    await GovtSchemesPage.setNSCInterestPercent(nscInterestPercent);
+    await GovtSchemesPage.setNSCStartMonth(nscStartMonth);
+    await GovtSchemesPage.setNSCMaturityMonth(nscMaturityMonth);
+    return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(schemeName));
+  }
+
+  async validateNSCSchemeDetails(nscInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth) {
+    expect(await GovtSchemesPage.nscSchemeGetNumericAttribute(Constants.NSC_SCHEME_ATTR_INTEREST)).to.equal(nscInterestPercent);
+    expect(await GovtSchemesPage.nscSchemeGetStringAttribute(Constants.NSC_SCHEME_ATTR_START_MONTH)).to.equal(nscStartMonth);
+    expect(await GovtSchemesPage.nscSchemeGetStringAttribute(Constants.NSC_SCHEME_ATTR_MATURITY_MONTH)).to.equal(nscMaturityMonth);
+  }
 }
 module.exports = new GovtSchemesFunctionality();

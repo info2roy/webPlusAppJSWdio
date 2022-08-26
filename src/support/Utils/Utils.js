@@ -293,6 +293,28 @@ class Utils {
     const isDisplayed = await $(webElement).isDisplayed();
     return isDisplayed;
   }
+
+  async setMonthAndYear(monthYear, monthYearFieldSelector, pickedYearSelector, prevYearButtonSelector, nextYearButtonSelector, monthSelector) {
+    const parts = monthYear.split(' ');
+    const month = parts[0].slice(0, -1);
+    const year = parseInt(parts[1], 10);
+    await Utils.clickElement(monthYearFieldSelector);
+    const currentYear = parseInt(await Utils.getText(pickedYearSelector), 10);
+    let yearDiff = currentYear - year;
+    if (yearDiff > 0) {
+      for (let index = 0; index < yearDiff; index ++) {
+        await Utils.clickElement(prevYearButtonSelector);
+      }
+    } else if (yearDiff < 0) {
+      yearDiff = yearDiff * (-1);
+      for (let index = 0; index < yearDiff; index ++) {
+        await Utils.clickElement(nextYearButtonSelector);
+      }
+    }
+    const selectedYear = parseInt(await Utils.getText(pickedYearSelector), 10);
+    expect(selectedYear).to.equal(year);
+    await Utils.clickElement(monthSelector(month));
+  }
 }
 
 module.exports = new Utils();

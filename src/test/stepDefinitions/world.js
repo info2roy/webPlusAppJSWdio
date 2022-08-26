@@ -24,6 +24,10 @@ class CustomWorld {
     this.npsGovtSecurityAmount = 0; //the NPS Govt Securities Investment amount
     this.npsCorpDebtAmount = 0; //the NPS Corp. Debt Investment amount
     this.npsAltInvestmentFundsAmount = 0; //this NPS Alternate Investment Funds amount
+    this.nscInvestedAmount = 0; //the NSC Invested Amount
+    this.nscInterestPercent = 0; //the NSC Interest Percent
+    this.nscStartMonth = ''; //the NSC Start Month
+    this.nscMaturityMonth = ''; //the NSC Maturity Month
   }
 }
 setWorldConstructor(CustomWorld);

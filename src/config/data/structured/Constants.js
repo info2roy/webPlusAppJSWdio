@@ -34,5 +34,9 @@ class Constants {
   NPS_SCHEME_ATTR_G = 'Scheme G - Government securities';
   NPS_SCHEME_ATTR_A = 'Scheme A - Alternative Investment Funds';
   NPS_SCHEME_ATTR_C = 'Scheme C - Corporate Debt';
+  NSC_SCHEME_ATTR_INTEREST = 'Interest';
+  NSC_SCHEME_ATTR_START_MONTH = 'Start';
+  NSC_SCHEME_ATTR_MATURITY_MONTH = 'Maturity';
+
 }
 module.exports = new Constants();

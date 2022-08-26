@@ -24,6 +24,7 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_GPF:
       case Constants.GOVT_SCHEME_SSY:
       case Constants.GOVT_SCHEME_SCSS:
+      case Constants.GOVT_SCHEME_NSC:
         await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
         break;
       case Constants.GOVT_SCHEME_NPS_TIER1:
@@ -44,6 +45,7 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_GPF:
       case Constants.GOVT_SCHEME_SSY:
       case Constants.GOVT_SCHEME_SCSS:
+      case Constants.GOVT_SCHEME_NSC:
         await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
         break;
       case Constants.GOVT_SCHEME_NPS_TIER1:
@@ -67,6 +69,8 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_NPS_TIER1:
       case Constants.GOVT_SCHEME_NPS_TIER2:
         return (await Utils.elementIsDisplayed(GovtSchemesObjects.enterSchemeDetailsHeader));
+      case Constants.GOVT_SCHEME_NSC:
+        return (await Utils.elementIsDisplayed(GovtSchemesObjects.enterInvestmentDetailsHeader));
       default:
         await console.log(`unsupported Govt Scheme ${schemeName}`);
         return false;
@@ -213,5 +217,32 @@ class GovtSchemesPage {
   async npsSchemeGetNumericAttribute(attrName) {
     return parseFloat((await Utils.getText(GovtSchemesObjects.npsSchemeDetailsAttribute(attrName))).replace(/,/g, ''));
   }
+
+  async setNSCInvestedAmount(nscInvestedAmount) {
+    await Utils.setInputField(nscInvestedAmount, GovtSchemesObjects.nscInvestedAmountField);
+  }
+
+  async setNSCInterestPercent(nscInterestPercent) {
+    await Utils.setInputField(nscInterestPercent, GovtSchemesObjects.nscInterestPercentField);
+  }
+
+  async setNSCStartMonth(startMonth) {
+    await Utils.setMonthAndYear(startMonth, GovtSchemesObjects.nscStartDateField, GovtSchemesObjects.nscPickedYear,
+      GovtSchemesObjects.previousYearButton, GovtSchemesObjects.nextYearButton, GovtSchemesObjects.nscMonthPicker);
+  }
+
+  async setNSCMaturityMonth(maturityMonth) {
+    await Utils.setMonthAndYear(maturityMonth, GovtSchemesObjects.nscMaturityDateField, GovtSchemesObjects.nscPickedYear,
+      GovtSchemesObjects.previousYearButton, GovtSchemesObjects.nextYearButton, GovtSchemesObjects.nscMonthPicker);
+  }
+
+  async nscSchemeGetStringAttribute(attrName) {
+    return (await Utils.getText(GovtSchemesObjects.nscSchemeDetailsAttribute(attrName)));
+  }
+
+  async nscSchemeGetNumericAttribute(attrName) {
+    return parseFloat((await Utils.getText(GovtSchemesObjects.nscSchemeDetailsAttribute(attrName))).replace(/,/g, ''));
+  }
+
 }
 module.exports = new GovtSchemesPage();
