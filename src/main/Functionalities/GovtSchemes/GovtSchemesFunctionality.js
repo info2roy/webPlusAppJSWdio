@@ -1,8 +1,10 @@
-const CommonPage = require('../../Pages/Common/CommonPage');
 const GovtSchemesPage = require('../../Pages/GovtSchemes/GovtSchemesPage');
 const { expect } = require('chai');
 const Constants = require('../../../config/data/structured/Constants');
 const Utils = require('../../../support/Utils/Utils');
+const CommonFunctionality = require('../Common/CommonFunctionality');
+const GovtSchemesObjects = require('../../Objects/GovtSchemes/GovtSchemesObjects');
+const CommonObjects = require('../../Objects/Common/CommonObjects');
 
 class GovtSchemesFunctionality {
 
@@ -16,18 +18,8 @@ class GovtSchemesFunctionality {
   }
 
   async selectFamilyMember(familyMemberName) {
-    if(await CommonPage.expandMoreButtonIsDisplayed(2000)) {
-      await CommonPage.clickExpandMoreButton();
-      if (await CommonPage.familyMemberNameIsDisplayed(familyMemberName, 2000)) {
-        await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-        return (await GovtSchemesPage.investedAmountHeaderIsDisplayed());
-      }
-      return false;
-    } else if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
-      await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-      return (await CommonPage.selectASchemePageHeaderIsDisplayed());
-    }
-    return false;
+    return await CommonFunctionality.selectFamilyMember(familyMemberName,
+      GovtSchemesObjects.investedAmountHeader, CommonObjects.selectASchemePageHeader);
   }
 
   async selectGovtScheme(schemeName) {

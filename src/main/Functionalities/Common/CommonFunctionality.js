@@ -13,6 +13,21 @@ class CommonFunctionality {
     return status;
   }
 
+  async selectFamilyMember(familyMemberName, page1HeaderSelector, page2HeaderSelector) {
+    if(await CommonPage.expandMoreButtonIsDisplayed(2000)) {
+      await CommonPage.clickExpandMoreButton();
+      if (await CommonPage.familyMemberNameIsDisplayed(familyMemberName, 2000)) {
+        await CommonPage.clickOnFamilyMemberByName(familyMemberName);
+        return (await CommonPage.elementIsDisplayed(page1HeaderSelector));
+      }
+      return false;
+    } else if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
+      await CommonPage.clickOnFamilyMemberByName(familyMemberName);
+      return (await CommonPage.elementIsDisplayed(page2HeaderSelector));
+    }
+    return false;
+  }
+
   async expandMore() {
     await CommonPage.clickExpandMoreButton();
   }
