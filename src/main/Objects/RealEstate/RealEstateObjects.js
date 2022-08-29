@@ -5,7 +5,7 @@ class RealEstateObjects {
   };
 
   addRealEstateButton = {
-    web: '//button[text()="Add Real Estate"]',
+    web: '//button[text()="Add Real Estate"] | //div[text()="Add Real Estate"]',
     app: '//*[@text="Add Real Estate"]'
   };
 
@@ -50,6 +50,12 @@ class RealEstateObjects {
   realEstatePropertyPurchaseYear(propertyName) {
     return {
       web: `//div[text()="${propertyName}"]/parent::div/parent::div/following-sibling::div/div`
+    };
+  }
+
+  realEstatePropertyMoreOptionsButton(propertyName) {
+    return {
+      web: `//div[text()="${propertyName}"]/parent::div/following-sibling::div/i[text()="more_horiz"]`
     };
   }
 }

@@ -41,3 +41,14 @@ Then(/^Real Estate Property details are shown correctly$/, async() => {
     this.realEstatePurchaseYear, this.realEstateCurrentValue, this.realEstateYoYGrowthRate);
 });
 
+When(/^I edit the Real Estate property (.+) with (.+), (\d+), (\d+), (\d+), (.+)$/,
+  async(propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue, expectedYoyGrowthRate) => {
+    console.log(`When I edit the Real Estate property ${propertyName} with ${newPropertyName}, ${propertyPrice}, ${purchaseYear}, ${currentValue}, ${expectedYoyGrowthRate}`);
+    this.realEstatePropertyName = newPropertyName;
+    this.realEstatePropertyPrice = propertyPrice;
+    this.realEstatePurchaseYear = purchaseYear;
+    this.realEstateCurrentValue = currentValue;
+    this.realEstateYoYGrowthRate = expectedYoyGrowthRate;
+    expect(await RealEstateFunctionality.updateRealEstateProperty(propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue)).to.be.true;
+  }
+);

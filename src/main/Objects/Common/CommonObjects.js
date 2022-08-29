@@ -51,5 +51,10 @@ class CommonObjects {
   saveOrUpdateButton = {
     web: '//button[text()="Save" or text()="Update"]'
   };
+
+  editDetailsButton = {
+    web: '//div[text()="Edit details"]',
+    app: '//*[@text="Edit details"]'
+  };
 }
 module.exports = new CommonObjects();

@@ -58,5 +58,9 @@ class CommonPage {
   async clickSaveOrUpdateButton() {
     await Utils.clickElement(CommonObjects.saveOrUpdateButton);
   }
+
+  async clickEditDetailsButton() {
+    await Utils.clickElement(CommonObjects.editDetailsButton);
+  }
 }
 module.exports = new CommonPage();

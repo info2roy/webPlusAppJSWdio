@@ -1,5 +1,8 @@
 class DashboardObjects {
-  helloUser = { web: '//div[contains(text(),"Hello")]', app: '//*[@text="HELLO"]' };
+  helloUser = {
+    web: '//div[contains(text(),"Hello") or contains(text(),"Namaste") or contains(text(),"Sata Sri Akal") or contains(text(),"Khamma Gani") or contains(text(),"Namaskar") or contains(text(),"Nomoshkar") or contains(text(),"Namaskaram") or contains(text(),"Adaab") or contains(text(),"Vanakkam") or contains(text(),"Khurumjari") or contains(text(),"Parnam")]',
+    app: '//*[@text="Hello"]'
+  };
 
   moreButton = {
     web: '//div[text()="More"]',

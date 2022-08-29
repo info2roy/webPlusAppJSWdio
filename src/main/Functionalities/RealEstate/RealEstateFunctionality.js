@@ -45,5 +45,16 @@ class RealEstateFunctionality {
     expect(await RealEstatePage.realEstatePropertyGetStringAttribute(propertyName, 3, Constants.REAL_ESTATE_ATTR_YOY_GROWTH)
     ).to.equal(`+ ${expectedYoYGrowthRate}%`);
   }
+
+  async updateRealEstateProperty(propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue) {
+    await RealEstatePage.clickOnRealEstatePropertyMoreOptionsButton(propertyName);
+    await CommonPage.clickEditDetailsButton();
+    await RealEstatePage.enterPropertyName(newPropertyName);
+    await RealEstatePage.enterPropertyPrice(propertyPrice);
+    await RealEstatePage.enterPurchaseYear(purchaseYear);
+    await RealEstatePage.enterCurrentValue(currentValue);
+    await CommonPage.clickSaveOrUpdateButton();
+    return (await CommonMyWealthPage.wealthUpdateSuccessMessageIsDisplayed('Real estate'));
+  }
 }
 module.exports = new RealEstateFunctionality();

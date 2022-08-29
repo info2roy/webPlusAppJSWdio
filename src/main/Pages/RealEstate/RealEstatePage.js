@@ -42,5 +42,9 @@ class RealEstatePage {
     return parseInt((await Utils.getText(RealEstateObjects.realEstatePropertyPurchaseYear(propertyName))).trim());
   }
 
+  async clickOnRealEstatePropertyMoreOptionsButton(propertyName) {
+    await Utils.clickElement(RealEstateObjects.realEstatePropertyMoreOptionsButton(propertyName));
+  }
+
 }
 module.exports = new RealEstatePage();
