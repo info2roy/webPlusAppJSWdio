@@ -5,6 +5,7 @@ const Utils = require('../../../support/Utils/Utils');
 const CommonFunctionality = require('../Common/CommonFunctionality');
 const GovtSchemesObjects = require('../../Objects/GovtSchemes/GovtSchemesObjects');
 const CommonObjects = require('../../Objects/Common/CommonObjects');
+const CommonPage = require('../../Pages/Common/CommonPage');
 
 class GovtSchemesFunctionality {
 
@@ -114,7 +115,7 @@ class GovtSchemesFunctionality {
     await GovtSchemesPage.setNPSGovtSecurityAmount(npsGovtSecurityAmount);
     await GovtSchemesPage.setNPSCorpDebtAmount(npsCorpDebtAmount);
     await GovtSchemesPage.setNPSAltInvestmentFunds(npsAltInvestmentFundsAmount);
-    await GovtSchemesPage.saveOrUpdateAmount();
+    await CommonPage.clickSaveOrUpdateButton();
     return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(npsType));
   }
 
@@ -132,6 +133,7 @@ class GovtSchemesFunctionality {
     await GovtSchemesPage.setNSCInterestPercent(nscInterestPercent);
     await GovtSchemesPage.setNSCStartMonth(nscStartMonth);
     await GovtSchemesPage.setNSCMaturityMonth(nscMaturityMonth);
+    await CommonPage.clickSaveOrUpdateButton();
     return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(schemeName));
   }
 
