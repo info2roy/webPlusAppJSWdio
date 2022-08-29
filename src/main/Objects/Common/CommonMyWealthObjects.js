@@ -36,6 +36,11 @@ class CommonMyWealthObjects {
     app: '(//*[@text="Real Estate"])[last()]'
   };
 
+  myWealthInvestmentFixedDepositHeader = {
+    web: '//div[contains(text(),"Interest rates upto 7.50% on FDs")]',
+    app: '//*[contains(@text,"Interest rates upto 7.50% on FDs")]'
+  };
+
   wealthUpdateSuccessMessage(wealthType) {
     return {
       web: `//div[text()="${wealthType} data updated successfully"]`

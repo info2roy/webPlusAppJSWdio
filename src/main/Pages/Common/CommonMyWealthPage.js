@@ -55,12 +55,18 @@ class CommonMyWealthPage {
     return (await Utils.elementIsDisplayed(CommonMyWealthObjects.myWealthInvestmentRealEstateHeader));
   }
 
+  async myWealthInvestmentFixedDepositPageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(CommonMyWealthObjects.myWealthInvestmentFixedDepositHeader));
+  }
+
   async validateNavigateToMyWealthInvestmentTypePage(investmentType) {
     switch(investmentType.toString()) {
       case Constants.MY_WEALTH_INVESTMENTS_GOVT_SCHEMES:
         return (await this.myWealthInvestmentGovtSchemePageIsDisplayed());
       case Constants.MY_WEALTH_INVESTMENTS_REAL_ESTATE:
         return (await this.myWealthInvestmentRealEstatePageIsDisplayed());
+      case Constants.MY_WEALTH_INVESTMENTS_FIXED_DEPOSITS:
+        return (await this.myWealthInvestmentFixedDepositPageIsDisplayed());
       default:
         await console.log(`Unsupported investmentType type -> ${ investmentType.toString()}`);
         return false;
