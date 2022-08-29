@@ -69,7 +69,7 @@ When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Sch
     } else {
       expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
       this.govtSchemesTotalInvestedAmountForMember = await GovtSchemesFunctionality.getTotalInvestedAmount();
-      if (schemeName == Constants.GOVT_SCHEME_NSC) {
+      if (schemeName === Constants.GOVT_SCHEME_NSC) {
         this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getSchemeAbsoluteAmount(schemeName);
       } else {
         const npsTier = GovtSchemesFunctionality.getNPSTier(schemeName);
