@@ -47,12 +47,11 @@ When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|Gene
   }
 );
 
-When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2)" for family member "([^"]*)?"$/,
+When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2|National Saving Certificate)" for family member "([^"]*)?"$/,
   async (schemeName, familyMember) => {
     await console.log(`When I select Govt Scheme "${schemeName}" for family member "${familyMember}"`);
     this.familyMemberName = familyMember;
     this.schemeName = schemeName;
-    const npsTier = GovtSchemesFunctionality.getNPSTier(schemeName);
 
     if(await GovtSchemesFunctionality.govtSchemesInitialPageLaunched()) {
       console.log('No preexisting Government schemes present');
@@ -70,39 +69,12 @@ When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Sch
     } else {
       expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
       this.govtSchemesTotalInvestedAmountForMember = await GovtSchemesFunctionality.getTotalInvestedAmount();
-      this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getNPSAbsoluteAmount(npsTier);
-      this.singleGovtSchemePercentAndAmountForMember = [0, 0];
-      console.log(`MYWEALTH govtSchemesTotalInvestedAmountForMember ${this.govtSchemesTotalInvestedAmountForMember}`);
-      console.log(`MYWEALTH singleGovtSchemeAbsoluteAmountForMember ${this.singleGovtSchemeAbsoluteAmountForMember}`);
-      expect(await GovtSchemesFunctionality.addGovtScheme()).to.be.true;
-      expect(await GovtSchemesFunctionality.selectGovtScheme(schemeName)).to.be.true;
-    }
-  }
-);
-
-When(/^I select Govt Scheme "National Saving Certificate" for family member "([^"]*)?"$/,
-  async (familyMember) => {
-    await console.log(`When I select Govt Scheme "National Saving Certificate" for family member "${familyMember}"`);
-    this.familyMemberName = familyMember;
-    this.schemeName = 'National Saving Certificate';
-
-    if(await GovtSchemesFunctionality.govtSchemesInitialPageLaunched()) {
-      console.log('No preexisting Government schemes present');
-      this.govtSchemesTotalInvestedAmountForMember = 0;
-      this.singleGovtSchemeAbsoluteAmountForMember = 0;
-      this.singleGovtSchemePercentAndAmountForMember = [0, 0];
-
-      expect(await GovtSchemesFunctionality.addGovtScheme()).to.be.true;
-      if(await CommonFunctionality.selectASchemePageLaunched()) {
-        expect(await GovtSchemesFunctionality.selectGovtScheme(schemeName)).to.be.true;
+      if (schemeName == Constants.GOVT_SCHEME_NSC) {
+        this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getSchemeAbsoluteAmount(schemeName);
       } else {
-        expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
-        expect(await GovtSchemesFunctionality.selectGovtScheme(schemeName)).to.be.true;
+        const npsTier = GovtSchemesFunctionality.getNPSTier(schemeName);
+        this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getNPSAbsoluteAmount(npsTier);
       }
-    } else {
-      expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
-      this.govtSchemesTotalInvestedAmountForMember = await GovtSchemesFunctionality.getTotalInvestedAmount();
-      this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getSchemeAbsoluteAmount(schemeName);
       this.singleGovtSchemePercentAndAmountForMember = [0, 0];
       console.log(`MYWEALTH govtSchemesTotalInvestedAmountForMember ${this.govtSchemesTotalInvestedAmountForMember}`);
       console.log(`MYWEALTH singleGovtSchemeAbsoluteAmountForMember ${this.singleGovtSchemeAbsoluteAmountForMember}`);
