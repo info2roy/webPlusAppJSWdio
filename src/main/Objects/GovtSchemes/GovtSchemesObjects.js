@@ -6,8 +6,8 @@ class GovtSchemesObjects {
   };
 
   addGovtSchemesButton = {
-    web: '//button[text()="Add Govt. Scheme" or text()="Add Government Scheme"]',
-    app: '//*[@text="Add Govt. Scheme" or @text="Add Government Scheme"]'
+    web: '//button[text()="Add Govt. Scheme" or text()="Add Government Scheme"] | //div[text()="Add government scheme"]',
+    app: '//*[@text="Add Govt. Scheme" or @text="Add Government Scheme" or @text="Add government scheme"]'
   };
 
   addGovtSchemePageHeader = {
