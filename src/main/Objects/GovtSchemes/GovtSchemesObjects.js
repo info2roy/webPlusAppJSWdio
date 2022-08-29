@@ -45,10 +45,6 @@ class GovtSchemesObjects {
     web: 'input#value'
   };
 
-  saveOrUpdateButton = {
-    web: '//button[text()="Save" or text()="Update"]'
-  };
-
   schemeNameToCode = {
     'Employee Provident Fund': 'EPF',
     'Public Provident Fund': 'PPF',

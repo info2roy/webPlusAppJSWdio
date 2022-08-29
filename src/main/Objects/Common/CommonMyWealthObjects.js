@@ -30,5 +30,16 @@ class CommonMyWealthObjects {
     web: '(//div[text()="Government Schemes"])[last()]',
     app: '(//*[@text="Government Schemes"])[last()]'
   };
+
+  myWealthInvestmentRealEstateHeader = {
+    web: '(//div[text()="Real Estate"])[last()]',
+    app: '(//*[@text="Real Estate"])[last()]'
+  };
+
+  wealthUpdateSuccessMessage(wealthType) {
+    return {
+      web: `//div[text()="${wealthType} data updated successfully"]`
+    };
+  }
 }
 module.exports = new CommonMyWealthObjects();

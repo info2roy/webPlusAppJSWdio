@@ -101,10 +101,6 @@ class GovtSchemesPage {
     }
   }
 
-  async saveOrUpdateAmount() {
-    await Utils.clickElement(GovtSchemesObjects.saveOrUpdateButton);
-  }
-
   async amountUpdateSuccessMessageIsDisplayed(schemeName) {
     return (await Utils.elementIsDisplayed(GovtSchemesObjects.amountUpdateSuccessMessage(schemeName)));
   }
