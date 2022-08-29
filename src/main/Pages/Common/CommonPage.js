@@ -50,5 +50,13 @@ class CommonPage {
   async clickVerifyWithOTPButton() {
     await Utils.clickElement(CommonObjects.verifyOTPButton);
   }
+
+  async elementIsDisplayed(selector) {
+    return (await Utils.elementIsDisplayed(selector));
+  }
+
+  async clickSaveOrUpdateButton() {
+    await Utils.clickElement(CommonObjects.saveOrUpdateButton);
+  }
 }
 module.exports = new CommonPage();

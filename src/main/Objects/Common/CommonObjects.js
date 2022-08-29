@@ -47,5 +47,9 @@ class CommonObjects {
     web: '//div[text()="Verify"]',
     app: '//*[@text="VERIFY"]'
   };
+
+  saveOrUpdateButton = {
+    web: '//button[text()="Save" or text()="Update"]'
+  };
 }
 module.exports = new CommonObjects();
