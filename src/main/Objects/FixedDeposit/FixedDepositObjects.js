@@ -15,6 +15,16 @@ class FixedDepositObjects {
     web: 'input#amount'
   };
 
-  fd
+  fdInterestRateField = {
+    web: 'input#interest'
+  };
+
+  fdStartMonthField = {
+    web: 'input#st_date'
+  };
+
+  fdMaturityMonth = {
+    web: 'input#my_date'
+  };
 }
 module.exports = new FixedDepositObjects();
