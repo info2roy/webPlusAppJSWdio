@@ -30,45 +30,45 @@ class PersonalInfoObjects {
 
   doneCropButton = { app: '~Crop' }; // the done Crop button
 
-  editFullNameButton = { web: '//div[contains(text(),"Full Name")]//following-sibling::span'};
+  editFullNameButton = { web: '//div[contains(text(),"Full Name")]//following-sibling::span' };
 
-  editNomineeButton = { web: '//div[contains(text(),"Nominee")]//following-sibling::span'};
+  editNomineeButton = { web: '//div[contains(text(),"Nominee")]//following-sibling::span' };
 
-  editEmailButton = { web: '//div[contains(text(),"Email")]//following-sibling::span'};
+  editEmailButton = { web: '//div[contains(text(),"Email")]//following-sibling::span' };
 
-  editMobileNumberButton = { web: '//div[contains(text(),"obile Number")]//following-sibling::span'};
+  editMobileNumberButton = { web: '//div[contains(text(),"obile Number")]//following-sibling::span' };
 
-  editBankButton = { web: '//div[contains(text(),"Bank")]//following-sibling::span'};
+  editBankButton = { web: '//div[contains(text(),"Bank")]//following-sibling::span' };
 
-  enterFullName = { web: '//input[@id="new-name"]'};
+  enterFullName = { web: '//input[@id="new-name"]' };
 
-  updateChangesButton = { web: '//button[contains(text(),"Update Changes")]'};
+  updateChangesButton = { web: '//button[contains(text(),"Update Changes")]' };
 
-  backButton = { web: '//span[@text="Back"]'};
+  backButton = { web: '//span[@text="Back"]' };
 
-  enterNewEmail = { web: '//input[@id="new-email"]'};
+  enterNewEmail = { web: '//input[@id="new-email"]' };
 
-  confirmNewEmail = { web: '//input[@id="new-email-confirmation"]'};
+  confirmNewEmail = { web: '//input[@id="new-email-confirmation"]' };
 
-  enterNewMobileNumber = { web: '//input[@id="new-phone"]'};
+  enterNewMobileNumber = { web: '//input[@id="new-phone"]' };
 
-  changeNameHeader = {web: '//*[contains(text(),"Current Full Name")]'};
+  changeNameHeader = { web: '//*[contains(text(),"Current Full Name")]' };
 
-  changeNomineeHeader = {web: '//*[contains(text(),"Nominee Full Name")]'};
+  changeNomineeHeader = { web: '//*[contains(text(),"Nominee Full Name")]' };
 
-  changeBankHeader = {web: '//*[contains(text(),"Account Type")]'};
+  changeBankHeader = { web: '//*[contains(text(),"Account Type")]' };
 
-  changeEmailHeader = {web: '//*[contains(text(),"Current Email")]'};
+  changeEmailHeader = { web: '//*[contains(text(),"Current Email")]' };
 
-  changeMobileHeader = {web: '//*[contains(text(),"Current Mobile Number")]'};
+  changeMobileHeader = { web: '//*[contains(text(),"Current Mobile Number")]' };
 
-  accountHolderName = {web: '//*[@id="account-holder-name"]'};
+  accountHolderName = { web: '//*[@id="account-holder-name"]' };
 
-  accountNumber = {web: '#account-number'};
+  accountNumber = { web: '#account-number' };
 
-  bankIFSCCode = {web: '#ifsc-code'};
+  bankIFSCCode = { web: '#ifsc-code' };
 
-  returnToHome = {web: '//*[contains(text(),"Return to Home")]'};
+  returnToHome = { web: '//*[contains(text(),"Return to Home")]' };
 }
 
 module.exports = new PersonalInfoObjects();

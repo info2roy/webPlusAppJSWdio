@@ -88,7 +88,7 @@ class GovtSchemesObjects {
 
   totalAbsoluteAmountForNPSScheme(index) {
     return {
-      web: `(//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))])[${index+1}]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div/div`
+      web: `(//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))])[${index + 1}]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div/div`
     };
   }
 

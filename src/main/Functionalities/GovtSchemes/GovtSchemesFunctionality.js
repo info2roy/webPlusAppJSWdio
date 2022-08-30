@@ -80,12 +80,12 @@ class GovtSchemesFunctionality {
       return 'Tier 1';
     } else if (schemeName === Constants.GOVT_SCHEME_NPS_TIER2) {
       return 'Tier 2';
-    } else {
-      throw `Unknown NPS scheme ${schemeName}`;
     }
+    throw `Unknown NPS scheme ${schemeName}`;
+
   }
 
-  async doGovtSchemeValidations(schemeName, familyMemberName, currentAmount, previousInvestedTotalAmount, previousInvestedTotalAmountForSingleGovtScheme, previousInvestedTotalAmountForSingleGovtSchemeOnPieChart) {
+  async doGovtSchemeValidations(schemeName, familyMemberName, currentAmount, previousInvestedTotalAmount, previousInvestedTotalAmountForSingleGovtScheme) {
     const newInvestedTotalAmount = await this.getTotalInvestedAmount();
     // const newSingleGovtSchemePercentAndAmount = await this.getSchemePercentAndAmount(schemeName);
     let newSingleGovtSchemeAbsoluteAmount = 0;

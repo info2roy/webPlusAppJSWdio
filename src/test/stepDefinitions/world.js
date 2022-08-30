@@ -12,7 +12,6 @@ class CustomWorld {
     this.lifeGoal = ''; //life goal like Retire Confident|Premier Education
     this.classOfChild = 0; //the class of the child
     this.childname = ''; //the name of the child
-    this.uat = 0; //the uat id , either 2 or 38
     this.familyMemberName = ''; //name of the family member
     this.govtSchemesTotalInvestedAmount = 0; //the total invested amount for Govt Schemes
     this.singleGovtSchemePercentAndAmount = [0, 0]; //array containing two values [percent, amount] for all family member for Single Govt Scheme

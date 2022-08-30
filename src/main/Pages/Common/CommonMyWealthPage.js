@@ -35,7 +35,7 @@ class CommonMyWealthPage {
       case Constants.MY_WEALTH_INSURANCE:
         return (await this.myWealthInsurancePageIsDisplayed());
       default:
-        await console.log('Unsupported wealthType type -> ' + wealthType.toString());
+        await console.log(`Unsupported wealthType type -> ${ wealthType.toString()}`);
         return false;
     }
   }
@@ -56,7 +56,7 @@ class CommonMyWealthPage {
       case Constants.MY_WEALTH_INVESTMENTS_GOVT_SCHEMES:
         return (await this.myWealthInvestmentGovtSchemePageIsDisplayed());
       default:
-        await console.log('Unsupported investmentType type -> ' + investmentType.toString());
+        await console.log(`Unsupported investmentType type -> ${ investmentType.toString()}`);
         return false;
     }
   }

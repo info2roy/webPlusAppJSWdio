@@ -129,9 +129,9 @@ class GovtSchemesPage {
       const percent = parseFloat(parts[0]);
       const total = Utils.numberAbbriviationToAbsoluteValue(parts[1].trim());
       return [percent, total];
-    } else {
-      return [0, 0];
     }
+    return [0, 0];
+
   }
 
   async totalAmountForSchemeAbsoluteIsDisplayed(schemeName) {
@@ -142,9 +142,9 @@ class GovtSchemesPage {
     if(await this.totalAmountForSchemeAbsoluteIsDisplayed(schemeName)) {
       const value = await Utils.getText(GovtSchemesObjects.totalAbsoluteAmountForScheme(schemeName));
       return Utils.numberAbbriviationToAbsoluteValue(value.trim());
-    } else {
-      return 0;
     }
+    return 0;
+
   }
 
   async getNPSAbsoluteAmountStr(npsTier) {
@@ -152,9 +152,9 @@ class GovtSchemesPage {
     console.log(`index = ${index}`);
     if(index >= 0) {
       return await Utils.getText(GovtSchemesObjects.totalAbsoluteAmountForNPSScheme(index));
-    } else {
-      return '';
     }
+    return '';
+
   }
 
   async getNPSAbsoluteAmount(npsTier) {
@@ -163,9 +163,9 @@ class GovtSchemesPage {
     if(index >= 0) {
       const value = await Utils.getText(GovtSchemesObjects.totalAbsoluteAmountForNPSScheme(index));
       return Utils.numberAbbriviationToAbsoluteValue(value.trim());
-    } else {
-      return 0;
     }
+    return 0;
+
   }
 
   async clickNPSSchemeTile(npsTier) {

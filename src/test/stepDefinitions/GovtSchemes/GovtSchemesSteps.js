@@ -100,14 +100,12 @@ Then(/^Total invested amount should get updated$/, async () => {
     totalInvestedAmount = this.amount;
   }
   await GovtSchemesFunctionality.doGovtSchemeValidations(this.schemeName, this.familyMemberName, totalInvestedAmount,
-    this.govtSchemesTotalInvestedAmountForMember, this.singleGovtSchemeAbsoluteAmountForMember,
-    this.singleGovtSchemePercentAndAmountForMember[1]);
+    this.govtSchemesTotalInvestedAmountForMember, this.singleGovtSchemeAbsoluteAmountForMember);
 
   //Now do validations for all members, total amount for all schemes and single scheme
   // if(await GovtSchemesFunctionality.selectFamilyMember('All family members')) {
   //   await GovtSchemesFunctionality.doGovtSchemeValidations(this.schemeName, 'All family members', this.amount,
-  //     this.govtSchemesTotalInvestedAmount, this.singleGovtSchemeAbsoluteAmount,
-  //     this.singleGovtSchemePercentAndAmount[1]);
+  //     this.govtSchemesTotalInvestedAmount, this.singleGovtSchemeAbsoluteAmount);
   // }
 });
 
