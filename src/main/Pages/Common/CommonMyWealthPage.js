@@ -2,6 +2,7 @@ const Utils = require('../../../support/Utils/Utils');
 const CommonMyWealthObjects = require('../../Objects/Common/CommonMyWealthObjects');
 const Constants = require('../../../config/data/structured/Constants');
 const Device = require('../../../support/libraries/Device');
+const CommonPage = require('./CommonPage');
 
 class CommonMyWealthPage {
 
@@ -55,10 +56,6 @@ class CommonMyWealthPage {
     return (await Utils.elementIsDisplayed(CommonMyWealthObjects.myWealthInvestmentRealEstateHeader));
   }
 
-  async myWealthInvestmentFixedDepositPageIsDisplayed() {
-    return (await Utils.elementIsDisplayed(CommonMyWealthObjects.myWealthInvestmentFixedDepositHeader));
-  }
-
   async validateNavigateToMyWealthInvestmentTypePage(investmentType) {
     switch(investmentType.toString()) {
       case Constants.MY_WEALTH_INVESTMENTS_GOVT_SCHEMES:
@@ -66,7 +63,7 @@ class CommonMyWealthPage {
       case Constants.MY_WEALTH_INVESTMENTS_REAL_ESTATE:
         return (await this.myWealthInvestmentRealEstatePageIsDisplayed());
       case Constants.MY_WEALTH_INVESTMENTS_FIXED_DEPOSITS:
-        return (await this.myWealthInvestmentFixedDepositPageIsDisplayed());
+        return (await CommonPage.fixedDepositPageIsDisplayed());
       default:
         await console.log(`Unsupported investmentType type -> ${ investmentType.toString()}`);
         return false;

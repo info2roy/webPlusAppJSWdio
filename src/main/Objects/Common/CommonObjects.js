@@ -56,5 +56,28 @@ class CommonObjects {
     web: '//div[text()="Edit details"]',
     app: '//*[@text="Edit details"]'
   };
+
+  previousYearButton = {
+    web: 'button.react-datepicker__navigation--previous'
+  };
+
+  nextYearButton = {
+    web: 'button.react-datepicker__navigation--next'
+  };
+
+  pickedYear = {
+    web: 'div.react-datepicker-year-header'
+  };
+
+  monthPicker(month) {
+    return {
+      web: `//div[text()="${month}"]`
+    };
+  }
+
+  fixedDepositPageHeader = {
+    web: '//div[contains(text(),"Interest rates upto 7.50% on FDs")]',
+    app: '//*[contains(@text,"Interest rates upto 7.50% on FDs")]'
+  };
 }
 module.exports = new CommonObjects();

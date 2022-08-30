@@ -48,5 +48,10 @@ class CommonFunctionality {
     await CommonPage.enterOTP(otp);
     await CommonPage.clickVerifyWithOTPButton();
   }
+
+  async fixedDepositInitialPageLaunched() {
+    return (await CommonPage.fixedDepositPageIsDisplayed());
+  }
+
 }
 module.exports = new CommonFunctionality();

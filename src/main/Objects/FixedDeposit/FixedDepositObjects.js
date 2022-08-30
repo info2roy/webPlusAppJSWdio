@@ -1,4 +1,5 @@
 class FixedDepositObjects {
+
   addExistingFixedDepositLink = {
     web: '//div[text()="Add existing Fixed Deposit"]'
   };
@@ -10,6 +11,12 @@ class FixedDepositObjects {
   fdFirmNameField = {
     web: 'input#firm'
   };
+
+  fdFirmNameOption(firmName) {
+    return {
+      web: `//li[text()="${firmName}"]`
+    };
+  }
 
   fdInvestedAmountField = {
     web: 'input#amount'

@@ -62,5 +62,10 @@ class CommonPage {
   async clickEditDetailsButton() {
     await Utils.clickElement(CommonObjects.editDetailsButton);
   }
+
+  async fixedDepositPageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(CommonObjects.fixedDepositPageHeader));
+  }
+
 }
 module.exports = new CommonPage();

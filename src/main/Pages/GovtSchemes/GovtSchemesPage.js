@@ -2,6 +2,7 @@ const Constants = require('../../../config/data/structured/Constants');
 const Utils = require('../../../support/Utils/Utils');
 const GovtSchemesObjects = require('../../Objects/GovtSchemes/GovtSchemesObjects');
 const { expect } = require('chai');
+const CommonObjects = require('../../Objects/Common/CommonObjects');
 
 class GovtSchemesPage {
 
@@ -223,13 +224,13 @@ class GovtSchemesPage {
   }
 
   async setNSCStartMonth(startMonth) {
-    await Utils.setMonthAndYear(startMonth, GovtSchemesObjects.nscStartDateField, GovtSchemesObjects.nscPickedYear,
-      GovtSchemesObjects.previousYearButton, GovtSchemesObjects.nextYearButton, GovtSchemesObjects.nscMonthPicker);
+    await Utils.setMonthAndYear(startMonth, GovtSchemesObjects.nscStartDateField, CommonObjects.pickedYear,
+      CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
   }
 
   async setNSCMaturityMonth(maturityMonth) {
-    await Utils.setMonthAndYear(maturityMonth, GovtSchemesObjects.nscMaturityDateField, GovtSchemesObjects.nscPickedYear,
-      GovtSchemesObjects.previousYearButton, GovtSchemesObjects.nextYearButton, GovtSchemesObjects.nscMonthPicker);
+    await Utils.setMonthAndYear(maturityMonth, GovtSchemesObjects.nscMaturityDateField, CommonObjects.pickedYear,
+      CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
   }
 
   async nscSchemeGetStringAttribute(attrName) {
