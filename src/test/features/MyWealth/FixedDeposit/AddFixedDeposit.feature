@@ -5,3 +5,4 @@ Feature: Scripbox MyWealth: Add a Fixed Deposit
 
   Scenario Outline: As a logged in user, I am able to add a Fixed Deposit to "My Wealth"
     Given I navigate to the MyWealth "Investments" type "Fixed Deposits"
+    When I click on "Add Fixed Deposit" for family member "Investor 156012"
