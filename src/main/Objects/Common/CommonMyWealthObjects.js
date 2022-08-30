@@ -41,5 +41,15 @@ class CommonMyWealthObjects {
       web: `//div[text()="${wealthType} data updated successfully" or text()="${wealthType} data added successfully"]`
     };
   }
+
+  wealthDeleteSuccessMessage(wealthType) {
+    return {
+      web: `//div[text()="${wealthType} deleted successfully"]`
+    };
+  }
+
+  totalInvestedAmount = {
+    web: '//div[text()="INVESTED AMOUNT"]/parent::div/following-sibling::div'
+  };
 }
 module.exports = new CommonMyWealthObjects();

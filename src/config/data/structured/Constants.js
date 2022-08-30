@@ -41,6 +41,9 @@ class Constants {
   REAL_ESTATE_ATTR_PURCHASE_COST = 'Purchase Cost';
   REAL_ESTATE_ATTR_CURRENT_VALUE = 'Current Value';
   REAL_ESTATE_ATTR_YOY_GROWTH = 'YoY Growth';
+  FIXED_DEPOSIT_ATTR_INTEREST = 'Interest';
+  FIXED_DEPOSIT_ATTR_START_MONTH = 'Start';
+  FIXED_DEPOSIT_ATTR_MATURITY_MONTH = 'Maturity';
 
 }
 module.exports = new Constants();

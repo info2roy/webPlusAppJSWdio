@@ -18,12 +18,12 @@ class CommonFunctionality {
       await CommonPage.clickExpandMoreButton();
       if (await CommonPage.familyMemberNameIsDisplayed(familyMemberName, 2000)) {
         await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-        return (await CommonPage.elementIsDisplayed(page1HeaderSelector));
+        return (await CommonPage.elementIsDisplayed(page1HeaderSelector, 15000, true));
       }
       return false;
     } else if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
       await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-      return (await CommonPage.elementIsDisplayed(page2HeaderSelector));
+      return (await CommonPage.elementIsDisplayed(page2HeaderSelector, 15000, true));
     }
     return false;
   }

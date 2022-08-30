@@ -6,6 +6,7 @@ const CommonFunctionality = require('../Common/CommonFunctionality');
 const GovtSchemesObjects = require('../../Objects/GovtSchemes/GovtSchemesObjects');
 const CommonObjects = require('../../Objects/Common/CommonObjects');
 const CommonPage = require('../../Pages/Common/CommonPage');
+const CommonMyWealthFunctionality = require('../Common/CommonMyWealthFunctionality');
 
 class GovtSchemesFunctionality {
 
@@ -78,8 +79,8 @@ class GovtSchemesFunctionality {
 
   }
 
-  async doGovtSchemeValidations(schemeName, familyMemberName, currentAmount, previousInvestedTotalAmount, previousInvestedTotalAmountForSingleGovtScheme) {
-    const newInvestedTotalAmount = await this.getTotalInvestedAmount();
+  async doGovtSchemeValidations(schemeName, familyMemberName, currentAmount, previousInvestedTotalAmount, previousInvestedTotalAmountForSingleGovtScheme, previousInvestedTotalAmountForSingleGovtSchemeOnPieChart) {
+    const newInvestedTotalAmount = await CommonMyWealthFunctionality.getTotalInvestedAmount();
     // const newSingleGovtSchemePercentAndAmount = await this.getSchemePercentAndAmount(schemeName);
     let newSingleGovtSchemeAbsoluteAmount = 0;
     if ([Constants.GOVT_SCHEME_NPS_TIER1, Constants.GOVT_SCHEME_NPS_TIER2].includes(schemeName)) {

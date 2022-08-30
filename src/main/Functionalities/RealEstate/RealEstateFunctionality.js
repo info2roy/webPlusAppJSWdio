@@ -48,7 +48,7 @@ class RealEstateFunctionality {
 
   async updateRealEstateProperty(propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue) {
     await RealEstatePage.clickOnRealEstatePropertyMoreOptionsButton(propertyName);
-    await CommonPage.clickEditDetailsButton();
+    await CommonPage.clickEditDetailsLink();
     await RealEstatePage.enterPropertyName(newPropertyName);
     await RealEstatePage.enterPropertyPrice(propertyPrice);
     await RealEstatePage.enterPurchaseYear(purchaseYear);

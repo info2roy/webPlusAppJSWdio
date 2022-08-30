@@ -52,9 +52,14 @@ class CommonObjects {
     web: '//button[text()="Save" or text()="Update"]'
   };
 
-  editDetailsButton = {
+  editDetailsLink = {
     web: '//div[text()="Edit details"]',
     app: '//*[@text="Edit details"]'
+  };
+
+  deleteLink = {
+    web: '//div[text()="Delete"]',
+    app: '//*[@text="Delete"]'
   };
 
   previousYearButton = {

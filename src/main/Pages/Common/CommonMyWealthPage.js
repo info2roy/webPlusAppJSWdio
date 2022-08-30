@@ -73,6 +73,18 @@ class CommonMyWealthPage {
   async wealthUpdateSuccessMessageIsDisplayed(wealthType) {
     return (await Utils.elementIsDisplayed(CommonMyWealthObjects.wealthUpdateSuccessMessage(wealthType)));
   }
+
+  async wealthDeleteSuccessMessageIsDisplayed(wealthType) {
+    return (await Utils.elementIsDisplayed(CommonMyWealthObjects.wealthDeleteSuccessMessage(wealthType)));
+  }
+
+  async getTotalInvestedAmount() {
+    return Utils.numberAbbriviationToAbsoluteValue(await Utils.getText(CommonMyWealthObjects.totalInvestedAmount));
+  }
+
+  async getTotalInvestedAmountStr() {
+    return await Utils.getText(CommonMyWealthObjects.totalInvestedAmount);
+  }
 }
 
 module.exports = new CommonMyWealthPage();

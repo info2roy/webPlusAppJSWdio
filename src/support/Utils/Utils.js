@@ -113,7 +113,7 @@ class Utils {
     await webElement.click();
   }
 
-  async elementIsDisplayed(selector, timeoutMS = 15000) {
+  async elementIsDisplayed(selector, timeoutMS = 15000, checkIsFocused = false) {
     const locator = this.getLocator(selector);
     // const element = await $(locator);
     try {
@@ -130,6 +130,11 @@ class Utils {
     }
     const isDisplayed = await $(locator).isDisplayed();
     console.log(`${locator} is displayed check --> ${isDisplayed}`);
+    if (checkIsFocused && isDisplayed) {
+      const isFocused = await $(locator).isFocused();
+      console.log(`${locator} is isFocused check --> ${isFocused}`);
+      return isDisplayed && isFocused;
+    }
     return isDisplayed;
   }
 
@@ -297,7 +302,7 @@ class Utils {
   async setMonthAndYear(monthYear, monthYearFieldSelector, pickedYearSelector, prevYearButtonSelector, nextYearButtonSelector, monthSelector) {
     const parts = monthYear.split(' ');
     const month = parts[0].slice(0, -1);
-    const year = parseInt(parts[1], 10);
+    const year = parseInt(parts[1].trim(), 10);
     await Utils.clickElement(monthYearFieldSelector);
     const currentYear = parseInt(await Utils.getText(pickedYearSelector), 10);
     let yearDiff = currentYear - year;

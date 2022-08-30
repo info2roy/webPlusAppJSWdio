@@ -4,7 +4,7 @@ const CommonObjects = require('../../Objects/Common/CommonObjects');
 class CommonPage {
 
   async selectFamilyMemberPageHeaderIsDisplayed(timeoutMS = 15000) {
-    return (await Utils.elementIsDisplayed(CommonObjects.selectFamilyMemberPageHeader, timeoutMS));
+    return (await Utils.elementIsDisplayed(CommonObjects.selectFamilyMemberPageHeader, timeoutMS, true));
   }
 
   async familyMemberNameIsDisplayed(familyMemberName, timeoutMS = 15000) {
@@ -36,7 +36,7 @@ class CommonPage {
   }
 
   async expandMoreButtonIsDisplayed(timeoutMS = 15000) {
-    return (await Utils.elementIsDisplayed(CommonObjects.expandMoreButton, timeoutMS));
+    return (await Utils.elementIsDisplayed(CommonObjects.expandMoreButton, timeoutMS, true));
   }
 
   async verifyMessage(message) {
@@ -51,16 +51,20 @@ class CommonPage {
     await Utils.clickElement(CommonObjects.verifyOTPButton);
   }
 
-  async elementIsDisplayed(selector) {
-    return (await Utils.elementIsDisplayed(selector));
+  async elementIsDisplayed(selector, timeoutMS = 15000, checkIsFocused = false) {
+    return (await Utils.elementIsDisplayed(selector, timeoutMS, checkIsFocused));
   }
 
   async clickSaveOrUpdateButton() {
     await Utils.clickElement(CommonObjects.saveOrUpdateButton);
   }
 
-  async clickEditDetailsButton() {
-    await Utils.clickElement(CommonObjects.editDetailsButton);
+  async clickEditDetailsLink() {
+    await Utils.clickElement(CommonObjects.editDetailsLink);
+  }
+
+  async clickDeleteLink() {
+    await Utils.clickElement(CommonObjects.deleteLink);
   }
 
   async fixedDepositPageIsDisplayed() {

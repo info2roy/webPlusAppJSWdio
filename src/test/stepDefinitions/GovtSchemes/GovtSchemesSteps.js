@@ -3,6 +3,7 @@ const GovtSchemesFunctionality = require('../../../main/Functionalities/GovtSche
 const { expect } = require('chai');
 const CommonFunctionality = require('../../../main/Functionalities/Common/CommonFunctionality');
 const Constants = require('../../../config/data/structured/Constants');
+const CommonMyWealthFunctionality = require('../../../main/Functionalities/Common/CommonMyWealthFunctionality');
 
 When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|National Saving Certificate|Senior Citizen Saving Scheme)" for family member "([^"]*)?"$/,
   async (schemeName, familyMember) => {
@@ -36,7 +37,7 @@ When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|Gene
       // }
 
       expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
-      this.govtSchemesTotalInvestedAmountForMember = await GovtSchemesFunctionality.getTotalInvestedAmount();
+      this.govtSchemesTotalInvestedAmountForMember = await CommonMyWealthFunctionality.getTotalInvestedAmount();
       this.singleGovtSchemePercentAndAmountForMember = await GovtSchemesFunctionality.getSchemePercentAndAmount(schemeName);
       this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getSchemeAbsoluteAmount(schemeName);
       console.log(`MYWEALTH govtSchemesTotalInvestedAmountForMember ${this.govtSchemesTotalInvestedAmountForMember} singleGovtSchemePercentAndAmountForMember ${this.singleGovtSchemePercentAndAmountForMember}`);
@@ -68,7 +69,7 @@ When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Sch
       }
     } else {
       expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
-      this.govtSchemesTotalInvestedAmountForMember = await GovtSchemesFunctionality.getTotalInvestedAmount();
+      this.govtSchemesTotalInvestedAmountForMember = await CommonMyWealthFunctionality.getTotalInvestedAmount();
       if (schemeName === Constants.GOVT_SCHEME_NSC) {
         this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getSchemeAbsoluteAmount(schemeName);
       } else {
