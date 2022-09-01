@@ -11,7 +11,7 @@ Then(/^The picture is uploaded successfully$/, async () => {
 });
 
 Then(/^I edit "([^"]*)?"$/, async (value) => {
-  await console.log('Check stepdef method '+value);
+  await console.log(`Check stepdef method ${value}`);
   await PersonalInfoFunctionality.updateProfileData(value);
 });
 

@@ -48,7 +48,7 @@ class PersonalInfoPage {
   }
 
   async clickEditButton(value) {
-    await console.log('Clicking edit button for ' + value.toString());
+    await console.log(`Clicking edit button for ${ value.toString()}`);
     switch (value.toString()) {
       case 'user name':
         await Utils.clickElement(PersonalInfoObjects.editFullNameButton);
@@ -66,12 +66,12 @@ class PersonalInfoPage {
         await Utils.clickElement(PersonalInfoObjects.editBankButton);
         break;
       default:
-        await console.warn('Edit info type is not valid -->' + value.toString());
+        await console.warn(`Edit info type is not valid -->${ value.toString()}`);
     }
   }
 
   async enterNewData(value) {
-    await console.log('Entering ' + value.toString());
+    await console.log(`Entering ${ value.toString()}`);
     switch (value.toString()) {
       case 'user email':
         await Utils.setInputField('abc@gmail.com', PersonalInfoObjects.enterNewEmail);
@@ -103,7 +103,7 @@ class PersonalInfoPage {
   }
 
   async checkEditHeader(value) {
-    await console.log('Checking header displayed of ' + value.toString());
+    await console.log(`Checking header displayed of ${ value.toString()}`);
     switch (value.toString()) {
       case 'user email':
         return await Utils.elementIsDisplayed(PersonalInfoObjects.changeEmailHeader);

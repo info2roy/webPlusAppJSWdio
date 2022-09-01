@@ -1,7 +1,7 @@
 Feature: Scripbox Investment in Mutual Fund Goals
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "MYSCRIPBOX2" for "user124148"
+    Given I login to Scripbox in "MYSCRIPBOX" for "user124148"
 
   Scenario Outline: As a logged in user, I am able to INVEST EVERY MONTH in mutual fund goal "Retire Confident"
     Given I am on the Investment Page

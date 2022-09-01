@@ -33,7 +33,7 @@ class DashboardPage {
   }
 
   async navigateToPage(pageOption) {
-    await console.log('Navigating to ' + pageOption.toString());
+    await console.log(`Navigating to ${ pageOption.toString()}`);
     switch (pageOption.toString()) {
       case 'Investment Calender':
         await Utils.clickElement(DashboardObjects.viewInvestmentCalender);
@@ -51,7 +51,7 @@ class DashboardPage {
         await Utils.clickElement(DashboardObjects.notifications);
         break;
       default:
-        await console.log(pageOption.toString() + ' Option not available in Dashboard page');
+        await console.log(`${pageOption.toString() } Option not available in Dashboard page`);
     }
   }
 
@@ -70,7 +70,7 @@ class DashboardPage {
       case 'Notifications':
         return (await browser.getUrl()).includes('/notifications?');
       default:
-        await console.log('Wrong page type -> ' + pageOption.toString());
+        await console.log(`Wrong page type -> ${ pageOption.toString()}`);
     }
   }
 }

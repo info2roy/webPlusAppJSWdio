@@ -31,7 +31,7 @@ When(/^I select the "(Withdraw|Invest more)" option on dashboard page$/, async (
 });
 
 When(/^I navigate to "([^"]*)?" from Dashboard$/, async (page) => {
-  await console.log('From dashboard, navigating to --> ' + page);
+  await console.log(`From dashboard, navigating to --> ${ page}`);
   expect(await DashboardFunctionality.navigateToPageFromDashboard(page)).to.be.true;
 });
 

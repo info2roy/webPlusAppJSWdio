@@ -1,6 +1,5 @@
 const Device = require('../libraries/Device');
 const { expect } = require('chai');
-const env = require('../../config/env');
 
 class Utils {
   getLocator(object) {
@@ -56,6 +55,7 @@ class Utils {
     await myButton.click();
   }
 
+  //Get the text of an element found by given selector.
   async getText(selector) {
     const locator = this.getLocator(selector);
     await this.elementIsDisplayed(selector);
@@ -63,18 +63,64 @@ class Utils {
     return (await element.getText());
   }
 
+  /**
+   * Return the matching element index for a given selector which matches input text
+   * @param  {string} selector The selector representing multiple matching elements
+   * @param  {string} text The text which should be matched with element's enclosing text
+   * @returns the element index whose text matches input text
+   */
+  async findMatchingElementIndexWithGivenText(selector, text) {
+    const locator = this.getLocator(selector);
+    const elements = await $$(locator);
+    for (let index = 0; index < elements.length; index ++) {
+      const value = await elements[index].getText();
+      console.log(`index ${index} value ${value}`);
+      if (value === text) {
+        return index;
+      }
+    }
+    return -1;
+  }
+
+  /**
+   * Return the matching element for a given selector which matches input text
+   * @param  {string} selector The selector representing multiple matching elements
+   * @param  {string} text The text which should be matched with element's enclosing text
+   * @returns the element whose text matches input text
+   */
+  async findMatchingElementWithGivenText(selector, text) {
+    const locator = this.getLocator(selector);
+    const elements = await $$(locator);
+    for (let index = 0; index < elements.length; index ++) {
+      const value = await elements[index].getText();
+      console.log(`index ${index} value ${value}`);
+      if (value === text) {
+        return elements[index];
+      }
+    }
+    return undefined;
+  }
+
+  //Get the value of a <textarea>, <select> or text <input> found by given selector.
+  async getValue(selector) {
+    const locator = this.getLocator(selector);
+    await this.elementIsDisplayed(selector);
+    const element = await $(locator);
+    return (await element.getValue());
+  }
+
   async clickWebElement(webElement) {
     await webElement.click();
   }
 
-  async elementIsDisplayed(selector) {
+  async elementIsDisplayed(selector, timeoutMS = 15000) {
     const locator = this.getLocator(selector);
     // const element = await $(locator);
     try {
       await browser.waitUntil(
         async () => await $(locator).isDisplayed(),
         {
-          timeout: 15000,
+          timeout: timeoutMS,
           timeoutMsg: `${locator} Selector not displayed yet`,
           interval: 2000
         },
@@ -194,6 +240,45 @@ class Utils {
 
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  /**
+   * Convert abbriviated string representation of a number to absolute value
+   * @param  {string} abbrStr the abbriviated string like 10.0 K, 10.0K, 23 k, 23k, 12.4 L, 12.4L, 1.2 l, 1.2l, 4 M, 4M, 5.4 m, 5.4m etc
+   * @returns '10.0 K' OR '10.0K'-> 10000.0, '23 k' OR '23k' -> 23000.0, '12.4 L' OR '12.4L' -> 1240000.0, '1.2 l' OR '1.2l' -> 120000.0, '4 M' or '4M' -> 4000000.0, '5.4 m' or '5.4m ' -> 5400000
+   */
+  numberAbbriviationToAbsoluteValue(abbrStr) {
+    const parts = abbrStr.split(' ');
+    let abbrChar = '';
+    if (parts.length == 2) {
+      abbrChar = parts[1];
+    } else {
+      abbrChar = abbrStr.at(-1);
+      parts[0] = parts[0].slice(0, -1);
+    }
+    console.log(`parts ${parts} abbrChar ${abbrChar}`);
+    switch(abbrChar) {
+      case 'K':
+      case 'k':
+        return Math.round(parseFloat(parts[0]) * 1000);
+      case 'L':
+      case 'l':
+        return Math.round(parseFloat(parts[0]) * 100000);
+      case 'M':
+      case 'm':
+        return Math.round(parseFloat(parts[0]) * 1000000);
+      default:
+        return Math.round(parseFloat(abbrStr));
+    }
+  }
+
+  absoluteValueToNumberAbbriviation(number) {
+    if (number > 100000) {
+      const lacs = number / 100000;
+      return `${lacs.toFixed(2)}L`;
+    } else if (number > 1000) {
+      const thousands = number / 1000;
+      return `${thousands.toFixed(2)}K`;
+    }
   }
 }
 

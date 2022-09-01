@@ -1,7 +1,7 @@
 Feature: Scripbox Investment in Mutual Fund Goals
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "MYSCRIPBOX2" for "user189182"
+    Given I login to Scripbox in "MYSCRIPBOX" for "user189182"
 
   Scenario Outline: As a logged in user, I am able to INVEST ONE TIME in mutual fund goal "Retire Confident" and then close the plan
     Given I am on the Investment Page

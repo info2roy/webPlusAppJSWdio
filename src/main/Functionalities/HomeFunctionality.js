@@ -3,7 +3,6 @@ const LoginPage = require('../Pages/LoginPage');
 const loginData = require('../../config/data/structured/LoginData');
 const LoginObjects = require('../Objects/LoginObjects');
 const DashboardFunctionality = require('../Functionalities/DashboardFunctionality');
-const LoginFunctionality = require('../Functionalities/LoginFunctionality');
 const Utils = require('../../support/Utils/Utils');
 
 class HomeFunctionality {
@@ -12,7 +11,7 @@ class HomeFunctionality {
   }
 
   async performLogin(env, user) {
-    console.log('testing for environment ' + env);
+    console.log(`testing for environment ${ env}`);
     if (env === 'ANDROMEDA') {
       await HomePage.clickMenuButton();
       await HomePage.selectLoginOption();
@@ -39,7 +38,7 @@ class HomeFunctionality {
           await LoginPage.enterUserId(loginData.user124148);
           break;
         default:
-          await console.log(user + ' User not available to add. Please add in login data to proceed');
+          await console.log(`${user } User not available to add. Please add in login data to proceed`);
       }
       await LoginPage.clickContinueOrNextButton();
       await LoginPage.enterPassword(loginData.password);
@@ -69,7 +68,7 @@ class HomeFunctionality {
           await Utils.setInputField(loginData.user124148, LoginObjects.stagingUserIdField);
           break;
         default:
-          await console.log(user + ' User not available to add. Please add in login data to proceed');
+          await console.log(`${user } User not available to add. Please add in login data to proceed`);
       }
       await Utils.setInputField(loginData.password, LoginObjects.stagingPasswordField);
       await Utils.clickElement(LoginObjects.stagingLoginButton);
@@ -122,7 +121,7 @@ class HomeFunctionality {
         await LoginPage.enterUserId(loginData.user124148);
         break;
       default:
-        await console.log(user + ' User not available to add. Please add in login data to proceed');
+        await console.log(`${user } User not available to add. Please add in login data to proceed`);
     }
     await LoginPage.clickContinueOrNextButton();
     await LoginPage.enterPassword(loginData.password);

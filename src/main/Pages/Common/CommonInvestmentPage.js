@@ -13,7 +13,7 @@ class CommonInvestmentPage {
       case Constants.INVESTMENT_INSTRUMENT_MUTUAL_FUND:
         return (await MFInvestmentPage.mutualFundsPageHeaderIsDisplayed());
       default:
-        await console.log('Unsupported instrument type -> ' + investmentInstrumentType.toString());
+        await console.log(`Unsupported instrument type -> ${ investmentInstrumentType.toString()}`);
         return false;
     }
   }

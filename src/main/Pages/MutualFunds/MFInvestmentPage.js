@@ -208,7 +208,7 @@ class MFInvestmentPage {
           await Utils.elementIsDisplayed(MFInvestmentObjects.emailIcon) &&
           await Utils.elementIsDisplayed(MFInvestmentObjects.downloadIcon));
       default:
-        console.log('Wrong type MF type to assert. -> ' + mfOption.toString());
+        console.log(`Wrong type MF type to assert. -> ${ mfOption.toString()}`);
     }
   }
 
