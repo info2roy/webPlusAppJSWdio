@@ -17,4 +17,10 @@ Feature: Scripbox MyWealth: Add a Fixed Deposit
     Then Fixed Deposit details are shown correctly
     Examples:
       | firmName | investedAmount | newInvestedAmount | interestRate | startMonth | maturityMonth |
-      | Airtel Payments Bank | 100000 | 110000 | 6.5 | Jan, 2023 | Jan, 2025 |
+      | AU Small Finance Bank | 100000 | 110000 | 6.5 | Aug, 2022 | Aug, 2025 |
+
+  Scenario Outline: I am able to delete the Fixed Deposit created and updated till previous step
+    When I delete the "Fixed Deposit" of <investedAmount>
+    Examples:
+      | investedAmount |
+      | 110000 |

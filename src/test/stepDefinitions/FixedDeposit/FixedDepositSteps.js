@@ -23,7 +23,7 @@ When(/^I click on "Add existing Fixed Deposit" for family member "([^"]*)?"$/,
   }
 );
 
-When(/^I fill "Fixed Deposit" form with (.+); (.+); (\d+); (.+); (.+)$/,
+When(/^I fill "Fixed Deposit" form with (.+); (\d+); (.+); (.+); (.+)$/,
   async (firmName, investedAmount, interestRate, startMonth, maturityMonth) => {
     console.log(`When I fill "Fixed Deposit" form with ${firmName}, ${investedAmount}, ${interestRate}, ${startMonth}, ${maturityMonth}`);
     this.fixedDepositFirmName = firmName;
@@ -49,7 +49,12 @@ When(/^I edit the "Fixed Deposit" of (\d+) with (.+); (\d+); (.+); (.+); (.+)$/,
     this.fixedDepositInterestRate = interestRate;
     this.fixedDepositStartMonth = startMonth;
     this.fixedDepositMaturityMonth = maturityMonth;
-    expect(await FixedDepositFunctionality.editFixedDeposit(firmName, investedAmount, newInvestedAmount, interestRate, startMonth, maturityMonth)).to.be.true;
+    expect(await FixedDepositFunctionality.editFixedDeposit(investedAmount, newInvestedAmount, interestRate, startMonth, maturityMonth)).to.be.true;
   }
 );
+
+When(/^I delete the "Fixed Deposit" of (\d+)$/, async(investedAmount) => {
+  console.log(`When I delete the "Fixed Deposit" of ${investedAmount}`);
+  expect(await FixedDepositFunctionality.deleteFixedDeposit(investedAmount)).to.be.true;
+});
 

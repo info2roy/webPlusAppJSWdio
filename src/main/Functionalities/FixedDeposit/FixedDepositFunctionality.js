@@ -62,10 +62,9 @@ class FixedDepositFunctionality {
     await CommonPage.clickSaveOrUpdateButton();
   }
 
-  async editFixedDeposit(fdFirmName, fdInvestedAmount, fdNewInvestedAmount, fdInterestRate, fdStartMonth, fdMaturityMonth) {
+  async editFixedDeposit(fdInvestedAmount, fdNewInvestedAmount, fdInterestRate, fdStartMonth, fdMaturityMonth) {
     await FixedDepositPage.clickOnFixedDepositMoreOptionsButton(fdInvestedAmount);
     await CommonPage.clickEditDetailsLink();
-    await FixedDepositPage.enterFDFirmName(fdFirmName);
     await FixedDepositPage.enterFDInvestedAmount(fdNewInvestedAmount);
     await FixedDepositPage.enterFDInterestRate(fdInterestRate);
     await FixedDepositPage.setFDStartMonth(fdStartMonth);
