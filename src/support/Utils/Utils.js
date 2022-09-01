@@ -113,7 +113,7 @@ class Utils {
     await webElement.click();
   }
 
-  async elementIsDisplayed(selector, timeoutMS = 15000, checkIsFocused = false) {
+  async elementIsDisplayed(selector, timeoutMS = 15000) {
     const locator = this.getLocator(selector);
     // const element = await $(locator);
     try {
@@ -130,11 +130,6 @@ class Utils {
     }
     const isDisplayed = await $(locator).isDisplayed();
     console.log(`${locator} is displayed check --> ${isDisplayed}`);
-    if (checkIsFocused && isDisplayed) {
-      const isFocused = await $(locator).isFocused();
-      console.log(`${locator} is isFocused check --> ${isFocused}`);
-      return isDisplayed && isFocused;
-    }
     return isDisplayed;
   }
 
@@ -303,22 +298,62 @@ class Utils {
     const parts = monthYear.split(' ');
     const month = parts[0].slice(0, -1);
     const year = parseInt(parts[1].trim(), 10);
-    await Utils.clickElement(monthYearFieldSelector);
-    const currentYear = parseInt(await Utils.getText(pickedYearSelector), 10);
+    await this.clickElement(monthYearFieldSelector);
+    const currentYear = parseInt(await this.getText(pickedYearSelector), 10);
     let yearDiff = currentYear - year;
     if (yearDiff > 0) {
       for (let index = 0; index < yearDiff; index ++) {
-        await Utils.clickElement(prevYearButtonSelector);
+        await this.clickElement(prevYearButtonSelector);
       }
     } else if (yearDiff < 0) {
       yearDiff = yearDiff * (-1);
       for (let index = 0; index < yearDiff; index ++) {
-        await Utils.clickElement(nextYearButtonSelector);
+        await this.clickElement(nextYearButtonSelector);
       }
     }
-    const selectedYear = parseInt(await Utils.getText(pickedYearSelector), 10);
+    const selectedYear = parseInt(await this.getText(pickedYearSelector), 10);
     expect(selectedYear).to.equal(year);
-    await Utils.clickElement(monthSelector(month));
+    await this.clickElement(monthSelector(month));
+  }
+
+  zeroPad(num, places) {
+    return String(num).padStart(places, '0');
+  }
+
+  async setDate(day, monthYear, monthYearFieldSelector, pickedMonthSelector, prevMonthButtonSelector, nextMonthButtonSelector, daySelector) {
+    const monthNames = { 'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12};
+    const parts = monthYear.split(' ');
+    const month = parts[0].slice(0, -1);
+    const year = parseInt(parts[1].trim(), 10);
+    console.log(`monthYear ${monthYear} month ${month} year ${year}`);
+    await this.clickElement(monthYearFieldSelector);
+    const currentMonthStr = await this.getText(pickedMonthSelector);
+    const currentMonthParts = currentMonthStr.trim().split(' ');
+    const currentMonth = currentMonthParts[0].slice(0, 3);
+    const currentYear = parseInt(currentMonthParts[1], 10);
+    console.log(`currentMonth ${currentMonthStr} month ${currentMonth} year ${currentYear}`);
+    let yearDiff = currentYear - year;
+    let monthDiff = monthNames[currentMonth] - monthNames[month];
+    console.log(`yearDiff ${yearDiff} monthDiff ${monthDiff}`);
+    if (yearDiff > 0 || (yearDiff === 0 && monthDiff >= 0)) {
+      for (let index = 0; index < (12 * yearDiff + monthDiff); index ++) {
+        await this.clickElement(prevMonthButtonSelector);
+      }
+    } else if (yearDiff <= 0) {
+      yearDiff = yearDiff * (-1);
+      monthDiff = monthDiff * (-1);
+      for (let index = 0; index < (12 * yearDiff + monthDiff); index ++) {
+        await this.clickElement(nextMonthButtonSelector);
+      }
+    }
+    const selectedMonthStr = await this.getText(pickedMonthSelector);
+    const selectedMonthParts = selectedMonthStr.trim().split(' ');
+    const selectedMonth = selectedMonthParts[0].slice(0, 3);
+    const selectedYear = parseInt(selectedMonthParts[1], 10);
+    console.log(`selectedMonth ${selectedMonthStr} month ${selectedMonth} year ${selectedYear}`);
+    expect(selectedYear).to.equal(year);
+    expect(selectedMonth).to.equal(month);
+    await this.clickElement(daySelector(day));
   }
 }
 

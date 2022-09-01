@@ -5,7 +5,7 @@ const FixedDepositFunctionality = require('../../../main/Functionalities/FixedDe
 
 When(/^I click on "Add existing Fixed Deposit" for family member "([^"]*)?"$/,
   async (familyMember) => {
-    await console.log(`When I click on "Add Real Estate" for family member "${familyMember}"`);
+    await console.log(`When I click on "Add existing Fixed Deposit" for family member "${familyMember}"`);
     this.familyMemberName = familyMember;
 
     if(await CommonFunctionality.fixedDepositInitialPageLaunched()) {
@@ -15,15 +15,15 @@ When(/^I click on "Add existing Fixed Deposit" for family member "([^"]*)?"$/,
       expect(await FixedDepositFunctionality.selectFamilyMember(familyMember)).to.be.true;
 
     } else {
-      expect(await FixedDepositFunctionality.selectFamilyMember(familyMember)).to.be.true;
+      expect(await FixedDepositFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
       this.fixedDepositTotalInvestedAmountForMember = await FixedDepositFunctionality.getTotalInvestedAmount();
-      console.log(`MYWEALTH realEstateTotalInvestedAmountForMember ${this.fixedDepositTotalInvestedAmountForMember}`);
+      console.log(`MYWEALTH fixedDepositTotalInvestedAmountForMember ${this.fixedDepositTotalInvestedAmountForMember}`);
       expect(await FixedDepositFunctionality.addExistingFixedDepositInitializedState()).to.be.true;
     }
   }
 );
 
-When(/^I fill "Fixed Deposit" form with (.+), (\d+), (\d+), (.+), (.+)$/,
+When(/^I fill "Fixed Deposit" form with (.+); (\d+); (\d+); (.+); (.+)$/,
   async (firmName, investedAmount, interestRate, startMonth, maturityMonth) => {
     console.log(`When I fill "Fixed Deposit" form with ${firmName}, ${investedAmount}, ${interestRate}, ${startMonth}, ${maturityMonth}`);
     this.fixedDepositFirmName = firmName;
@@ -41,7 +41,7 @@ Then(/^Fixed Deposit details are shown correctly$/, async() => {
     this.fixedDepositInterestRate, this.fixedDepositStartMonth, this.fixedDepositMaturityMonth);
 });
 
-When(/^I edit the "Fixed Deposit" of (\d+) with (.+), (\d+), (.+), (.+), (.+)$/,
+When(/^I edit the "Fixed Deposit" of (\d+) with (.+); (\d+); (.+); (.+); (.+)$/,
   async (investedAmount, firmName, newInvestedAmount, interestRate, startMonth, maturityMonth) => {
     console.log(`When I edit the "Fixed Deposit" of ${investedAmount} with ${firmName}, ${newInvestedAmount}, ${interestRate}, ${startMonth}, ${maturityMonth}`);
     this.fixedDepositFirmName = firmName;

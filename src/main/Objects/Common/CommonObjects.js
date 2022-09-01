@@ -1,3 +1,5 @@
+const Utils = require("../../../support/Utils/Utils");
+
 class CommonObjects {
 
   selectFamilyMemberPageHeader = {
@@ -77,6 +79,24 @@ class CommonObjects {
   monthPicker(month) {
     return {
       web: `//div[text()="${month}"]`
+    };
+  }
+
+  currentMonth = {
+    web: 'div.react-datepicker__current-month'
+  };
+
+  previousMonthLink = {
+    web: 'button.react-datepicker__navigation--previous'
+  };
+
+  nextMonthLink = {
+    web: 'button.react-datepicker__navigation--next'
+  };
+
+  dayPicker(day) {
+    return {
+      web: `div.react-datepicker__day--${Utils.zeroPad(day, 3)}`
     };
   }
 

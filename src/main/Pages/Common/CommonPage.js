@@ -4,7 +4,7 @@ const CommonObjects = require('../../Objects/Common/CommonObjects');
 class CommonPage {
 
   async selectFamilyMemberPageHeaderIsDisplayed(timeoutMS = 15000) {
-    return (await Utils.elementIsDisplayed(CommonObjects.selectFamilyMemberPageHeader, timeoutMS, true));
+    return (await Utils.elementIsDisplayed(CommonObjects.selectFamilyMemberPageHeader, timeoutMS));
   }
 
   async familyMemberNameIsDisplayed(familyMemberName, timeoutMS = 15000) {
@@ -36,7 +36,7 @@ class CommonPage {
   }
 
   async expandMoreButtonIsDisplayed(timeoutMS = 15000) {
-    return (await Utils.elementIsDisplayed(CommonObjects.expandMoreButton, timeoutMS, true));
+    return (await Utils.elementIsDisplayed(CommonObjects.expandMoreButton, timeoutMS));
   }
 
   async verifyMessage(message) {
@@ -51,8 +51,8 @@ class CommonPage {
     await Utils.clickElement(CommonObjects.verifyOTPButton);
   }
 
-  async elementIsDisplayed(selector, timeoutMS = 15000, checkIsFocused = false) {
-    return (await Utils.elementIsDisplayed(selector, timeoutMS, checkIsFocused));
+  async elementIsDisplayed(selector, timeoutMS = 15000) {
+    return (await Utils.elementIsDisplayed(selector, timeoutMS));
   }
 
   async clickSaveOrUpdateButton() {

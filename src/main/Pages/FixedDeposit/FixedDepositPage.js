@@ -2,6 +2,7 @@ const Utils = require('../../../support/Utils/Utils');
 const CommonMyWealthObjects = require('../../Objects/Common/CommonMyWealthObjects');
 const CommonObjects = require('../../Objects/Common/CommonObjects');
 const FixedDepositObjects = require('../../Objects/FixedDeposit/FixedDepositObjects');
+const { expect } = require('chai');
 
 class FixedDepositPage {
 
@@ -49,8 +50,11 @@ class FixedDepositPage {
   }
 
   async setFDStartMonth(startMonth) {
-    await Utils.setMonthAndYear(startMonth, FixedDepositObjects.fdStartMonthField, CommonObjects.pickedYear,
-      CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
+    // await Utils.setMonthAndYear(startMonth, FixedDepositObjects.fdStartMonthField, CommonObjects.pickedYear,
+    //  CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
+
+    await Utils.setDate(1, startMonth, FixedDepositObjects.fdStartMonthField, CommonObjects.currentMonth,
+      CommonObjects.previousMonthLink, CommonObjects.nextMonthLink, CommonObjects.dayPicker);
   }
 
   async getFDStartMonth() {
@@ -58,12 +62,15 @@ class FixedDepositPage {
   }
 
   async setFDMaturityMonth(maturityMonth) {
-    await Utils.setMonthAndYear(maturityMonth, FixedDepositObjects.fdMaturityMonth, CommonObjects.pickedYear,
-      CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
+    // await Utils.setMonthAndYear(maturityMonth, FixedDepositObjects.fdMaturityMonth, CommonObjects.pickedYear,
+    //  CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
+
+    await Utils.setDate(1, maturityMonth, FixedDepositObjects.fdMaturityMonthField, CommonObjects.currentMonth,
+      CommonObjects.previousMonthLink, CommonObjects.nextMonthLink, CommonObjects.dayPicker);
   }
 
   async getFDMaturityMonth() {
-    return (await Utils.getValue(FixedDepositObjects.fdMaturityMonth)).replace(' ', ', ');
+    return (await Utils.getValue(FixedDepositObjects.fdMaturityMonthField)).replace(' ', ', ');
   }
 
   async fixedDepositGetStringAttribute(fdAmount, index, attrName) {

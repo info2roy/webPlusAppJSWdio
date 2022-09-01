@@ -38,7 +38,7 @@ class FixedDepositObjects {
     web: 'input#st_date'
   };
 
-  fdMaturityMonth = {
+  fdMaturityMonthField = {
     web: 'input#my_date'
   };
 

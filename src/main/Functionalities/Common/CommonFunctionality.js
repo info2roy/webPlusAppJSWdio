@@ -13,17 +13,22 @@ class CommonFunctionality {
     return status;
   }
 
-  async selectFamilyMember(familyMemberName, page1HeaderSelector, page2HeaderSelector) {
+  async selectFamilyMemberViaExpandMore(familyMemberName, landingPageHeaderSelector) {
     if(await CommonPage.expandMoreButtonIsDisplayed(2000)) {
       await CommonPage.clickExpandMoreButton();
       if (await CommonPage.familyMemberNameIsDisplayed(familyMemberName, 2000)) {
         await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-        return (await CommonPage.elementIsDisplayed(page1HeaderSelector, 15000, true));
+        return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector, 15000));
       }
       return false;
-    } else if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
+    }
+    return false;
+  }
+
+  async selectFamilyMember(familyMemberName, landingPageHeaderSelector) {
+    if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
       await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-      return (await CommonPage.elementIsDisplayed(page2HeaderSelector, 15000, true));
+      return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector, 15000));
     }
     return false;
   }

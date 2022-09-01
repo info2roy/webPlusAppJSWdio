@@ -4,7 +4,6 @@ const CommonMyWealthPage = require('../../Pages/Common/CommonMyWealthPage');
 const CommonFunctionality = require('../Common/CommonFunctionality');
 const FixedDepositObjects = require('../../Objects/FixedDeposit/FixedDepositObjects');
 const Constants = require('../../../config/data/structured/Constants');
-const Utils = require('../../../support/Utils/Utils');
 
 class FixedDepositFunctionality {
 
@@ -23,7 +22,12 @@ class FixedDepositFunctionality {
 
   async selectFamilyMember(familyMemberName) {
     return await CommonFunctionality.selectFamilyMember(familyMemberName,
-      FixedDepositObjects.enterInvestmentDetailsHeader, FixedDepositObjects.enterInvestmentDetailsHeader);
+      FixedDepositObjects.enterInvestmentDetailsHeader);
+  }
+
+  async selectFamilyMemberViaExpandMore(familyMemberName) {
+    return await CommonFunctionality.selectFamilyMemberViaExpandMore(familyMemberName,
+      FixedDepositObjects.enterInvestmentDetailsHeader);
   }
 
   async getTotalInvestedAmount() {
