@@ -20,7 +20,12 @@ class RealEstateFunctionality {
 
   async selectFamilyMember(familyMemberName) {
     return await CommonFunctionality.selectFamilyMember(familyMemberName,
-      RealEstateObjects.estimatedCurrentValueHeader, RealEstateObjects.addRealEstatePageHeader);
+      RealEstateObjects.addRealEstatePageHeader);
+  }
+
+  async selectFamilyMemberViaExpandMore(familyMemberName) {
+    return await CommonFunctionality.selectFamilyMemberViaExpandMore(familyMemberName,
+      RealEstateObjects.estimatedCurrentValueHeader);
   }
 
   async getTotalInvestedAmount() {

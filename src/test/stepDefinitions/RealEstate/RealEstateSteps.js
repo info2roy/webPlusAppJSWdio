@@ -14,7 +14,7 @@ When(/^I click on "Add Real Estate" for family member "([^"]*)?"$/,
       expect(await RealEstateFunctionality.selectFamilyMember(familyMember)).to.be.true;
 
     } else {
-      expect(await RealEstateFunctionality.selectFamilyMember(familyMember)).to.be.true;
+      expect(await RealEstateFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
       this.realEstateTotalInvestedAmountForMember = await RealEstateFunctionality.getTotalInvestedAmount();
       console.log(`MYWEALTH realEstateTotalInvestedAmountForMember ${this.realEstateTotalInvestedAmountForMember}`);
       expect(await RealEstateFunctionality.addRealEstate()).to.be.true;
@@ -36,7 +36,7 @@ When(/^I fill "Real Estate" form with (.+), (\d+), (\d+), (\d+), (.+)$/,
 
 Then(/^Real Estate Property details are shown correctly$/, async() => {
   console.log('Real Estate Property details are shown correctly');
-  expect(await RealEstateFunctionality.selectFamilyMember(this.familyMemberName)).to.be.true;
+  expect(await RealEstateFunctionality.selectFamilyMemberViaExpandMore(this.familyMemberName)).to.be.true;
   await RealEstateFunctionality.validateRealEstatePropertyDetails(this.realEstatePropertyName, this.realEstatePropertyPrice,
     this.realEstatePurchaseYear, this.realEstateCurrentValue, this.realEstateYoYGrowthRate);
 });
