@@ -96,7 +96,7 @@ class CommonObjects {
 
   dayPicker(day) {
     return {
-      web: `div.react-datepicker__day--${Utils.zeroPad(day, 3)}`
+      web: `//div[contains(@class,"react-datepicker__day--${Utils.zeroPad(day, 3)}") and not(contains(@class,"react-datepicker__day--outside-month"))]`
     };
   }
 

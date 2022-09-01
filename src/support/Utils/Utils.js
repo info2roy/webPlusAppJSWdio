@@ -101,6 +101,32 @@ class Utils {
     return undefined;
   }
 
+  /**
+   * Return the matching element for a given selector which matches all (attribute, value) in atrributes_object
+   * @param  {string} selector The selector representing multiple matching elements
+   * @param  {string} atrributes_object The object contains key,value corresponding to attribute,value
+   * @returns the first matching element, undefined if no match found
+   */
+  async findMatchingElementWithGivenAttributes(selector, atrributes_object) {
+    const locator = this.getLocator(selector);
+    const elements = await $$(locator);
+    for (let index = 0; index < elements.length; index ++) {
+      let all_matched = true;
+      for (attribute in atrributes_object) {
+        const value = await elements[index].getAttribute(attribute);
+        console.log(`index ${index} attribute ${attribute} value ${value} expected ${atrributes_object[attribute]}`);
+        if (value !== atrributes_object[attribute]) {
+          all_matched = false;
+          break;
+        }
+      }
+      if(all_matched) {
+        return elements[index];
+      }
+    }
+    return undefined;
+  }
+
   //Get the value of a <textarea>, <select> or text <input> found by given selector.
   async getValue(selector) {
     const locator = this.getLocator(selector);
