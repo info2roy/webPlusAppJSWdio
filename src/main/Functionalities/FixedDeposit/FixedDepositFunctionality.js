@@ -4,6 +4,7 @@ const CommonMyWealthPage = require('../../Pages/Common/CommonMyWealthPage');
 const CommonFunctionality = require('../Common/CommonFunctionality');
 const FixedDepositObjects = require('../../Objects/FixedDeposit/FixedDepositObjects');
 const Constants = require('../../../config/data/structured/Constants');
+const { expect } = require('chai');
 
 class FixedDepositFunctionality {
 
@@ -54,7 +55,7 @@ class FixedDepositFunctionality {
     await FixedDepositPage.clickOnFixedDepositMoreOptionsButton(fdInvestedAmount);
     await CommonPage.clickEditDetailsLink();
     expect(await FixedDepositPage.getFDFirmName()).to.equal(fdFirmName);
-    expect(await FixedDepositPage.getFDInvestedAmount()).to.equal(fdInvestedAmount);
+    expect(await FixedDepositPage.getFDInvestedAmount()).to.equal(fdInvestedAmount.toLocaleString('hi'));
     expect(await FixedDepositPage.getFDInterestRate()).to.equal(fdInterestRate);
     expect(await FixedDepositPage.getFDStartMonth()).to.equal(fdStartMonth);
     expect(await FixedDepositPage.getFDMaturityMonth()).to.equal(fdMaturityMonth);

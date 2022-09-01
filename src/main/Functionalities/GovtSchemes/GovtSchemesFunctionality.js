@@ -6,7 +6,6 @@ const CommonFunctionality = require('../Common/CommonFunctionality');
 const GovtSchemesObjects = require('../../Objects/GovtSchemes/GovtSchemesObjects');
 const CommonObjects = require('../../Objects/Common/CommonObjects');
 const CommonPage = require('../../Pages/Common/CommonPage');
-const CommonMyWealthFunctionality = require('../Common/CommonMyWealthFunctionality');
 
 class GovtSchemesFunctionality {
 

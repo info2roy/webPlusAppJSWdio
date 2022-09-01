@@ -23,7 +23,7 @@ When(/^I click on "Add existing Fixed Deposit" for family member "([^"]*)?"$/,
   }
 );
 
-When(/^I fill "Fixed Deposit" form with (.+); (\d+); (\d+); (.+); (.+)$/,
+When(/^I fill "Fixed Deposit" form with (.+); (.+); (\d+); (.+); (.+)$/,
   async (firmName, investedAmount, interestRate, startMonth, maturityMonth) => {
     console.log(`When I fill "Fixed Deposit" form with ${firmName}, ${investedAmount}, ${interestRate}, ${startMonth}, ${maturityMonth}`);
     this.fixedDepositFirmName = firmName;

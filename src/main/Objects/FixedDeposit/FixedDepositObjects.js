@@ -51,7 +51,7 @@ class FixedDepositObjects {
 
   fixedDepositMoreOptionsButton(fdAmount) {
     return {
-      web: `//div/h5[text()="${fdAmount.toLocaleString('hi')}"]/parent::div/following-sibling::div/span[text()="more_horiz"]`
+      web: `//div[text()="${fdAmount.toLocaleString('hi')}"]/parent::div/following-sibling::div/span[text()="more_horiz"]`
     };
   }
 }
