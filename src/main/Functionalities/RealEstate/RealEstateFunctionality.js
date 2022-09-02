@@ -29,7 +29,7 @@ class RealEstateFunctionality {
   }
 
   async getTotalInvestedAmount() {
-    return (await RealEstatePage.getTotalInvestedAmount());
+    return (await RealEstatePage.getEstimatedCurrentValue());
   }
 
   async fillAddRealEstateForm(propertyName, propertyPrice, purchaseYear, currentValue) {
@@ -49,6 +49,18 @@ class RealEstateFunctionality {
     expect(await RealEstatePage.realEstatePropertyGetPurchaseYear(propertyName)).to.equal(purchaseYear);
     expect(await RealEstatePage.realEstatePropertyGetStringAttribute(propertyName, 3, Constants.REAL_ESTATE_ATTR_YOY_GROWTH)
     ).to.equal(`+ ${expectedYoYGrowthRate}%`);
+
+    expect(await RealEstatePage.getEstimatedCurrentValue()).to.equal(Utils.absoluteValueToNumberAbbriviation(currentValue));
+    expect(await RealEstatePage.getInvestedAmount()).to.equal(propertyPrice.toLocaleString('hi'));
+    expect(await RealEstatePage.getGainLossAmount()).to.equal((currentValue - propertyPrice).toLocaleString('hi'));
+
+    await RealEstatePage.clickOnRealEstatePropertyMoreOptionsButton(propertyName);
+    await CommonPage.clickEditDetailsLink();
+    expect(await RealEstatePage.getPropertyName()).to.equal(propertyName);
+    expect(await RealEstatePage.getPropertyPrice()).to.equal(propertyPrice.toLocaleString('hi'));
+    expect(await RealEstatePage.getPurchaseYear()).to.equal(purchaseYear.toString());
+    expect(await RealEstatePage.getCurrentValue()).to.equal(currentValue.toLocaleString('hi'));
+    await CommonPage.clickSaveOrUpdateButton();
   }
 
   async updateRealEstateProperty(propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue) {
@@ -60,6 +72,13 @@ class RealEstateFunctionality {
     await RealEstatePage.enterCurrentValue(currentValue);
     await CommonPage.clickSaveOrUpdateButton();
     return (await CommonMyWealthPage.wealthUpdateSuccessMessageIsDisplayed('Real estate'));
+  }
+
+  async deleteRealEstate(propertyName) {
+    await RealEstatePage.clickOnRealEstatePropertyMoreOptionsButton(propertyName);
+    await CommonPage.clickDeleteLink();
+    return true;
+    //return (await CommonMyWealthPage.wealthDeleteSuccessMessageIsDisplayed('Real estate'));
   }
 }
 module.exports = new RealEstateFunctionality();

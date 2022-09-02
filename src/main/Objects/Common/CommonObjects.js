@@ -55,12 +55,12 @@ class CommonObjects {
   };
 
   editDetailsLink = {
-    web: '//div[text()="Edit details"]',
+    web: '//div[text()="Edit details"] | //h6[text()="Edit details"]',
     app: '//*[@text="Edit details"]'
   };
 
   deleteLink = {
-    web: '//div[text()="Delete"]',
+    web: '//div[text()="Delete"] | //h6[text()="Delete"]',
     app: '//*[@text="Delete"]'
   };
 

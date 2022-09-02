@@ -21,6 +21,8 @@ Feature: Scripbox MyWealth: Add a Fixed Deposit
 
   Scenario Outline: I am able to delete the Fixed Deposit created and updated till previous step
     When I delete the "Fixed Deposit" of <investedAmount>
+    Then I go back to the dashboard page
+    Then I logout of Scripbox
     Examples:
       | investedAmount |
       | 110000 |

@@ -1,6 +1,6 @@
 class RealEstateObjects {
   realEstateInitialPageHeader = {
-    web: '//div[text()="One place to track all of your real estate investments"]',
+    web: '//h5[text()="One place to track all of your real estate investments"]',
     app: '//*[@text="One place to track all of your real estate investments"]'
   };
 
@@ -19,8 +19,16 @@ class RealEstateObjects {
     app: '//*[@text="ESTIMATED CURRENT VALUE"]'
   };
 
-  totalInvestedAmount = {
+  estimatedCurrentValue = {
     web: '//div[text()="ESTIMATED CURRENT VALUE"]/following-sibling::div/div'
+  };
+
+  investedAmount = {
+    web: '//div[text()="Invested"]/parent::div/following-sibling::div'
+  };
+
+  gainLossAmount = {
+    web: '//div[text()="Gain / Loss"]/parent::div/following-sibling::div'
   };
 
   propertyNameField = {

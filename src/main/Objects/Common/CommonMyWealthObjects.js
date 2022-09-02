@@ -44,7 +44,7 @@ class CommonMyWealthObjects {
 
   wealthDeleteSuccessMessage(wealthType) {
     return {
-      web: `//div[text()="${wealthType} deleted successfully"]`
+      web: `//div[contains(text(),"${wealthType} deleted successfully") or contains(text(),"${wealthType} data deleted successfully")]`
     };
   }
 

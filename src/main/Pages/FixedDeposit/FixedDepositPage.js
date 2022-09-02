@@ -50,9 +50,6 @@ class FixedDepositPage {
   }
 
   async setFDStartMonth(startMonth) {
-    // await Utils.setMonthAndYear(startMonth, FixedDepositObjects.fdStartMonthField, CommonObjects.pickedYear,
-    //  CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
-
     await Utils.setDate(1, startMonth, FixedDepositObjects.fdStartMonthField, CommonObjects.currentMonth,
       CommonObjects.previousMonthLink, CommonObjects.nextMonthLink, CommonObjects.dayPicker);
   }
@@ -62,9 +59,6 @@ class FixedDepositPage {
   }
 
   async setFDMaturityMonth(maturityMonth) {
-    // await Utils.setMonthAndYear(maturityMonth, FixedDepositObjects.fdMaturityMonth, CommonObjects.pickedYear,
-    //  CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
-
     await Utils.setDate(1, maturityMonth, FixedDepositObjects.fdMaturityMonthField, CommonObjects.currentMonth,
       CommonObjects.previousMonthLink, CommonObjects.nextMonthLink, CommonObjects.dayPicker);
   }

@@ -11,7 +11,7 @@ When(/^I click on "Add Real Estate" for family member "([^"]*)?"$/,
       console.log('No preexisting Real Estate present');
       this.realEstateTotalInvestedAmountForMember = 0;
       expect(await RealEstateFunctionality.addRealEstate()).to.be.true;
-      expect(await RealEstateFunctionality.selectFamilyMember(familyMember)).to.be.true;
+      //expect(await RealEstateFunctionality.selectFamilyMember(familyMember)).to.be.true;
 
     } else {
       expect(await RealEstateFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
@@ -34,16 +34,16 @@ When(/^I fill "Real Estate" form with (.+), (\d+), (\d+), (\d+), (.+)$/,
   }
 );
 
-Then(/^Real Estate Property details are shown correctly$/, async() => {
-  console.log('Real Estate Property details are shown correctly');
+Then(/^"Real Estate" Property details are shown correctly$/, async() => {
+  console.log('"Real Estate" Property details are shown correctly');
   expect(await RealEstateFunctionality.selectFamilyMemberViaExpandMore(this.familyMemberName)).to.be.true;
   await RealEstateFunctionality.validateRealEstatePropertyDetails(this.realEstatePropertyName, this.realEstatePropertyPrice,
     this.realEstatePurchaseYear, this.realEstateCurrentValue, this.realEstateYoYGrowthRate);
 });
 
-When(/^I edit the Real Estate property (.+) with (.+), (\d+), (\d+), (\d+), (.+)$/,
+When(/^I edit the "Real Estate" property (.+) with (.+), (\d+), (\d+), (\d+), (.+)$/,
   async(propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue, expectedYoyGrowthRate) => {
-    console.log(`When I edit the Real Estate property ${propertyName} with ${newPropertyName}, ${propertyPrice}, ${purchaseYear}, ${currentValue}, ${expectedYoyGrowthRate}`);
+    console.log(`When I edit the "Real Estate" property ${propertyName} with ${newPropertyName}, ${propertyPrice}, ${purchaseYear}, ${currentValue}, ${expectedYoyGrowthRate}`);
     this.realEstatePropertyName = newPropertyName;
     this.realEstatePropertyPrice = propertyPrice;
     this.realEstatePurchaseYear = purchaseYear;
@@ -52,3 +52,8 @@ When(/^I edit the Real Estate property (.+) with (.+), (\d+), (\d+), (\d+), (.+)
     expect(await RealEstateFunctionality.updateRealEstateProperty(propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue)).to.be.true;
   }
 );
+
+When(/^I delete the "Real Estate" property (.+)$/, async(propertyName) => {
+  console.log(`When I delete the "Real Estate" property ${propertyName}`);
+  expect(await RealEstateFunctionality.deleteRealEstate(propertyName)).to.be.true;
+});
