@@ -1,11 +1,11 @@
 Feature: Scripbox MyWealth: Add a Real Estate
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "ANDROMEDA" for "mahesh.bale@scripbox.com"
+    Given I login to Scripbox in "ANDROMEDA" for "user180756"
 
   Scenario Outline: As a logged in user, I am able to add a Real Estate to "My Wealth"
     Given I navigate to the MyWealth "Investments" type "Real Estate"
-    When I click on "Add Real Estate" for family member "Mahesh Rajesham Bale"
+    When I click on "Add Real Estate" for family member "Investor 156012"
     When I fill "Real Estate" form with <propertyName>, <propertyPrice>, <purchaseYear>, <currentValue>, <expectedYoyGrowthRate>
     Then "Real Estate" Property details are shown correctly
     Examples:
