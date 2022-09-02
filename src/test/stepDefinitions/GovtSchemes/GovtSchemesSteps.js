@@ -23,7 +23,7 @@ When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|Gene
       if(await CommonFunctionality.selectASchemePageLaunched()) {
         expect(await GovtSchemesFunctionality.selectGovtScheme(schemeName)).to.be.true;
       } else {
-        expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
+        expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
         expect(await GovtSchemesFunctionality.selectGovtScheme(schemeName)).to.be.true;
       }
     } else {
@@ -36,7 +36,7 @@ When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|Gene
       //   console.log(`MYWEALTH singleGovtSchemeAbsoluteAmount ${this.singleGovtSchemeAbsoluteAmount}`);
       // }
 
-      expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
+      expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
       this.govtSchemesTotalInvestedAmountForMember = await CommonMyWealthFunctionality.getTotalInvestedAmount();
       this.singleGovtSchemePercentAndAmountForMember = await GovtSchemesFunctionality.getSchemePercentAndAmount(schemeName);
       this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getSchemeAbsoluteAmount(schemeName);
@@ -64,11 +64,11 @@ When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Sch
       if(await CommonFunctionality.selectASchemePageLaunched()) {
         expect(await GovtSchemesFunctionality.selectGovtScheme(schemeName)).to.be.true;
       } else {
-        expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
+        expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
         expect(await GovtSchemesFunctionality.selectGovtScheme(schemeName)).to.be.true;
       }
     } else {
-      expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
+      expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
       this.govtSchemesTotalInvestedAmountForMember = await CommonMyWealthFunctionality.getTotalInvestedAmount();
       if (schemeName === Constants.GOVT_SCHEME_NSC) {
         this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getSchemeAbsoluteAmount(schemeName);
@@ -97,7 +97,7 @@ When(/^I set amount as (\d+) for Govt Scheme "(Employee Provident Fund|Public Pr
 Then(/^Total invested amount should get updated$/, async () => {
   console.log('Then Total invested amount should get updated');
   //First do validations for member level, total amount for all schemes and single scheme
-  expect(await GovtSchemesFunctionality.selectFamilyMember(this.familyMemberName)).to.be.true;
+  expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(this.familyMemberName)).to.be.true;
   let totalInvestedAmount = 0;
   if ([Constants.GOVT_SCHEME_NPS_TIER1, Constants.GOVT_SCHEME_NPS_TIER2].includes(this.schemeName)) {
     totalInvestedAmount = this.npsEquityAmount + this.npsGovtSecurityAmount + this.npsCorpDebtAmount + this.npsAltInvestmentFundsAmount;
@@ -118,7 +118,7 @@ Then(/^Total invested amount should get updated$/, async () => {
 
 When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2|Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|National Saving Certificate|Senior Citizen Saving Scheme)" tile for family member "([^"]*)"?$/, async (schemeName, familyMemberName) => {
   console.log(`When I select Govt Scheme "${schemeName}" tile for family member "${familyMemberName}"`);
-  expect(await GovtSchemesFunctionality.selectFamilyMember(this.familyMemberName)).to.be.true;
+  expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(this.familyMemberName)).to.be.true;
   await GovtSchemesFunctionality.selectGovtSchemeTile(schemeName);
 });
 

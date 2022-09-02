@@ -23,3 +23,4 @@ Feature: Scripbox MyWealth: Add a Government Scheme "National Pension Scheme Tie
     When I select Govt Scheme "National Pension Scheme Tier1" tile for family member "Investor 156012"
     When I delete Govt Scheme 
     Then I go back to the dashboard page
+    Then I logout of Scripbox

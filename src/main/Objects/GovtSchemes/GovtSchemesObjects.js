@@ -1,7 +1,7 @@
 class GovtSchemesObjects {
 
   govtSchemesInitialPageHeader = {
-    web: '//div[text()="One place to track all your Govt. Schemes"]',
+    web: '//div[text()="One place to track all your Govt. Schemes"] | //h5[text()="One place to track all your Govt. Schemes"]',
     app: '//*[@text="One place to track all your Govt. Schemes"]'
   };
 
@@ -84,17 +84,17 @@ class GovtSchemesObjects {
   }
 
   npsSchemeTile = {
-    web: '//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))]'
+    web: '//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))] | //p[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))]'
   };
 
   totalAbsoluteAmountForNPSScheme(index) {
     return {
-      web: `(//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))])[${index + 1}]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div/div`
+      web: `(//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))] | //p[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))])[${index + 1}]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div/div`
     };
   }
 
   deleteSchemeButton = {
-    web: '//div[text()="Delete"]',
+    web: '//div[text()="Delete"] | //p[text()="Delete"]',
     app: '//*[@text="Delete"]'
   };
 

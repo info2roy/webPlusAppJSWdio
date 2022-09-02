@@ -20,7 +20,12 @@ class GovtSchemesFunctionality {
 
   async selectFamilyMember(familyMemberName) {
     return await CommonFunctionality.selectFamilyMember(familyMemberName,
-      GovtSchemesObjects.investedAmountHeader, CommonObjects.selectASchemePageHeader);
+      CommonObjects.selectASchemePageHeader);
+  }
+
+  async selectFamilyMemberViaExpandMore(familyMemberName) {
+    return await CommonFunctionality.selectFamilyMemberViaExpandMore(familyMemberName,
+      GovtSchemesObjects.investedAmountHeader);
   }
 
   async selectGovtScheme(schemeName) {
