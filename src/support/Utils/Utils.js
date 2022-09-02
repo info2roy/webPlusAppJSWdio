@@ -293,7 +293,7 @@ class Utils {
       case 'm':
         return Math.round(parseFloat(parts[0]) * 1000000);
       default:
-        return Math.round(parseFloat(abbrStr));
+        return Math.round(parseFloat(abbrStr.replace(',', '')));
     }
   }
 

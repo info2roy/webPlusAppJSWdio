@@ -19,7 +19,7 @@ class FixedDepositPage {
   }
 
   async getTotalInvestedAmount() {
-    return Utils.numberAbbriviationToAbsoluteValue(await Utils.getText(CommonMyWealthObjects.totalInvestedAmount));
+    return Utils.numberAbbriviationToAbsoluteValue(await Utils.getText(FixedDepositObjects.totalInvestedAmount));
   }
 
   async enterFDFirmName(fdFirmName) {

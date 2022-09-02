@@ -12,10 +12,6 @@ class FixedDepositObjects {
     web: '//div[text()="Enter investment details"]'
   };
 
-  totalInvestedAmount = {
-    web: '//div[text()="ESTIMATED CURRENT VALUE"]/following-sibling::div/div'
-  };
-
   fdFirmNameField = {
     web: 'input#firm'
   };
@@ -40,6 +36,10 @@ class FixedDepositObjects {
 
   fdMaturityMonthField = {
     web: 'input#my_date'
+  };
+
+  totalInvestedAmount = {
+    web: '//div[text()="INVESTED AMOUNT"]/following-sibling::div/div'
   };
 
   //For Fixed Deposit details attributes Interest, Start Month, Maturity Month

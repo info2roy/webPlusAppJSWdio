@@ -45,7 +45,9 @@ class FixedDepositFunctionality {
     return (await CommonMyWealthPage.wealthUpdateSuccessMessageIsDisplayed('Fixed deposit'));
   }
 
-  async validateFixedDepositDetails(fdFirmName, fdInvestedAmount, fdInterestRate, fdStartMonth, fdMaturityMonth) {
+  async validateFixedDepositDetails(fdFirmName, fdInvestedAmount, fdInterestRate, fdStartMonth, fdMaturityMonth,
+    prevTotalInvestedAmount) {
+    expect(await FixedDepositPage.getTotalInvestedAmount() - prevTotalInvestedAmount).to.equal(fdInvestedAmount);
     expect(await FixedDepositPage.fixedDepositGetStringAttribute(fdInvestedAmount, 1, Constants.FIXED_DEPOSIT_ATTR_INTEREST)
     ).to.equal(`${fdInterestRate}%`);
     expect(await FixedDepositPage.fixedDepositGetStringAttribute(fdInvestedAmount, 2, Constants.FIXED_DEPOSIT_ATTR_START_MONTH)

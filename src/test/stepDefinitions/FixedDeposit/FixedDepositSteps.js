@@ -38,7 +38,7 @@ When(/^I fill "Fixed Deposit" form with (.+); (\d+); (.+); (.+); (.+)$/,
 Then(/^Fixed Deposit details are shown correctly$/, async() => {
   console.log('Fixed Deposit details are shown correctly');
   await FixedDepositFunctionality.validateFixedDepositDetails(this.fixedDepositFirmName, this.fixedDepositInvestedAmount,
-    this.fixedDepositInterestRate, this.fixedDepositStartMonth, this.fixedDepositMaturityMonth);
+    this.fixedDepositInterestRate, this.fixedDepositStartMonth, this.fixedDepositMaturityMonth, this.fixedDepositTotalInvestedAmountForMember);
 });
 
 When(/^I edit the "Fixed Deposit" of (\d+) with (.+); (\d+); (.+); (.+); (.+)$/,
