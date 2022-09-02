@@ -15,15 +15,15 @@ class RealEstatePage {
   }
 
   async getEstimatedCurrentValue() {
-    return (await Utils.getText(RealEstateObjects.estimatedCurrentValue)).replace(' ', '');
+    return Utils.numberAbbriviationToAbsoluteValue(await Utils.getText(RealEstateObjects.estimatedCurrentValue));
   }
 
   async getInvestedAmount() {
-    return (await Utils.getText(RealEstateObjects.investedAmount));
+    return parseInt((await Utils.getText(RealEstateObjects.investedAmount)).replace(/,/g, ''));
   }
 
   async getGainLossAmount() {
-    return (await Utils.getText(RealEstateObjects.gainLossAmount));
+    return parseInt((await Utils.getText(RealEstateObjects.gainLossAmount)).replace(/,/g, ''));
   }
 
   async enterPropertyName(propertyName) {

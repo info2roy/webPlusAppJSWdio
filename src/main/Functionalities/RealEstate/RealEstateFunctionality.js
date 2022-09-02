@@ -59,9 +59,9 @@ class RealEstateFunctionality {
     expect(await RealEstatePage.realEstatePropertyGetStringAttribute(propertyName, 3, Constants.REAL_ESTATE_ATTR_YOY_GROWTH)
     ).to.equal(`+ ${expectedYoYGrowthRate}%`);
 
-    expect(await RealEstatePage.getEstimatedCurrentValue() - prevTotalEstimatedCurrentValue).to.equal(Utils.absoluteValueToNumberAbbriviation(currentValue));
-    expect(await RealEstatePage.getInvestedAmount() - prevTotalInvestedAmount).to.equal(propertyPrice.toLocaleString('hi'));
-    expect(await RealEstatePage.getGainLossAmount() - prevTotalGainLossAmount).to.equal((currentValue - propertyPrice).toLocaleString('hi'));
+    expect(await RealEstatePage.getEstimatedCurrentValue() - prevTotalEstimatedCurrentValue).to.equal(currentValue);
+    expect(await RealEstatePage.getInvestedAmount() - prevTotalInvestedAmount).to.equal(propertyPrice);
+    expect(await RealEstatePage.getGainLossAmount() - prevTotalGainLossAmount).to.equal(currentValue - propertyPrice);
 
     await RealEstatePage.clickOnRealEstatePropertyMoreOptionsButton(propertyName);
     await CommonPage.clickEditDetailsLink();
