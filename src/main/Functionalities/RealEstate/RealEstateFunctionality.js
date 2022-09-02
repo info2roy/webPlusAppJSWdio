@@ -28,8 +28,16 @@ class RealEstateFunctionality {
       RealEstateObjects.estimatedCurrentValueHeader);
   }
 
-  async getTotalInvestedAmount() {
+  async getEstimatedCurrentValue() {
     return (await RealEstatePage.getEstimatedCurrentValue());
+  }
+
+  async getTotalInvestedAmount() {
+    return (await RealEstatePage.getInvestedAmount());
+  }
+
+  async getTotalGainLossAmount() {
+    return (await RealEstatePage.getGainLossAmount());
   }
 
   async fillAddRealEstateForm(propertyName, propertyPrice, purchaseYear, currentValue) {
@@ -41,7 +49,8 @@ class RealEstateFunctionality {
     return (await CommonMyWealthPage.wealthUpdateSuccessMessageIsDisplayed('Real estate'));
   }
 
-  async validateRealEstatePropertyDetails(propertyName, propertyPrice, purchaseYear, currentValue, expectedYoYGrowthRate) {
+  async validateRealEstatePropertyDetails(propertyName, propertyPrice, purchaseYear, currentValue, expectedYoYGrowthRate,
+    prevTotalEstimatedCurrentValue, prevTotalInvestedAmount, prevTotalGainLossAmount) {
     expect(await RealEstatePage.realEstatePropertyGetStringAttribute(propertyName, 1, Constants.REAL_ESTATE_ATTR_PURCHASE_COST)
     ).to.equal(Utils.absoluteValueToNumberAbbriviation(propertyPrice));
     expect(await RealEstatePage.realEstatePropertyGetStringAttribute(propertyName, 2, Constants.REAL_ESTATE_ATTR_CURRENT_VALUE)
@@ -50,9 +59,9 @@ class RealEstateFunctionality {
     expect(await RealEstatePage.realEstatePropertyGetStringAttribute(propertyName, 3, Constants.REAL_ESTATE_ATTR_YOY_GROWTH)
     ).to.equal(`+ ${expectedYoYGrowthRate}%`);
 
-    expect(await RealEstatePage.getEstimatedCurrentValue()).to.equal(Utils.absoluteValueToNumberAbbriviation(currentValue));
-    expect(await RealEstatePage.getInvestedAmount()).to.equal(propertyPrice.toLocaleString('hi'));
-    expect(await RealEstatePage.getGainLossAmount()).to.equal((currentValue - propertyPrice).toLocaleString('hi'));
+    expect(await RealEstatePage.getEstimatedCurrentValue() - prevTotalEstimatedCurrentValue).to.equal(Utils.absoluteValueToNumberAbbriviation(currentValue));
+    expect(await RealEstatePage.getInvestedAmount() - prevTotalInvestedAmount).to.equal(propertyPrice.toLocaleString('hi'));
+    expect(await RealEstatePage.getGainLossAmount() - prevTotalGainLossAmount).to.equal((currentValue - propertyPrice).toLocaleString('hi'));
 
     await RealEstatePage.clickOnRealEstatePropertyMoreOptionsButton(propertyName);
     await CommonPage.clickEditDetailsLink();

@@ -9,14 +9,20 @@ When(/^I click on "Add Real Estate" for family member "([^"]*)?"$/,
 
     if(await RealEstateFunctionality.realEstateInitialPageLaunched()) {
       console.log('No preexisting Real Estate present');
-      this.realEstateTotalInvestedAmountForMember = 0;
+      this.realEstateTotalEstimatedCurrentValue = 0;
+      this.realEstateTotalInvestedAmount = 0;
+      this.realEstateTotalGainLossAmount = 0;
       expect(await RealEstateFunctionality.addRealEstate()).to.be.true;
       //expect(await RealEstateFunctionality.selectFamilyMember(familyMember)).to.be.true;
 
     } else {
       expect(await RealEstateFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
-      this.realEstateTotalInvestedAmountForMember = await RealEstateFunctionality.getTotalInvestedAmount();
-      console.log(`MYWEALTH realEstateTotalInvestedAmountForMember ${this.realEstateTotalInvestedAmountForMember}`);
+      this.realEstateTotalEstimatedCurrentValue = await RealEstateFunctionality.getEstimatedCurrentValue();
+      this.realEstateTotalInvestedAmount = await RealEstateFunctionality.getTotalInvestedAmount();
+      this.realEstateTotalGainLossAmount = await RealEstateFunctionality.getTotalGainLossAmount();
+      console.log(`MYWEALTH realEstateTotalEstimatedCurrentValue ${this.realEstateTotalEstimatedCurrentValue}`);
+      console.log(`MYWEALTH realEstateTotalInvestedAmount ${this.realEstateTotalInvestedAmount}`);
+      console.log(`MYWEALTH realEstateTotalGainLossAmount ${this.realEstateTotalGainLossAmount}`);
       expect(await RealEstateFunctionality.addRealEstate()).to.be.true;
     }
   }
@@ -38,7 +44,8 @@ Then(/^"Real Estate" Property details are shown correctly$/, async() => {
   console.log('"Real Estate" Property details are shown correctly');
   expect(await RealEstateFunctionality.selectFamilyMemberViaExpandMore(this.familyMemberName)).to.be.true;
   await RealEstateFunctionality.validateRealEstatePropertyDetails(this.realEstatePropertyName, this.realEstatePropertyPrice,
-    this.realEstatePurchaseYear, this.realEstateCurrentValue, this.realEstateYoYGrowthRate);
+    this.realEstatePurchaseYear, this.realEstateCurrentValue, this.realEstateYoYGrowthRate, this.realEstateTotalEstimatedCurrentValue,
+    this.realEstateTotalInvestedAmount, this.realEstateTotalGainLossAmount);
 });
 
 When(/^I edit the "Real Estate" property (.+) with (.+), (\d+), (\d+), (\d+), (.+)$/,
