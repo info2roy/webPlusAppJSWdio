@@ -159,6 +159,6 @@ When(/^I fill form with (\d+); (.+); (.+); (.+) for Govt Scheme "National Saving
 
 Then(/^NSC Scheme details are shown correctly for Govt Scheme "National Saving Certificate"$/, async() => {
   console.log(`Then NSC Scheme details are shown correctly for Govt Scheme "National Saving Certificate"`);
-  await GovtSchemesFunctionality.validateNPSSchemeDetails(this.npsFundName, this.npsEquityAmount,
-    this.npsGovtSecurityAmount, this.npsCorpDebtAmount, this.npsAltInvestmentFundsAmount, 'National Saving Certificate');
+  await GovtSchemesFunctionality.validateNSCSchemeDetails(this.nscInvestedAmount, this.nscInterestPercent,
+    this.nscStartMonth, this.nscMaturityMonth);
 });
