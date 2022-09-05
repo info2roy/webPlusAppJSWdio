@@ -61,10 +61,7 @@ class LoginPage {
   }
 
   async enterOTPHeaderIsDisplayed() {
-    if (Device.isWeb()) {
-      return (await Utils.elementIsDisplayed(LoginObjects.enterOTPPageHeader));
-    }
-    return true;
+    return (await Utils.elementIsDisplayed(LoginObjects.enterOTPPageHeader));
   }
 
   async loginYourAccountToContinueHeaderIsDisplayed() {

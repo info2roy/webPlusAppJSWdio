@@ -21,7 +21,7 @@ class LoginObjects {
     app: '//*[@text="Login / Signup"]' };
 
   enterOTPPageHeader = {
-    web: '//span[text()="Enter OTP"]'
+    web: '//span[text()="Enter OTP"]', app: '//*[@text="Enter OTP"]'
   };
 
   secondLoginPageHeader = { web: '//span[text()="Enter Password"]', app: '//*[@text="Enter Password"]' };
@@ -42,7 +42,8 @@ class LoginObjects {
 
   otpField(index) {
     return {
-      web: `//input[@id="user_otp${index + 1}"]`
+      web: `//input[@id="user_otp${index + 1}"]`,
+      app: `(//android.widget.EditText)[${index + 1}]`
     };
   }
 }
