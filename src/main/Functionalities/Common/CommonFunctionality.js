@@ -18,7 +18,7 @@ class CommonFunctionality {
       await CommonPage.clickExpandMoreButton();
       if (await CommonPage.familyMemberNameIsDisplayed(familyMemberName, 2000)) {
         await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-        return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector, 15000));
+        return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector));
       }
       return false;
     }
@@ -28,7 +28,7 @@ class CommonFunctionality {
   async selectFamilyMember(familyMemberName, landingPageHeaderSelector) {
     if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
       await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-      return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector, 15000));
+      return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector));
     }
     return false;
   }
