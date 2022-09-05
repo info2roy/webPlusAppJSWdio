@@ -6,7 +6,7 @@ Feature: Scripbox MyWealth: Add a Government Scheme "National Saving Certificate
   Scenario Outline: As a logged in user, I am able to add and update a Government Scheme "National Saving Certificate" to "My Wealth"
     Given I navigate to the MyWealth "Investments" type "Govt. Schemes"
     When I select Govt Scheme "National Saving Certificate" for family member "Investor 156012"
-    When I fill form with <nscInvestedAmount>, <nscInterestPercent>, <nscStartMonth>, <nscMaturityMonth> for Govt Scheme "National Saving Certificate"
+    When I fill form with <nscInvestedAmount>; <nscInterestPercent>; <nscStartMonth>; <nscMaturityMonth> for Govt Scheme "National Saving Certificate"
     When I go back to previous page
     Then Total invested amount should get updated
     When I select Govt Scheme "National Saving Certificate" tile for family member "Investor 156012"

@@ -145,7 +145,7 @@ When(/^I fill form with (.+), (\d+), (\d+), (\d+), (\d+) for Govt Scheme "(Natio
   }
 );
 
-When(/^I fill form with (\d+), (.+), (.+), (.+) for Govt Scheme "National Saving Certificate"$/,
+When(/^I fill form with (\d+); (.+); (.+); (.+) for Govt Scheme "National Saving Certificate"$/,
   async(nscInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth) => {
     this.schemeName = 'National Saving Certificate';
     console.log(`When I fill form with ${nscInvestedAmount}, ${nscInterestPercent}, ${nscStartMonth}, ${nscMaturityMonth} for Govt Scheme "${this.schemeName}"`);
