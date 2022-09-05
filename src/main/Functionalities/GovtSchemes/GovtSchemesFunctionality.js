@@ -45,7 +45,7 @@ class GovtSchemesFunctionality {
 
   async setAmountForGovtScheme(amount, schemeName) {
     await GovtSchemesPage.setAmount(amount, schemeName);
-    await GovtSchemesPage.saveOrUpdateAmount();
+    await CommonPage.clickSaveOrUpdateButton();
     return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(schemeName));
   }
 
