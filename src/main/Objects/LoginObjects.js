@@ -46,6 +46,18 @@ class LoginObjects {
       app: `(//android.widget.EditText)[${index + 1}]`
     };
   }
+
+  newTermsHeader = {
+    app: '//*[@text="New Terms"]'
+  };
+
+  acceptNewTermsCheckBox = {
+    app: '//android.widget.ImageView'
+  };
+
+  iAcceptButton = {
+    app: '//*[@text="I ACCEPT"]'
+  };
 }
 
 module.exports = new LoginObjects();

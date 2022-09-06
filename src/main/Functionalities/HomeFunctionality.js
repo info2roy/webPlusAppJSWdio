@@ -139,6 +139,10 @@ class HomeFunctionality {
       await LoginPage.enterPassword(loginData.password);
       await LoginPage.clickContinueLoginButton();
     }
+    if (await LoginPage.newTermsHeaderIsDisplayed()) {
+      await LoginPage.clickAcceptNewTermsCheckbox();
+      await LoginPage.clickIAcceptButton();
+    }
     await DashboardFunctionality.validate();
   }
 }

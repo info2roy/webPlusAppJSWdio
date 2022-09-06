@@ -72,5 +72,17 @@ class LoginPage {
     await Utils.setInputField(digit, LoginObjects.otpField(index));
   }
 
+  async newTermsHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(LoginObjects.newTermsHeader, 2000));
+  }
+
+  async clickAcceptNewTermsCheckbox() {
+    await Utils.clickElement(LoginObjects.acceptNewTermsCheckBox);
+  }
+
+  async clickIAcceptButton() {
+    await Utils.clickElement(LoginObjects.iAcceptButton);
+  }
+
 }
 module.exports = new LoginPage();
