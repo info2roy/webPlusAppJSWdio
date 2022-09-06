@@ -214,14 +214,7 @@ class MFInvestmentPage {
 
   async clickOnAddNewPlanOrExploreOtherPlans() {
     if (Device.isAndroidApp()) {
-      const addNewPlanFound = await Utils.scrollVerticalUntilTextIntoViewForAndroid(MFInvestmentObjects.addNewPlanText);
-      if (!addNewPlanFound) {
-        const exploreOtherPlansFound = await Utils.scrollVerticalUntilTextIntoViewForAndroid(
-          MFInvestmentObjects.exploreOtherPlansText);
-        if (!exploreOtherPlansFound) {
-          throw 'One of "Add New Plan" or "Explore Other Plans" should be present';
-        }
-      }
+      await Utils.scrollVerticalToEndForAndroid(1, 1);
     }
     Utils.clickElement(MFInvestmentObjects.addNewPlanOrExploreOtherPlans);
   }

@@ -222,9 +222,15 @@ class Utils {
     await this.moveToElement(element);
   }
 
-  async scrollVerticalUntilTextIntoViewForAndroid(textToBeIntoView) {
-    const func = 'new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView';
+  async scrollVerticalUntilTextIntoViewForAndroid(textToBeIntoView, scrollableInstanceId = 0) {
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).scrollTextIntoView`;
     await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
+  }
+
+  async scrollVerticalToEndForAndroid(scrollableInstanceId, maxSwipes) {
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrolltoend
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsVerticalList().scrollToEnd`;
+    await $(`android=${func}(${maxSwipes})`);
   }
 
   async scrollHorizontalUntilTextIntoViewForAndroid(textToBeIntoView) {
