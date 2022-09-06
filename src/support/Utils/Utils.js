@@ -233,8 +233,8 @@ class Utils {
     await $(`android=${func}(${maxSwipes})`);
   }
 
-  async scrollHorizontalUntilTextIntoViewForAndroid(textToBeIntoView) {
-    const func = 'new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollTextIntoView';
+  async scrollHorizontalUntilTextIntoViewForAndroid(textToBeIntoView, scrollableInstanceId = 0) {
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsHorizontalList().scrollTextIntoView`;
     await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
   }
 

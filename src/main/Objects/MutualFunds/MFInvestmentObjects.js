@@ -202,7 +202,7 @@ class MFInvestmentObjects {
   };
 
   addNewPlanPageHeader = {
-    web: '//div[text()="Add new plan"]'
+    web: '//div[text()="Add new plan"]', app: '//*[@text="Add new plan"]'
   };
 
   addNewPlanPageInvestmentStrategiesHeader = {

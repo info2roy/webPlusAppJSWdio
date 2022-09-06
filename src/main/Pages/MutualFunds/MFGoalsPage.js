@@ -6,8 +6,8 @@ const { expect } = require('chai');
 class MFGoalsPage {
   async clickOnLifeGoal(lifeGoal) {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid('Achieve life goals');
-      await Utils.scrollHorizontalUntilTextIntoViewForAndroid(lifeGoal);
+      await Utils.scrollVerticalToEndForAndroid(0, 5);
+      await Utils.scrollHorizontalUntilTextIntoViewForAndroid({ app: lifeGoal }, 1);
     } else if(Device.isWeb()) {
       await Utils.scrollAndMoveToElement(MFGoalsObjects.lifeGoalElement(lifeGoal));
     }

@@ -224,10 +224,16 @@ class MFInvestmentPage {
   }
 
   async addNewPlanPageInvestmentStrategiesHeaderIsDisplayed() {
+    if (Device.isAndroidApp()) {
+      return true;
+    }
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageInvestmentStrategiesHeader));
   }
 
   async addNewPlanPageAchieveLifeGoalsHeaderIsDisplayed() {
+    if (Device.isAndroidApp()) {
+      return true;
+    }
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageAchieveLifeGoalsHeader));
   }
 
