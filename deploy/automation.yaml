@@ -18,11 +18,6 @@ global:
       version: 3.0.*
       repo: apps/andromeda
       branch: master
-    qaautomation:
-      chart: staging/qaautomation
-      version: 3.0.*
-      repo: qaautomation
-      branch: feature/ci-cd-qa
 
 myscripbox:
   myscripbox:
@@ -32,7 +27,7 @@ myscripbox:
         image:
           tag: v-master
         envs:
-          SELENIUM_HUB_URL: '{{ .Values.global.services.qaautomation.hostname }}.{{ .Values.global.accountDomain }}'
+          SELENIUM_HUB_URL: 'selenium.scripbox.org'
           ANDROMEDA_URL: https://{{ .Values.global.services.andromeda.hostname }}.{{ .Values.global.accountDomain }}
           MYSCRIPBOX_URL: https://{{ .Values.global.services.myscripbox.hostname }}.{{ .Values.global.accountDomain }}
           MYSCRIPBOX_API_URL: https://{{ .Values.global.services.myscripboxapi.hostname }}.{{ .Values.global.accountDomain }}

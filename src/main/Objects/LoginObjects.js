@@ -7,9 +7,9 @@ class LoginObjects {
 
   stagingUserIdField = { web: '.login-email' };
 
-  stagingPasswordField = { web: '#password'};
+  stagingPasswordField = { web: '#password' };
 
-  stagingLoginButton = { web: '(//button[@type="submit"])[2]'};
+  stagingLoginButton = { web: '(//button[@type="submit"])[2]' };
 
   userIdField = { web: '#test-email-input', app: this.loginCredentialsTextAndroid };
 

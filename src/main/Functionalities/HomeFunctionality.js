@@ -11,7 +11,7 @@ class HomeFunctionality {
   }
 
   async performLogin(env, user) {
-    console.log('testing for environment ' + env);
+    console.log(`testing for environment ${ env}`);
     if (env === 'ANDROMEDA') {
       await HomePage.clickMenuButton();
       await HomePage.selectLoginOption();
@@ -38,7 +38,7 @@ class HomeFunctionality {
           await LoginPage.enterUserId(loginData.user124148);
           break;
         default:
-          await console.log(user + ' User not available to add. Please add in login data to proceed');
+          await console.log(`${user } User not available to add. Please add in login data to proceed`);
       }
       await LoginPage.clickContinueOrNextButton();
       await LoginPage.enterPassword(loginData.password);
@@ -68,7 +68,7 @@ class HomeFunctionality {
           await Utils.setInputField(loginData.user124148, LoginObjects.stagingUserIdField);
           break;
         default:
-          await console.log(user + ' User not available to add. Please add in login data to proceed');
+          await console.log(`${user } User not available to add. Please add in login data to proceed`);
       }
       await Utils.setInputField(loginData.password, LoginObjects.stagingPasswordField);
       await Utils.clickElement(LoginObjects.stagingLoginButton);
@@ -121,7 +121,7 @@ class HomeFunctionality {
         await LoginPage.enterUserId(loginData.user124148);
         break;
       default:
-        await console.log(user + ' User not available to add. Please add in login data to proceed');
+        await console.log(`${user } User not available to add. Please add in login data to proceed`);
     }
     await LoginPage.clickContinueOrNextButton();
     await LoginPage.enterPassword(loginData.password);

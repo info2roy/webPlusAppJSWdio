@@ -1,7 +1,7 @@
 const { config } = require('./wdio.conf');
 
-config.user= 'priyankarroy_QvPVx0';
-config.key= 'obEaBaJdQRn6wxxQmWxj';
+config.user = 'priyankarroy_QvPVx0';
+config.key = 'obEaBaJdQRn6wxxQmWxj';
 exports.config = {
   ...config,
   ...{

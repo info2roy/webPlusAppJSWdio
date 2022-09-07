@@ -12,20 +12,6 @@ stages:
   - Build
   - Deploy
 
-charts:
-  <<: *shared-runner
-  stage: Build
-  image: $STAGING_ECR_AP_SOUTH/devops/build-chart:${BUILD_CHART_VERSION}
-  variables:
-    TILLER_NAMESPACE: $STAG_APP_TILLER_NS
-    CI_KUBECONFIG: $CI_STAGING_KUBECONFIG
-  before_script:
-    - entrypoint.sh
-  script:
-    - build-chart.sh
-  dependencies: []
-  cache: {}
-
 .automation-build-common: &automation-build-common
   <<: *shared-runner
   image: $STAGING_ECR_AP_SOUTH/devops/build-image:${BUILD_IMAGE_VERSION}
@@ -64,6 +50,11 @@ automation:
     RELEASE_NAME: auto-qaauto-$CI_COMMIT_REF_SLUG
     VALUES_FILE: deploy/automation.yaml
     CI_KUBECONFIG: $CI_STAGING_KUBECONFIG
+    ANDROMEDA_URL_GITLAB: $ANDROMEDA_URL_GITLAB
+    MYSCRIPBOX_API_URL_GITLAB: $MYSCRIPBOX_API_URL_GITLAB
+    MYSCRIPBOX_URL_GITLAB: $MYSCRIPBOX_URL_GITLAB
+    SLEEP_MS_AFTER_EACH_STEP_GITLAB: $SLEEP_MS_AFTER_EACH_STEP_GITLAB
+
   before_script:
     - entrypoint.sh
     - yq write --inplace $VALUES_FILE myscripbox.myscripbox.testCases.global.image.tag "sha-$CI_COMMIT_SHA"

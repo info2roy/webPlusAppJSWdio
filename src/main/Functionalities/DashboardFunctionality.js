@@ -10,7 +10,7 @@ class DashboardFunctionality {
 
   async open() {
     if (Device.isWeb()) {
-      await browser.url(`${MYSCRIPBOX}dashboard`);
+      await browser.url(`${MYSCRIPBOX}/dashboard`);
     } else if (Device.isAndroidApp()) {
       await browser.url('scripbox://scripbox');
     }
@@ -44,6 +44,10 @@ class DashboardFunctionality {
 
   async home() {
     await DashboardPage.selectDashboardTab(Constants.DASHBOARD_HOME);
+  }
+
+  async myWealth() {
+    await DashboardPage.selectDashboardTab(Constants.DASHBOARD_MYWEALTH);
   }
 
   async selectWithdrawOrInvestMoreOption(option) {

@@ -1,17 +1,14 @@
 const CommonWithdrawalPage = require('../../Pages/Common/CommonWithdrawalPage');
+const CommonPage = require('../../Pages/Common/CommonPage');
 
 class CommonWithdrawalFunctionality {
-  async selectFamilyMemberPageLaunched() {
-    return (await CommonWithdrawalPage.selectFamilyMemberPageHeaderIsDisplayed());
-  }
-
   async selectFamilyMember(familyMemberName) {
-    await CommonWithdrawalPage.clickOnFamilyMemberByName(familyMemberName);
-    return (await CommonWithdrawalPage.selectFinancialProductPageHeaderIsDisplayed());
+    await CommonPage.clickOnFamilyMemberByName(familyMemberName);
+    return (await CommonPage.selectFinancialProductPageHeaderIsDisplayed());
   }
 
   async selectFinancialProduct(productName) {
-    await CommonWithdrawalPage.clickOnFinancialProduct(productName);
+    await CommonPage.clickOnFinancialProduct(productName);
     return CommonWithdrawalPage.validateFinancialProductPage(productName);
   }
 }
