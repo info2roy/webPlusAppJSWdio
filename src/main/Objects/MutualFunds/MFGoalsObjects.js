@@ -67,6 +67,22 @@ class MFGoalsObjects {
     app: '(//android.widget.EditText)[1]'
   };
 
+  myAgeIsLabel = {
+    app: '//*[@text="My age is"]'
+  };
+
+  myCurrentMonthlyExpensesAreLabel = {
+    app: '//*[@text="My current monthly expenses are"]'
+  };
+
+  iWantToRetireAtTheAgeOfLabel = {
+    app: '//*[@text="I want to retire at the age of"]'
+  };
+
+  iWantToPlanForAgeLabel = {
+    app: '//*[@text="I want to plan for age"]'
+  };
+
   monthlyExpensesOption(value) {
     const amountToShortCode = {
       25000: '25K',
@@ -107,19 +123,23 @@ class MFGoalsObjects {
   }
 
   retireAtAgeField = {
-    web: 'input.ff-retirement-age-js'
+    web: 'input.ff-retirement-age-js',
+    app: '(//android.widget.EditText)[3]'
   };
 
   retirementEndAgeField = {
-    web: 'input.ff-retirment-end-age-js'
+    web: 'input.ff-retirment-end-age-js',
+    app: '(//android.widget.EditText)[2]'
   };
 
   createAPlanLink = {
-    web: '//a[contains(text(),"Create a plan")]'
+    web: '//a[contains(text(),"Create a plan")]',
+    app: '//*[@text="CREATE A PLAN"]'
   };
 
   existingSavingsAndPlansPageHeader = {
-    web: '//span[text()="Existing savings and plans"]'
+    web: '//span[text()="Existing savings and plans"]',
+    app: '//*[@text="Existing savings and plans"]'
   };
 
   addExistingSavingsLink = {

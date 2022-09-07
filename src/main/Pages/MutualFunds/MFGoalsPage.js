@@ -83,32 +83,55 @@ class MFGoalsPage {
   }
 
   async enterAge(currentAge) {
-    await Utils.setInputField(currentAge, MFGoalsObjects.myAgeField);
+    await Utils.setInputField(currentAge, MFGoalsObjects.myAgeField, false);
+    // if (Device.isAndroidApp()) {
+    //   await Utils.clickElement(MFGoalsObjects.myAgeIsLabel);
+    // }
   }
 
   async enterCurrentMonthlyExpenses(monthlyExpensesAmount) {
     const selector = MFGoalsObjects.monthlyExpensesOption(monthlyExpensesAmount);
     if (selector == undefined) {
       await Utils.setInputField(monthlyExpensesAmount, MFGoalsObjects.currentMonthlyExpensesField);
+      if (Device.isAndroidApp()) {
+        await Utils.clickElement(MFGoalsObjects.myCurrentMonthlyExpensesAreLabel);
+      }
     } else {
       await Utils.clickElement(selector);
     }
   }
 
   async enterRetireAtAge(retireAtAge) {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'I want to retire at the age of' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: '70' }, 0);
+    }
     const selector = MFGoalsObjects.retireAtAgeOption(retireAtAge);
     if (selector == undefined) {
       await Utils.setInputField(retireAtAge, MFGoalsObjects.retireAtAgeField);
+      if (Device.isAndroidApp()) {
+        await Utils.clickElement(MFGoalsObjects.iWantToRetireAtTheAgeOfLabel);
+      }
     } else {
       await Utils.clickElement(selector);
     }
   }
 
   async enterRetirementEndAge(retirementEndAge) {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'I want to plan for age' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: '100' }, 0);
+    }
     await Utils.setInputField(retirementEndAge, MFGoalsObjects.retirementEndAgeField);
+    if (Device.isAndroidApp()) {
+      await Utils.clickElement(MFGoalsObjects.iWantToPlanForAgeLabel);
+    }
   }
 
   async clickOnCreateAPlanLink() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'CREATE A PLAN' }, 0);
+    }
     await Utils.clickElement(MFGoalsObjects.createAPlanLink);
   }
 
