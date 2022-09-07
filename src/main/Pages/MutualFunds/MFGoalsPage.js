@@ -83,7 +83,7 @@ class MFGoalsPage {
   }
 
   async enterAge(currentAge) {
-    await Utils.setInputField(currentAge, MFGoalsObjects.myAgeField, false);
+    await Utils.setInputField(currentAge, MFGoalsObjects.myAgeField);
     // if (Device.isAndroidApp()) {
     //   await Utils.clickElement(MFGoalsObjects.myAgeIsLabel);
     // }

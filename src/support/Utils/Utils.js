@@ -165,16 +165,15 @@ class Utils {
     return (await element.getAttribute(attribute));
   }
 
-  async setInputField(value, selector, click = true) {
-    if (click) {
+  async setInputField(value, selector) {
+    if (Device.isWeb()) {
       await this.clickElement(selector);
     }
     const myButton = await $(this.getLocator(selector));
     if (Device.isAndroidApp()) {
-      await myButton.addValue(value);
-    } else {
-      await myButton.setValue(value);
+      await myButton.touchAction('tap');
     }
+    await myButton.setValue(value);
   }
 
   async setTextObject(value, webElement) {

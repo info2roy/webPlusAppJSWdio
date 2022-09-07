@@ -73,7 +73,7 @@ class LoginPage {
   }
 
   async newTermsHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(LoginObjects.newTermsHeader, 2000));
+    return (await Utils.elementIsDisplayed(LoginObjects.newTermsHeader, 5000));
   }
 
   async clickAcceptNewTermsCheckbox() {
