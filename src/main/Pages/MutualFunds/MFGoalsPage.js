@@ -120,7 +120,6 @@ class MFGoalsPage {
   async enterRetirementEndAge(retirementEndAge) {
     if (Device.isAndroidApp()) {
       await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'I want to plan for age' }, 0);
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: '100' }, 0);
     }
     await Utils.setInputField(retirementEndAge, MFGoalsObjects.retirementEndAgeField);
     if (Device.isAndroidApp()) {

@@ -170,9 +170,6 @@ class Utils {
       await this.clickElement(selector);
     }
     const myButton = await $(this.getLocator(selector));
-    if (Device.isAndroidApp()) {
-      await myButton.touchAction('tap');
-    }
     await myButton.setValue(value);
   }
 
