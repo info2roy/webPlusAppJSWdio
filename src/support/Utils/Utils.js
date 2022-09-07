@@ -1,6 +1,5 @@
 const Device = require('../libraries/Device');
 const { expect } = require('chai');
-const env = require('../../config/env');
 
 class Utils {
   getLocator(object) {

@@ -135,5 +135,63 @@ class MFWithdrawalObjects {
     app: '//*[@text="Withdrawal Scheduled"]'
   };
 
+  selectFundsButton = {
+    web: '//button[text()="Select funds"]',
+  };
+
+  finalWithdrawlPageHeader = {
+    web: '//div[text()="Enter the amount you want to withdraw from one or more of the following funds."]',
+  };
+
+  fundSelectButton = {
+    web: '//div[text()="Select"][1]',
+  };
+
+  withdrawAmountValue = {
+    web: '//input[contains(@class,"withdraw-custom-amount-input")]'
+  };
+
+  withdrawlConfirmationHeader = {
+    web: '//div[text()="Confirm your withdrawal"]'
+  };
+
+  withdrawlCreditStatememnt = {
+    web: '//p[contains(text(), "Money will be credited to your bank account by")]'
+  };
+
+  confirmConfirmationButton = {
+    web: '//button[text()="CONFIRM WITHDRAWAL"]'
+  };
+
+  withdrawlBreakupHeader = {
+    web: '//div[text()="Your withdrawal break-up"]'
+  };
+
+  withdrawlGainHeader = {
+    web: '//div[text()="Gains"]'
+  };
+
+  withdrawlYouWillGetHeader = {
+    web: '//div[text()="You will get"]'
+  };
+
+  continueButtonForWithdrawl = {
+    web: '//button[contains(text(), "Continue")]'
+  };
+
+  readTotalAmount() {
+    return {
+      web: '//div[text()="Total:"]//ancestor::span/span/div'
+    };
+  }
+
+  verifyWithOTP = {
+    web: '//div[text()="Verify with OTP"]'
+  };
+
+  PleaseEnterCodeBanner = {
+    web: '//div[text()="Please enter the code you received"]'
+  };
+
 }
 module.exports = new MFWithdrawalObjects();

@@ -1,5 +1,5 @@
 class DashboardObjects {
-  helloUser = { web: '//div[text()="HELLO"]', app: '//*[@text="HELLO"]' };
+  helloUser = { web: '//div[contains(text(),"Hello")]', app: '//*[@text="HELLO"]' };
 
   moreButton = {
     web: '//div[text()="More"]',

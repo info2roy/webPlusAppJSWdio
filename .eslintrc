@@ -162,6 +162,7 @@
       "never"
     ],
     "no-tabs": "error",
+    "no-useless-escape":"warn",
     "no-template-curly-in-string": "error",
     "import/no-unresolved": [
       "error",

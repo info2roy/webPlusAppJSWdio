@@ -3,7 +3,6 @@ const LoginPage = require('../Pages/LoginPage');
 const loginData = require('../../config/data/structured/LoginData');
 const LoginObjects = require('../Objects/LoginObjects');
 const DashboardFunctionality = require('../Functionalities/DashboardFunctionality');
-const LoginFunctionality = require('../Functionalities/LoginFunctionality');
 const Utils = require('../../support/Utils/Utils');
 
 class HomeFunctionality {
