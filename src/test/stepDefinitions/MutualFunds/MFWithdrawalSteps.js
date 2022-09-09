@@ -50,3 +50,24 @@ Then(/^I should see Withdrawal Scheduled success message$/, async () => {
   await console.log('Then I should see Withdrawal Scheduled success message');
   expect(await MFWithdrawalFunctionality.withdrawalScheduledPageLaunched()).to.be.true;
 });
+
+When(/^I select option I want to withdraw by fund in Available to withdraw page for (.+)$/, async (fundPortfolio) => {
+  await console.log(`I select option I want to withdraw by fund in Available to withdraw page for ${fundPortfolio}`);
+  expect(await MFWithdrawalFunctionality.verifyWithdrawlPageNavigate(fundPortfolio)).to.be.true;
+});
+
+When(/^I select fund for withdraw$/, async () => {
+  await console.log(`I click on select fund button for withdraw`);
+  await MFWithdrawalFunctionality.selectFundForWithdrawlUnits();
+});
+
+Then(/^I should see withdrawl confirmation page$/, async () => {
+  await console.log('I should see withdrawl confirmation page');
+  expect(await MFWithdrawalFunctionality.withdrawlConfirmationPage()).to.be.true;
+  await MFWithdrawalFunctionality.clickConfirmWithdrawl();
+});
+
+Then(/^I click on confirm withdrawl for OTP$/, async () => {
+  await console.log('I click on confirm withdrawl for OTP');
+  expect(await MFWithdrawalFunctionality.verifyOTPPageNavigate()).to.be.true;
+});

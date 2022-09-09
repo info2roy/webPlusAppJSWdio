@@ -70,6 +70,29 @@ class MFWithdrawalFunctionality {
   async withdrawalScheduledPageLaunched() {
     return (await MFWithdrawalPage.withdrawScheduledPageHeaderIsDisplayed());
   }
+
+  async verifyWithdrawlPageNavigate(fundPortfolio) {
+    await MFWithdrawalPage.clickSelectFundsButton();
+    return (await MFWithdrawalPage.withdrawlPageNavigate(fundPortfolio));
+  }
+
+  async selectFundForWithdrawlUnits() {
+    await MFWithdrawalPage.clickOnSelect();
+    await MFWithdrawalPage.enterWithdrawAmount();
+    await MFWithdrawalPage.clickOnContinue();
+  }
+
+  async withdrawlConfirmationPage() {
+    return (await MFWithdrawalPage.withdrawlConfirmationPageNavigate());
+  }
+
+  async clickConfirmWithdrawl() {
+    await MFWithdrawalPage.clickConfirmWithdrawl();
+  }
+
+  async verifyOTPPageNavigate() {
+    return (await MFWithdrawalPage.verifyOTPPage());
+  }
 }
 
 module.exports = new MFWithdrawalFunctionality();

@@ -78,7 +78,7 @@ class MFWithdrawalPage {
     if (Device.isAndroidApp()) {
       const inputField = await Utils.getLastMatchingElement(MFWithdrawalObjects.mutualFundAmountFields);
       await Utils.setTextObject(amount, inputField);
-    } else if(Device.isWeb()) {
+    } else if (Device.isWeb()) {
       const inputField = await Utils.getMatchingElementByIndex(MFWithdrawalObjects.mutualFundAmountFields, index - 1);
       await Utils.setTextObject(amount, inputField);
     }
@@ -111,6 +111,51 @@ class MFWithdrawalPage {
   async withdrawScheduledPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawScheduledPageHeader));
   }
+
+  async withdrawlPageNavigate(fundPortfolio) {
+    return (
+      await Utils.elementIsDisplayed(MFWithdrawalObjects.selectFundsPageHeader(fundPortfolio)) &&
+      await Utils.elementIsDisplayed(MFWithdrawalObjects.finalWithdrawlPageHeader) &&
+      await Utils.elementIsDisplayed(MFWithdrawalObjects.fundSelectButton));
+  }
+
+  async clickOnSelect() {
+    await Utils.clickElement(MFWithdrawalObjects.fundSelectButton);
+  }
+
+  async enterWithdrawAmount() {
+    const valueRead = (await (Utils.getText(MFWithdrawalObjects.readTotalAmount()))).replace(/\,/g, '');
+    const nearestRound = Math.floor(parseInt(valueRead) / 100) * 100;
+    await Utils.setInputField(nearestRound, MFWithdrawalObjects.withdrawAmountValue);
+  }
+
+  async clickOnContinue() {
+    await Utils.clickElement(MFWithdrawalObjects.continueButtonForWithdrawl);
+  }
+
+  async withdrawlConfirmationPageNavigate() {
+    return (
+      await Utils.elementIsDisplayed(MFWithdrawalObjects.confirmWithdrawalPageHeader) &&
+      await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawlCreditStatememnt));
+  }
+
+  async confirmWithdrawlDetails() {
+    return (
+      await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawlBreakupHeader) &&
+      await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawlGainHeader) &&
+      await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawlYouWillGetHeader));
+  }
+
+  async verifyOTPPage() {
+    return (
+      await Utils.elementIsDisplayed(MFWithdrawalObjects.verifyWithOTPPageHeader) &&
+      await Utils.elementIsDisplayed(MFWithdrawalObjects.PleaseEnterCodeBanner));
+  }
+
+  async clickConfirmWithdrawl() {
+    await Utils.clickElement(MFWithdrawalObjects.confirmConfirmationButton);
+  }
+
 }
 
 module.exports = new MFWithdrawalPage();
