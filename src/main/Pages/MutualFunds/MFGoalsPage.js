@@ -363,6 +363,9 @@ class MFGoalsPage {
   }
 
   async clickInvestEveryMonthButton() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'INVEST EVERY MONTH' }, 0);
+    }
     await Utils.clickElement(MFGoalsObjects.investEveryMonthButton);
   }
 

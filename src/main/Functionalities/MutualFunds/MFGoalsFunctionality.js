@@ -3,6 +3,7 @@ const LoginPage = require('../../Pages/LoginPage');
 const LoginFunctionality = require('../../Functionalities/LoginFunctionality');
 const { expect } = require('chai');
 const LoginData = require('../../../config/data/structured/LoginData');
+const Device = require('../../../support/libraries/Device');
 
 class MFGoalsFunctionality {
   async selectLifeGoal(lifeGoal) {
@@ -136,12 +137,14 @@ class MFGoalsFunctionality {
   async createAPlanOrSignupOrLoginForLifeGoalPlan(username) {
     if(await MFGoalsPage.signupOrLoginButtonIsDisplayed()) {
       await MFGoalsPage.clickSignupOrLoginButton();
-      expect(await LoginPage.loginYourAccountToContinueHeaderIsDisplayed()).to.be.true;
-      await LoginFunctionality.loginWithUsername(LoginData[username]);
-      if (await LoginPage.enterOTPHeaderIsDisplayed()) {
-        await LoginFunctionality.enterOTP([1, 1, 1, 1, 1, 1]);
-      } else {
-        await LoginFunctionality.loginWithPassword(LoginData.password);
+      if (Device.isWeb()) {
+        expect(await LoginPage.loginYourAccountToContinueHeaderIsDisplayed()).to.be.true;
+        await LoginFunctionality.loginWithUsername(LoginData[username]);
+        if (await LoginPage.enterOTPHeaderIsDisplayed()) {
+          await LoginFunctionality.enterOTP([1, 1, 1, 1, 1, 1]);
+        } else {
+          await LoginFunctionality.loginWithPassword(LoginData.password);
+        }
       }
       return true;
     } else if(await MFGoalsPage.createPlanButtonIsDisplayed()) {

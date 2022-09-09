@@ -373,7 +373,8 @@ class MFGoalsObjects {
   };
 
   signupOrLoginButton = {
-    web: '//a[contains(text(),"Signup / Login")]'
+    web: '//a[contains(text(),"Signup / Login")]',
+    app: '//android.widget.TextView[@text="SIGNUP / LOGIN"]'
   };
 
   createPlanButton = {
@@ -381,7 +382,8 @@ class MFGoalsObjects {
   };
 
   investEveryMonthButton = {
-    web: '//button[text()="INVEST EVERY MONTH"]'
+    web: '//button[text()="INVEST EVERY MONTH"]',
+    app: '//android.widget.TextView[@text="INVEST EVERY MONTH"]'
   };
 
   investOneTimeButton = {
