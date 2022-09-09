@@ -139,55 +139,73 @@ class MFGoalsObjects {
 
   existingSavingsAndPlansPageHeader = {
     web: '//span[text()="Existing savings and plans"]',
-    app: '//*[@text="Existing savings and plans"]'
+    app: '//android.view.View[@text="Existing savings and plans"]'
   };
 
   addExistingSavingsLink = {
-    web: '//a[text()="Add"]'
+    web: '//a[text()="Add"]',
+    app: '//android.view.View[@text="Add"]'
   };
 
   myExistingSavingsHeader = {
-    web: '//div[text()="My existing savings"]'
+    web: '//div[text()="My existing savings"]',
+    app: '//android.view.View[@text="My existing savings"]'
   };
 
   existingSavingsAmountField = {
-    web: 'input.ff-savings-amount-input-js'
+    web: 'input.ff-savings-amount-input-js',
+    app: '(//android.widget.EditText)[1]'
   };
 
   existingSavingsAmountGrowthRateField = {
-    web: 'input.ff-savings-returns-input-js'
+    web: 'input.ff-savings-returns-input-js',
+    app: '(//android.widget.EditText)[2]'
   };
 
   saveExistingSavingsDetailsButton = {
-    web: '//button[text()="Save"]'
+    web: '//button[text()="Save"]',
+    app: '//android.widget.Button[@text="SAVE"]'
   };
 
   futureMonthlyIncomeFromOtherSourcesField = {
-    web: 'input.ff-plan-savings-amount-custom-js'
+    web: 'input.ff-plan-savings-amount-custom-js',
+    app: '(//android.widget.EditText)[1]'
   };
 
   calculateMyNeedLink = {
-    web: '//a[contains(text(),"Calculate My Need")]'
+    web: '//a[contains(text(),"Calculate My Need")]',
+    app: '//android.widget.TextView[@text="CALCULATE MY NEED"]'
   };
 
   whatYouNeedToRetireHeader = {
-    web: '//span[text()="What you need to retire"]'
+    web: '//span[text()="What you need to retire"]',
+    app: '//android.view.View[@text="What you need to retire"]'
   };
 
   inflationPercentSelectOption = {
-    web: 'select.ff-plan-inflation'
+    web: 'select.ff-plan-inflation',
+    app: '//android.view.View[@text="5%"]'
   };
 
+  inflationPercentOption(inflationPercent) {
+    return {
+      app: `//android.widget.CheckedTextView[@text="${inflationPercent}%"]`
+    };
+  }
+
   showDetailedPlanLink = {
-    web: '//a[contains(text(),"Show Detailed Plan")]'
+    web: '//a[contains(text(),"Show Detailed Plan")]',
+    app: '//android.widget.TextView[@text="SHOW DETAILED PLAN"]'
   };
 
   yourRetirementPlanPageHeader = {
-    web: '//span[text()="Your Retirement Plan"]'
+    web: '//span[text()="Your Retirement Plan"]',
+    app: '//android.view.View[@text="Your Retirement Plan"]'
   };
 
   continueLink = {
-    web: '//a[contains(text(),"Continue")]'
+    web: '//a[contains(text(),"Continue")]',
+    app: '//android.widget.TextView[@text="CONTINUE"]'
   };
 
   continueLinkText = {
@@ -195,7 +213,8 @@ class MFGoalsObjects {
   };
 
   congratulationsPageHeader = {
-    web: '//span[text()="Congratulations!"]'
+    web: '//span[text()="Congratulations!"]',
+    app: '//android.view.View[@text="Congratulations!"]'
   };
 
   createPlanFinalButton = {

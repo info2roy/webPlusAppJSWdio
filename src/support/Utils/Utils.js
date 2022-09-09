@@ -165,12 +165,34 @@ class Utils {
     return (await element.getAttribute(attribute));
   }
 
-  async setInputField(value, selector) {
+  async setInputField(value, selector, androidPressKeyCode = false) {
     if (Device.isWeb()) {
       await this.clickElement(selector);
     }
-    const myButton = await $(this.getLocator(selector));
-    await myButton.setValue(value);
+    const myTextField = await $(this.getLocator(selector));
+    if (Device.isAndroidApp() && androidPressKeyCode) {
+      await myTextField.clearValue();
+      await myTextField.click();
+      const keycodes = {
+        '0': 7,
+        '1': 8,
+        '2': 9,
+        '3': 10,
+        '4': 11,
+        '5': 12,
+        '6': 13,
+        '7': 14,
+        '8': 15,
+        '9': 16
+      };
+      const numStr = value.toString();
+      for (let i = 0; i < numStr.length; i++) {
+        console.log(`i = ${i} char ${numStr[i]} code ${keycodes[numStr[i]]}`);
+        await driver.pressKeyCode(keycodes[numStr[i]]);
+      }
+    } else {
+      await myTextField.setValue(value);
+    }
   }
 
   async setTextObject(value, webElement) {
