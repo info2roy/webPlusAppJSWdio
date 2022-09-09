@@ -391,7 +391,8 @@ class MFGoalsObjects {
   };
 
   amountPlannedWithScripboxHeader = {
-    web: '//p[text()="Amount Planned With Scripbox:"]'
+    web: '//p[text()="Amount Planned With Scripbox:"]',
+    app: '//android.widget.TextView[@text="Amount Planned With Scripbox:"]'
   };
 
   howWouldYouLikeYourMoneyToGrowHeader = {
@@ -403,15 +404,18 @@ class MFGoalsObjects {
   };
 
   continueButton = {
-    web: '//button[contains(text(),"Continue")]'
+    web: '//button[contains(text(),"Continue")]',
+    app: '//android.widget.TextView[@text="CONTINUE"]'
   };
 
   fundListHeader = {
-    web: '//div[text()="Fund list"]'
+    web: '//div[text()="Fund list"]',
+    app: '//android.widget.TextView[@text="Fund list"]'
   };
 
   continueToInvestButton = {
-    web: '//button[contains(text(),"Continue to invest")]'
+    web: '//button[contains(text(),"Continue to invest")]',
+    app: '//android.widget.TextView[@text="CONTINUE TO INVEST"]'
   };
 
   paymentTypePageHeader = {
