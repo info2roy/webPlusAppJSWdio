@@ -419,7 +419,8 @@ class MFGoalsObjects {
   };
 
   paymentTypePageHeader = {
-    web: '//div[contains(text(),"I would like to invest Rs")]'
+    web: '//div[contains(text(),"I would like to invest Rs")]',
+    app: '//android.widget.TextView[contains(@text,"I would like to invest Rs")]'
   };
 
   noInvestmentsToCancelMessage = {
@@ -427,7 +428,8 @@ class MFGoalsObjects {
   };
 
   confirmButton = {
-    web: '//button[contains(text(),"Confirm")]'
+    web: '//button[contains(text(),"Confirm")]',
+    app: '//android.widget.TextView[@text="CONFIRM"]'
   };
 
   rightAngleBracketButton = {

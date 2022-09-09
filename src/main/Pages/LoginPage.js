@@ -61,7 +61,7 @@ class LoginPage {
   }
 
   async enterOTPHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(LoginObjects.enterOTPPageHeader));
+    return (await Utils.elementIsDisplayed(LoginObjects.enterOTPPageHeader, 5000));
   }
 
   async loginYourAccountToContinueHeaderIsDisplayed() {

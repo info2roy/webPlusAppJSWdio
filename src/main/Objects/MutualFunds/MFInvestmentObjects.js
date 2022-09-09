@@ -134,7 +134,7 @@ class MFInvestmentObjects {
 
   investmentScheduledSuccessfullyPageHeader = {
     web: '//div[text()="Investment scheduled successfully"]',
-    app: '//*[@text="Investment scheduled successfully"]'
+    app: '//*[@text="Investment scheduled successfully" or @text="Investment Scheduled"]'
   };
 
   paymentInstrument(paymentInstrumentType) {

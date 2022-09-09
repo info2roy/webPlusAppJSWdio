@@ -3,7 +3,7 @@ class LoginObjects {
 
   loginPageBanner = { app: '//*[@text="All things good for your wealth, under one roof."]' };
 
-  passwordPageBanner = { app: '//*[@text="Enter Password"] | //*[@text="Welcome back"]' };
+  passwordPageBanner = { app: '//*[@text="Enter Password"] | //*[@text="Welcome back"] | //android.widget.TextView[contains(@text,"For added security")]' };
 
   stagingUserIdField = { web: '.login-email' };
 
