@@ -72,7 +72,7 @@ class MFWithdrawalFunctionality {
   }
 
   async verifyWithdrawlPageNavigate(fundPortfolio) {
-    await MFWithdrawalPage.clickOnSelectFundsOption();
+    await MFWithdrawalPage.clickSelectFundsButton();
     return (await MFWithdrawalPage.withdrawlPageNavigate(fundPortfolio));
   }
 

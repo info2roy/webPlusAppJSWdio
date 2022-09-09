@@ -135,10 +135,6 @@ class MFWithdrawalObjects {
     app: '//*[@text="Withdrawal Scheduled"]'
   };
 
-  selectFundsButton = {
-    web: '//button[text()="Select funds"]',
-  };
-
   finalWithdrawlPageHeader = {
     web: '//div[text()="Enter the amount you want to withdraw from one or more of the following funds."]',
   };
@@ -149,10 +145,6 @@ class MFWithdrawalObjects {
 
   withdrawAmountValue = {
     web: '//input[contains(@class,"withdraw-custom-amount-input")]'
-  };
-
-  withdrawlConfirmationHeader = {
-    web: '//div[text()="Confirm your withdrawal"]'
   };
 
   withdrawlCreditStatememnt = {
@@ -184,10 +176,6 @@ class MFWithdrawalObjects {
       web: '//div[text()="Total:"]//ancestor::span/span/div'
     };
   }
-
-  verifyWithOTP = {
-    web: '//div[text()="Verify with OTP"]'
-  };
 
   PleaseEnterCodeBanner = {
     web: '//div[text()="Please enter the code you received"]'

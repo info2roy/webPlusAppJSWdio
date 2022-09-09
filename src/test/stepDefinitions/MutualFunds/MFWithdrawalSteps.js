@@ -52,13 +52,13 @@ Then(/^I should see Withdrawal Scheduled success message$/, async () => {
 });
 
 When(/^I select option I want to withdraw by fund in Available to withdraw page for (.+)$/, async (fundPortfolio) => {
-  await console.log(`I am in Available to withdraw page`);
+  await console.log(`I select option I want to withdraw by fund in Available to withdraw page for ${fundPortfolio}`);
   expect(await MFWithdrawalFunctionality.verifyWithdrawlPageNavigate(fundPortfolio)).to.be.true;
 });
 
-When(/^I select fund (.+) for withdraw$/, async (fundPortfolio) => {
+When(/^I select fund for withdraw$/, async () => {
   await console.log(`I click on select fund button for withdraw`);
-  await MFWithdrawalFunctionality.selectFundForWithdrawlUnits(fundPortfolio);
+  await MFWithdrawalFunctionality.selectFundForWithdrawlUnits();
 });
 
 Then(/^I should see withdrawl confirmation page$/, async () => {

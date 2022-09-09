@@ -112,10 +112,6 @@ class MFWithdrawalPage {
     return (await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawScheduledPageHeader));
   }
 
-  async clickOnSelectFundsOption() {
-    await Utils.clickElement(MFWithdrawalObjects.selectFundsButton);
-  }
-
   async withdrawlPageNavigate(fundPortfolio) {
     return (
       await Utils.elementIsDisplayed(MFWithdrawalObjects.selectFundsPageHeader(fundPortfolio)) &&
@@ -139,7 +135,7 @@ class MFWithdrawalPage {
 
   async withdrawlConfirmationPageNavigate() {
     return (
-      await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawlConfirmationHeader) &&
+      await Utils.elementIsDisplayed(MFWithdrawalObjects.confirmWithdrawalPageHeader) &&
       await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawlCreditStatememnt));
   }
 
@@ -152,7 +148,7 @@ class MFWithdrawalPage {
 
   async verifyOTPPage() {
     return (
-      await Utils.elementIsDisplayed(MFWithdrawalObjects.verifyWithOTP) &&
+      await Utils.elementIsDisplayed(MFWithdrawalObjects.verifyWithOTPPageHeader) &&
       await Utils.elementIsDisplayed(MFWithdrawalObjects.PleaseEnterCodeBanner));
   }
 
