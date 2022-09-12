@@ -216,7 +216,7 @@ class MFInvestmentPage {
     if (Device.isAndroidApp()) {
       await Utils.scrollVerticalToEndForAndroid(1, 1);
     }
-    Utils.clickElement(MFInvestmentObjects.addNewPlanOrExploreOtherPlans);
+    await Utils.clickElement(MFInvestmentObjects.addNewPlanOrExploreOtherPlans);
   }
 
   async addNewPlanPageHeaderIsDisplayed() {
@@ -238,7 +238,7 @@ class MFInvestmentPage {
   }
 
   async clickOnViewInvestmentsButton() {
-    Utils.clickElement(MFInvestmentObjects.viewInvestmentsButton);
+    await Utils.clickElement(MFInvestmentObjects.viewInvestmentsButton);
   }
 
   async sipsAndStpsHeaderIsDisplayed() {
