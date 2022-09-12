@@ -17,7 +17,7 @@ Feature: Scripbox Investment in Mutual Fund Goal of Premier Education
     When I click "SHOW PLAN FOR" on the Yearly Fees Breakup Plan Page
     When I click "START WITH" for "Premier Education" Working Plan
     When I click "CONTINUE" on the "Premier Education" Suggested Plan
-    When I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan
+    When I click on "CREATE A PLAN OR SIGNUP OR LOGIN" for Life Goal Plan for user "user189182"
     When I click on "INVEST EVERY MONTH" for Life Goal Plan
     When I click "CONTINUE" for "INVEST EVERY MONTH" on the "Premier Education" Plan
     When I click "CONTINUE TO INVEST" on the "Premier Education" Plan
