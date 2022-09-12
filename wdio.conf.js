@@ -183,7 +183,10 @@ exports.config = {
     source: false,
     profile: [],
     strict: true,
-    tagExpression: 'not @Pending',
+    // <string> (expression) only execute the features or scenarios with
+    // tags matching the expression, see
+    // https://docs.cucumber.io/tag-expressions/
+    tagExpression: '@smoke',
     timeout: 30000,
     tagsInTitle: false,
     snippetSyntax: undefined,
