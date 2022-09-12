@@ -264,16 +264,24 @@ class MFGoalsObjects {
   }
 
   //Premier Education
+
+  myChildIsInClassLabel = {
+    app: '//android.view.View[@text="My child is in class"]'
+  };
+
   classOfChildField = {
-    web: 'input.education-plan-age-input'
+    web: 'input.education-plan-age-input',
+    app: '//android.widget.EditText[@resource-id="education-grade-input-js"]'
   };
 
   childInPreschoolOrNotInSchoolCheckbox = {
-    web: '//input[@type="checkbox"]'
+    web: '//input[@type="checkbox"]',
+    app: '//android.widget.CheckBox[@resource-id="education-plan-input-preschool"]'
   };
 
   childLikelyToStartCollegeInYearHeader = {
-    web: '//div[contains(text(),"Your child is likely to start college in")]'
+    web: '//div[contains(text(),"Your child is likely to start college in")]',
+    app: '//android.view.View[contains(@text,"Your child is likely to start college in")]'
   };
 
   getStartCollegeYear(classOfChild) {
@@ -287,7 +295,8 @@ class MFGoalsObjects {
 
   childLikelyToStartCollegeInYear(classOfChild) {
     return {
-      web: `//span[contains(text(),"${this.getStartCollegeYear(classOfChild)}")]`
+      web: `//span[contains(text(),"${this.getStartCollegeYear(classOfChild)}")]`,
+      app: `//android.view.View[contains(@text,"Your child is likely to start college in ${this.getStartCollegeYear(classOfChild)}")]`
     };
   }
 
@@ -300,46 +309,58 @@ class MFGoalsObjects {
   personaliseThisPlanLinkForCollegeType(collegeType) {
     const index = this.premierEducationCollegeTypeToIndex[collegeType];
     return {
-      web: `(//a[contains(text(),"Personalise this plan")])[${index}]`
+      web: `(//a[contains(text(),"Personalise this plan")])[${index}]`,
+      app: `(//android.view.View[@text="${collegeType}"]/following-sibling::android.view.View)[last()]`
     };
   }
 
   premierEducationPlanPageHeader = {
-    web: '//p[contains(text(),"Quick plan for your child\'s")]'
+    web: '//p[contains(text(),"Quick plan for your child\'s")]',
+    app: '//android.view.View[contains(@text,"Quick plan for your child\'s")]'
   };
 
   continueButtonForPremierEducationPlan(index) {
     return {
-      web: `(//a[contains(text(),"Continue")])[${index}]`
+      web: `(//a[contains(text(),"Continue")])[${index}]`,
+      app: '//android.widget.TextView[@text="CONTINUE"]'
     };
   }
 
   premierEducationFormHeader = {
-    web: '//label[contains(text(),"This plan is for")]'
+    web: '//label[contains(text(),"This plan is for")]',
+    app: '//android.view.View[@text="This plan is for"]'
   };
 
   childNameField = {
-    web: 'input.gef-name-input'
+    web: 'input.gef-name-input',
+    app: '(//android.view.View[@text="This plan is for"]/following-sibling::android.widget.EditText)[1]'
   };
 
   yearlyFeesField = {
-    web: 'input.plan-goal-amount-input'
+    web: 'input.plan-goal-amount-input',
+    app: '(//android.view.View[@text="Planning for a college with current yearly fees of"]/following-sibling::android.widget.EditText)[1]'
   };
 
   seeYearlyBreakupButton = {
-    web: '//div[contains(text(),"See yearly breakup")]'
+    web: '//div[contains(text(),"See yearly breakup")]',
+    app: '//android.view.View[@text="SEE YEARLY BREAKUP"]'
   };
 
   yearlyBreakupPageGoal = {
-    web: '//div[contains(text(),"Goal")]'
+    web: '//div[contains(text(),"Goal")]',
+    app: '//android.view.View[@text="Goal"]'
   };
 
-  yearlyBreakupPageGoalHeader = {
-    web: `//div[contains(text(),"Estimated yearly fees in")]`
-  };
+  yearlyBreakupPageGoalHeader(classOfChild) {
+    return {
+      web: `//div[contains(text(),"Estimated yearly fees in")]`,
+      app: `//android.view.View[@text="Estimated yearly fees in ${this.getStartCollegeYear(classOfChild)}"]`
+    };
+  }
 
   yearlyBreakupPagePlan = {
-    web: '//div[contains(text(),"Plan")]'
+    web: '//div[contains(text(),"Plan")]',
+    app: '//android.view.View[@text="Plan"]'
   };
 
   yearlyBreakupPagePlanChildName(childname) {
@@ -349,27 +370,33 @@ class MFGoalsObjects {
   }
 
   yearlyBreakupPagePlanHeader = {
-    web: '//div/span[contains(text(),"\'s college education plan")]'
+    web: '//div/span[contains(text(),"\'s college education plan")]',
+    app: '//android.view.View[contains(@text,"\'s college education plan")]'
   };
 
   yearlyBreakupPageShowPlanButton = {
-    web: '//a[contains(text(),"Show plan for")]'
+    web: '//a[contains(text(),"Show plan for")]',
+    app: '//android.widget.TextView[contains(@text,"SHOW PLAN FOR")]'
   };
 
   premierEducationWorkingPlanHeader1 = {
-    web: '//div[contains(text(),"Here is a working plan for")]'
+    web: '//div[contains(text(),"Here is a working plan for")]',
+    app: '//android.view.View[contains(@text,"Here is a working plan for")]'
   };
 
   premierEducationWorkingPlanHeader2 = {
-    web: '//div/span[contains(text(),"\'s education")]'
+    web: '//div/span[contains(text(),"\'s education")]',
+    app: '//android.view.View[contains(@text,"\'s education")]'
   };
 
   premierEducationWorkingPlanStartWithButton = {
-    web: '//a[contains(text(),"Start With")]'
+    web: '//a[contains(text(),"Start With")]',
+    app: '//android.widget.TextView[contains(@text,"START WITH")]'
   };
 
   premierEducationInvestPageHeader = {
-    web: '//p[contains(text(),"\'s College Education Plan")]'
+    web: '//p[contains(text(),"\'s College Education Plan")]',
+    app: '//android.view.View[contains(@text,"\'s College Education Plan")]'
   };
 
   signupOrLoginButton = {

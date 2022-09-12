@@ -272,7 +272,10 @@ class MFGoalsPage {
     if(classOfChild === 0) {
       await Utils.setCheckBox(MFGoalsObjects.childInPreschoolOrNotInSchoolCheckbox, true);
     } else if (classOfChild > 0) {
-      await Utils.setInputField(classOfChild, MFGoalsObjects.classOfChildField);
+      await Utils.setInputField(classOfChild, MFGoalsObjects.classOfChildField, true);
+      if (Device.isAndroidApp()) {
+        await Utils.clickElement(MFGoalsObjects.myChildIsInClassLabel);
+      }
     } else {
       console.log(`Invalid child class ${classOfChild}`);
     }
@@ -289,6 +292,8 @@ class MFGoalsPage {
   async clickPersonaliseThisPlanForCollegeType(collegeType) {
     if (Device.isWeb()) {
       await Utils.scrollAndMoveToElement(MFGoalsObjects.personaliseThisPlanLinkForCollegeType(collegeType));
+    } else if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: collegeType });
     }
     await Utils.clickElement(MFGoalsObjects.personaliseThisPlanLinkForCollegeType(collegeType));
   }
@@ -300,6 +305,8 @@ class MFGoalsPage {
   async clickContinueButtonForPremierEducationPlan(index) {
     if (Device.isWeb()) {
       await Utils.scrollAndMoveToElement(MFGoalsObjects.continueButtonForPremierEducationPlan(index));
+    } else if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'CONTINUE' });
     }
     await Utils.clickElement(MFGoalsObjects.continueButtonForPremierEducationPlan(index));
   }
@@ -313,6 +320,9 @@ class MFGoalsPage {
   }
 
   async enterYearlyFees(yearlyFees) {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalToEndForAndroid(0, 1);
+    }
     await Utils.setInputField(yearlyFees, MFGoalsObjects.yearlyFeesField);
   }
 
@@ -321,9 +331,12 @@ class MFGoalsPage {
   }
 
   async yearlyBreakupGoalPageIsDisplayed(classOfChild) {
-    return (await Utils.elementIsDisplayed(MFGoalsObjects.yearlyBreakupPageGoal)) &&
-      (await Utils.elementIsDisplayed(MFGoalsObjects.yearlyBreakupPageGoalHeader)) &&
-      (await Utils.elementIsDisplayed(MFGoalsObjects.childLikelyToStartCollegeInYear(classOfChild)));
+    let status = (await Utils.elementIsDisplayed(MFGoalsObjects.yearlyBreakupPageGoal)) &&
+      (await Utils.elementIsDisplayed(MFGoalsObjects.yearlyBreakupPageGoalHeader(classOfChild)));
+    if (Device.isWeb()) {
+      status = status && (await Utils.elementIsDisplayed(MFGoalsObjects.childLikelyToStartCollegeInYear(classOfChild)));
+    }
+    return status;
   }
 
   async yearlyBreakupPlanPageIsDisplayed() {
@@ -332,6 +345,9 @@ class MFGoalsPage {
   }
 
   async clickYearlyBreakupPageShowPlanButton() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'SHOW PLAN FOR' });
+    }
     await Utils.clickElement(MFGoalsObjects.yearlyBreakupPageShowPlanButton);
   }
 
@@ -341,6 +357,9 @@ class MFGoalsPage {
   }
 
   async clickPremierEducationWorkingPlanStartWithButton() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'START WITH' });
+    }
     await Utils.clickElement(MFGoalsObjects.premierEducationWorkingPlanStartWithButton);
   }
 

@@ -41,7 +41,8 @@ class DashboardObjects {
 
   manageExternalSIPs = { web: '//div[@class="cursor-pointer"]//*[text()="Manage"]' };
 
-  investNowButton = { web: '//div[contains(@class,"dashboard-invest-withdraw-btn")]//*[contains(text(),"Invest ")]' };
+  investNowButton = { web: '//div[contains(@class,"dashboard-invest-withdraw-btn")]//*[contains(text(),"Invest ")]',
+    app: '//*[@text="Invest now"]' };
 
   wealthCalenderNavigationButton = { web: '//div[contains(@class, "wealth-calendar")]//span[text()="chevron_right"]' };
 

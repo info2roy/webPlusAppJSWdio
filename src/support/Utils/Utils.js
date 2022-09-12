@@ -142,6 +142,7 @@ class Utils {
   async elementIsDisplayed(selector, timeoutMS = 15000) {
     const locator = this.getLocator(selector);
     // const element = await $(locator);
+    let isDisplayed = false;
     try {
       await browser.waitUntil(
         async () => await $(locator).isDisplayed(),
@@ -151,10 +152,10 @@ class Utils {
           interval: 2000
         },
       );
-    } catch (err) {
+      isDisplayed = await $(locator).isDisplayed();
+    } catch(err) {
       console.log(err.message);
     }
-    const isDisplayed = await $(locator).isDisplayed();
     console.log(`${locator} is displayed check --> ${isDisplayed}`);
     return isDisplayed;
   }
