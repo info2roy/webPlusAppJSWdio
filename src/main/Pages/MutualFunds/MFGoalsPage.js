@@ -58,7 +58,11 @@ class MFGoalsPage {
 
   async clickOnExistingPlanForLifeGoal(lifeGoal, childname = '') {
     if (childname.length > 0) {
-      lifeGoal = `${lifeGoal} for ${Utils.capitalizeFirstLetter(childname)}`;
+      if (Device.isWeb()) {
+        lifeGoal = `${lifeGoal} for ${Utils.capitalizeFirstLetter(childname)}`;
+      } else if (Device.isAndroidApp()) {
+        lifeGoal = `${lifeGoal} for ${childname}`;
+      }
     }
     const lifeGoalExistingPlan = await Utils.getMatchingElementByIndex(MFGoalsObjects.lifeGoalElement(lifeGoal), 0);
     await Utils.clickWebElement(lifeGoalExistingPlan);
