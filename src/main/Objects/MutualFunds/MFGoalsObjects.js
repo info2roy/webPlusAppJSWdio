@@ -236,6 +236,10 @@ class MFGoalsObjects {
     web: '//button[text()="Other actions"] | //button[text()="Other Actions"]'
   };
 
+  managePlanButton = {
+    app: '//android.widget.TextView[@text="MANAGE PLAN"]'
+  };
+
   otherActionForGoalPlan(actionType) {
     return {
       web: `//div[text()="${actionType}"]`
@@ -479,15 +483,18 @@ class MFGoalsObjects {
   }
 
   moveMoneyHeader = {
-    web: '//div[text()="Move Money"]'
+    web: '//div[text()="Move Money"]',
+    app: '//android.widget.TextView[@text="Move Money"]'
   };
 
   stopAllInvestmentsHeader = {
-    web: '//div[text()="Stop All Investments"]'
+    web: '//div[text()="Stop All Investments"]',
+    app: '//android.widget.TextView[@text="Stop All Investments"]'
   };
 
   closePlanHeader = {
-    web: '//div[text()="Close Plan"]'
+    web: '//div[text()="Close Plan"]',
+    app: '//android.widget.TextView[@text="Close Plan"]'
   };
 
   closeThisPlanButton = {
@@ -507,19 +514,23 @@ class MFGoalsObjects {
   };
 
   moveMoneyWarningMessage = {
-    web: '//div[text()="Oops. You currently do not have any investments to re-allocate."]'
+    web: '//div[text()="Oops. You currently do not have any investments to re-allocate."]',
+    app: '//android.widget.TextView[@text="You currently do not have any investments to re-allocate."]'
   };
 
   stopAllInvestmentsMessage = {
-    web: '//p[text()="Cancelling this plan will cancel all running SIPs."]'
+    web: '//p[text()="Cancelling this plan will cancel all running SIPs."]',
+    app: '//android.widget.TextView[@text="Cancelling this plan will cancel all running SIPs."]'
   };
 
   closePlanMessage = {
-    web: '//div[text()="If you think you have reached your goal, or if this is no longer needed, you can close the plan by following these steps."]'
+    web: '//div[text()="If you think you have reached your goal, or if this is no longer needed, you can close the plan by following these steps."]',
+    app: '//android.widget.TextView[@text="If you think you have reached your goal, or if this is no longer needed, you can close the plan by following these steps."]'
   };
 
   planCancelledMessage = {
-    web: '//p[text()="Your plan has been cancelled"]'
+    web: '//p[text()="Your plan has been cancelled"]',
+    app: '//android.widget.TextView[@text="Your plan has been cancelled"]'
   };
 
   editRetirementAgeLink = {

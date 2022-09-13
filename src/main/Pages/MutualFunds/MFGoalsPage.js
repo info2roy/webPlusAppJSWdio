@@ -453,7 +453,11 @@ class MFGoalsPage {
   async clickOtherActionsOrEditPlanButton(buttonText) {
     switch(buttonText) {
       case 'OTHER ACTIONS':
-        await Utils.clickElement(MFGoalsObjects.otherActionsButton);
+        if (Device.isWeb()) {
+          await Utils.clickElement(MFGoalsObjects.otherActionsButton);
+        } else if (Device.isAndroidApp()) {
+          await Utils.clickElement(MFGoalsObjects.managePlanButton);
+        }
         break;
       case 'EDIT PLAN':
         await Utils.clickElement(MFGoalsObjects.editPlanButton);
