@@ -280,6 +280,13 @@ class Utils {
       return `${thousands.toFixed(2)}K`;
     }
   }
+
+  clickElementByText(button) {
+    const webElement = (`//*[text()="${button}"]`);
+    const myButton = await $(webElement);
+    await myButton.click();
+
+  }
 }
 
 module.exports = new Utils();
