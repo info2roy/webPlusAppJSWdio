@@ -281,7 +281,7 @@ class Utils {
     }
   }
 
-  clickElementByText(button) {
+  async clickElementByText(button) {
     const webElement = (`//*[text()="${button}"]`);
     const myButton = await $(webElement);
     await myButton.click();
