@@ -1,6 +1,7 @@
 const Device = require('../../../support/libraries/Device');
 const Utils = require('../../../support/Utils/Utils');
 const MFWithdrawalObjects = require('../../Objects/MutualFunds/MFWithdrawalObjects');
+const { expect } = require('chai');
 
 class MFWithdrawalPage {
 
@@ -123,10 +124,13 @@ class MFWithdrawalPage {
     await Utils.clickElement(MFWithdrawalObjects.fundSelectButton);
   }
 
-  async enterWithdrawAmount() {
+  async enterWithdrawAmount(option) {
     const valueRead = (await (Utils.getText(MFWithdrawalObjects.readTotalAmount()))).replace(/\,/g, '');
     const nearestRound = Math.floor(parseInt(valueRead) / 100) * 100;
     await Utils.setInputField(nearestRound, MFWithdrawalObjects.withdrawAmountValue);
+    if (option == 'Yes') {
+      await Utils.clickRadioButton(option);
+    }
   }
 
   async clickOnContinue() {
@@ -139,7 +143,11 @@ class MFWithdrawalPage {
       await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawlCreditStatememnt));
   }
 
-  async confirmWithdrawlDetails() {
+  async confirmWithdrawlDetails(option) {
+    if (option == 'Yes') {
+      await console.log('Checking for withdrawl amount to be full');
+      expect(await Utils.getText(MFWithdrawalObjects.withdrawlAmount) == await Utils.getText(MFWithdrawalObjects.amountUserWillGet)).to.be.true;
+    }
     return (
       await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawlBreakupHeader) &&
       await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawlGainHeader) &&
