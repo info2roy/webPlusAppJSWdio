@@ -72,7 +72,7 @@ class Utils {
   async findMatchingElementIndexWithGivenText(selector, text) {
     const locator = this.getLocator(selector);
     const elements = await $$(locator);
-    for (let index = 0; index < elements.length; index ++) {
+    for (let index = 0; index < elements.length; index++) {
       const value = await elements[index].getText();
       console.log(`index ${index} value ${value}`);
       if (value === text) {
@@ -91,7 +91,7 @@ class Utils {
   async findMatchingElementWithGivenText(selector, text) {
     const locator = this.getLocator(selector);
     const elements = await $$(locator);
-    for (let index = 0; index < elements.length; index ++) {
+    for (let index = 0; index < elements.length; index++) {
       const value = await elements[index].getText();
       console.log(`index ${index} value ${value}`);
       if (value === text) {
@@ -125,7 +125,7 @@ class Utils {
           interval: 2000
         },
       );
-    } catch(err) {
+    } catch (err) {
       console.log(err.message);
     }
     const isDisplayed = await $(locator).isDisplayed();
@@ -256,7 +256,7 @@ class Utils {
       parts[0] = parts[0].slice(0, -1);
     }
     console.log(`parts ${parts} abbrChar ${abbrChar}`);
-    switch(abbrChar) {
+    switch (abbrChar) {
       case 'K':
       case 'k':
         return Math.round(parseFloat(parts[0]) * 1000);
@@ -285,7 +285,12 @@ class Utils {
     const webElement = (`//*[text()="${button}"]`);
     const myButton = await $(webElement);
     await myButton.click();
+  }
 
+  async clickRadioButton(option) {
+    const webElement = (`//*[contains(@class, 'radio-input') and contains(text(),"${option}")]`);
+    const myButton = await $(webElement);
+    await myButton.click();
   }
 }
 

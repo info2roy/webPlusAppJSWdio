@@ -76,14 +76,15 @@ class MFWithdrawalFunctionality {
     return (await MFWithdrawalPage.withdrawlPageNavigate(fundPortfolio));
   }
 
-  async selectFundForWithdrawlUnits() {
+  async selectFundForWithdrawlUnits(option) {
     await MFWithdrawalPage.clickOnSelect();
-    await MFWithdrawalPage.enterWithdrawAmount();
+    await MFWithdrawalPage.enterWithdrawAmount(option);
     await MFWithdrawalPage.clickOnContinue();
   }
 
-  async withdrawlConfirmationPage() {
-    return (await MFWithdrawalPage.withdrawlConfirmationPageNavigate());
+  async withdrawlConfirmationPage(option) {
+    return (await MFWithdrawalPage.withdrawlConfirmationPageNavigate() &&
+      (await MFWithdrawalPage.confirmWithdrawlDetails(option)));
   }
 
   async clickConfirmWithdrawl() {

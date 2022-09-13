@@ -56,14 +56,14 @@ When(/^I select option I want to withdraw by fund in Available to withdraw page 
   expect(await MFWithdrawalFunctionality.verifyWithdrawlPageNavigate(fundPortfolio)).to.be.true;
 });
 
-When(/^I select fund for withdraw$/, async () => {
-  await console.log(`I click on select fund button for withdraw`);
-  await MFWithdrawalFunctionality.selectFundForWithdrawlUnits();
+When(/^I select fund for withdraw for (.+) funds withdrawl$/, async (option) => {
+  await console.log(`I click on select fund button for withdraw ${option} funds withdrawl`);
+  await MFWithdrawalFunctionality.selectFundForWithdrawlUnits(option);
 });
 
-Then(/^I should see withdrawl confirmation page$/, async () => {
-  await console.log('I should see withdrawl confirmation page');
-  expect(await MFWithdrawalFunctionality.withdrawlConfirmationPage()).to.be.true;
+Then(/^I should see withdrawl confirmation page for (.+) withdrawl$/, async (option) => {
+  await console.log(`I should see withdrawl confirmation page for ${option} withdrawl`);
+  expect(await MFWithdrawalFunctionality.withdrawlConfirmationPage(option)).to.be.true;
   await MFWithdrawalFunctionality.clickConfirmWithdrawl();
 });
 

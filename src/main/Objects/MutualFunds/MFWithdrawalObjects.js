@@ -151,6 +151,14 @@ class MFWithdrawalObjects {
     web: '//p[contains(text(), "Money will be credited to your bank account by")]'
   };
 
+  withdrawlAmount = {
+    web: '//div[text()="Your withdrawal break-up"]//ancestor::p//following-sibling::div//span/div'
+  };
+
+  amountUserWillGet = {
+    web: '//div[text()="You will get"]//ancestor::p//following-sibling::div//span/div'
+  };
+
   confirmConfirmationButton = {
     web: '//button[text()="CONFIRM WITHDRAWAL"]'
   };
