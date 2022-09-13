@@ -11,9 +11,9 @@ Feature: Scripbox Withdraw for Mutual Fund
     When I select for withdrawal the mutual fund portfolio <mutualFundPortfolio>
     When I select withdrawal bank option as "Continue with same bank"
     When I select option I want to withdraw by fund in Available to withdraw page for <mutualFundPortfolio>
-    When I select fund for withdraw
-    Then I should see withdrawl confirmation page
+    When I select fund for withdraw for <withdrawAllOption> funds withdrawl
+    Then I should see withdrawl confirmation page for <withdrawAllOption> withdrawl
     Then I click on confirm withdrawl for OTP
     Examples:
-      | mutualFundPortfolio |
-      | Tax Saver Plan |
+      | mutualFundPortfolio | withdrawAllOption |
+      | Tax Saver Plan      | Yes                |
