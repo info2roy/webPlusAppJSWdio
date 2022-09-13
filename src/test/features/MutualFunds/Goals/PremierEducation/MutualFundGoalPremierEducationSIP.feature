@@ -25,30 +25,30 @@ Feature: Scripbox Investment in Mutual Fund Goal of Premier Education
     # When I click "CONFIRM" on the "Premier Education" investment
     # Then I should see investment scheduled successfully message
     # Then I click on "HOME" button
+    # Given I am on the Investment Page
+    # When I navigate to the investment tab "Mutual Funds"
+    # When I click on "Add new plan" for mutual funds
+    # When I select existing plan for mutual funds life goal "Premier Education" for child <childname>
+    # When I click on ">" to see plan details for "Premier Education" Plan
+    # When I click on "EDIT PLAN" button for "Premier Education" Plan
+    # When I update "College Start Year" to <newCollegeStartYear> for "Premier Education" Plan
+    # When I update "Current Year Fees" to <newCurrentYearFees> for "Premier Education" Plan
+    # When I update "Annual Fees Increase Percent" to <newAnnualFeesIncreasePercent> for "Premier Education" Plan
+    # When I click "CONTINUE" to Replan for "Premier Education" Plan
+    # When I update "Annual Contribution While In College" to <newAnnualContributionWhileInCollege> for "Premier Education" Plan
+    # When I fill External Savings form with <externalSavingsAmount>, <externalSavingsGrowthRate>
+    # When I click "SHOW PLAN DETAILS" after step 3 of Replan for "Premier Education" Plan
+    # When I click "CONTINUE" with SIP amount for Replan for "Premier Education" Plan
+    # When I click "CONTINUE" with Growth Strategy for Replan for "Premier Education" Plan
+    # When I click "CONTINUE TO INVEST" on the "Premier Education" Plan
+    # When I select Payment type as <paymentType>
+    # When I click "CONFIRM" on the "Premier Education" investment
+    # Then I should see message "Replan completed successfully"
+    # Then I click on "HOME" button
     Given I am on the Investment Page
     When I navigate to the investment tab "Mutual Funds"
     When I click on "Add new plan" for mutual funds
     When I select existing plan for mutual funds life goal "Premier Education" for child <childname>
-    When I click on ">" to see plan details for "Premier Education" Plan
-    When I click on "EDIT PLAN" button for "Premier Education" Plan
-    When I update "College Start Year" to <newCollegeStartYear> for "Premier Education" Plan
-    When I update "Current Year Fees" to <newCurrentYearFees> for "Premier Education" Plan
-    When I update "Annual Fees Increase Percent" to <newAnnualFeesIncreasePercent> for "Premier Education" Plan
-    When I click "CONTINUE" to Replan for "Premier Education" Plan
-    When I update "Annual Contribution While In College" to <newAnnualContributionWhileInCollege> for "Premier Education" Plan
-    When I fill External Savings form with <externalSavingsAmount>, <externalSavingsGrowthRate>
-    When I click "SHOW PLAN DETAILS" after step 3 of Replan for "Premier Education" Plan
-    When I click "CONTINUE" with SIP amount for Replan for "Premier Education" Plan
-    When I click "CONTINUE" with Growth Strategy for Replan for "Premier Education" Plan
-    When I click "CONTINUE TO INVEST" on the "Premier Education" Plan
-    When I select Payment type as <paymentType>
-    When I click "CONFIRM" on the "Premier Education" investment
-    Then I should see message "Replan completed successfully"
-    Then I click on "HOME" button
-    Given I am on the Investment Page
-    When I navigate to the investment tab "Mutual Funds"
-    When I click on "Add new plan" for mutual funds
-    When I select existing plan for mutual funds life goal "Premier Education"
     When I click on ">" to see plan details for "Premier Education" Plan
     When I click on "OTHER ACTIONS" button for "Premier Education" Plan
     When I click on "Stop All Investments" from "OTHER ACTIONS" for "Premier Education" Plan
