@@ -202,9 +202,9 @@ class MFGoalsFunctionality {
     await MFGoalsPage.clickConfirmButton();
   }
 
-  async seeLifeGoalPlanDetails() {
+  async seeLifeGoalPlanDetails(lifeGoal, childname) {
     await MFGoalsPage.clickToSeeLifeGoalPlanDetails();
-    return (await MFGoalsPage.planDetailsHeaderIsDisplayed());
+    return (await MFGoalsPage.planDetailsHeaderIsDisplayed(lifeGoal, childname));
   }
 
   async otherActionsOrEditPlan(buttonText) {

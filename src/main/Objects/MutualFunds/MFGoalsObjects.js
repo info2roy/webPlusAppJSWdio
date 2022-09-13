@@ -3,7 +3,7 @@ class MFGoalsObjects {
   lifeGoalElement(lifeGoal) {
     return {
       web: `(//div[text()="${lifeGoal}"])[1]`,
-      app: `(//*[@text="${lifeGoal}"])[1]`,
+      app: `//android.widget.TextView[@text="${lifeGoal}"]`,
     };
   }
 
@@ -42,7 +42,8 @@ class MFGoalsObjects {
   };
 
   investmentCalendarHeader = {
-    web: '//div[text()="Investment Calendar"]'
+    web: '//div[text()="Investment Calendar"]',
+    app: '//android.widget.TextView[@text="Investment Calendar"]'
   };
 
   showMeHowText = {
@@ -462,12 +463,20 @@ class MFGoalsObjects {
   };
 
   rightAngleBracketButton = {
-    web: '//span[text()="chevron_right"]'
+    web: '//span[text()="chevron_right"]',
+    app: '(//android.widget.TextView[contains(@text,"achieved")]/following-sibling::android.view.ViewGroup)[1]'
   };
 
-  planDetailsHeader = {
-    web: '//p[text()="PLAN DETAILS"]'
-  };
+  planDetailsHeader(lifeGoal, childname) {
+    let title = lifeGoal;
+    if (childname.length > 0) {
+      title = `${title} for ${childname}`;
+    }
+    return {
+      web: '//p[text()="PLAN DETAILS"]',
+      app: `//android.widget.TextView[@text="${title}"]`
+    };
+  }
 
   moveMoneyHeader = {
     web: '//div[text()="Move Money"]'

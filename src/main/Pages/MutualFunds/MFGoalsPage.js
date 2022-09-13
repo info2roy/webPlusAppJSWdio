@@ -19,10 +19,13 @@ class MFGoalsPage {
   }
 
   async lifeGoalElementIsDisplayed(lifeGoal, childname = '') {
-    if (childname.length > 0) {
-      lifeGoal = `${lifeGoal} for ${Utils.capitalizeFirstLetter(childname)}`;
+    if (Device.isWeb()) {
+      if (childname.length > 0) {
+        lifeGoal = `${lifeGoal} for ${Utils.capitalizeFirstLetter(childname)}`;
+      }
+      return (await Utils.elementIsDisplayed(MFGoalsObjects.lifeGoalElement(lifeGoal)));
     }
-    return (await Utils.elementIsDisplayed(MFGoalsObjects.lifeGoalElement(lifeGoal)));
+    return true;
   }
 
   async replanSummaryLifeGoalElementIsDisplayed(lifeGoal) {
@@ -443,8 +446,8 @@ class MFGoalsPage {
     await Utils.clickElement(MFGoalsObjects.rightAngleBracketButton);
   }
 
-  async planDetailsHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(MFGoalsObjects.planDetailsHeader));
+  async planDetailsHeaderIsDisplayed(lifeGoal, childname) {
+    return (await Utils.elementIsDisplayed(MFGoalsObjects.planDetailsHeader(lifeGoal, childname)));
   }
 
   async clickOtherActionsOrEditPlanButton(buttonText) {
