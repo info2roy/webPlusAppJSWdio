@@ -31,12 +31,14 @@ class MFGoalsObjects {
 
   lifeGoalExistingPlanElement(lifeGoal) {
     return {
-      web: `//div[text()="${lifeGoal}"]/following-sibling::div/following-sibling::div`
+      web: `//div[text()="${lifeGoal}"]/following-sibling::div/following-sibling::div`,
+      app: `//android.widget.TextView[@text="${lifeGoal}"]/following-sibling::android.widget.TextView[contains(@text,"1 · existing plans")]`
     };
   }
 
   yourExistingPlansHeader = {
-    web: '//div[contains(text(),"Your existing plans")]'
+    web: '//div[contains(text(),"Your existing plans")]',
+    app: '//android.widget.TextView[@text="Your existing plans"]'
   };
 
   investmentCalendarHeader = {

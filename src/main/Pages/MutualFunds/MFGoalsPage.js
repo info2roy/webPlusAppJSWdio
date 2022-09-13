@@ -42,10 +42,15 @@ class MFGoalsPage {
   }
 
   async clickOn1ExistingPlan(lifeGoal) {
-    const existingPlanText = await Utils.getText(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
-    expect(existingPlanText).to.equal('1 · existing plan');
     if(Device.isWeb()) {
       await Utils.scrollAndMoveToElement(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
+      const existingPlanText = await Utils.getText(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
+      expect(existingPlanText).to.equal('1 · existing plan');
+    } else if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalToEndForAndroid(0, 5);
+      await Utils.scrollHorizontalUntilTextIntoViewForAndroid({ app: lifeGoal }, 1);
+      const existingPlanText = await Utils.getText(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
+      expect(existingPlanText).to.equal(' 1 · existing plans ');
     }
     await Utils.clickElement(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
     expect(await Utils.elementIsDisplayed(MFGoalsObjects.yourExistingPlansHeader)).to.be.true;
