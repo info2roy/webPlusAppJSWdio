@@ -458,7 +458,8 @@ class MFGoalsObjects {
   };
 
   noInvestmentsToCancelMessage = {
-    web: '//p[text()="There are no investments to cancel in this plan."]'
+    web: '//p[text()="There are no investments to cancel in this plan."]',
+    app: '//android.widget.TextView[@text="There are no investments to cancel in this plan."]'
   };
 
   confirmButton = {
