@@ -112,7 +112,7 @@ class MFInvestmentFunctionality {
   async fundResultFound() {
 
   }
-  
+
   async pickFund() {
 
   }
