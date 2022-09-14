@@ -9,7 +9,7 @@ class MFGoalsObjects {
 
   createANewPlanHeader = {
     web: '//div[contains(text(),"Create a new plan")]',
-    app: '//*[contains(text(),"Create a new plan")]'
+    app: '//android.widget.TextView[contains(@text,"Create new plan")]'
   };
 
   replanSummaryLifeGoalElement(lifeGoal) {

@@ -22,7 +22,7 @@ class DashboardFunctionality {
       expect(await browser.getUrl()).toContain('dashboard');
     }
     expect(await Utils.elementIsDisplayed(DashboardObjects.withdrawButton)).toBe.true;
-    expect(await Utils.elementIsDisplayed(DashboardObjects.investNowButton)).toBe.true;
+    expect(await Utils.elementIsDisplayed(DashboardObjects.investMoreButton)).toBe.true;
   }
 
   async openMoreOptions() {
