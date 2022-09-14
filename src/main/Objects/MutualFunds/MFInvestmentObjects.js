@@ -228,5 +228,17 @@ class MFInvestmentObjects {
   monthlySummaryHeader = {
     web: '//div[text()="Monthly Summary"]'
   };
+
+  exploreFundsSearchBox = {
+    web: '(//div[contains(text(),"Explore funds")]//ancestor::div[1]//img)[1]'
+  };
+
+  chooseYourFundHeader = {
+    web: '(//div[text()="Choose your fund"])[3]'
+  };
+
+  enterFundNameTextBox = {
+    web: '//input[@placeholder="Search for mutual funds"]'
+  };
 }
 module.exports = new MFInvestmentObjects();

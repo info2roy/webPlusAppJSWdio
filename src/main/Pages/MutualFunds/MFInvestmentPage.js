@@ -208,7 +208,7 @@ class MFInvestmentPage {
           await Utils.elementIsDisplayed(MFInvestmentObjects.emailIcon) &&
           await Utils.elementIsDisplayed(MFInvestmentObjects.downloadIcon));
       default:
-        console.log(`Wrong type MF type to assert. -> ${ mfOption.toString()}`);
+        console.log(`Wrong type MF type to assert. -> ${mfOption.toString()}`);
     }
   }
 
@@ -252,6 +252,15 @@ class MFInvestmentPage {
 
   async monthlySummaryHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.monthlySummaryHeader));
+  }
+
+  async chooseYourFundPageAvailable() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.chooseYourFundHeader));
+  }
+
+  async searchMutualFund(fundName) {
+    await Utils.clickElement(MFInvestmentObjects.exploreFundsSearchBox);
+    await Utils.setInputField(fundName, MFInvestmentObjects.enterFundNameTextBox);
   }
 }
 module.exports = new MFInvestmentPage();

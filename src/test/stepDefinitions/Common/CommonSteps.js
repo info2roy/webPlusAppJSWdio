@@ -13,5 +13,6 @@ When(/^I go back to previous page$/, async () => {
 });
 
 When(/^I click on "([^"]*)?"$/, async (button) => {
+  await console.log(`I click on ${button}`);
   await Utils.clickElementByText(button);
 });

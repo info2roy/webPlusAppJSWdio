@@ -98,3 +98,13 @@ When(/^I click on "VIEW INVESTMENTS" button$/, async () => {
   await console.log('When I click on "VIEW INVESTMENTS" button');
   expect(await MFInvestmentFunctionality.viewInvestments()).to.be.true;
 });
+
+When(/^I search mutual fund (.+)$/, async (mutualFund) => {
+  await console.log(`I search mutual fund ${mutualFund}`);
+  expect(await MFInvestmentFunctionality.searchMutualFund(mutualFund)).to.be.true;
+});
+
+When(/^I perform pick fund for first available fund$/, async () => {
+  await console.log(`I perform pick fund for first available fund`);
+  expect().to.be.true;
+});

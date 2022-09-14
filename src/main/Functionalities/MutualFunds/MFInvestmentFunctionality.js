@@ -103,5 +103,18 @@ class MFInvestmentFunctionality {
       (await MFInvestmentPage.externalSipsHeaderIsDisplayed()) &&
       (await MFInvestmentPage.monthlySummaryHeaderIsDisplayed());
   }
+
+  async searchMutualFund(fundName) {
+    await MFInvestmentPage.searchMutualFund(fundName);
+    return (await MFInvestmentPage.chooseYourFundPageAvailable());
+  }
+
+  async fundResultFound() {
+
+  }
+  
+  async pickFund() {
+
+  }
 }
 module.exports = new MFInvestmentFunctionality();

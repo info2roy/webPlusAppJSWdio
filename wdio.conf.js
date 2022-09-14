@@ -27,7 +27,7 @@ exports.config = {
   // port: 52033,
   // path: '/wd/hub',
   specs: [
-    './src/test/features/LoginViaHomepage.feature'
+    './src/test/features/MutualFunds/InitiateNewSIP.feature'
   ],
   // Patterns to exclude.
   exclude: [
