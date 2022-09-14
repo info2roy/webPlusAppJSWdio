@@ -2,13 +2,13 @@ class CommonMyWealthObjects {
 
   yourWealthPageHeader = {
     web: '//div[text()="YOUR WEALTH" or text()="MY WEALTH"]',
-    app: '//*[@text="YOUR WEALTH" or @text="MY WEALTH"]'
+    app: '//android.widget.TextView[@text="YOUR WEALTH" or @text="MY WEALTH"]'
   };
 
   myWealthTab(wealthType) { //wealthType belongs to ["Investments", "Insurance"]
     return {
       web: `//div[text()="${wealthType}"]`,
-      app: `//*[@text="${wealthType}"]`
+      app: `//android.widget.TextView[@text="${wealthType}"]`
     };
   }
 

@@ -19,6 +19,9 @@ class CommonMyWealthPage {
   }
 
   async myWealthInvestmentsPageIsDisplayed() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('Mutual Funds');
+    }
     return (await Utils.elementIsDisplayed(CommonMyWealthObjects.myWealthInvestmentType('Mutual Funds'))) &&
       (await Utils.elementIsDisplayed(CommonMyWealthObjects.myWealthInvestmentType('Stocks')));
   }
