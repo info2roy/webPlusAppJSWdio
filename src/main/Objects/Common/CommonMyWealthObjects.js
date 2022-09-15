@@ -15,7 +15,7 @@ class CommonMyWealthObjects {
   myWealthInvestmentType(investmentType) { //investmentType belongs to ["Mutual Funds", "Stocks", "US Stocks", "Fixed Deposits", "Real Estate", "Govt. Schemes", "Other Investments"]
     return {
       web: `//div[text()="${investmentType}"]`,
-      app: `//*[@text="${investmentType}"]`
+      app: `//android.widget.TextView[@text="${investmentType}"]`
     };
   }
 

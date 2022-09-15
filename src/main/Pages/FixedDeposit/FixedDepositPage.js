@@ -1,13 +1,20 @@
 const Utils = require('../../../support/Utils/Utils');
-const CommonMyWealthObjects = require('../../Objects/Common/CommonMyWealthObjects');
 const CommonObjects = require('../../Objects/Common/CommonObjects');
 const FixedDepositObjects = require('../../Objects/FixedDeposit/FixedDepositObjects');
 const { expect } = require('chai');
+const Device = require('../../../support/libraries/Device');
 
 class FixedDepositPage {
 
   async clickAddExistingFixedDepositLink() {
     await Utils.clickElement(FixedDepositObjects.addExistingFixedDepositLink);
+  }
+
+  async fixedDepositPageHeaderIsDisplayed() {
+    if (Device.isAndroidApp()) {
+      return (await Utils.elementIsDisplayed(FixedDepositObjects.fixedDepositPageHeader));
+    }
+    return true;
   }
 
   async clickAddFixedDepositLink() {
@@ -50,8 +57,14 @@ class FixedDepositPage {
   }
 
   async setFDStartMonth(startMonth) {
-    await Utils.setDate(1, startMonth, FixedDepositObjects.fdStartMonthField, CommonObjects.currentMonth,
-      CommonObjects.previousMonthLink, CommonObjects.nextMonthLink, CommonObjects.dayPicker);
+    if (Device.isWeb()) {
+      await Utils.setDate(1, startMonth, FixedDepositObjects.fdStartMonthField, CommonObjects.currentMonth,
+        CommonObjects.previousMonthLink, CommonObjects.nextMonthLink, CommonObjects.dayPicker);
+    } else if (Device.isAndroidApp()) {
+      await Utils.setMonthAndYearForAndroid(startMonth, FixedDepositObjects.fdStartMonthField,
+        CommonObjects.androidMonthPickerMonth, CommonObjects.androidMonthPickerYear,
+        CommonObjects.androidMonthPickerDoneButton);
+    }
   }
 
   async getFDStartMonth() {
@@ -59,8 +72,15 @@ class FixedDepositPage {
   }
 
   async setFDMaturityMonth(maturityMonth) {
-    await Utils.setDate(1, maturityMonth, FixedDepositObjects.fdMaturityMonthField, CommonObjects.currentMonth,
-      CommonObjects.previousMonthLink, CommonObjects.nextMonthLink, CommonObjects.dayPicker);
+    if (Device.isWeb()) {
+      await Utils.setDate(1, maturityMonth, FixedDepositObjects.fdMaturityMonthField, CommonObjects.currentMonth,
+        CommonObjects.previousMonthLink, CommonObjects.nextMonthLink, CommonObjects.dayPicker);
+    } else if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalToEndForAndroid(0, 1);
+      await Utils.setMonthAndYearForAndroid(maturityMonth, FixedDepositObjects.fdMaturityMonthField,
+        CommonObjects.androidMonthPickerMonth, CommonObjects.androidMonthPickerYear,
+        CommonObjects.androidMonthPickerDoneButton);
+    }
   }
 
   async getFDMaturityMonth() {

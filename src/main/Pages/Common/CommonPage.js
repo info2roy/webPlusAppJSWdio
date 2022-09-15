@@ -1,10 +1,14 @@
+const Device = require('../../../support/libraries/Device');
 const Utils = require('../../../support/Utils/Utils');
 const CommonObjects = require('../../Objects/Common/CommonObjects');
 
 class CommonPage {
 
   async selectFamilyMemberPageHeaderIsDisplayed(timeoutMS = 15000) {
-    return (await Utils.elementIsDisplayed(CommonObjects.selectFamilyMemberPageHeader, timeoutMS));
+    if (Device.isWeb()) {
+      return (await Utils.elementIsDisplayed(CommonObjects.selectFamilyMemberPageHeader, timeoutMS));
+    }
+    return true;
   }
 
   async familyMemberNameIsDisplayed(familyMemberName, timeoutMS = 15000) {

@@ -51,7 +51,8 @@ class CommonObjects {
   };
 
   saveOrUpdateButton = {
-    web: '//button[text()="Save" or text()="Update"]'
+    web: '//button[text()="Save" or text()="Update"]',
+    app: '//android.widget.TextView[@text="Save"]'
   };
 
   editDetailsLink = {
@@ -102,7 +103,19 @@ class CommonObjects {
 
   fixedDepositPageHeader = {
     web: '//div[contains(text(),"Interest rates upto")]',
-    app: '//*[contains(@text,"Interest rates upto")]'
+    app: '//android.widget.TextView[contains(@text,"You can now track all your Fixed Deposits in one place")]'
+  };
+
+  androidMonthPickerMonth = {
+    app: '(//android.widget.EditText[@resource-id="android:id/numberpicker_input"])[1]'
+  };
+
+  androidMonthPickerYear = {
+    app: '(//android.widget.EditText[@resource-id="android:id/numberpicker_input"])[2]'
+  };
+
+  androidMonthPickerDoneButton = {
+    app: '//android.widget.Button[@resource-id="android:id/button1"]'
   };
 }
 module.exports = new CommonObjects();

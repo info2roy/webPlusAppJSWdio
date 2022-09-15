@@ -13,7 +13,7 @@ When(/^I click on "Add existing Fixed Deposit" for family member "([^"]*)?"$/,
       this.fixedDepositTotalInvestedAmountForMember = 0;
       expect(await FixedDepositFunctionality.addExistingFixedDepositInitialState()).to.be.true;
       expect(await FixedDepositFunctionality.selectFamilyMember(familyMember)).to.be.true;
-
+      expect(await FixedDepositFunctionality.addFixedDeposit()).to.be.true;
     } else {
       expect(await FixedDepositFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
       this.fixedDepositTotalInvestedAmountForMember = await FixedDepositFunctionality.getTotalInvestedAmount();

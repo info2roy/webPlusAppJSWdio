@@ -20,7 +20,7 @@ class CommonMyWealthPage {
 
   async myWealthInvestmentsPageIsDisplayed() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid('Mutual Funds');
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'Mutual Funds' });
     }
     return (await Utils.elementIsDisplayed(CommonMyWealthObjects.myWealthInvestmentType('Mutual Funds'))) &&
       (await Utils.elementIsDisplayed(CommonMyWealthObjects.myWealthInvestmentType('Stocks')));
@@ -47,6 +47,8 @@ class CommonMyWealthPage {
   async selectMyWealthInvestmentType(investmentType) {
     if (Device.isWeb()) {
       await Utils.scrollAndMoveToElement(CommonMyWealthObjects.myWealthInvestmentType(investmentType));
+    } else if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: investmentType } );
     }
     await Utils.clickElement(CommonMyWealthObjects.myWealthInvestmentType(investmentType));
   }

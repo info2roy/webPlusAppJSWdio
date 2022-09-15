@@ -248,7 +248,7 @@ class Utils {
   }
 
   async scrollVerticalUntilTextIntoViewForAndroid(textToBeIntoView, scrollableInstanceId = 0) {
-    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).scrollTextIntoView`;
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsVerticalList().scrollTextIntoView`;
     await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
   }
 
@@ -351,6 +351,13 @@ class Utils {
     return isDisplayed;
   }
 
+  splitMonthAndYear(monthYear) {
+    const parts = monthYear.split(' ');
+    const month = parts[0].slice(0, -1);
+    const year = parseInt(parts[1].trim(), 10);
+    return [month, year];
+  }
+
   /**
    * Set a monthYear for given month and year on the month calendar shown on the page
    * @param  {string} monthYear The text of the form 'Jan, 2022'
@@ -361,9 +368,7 @@ class Utils {
    * @param  {object} monthSelector The selector for selecting the month on the calendar
    */
   async setMonthAndYear(monthYear, monthYearFieldSelector, pickedYearSelector, prevYearButtonSelector, nextYearButtonSelector, monthSelector) {
-    const parts = monthYear.split(' ');
-    const month = parts[0].slice(0, -1);
-    const year = parseInt(parts[1].trim(), 10);
+    const [month, year] = this.splitMonthAndYear(monthYear);
     await this.clickElement(monthYearFieldSelector);
     const currentYear = parseInt(await this.getText(pickedYearSelector), 10);
     let yearDiff = currentYear - year;
@@ -380,6 +385,21 @@ class Utils {
     const selectedYear = parseInt(await this.getText(pickedYearSelector), 10);
     expect(selectedYear).to.equal(year);
     await this.clickElement(monthSelector(month));
+  }
+
+  async setMonthAndYearForAndroid(monthYear, monthYearFieldSelector, monthPickerMonthSelector, monthPickerYearSelector, doneButtonSelector) {
+    const [month, year] = this.splitMonthAndYear(monthYear);
+    await this.clickElement(monthYearFieldSelector);
+    const currentYear = parseInt(await this.getText(monthPickerYearSelector), 10);
+    let yearDiff = currentYear - year;
+    if (yearDiff > 0) {
+      await this.scrollVerticalUntilTextIntoViewForAndroid(year.toString(), 1);
+    } else if (yearDiff < 0) {
+      yearDiff = yearDiff * (-1);
+      await this.scrollVerticalUntilTextIntoViewForAndroid(year.toString(), 1);
+    }
+    await this.scrollVerticalUntilTextIntoViewForAndroid(month, 0);
+    await this.clickElement(doneButtonSelector);
   }
 
   //pad zeroes at the beginning so that the string num has total places digits

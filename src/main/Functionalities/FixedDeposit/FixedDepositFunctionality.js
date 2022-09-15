@@ -5,13 +5,22 @@ const CommonFunctionality = require('../Common/CommonFunctionality');
 const FixedDepositObjects = require('../../Objects/FixedDeposit/FixedDepositObjects');
 const Constants = require('../../../config/data/structured/Constants');
 const { expect } = require('chai');
+const Device = require('../../../support/libraries/Device');
 
 class FixedDepositFunctionality {
 
   //corresponds to state when no existing fixed deposit is added
   async addExistingFixedDepositInitialState() {
     await FixedDepositPage.clickAddExistingFixedDepositLink();
-    return (await CommonPage.selectFamilyMemberPageHeaderIsDisplayed());
+    return (await CommonPage.selectFamilyMemberPageHeaderIsDisplayed()) && (await FixedDepositPage.fixedDepositPageHeaderIsDisplayed());
+  }
+
+  async addFixedDeposit() {
+    if (Device.isAndroidApp()) {
+      await FixedDepositPage.clickAddFixedDepositLink();
+      return (await FixedDepositPage.enterInvestmentDetailsHeaderIsDisplayed());
+    }
+    return true;
   }
 
   //corresponds to state when at least one existing fixed deposit is added
