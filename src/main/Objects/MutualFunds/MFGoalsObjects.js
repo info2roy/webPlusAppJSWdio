@@ -46,9 +46,7 @@ class MFGoalsObjects {
     app: '//android.widget.TextView[@text="Investment Calendar"]'
   };
 
-  showMeHowText = {
-    app: 'SHOW ME HOW'
-  };
+  showMeHowText = 'SHOW ME HOW';
 
   showMeHowButton = {
     web: '//button[contains(text(),"Show me how")]',
@@ -211,9 +209,7 @@ class MFGoalsObjects {
     app: '//android.widget.TextView[@text="CONTINUE"]'
   };
 
-  continueLinkText = {
-    app: 'CONTINUE'
-  };
+  continueLinkText = 'CONTINUE';
 
   congratulationsPageHeader = {
     web: '//span[text()="Congratulations!"]',

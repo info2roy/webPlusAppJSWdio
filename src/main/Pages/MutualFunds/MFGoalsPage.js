@@ -7,7 +7,7 @@ class MFGoalsPage {
   async clickOnLifeGoal(lifeGoal) {
     if (Device.isAndroidApp()) {
       await Utils.scrollVerticalToEndForAndroid(0, 5);
-      await Utils.scrollHorizontalUntilTextIntoViewForAndroid({ app: lifeGoal }, 1);
+      await Utils.scrollHorizontalUntilTextIntoViewForAndroid(lifeGoal, 1);
     } else if(Device.isWeb()) {
       await Utils.scrollAndMoveToElement(MFGoalsObjects.lifeGoalElement(lifeGoal));
     }
@@ -51,7 +51,7 @@ class MFGoalsPage {
       expect(existingPlanText).to.equal('1 · existing plan');
     } else if (Device.isAndroidApp()) {
       await Utils.scrollVerticalToEndForAndroid(0, 5);
-      await Utils.scrollHorizontalUntilTextIntoViewForAndroid({ app: lifeGoal }, 1);
+      await Utils.scrollHorizontalUntilTextIntoViewForAndroid(lifeGoal, 1);
       const existingPlanText = await Utils.getText(MFGoalsObjects.lifeGoalExistingPlanElement(lifeGoal));
       expect(existingPlanText).to.equal(' 1 · existing plans ');
     }
@@ -115,8 +115,8 @@ class MFGoalsPage {
 
   async enterRetireAtAge(retireAtAge) {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'I want to retire at the age of' }, 0);
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: '70' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('I want to retire at the age of', 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('70', 0);
     }
     const selector = MFGoalsObjects.retireAtAgeOption(retireAtAge);
     if (selector == undefined) {
@@ -131,7 +131,7 @@ class MFGoalsPage {
 
   async enterRetirementEndAge(retirementEndAge) {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'I want to plan for age' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('I want to plan for age', 0);
     }
     await Utils.setInputField(retirementEndAge, MFGoalsObjects.retirementEndAgeField, true);
     if (Device.isAndroidApp()) {
@@ -141,7 +141,7 @@ class MFGoalsPage {
 
   async clickOnCreateAPlanLink() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'CREATE A PLAN' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('CREATE A PLAN', 0);
     }
     await Utils.clickElement(MFGoalsObjects.createAPlanLink);
   }
@@ -169,28 +169,28 @@ class MFGoalsPage {
 
   async enterFutureMonthlyIncomeFromOtherSources(amount) {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: '40K' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('40K', 0);
     }
     await Utils.setInputField(amount, MFGoalsObjects.futureMonthlyIncomeFromOtherSourcesField, true);
   }
 
   async clickCalculateMyNeedLink() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'CALCULATE MY NEED' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('CALCULATE MY NEED', 0);
     }
     await Utils.clickElement(MFGoalsObjects.calculateMyNeedLink);
   }
 
   async whatYouNeedToRetireHeaderIsDisplayed() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'What you need to retire' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('What you need to retire', 0);
     }
     return (await Utils.elementIsDisplayed(MFGoalsObjects.whatYouNeedToRetireHeader));
   }
 
   async selectInflationPercent(inflationPercent) {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'Your expenses will increase every year' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('Your expenses will increase every year', 0);
       await Utils.clickElement(MFGoalsObjects.inflationPercentSelectOption);
       await Utils.clickElement(MFGoalsObjects.inflationPercentOption(inflationPercent));
     } else {
@@ -202,14 +202,14 @@ class MFGoalsPage {
     if (Device.isWeb()) {
       await Utils.scrollAndMoveToElement(MFGoalsObjects.showDetailedPlanLink);
     } else if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'SHOW DETAILED PLAN' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('SHOW DETAILED PLAN', 0);
     }
     await Utils.clickElement(MFGoalsObjects.showDetailedPlanLink);
   }
 
   async yourRetirementPlanPageHeaderIsDisplayed() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'Your Retirement Plan' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('Your Retirement Plan', 0);
     }
     return (await Utils.elementIsDisplayed(MFGoalsObjects.yourRetirementPlanPageHeader));
   }
@@ -225,7 +225,7 @@ class MFGoalsPage {
 
   async congratulationsPageHeaderIsDisplayed() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'Congratulations!' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('Congratulations!', 0);
     }
     console.log('step1');
     await browser.pause(10000);
@@ -305,7 +305,7 @@ class MFGoalsPage {
     if (Device.isWeb()) {
       await Utils.scrollAndMoveToElement(MFGoalsObjects.personaliseThisPlanLinkForCollegeType(collegeType));
     } else if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: collegeType });
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(collegeType);
     }
     await Utils.clickElement(MFGoalsObjects.personaliseThisPlanLinkForCollegeType(collegeType));
   }
@@ -318,7 +318,7 @@ class MFGoalsPage {
     if (Device.isWeb()) {
       await Utils.scrollAndMoveToElement(MFGoalsObjects.continueButtonForPremierEducationPlan(index));
     } else if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'CONTINUE' });
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('CONTINUE');
     }
     await Utils.clickElement(MFGoalsObjects.continueButtonForPremierEducationPlan(index));
   }
@@ -358,7 +358,7 @@ class MFGoalsPage {
 
   async clickYearlyBreakupPageShowPlanButton() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'SHOW PLAN FOR' });
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('SHOW PLAN FOR');
     }
     await Utils.clickElement(MFGoalsObjects.yearlyBreakupPageShowPlanButton);
   }
@@ -370,7 +370,7 @@ class MFGoalsPage {
 
   async clickPremierEducationWorkingPlanStartWithButton() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'START WITH' });
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('START WITH');
     }
     await Utils.clickElement(MFGoalsObjects.premierEducationWorkingPlanStartWithButton);
   }
@@ -397,7 +397,7 @@ class MFGoalsPage {
 
   async clickInvestEveryMonthButton() {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid({ app: 'INVEST EVERY MONTH' }, 0);
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('INVEST EVERY MONTH', 0);
     }
     await Utils.clickElement(MFGoalsObjects.investEveryMonthButton);
   }

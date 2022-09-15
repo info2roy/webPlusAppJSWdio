@@ -249,7 +249,7 @@ class Utils {
 
   async scrollVerticalUntilTextIntoViewForAndroid(textToBeIntoView, scrollableInstanceId = 0) {
     const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsVerticalList().scrollTextIntoView`;
-    await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
+    await $(`android=${func}("${textToBeIntoView}")`);
   }
 
   async scrollVerticalToEndForAndroid(scrollableInstanceId, maxSwipes) {
@@ -260,7 +260,7 @@ class Utils {
 
   async scrollHorizontalUntilTextIntoViewForAndroid(textToBeIntoView, scrollableInstanceId = 0) {
     const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsHorizontalList().scrollTextIntoView`;
-    await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
+    await $(`android=${func}("${textToBeIntoView}")`);
   }
 
   //Choose a Select tag option by Visible Text

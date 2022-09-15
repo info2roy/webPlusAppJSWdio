@@ -12,7 +12,7 @@ class MFWithdrawalPage {
   async scrollUntilMFPlanNameTextIsDisplayed(planName) {
     if (Device.isAndroidApp()) {
       await console.log(`scrollUntilMFPlanNameTextIsDisplayed ${planName}`);
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MFWithdrawalObjects.mutualFundPlanNameText(planName));
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(planName);
     } else if (Device.isWeb()) {
       await Utils.scrollAndMoveToElement(MFWithdrawalObjects.mutualFundPlan(planName));
     }
@@ -64,7 +64,7 @@ class MFWithdrawalPage {
 
   async scrollUntilMutualFundNameIsDisplayed(fundName) {
     if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid(MFWithdrawalObjects.mutualFundNameText(fundName));
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(fundName);
     }
   }
 

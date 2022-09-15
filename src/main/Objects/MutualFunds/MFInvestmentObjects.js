@@ -21,14 +21,11 @@ class MFInvestmentObjects {
     app: '//*[@text="Invest"]'
   };
 
-  ageGroupHeaderText = {
-    web: '30s',
-    app: '30s'
-  };
+  ageGroupHeaderText = '30s';
 
   ageGroupHeader = {
-    web: `//div[text()="${this.ageGroupHeaderText.web}"]`,
-    app: `//*[@text="${this.ageGroupHeaderText.app}"]`
+    web: `//div[text()="${this.ageGroupHeaderText}"]`,
+    app: `//*[@text="${this.ageGroupHeaderText}"]`
   };
 
   ageGroupTab(ageGroup) {
@@ -84,25 +81,25 @@ class MFInvestmentObjects {
     };
   }
 
-  MAKE_PAYMENT_NOW_TEXT = { web: 'MAKE PAYMENT NOW', app: 'MAKE PAYMENT NOW' };
+  MAKE_PAYMENT_NOW_TEXT = 'MAKE PAYMENT NOW';
 
-  ONE_CLICK_INVEST_TEXT = { web: '1-CLICK INVEST', app: '1-CLICK INVEST' };
+  ONE_CLICK_INVEST_TEXT = '1-CLICK INVEST';
 
-  AUTOMATE_NOW_TEXT = { web: 'AUTOMATE NOW', app: 'AUTOMATE NOW' };
+  AUTOMATE_NOW_TEXT = 'AUTOMATE NOW';
 
   makePaymentNowButton = {
     web: `//button[text()="Make Payment Now"]`,
-    app: `//*[@text="${this.MAKE_PAYMENT_NOW_TEXT.app}"]`
+    app: `//*[@text="${this.MAKE_PAYMENT_NOW_TEXT}"]`
   };
 
   oneClickInvestButton = {
     web: `//button[text()="1-Click Invest"] | //button[text()="Schedule Now"] | //button[text()="Automate Now"]`,
-    app: `//*[@text="${this.ONE_CLICK_INVEST_TEXT.app}"]`
+    app: `//*[@text="${this.ONE_CLICK_INVEST_TEXT}"]`
   };
 
   automateNowButton = {
     web: `//button[text()="Automate Now"]`,
-    app: `//*[@text="${this.AUTOMATE_NOW_TEXT.app}"]`
+    app: `//*[@text="${this.AUTOMATE_NOW_TEXT}"]`
   };
 
   setupMFSipInvestmentPageHeader(amount, months) {
