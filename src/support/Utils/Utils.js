@@ -263,6 +263,12 @@ class Utils {
     await $(`android=${func}("${textToBeIntoView}")`);
   }
 
+  async scrollHorizontalToEndForAndroid(scrollableInstanceId, maxSwipes) {
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrolltoend
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsHorizontalList().scrollToEnd`;
+    await $(`android=${func}(${maxSwipes})`);
+  }
+
   //Choose a Select tag option by Visible Text
   async chooseSelectOptionByVisibleText(selector, visibleText) {
     const locator = this.getLocator(selector);
