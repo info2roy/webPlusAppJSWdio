@@ -32,7 +32,12 @@ class FixedDepositPage {
   async enterFDFirmName(fdFirmName) {
     await Utils.clickElement(FixedDepositObjects.fdFirmNameField);
     await Utils.clickElement(FixedDepositObjects.fdFirmNameOption(fdFirmName));
-    const selectedFirmName = await Utils.getValue(FixedDepositObjects.fdFirmNameField);
+    let selectedFirmName = '';
+    if (Device.isWeb()) {
+      selectedFirmName = await Utils.getValue(FixedDepositObjects.fdFirmNameField);
+    } else if (Device.isAndroidApp()) {
+      selectedFirmName = await Utils.getText(FixedDepositObjects.fdFirmNameField);
+    }
     expect(selectedFirmName).to.equal(fdFirmName);
   }
 
