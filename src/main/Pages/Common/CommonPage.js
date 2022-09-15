@@ -38,5 +38,9 @@ class CommonPage {
   async expandMoreButtonIsDisplayed(timeoutMS = 15000) {
     return (await Utils.elementIsDisplayed(CommonObjects.expandMoreButton, timeoutMS));
   }
+
+  async verifyMessage(message) {
+    return (await Utils.returnTextIsDisplayed(message));
+  }
 }
 module.exports = new CommonPage();

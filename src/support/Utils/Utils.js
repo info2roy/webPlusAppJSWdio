@@ -286,6 +286,13 @@ class Utils {
     const myButton = await $(webElement);
     await myButton.click();
   }
+
+  async returnTextIsDisplayed(text) {
+    await browser.pause(1000);
+    const webElement = (`//*[contains(text(),"${text}")]`);
+    const isDisplayed = await $(webElement).isDisplayed();
+    return isDisplayed;
+  }
 }
 
 module.exports = new Utils();

@@ -1,6 +1,7 @@
 const CommonPage = require('../../Pages/Common/CommonPage');
 
 class CommonFunctionality {
+
   async selectFamilyMemberPageLaunched() {
     return (await CommonPage.selectFamilyMemberPageHeaderIsDisplayed());
   }
@@ -22,6 +23,10 @@ class CommonFunctionality {
 
   async selectASchemePageLaunched() {
     return (await CommonPage.selectASchemePageHeaderIsDisplayed(2000));
+  }
+
+  async assertMessage(message) {
+    return (await CommonPage.verifyMessage(message));
   }
 
 }
