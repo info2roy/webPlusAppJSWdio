@@ -258,6 +258,14 @@ class Utils {
     await $(`android=${func}(${maxSwipes})`);
   }
 
+  async scrollVerticalForAndroid(scrollableInstanceId, steps, forward = true) {
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollForward(int)
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollBackward(int)
+
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsVerticalList()`;
+    await $(`android=${func}.${forward ? 'scrollForward' : 'scrollBackward' }(${steps})`);
+  }
+
   async scrollHorizontalUntilTextIntoViewForAndroid(textToBeIntoView, scrollableInstanceId = 0) {
     const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsHorizontalList().scrollTextIntoView`;
     await $(`android=${func}("${textToBeIntoView}")`);
@@ -393,18 +401,87 @@ class Utils {
     await this.clickElement(monthSelector(month));
   }
 
+  monthAbbrToFullName(monthAbbr) {
+    const map = {
+      'Jan': 'January',
+      'Feb': 'February',
+      'Mar': 'March',
+      'Apr': 'April',
+      'May': 'May',
+      'Jun': 'June',
+      'Jul': 'July',
+      'Aug': 'August',
+      'Sep': 'September',
+      'Oct': 'October',
+      'Nov': 'November',
+      'Dec': 'December'
+    };
+    return map[monthAbbr];
+  }
+
+  async swipeOnAndroid(startXMultiplier, startYMultiplier, endXMultiplier, endYMultiplier) {
+    const windowSize = await driver.getWindowSize();
+
+    const right2leftSwipeOptions = {
+      startX: windowSize.width * startXMultiplier,
+      startY: windowSize.height * startYMultiplier,
+      endX: windowSize.width * endXMultiplier,
+      endY: windowSize.height * endYMultiplier,
+      delay: 0
+    };
+
+    await driver.touchPerform([
+      {
+        action: 'press',
+        options: {
+          x: right2leftSwipeOptions.startX,
+          y: right2leftSwipeOptions.startY
+        }
+      },
+      { action: 'wait', options: { mseconds: right2leftSwipeOptions.delay } },
+      {
+        action: 'moveTo',
+        options: {
+          x: right2leftSwipeOptions.endX,
+          y: right2leftSwipeOptions.endY
+        }
+      },
+      { action: 'release' }
+    ]);
+  }
+
   async setMonthAndYearForAndroid(monthYear, monthYearFieldSelector, monthPickerMonthSelector, monthPickerYearSelector, doneButtonSelector) {
+    const monthNames = { 'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5, 'July': 6,
+      'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11 };
     const [month, year] = this.splitMonthAndYear(monthYear);
+    const monthFullName = this.monthAbbrToFullName(month);
     await this.clickElement(monthYearFieldSelector);
+    const currentMonth = new Date().getMonth();
     const currentYear = parseInt(await this.getText(monthPickerYearSelector), 10);
+    console.log(`currentMonth ${currentMonth} currentYear ${currentYear} monthFullName ${monthFullName}`);
     let yearDiff = currentYear - year;
+    let monthDiff = currentMonth - monthNames[monthFullName];
+    console.log(`yeardiff = ${yearDiff} monthDiff = ${monthDiff}`);
     if (yearDiff > 0) {
-      await this.scrollVerticalUntilTextIntoViewForAndroid(year.toString(), 1);
+      for (let index = 0; index < yearDiff; index++) {
+        await this.swipeOnAndroid(0.6, 0.5, 0.6, 0.6);
+      }
     } else if (yearDiff < 0) {
       yearDiff = yearDiff * (-1);
-      await this.scrollVerticalUntilTextIntoViewForAndroid(year.toString(), 1);
+      for (let index = 0; index < yearDiff; index++) {
+        await this.swipeOnAndroid(0.6, 0.5, 0.6, 0.4);
+      }
     }
-    await this.scrollVerticalUntilTextIntoViewForAndroid(month, 0);
+    if (monthDiff > 0) {
+      for (let index = 0; index < monthDiff; index++) {
+        await this.swipeOnAndroid(0.4, 0.5, 0.4, 0.6);
+      }
+    } else if (monthDiff < 0) {
+      monthDiff = monthDiff * (-1);
+      for (let index = 0; index < monthDiff; index++) {
+        await this.swipeOnAndroid(0.4, 0.5, 0.4, 0.4);
+      }
+    }
     await this.clickElement(doneButtonSelector);
   }
 

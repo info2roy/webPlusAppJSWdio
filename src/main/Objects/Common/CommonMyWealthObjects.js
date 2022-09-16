@@ -38,7 +38,8 @@ class CommonMyWealthObjects {
 
   wealthUpdateSuccessMessage(wealthType) {
     return {
-      web: `//div[text()="${wealthType} data updated successfully" or text()="${wealthType} data added successfully"]`
+      web: `//div[text()="${wealthType} data updated successfully" or text()="${wealthType} data added successfully"]`,
+      app: `//*[@text="${wealthType} data updated successfully" or @text="${wealthType} data added successfully"]`
     };
   }
 

@@ -47,7 +47,8 @@ class FixedDepositObjects {
   };
 
   fdMaturityMonthField = {
-    web: 'input#my_date'
+    web: 'input#my_date',
+    app: '//android.widget.TextView[@text="MM/YY"]'
   };
 
   totalInvestedAmount = {
