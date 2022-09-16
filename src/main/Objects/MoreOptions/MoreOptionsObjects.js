@@ -138,7 +138,8 @@ class MoreOptionsPageObjects {
   };
 
   logoutOption = {
-    web: '//div[text()="Logout"]'
+    web: '//div[text()="Logout"]',
+    app: '//android.widget.TextView[@text="Logout"]'
   };
 
   logoutOptionText = 'Logout';

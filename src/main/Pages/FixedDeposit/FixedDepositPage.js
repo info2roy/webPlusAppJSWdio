@@ -42,7 +42,12 @@ class FixedDepositPage {
   }
 
   async getFDFirmName() {
-    return await Utils.getValue(FixedDepositObjects.fdFirmNameField);
+    if (Device.isWeb()) {
+      return await Utils.getValue(FixedDepositObjects.fdFirmNameField);
+    } else if (Device.isAndroidApp()) {
+      return await Utils.getText(FixedDepositObjects.fdFirmNameField);
+    }
+    return '';
   }
 
   async enterFDInvestedAmount(investedAmount) {
@@ -50,7 +55,12 @@ class FixedDepositPage {
   }
 
   async getFDInvestedAmount() {
-    return await Utils.getValue(FixedDepositObjects.fdInvestedAmountField);
+    if (Device.isWeb()) {
+      return await Utils.getValue(FixedDepositObjects.fdInvestedAmountField);
+    } else if (Device.isAndroidApp()) {
+      return await Utils.getText(FixedDepositObjects.fdInvestedAmountField);
+    }
+    return '';
   }
 
   async enterFDInterestRate(interestRate) {
@@ -58,7 +68,11 @@ class FixedDepositPage {
   }
 
   async getFDInterestRate() {
-    return await Utils.getValue(FixedDepositObjects.fdInterestRateField);
+    if (Device.isWeb()) {
+      return await Utils.getValue(FixedDepositObjects.fdInterestRateField);
+    } else if (Device.isAndroidApp()) {
+      return await Utils.getText(FixedDepositObjects.fdInterestRateField);
+    }
   }
 
   async setFDStartMonth(startMonth) {
@@ -73,7 +87,13 @@ class FixedDepositPage {
   }
 
   async getFDStartMonth() {
-    return (await Utils.getValue(FixedDepositObjects.fdStartMonthField)).replace(' ', ', ');
+    if (Device.isWeb()) {
+      return (await Utils.getValue(FixedDepositObjects.fdStartMonthField)).replace(' ', ', ');
+    } else if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalToEndForAndroid(0, 1);
+      return (await Utils.getText(FixedDepositObjects.fdStartMonthField)).replace(' ', ', ');
+    }
+    return '';
   }
 
   async setFDMaturityMonth(maturityMonth) {
@@ -89,7 +109,12 @@ class FixedDepositPage {
   }
 
   async getFDMaturityMonth() {
-    return (await Utils.getValue(FixedDepositObjects.fdMaturityMonthField)).replace(' ', ', ');
+    if (Device.isWeb()) {
+      return (await Utils.getValue(FixedDepositObjects.fdMaturityMonthField)).replace(' ', ', ');
+    } else if (Device.isAndroidApp()) {
+      return (await Utils.getText(FixedDepositObjects.fdMaturityMonthField)).replace(' ', ', ');
+    }
+    return '';
   }
 
   async fixedDepositGetStringAttribute(fdAmount, index, attrName) {

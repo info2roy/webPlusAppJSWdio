@@ -52,17 +52,17 @@ class CommonObjects {
 
   saveOrUpdateButton = {
     web: '//button[text()="Save" or text()="Update"]',
-    app: '//android.widget.TextView[@text="Save"]'
+    app: '//android.widget.TextView[@text="Save" or @text="Update"]'
   };
 
   editDetailsLink = {
     web: '//div[text()="Edit details"] | //h6[text()="Edit details"]',
-    app: '//*[@text="Edit details"]'
+    app: '//android.widget.TextView[@text="Edit details"]'
   };
 
   deleteLink = {
     web: '//div[text()="Delete"] | //h6[text()="Delete"]',
-    app: '//*[@text="Delete"]'
+    app: '//android.widget.TextView[@text="Delete"]'
   };
 
   previousYearButton = {

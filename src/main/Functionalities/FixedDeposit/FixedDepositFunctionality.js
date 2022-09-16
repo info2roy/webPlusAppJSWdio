@@ -60,9 +60,9 @@ class FixedDepositFunctionality {
     expect(await FixedDepositPage.fixedDepositGetStringAttribute(fdInvestedAmount, 1, Constants.FIXED_DEPOSIT_ATTR_INTEREST)
     ).to.equal(`${fdInterestRate}%`);
     expect(await FixedDepositPage.fixedDepositGetStringAttribute(fdInvestedAmount, 2, Constants.FIXED_DEPOSIT_ATTR_START_MONTH)
-    ).to.equal(fdStartMonth);
+    ).to.equal(`01 ${fdStartMonth}`);
     expect(await FixedDepositPage.fixedDepositGetStringAttribute(fdInvestedAmount, 3, Constants.FIXED_DEPOSIT_ATTR_MATURITY_MONTH)
-    ).to.equal(fdMaturityMonth);
+    ).to.equal(`01 ${fdMaturityMonth}`);
     await FixedDepositPage.clickOnFixedDepositMoreOptionsButton(fdInvestedAmount);
     await CommonPage.clickEditDetailsLink();
     expect(await FixedDepositPage.getFDFirmName()).to.equal(fdFirmName);
