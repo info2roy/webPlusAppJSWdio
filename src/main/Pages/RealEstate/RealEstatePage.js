@@ -1,3 +1,4 @@
+const Device = require('../../../support/libraries/Device');
 const Utils = require('../../../support/Utils/Utils');
 const RealEstateObjects = require('../../Objects/RealEstate/RealEstateObjects');
 
@@ -31,7 +32,12 @@ class RealEstatePage {
   }
 
   async getPropertyName() {
-    return (await Utils.getValue(RealEstateObjects.propertyNameField));
+    if (Device.isWeb()) {
+      return (await Utils.getValue(RealEstateObjects.propertyNameField));
+    } else if (Device.isAndroidApp()) {
+      return (await Utils.getText(RealEstateObjects.propertyNameField));
+    }
+    return '';
   }
 
   async enterPropertyPrice(propertyPrice) {
@@ -39,7 +45,12 @@ class RealEstatePage {
   }
 
   async getPropertyPrice() {
-    return (await Utils.getValue(RealEstateObjects.propertyPriceField));
+    if (Device.isWeb()) {
+      return (await Utils.getValue(RealEstateObjects.propertyPriceField));
+    } else if (Device.isAndroidApp()) {
+      return (await Utils.getText(RealEstateObjects.propertyPriceField));
+    }
+    return '';
   }
 
   async enterPurchaseYear(purchaseYear) {
@@ -47,7 +58,12 @@ class RealEstatePage {
   }
 
   async getPurchaseYear() {
-    return (await Utils.getValue(RealEstateObjects.purchaseYearField));
+    if (Device.isWeb()) {
+      return (await Utils.getValue(RealEstateObjects.purchaseYearField));
+    } else if (Device.isAndroidApp()) {
+      return (await Utils.getText(RealEstateObjects.purchaseYearField));
+    }
+    return '';
   }
 
   async enterCurrentValue(currentValue) {
@@ -55,7 +71,12 @@ class RealEstatePage {
   }
 
   async getCurrentValue() {
-    return (await Utils.getValue(RealEstateObjects.currentValueField));
+    if (Device.isWeb()) {
+      return (await Utils.getValue(RealEstateObjects.currentValueField));
+    } else if (Device.isAndroidApp()) {
+      return (await Utils.getText(RealEstateObjects.currentValueField));
+    }
+    return '';
   }
 
   async realEstatePropertyGetStringAttribute(propertyName, index, attrName) {

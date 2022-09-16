@@ -33,19 +33,20 @@ class CommonMyWealthObjects {
 
   myWealthInvestmentRealEstateHeader = {
     web: '(//div[text()="Real Estate"])[last()]',
-    app: '(//*[@text="Real Estate"])[last()]'
+    app: '//android.widget.TextView[@text="Real Estate"]'
   };
 
   wealthUpdateSuccessMessage(wealthType) {
     return {
-      web: `//div[text()="${wealthType} data updated successfully" or text()="${wealthType} data added successfully"]`,
-      app: `//*[@text="${wealthType} data updated successfully" or @text="${wealthType} data added successfully"]`
+      web: `//div[text()="${wealthType} data updated successfully" or text()="${wealthType} data added successfully" or text()="ESTIMATED CURRENT VALUE"]`,
+      app: `//*[@text="${wealthType} data updated successfully" or @text="${wealthType} data added successfully" or @text="ESTIMATED CURRENT VALUE"]`
     };
   }
 
   wealthDeleteSuccessMessage(wealthType) {
     return {
-      web: `//div[contains(text(),"${wealthType} deleted successfully") or contains(text(),"${wealthType} data deleted successfully")]`
+      web: `//div[contains(text(),"${wealthType} deleted successfully") or contains(text(),"${wealthType} data deleted successfully") or text()="ESTIMATED CURRENT VALUE"]`,
+      app: `//*[contains(@text,"${wealthType} deleted successfully") or contains(@text,"${wealthType} data deleted successfully") or @text="ESTIMATED CURRENT VALUE"]`
     };
   }
 

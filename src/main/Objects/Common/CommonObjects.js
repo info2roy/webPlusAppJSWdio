@@ -10,7 +10,7 @@ class CommonObjects {
   familyMember(familyMemberName) {
     return {
       web: `(//div[contains(text(),"${familyMemberName}")])[last()]`,
-      app: `(//*[contains(@text,"${familyMemberName}")])[last()]`
+      app: `//android.widget.TextView[contains(@text,"${familyMemberName}")]`
     };
   }
 
@@ -37,7 +37,7 @@ class CommonObjects {
 
   expandMoreButton = {
     web: '//i[text()="expand_more"]',
-    app: '//*[@text="expand_more"]'
+    app: '(//android.widget.TextView[@index=2])[1]'
   };
 
   otpField = {
