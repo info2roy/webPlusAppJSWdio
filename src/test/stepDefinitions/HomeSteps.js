@@ -7,7 +7,6 @@ const Device = require('../../support/libraries/Device');
 const Utils = require('../../support/Utils/Utils');
 require('dotenv').config();
 const { ANDROMEDA, MYSCRIPBOX, MOCKAPI } = require('../../config/env');
-// const url = '';
 
 Given(/^I am on the scripbox home page$/, async () => {
   await console.log('Given I am on the scripbox home page');
@@ -65,7 +64,6 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
 
 Then(/^I go back to the dashboard page$/, async () => {
   await console.log('Then I go back to the dashboard page');
-  await browser.pause(3000);
-  await DashboardFunctionality.open(this.url); //this.uat is coming from world.js
+  await DashboardFunctionality.open(this.url);
   await DashboardFunctionality.validate();
 });

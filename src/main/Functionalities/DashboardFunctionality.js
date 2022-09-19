@@ -20,7 +20,7 @@ class DashboardFunctionality {
   async validate() {
     expect(await Utils.elementIsDisplayed(DashboardObjects.helloUser)).toBe.true;
     if (Device.isWeb()) {
-      // expect(await browser.getUrl()).toContain('dashboard');
+      expect(await browser.getUrl()).toContain('dashboard');
     }
   }
 
