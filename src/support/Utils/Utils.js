@@ -320,6 +320,15 @@ class Utils {
     return isDisplayed;
   }
 
+  /**
+   * Set a monthYear for given month and year on the month calendar shown on the page
+   * @param  {string} monthYear The text of the form 'Jan, 2022'
+   * @param  {object} monthYearFieldSelector The selector for monthYear textfield
+   * @param  {object} pickedYearSelector The selector for the displayed selected/picked year
+   * @param  {object} prevYearButtonSelector The selector for arrow to be used for navigating to the previous year
+   * @param  {object} nextYearButtonSelector The selector for arrow to be used for navigating to the next year
+   * @param  {object} monthSelector The selector for selecting the month on the calendar
+   */
   async setMonthAndYear(monthYear, monthYearFieldSelector, pickedYearSelector, prevYearButtonSelector, nextYearButtonSelector, monthSelector) {
     const parts = monthYear.split(' ');
     const month = parts[0].slice(0, -1);
@@ -342,10 +351,21 @@ class Utils {
     await this.clickElement(monthSelector(month));
   }
 
+  //pad zeroes at the beginning so that the string num has total places digits
   zeroPad(num, places) {
     return String(num).padStart(places, '0');
   }
 
+  /**
+   * Set a date for given day, month and year on the calendar shown on the page
+   * @param  {Number} day The day between 1 and 31
+   * @param  {string} monthYear The text of the form 'Jan, 2022'
+   * @param  {object} monthYearFieldSelector The selector for monthYear textfield
+   * @param  {object} pickedMonthSelector The selector for the displayed selected/picked month
+   * @param  {object} prevMonthButtonSelector The selector for arrow to be used for navigating to the previous month
+   * @param  {object} nextMonthButtonSelector The selector for arrow to be used for navigating to the next month
+   * @param  {object} daySelector The selector for selecting the day on the calendar
+   */
   async setDate(day, monthYear, monthYearFieldSelector, pickedMonthSelector, prevMonthButtonSelector, nextMonthButtonSelector, daySelector) {
     const monthNames = { 'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12};
     const parts = monthYear.split(' ');
