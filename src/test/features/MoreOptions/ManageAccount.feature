@@ -16,8 +16,6 @@ Feature: As customer I wish to update my account details
     And I should see "Email change has been submitted" success message
     And I go back to the dashboard page
 
-
-
   Scenario: As a logged in user I wish to update my User mobile number
     When I navigate to "Personal Information" Page from More Options Page
     Then I edit "mobile number"
