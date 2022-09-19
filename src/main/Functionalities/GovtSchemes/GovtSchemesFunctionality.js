@@ -6,6 +6,7 @@ const CommonFunctionality = require('../Common/CommonFunctionality');
 const GovtSchemesObjects = require('../../Objects/GovtSchemes/GovtSchemesObjects');
 const CommonObjects = require('../../Objects/Common/CommonObjects');
 const CommonPage = require('../../Pages/Common/CommonPage');
+const CommonMyWealthFunctionality = require('../Common/CommonMyWealthFunctionality');
 
 class GovtSchemesFunctionality {
 
@@ -39,6 +40,12 @@ class GovtSchemesFunctionality {
   }
 
   async deleteGovtScheme() {
+    await GovtSchemesPage.clickDeleteSchemeButton();
+    return (await GovtSchemesPage.govtSchemeDeleteMessageIsDisplayed());
+  }
+
+  async deleteGovtSchemeNSC(nscInvestedAmount) {
+    await GovtSchemesPage.clickNscSchemeMoreOptionsButton(nscInvestedAmount);
     await GovtSchemesPage.clickDeleteSchemeButton();
     return (await GovtSchemesPage.govtSchemeDeleteMessageIsDisplayed());
   }
@@ -83,7 +90,7 @@ class GovtSchemesFunctionality {
 
   }
 
-  async doGovtSchemeValidations(schemeName, familyMemberName, currentAmount, previousInvestedTotalAmount, previousInvestedTotalAmountForSingleGovtScheme, previousInvestedTotalAmountForSingleGovtSchemeOnPieChart) {
+  async doGovtSchemeValidations(schemeName, familyMemberName, currentAmount, previousInvestedTotalAmount, previousInvestedTotalAmountForSingleGovtScheme) {
     const newInvestedTotalAmount = await CommonMyWealthFunctionality.getTotalInvestedAmount();
     // const newSingleGovtSchemePercentAndAmount = await this.getSchemePercentAndAmount(schemeName);
     let newSingleGovtSchemeAbsoluteAmount = 0;
@@ -143,9 +150,20 @@ class GovtSchemesFunctionality {
   }
 
   async validateNSCSchemeDetails(nscInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth) {
-    expect(await GovtSchemesPage.nscSchemeGetNumericAttribute(Constants.NSC_SCHEME_ATTR_INTEREST)).to.equal(nscInterestPercent);
-    expect(await GovtSchemesPage.nscSchemeGetStringAttribute(Constants.NSC_SCHEME_ATTR_START_MONTH)).to.equal(nscStartMonth);
-    expect(await GovtSchemesPage.nscSchemeGetStringAttribute(Constants.NSC_SCHEME_ATTR_MATURITY_MONTH)).to.equal(nscMaturityMonth);
+    expect(await GovtSchemesPage.nscSchemeGetNumericAttribute(nscInvestedAmount, 1, Constants.NSC_SCHEME_ATTR_INTEREST)).to.equal(nscInterestPercent);
+    expect(await GovtSchemesPage.nscSchemeGetStringAttribute(nscInvestedAmount, 2, Constants.NSC_SCHEME_ATTR_START_MONTH)).to.equal(nscStartMonth);
+    expect(await GovtSchemesPage.nscSchemeGetStringAttribute(nscInvestedAmount, 3, Constants.NSC_SCHEME_ATTR_MATURITY_MONTH)).to.equal(nscMaturityMonth);
+  }
+
+  async editNSCDetails(nscInvestedAmount, newInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth, schemeName) {
+    await GovtSchemesPage.clickNscSchemeMoreOptionsButton(nscInvestedAmount);
+    await CommonPage.clickEditDetailsLink();
+    await GovtSchemesPage.setNSCInvestedAmount(newInvestedAmount);
+    await GovtSchemesPage.setNSCInterestPercent(nscInterestPercent);
+    await GovtSchemesPage.setNSCStartMonth(nscStartMonth);
+    await GovtSchemesPage.setNSCMaturityMonth(nscMaturityMonth);
+    await CommonPage.clickSaveOrUpdateButton();
+    return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(schemeName));
   }
 }
 module.exports = new GovtSchemesFunctionality();

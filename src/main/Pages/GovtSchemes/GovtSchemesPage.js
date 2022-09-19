@@ -233,12 +233,16 @@ class GovtSchemesPage {
       CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
   }
 
-  async nscSchemeGetStringAttribute(attrName) {
-    return (await Utils.getText(GovtSchemesObjects.nscSchemeDetailsAttribute(attrName)));
+  async nscSchemeGetStringAttribute(nscInvestedAmount, index, attrName) {
+    return (await Utils.getText(GovtSchemesObjects.nscSchemeDetailsAttribute(nscInvestedAmount, index, attrName)));
   }
 
-  async nscSchemeGetNumericAttribute(attrName) {
-    return parseFloat((await Utils.getText(GovtSchemesObjects.nscSchemeDetailsAttribute(attrName))).replace(/,/g, ''));
+  async nscSchemeGetNumericAttribute(nscInvestedAmount, index, attrName) {
+    return parseFloat((await Utils.getText(GovtSchemesObjects.nscSchemeDetailsAttribute(nscInvestedAmount, index, attrName))).replace(/,/g, ''));
+  }
+
+  async clickNscSchemeMoreOptionsButton(nscInvestedAmount) {
+    await Utils.clickElement(GovtSchemesObjects.nscSchemeMoreOptionsButton(nscInvestedAmount));
   }
 
 }

@@ -5,7 +5,7 @@ const CommonFunctionality = require('../../../main/Functionalities/Common/Common
 const Constants = require('../../../config/data/structured/Constants');
 const CommonMyWealthFunctionality = require('../../../main/Functionalities/Common/CommonMyWealthFunctionality');
 
-When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|National Saving Certificate|Senior Citizen Saving Scheme)" for family member "([^"]*)?"$/,
+When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|Senior Citizen Saving Scheme)" for family member "([^"]*)?"$/,
   async (schemeName, familyMember) => {
     await console.log(`When I select Govt Scheme "${schemeName}" for family member "${familyMember}"`);
     this.familyMemberName = familyMember;
@@ -130,7 +130,12 @@ Then(/^NPS Scheme details are shown correctly for Govt Scheme "(National Pension
 
 When(/^I delete Govt Scheme$/, async() => {
   console.log('When I delete Govt Scheme');
-  await GovtSchemesFunctionality.deleteGovtScheme();
+  expect(await GovtSchemesFunctionality.deleteGovtScheme()).to.be.true;
+});
+
+When(/^I delete Govt Scheme "National Saving Certificate"$/, async() => {
+  console.log('When I delete Govt Scheme "National Saving Certificate"');
+  expect(await GovtSchemesFunctionality.deleteGovtSchemeNSC(this.nscInvestedAmount)).to.be.true;
 });
 
 When(/^I fill form with (.+), (\d+), (\d+), (\d+), (\d+) for Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2)"$/,
@@ -148,12 +153,24 @@ When(/^I fill form with (.+), (\d+), (\d+), (\d+), (\d+) for Govt Scheme "(Natio
 When(/^I fill form with (\d+); (.+); (.+); (.+) for Govt Scheme "National Saving Certificate"$/,
   async(nscInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth) => {
     this.schemeName = 'National Saving Certificate';
-    console.log(`When I fill form with ${nscInvestedAmount}, ${nscInterestPercent}, ${nscStartMonth}, ${nscMaturityMonth} for Govt Scheme "${this.schemeName}"`);
+    console.log(`When I fill form with ${nscInvestedAmount}; ${nscInterestPercent}; ${nscStartMonth}; ${nscMaturityMonth} for Govt Scheme "${this.schemeName}"`);
     this.nscInvestedAmount = nscInvestedAmount;
     this.nscInterestPercent = parseFloat(nscInterestPercent);
     this.nscStartMonth = nscStartMonth;
     this.nscMaturityMonth = nscMaturityMonth;
     expect(await GovtSchemesFunctionality.fillNSCForm(nscInvestedAmount, this.nscInterestPercent, nscStartMonth, nscMaturityMonth, this.schemeName)).to.be.true;
+  }
+);
+
+When(/^I edit the "National Saving Certificate" of (\d+) with (\d+); (.+); (.+); (.+)$/,
+  async(nscInvestedAmount, newInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth) => {
+    console.log(`When I edit the "National Saving Certificate" of ${nscInvestedAmount} with ${newInvestedAmount}; ${nscInterestPercent}; ${nscStartMonth}; ${nscMaturityMonth}`);
+    this.schemeName = 'National Saving Certificate';
+    this.nscInvestedAmount = newInvestedAmount;
+    this.nscInterestPercent = parseFloat(nscInterestPercent);
+    this.nscStartMonth = nscStartMonth;
+    this.nscMaturityMonth = nscMaturityMonth;
+    expect(await GovtSchemesFunctionality.editNSCDetails(nscInvestedAmount, newInvestedAmount, this.nscInterestPercent, nscStartMonth, nscMaturityMonth, this.schemeName)).to.be.true;
   }
 );
 

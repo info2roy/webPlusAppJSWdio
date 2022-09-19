@@ -52,7 +52,8 @@ class GovtSchemesObjects {
     'Sukanya Samridhi Yojna': 'SSY',
     'Senior Citizen Saving Scheme': 'SCSS',
     'National Pension Scheme Tier1': 'NPS',
-    'National Pension Scheme Tier2': 'NPS'
+    'National Pension Scheme Tier2': 'NPS',
+    'National Saving Certificate': 'NSC'
   };
 
   amountUpdateSuccessMessage(schemeName) {
@@ -170,9 +171,15 @@ class GovtSchemesObjects {
   }
 
   //For NSC Scheme details attributes Interest, Start, Maturity
-  nscSchemeDetailsAttribute(attribute) {
+  nscSchemeDetailsAttribute(nscAmount, index, attribute) {
     return {
-      web: `//div[text()="${attribute}"]/following-sibling::div`
+      web: `//h5[text()="${nscAmount.toLocaleString('hi')}"]/parent::div/parent::div/following-sibling::div/div[${index}]/p[text()="${attribute}"]/following-sibling::p`
+    };
+  }
+
+  nscSchemeMoreOptionsButton(nscAmount) {
+    return {
+      web: `//h5[text()="${nscAmount.toLocaleString('hi')}"]/parent::div/following-sibling::div/span[text()="more_horiz"]`
     };
   }
 }
