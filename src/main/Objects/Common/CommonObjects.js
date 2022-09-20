@@ -37,5 +37,15 @@ class CommonObjects {
     web: '//i[text()="expand_more"]',
     app: '//*[@text="expand_more"]'
   };
+
+  otpField = {
+    web: 'input#verify-otp',
+    app: '.android.widget.EditText'
+  };
+
+  verifyOTPButton = {
+    web: '//div[text()="Verify"]',
+    app: '//*[@text="VERIFY"]'
+  };
 }
 module.exports = new CommonObjects();
