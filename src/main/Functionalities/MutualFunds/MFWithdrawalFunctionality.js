@@ -62,11 +62,6 @@ class MFWithdrawalFunctionality {
     return (await MFWithdrawalPage.verifyWithOTPPageHeaderIsDisplayed());
   }
 
-  async verifyWithOTP(otp) {
-    await MFWithdrawalPage.enterOTP(otp);
-    await MFWithdrawalPage.clickVerifyWithOTPButton();
-  }
-
   async withdrawalScheduledPageLaunched() {
     return (await MFWithdrawalPage.withdrawScheduledPageHeaderIsDisplayed());
   }

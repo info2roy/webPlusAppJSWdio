@@ -120,16 +120,6 @@ class MFWithdrawalObjects {
     app: '//*[@text="Verify with OTP"]'
   };
 
-  otpField = {
-    web: 'input#verify-otp',
-    app: '.android.widget.EditText'
-  };
-
-  verifyOTPButton = {
-    web: '//div[text()="Verify"]',
-    app: '//*[@text="VERIFY"]'
-  };
-
   withdrawScheduledPageHeader = {
     web: '//div[text()="Withdrawal Scheduled"]',
     app: '//*[@text="Withdrawal Scheduled"]'

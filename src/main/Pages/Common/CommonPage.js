@@ -38,5 +38,17 @@ class CommonPage {
   async expandMoreButtonIsDisplayed(timeoutMS = 15000) {
     return (await Utils.elementIsDisplayed(CommonObjects.expandMoreButton, timeoutMS));
   }
+
+  async verifyMessage(message) {
+    return (await Utils.isTextDisplayed(message));
+  }
+
+  async enterOTP(otp) {
+    await Utils.setInputField(otp, CommonObjects.otpField);
+  }
+
+  async clickVerifyWithOTPButton() {
+    await Utils.clickElement(CommonObjects.verifyOTPButton);
+  }
 }
 module.exports = new CommonPage();

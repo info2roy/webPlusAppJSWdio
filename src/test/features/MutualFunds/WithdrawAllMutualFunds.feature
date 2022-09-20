@@ -1,7 +1,7 @@
 Feature: Scripbox Withdraw for Mutual Fund
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "STAGING" for "user189182"
+    Given I login to Scripbox in "MOCKAPI" for "user189182"
 
   Scenario Outline: As a logged in user, I am able to withdraw from mutual fund using Custom fund based withdrawal
     Given I am on the dashboard page

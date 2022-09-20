@@ -1,6 +1,7 @@
 const CommonPage = require('../../Pages/Common/CommonPage');
 
 class CommonFunctionality {
+
   async selectFamilyMemberPageLaunched() {
     return (await CommonPage.selectFamilyMemberPageHeaderIsDisplayed());
   }
@@ -24,5 +25,13 @@ class CommonFunctionality {
     return (await CommonPage.selectASchemePageHeaderIsDisplayed(2000));
   }
 
+  async assertMessage(message) {
+    return (await CommonPage.verifyMessage(message));
+  }
+
+  async verifyWithOTP(otp) {
+    await CommonPage.enterOTP(otp);
+    await CommonPage.clickVerifyWithOTPButton();
+  }
 }
 module.exports = new CommonFunctionality();
