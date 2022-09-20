@@ -41,11 +41,6 @@ When(/^I click on button "(CONFIRM WITHDRAWAL|NO, STAY INVESTED|CANCEL)" for wit
   expect(await MFWithdrawalFunctionality.takeFinalAction(action)).to.be.true;
 });
 
-When(/^I enter OTP as (\d+) for verification$/, async (otp) => {
-  await console.log(`When I enter OTP as ${otp} for verification`);
-  await MFWithdrawalFunctionality.verifyWithOTP(otp);
-});
-
 Then(/^I should see Withdrawal Scheduled success message$/, async () => {
   await console.log('Then I should see Withdrawal Scheduled success message');
   expect(await MFWithdrawalFunctionality.withdrawalScheduledPageLaunched()).to.be.true;

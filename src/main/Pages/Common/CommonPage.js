@@ -40,7 +40,7 @@ class CommonPage {
   }
 
   async verifyMessage(message) {
-    return (await Utils.returnTextIsDisplayed(message));
+    return (await Utils.isTextDisplayed(message));
   }
 }
 module.exports = new CommonPage();

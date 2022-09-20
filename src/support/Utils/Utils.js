@@ -287,7 +287,7 @@ class Utils {
     await myButton.click();
   }
 
-  async returnTextIsDisplayed(text) {
+  async isTextDisplayed(text) {
     await browser.pause(1000);
     const webElement = (`//*[contains(text(),"${text}")]`);
     const isDisplayed = await $(webElement).isDisplayed();
