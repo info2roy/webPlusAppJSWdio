@@ -29,5 +29,9 @@ class CommonFunctionality {
     return (await CommonPage.verifyMessage(message));
   }
 
+  async verifyWithOTP(otp) {
+    await MFWithdrawalPage.enterOTP(otp);
+    await MFWithdrawalPage.clickVerifyWithOTPButton();
+  }
 }
 module.exports = new CommonFunctionality();
