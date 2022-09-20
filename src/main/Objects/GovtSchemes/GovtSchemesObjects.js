@@ -2,23 +2,23 @@ class GovtSchemesObjects {
 
   govtSchemesInitialPageHeader = {
     web: '//*[text()="One place to track all your Govt. Schemes"]',
-    app: '//*[@text="One place to track all your Govt. Schemes"]'
+    app: '//android.widget.TextView[@text="One place to track all your Govt. Schemes"]'
   };
 
   addGovtSchemesButton = {
     web: '//button[text()="Add Govt. Scheme" or text()="Add Government Scheme"] | //div[text()="Add government scheme"]',
-    app: '//*[@text="Add Govt. Scheme" or @text="Add Government Scheme" or @text="Add government scheme"]'
+    app: '//android.widget.TextView[@text="ADD GOVT. SCHEME"]'
   };
 
   addGovtSchemePageHeader = {
     web: '(//div[text()="Add Scheme"])[last()]',
-    app: '(//*[@text="Add Scheme"])[last()]'
+    app: '//android.widget.TextView[@text="Add Scheme"]'
   };
 
   govtScheme(schemaName) {
     return {
       web: `//div[contains(text(),"${schemaName}")]`,
-      app: `//*[contains(@text,"${schemaName}")]`
+      app: `//android.widget.TextView[contains(@text,"${schemaName}")]`
     };
   }
 
@@ -29,7 +29,7 @@ class GovtSchemesObjects {
 
   enterInvestmentDetailsHeader = {
     web: '//div[text()="Enter Investment details"]',
-    app: '//*[@text="Enter Investment details"]'
+    app: '//android.widget.TextView[@text="Enter investment details"]'
   };
 
   currentValueHeader = {
@@ -58,17 +58,14 @@ class GovtSchemesObjects {
 
   amountUpdateSuccessMessage(schemeName) {
     return {
-      web: `//div[text()="${this.schemeNameToCode[schemeName]} data updated successfully" or text()="${this.schemeNameToCode[schemeName]} data added successfully"]`
+      web: `//div[text()="${this.schemeNameToCode[schemeName]} data updated successfully" or text()="${this.schemeNameToCode[schemeName]} data added successfully"]`,
+      app: `//*[@text="${this.schemeNameToCode[schemeName]} data added successfully" or @text="${this.schemeNameToCode[schemeName]} data updated successfully"]`
     };
   }
 
   investedAmountHeader = {
     web: '//div[text()="INVESTED AMOUNT"]',
     app: '//*[@text="INVESTED AMOUNT"]'
-  };
-
-  totalInvestedAmount = {
-    web: '//div[text()="INVESTED AMOUNT"]/parent::div/following-sibling::div'
   };
 
   totalAmountForSchemePieChart(schemeName) {
@@ -80,7 +77,8 @@ class GovtSchemesObjects {
 
   totalAbsoluteAmountForScheme(schemeName) {
     return {
-      web: `//div[contains(text(),"${schemeName}")]/parent::div/parent::div/parent::div/following-sibling::div/div/div`
+      web: `//div[contains(text(),"${schemeName}")]/parent::div/parent::div/parent::div/following-sibling::div/div/div`,
+      app: `(//android.widget.TextView[@text="${schemeName}"]/following-sibling::android.widget.TextView)[2]`
     };
   }
 
@@ -137,19 +135,23 @@ class GovtSchemesObjects {
   }
 
   nscInvestedAmountField = {
-    web: 'input#invested_val'
+    web: 'input#invested_val',
+    app: '(//android.widget.TextView[@text="Invested Amount"]/following-sibling::android.view.ViewGroup/android.widget.EditText)[1]'
   };
 
   nscInterestPercentField = {
-    web: 'input#interest'
+    web: 'input#interest',
+    app: '(//android.widget.TextView[@text="Interest (%)"]/following-sibling::android.view.ViewGroup/android.widget.EditText)[1]'
   };
 
   nscStartDateField = {
-    web: 'input#start_date'
+    web: 'input#start_date',
+    app: '(//android.widget.TextView[@text="Start Date"]/following-sibling::android.view.ViewGroup/android.widget.TextView)[1]'
   };
 
   nscMaturityDateField = {
-    web: 'input#my_date'
+    web: 'input#my_date',
+    app: '(//android.widget.TextView[@text="Maturity Date"]/following-sibling::android.view.ViewGroup/android.widget.TextView)[1]'
   };
 
   previousYearButton = {
@@ -173,13 +175,15 @@ class GovtSchemesObjects {
   //For NSC Scheme details attributes Interest, Start, Maturity
   nscSchemeDetailsAttribute(nscAmount, index, attribute) {
     return {
-      web: `//h5[text()="${nscAmount.toLocaleString('hi')}"]/parent::div/parent::div/following-sibling::div/div[${index}]/p[text()="${attribute}"]/following-sibling::p`
+      web: `//h5[text()="${nscAmount.toLocaleString('hi')}"]/parent::div/parent::div/following-sibling::div/div[${index}]/p[text()="${attribute}"]/following-sibling::p`,
+      app: `//android.widget.TextView[@text="1 Investment"]/following-sibling::android.view.ViewGroup/android.widget.TextView[@text="${nscAmount.toLocaleString('hi')}"]/following-sibling::android.widget.TextView[${index + 3}]`
     };
   }
 
   nscSchemeMoreOptionsButton(nscAmount) {
     return {
-      web: `//h5[text()="${nscAmount.toLocaleString('hi')}"]/parent::div/following-sibling::div/span[text()="more_horiz"]`
+      web: `//h5[text()="${nscAmount.toLocaleString('hi')}"]/parent::div/following-sibling::div/span[text()="more_horiz"]`,
+      app: `//android.widget.TextView[@text="1 Investment"]/following-sibling::android.view.ViewGroup/android.widget.TextView[@text="${nscAmount.toLocaleString('hi')}"]/following-sibling::android.view.ViewGroup/android.widget.TextView`
     };
   }
 }

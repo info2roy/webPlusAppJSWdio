@@ -150,7 +150,7 @@ When(/^I fill form with (.+), (\d+), (\d+), (\d+), (\d+) for Govt Scheme "(Natio
   }
 );
 
-When(/^I fill form with (\d+); (.+); (.+); (.+) for Govt Scheme "National Saving Certificate"$/,
+When(/^I fill form with (\d+); (.+); (.+); (.+) for Govt Scheme "National Saving Certificate"$/, { timeout: 60000 },
   async(nscInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth) => {
     this.schemeName = 'National Saving Certificate';
     console.log(`When I fill form with ${nscInvestedAmount}; ${nscInterestPercent}; ${nscStartMonth}; ${nscMaturityMonth} for Govt Scheme "${this.schemeName}"`);
@@ -162,7 +162,7 @@ When(/^I fill form with (\d+); (.+); (.+); (.+) for Govt Scheme "National Saving
   }
 );
 
-When(/^I edit the "National Saving Certificate" of (\d+) with (\d+); (.+); (.+); (.+)$/,
+When(/^I edit the "National Saving Certificate" of (\d+) with (\d+); (.+); (.+); (.+)$/, { timeout: 60000 },
   async(nscInvestedAmount, newInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth) => {
     console.log(`When I edit the "National Saving Certificate" of ${nscInvestedAmount} with ${newInvestedAmount}; ${nscInterestPercent}; ${nscStartMonth}; ${nscMaturityMonth}`);
     this.schemeName = 'National Saving Certificate';

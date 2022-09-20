@@ -28,7 +28,7 @@ class CommonMyWealthObjects {
 
   myWealthInvestmentGovtSchemesHeader = {
     web: '(//div[text()="Government Schemes"])[last()]',
-    app: '(//*[@text="Government Schemes"])[last()]'
+    app: '//android.widget.TextView[@text="Government Schemes"]'
   };
 
   myWealthInvestmentRealEstateHeader = {
@@ -51,7 +51,8 @@ class CommonMyWealthObjects {
   }
 
   totalInvestedAmount = {
-    web: '//div[text()="INVESTED AMOUNT"]/parent::div/following-sibling::div'
+    web: '//div[text()="INVESTED AMOUNT"]/parent::div/following-sibling::div',
+    app: '(//android.widget.TextView[@text="INVESTED AMOUNT"]/following-sibling::android.widget.TextView)[1]'
   };
 }
 module.exports = new CommonMyWealthObjects();

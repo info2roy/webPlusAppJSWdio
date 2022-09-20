@@ -47,7 +47,7 @@ class Utils {
 
   async clickElement(selector) {
     const locator = this.getLocator(selector);
-    await this.elementIsDisplayed(selector);
+    expect(await this.elementIsDisplayed(selector)).to.be.true;
     const myButton = await $(locator);
     if (Device.isWeb()) {
       await myButton.waitForClickable({ timeout: 10000 });

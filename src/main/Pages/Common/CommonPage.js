@@ -28,7 +28,10 @@ class CommonPage {
   }
 
   async selectASchemePageHeaderIsDisplayed(timeoutMS = 15000) {
-    return (await Utils.elementIsDisplayed(CommonObjects.selectASchemePageHeader, timeoutMS));
+    if (Device.isWeb()) {
+      return (await Utils.elementIsDisplayed(CommonObjects.selectASchemePageHeader, timeoutMS));
+    }
+    return true;
   }
 
   async clickBackButton() {
@@ -53,6 +56,10 @@ class CommonPage {
 
   async clickVerifyWithOTPButton() {
     await Utils.clickElement(CommonObjects.verifyOTPButton);
+  }
+
+  async getExpandMoreText() {
+    return (await Utils.getText(CommonObjects.expandMoreButton));
   }
 
   async elementIsDisplayed(selector, timeoutMS = 15000) {

@@ -3,6 +3,7 @@ const Utils = require('../../../support/Utils/Utils');
 const GovtSchemesObjects = require('../../Objects/GovtSchemes/GovtSchemesObjects');
 const { expect } = require('chai');
 const CommonObjects = require('../../Objects/Common/CommonObjects');
+const Device = require('../../../support/libraries/Device');
 
 class GovtSchemesPage {
 
@@ -25,7 +26,10 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_GPF:
       case Constants.GOVT_SCHEME_SSY:
       case Constants.GOVT_SCHEME_SCSS:
+        await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
+        break;
       case Constants.GOVT_SCHEME_NSC:
+        await Utils.scrollVerticalUntilTextIntoViewForAndroid(schemeName);
         await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
         break;
       case Constants.GOVT_SCHEME_NPS_TIER1:
@@ -46,7 +50,10 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_GPF:
       case Constants.GOVT_SCHEME_SSY:
       case Constants.GOVT_SCHEME_SCSS:
+        await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
+        break;
       case Constants.GOVT_SCHEME_NSC:
+        await Utils.scrollVerticalUntilTextIntoViewForAndroid(schemeName);
         await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
         break;
       case Constants.GOVT_SCHEME_NPS_TIER1:
@@ -88,6 +95,8 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_NPS_TIER1:
       case Constants.GOVT_SCHEME_NPS_TIER2:
         return (await Utils.elementIsDisplayed(GovtSchemesObjects.currentValueHeader));
+      case Constants.GOVT_SCHEME_NSC:
+        return (await Utils.elementIsDisplayed(GovtSchemesObjects.investedAmountHeader));
       default:
         await console.log(`unsupported Govt Scheme ${schemeName}`);
         return false;
@@ -104,14 +113,6 @@ class GovtSchemesPage {
 
   async amountUpdateSuccessMessageIsDisplayed(schemeName) {
     return (await Utils.elementIsDisplayed(GovtSchemesObjects.amountUpdateSuccessMessage(schemeName)));
-  }
-
-  async getTotalInvestedAmount() {
-    return Utils.numberAbbriviationToAbsoluteValue(await Utils.getText(GovtSchemesObjects.totalInvestedAmount));
-  }
-
-  async getTotalInvestedAmountStr() {
-    return await Utils.getText(GovtSchemesObjects.totalInvestedAmount);
   }
 
   async totalAmountForSchemePieChartIsDisplayed(schemeName) {
@@ -140,6 +141,9 @@ class GovtSchemesPage {
   }
 
   async getSchemeAbsoluteAmount(schemeName) {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(schemeName);
+    }
     if(await this.totalAmountForSchemeAbsoluteIsDisplayed(schemeName)) {
       const value = await Utils.getText(GovtSchemesObjects.totalAbsoluteAmountForScheme(schemeName));
       return Utils.numberAbbriviationToAbsoluteValue(value.trim());
@@ -224,13 +228,25 @@ class GovtSchemesPage {
   }
 
   async setNSCStartMonth(startMonth) {
-    await Utils.setMonthAndYear(startMonth, GovtSchemesObjects.nscStartDateField, CommonObjects.pickedYear,
-      CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
+    if (Device.isWeb()) {
+      await Utils.setMonthAndYear(startMonth, GovtSchemesObjects.nscStartDateField, CommonObjects.pickedYear,
+        CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
+    } else if(Device.isAndroidApp()) {
+      await Utils.setMonthAndYearForAndroid(startMonth, GovtSchemesObjects.nscStartDateField,
+        CommonObjects.androidMonthPickerMonth, CommonObjects.androidMonthPickerYear,
+        CommonObjects.androidMonthPickerDoneButton);
+    }
   }
 
   async setNSCMaturityMonth(maturityMonth) {
-    await Utils.setMonthAndYear(maturityMonth, GovtSchemesObjects.nscMaturityDateField, CommonObjects.pickedYear,
-      CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
+    if (Device.isWeb()) {
+      await Utils.setMonthAndYear(maturityMonth, GovtSchemesObjects.nscMaturityDateField, CommonObjects.pickedYear,
+        CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
+    } else if(Device.isAndroidApp()) {
+      await Utils.setMonthAndYearForAndroid(maturityMonth, GovtSchemesObjects.nscMaturityDateField,
+        CommonObjects.androidMonthPickerMonth, CommonObjects.androidMonthPickerYear,
+        CommonObjects.androidMonthPickerDoneButton);
+    }
   }
 
   async nscSchemeGetStringAttribute(nscInvestedAmount, index, attrName) {

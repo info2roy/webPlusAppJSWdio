@@ -32,7 +32,8 @@ class CommonObjects {
   };
 
   backButton = {
-    web: '//i[text()="chevron_left"]'
+    web: '//i[text()="chevron_left"]',
+    app: '(//android.widget.TextView)[1]'
   };
 
   expandMoreButton = {
