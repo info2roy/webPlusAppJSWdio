@@ -38,7 +38,7 @@ class CommonObjects {
 
   expandMoreButton = {
     web: '//i[text()="expand_more"]',
-    app: '(//android.widget.TextView[@index=2])[1]'
+    app: '//android.widget.TextView[@text="\uE313"]'
   };
 
   otpField = {

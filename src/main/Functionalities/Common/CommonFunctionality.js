@@ -16,22 +16,14 @@ class CommonFunctionality {
 
   async selectFamilyMemberViaExpandMore(familyMemberName, landingPageHeaderSelector) {
     if(await CommonPage.expandMoreButtonIsDisplayed(2000)) {
-      const expandMoreText = await CommonPage.getExpandMoreText();
-      console.log(`expandMore text ${expandMoreText}`);
-
-      for (let index = 0; index < expandMoreText.length; index ++) {
-        console.log(`index = ${index} ch ${expandMoreText[index]} code ${expandMoreText.charCodeAt(index)}`);
-      }
-      if (expandMoreText.length == 1 && expandMoreText.charCodeAt(0) === 58131) {
-        await CommonPage.clickExpandMoreButton();
-        if (await CommonPage.familyMemberNameIsDisplayed(familyMemberName, 2000)) {
-          await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-          return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector));
-        }
+      await CommonPage.clickExpandMoreButton();
+      if (await CommonPage.familyMemberNameIsDisplayed(familyMemberName, 2000)) {
+        await CommonPage.clickOnFamilyMemberByName(familyMemberName);
+        return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector));
       }
       return true;
     }
-    return false;
+    return true;
   }
 
   async selectFamilyMember(familyMemberName, landingPageHeaderSelector) {
