@@ -258,6 +258,12 @@ class Utils {
     await $(`android=${func}(${maxSwipes})`);
   }
 
+  async scrollVerticalToBeginningForAndroid(scrollableInstanceId, maxSwipes) {
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollToBeginning(int)
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsVerticalList().scrollToBeginning`;
+    await $(`android=${func}(${maxSwipes})`);
+  }
+
   async scrollVerticalForAndroid(scrollableInstanceId, steps, forward = true) {
     //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollForward(int)
     //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollBackward(int)

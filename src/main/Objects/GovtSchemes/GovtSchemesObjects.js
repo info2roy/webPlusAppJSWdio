@@ -24,7 +24,7 @@ class GovtSchemesObjects {
 
   enterSchemeDetailsHeader = {
     web: '//div[text()="Enter Scheme details" or text()="Enter Scheme Details"]',
-    app: '//*[@text="Enter Scheme details" or @text="Enter Scheme Details"]'
+    app: '//android.widget.TextView[@text="Enter Scheme details" or @text="Enter Scheme Details" or @text="Enter scheme details"]'
   };
 
   enterInvestmentDetailsHeader = {
@@ -83,12 +83,14 @@ class GovtSchemesObjects {
   }
 
   npsSchemeTile = {
-    web: '//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))] | //p[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))]'
+    web: '//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))] | //p[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))]',
+    app: '//android.widget.TextView[contains(@text,"NPS") and not(contains(@text, "NPS Tier"))]'
   };
 
   totalAbsoluteAmountForNPSScheme(index) {
     return {
-      web: `(//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))] | //p[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))])[${index + 1}]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div/div`
+      web: `(//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))] | //p[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))])[${index + 1}]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div/div`,
+      app: '//android.widget.TextView[contains(@text,"NPS") and not(contains(@text, "NPS Tier"))]/following-sibling::android.widget.TextView'
     };
   }
 
@@ -103,34 +105,41 @@ class GovtSchemesObjects {
   };
 
   npsFundNameField = {
-    web: 'input#fund'
+    web: 'input#fund',
+    app: '(//android.widget.TextView[@text="Fund Name"]/following-sibling::android.view.ViewGroup/android.view.ViewGroup/android.widget.TextView)[1]'
   };
 
   npsFundNameOption(fundName) {
     return {
-      web: `//li[text()="${fundName}"]`
+      web: `//li[text()="${fundName}"]`,
+      app: `//android.widget.TextView[@text="${fundName}"]`
     };
   }
   npsEquityAmountField = {
-    web: 'input#value1'
+    web: 'input#value1',
+    app: '(//android.widget.TextView[@text="Scheme E - Equity"]/following-sibling::android.view.ViewGroup/android.widget.EditText)[1]'
   };
 
   npsGovtSecurityAmountField = {
-    web: 'input#value2'
+    web: 'input#value2',
+    app: '(//android.widget.TextView[@text="Scheme G - Government securities"]/following-sibling::android.view.ViewGroup/android.widget.EditText)[1]'
   };
 
   npsCorpDebtAmountField = {
-    web: 'input#value3'
+    web: 'input#value3',
+    app: '(//android.widget.TextView[@text="Scheme C - Corporate Debt"]/following-sibling::android.view.ViewGroup/android.widget.EditText)[1]'
   };
 
   npsAltInvestmentFundsAmountField = {
-    web: 'input#value4'
+    web: 'input#value4',
+    app: '(//android.widget.TextView[@text="Scheme A - Alternative Investment Funds"]/following-sibling::android.view.ViewGroup/android.widget.EditText)[1]'
   };
 
   //For NPS Scheme details attributes Type, Fund Name, Scheme E - Equity, Scheme G - Government securities, Scheme A - Alternative Investment Funds or Scheme C - Corporate Debt
   npsSchemeDetailsAttribute(attribute) {
     return {
-      web: `//div[text()="${attribute}"]/following-sibling::div`
+      web: `//div[text()="${attribute}"]/following-sibling::div`,
+      app: `//android.widget.TextView[@text="${attribute}"]/following-sibling::android.widget.TextView`
     };
   }
 

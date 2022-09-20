@@ -94,6 +94,9 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_SCSS:
       case Constants.GOVT_SCHEME_NPS_TIER1:
       case Constants.GOVT_SCHEME_NPS_TIER2:
+        if (Device.isAndroidApp()) {
+          await Utils.scrollVerticalToBeginningForAndroid(0, 1);
+        }
         return (await Utils.elementIsDisplayed(GovtSchemesObjects.currentValueHeader));
       case Constants.GOVT_SCHEME_NSC:
         return (await Utils.elementIsDisplayed(GovtSchemesObjects.investedAmountHeader));
@@ -163,6 +166,7 @@ class GovtSchemesPage {
   }
 
   async getNPSAbsoluteAmount(npsTier) {
+    await Utils.scrollVerticalUntilTextIntoViewForAndroid('National Pension Scheme');
     const index = await Utils.findMatchingElementIndexWithGivenText(GovtSchemesObjects.npsSchemeTile, `NPS | ${npsTier}`);
     console.log(`index = ${index}`);
     if(index >= 0) {
@@ -191,7 +195,12 @@ class GovtSchemesPage {
   async setNPSFundName(npsFundName) {
     await Utils.clickElement(GovtSchemesObjects.npsFundNameField);
     await Utils.clickElement(GovtSchemesObjects.npsFundNameOption(npsFundName));
-    const selectedFundName = await Utils.getValue(GovtSchemesObjects.npsFundNameField);
+    let selectedFundName = '';
+    if (Device.isWeb()) {
+      selectedFundName = await Utils.getValue(GovtSchemesObjects.npsFundNameField);
+    } else if (Device.isAndroidApp()) {
+      selectedFundName = await Utils.getText(GovtSchemesObjects.npsFundNameField);
+    }
     expect(selectedFundName).to.equal(npsFundName);
   }
 
@@ -208,10 +217,18 @@ class GovtSchemesPage {
   }
 
   async setNPSAltInvestmentFunds(npsAltInvestmentFundsAmount) {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('Scheme A - Alternative Investment Funds');
+    }
     await Utils.setInputField(npsAltInvestmentFundsAmount, GovtSchemesObjects.npsAltInvestmentFundsAmountField);
   }
 
   async npsSchemeGetStringAttribute(attrName) {
+    if (Device.isAndroidApp()) {
+      if (attrName.startsWith('Scheme')) {
+        await Utils.scrollVerticalUntilTextIntoViewForAndroid(attrName);
+      }
+    }
     return (await Utils.getText(GovtSchemesObjects.npsSchemeDetailsAttribute(attrName)));
   }
 
