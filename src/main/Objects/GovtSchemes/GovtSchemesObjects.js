@@ -7,7 +7,7 @@ class GovtSchemesObjects {
 
   addGovtSchemesButton = {
     web: '//button[text()="Add Govt. Scheme" or text()="Add Government Scheme"] | //div[text()="Add government scheme"]',
-    app: '//android.widget.TextView[@text="ADD GOVT. SCHEME"]'
+    app: '//android.widget.TextView[@text="ADD GOVT. SCHEME" or @text="Add Government Scheme"]'
   };
 
   addGovtSchemePageHeader = {
@@ -89,8 +89,8 @@ class GovtSchemesObjects {
 
   totalAbsoluteAmountForNPSScheme(index) {
     return {
-      web: `(//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))] | //p[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))])[${index + 1}]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div/div`,
-      app: '//android.widget.TextView[contains(@text,"NPS") and not(contains(@text, "NPS Tier"))]/following-sibling::android.widget.TextView'
+      web: `(${this.npsSchemeTile.web})[${index + 1}]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div/div`,
+      app: `${this.npsSchemeTile.app}/following-sibling::android.widget.TextView`
     };
   }
 

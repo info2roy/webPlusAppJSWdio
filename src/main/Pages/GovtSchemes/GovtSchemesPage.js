@@ -25,17 +25,30 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_PPF:
       case Constants.GOVT_SCHEME_GPF:
       case Constants.GOVT_SCHEME_SSY:
+        await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
+        break;
       case Constants.GOVT_SCHEME_SCSS:
+        if (Device.isAndroidApp()) {
+          await Utils.scrollVerticalToEndForAndroid(0, 1);
+        }
         await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
         break;
       case Constants.GOVT_SCHEME_NSC:
-        await Utils.scrollVerticalUntilTextIntoViewForAndroid(schemeName);
+        if (Device.isAndroidApp()) {
+          await Utils.scrollVerticalToEndForAndroid(0, 1);
+        }
         await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
         break;
       case Constants.GOVT_SCHEME_NPS_TIER1:
+        if (Device.isAndroidApp()) {
+          await Utils.scrollVerticalToBeginningForAndroid(0, 1);
+        }
         await Utils.clickElement(GovtSchemesObjects.govtScheme('Tier 1'));
         break;
       case Constants.GOVT_SCHEME_NPS_TIER2:
+        if (Device.isAndroidApp()) {
+          await Utils.scrollVerticalToBeginningForAndroid(0, 1);
+        }
         await Utils.clickElement(GovtSchemesObjects.govtScheme('Tier 2'));
         break;
       default:
@@ -44,6 +57,9 @@ class GovtSchemesPage {
   }
 
   async selectGovtSchemeTile(schemeName) {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid(schemeName);
+    }
     switch(schemeName) {
       case Constants.GOVT_SCHEME_EPF:
       case Constants.GOVT_SCHEME_PPF:
@@ -166,19 +182,30 @@ class GovtSchemesPage {
   }
 
   async getNPSAbsoluteAmount(npsTier) {
-    await Utils.scrollVerticalUntilTextIntoViewForAndroid('National Pension Scheme');
-    const index = await Utils.findMatchingElementIndexWithGivenText(GovtSchemesObjects.npsSchemeTile, `NPS | ${npsTier}`);
+    let npsTierStr = '';
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalUntilTextIntoViewForAndroid('National Pension Scheme');
+      npsTierStr = `NPS   | ${npsTier}`;
+    } else {
+      npsTierStr = `NPS | ${npsTier}`;
+    }
+    const index = await Utils.findMatchingElementIndexWithGivenText(GovtSchemesObjects.npsSchemeTile, npsTierStr);
     console.log(`index = ${index}`);
     if(index >= 0) {
       const value = await Utils.getText(GovtSchemesObjects.totalAbsoluteAmountForNPSScheme(index));
       return Utils.numberAbbriviationToAbsoluteValue(value.trim());
     }
     return 0;
-
   }
 
   async clickNPSSchemeTile(npsTier) {
-    const element = await Utils.findMatchingElementWithGivenText(GovtSchemesObjects.npsSchemeTile, `NPS | ${npsTier}`);
+    let npsTierStr = '';
+    if (Device.isAndroidApp()) {
+      npsTierStr = `NPS   | ${npsTier}`;
+    } else {
+      npsTierStr = `NPS | ${npsTier}`;
+    }
+    const element = await Utils.findMatchingElementWithGivenText(GovtSchemesObjects.npsSchemeTile, npsTierStr);
     if (element != undefined) {
       await Utils.clickWebElement(element);
     }
@@ -213,13 +240,13 @@ class GovtSchemesPage {
   }
 
   async setNPSCorpDebtAmount(npsCorpDebtAmount) {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalToEndForAndroid(0, 1);
+    }
     await Utils.setInputField(npsCorpDebtAmount, GovtSchemesObjects.npsCorpDebtAmountField);
   }
 
   async setNPSAltInvestmentFunds(npsAltInvestmentFundsAmount) {
-    if (Device.isAndroidApp()) {
-      await Utils.scrollVerticalUntilTextIntoViewForAndroid('Scheme A - Alternative Investment Funds');
-    }
     await Utils.setInputField(npsAltInvestmentFundsAmount, GovtSchemesObjects.npsAltInvestmentFundsAmountField);
   }
 
@@ -233,6 +260,11 @@ class GovtSchemesPage {
   }
 
   async npsSchemeGetNumericAttribute(attrName) {
+    if (Device.isAndroidApp()) {
+      if (attrName.startsWith('Scheme')) {
+        await Utils.scrollVerticalUntilTextIntoViewForAndroid(attrName);
+      }
+    }
     return parseFloat((await Utils.getText(GovtSchemesObjects.npsSchemeDetailsAttribute(attrName))).replace(/,/g, ''));
   }
 
