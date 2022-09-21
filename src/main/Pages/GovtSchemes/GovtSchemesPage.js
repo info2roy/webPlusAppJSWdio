@@ -84,7 +84,7 @@ class GovtSchemesPage {
   }
 
   async validateNavigateToGovtSchemePage(schemeName) {
-    if (Device.isAndroidApp()) {
+    if (Device.isAndroidApp() && schemeName === Constants.GOVT_SCHEME_EPF) {
       await Utils.scrollVerticalToBeginningForAndroid(0, 1);
     }
     switch(schemeName) {
