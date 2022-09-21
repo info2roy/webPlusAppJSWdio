@@ -38,7 +38,8 @@ class GovtSchemesObjects {
   };
 
   amountField = {
-    web: 'input#current_value'
+    web: 'input#current_value',
+    app: '//android.widget.TextView[@text="Current Value"]/following-sibling::android.view.ViewGroup/android.widget.EditText'
   };
 
   amountFieldSCSS = {

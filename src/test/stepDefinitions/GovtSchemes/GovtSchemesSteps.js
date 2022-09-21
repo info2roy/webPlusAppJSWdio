@@ -38,7 +38,7 @@ When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|Gene
 
       expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
       this.govtSchemesTotalInvestedAmountForMember = await CommonMyWealthFunctionality.getTotalInvestedAmount();
-      this.singleGovtSchemePercentAndAmountForMember = await GovtSchemesFunctionality.getSchemePercentAndAmount(schemeName);
+      this.singleGovtSchemePercentAndAmountForMember = [0, 0];
       this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getSchemeAbsoluteAmount(schemeName);
       console.log(`MYWEALTH govtSchemesTotalInvestedAmountForMember ${this.govtSchemesTotalInvestedAmountForMember} singleGovtSchemePercentAndAmountForMember ${this.singleGovtSchemePercentAndAmountForMember}`);
       console.log(`MYWEALTH singleGovtSchemeAbsoluteAmountForMember ${this.singleGovtSchemeAbsoluteAmountForMember}`);

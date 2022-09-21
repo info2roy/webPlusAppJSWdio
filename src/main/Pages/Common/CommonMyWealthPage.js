@@ -84,6 +84,9 @@ class CommonMyWealthPage {
   }
 
   async getTotalInvestedAmount() {
+    if (Device.isAndroidApp()) {
+      await Utils.scrollVerticalToBeginningForAndroid(0, 1);
+    }
     return Utils.numberAbbriviationToAbsoluteValue(await Utils.getText(CommonMyWealthObjects.totalInvestedAmount));
   }
 
