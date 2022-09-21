@@ -43,7 +43,8 @@ class GovtSchemesObjects {
   };
 
   amountFieldSCSS = {
-    web: 'input#value'
+    web: 'input#value',
+    app: '//android.widget.TextView[@text="Invested Amount"]/following-sibling::android.view.ViewGroup/android.widget.EditText'
   };
 
   schemeNameToCode = {
