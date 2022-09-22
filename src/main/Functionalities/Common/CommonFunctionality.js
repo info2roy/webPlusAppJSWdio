@@ -24,5 +24,9 @@ class CommonFunctionality {
     return (await CommonPage.selectASchemePageHeaderIsDisplayed(2000));
   }
 
+  async selectNextMonthFirstDate() {
+    await CommonPage.selectFirstDate();
+  }
+
 }
 module.exports = new CommonFunctionality();

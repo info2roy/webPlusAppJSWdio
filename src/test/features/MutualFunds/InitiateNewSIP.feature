@@ -5,11 +5,21 @@ Feature: Scripbox Investment for monthly SIP
         Given I login to Scripbox in "ANDROMEDA" for "user180756"
 
     @smoke
-    Scenario Outline: As a logged in user, I want to search a new fund and initiate SIP
-        Given I click on "Invest"
-        When I click on "Mutual Funds"
-        When I search mutual fund <fundName>
-        When I perform pick fund for first available fund
+    Scenario Outline: As a logged in user, I want to search a new fund to initiate SIP
+        When I click on "Invest"
+        And I click on "Mutual Funds"
+        And I search mutual fund <fundName>
+        Then I perform pick fund for first available fund
         Examples:
             | fundName     |
             | Parag Parikh |
+
+    @smoke
+    Scenario Outline: As a logged in user, I want enter SIP details to initiate monthly SIP
+        When I select invest option <SIPFrequency> funds withdrawl
+        And I enter SIP fund <SIPAmount> and <SIPDuration>
+        And I select first date of next month
+        #     Then I click on "Confirm SIP of "
+        Examples:
+            | SIPFrequency | SIPAmount | SIPDuration |
+            | Monthly SIP  | 2000      | 20          |

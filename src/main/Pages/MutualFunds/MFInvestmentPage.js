@@ -255,12 +255,33 @@ class MFInvestmentPage {
   }
 
   async chooseYourFundPageAvailable() {
-    return (await Utils.elementIsDisplayed(MFInvestmentObjects.chooseYourFundHeader));
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.chooseYourFundHeader) &&
+      await Utils.elementIsDisplayed(MFInvestmentObjects.searchResultsFoundText));
   }
 
   async searchMutualFund(fundName) {
     await Utils.clickElement(MFInvestmentObjects.exploreFundsSearchBox);
     await Utils.setInputField(fundName, MFInvestmentObjects.enterFundNameTextBox);
+  }
+
+  async selectSIP(option) {
+    await Utils.clickRadioButton(option);
+  }
+
+  async enterSIPValue(value) {
+    await Utils.setInputField(value, MFInvestmentObjects.SIPAmountTextBox);
+  }
+
+  async enterSIPDuration(time) {
+    await Utils.setInputField(time, MFInvestmentObjects.SIPDurationTextBox);
+  }
+
+  async clickPickFund() {
+    await Utils.clickElement(MFInvestmentObjects.firstPickFundButton);
+  }
+
+  async confirmSetUpInvestmentHeaderDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.setUpInvestmentHeader));
   }
 }
 module.exports = new MFInvestmentPage();

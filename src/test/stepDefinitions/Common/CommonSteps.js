@@ -16,3 +16,9 @@ When(/^I click on "([^"]*)?"$/, async (button) => {
   await console.log(`I click on ${button}`);
   await Utils.clickElementByText(button);
 });
+
+When(/^I select first date of next month$/, async () => {
+  await console.log('I select first date of next month');
+  await CommonFunctionality.selectNextMonthFirstDate();
+  await browser.pause(3000);
+});

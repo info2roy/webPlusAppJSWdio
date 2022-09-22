@@ -38,5 +38,20 @@ class CommonPage {
   async expandMoreButtonIsDisplayed(timeoutMS = 15000) {
     return (await Utils.elementIsDisplayed(CommonObjects.expandMoreButton, timeoutMS));
   }
+
+  async clickNextMonthNavgationButton() {
+    await Utils.clickElement(CommonObjects.nextMonthButtonInCalander);
+  }
+
+  async selectFirstDate() {
+    await browser.pause(3000);
+    await Utils.clickElement(CommonObjects.calanderInput);
+    await browser.pause(3000);
+    for (let i=0; i>=0; i++) {
+      await console.log('Clicking next month button');
+      if (Utils.elementIsDisplayed(CommonObjects.nextMonthFirstDayInCalander))
+        await Utils.clickElement(CommonObjects.nextMonthFirstDayInCalander);
+    }
+  }
 }
 module.exports = new CommonPage();

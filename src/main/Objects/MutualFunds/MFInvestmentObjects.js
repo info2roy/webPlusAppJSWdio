@@ -237,8 +237,28 @@ class MFInvestmentObjects {
     web: '(//div[text()="Choose your fund"])[3]'
   };
 
+  searchResultsFoundText = {
+    web: '//p[@class="link-title"]'
+  };
+
   enterFundNameTextBox = {
     web: '//input[@placeholder="Search for mutual funds"]'
+  };
+
+  firstPickFundButton = {
+    web: '(//div[text()="Pick fund"])[1]'
+  };
+
+  setUpInvestmentHeader = {
+    web: '(//div[text()="Set up investment"])[3]'
+  };
+
+  SIPAmountTextBox = {
+    web: '//input[@placeholder="SIP Amount"]'
+  };
+
+  SIPDurationTextBox = {
+    web: '//input[@id="duration"]'
   };
 }
 module.exports = new MFInvestmentObjects();

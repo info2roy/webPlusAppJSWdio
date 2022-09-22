@@ -37,5 +37,11 @@ class CommonObjects {
     web: '//i[text()="expand_more"]',
     app: '//*[@text="expand_more"]'
   };
+
+  nextMonthButtonInCalander = { web: '(//*[contains(@class,"DayPickerNavigation_svg")])[2]' };
+
+  calanderInput = {web: '(//input[contains(@class,"-amount-field__input")])[2]'};
+
+  nextMonthFirstDayInCalander = { web: '//*[contains(@class,"CalendarMonth_table")]//td[text()="1"]' };
 }
 module.exports = new CommonObjects();

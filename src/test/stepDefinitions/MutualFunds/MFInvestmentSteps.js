@@ -106,5 +106,15 @@ When(/^I search mutual fund (.+)$/, async (mutualFund) => {
 
 When(/^I perform pick fund for first available fund$/, async () => {
   await console.log(`I perform pick fund for first available fund`);
-  expect().to.be.true;
+  expect(await MFInvestmentFunctionality.pickFund()).to.be.true;
+});
+
+When(/^I enter SIP fund (.+) and (.+)$/, async (amount, duration) => {
+  await console.log(`I enter SIP fund ${amount} and ${duration}`);
+  await MFInvestmentFunctionality.enterSIPDetails(amount, duration);
+});
+
+When(/^I select invest option (.+) funds withdrawl$/, async (frequency) => {
+  await console.log(`I select invest option ${frequency} funds withdrawl`);
+  await MFInvestmentFunctionality.selectSIPFrequency(frequency);
 });

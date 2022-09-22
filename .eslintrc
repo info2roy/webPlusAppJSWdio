@@ -92,6 +92,7 @@
     "no-useless-computed-key": "error",
     "no-useless-rename": "error",
     "no-var": "error",
+    "for-direction": "warn",
     "object-shorthand": "error",
     "prefer-const": "warn",
     "prefer-template": "warn",
