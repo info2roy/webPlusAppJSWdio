@@ -40,13 +40,13 @@ class RealEstateFunctionality {
     return (await RealEstatePage.getGainLossAmount());
   }
 
-  async fillAddRealEstateForm(propertyName, propertyPrice, purchaseYear, currentValue) {
+  async fillAddRealEstateForm(wealthType, propertyName, propertyPrice, purchaseYear, currentValue) {
     await RealEstatePage.enterPropertyName(propertyName);
     await RealEstatePage.enterPropertyPrice(propertyPrice);
     await RealEstatePage.enterPurchaseYear(purchaseYear);
     await RealEstatePage.enterCurrentValue(currentValue);
     await CommonPage.clickSaveOrUpdateButton();
-    return (await CommonMyWealthPage.wealthUpdateSuccessMessageIsDisplayed('Real estate'));
+    return (await CommonMyWealthPage.wealthUpdateSuccessMessageIsDisplayed(wealthType));
   }
 
   async validateRealEstatePropertyDetails(propertyName, propertyPrice, purchaseYear, currentValue, expectedYoYGrowthRate,
@@ -72,7 +72,7 @@ class RealEstateFunctionality {
     await CommonPage.clickSaveOrUpdateButton();
   }
 
-  async updateRealEstateProperty(propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue) {
+  async updateRealEstateProperty(wealthType, propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue) {
     await RealEstatePage.clickOnRealEstatePropertyMoreOptionsButton(propertyName);
     await CommonPage.clickEditDetailsLink();
     await RealEstatePage.enterPropertyName(newPropertyName);
@@ -80,7 +80,7 @@ class RealEstateFunctionality {
     await RealEstatePage.enterPurchaseYear(purchaseYear);
     await RealEstatePage.enterCurrentValue(currentValue);
     await CommonPage.clickSaveOrUpdateButton();
-    return (await CommonMyWealthPage.wealthUpdateSuccessMessageIsDisplayed('Real estate'));
+    return (await CommonMyWealthPage.wealthUpdateSuccessMessageIsDisplayed(wealthType));
   }
 
   async deleteRealEstate(propertyName) {

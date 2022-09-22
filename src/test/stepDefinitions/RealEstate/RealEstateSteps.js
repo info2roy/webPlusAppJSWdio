@@ -28,15 +28,15 @@ When(/^I click on "Add Real Estate" for family member "([^"]*)?"$/,
   }
 );
 
-When(/^I fill "Real Estate" form with (.+), (\d+), (\d+), (\d+), (.+)$/,
-  async (propertyName, propertyPrice, purchaseYear, currentValue, expectedYoyGrowthRate) => {
-    console.log(`When I fill "Real Estate" form with ${propertyName}, ${propertyPrice}, ${purchaseYear}, ${currentValue}, ${expectedYoyGrowthRate}`);
+When(/^I fill (.+) form with (.+), (\d+), (\d+), (\d+), (.+)$/,
+  async (wealthType, propertyName, propertyPrice, purchaseYear, currentValue, expectedYoyGrowthRate) => {
+    console.log(`When I fill ${wealthType} form with ${propertyName}, ${propertyPrice}, ${purchaseYear}, ${currentValue}, ${expectedYoyGrowthRate}`);
     this.realEstatePropertyName = propertyName;
     this.realEstatePropertyPrice = propertyPrice;
     this.realEstatePurchaseYear = purchaseYear;
     this.realEstateCurrentValue = currentValue;
     this.realEstateYoYGrowthRate = expectedYoyGrowthRate;
-    expect(await RealEstateFunctionality.fillAddRealEstateForm(propertyName, propertyPrice, purchaseYear, currentValue)).to.be.true;
+    expect(await RealEstateFunctionality.fillAddRealEstateForm(wealthType, propertyName, propertyPrice, purchaseYear, currentValue)).to.be.true;
   }
 );
 
@@ -48,19 +48,19 @@ Then(/^"Real Estate" Property details are shown correctly$/, async() => {
     this.realEstateTotalInvestedAmount, this.realEstateTotalGainLossAmount);
 });
 
-When(/^I edit the "Real Estate" property (.+) with (.+), (\d+), (\d+), (\d+), (.+)$/,
-  async(propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue, expectedYoyGrowthRate) => {
-    console.log(`When I edit the "Real Estate" property ${propertyName} with ${newPropertyName}, ${propertyPrice}, ${purchaseYear}, ${currentValue}, ${expectedYoyGrowthRate}`);
+When(/^I edit the (.+) property (.+) with (.+), (\d+), (\d+), (\d+), (.+)$/,
+  async(wealthType, propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue, expectedYoyGrowthRate) => {
+    console.log(`When I edit the ${wealthType} property ${propertyName} with ${newPropertyName}, ${propertyPrice}, ${purchaseYear}, ${currentValue}, ${expectedYoyGrowthRate}`);
     this.realEstatePropertyName = newPropertyName;
     this.realEstatePropertyPrice = propertyPrice;
     this.realEstatePurchaseYear = purchaseYear;
     this.realEstateCurrentValue = currentValue;
     this.realEstateYoYGrowthRate = expectedYoyGrowthRate;
-    expect(await RealEstateFunctionality.updateRealEstateProperty(propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue)).to.be.true;
+    expect(await RealEstateFunctionality.updateRealEstateProperty(wealthType, propertyName, newPropertyName, propertyPrice, purchaseYear, currentValue)).to.be.true;
   }
 );
 
-When(/^I delete the "Real Estate" property (.+)$/, async(propertyName) => {
-  console.log(`When I delete the "Real Estate" property ${propertyName}`);
+When(/^I delete the (.+) property (.+)$/, async(wealthType, propertyName) => {
+  console.log(`When I delete the ${wealthType} property ${propertyName}`);
   expect(await RealEstateFunctionality.deleteRealEstate(propertyName)).to.be.true;
 });
