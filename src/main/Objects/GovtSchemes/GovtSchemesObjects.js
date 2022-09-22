@@ -1,7 +1,7 @@
 class GovtSchemesObjects {
 
   govtSchemesInitialPageHeader = {
-    web: '//div[text()="One place to track all your Govt. Schemes"] | //h5[text()="One place to track all your Govt. Schemes"]',
+    web: '//*[text()="One place to track all your Govt. Schemes"]',
     app: '//*[@text="One place to track all your Govt. Schemes"]'
   };
 
