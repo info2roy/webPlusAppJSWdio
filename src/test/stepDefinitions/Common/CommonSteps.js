@@ -1,4 +1,4 @@
-const { When } = require('@wdio/cucumber-framework');
+const { When, Then } = require('@wdio/cucumber-framework');
 const CommonFunctionality = require('../../../main/Functionalities/Common/CommonFunctionality');
 const { expect } = require('chai');
 

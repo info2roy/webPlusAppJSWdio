@@ -8,10 +8,10 @@ const Constants = require('../../config/data/structured/Constants');
 
 class DashboardFunctionality {
 
-  async open(url) {
+  async open() {
     if (Device.isWeb()) {
-      await console.log('Navigating to Dashboard URL '+ `envURLs.${url}`);
-      await browser.url(`${envURLs[url]}/dashboard`);
+      await console.log('Navigating to Dashboard URL ' + `${envURLs['MYSCRIPBOX']}`);
+      await browser.url(`${envURLs['MYSCRIPBOX']}/dashboard`);
     } else if (Device.isAndroidApp()) {
       await browser.url('scripbox://scripbox');
     }
