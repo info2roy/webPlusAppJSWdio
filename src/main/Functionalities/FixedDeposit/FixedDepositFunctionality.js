@@ -35,14 +35,14 @@ class FixedDepositFunctionality {
     return (await FixedDepositPage.getTotalInvestedAmount());
   }
 
-  async fillAddFDForm(fdFirmName, fdInvestedAmount, fdInterestRate, fdStartMonth, fdMaturityMonth) {
+  async fillAddFDForm(wealthType, fdFirmName, fdInvestedAmount, fdInterestRate, fdStartMonth, fdMaturityMonth) {
     await FixedDepositPage.enterFDFirmName(fdFirmName);
     await FixedDepositPage.enterFDInvestedAmount(fdInvestedAmount);
     await FixedDepositPage.enterFDInterestRate(fdInterestRate);
     await FixedDepositPage.setFDStartMonth(fdStartMonth);
     await FixedDepositPage.setFDMaturityMonth(fdMaturityMonth);
     await CommonPage.clickSaveOrUpdateButton();
-    return (await CommonMyWealthPage.wealthUpdateSuccessMessageIsDisplayed('Fixed deposit'));
+    return (await CommonMyWealthPage.wealthUpdateSuccessMessageIsDisplayed(wealthType));
   }
 
   async validateFixedDepositDetails(fdFirmName, fdInvestedAmount, fdInterestRate, fdStartMonth, fdMaturityMonth,
@@ -64,7 +64,7 @@ class FixedDepositFunctionality {
     await CommonPage.clickSaveOrUpdateButton();
   }
 
-  async editFixedDeposit(fdInvestedAmount, fdNewInvestedAmount, fdInterestRate, fdStartMonth, fdMaturityMonth) {
+  async editFixedDeposit(wealthType, fdInvestedAmount, fdNewInvestedAmount, fdInterestRate, fdStartMonth, fdMaturityMonth) {
     await FixedDepositPage.clickOnFixedDepositMoreOptionsButton(fdInvestedAmount);
     await CommonPage.clickEditDetailsLink();
     await FixedDepositPage.enterFDInvestedAmount(fdNewInvestedAmount);
@@ -72,7 +72,7 @@ class FixedDepositFunctionality {
     await FixedDepositPage.setFDStartMonth(fdStartMonth);
     await FixedDepositPage.setFDMaturityMonth(fdMaturityMonth);
     await CommonPage.clickSaveOrUpdateButton();
-    return (await CommonMyWealthPage.wealthUpdateSuccessMessageIsDisplayed('Fixed deposit'));
+    return (await CommonMyWealthPage.wealthUpdateSuccessMessageIsDisplayed(wealthType));
   }
 
   async deleteFixedDeposit(fdInvestedAmount) {

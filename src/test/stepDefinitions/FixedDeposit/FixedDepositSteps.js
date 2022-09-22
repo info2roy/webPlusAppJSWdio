@@ -23,15 +23,15 @@ When(/^I click on "Add existing Fixed Deposit" for family member "([^"]*)?"$/,
   }
 );
 
-When(/^I fill "Fixed Deposit" form with (.+); (\d+); (.+); (.+); (.+)$/,
-  async (firmName, investedAmount, interestRate, startMonth, maturityMonth) => {
-    console.log(`When I fill "Fixed Deposit" form with ${firmName}, ${investedAmount}, ${interestRate}, ${startMonth}, ${maturityMonth}`);
+When(/^I fill (.+) form with (.+); (\d+); (.+); (.+); (.+)$/,
+  async (wealthType, firmName, investedAmount, interestRate, startMonth, maturityMonth) => {
+    console.log(`When I fill ${wealthType} form with ${firmName}, ${investedAmount}, ${interestRate}, ${startMonth}, ${maturityMonth}`);
     this.fixedDepositFirmName = firmName;
     this.fixedDepositInvestedAmount = investedAmount;
     this.fixedDepositInterestRate = interestRate;
     this.fixedDepositStartMonth = startMonth;
     this.fixedDepositMaturityMonth = maturityMonth;
-    expect(await FixedDepositFunctionality.fillAddFDForm(firmName, investedAmount, interestRate, startMonth, maturityMonth)).to.be.true;
+    expect(await FixedDepositFunctionality.fillAddFDForm(wealthType, firmName, investedAmount, interestRate, startMonth, maturityMonth)).to.be.true;
   }
 );
 
@@ -41,9 +41,9 @@ Then(/^Fixed Deposit details are shown correctly$/, async() => {
     this.fixedDepositInterestRate, this.fixedDepositStartMonth, this.fixedDepositMaturityMonth, this.fixedDepositTotalInvestedAmountForMember);
 });
 
-When(/^I edit the "Fixed Deposit" of (\d+) with (.+); (\d+); (.+); (.+); (.+)$/,
-  async (investedAmount, firmName, newInvestedAmount, interestRate, startMonth, maturityMonth) => {
-    console.log(`When I edit the "Fixed Deposit" of ${investedAmount} with ${firmName}, ${newInvestedAmount}, ${interestRate}, ${startMonth}, ${maturityMonth}`);
+When(/^I edit the (.+) of (\d+) with (.+); (\d+); (.+); (.+); (.+)$/,
+  async (wealthType, investedAmount, firmName, newInvestedAmount, interestRate, startMonth, maturityMonth) => {
+    console.log(`When I edit the ${wealthType} of ${investedAmount} with ${firmName}, ${newInvestedAmount}, ${interestRate}, ${startMonth}, ${maturityMonth}`);
     this.fixedDepositFirmName = firmName;
     this.fixedDepositInvestedAmount = newInvestedAmount;
     this.fixedDepositInterestRate = interestRate;
@@ -53,8 +53,8 @@ When(/^I edit the "Fixed Deposit" of (\d+) with (.+); (\d+); (.+); (.+); (.+)$/,
   }
 );
 
-When(/^I delete the "Fixed Deposit" of (\d+)$/, async(investedAmount) => {
-  console.log(`When I delete the "Fixed Deposit" of ${investedAmount}`);
+When(/^I delete the (.+) of (\d+)$/, async(wealthType, investedAmount) => {
+  console.log(`When I delete the ${wealthType} of ${investedAmount}`);
   expect(await FixedDepositFunctionality.deleteFixedDeposit(investedAmount)).to.be.true;
 });
 
