@@ -1,4 +1,4 @@
-const Utils = require("../../../support/Utils/Utils");
+const Utils = require('../../../support/Utils/Utils');
 
 class CommonObjects {
 
@@ -101,8 +101,8 @@ class CommonObjects {
   }
 
   fixedDepositPageHeader = {
-    web: '//div[contains(text(),"Interest rates upto 7.50% on FDs")]',
-    app: '//*[contains(@text,"Interest rates upto 7.50% on FDs")]'
+    web: '//div[contains(text(),"Interest rates upto")]',
+    app: '//*[contains(@text,"Interest rates upto")]'
   };
 }
 module.exports = new CommonObjects();
