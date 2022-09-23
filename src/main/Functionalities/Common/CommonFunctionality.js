@@ -13,6 +13,26 @@ class CommonFunctionality {
     return status;
   }
 
+  async selectFamilyMemberViaExpandMore(familyMemberName, landingPageHeaderSelector) {
+    if(await CommonPage.expandMoreButtonIsDisplayed(2000)) {
+      await CommonPage.clickExpandMoreButton();
+      if (await CommonPage.familyMemberNameIsDisplayed(familyMemberName, 2000)) {
+        await CommonPage.clickOnFamilyMemberByName(familyMemberName);
+        return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector));
+      }
+      return false;
+    }
+    return false;
+  }
+
+  async selectFamilyMember(familyMemberName, landingPageHeaderSelector) {
+    if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
+      await CommonPage.clickOnFamilyMemberByName(familyMemberName);
+      return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector));
+    }
+    return false;
+  }
+
   async expandMore() {
     await CommonPage.clickExpandMoreButton();
   }
@@ -33,5 +53,10 @@ class CommonFunctionality {
     await CommonPage.enterOTP(otp);
     await CommonPage.clickVerifyWithOTPButton();
   }
+
+  async fixedDepositInitialPageLaunched() {
+    return (await CommonPage.fixedDepositPageIsDisplayed());
+  }
+
 }
 module.exports = new CommonFunctionality();

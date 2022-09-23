@@ -1,13 +1,13 @@
 class GovtSchemesObjects {
 
   govtSchemesInitialPageHeader = {
-    web: '//div[text()="One place to track all your Govt. Schemes"]',
+    web: '//*[text()="One place to track all your Govt. Schemes"]',
     app: '//*[@text="One place to track all your Govt. Schemes"]'
   };
 
   addGovtSchemesButton = {
-    web: '//button[text()="Add Govt. Scheme" or text()="Add Government Scheme"]',
-    app: '//*[@text="Add Govt. Scheme" or @text="Add Government Scheme"]'
+    web: '//button[text()="Add Govt. Scheme" or text()="Add Government Scheme"] | //div[text()="Add government scheme"]',
+    app: '//*[@text="Add Govt. Scheme" or @text="Add Government Scheme" or @text="Add government scheme"]'
   };
 
   addGovtSchemePageHeader = {
@@ -27,6 +27,11 @@ class GovtSchemesObjects {
     app: '//*[@text="Enter Scheme details" or @text="Enter Scheme Details"]'
   };
 
+  enterInvestmentDetailsHeader = {
+    web: '//div[text()="Enter Investment details"]',
+    app: '//*[@text="Enter Investment details"]'
+  };
+
   currentValueHeader = {
     web: '//div[text()="CURRENT VALUE"]',
     app: '//*[@text="CURRENT VALUE"]'
@@ -40,10 +45,6 @@ class GovtSchemesObjects {
     web: 'input#value'
   };
 
-  saveOrUpdateButton = {
-    web: '//button[text()="Save" or text()="Update"]'
-  };
-
   schemeNameToCode = {
     'Employee Provident Fund': 'EPF',
     'Public Provident Fund': 'PPF',
@@ -51,7 +52,8 @@ class GovtSchemesObjects {
     'Sukanya Samridhi Yojna': 'SSY',
     'Senior Citizen Saving Scheme': 'SCSS',
     'National Pension Scheme Tier1': 'NPS',
-    'National Pension Scheme Tier2': 'NPS'
+    'National Pension Scheme Tier2': 'NPS',
+    'National Saving Certificate': 'NSC'
   };
 
   amountUpdateSuccessMessage(schemeName) {
@@ -83,17 +85,17 @@ class GovtSchemesObjects {
   }
 
   npsSchemeTile = {
-    web: '//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))]'
+    web: '//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))] | //p[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))]'
   };
 
   totalAbsoluteAmountForNPSScheme(index) {
     return {
-      web: `(//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))])[${index + 1}]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div/div`
+      web: `(//div[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))] | //p[contains(text(),"NPS") and not(contains(text(), "NPS Tier"))])[${index + 1}]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div/div`
     };
   }
 
   deleteSchemeButton = {
-    web: '//div[text()="Delete"]',
+    web: '//div[text()="Delete"] | //p[text()="Delete"]',
     app: '//*[@text="Delete"]'
   };
 
@@ -131,6 +133,53 @@ class GovtSchemesObjects {
   npsSchemeDetailsAttribute(attribute) {
     return {
       web: `//div[text()="${attribute}"]/following-sibling::div`
+    };
+  }
+
+  nscInvestedAmountField = {
+    web: 'input#invested_val'
+  };
+
+  nscInterestPercentField = {
+    web: 'input#interest'
+  };
+
+  nscStartDateField = {
+    web: 'input#start_date'
+  };
+
+  nscMaturityDateField = {
+    web: 'input#my_date'
+  };
+
+  previousYearButton = {
+    web: 'button.react-datepicker__navigation--previous'
+  };
+
+  nextYearButton = {
+    web: 'button.react-datepicker__navigation--next'
+  };
+
+  nscPickedYear = {
+    web: 'div.react-datepicker-year-header'
+  };
+
+  nscMonthPicker(month) {
+    return {
+      web: `//div[text()="${month}"]`
+    };
+  }
+
+  //For NSC Scheme details attributes Interest, Start, Maturity
+  nscSchemeDetailsAttribute(nscAmount, index, attribute) {
+    return {
+      web: `//h5[text()="${nscAmount.toLocaleString('hi')}"]/parent::div/parent::div/following-sibling::div/div[${index}]/p[text()="${attribute}"]/following-sibling::p`
+    };
+  }
+
+  nscSchemeMoreOptionsButton(nscAmount) {
+    return {
+      web: `//h5[text()="${nscAmount.toLocaleString('hi')}"]/parent::div/following-sibling::div/span[text()="more_horiz"]`
     };
   }
 }

@@ -3,8 +3,9 @@ const GovtSchemesFunctionality = require('../../../main/Functionalities/GovtSche
 const { expect } = require('chai');
 const CommonFunctionality = require('../../../main/Functionalities/Common/CommonFunctionality');
 const Constants = require('../../../config/data/structured/Constants');
+const CommonMyWealthFunctionality = require('../../../main/Functionalities/Common/CommonMyWealthFunctionality');
 
-When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|National Saving Certificate|Senior Citizen Saving Scheme)" for family member "([^"]*)?"$/,
+When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|Senior Citizen Saving Scheme)" for family member "([^"]*)?"$/,
   async (schemeName, familyMember) => {
     await console.log(`When I select Govt Scheme "${schemeName}" for family member "${familyMember}"`);
     this.familyMemberName = familyMember;
@@ -22,7 +23,7 @@ When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|Gene
       if(await CommonFunctionality.selectASchemePageLaunched()) {
         expect(await GovtSchemesFunctionality.selectGovtScheme(schemeName)).to.be.true;
       } else {
-        expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
+        expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
         expect(await GovtSchemesFunctionality.selectGovtScheme(schemeName)).to.be.true;
       }
     } else {
@@ -35,8 +36,8 @@ When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|Gene
       //   console.log(`MYWEALTH singleGovtSchemeAbsoluteAmount ${this.singleGovtSchemeAbsoluteAmount}`);
       // }
 
-      expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
-      this.govtSchemesTotalInvestedAmountForMember = await GovtSchemesFunctionality.getTotalInvestedAmount();
+      expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
+      this.govtSchemesTotalInvestedAmountForMember = await CommonMyWealthFunctionality.getTotalInvestedAmount();
       this.singleGovtSchemePercentAndAmountForMember = await GovtSchemesFunctionality.getSchemePercentAndAmount(schemeName);
       this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getSchemeAbsoluteAmount(schemeName);
       console.log(`MYWEALTH govtSchemesTotalInvestedAmountForMember ${this.govtSchemesTotalInvestedAmountForMember} singleGovtSchemePercentAndAmountForMember ${this.singleGovtSchemePercentAndAmountForMember}`);
@@ -47,12 +48,11 @@ When(/^I select Govt Scheme "(Employee Provident Fund|Public Provident Fund|Gene
   }
 );
 
-When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2)" for family member "([^"]*)?"$/,
+When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2|National Saving Certificate)" for family member "([^"]*)?"$/,
   async (schemeName, familyMember) => {
     await console.log(`When I select Govt Scheme "${schemeName}" for family member "${familyMember}"`);
     this.familyMemberName = familyMember;
     this.schemeName = schemeName;
-    const npsTier = GovtSchemesFunctionality.getNPSTier(schemeName);
 
     if(await GovtSchemesFunctionality.govtSchemesInitialPageLaunched()) {
       console.log('No preexisting Government schemes present');
@@ -64,13 +64,18 @@ When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Sch
       if(await CommonFunctionality.selectASchemePageLaunched()) {
         expect(await GovtSchemesFunctionality.selectGovtScheme(schemeName)).to.be.true;
       } else {
-        expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
+        expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
         expect(await GovtSchemesFunctionality.selectGovtScheme(schemeName)).to.be.true;
       }
     } else {
-      expect(await GovtSchemesFunctionality.selectFamilyMember(familyMember)).to.be.true;
-      this.govtSchemesTotalInvestedAmountForMember = await GovtSchemesFunctionality.getTotalInvestedAmount();
-      this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getNPSAbsoluteAmount(npsTier);
+      expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(familyMember)).to.be.true;
+      this.govtSchemesTotalInvestedAmountForMember = await CommonMyWealthFunctionality.getTotalInvestedAmount();
+      if (schemeName === Constants.GOVT_SCHEME_NSC) {
+        this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getSchemeAbsoluteAmount(schemeName);
+      } else {
+        const npsTier = GovtSchemesFunctionality.getNPSTier(schemeName);
+        this.singleGovtSchemeAbsoluteAmountForMember = await GovtSchemesFunctionality.getNPSAbsoluteAmount(npsTier);
+      }
       this.singleGovtSchemePercentAndAmountForMember = [0, 0];
       console.log(`MYWEALTH govtSchemesTotalInvestedAmountForMember ${this.govtSchemesTotalInvestedAmountForMember}`);
       console.log(`MYWEALTH singleGovtSchemeAbsoluteAmountForMember ${this.singleGovtSchemeAbsoluteAmountForMember}`);
@@ -92,10 +97,12 @@ When(/^I set amount as (\d+) for Govt Scheme "(Employee Provident Fund|Public Pr
 Then(/^Total invested amount should get updated$/, async () => {
   console.log('Then Total invested amount should get updated');
   //First do validations for member level, total amount for all schemes and single scheme
-  expect(await GovtSchemesFunctionality.selectFamilyMember(this.familyMemberName)).to.be.true;
+  expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(this.familyMemberName)).to.be.true;
   let totalInvestedAmount = 0;
   if ([Constants.GOVT_SCHEME_NPS_TIER1, Constants.GOVT_SCHEME_NPS_TIER2].includes(this.schemeName)) {
     totalInvestedAmount = this.npsEquityAmount + this.npsGovtSecurityAmount + this.npsCorpDebtAmount + this.npsAltInvestmentFundsAmount;
+  } else if (this.schemeName === Constants.GOVT_SCHEME_NSC) {
+    totalInvestedAmount = this.nscInvestedAmount;
   } else {
     totalInvestedAmount = this.amount;
   }
@@ -111,7 +118,7 @@ Then(/^Total invested amount should get updated$/, async () => {
 
 When(/^I select Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2|Employee Provident Fund|Public Provident Fund|General Provident Fund|Sukanya Samridhi Yojna|National Saving Certificate|Senior Citizen Saving Scheme)" tile for family member "([^"]*)"?$/, async (schemeName, familyMemberName) => {
   console.log(`When I select Govt Scheme "${schemeName}" tile for family member "${familyMemberName}"`);
-  expect(await GovtSchemesFunctionality.selectFamilyMember(this.familyMemberName)).to.be.true;
+  expect(await GovtSchemesFunctionality.selectFamilyMemberViaExpandMore(this.familyMemberName)).to.be.true;
   await GovtSchemesFunctionality.selectGovtSchemeTile(schemeName);
 });
 
@@ -123,7 +130,12 @@ Then(/^NPS Scheme details are shown correctly for Govt Scheme "(National Pension
 
 When(/^I delete Govt Scheme$/, async() => {
   console.log('When I delete Govt Scheme');
-  await GovtSchemesFunctionality.deleteGovtScheme();
+  expect(await GovtSchemesFunctionality.deleteGovtScheme()).to.be.true;
+});
+
+When(/^I delete Govt Scheme "National Saving Certificate"$/, async() => {
+  console.log('When I delete Govt Scheme "National Saving Certificate"');
+  expect(await GovtSchemesFunctionality.deleteGovtSchemeNSC(this.nscInvestedAmount)).to.be.true;
 });
 
 When(/^I fill form with (.+), (\d+), (\d+), (\d+), (\d+) for Govt Scheme "(National Pension Scheme Tier1|National Pension Scheme Tier2)"$/,
@@ -134,6 +146,36 @@ When(/^I fill form with (.+), (\d+), (\d+), (\d+), (\d+) for Govt Scheme "(Natio
     this.npsGovtSecurityAmount = npsGovtSecurityAmount;
     this.npsCorpDebtAmount = npsCorpDebtAmount;
     this.npsAltInvestmentFundsAmount = npsAltInvestmentFundsAmount;
-    await GovtSchemesFunctionality.fillNPSForm(npsFundName, npsEquityAmount, npsGovtSecurityAmount, npsCorpDebtAmount, npsAltInvestmentFundsAmount, npsType);
+    expect(await GovtSchemesFunctionality.fillNPSForm(npsFundName, npsEquityAmount, npsGovtSecurityAmount, npsCorpDebtAmount, npsAltInvestmentFundsAmount, npsType)).to.be.true;
   }
 );
+
+When(/^I fill form with (\d+); (.+); (.+); (.+) for Govt Scheme "National Saving Certificate"$/,
+  async(nscInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth) => {
+    this.schemeName = 'National Saving Certificate';
+    console.log(`When I fill form with ${nscInvestedAmount}; ${nscInterestPercent}; ${nscStartMonth}; ${nscMaturityMonth} for Govt Scheme "${this.schemeName}"`);
+    this.nscInvestedAmount = nscInvestedAmount;
+    this.nscInterestPercent = parseFloat(nscInterestPercent);
+    this.nscStartMonth = nscStartMonth;
+    this.nscMaturityMonth = nscMaturityMonth;
+    expect(await GovtSchemesFunctionality.fillNSCForm(nscInvestedAmount, this.nscInterestPercent, nscStartMonth, nscMaturityMonth, this.schemeName)).to.be.true;
+  }
+);
+
+When(/^I edit the "National Saving Certificate" of (\d+) with (\d+); (.+); (.+); (.+)$/,
+  async(nscInvestedAmount, newInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth) => {
+    console.log(`When I edit the "National Saving Certificate" of ${nscInvestedAmount} with ${newInvestedAmount}; ${nscInterestPercent}; ${nscStartMonth}; ${nscMaturityMonth}`);
+    this.schemeName = 'National Saving Certificate';
+    this.nscInvestedAmount = newInvestedAmount;
+    this.nscInterestPercent = parseFloat(nscInterestPercent);
+    this.nscStartMonth = nscStartMonth;
+    this.nscMaturityMonth = nscMaturityMonth;
+    expect(await GovtSchemesFunctionality.editNSCDetails(nscInvestedAmount, newInvestedAmount, this.nscInterestPercent, nscStartMonth, nscMaturityMonth, this.schemeName)).to.be.true;
+  }
+);
+
+Then(/^NSC Scheme details are shown correctly for Govt Scheme "National Saving Certificate"$/, async() => {
+  console.log(`Then NSC Scheme details are shown correctly for Govt Scheme "National Saving Certificate"`);
+  await GovtSchemesFunctionality.validateNSCSchemeDetails(this.nscInvestedAmount, this.nscInterestPercent,
+    this.nscStartMonth, this.nscMaturityMonth);
+});

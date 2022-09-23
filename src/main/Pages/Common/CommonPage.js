@@ -50,5 +50,26 @@ class CommonPage {
   async clickVerifyWithOTPButton() {
     await Utils.clickElement(CommonObjects.verifyOTPButton);
   }
+
+  async elementIsDisplayed(selector, timeoutMS = 15000) {
+    return (await Utils.elementIsDisplayed(selector, timeoutMS));
+  }
+
+  async clickSaveOrUpdateButton() {
+    await Utils.clickElement(CommonObjects.saveOrUpdateButton);
+  }
+
+  async clickEditDetailsLink() {
+    await Utils.clickElement(CommonObjects.editDetailsLink);
+  }
+
+  async clickDeleteLink() {
+    await Utils.clickElement(CommonObjects.deleteLink);
+  }
+
+  async fixedDepositPageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(CommonObjects.fixedDepositPageHeader));
+  }
+
 }
 module.exports = new CommonPage();

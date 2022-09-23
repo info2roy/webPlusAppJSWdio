@@ -2,6 +2,7 @@ const Constants = require('../../../config/data/structured/Constants');
 const Utils = require('../../../support/Utils/Utils');
 const GovtSchemesObjects = require('../../Objects/GovtSchemes/GovtSchemesObjects');
 const { expect } = require('chai');
+const CommonObjects = require('../../Objects/Common/CommonObjects');
 
 class GovtSchemesPage {
 
@@ -24,6 +25,7 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_GPF:
       case Constants.GOVT_SCHEME_SSY:
       case Constants.GOVT_SCHEME_SCSS:
+      case Constants.GOVT_SCHEME_NSC:
         await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
         break;
       case Constants.GOVT_SCHEME_NPS_TIER1:
@@ -44,6 +46,7 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_GPF:
       case Constants.GOVT_SCHEME_SSY:
       case Constants.GOVT_SCHEME_SCSS:
+      case Constants.GOVT_SCHEME_NSC:
         await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
         break;
       case Constants.GOVT_SCHEME_NPS_TIER1:
@@ -67,6 +70,8 @@ class GovtSchemesPage {
       case Constants.GOVT_SCHEME_NPS_TIER1:
       case Constants.GOVT_SCHEME_NPS_TIER2:
         return (await Utils.elementIsDisplayed(GovtSchemesObjects.enterSchemeDetailsHeader));
+      case Constants.GOVT_SCHEME_NSC:
+        return (await Utils.elementIsDisplayed(GovtSchemesObjects.enterInvestmentDetailsHeader));
       default:
         await console.log(`unsupported Govt Scheme ${schemeName}`);
         return false;
@@ -95,10 +100,6 @@ class GovtSchemesPage {
     } else {
       await Utils.setInputField(amount, GovtSchemesObjects.amountField);
     }
-  }
-
-  async saveOrUpdateAmount() {
-    await Utils.clickElement(GovtSchemesObjects.saveOrUpdateButton);
   }
 
   async amountUpdateSuccessMessageIsDisplayed(schemeName) {
@@ -213,5 +214,36 @@ class GovtSchemesPage {
   async npsSchemeGetNumericAttribute(attrName) {
     return parseFloat((await Utils.getText(GovtSchemesObjects.npsSchemeDetailsAttribute(attrName))).replace(/,/g, ''));
   }
+
+  async setNSCInvestedAmount(nscInvestedAmount) {
+    await Utils.setInputField(nscInvestedAmount, GovtSchemesObjects.nscInvestedAmountField);
+  }
+
+  async setNSCInterestPercent(nscInterestPercent) {
+    await Utils.setInputField(nscInterestPercent, GovtSchemesObjects.nscInterestPercentField);
+  }
+
+  async setNSCStartMonth(startMonth) {
+    await Utils.setMonthAndYear(startMonth, GovtSchemesObjects.nscStartDateField, CommonObjects.pickedYear,
+      CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
+  }
+
+  async setNSCMaturityMonth(maturityMonth) {
+    await Utils.setMonthAndYear(maturityMonth, GovtSchemesObjects.nscMaturityDateField, CommonObjects.pickedYear,
+      CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
+  }
+
+  async nscSchemeGetStringAttribute(nscInvestedAmount, index, attrName) {
+    return (await Utils.getText(GovtSchemesObjects.nscSchemeDetailsAttribute(nscInvestedAmount, index, attrName)));
+  }
+
+  async nscSchemeGetNumericAttribute(nscInvestedAmount, index, attrName) {
+    return parseFloat((await Utils.getText(GovtSchemesObjects.nscSchemeDetailsAttribute(nscInvestedAmount, index, attrName))).replace(/,/g, ''));
+  }
+
+  async clickNscSchemeMoreOptionsButton(nscInvestedAmount) {
+    await Utils.clickElement(GovtSchemesObjects.nscSchemeMoreOptionsButton(nscInvestedAmount));
+  }
+
 }
 module.exports = new GovtSchemesPage();

@@ -2,6 +2,7 @@ const Utils = require('../../../support/Utils/Utils');
 const CommonMyWealthObjects = require('../../Objects/Common/CommonMyWealthObjects');
 const Constants = require('../../../config/data/structured/Constants');
 const Device = require('../../../support/libraries/Device');
+const CommonPage = require('./CommonPage');
 
 class CommonMyWealthPage {
 
@@ -51,14 +52,38 @@ class CommonMyWealthPage {
     return (await Utils.elementIsDisplayed(CommonMyWealthObjects.myWealthInvestmentGovtSchemesHeader));
   }
 
+  async myWealthInvestmentRealEstatePageIsDisplayed() {
+    return (await Utils.elementIsDisplayed(CommonMyWealthObjects.myWealthInvestmentRealEstateHeader));
+  }
+
   async validateNavigateToMyWealthInvestmentTypePage(investmentType) {
     switch(investmentType.toString()) {
       case Constants.MY_WEALTH_INVESTMENTS_GOVT_SCHEMES:
         return (await this.myWealthInvestmentGovtSchemePageIsDisplayed());
+      case Constants.MY_WEALTH_INVESTMENTS_REAL_ESTATE:
+        return (await this.myWealthInvestmentRealEstatePageIsDisplayed());
+      case Constants.MY_WEALTH_INVESTMENTS_FIXED_DEPOSITS:
+        return (await CommonPage.fixedDepositPageIsDisplayed());
       default:
         await console.log(`Unsupported investmentType type -> ${ investmentType.toString()}`);
         return false;
     }
+  }
+
+  async wealthUpdateSuccessMessageIsDisplayed(wealthType) {
+    return (await Utils.elementIsDisplayed(CommonMyWealthObjects.wealthUpdateSuccessMessage(wealthType)));
+  }
+
+  async wealthDeleteSuccessMessageIsDisplayed(wealthType) {
+    return (await Utils.elementIsDisplayed(CommonMyWealthObjects.wealthDeleteSuccessMessage(wealthType)));
+  }
+
+  async getTotalInvestedAmount() {
+    return Utils.numberAbbriviationToAbsoluteValue(await Utils.getText(CommonMyWealthObjects.totalInvestedAmount));
+  }
+
+  async getTotalInvestedAmountStr() {
+    return await Utils.getText(CommonMyWealthObjects.totalInvestedAmount);
   }
 }
 

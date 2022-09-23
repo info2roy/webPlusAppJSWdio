@@ -37,7 +37,6 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
   await console.log(`Logging in to ${ env } for user ${ user}`);
   const platform = Utils.getPlatform();
   Device.setDevice(platform);
-  this.url = env.toString();
   if (Device.isMobileWeb() || Device.isDesktop()) {
     switch (env.toString()) {
       case 'MYSCRIPBOX':
@@ -64,6 +63,6 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
 
 Then(/^I go back to the dashboard page$/, async () => {
   await console.log('Then I go back to the dashboard page');
-  await DashboardFunctionality.open(this.url);
+  await DashboardFunctionality.open();
   await DashboardFunctionality.validate();
 });

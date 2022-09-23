@@ -20,6 +20,7 @@ class Constants {
   MY_WEALTH_INVESTMENTS_US_STOCKS = 'US Stocks';
   MY_WEALTH_INVESTMENTS_FIXED_DEPOSITS = 'Fixed Deposits';
   MY_WEALTH_INVESTMENTS_GOVT_SCHEMES = 'Govt. Schemes';
+  MY_WEALTH_INVESTMENTS_REAL_ESTATE = 'Real Estate';
   GOVT_SCHEME_NPS_TIER1 = 'National Pension Scheme Tier1';
   GOVT_SCHEME_NPS_TIER2 = 'National Pension Scheme Tier2';
   GOVT_SCHEME_EPF = 'Employee Provident Fund';
@@ -34,5 +35,15 @@ class Constants {
   NPS_SCHEME_ATTR_G = 'Scheme G - Government securities';
   NPS_SCHEME_ATTR_A = 'Scheme A - Alternative Investment Funds';
   NPS_SCHEME_ATTR_C = 'Scheme C - Corporate Debt';
+  NSC_SCHEME_ATTR_INTEREST = 'Interest';
+  NSC_SCHEME_ATTR_START_MONTH = 'Start';
+  NSC_SCHEME_ATTR_MATURITY_MONTH = 'Maturity';
+  REAL_ESTATE_ATTR_PURCHASE_COST = 'Purchase Cost';
+  REAL_ESTATE_ATTR_CURRENT_VALUE = 'Current Value';
+  REAL_ESTATE_ATTR_YOY_GROWTH = 'YoY Growth';
+  FIXED_DEPOSIT_ATTR_INTEREST = 'Interest';
+  FIXED_DEPOSIT_ATTR_START_MONTH = 'Start';
+  FIXED_DEPOSIT_ATTR_MATURITY_MONTH = 'Maturity';
+
 }
 module.exports = new Constants();
