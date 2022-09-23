@@ -17,5 +17,13 @@ class CommonMyWealthFunctionality {
     await CommonMyWealthPage.selectMyWealthInvestmentType(investmentType);
     return (await CommonMyWealthPage.validateNavigateToMyWealthInvestmentTypePage(investmentType));
   }
+
+  async getTotalInvestedAmount() {
+    return (await CommonMyWealthPage.getTotalInvestedAmount());
+  }
+
+  async getTotalInvestedAmountStr() {
+    return (await CommonMyWealthPage.getTotalInvestedAmountStr());
+  }
 }
 module.exports = new CommonMyWealthFunctionality();

@@ -1,8 +1,12 @@
-const CommonPage = require('../../Pages/Common/CommonPage');
 const GovtSchemesPage = require('../../Pages/GovtSchemes/GovtSchemesPage');
 const { expect } = require('chai');
 const Constants = require('../../../config/data/structured/Constants');
 const Utils = require('../../../support/Utils/Utils');
+const CommonFunctionality = require('../Common/CommonFunctionality');
+const GovtSchemesObjects = require('../../Objects/GovtSchemes/GovtSchemesObjects');
+const CommonObjects = require('../../Objects/Common/CommonObjects');
+const CommonPage = require('../../Pages/Common/CommonPage');
+const CommonMyWealthFunctionality = require('../Common/CommonMyWealthFunctionality');
 
 class GovtSchemesFunctionality {
 
@@ -16,18 +20,13 @@ class GovtSchemesFunctionality {
   }
 
   async selectFamilyMember(familyMemberName) {
-    if(await CommonPage.expandMoreButtonIsDisplayed(2000)) {
-      await CommonPage.clickExpandMoreButton();
-      if (await CommonPage.familyMemberNameIsDisplayed(familyMemberName, 2000)) {
-        await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-        return (await GovtSchemesPage.investedAmountHeaderIsDisplayed());
-      }
-      return false;
-    } else if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
-      await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-      return (await CommonPage.selectASchemePageHeaderIsDisplayed());
-    }
-    return false;
+    return await CommonFunctionality.selectFamilyMember(familyMemberName,
+      CommonObjects.selectASchemePageHeader);
+  }
+
+  async selectFamilyMemberViaExpandMore(familyMemberName) {
+    return await CommonFunctionality.selectFamilyMemberViaExpandMore(familyMemberName,
+      GovtSchemesObjects.investedAmountHeader);
   }
 
   async selectGovtScheme(schemeName) {
@@ -45,9 +44,15 @@ class GovtSchemesFunctionality {
     return (await GovtSchemesPage.govtSchemeDeleteMessageIsDisplayed());
   }
 
+  async deleteGovtSchemeNSC(nscInvestedAmount) {
+    await GovtSchemesPage.clickNscSchemeMoreOptionsButton(nscInvestedAmount);
+    await GovtSchemesPage.clickDeleteSchemeButton();
+    return (await GovtSchemesPage.govtSchemeDeleteMessageIsDisplayed());
+  }
+
   async setAmountForGovtScheme(amount, schemeName) {
     await GovtSchemesPage.setAmount(amount, schemeName);
-    await GovtSchemesPage.saveOrUpdateAmount();
+    await CommonPage.clickSaveOrUpdateButton();
     return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(schemeName));
   }
 
@@ -86,7 +91,7 @@ class GovtSchemesFunctionality {
   }
 
   async doGovtSchemeValidations(schemeName, familyMemberName, currentAmount, previousInvestedTotalAmount, previousInvestedTotalAmountForSingleGovtScheme) {
-    const newInvestedTotalAmount = await this.getTotalInvestedAmount();
+    const newInvestedTotalAmount = await CommonMyWealthFunctionality.getTotalInvestedAmount();
     // const newSingleGovtSchemePercentAndAmount = await this.getSchemePercentAndAmount(schemeName);
     let newSingleGovtSchemeAbsoluteAmount = 0;
     if ([Constants.GOVT_SCHEME_NPS_TIER1, Constants.GOVT_SCHEME_NPS_TIER2].includes(schemeName)) {
@@ -122,7 +127,7 @@ class GovtSchemesFunctionality {
     await GovtSchemesPage.setNPSGovtSecurityAmount(npsGovtSecurityAmount);
     await GovtSchemesPage.setNPSCorpDebtAmount(npsCorpDebtAmount);
     await GovtSchemesPage.setNPSAltInvestmentFunds(npsAltInvestmentFundsAmount);
-    await GovtSchemesPage.saveOrUpdateAmount();
+    await CommonPage.clickSaveOrUpdateButton();
     return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(npsType));
   }
 
@@ -133,6 +138,32 @@ class GovtSchemesFunctionality {
     expect(await GovtSchemesPage.npsSchemeGetNumericAttribute(Constants.NPS_SCHEME_ATTR_G)).to.equal(npsGovtSecurityAmount);
     expect(await GovtSchemesPage.npsSchemeGetNumericAttribute(Constants.NPS_SCHEME_ATTR_C)).to.equal(npsCorpDebtAmount);
     expect(await GovtSchemesPage.npsSchemeGetNumericAttribute(Constants.NPS_SCHEME_ATTR_A)).to.equal(npsAltInvestmentFundsAmount);
+  }
+
+  async fillNSCForm(nscInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth, schemeName) {
+    await GovtSchemesPage.setNSCInvestedAmount(nscInvestedAmount);
+    await GovtSchemesPage.setNSCInterestPercent(nscInterestPercent);
+    await GovtSchemesPage.setNSCStartMonth(nscStartMonth);
+    await GovtSchemesPage.setNSCMaturityMonth(nscMaturityMonth);
+    await CommonPage.clickSaveOrUpdateButton();
+    return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(schemeName));
+  }
+
+  async validateNSCSchemeDetails(nscInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth) {
+    expect(await GovtSchemesPage.nscSchemeGetNumericAttribute(nscInvestedAmount, 1, Constants.NSC_SCHEME_ATTR_INTEREST)).to.equal(nscInterestPercent);
+    expect(await GovtSchemesPage.nscSchemeGetStringAttribute(nscInvestedAmount, 2, Constants.NSC_SCHEME_ATTR_START_MONTH)).to.equal(nscStartMonth);
+    expect(await GovtSchemesPage.nscSchemeGetStringAttribute(nscInvestedAmount, 3, Constants.NSC_SCHEME_ATTR_MATURITY_MONTH)).to.equal(nscMaturityMonth);
+  }
+
+  async editNSCDetails(nscInvestedAmount, newInvestedAmount, nscInterestPercent, nscStartMonth, nscMaturityMonth, schemeName) {
+    await GovtSchemesPage.clickNscSchemeMoreOptionsButton(nscInvestedAmount);
+    await CommonPage.clickEditDetailsLink();
+    await GovtSchemesPage.setNSCInvestedAmount(newInvestedAmount);
+    await GovtSchemesPage.setNSCInterestPercent(nscInterestPercent);
+    await GovtSchemesPage.setNSCStartMonth(nscStartMonth);
+    await GovtSchemesPage.setNSCMaturityMonth(nscMaturityMonth);
+    await CommonPage.clickSaveOrUpdateButton();
+    return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(schemeName));
   }
 }
 module.exports = new GovtSchemesFunctionality();

@@ -1,7 +1,7 @@
 Feature: Scripbox Withdraw for Mutual Fund
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "STAGING" for "user189182"
+    Given I login to Scripbox in "MOCKAPI" for "user189182"
 
   Scenario Outline: As a logged in user, I am able to withdraw from mutual fund using Custom fund based withdrawal
     Given I am on the dashboard page
@@ -16,7 +16,7 @@ Feature: Scripbox Withdraw for Mutual Fund
     When I select to withdraw half amount from fund "ICICI Prudential Savings Fund (G)" at index 2
     When I click on "CONTINUE" button for withdrawal
     When I click on button "CONFIRM WITHDRAWAL" for withdrawal
-    When I enter OTP as 111111 for withdrawal
+    When I enter OTP as 111111 for verification
     Then I should see Withdrawal Scheduled success message
     Then I go back to the dashboard page
     Examples:
@@ -34,7 +34,7 @@ Feature: Scripbox Withdraw for Mutual Fund
     When I select "TAX_OPTIMIZED_WITHDRAWAL" as strategy
     When I click on "CONTINUE" button for withdrawal
     When I click on button "CONFIRM WITHDRAWAL" for withdrawal
-    When I enter OTP as 111111 for withdrawal
+    When I enter OTP as 111111 for verification
     Then I should see Withdrawal Scheduled success message
     Then I go back to the dashboard page
     Examples:

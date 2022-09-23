@@ -47,7 +47,7 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
         await browser.url(ANDROMEDA);
         await HomeFunctionality.performLogin(env, user);
         break;
-      case 'STAGING':
+      case 'MOCKAPI':
         await browser.url(MOCKAPI);
         await HomeFunctionality.performLogin(env, user);
       default:
@@ -63,6 +63,6 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
 
 Then(/^I go back to the dashboard page$/, async () => {
   await console.log('Then I go back to the dashboard page');
-  await DashboardFunctionality.open(); //this.uat is coming from world.js
+  await DashboardFunctionality.open();
   await DashboardFunctionality.validate();
 });

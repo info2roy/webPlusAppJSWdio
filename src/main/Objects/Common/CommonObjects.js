@@ -1,3 +1,5 @@
+const Utils = require('../../../support/Utils/Utils');
+
 class CommonObjects {
 
   selectFamilyMemberPageHeader = {
@@ -43,5 +45,70 @@ class CommonObjects {
   calanderInput = {web: '(//input[contains(@class,"-amount-field__input")])[2]'};
 
   nextMonthFirstDayInCalander = { web: '//*[contains(@class,"CalendarMonth_table")]//td[text()="1"]' };
+
+  otpField = {
+    web: 'input#verify-otp',
+    app: '.android.widget.EditText'
+  };
+
+  verifyOTPButton = {
+    web: '//div[text()="Verify"]',
+    app: '//*[@text="VERIFY"]'
+  };
+
+  saveOrUpdateButton = {
+    web: '//button[text()="Save" or text()="Update"]'
+  };
+
+  editDetailsLink = {
+    web: '//div[text()="Edit details"] | //h6[text()="Edit details"]',
+    app: '//*[@text="Edit details"]'
+  };
+
+  deleteLink = {
+    web: '//div[text()="Delete"] | //h6[text()="Delete"]',
+    app: '//*[@text="Delete"]'
+  };
+
+  previousYearButton = {
+    web: 'button.react-datepicker__navigation--previous'
+  };
+
+  nextYearButton = {
+    web: 'button.react-datepicker__navigation--next'
+  };
+
+  pickedYear = {
+    web: 'div.react-datepicker-year-header'
+  };
+
+  monthPicker(month) {
+    return {
+      web: `//div[text()="${month}"]`
+    };
+  }
+
+  currentMonth = {
+    web: 'div.react-datepicker__current-month'
+  };
+
+  previousMonthLink = {
+    web: 'button.react-datepicker__navigation--previous'
+  };
+
+  nextMonthLink = {
+    web: 'button.react-datepicker__navigation--next'
+  };
+
+  dayPicker(day) {
+    return {
+      web: `//div[contains(@class,"react-datepicker__day--${Utils.zeroPad(day, 3)}") and not(contains(@class,"react-datepicker__day--outside-month"))]`
+    };
+  }
+
+  fixedDepositPageHeader = {
+    web: '//div[contains(text(),"Interest rates upto")]',
+    app: '//*[contains(@text,"Interest rates upto")]'
+  };
 }
 module.exports = new CommonObjects();

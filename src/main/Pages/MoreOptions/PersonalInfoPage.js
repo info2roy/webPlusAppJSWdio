@@ -91,6 +91,9 @@ class PersonalInfoPage {
         break;
       case 'nominee':
         await Utils.setInputField('UserAB', PersonalInfoObjects.enterFullName);
+        await Utils.setInputField('1991', PersonalInfoObjects.enterYear);
+        await Utils.setInputField('10', PersonalInfoObjects.enterMonth);
+        await Utils.setInputField('11', PersonalInfoObjects.enterDate);
         break;
       default:
         await console.warn('Link type is not valid');

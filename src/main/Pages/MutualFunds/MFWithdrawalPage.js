@@ -101,14 +101,6 @@ class MFWithdrawalPage {
     return (await Utils.elementIsDisplayed(MFWithdrawalObjects.verifyWithOTPPageHeader));
   }
 
-  async enterOTP(otp) {
-    await Utils.setInputField(otp, MFWithdrawalObjects.otpField);
-  }
-
-  async clickVerifyWithOTPButton() {
-    await Utils.clickElement(MFWithdrawalObjects.verifyOTPButton);
-  }
-
   async withdrawScheduledPageHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFWithdrawalObjects.withdrawScheduledPageHeader));
   }

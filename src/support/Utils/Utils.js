@@ -101,6 +101,32 @@ class Utils {
     return undefined;
   }
 
+  /**
+   * Return the matching element for a given selector which matches all (attribute, value) in atrributes_object
+   * @param  {string} selector The selector representing multiple matching elements
+   * @param  {string} atrributes_object The object contains key,value corresponding to attribute,value
+   * @returns the first matching element, undefined if no match found
+   */
+  async findMatchingElementWithGivenAttributes(selector, atrributes_object) {
+    const locator = this.getLocator(selector);
+    const elements = await $$(locator);
+    for (let index = 0; index < elements.length; index ++) {
+      let all_matched = true;
+      for (attribute in atrributes_object) {
+        const value = await elements[index].getAttribute(attribute);
+        console.log(`index ${index} attribute ${attribute} value ${value} expected ${atrributes_object[attribute]}`);
+        if (value !== atrributes_object[attribute]) {
+          all_matched = false;
+          break;
+        }
+      }
+      if(all_matched) {
+        return elements[index];
+      }
+    }
+    return undefined;
+  }
+
   //Get the value of a <textarea>, <select> or text <input> found by given selector.
   async getValue(selector) {
     const locator = this.getLocator(selector);
@@ -267,7 +293,7 @@ class Utils {
       case 'm':
         return Math.round(parseFloat(parts[0]) * 1000000);
       default:
-        return Math.round(parseFloat(abbrStr));
+        return Math.round(parseFloat(abbrStr.replace(/,/g, '')));
     }
   }
 
@@ -292,6 +318,95 @@ class Utils {
     const webElement = (`//*[contains(@class, 'radio-input') and contains(text(),"${option}")]`);
     const myButton = await $(webElement);
     await myButton.click();
+  }
+
+  async isTextDisplayed(text) {
+    await browser.pause(1000);
+    const webElement = (`//*[contains(text(),"${text}")]`);
+    const isDisplayed = await $(webElement).isDisplayed();
+    return isDisplayed;
+  }
+
+  /**
+   * Set a monthYear for given month and year on the month calendar shown on the page
+   * @param  {string} monthYear The text of the form 'Jan, 2022'
+   * @param  {object} monthYearFieldSelector The selector for monthYear textfield
+   * @param  {object} pickedYearSelector The selector for the displayed selected/picked year
+   * @param  {object} prevYearButtonSelector The selector for arrow to be used for navigating to the previous year
+   * @param  {object} nextYearButtonSelector The selector for arrow to be used for navigating to the next year
+   * @param  {object} monthSelector The selector for selecting the month on the calendar
+   */
+  async setMonthAndYear(monthYear, monthYearFieldSelector, pickedYearSelector, prevYearButtonSelector, nextYearButtonSelector, monthSelector) {
+    const parts = monthYear.split(' ');
+    const month = parts[0].slice(0, -1);
+    const year = parseInt(parts[1].trim(), 10);
+    await this.clickElement(monthYearFieldSelector);
+    const currentYear = parseInt(await this.getText(pickedYearSelector), 10);
+    let yearDiff = currentYear - year;
+    if (yearDiff > 0) {
+      for (let index = 0; index < yearDiff; index ++) {
+        await this.clickElement(prevYearButtonSelector);
+      }
+    } else if (yearDiff < 0) {
+      yearDiff = yearDiff * (-1);
+      for (let index = 0; index < yearDiff; index ++) {
+        await this.clickElement(nextYearButtonSelector);
+      }
+    }
+    const selectedYear = parseInt(await this.getText(pickedYearSelector), 10);
+    expect(selectedYear).to.equal(year);
+    await this.clickElement(monthSelector(month));
+  }
+
+  //pad zeroes at the beginning so that the string num has total places digits
+  zeroPad(num, places) {
+    return String(num).padStart(places, '0');
+  }
+
+  /**
+   * Set a date for given day, month and year on the calendar shown on the page
+   * @param  {Number} day The day between 1 and 31
+   * @param  {string} monthYear The text of the form 'Jan, 2022'
+   * @param  {object} monthYearFieldSelector The selector for monthYear textfield
+   * @param  {object} pickedMonthSelector The selector for the displayed selected/picked month
+   * @param  {object} prevMonthButtonSelector The selector for arrow to be used for navigating to the previous month
+   * @param  {object} nextMonthButtonSelector The selector for arrow to be used for navigating to the next month
+   * @param  {object} daySelector The selector for selecting the day on the calendar
+   */
+  async setDate(day, monthYear, monthYearFieldSelector, pickedMonthSelector, prevMonthButtonSelector, nextMonthButtonSelector, daySelector) {
+    const monthNames = { 'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12};
+    const parts = monthYear.split(' ');
+    const month = parts[0].slice(0, -1);
+    const year = parseInt(parts[1].trim(), 10);
+    console.log(`monthYear ${monthYear} month ${month} year ${year}`);
+    await this.clickElement(monthYearFieldSelector);
+    const currentMonthStr = await this.getText(pickedMonthSelector);
+    const currentMonthParts = currentMonthStr.trim().split(' ');
+    const currentMonth = currentMonthParts[0].slice(0, 3);
+    const currentYear = parseInt(currentMonthParts[1], 10);
+    console.log(`currentMonth ${currentMonthStr} month ${currentMonth} year ${currentYear}`);
+    let yearDiff = currentYear - year;
+    let monthDiff = monthNames[currentMonth] - monthNames[month];
+    console.log(`yearDiff ${yearDiff} monthDiff ${monthDiff}`);
+    if (yearDiff > 0 || (yearDiff === 0 && monthDiff >= 0)) {
+      for (let index = 0; index < (12 * yearDiff + monthDiff); index ++) {
+        await this.clickElement(prevMonthButtonSelector);
+      }
+    } else if (yearDiff <= 0) {
+      yearDiff = yearDiff * (-1);
+      monthDiff = monthDiff * (-1);
+      for (let index = 0; index < (12 * yearDiff + monthDiff); index ++) {
+        await this.clickElement(nextMonthButtonSelector);
+      }
+    }
+    const selectedMonthStr = await this.getText(pickedMonthSelector);
+    const selectedMonthParts = selectedMonthStr.trim().split(' ');
+    const selectedMonth = selectedMonthParts[0].slice(0, 3);
+    const selectedYear = parseInt(selectedMonthParts[1], 10);
+    console.log(`selectedMonth ${selectedMonthStr} month ${selectedMonth} year ${selectedYear}`);
+    expect(selectedYear).to.equal(year);
+    expect(selectedMonth).to.equal(month);
+    await this.clickElement(daySelector(day));
   }
 }
 

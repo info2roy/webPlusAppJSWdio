@@ -15,60 +15,68 @@ class HomeFunctionality {
     if (env === 'ANDROMEDA') {
       await HomePage.clickMenuButton();
       await HomePage.selectLoginOption();
-      switch (user.toString()) {
-        case 'user180756':
-          await LoginPage.enterUserId(loginData.user180756);
-          break;
-        case 'user189182':
-          await LoginPage.enterUserId(loginData.user189182);
-          break;
-        case 'user120405':
-          await LoginPage.enterUserId(loginData.user120405);
-          break;
-        case 'user120406':
-          await LoginPage.enterUserId(loginData.user120406);
-          break;
-        case 'user120409':
-          await LoginPage.enterUserId(loginData.user120409);
-          break;
-        case 'user123473':
-          await LoginPage.enterUserId(loginData.user123473);
-          break;
-        case 'user124148':
-          await LoginPage.enterUserId(loginData.user124148);
-          break;
-        default:
-          await console.log(`${user } User not available to add. Please add in login data to proceed`);
+      if (loginData[user.toString()] === undefined) {
+        await LoginPage.enterUserId(user.toString());
+      } else {
+        switch (user.toString()) {
+          case 'user180756':
+            await LoginPage.enterUserId(loginData.user180756);
+            break;
+          case 'user189182':
+            await LoginPage.enterUserId(loginData.user189182);
+            break;
+          case 'user120405':
+            await LoginPage.enterUserId(loginData.user120405);
+            break;
+          case 'user120406':
+            await LoginPage.enterUserId(loginData.user120406);
+            break;
+          case 'user120409':
+            await LoginPage.enterUserId(loginData.user120409);
+            break;
+          case 'user123473':
+            await LoginPage.enterUserId(loginData.user123473);
+            break;
+          case 'user124148':
+            await LoginPage.enterUserId(loginData.user124148);
+            break;
+          default:
+            await console.log(user + ' User not available to add. Please add in login data to proceed');
+        }
       }
       await LoginPage.clickContinueOrNextButton();
       await LoginPage.enterPassword(loginData.password);
       await LoginPage.clickContinueLoginButton();
       await DashboardFunctionality.validate();
-    } else if (env === 'STAGING' || env === 'MYSCRIPBOX') {
-      switch (user.toString()) {
-        case 'user180756':
-          await Utils.setInputField(loginData.user180756, LoginObjects.stagingUserIdField);
-          break;
-        case 'user189182':
-          await Utils.setInputField(loginData.user189182, LoginObjects.stagingUserIdField);
-          break;
-        case 'user120405':
-          await Utils.setInputField(loginData.user120405, LoginObjects.stagingUserIdField);
-          break;
-        case 'user120406':
-          await Utils.setInputField(loginData.user120406, LoginObjects.stagingUserIdField);
-          break;
-        case 'user120409':
-          await Utils.setInputField(loginData.user120409, LoginObjects.stagingUserIdField);
-          break;
-        case 'user123473':
-          await Utils.setInputField(loginData.user123473, LoginObjects.stagingUserIdField);
-          break;
-        case 'user124148':
-          await Utils.setInputField(loginData.user124148, LoginObjects.stagingUserIdField);
-          break;
-        default:
-          await console.log(`${user } User not available to add. Please add in login data to proceed`);
+    } else if (env === 'MOCKAPI' || env === 'MYSCRIPBOX') {
+      if (loginData[user.toString()] === undefined) {
+        await Utils.setInputField(user.toString(), LoginObjects.stagingUserIdField);
+      } else {
+        switch (user.toString()) {
+          case 'user180756':
+            await Utils.setInputField(loginData.user180756, LoginObjects.stagingUserIdField);
+            break;
+          case 'user189182':
+            await Utils.setInputField(loginData.user189182, LoginObjects.stagingUserIdField);
+            break;
+          case 'user120405':
+            await Utils.setInputField(loginData.user120405, LoginObjects.stagingUserIdField);
+            break;
+          case 'user120406':
+            await Utils.setInputField(loginData.user120406, LoginObjects.stagingUserIdField);
+            break;
+          case 'user120409':
+            await Utils.setInputField(loginData.user120409, LoginObjects.stagingUserIdField);
+            break;
+          case 'user123473':
+            await Utils.setInputField(loginData.user123473, LoginObjects.stagingUserIdField);
+            break;
+          case 'user124148':
+            await Utils.setInputField(loginData.user124148, LoginObjects.stagingUserIdField);
+            break;
+          default:
+            await console.log(user + ' User not available to add. Please add in login data to proceed');
+        }
       }
       await Utils.setInputField(loginData.password, LoginObjects.stagingPasswordField);
       await Utils.clickElement(LoginObjects.stagingLoginButton);

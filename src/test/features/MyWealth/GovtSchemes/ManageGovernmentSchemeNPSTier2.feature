@@ -1,7 +1,7 @@
-Feature: Scripbox MyWealth: Add a Government Scheme
+Feature: Scripbox MyWealth: Add a Government Scheme "National Pension Scheme Tier2"
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "MYSCRIPBOX" for "user180756"
+    Given I login to Scripbox in "ANDROMEDA" for "user180756"
 
   Scenario Outline: As a logged in user, I am able to add and update a Government Scheme "National Pension Scheme Tier2" to "My Wealth"
     Given I navigate to the MyWealth "Investments" type "Govt. Schemes"
@@ -23,3 +23,4 @@ Feature: Scripbox MyWealth: Add a Government Scheme
     When I select Govt Scheme "National Pension Scheme Tier2" tile for family member "Investor 156012"
     When I delete Govt Scheme 
     Then I go back to the dashboard page
+    Then I logout of Scripbox
