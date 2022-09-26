@@ -1,6 +1,6 @@
 class RealEstateObjects {
   realEstateInitialPageHeader = {
-    web: '//h5[text()="One place to track all of your real estate investments"]',
+    web: '//*[text()="One place to track all of your real estate investments"]',
     app: '//android.widget.TextView[@text="One place to track all of your real estate investments"]'
   };
 
