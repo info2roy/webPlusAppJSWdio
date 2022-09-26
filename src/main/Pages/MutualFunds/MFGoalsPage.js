@@ -227,8 +227,6 @@ class MFGoalsPage {
     if (Device.isAndroidApp()) {
       await Utils.scrollVerticalUntilTextIntoViewForAndroid('Congratulations!', 0);
     }
-    console.log('step1');
-    await browser.pause(10000);
     return (await Utils.elementIsDisplayed(MFGoalsObjects.congratulationsPageHeader));
   }
 
