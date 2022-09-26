@@ -186,14 +186,14 @@ class GovtSchemesObjects {
   //For NSC Scheme details attributes Interest, Start, Maturity
   nscSchemeDetailsAttribute(nscAmount, index, attribute) {
     return {
-      web: `//h5[text()="${nscAmount.toLocaleString('hi')}"]/parent::div/parent::div/following-sibling::div/div[${index}]/p[text()="${attribute}"]/following-sibling::p`,
+      web: `//*[text()="${nscAmount.toLocaleString('hi')}"]/parent::div/parent::div/following-sibling::div/div[${index}]/p[text()="${attribute}"]/following-sibling::p`,
       app: `//android.widget.TextView[@text="1 Investment"]/following-sibling::android.view.ViewGroup/android.widget.TextView[@text="${nscAmount.toLocaleString('hi')}"]/following-sibling::android.widget.TextView[${index + 3}]`
     };
   }
 
   nscSchemeMoreOptionsButton(nscAmount) {
     return {
-      web: `//h5[text()="${nscAmount.toLocaleString('hi')}"]/parent::div/following-sibling::div/span[text()="more_horiz"]`,
+      web: `//*[text()="${nscAmount.toLocaleString('hi')}"]/parent::div/following-sibling::div/span[text()="more_horiz"]`,
       app: `//android.widget.TextView[@text="1 Investment"]/following-sibling::android.view.ViewGroup/android.widget.TextView[@text="${nscAmount.toLocaleString('hi')}"]/following-sibling::android.view.ViewGroup/android.widget.TextView`
     };
   }
