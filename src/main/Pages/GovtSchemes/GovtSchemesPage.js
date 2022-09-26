@@ -69,7 +69,6 @@ class GovtSchemesPage {
         await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
         break;
       case Constants.GOVT_SCHEME_NSC:
-        await Utils.scrollVerticalUntilTextIntoViewForAndroid(schemeName);
         await Utils.clickElement(GovtSchemesObjects.govtScheme(schemeName));
         break;
       case Constants.GOVT_SCHEME_NPS_TIER1:
