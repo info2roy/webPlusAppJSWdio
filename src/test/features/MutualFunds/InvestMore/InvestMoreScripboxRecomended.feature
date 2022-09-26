@@ -14,7 +14,7 @@ Feature: Scripbox Dashboard -> Invest footer button -> Scripbox recomended
         And I validate recomended funds present  //*[@id="alcFundContainer"]//div[contains(@class,"scard-container")]
         And I click on "Pick fund"
         And I validate header "Set up investment"
-        And I select invest option <SIPFrequency> funds withdrawl
+        And I select invest option <SIPFrequency>
         And I enter SIP details <SIPAmount>
         And I enter SIP details <SIPDuration>
         And I select start date <SIPStartDate>
@@ -35,7 +35,7 @@ Feature: Scripbox Dashboard -> Invest footer button -> Scripbox recomended
         And I validate recomended funds present  //*[@id="alcFundContainer"]//div[contains(@class,"scard-container")]
         And I click on "Pick fund"
         And I validate header "Set up investment"
-        And I select invest option <SIPFrequency> funds withdrawl
+        And I select invest option <SIPFrequency>
         And I enter SIP details <SIPAmount>
         Then Then I click on "Pay "
         And I validate header "I would like to invest using"

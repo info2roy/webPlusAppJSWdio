@@ -1,9 +1,9 @@
-Feature: Scripbox Dashboard -> Invest footer button -> Add new plan
+Feature: Scripbox Dashboard -> Invest button -> Add new plan
 
   Scenario: As a Scripbox user, I am logged in
     Given I login to Scripbox in "ANDROMEDA" for "automation+1@sb.io"
 
-  Scenario Outline: As a logged in user, I am able to add new mutual fund plan using "1-Click Invest"
+  Scenario Outline: As a logged in user, I am able to schedule investment instruction via Dashboard Invest
     When I navigate to "Invest" from Dashboard
     And I click on "Mutual Funds"
     And I click on "Add new plan"
@@ -13,7 +13,7 @@ Feature: Scripbox Dashboard -> Invest footer button -> Add new plan
     And I validate header "Emergency Fund"
     And I click on "Invest more"
     And I validate header "I want to invest"
-    And I select invest option <SIPFrequency> funds withdrawl
+    And I select invest option <SIPFrequency>
     And I enter SIP details <SIPAmount>
     And I see Investment calculator container
     And I click on "See Recommended Funds"
@@ -46,7 +46,7 @@ Feature: Scripbox Dashboard -> Invest footer button -> Add new plan
     When I validate header "Emergency Fund"
     When I click on "Invest more"
     When I validate header "I want to invest"
-    When I select invest option <SIPFrequency> funds withdrawl
+    When I select invest option <SIPFrequency>
     When I enter SIP details <SIPAmount>
     When I see Investment calculator container
     When I click on "See Recommended Funds"
