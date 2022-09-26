@@ -385,6 +385,7 @@ class Utils {
     return isDisplayed;
   }
 
+  //monthYear should be of form => "Jan 1, 2022", "Feb 3, 2021" etc
   splitMonthAndYear(monthYear) {
     const parts = monthYear.split(' ');
     const month = parts[0].slice(0, -1);
