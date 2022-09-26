@@ -38,7 +38,7 @@ class CommonObjects {
 
   expandMoreButton = {
     web: '//i[text()="expand_more"]',
-    app: '//android.widget.TextView[@text="\uE313"]'
+    app: '//android.widget.TextView[@text="\uE313"]' //The expand more button has this unicode char \uE313 value
   };
 
   otpField = {
