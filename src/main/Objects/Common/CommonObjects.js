@@ -57,12 +57,12 @@ class CommonObjects {
   };
 
   editDetailsLink = {
-    web: '//div[text()="Edit details"] | //h6[text()="Edit details"]',
+    web: '//*[text()="Edit details"]',
     app: '//android.widget.TextView[@text="Edit details"]'
   };
 
   deleteLink = {
-    web: '//div[text()="Delete"] | //h6[text()="Delete"]',
+    web: '//*[text()="Delete"]',
     app: '//android.widget.TextView[@text="Delete"]'
   };
 
