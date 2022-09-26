@@ -385,7 +385,7 @@ class Utils {
     return isDisplayed;
   }
 
-  //monthYear should be of form => "Jan 1, 2022", "Feb 3, 2021" etc
+  //monthYear should be of form => "Jan, 2022", "Feb, 2021" etc
   splitMonthAndYear(monthYear) {
     const parts = monthYear.split(' ');
     const month = parts[0].slice(0, -1);
@@ -440,6 +440,13 @@ class Utils {
     return map[monthAbbr];
   }
 
+  /**
+   * Swipe on android based on fraction of window width and window height for start and end X and Y coordinates
+   * @param  {Number} startXMultiplier The fraction of windowSize.width value between 0 and 1 for swipe start X co-ordinate
+   * @param  {Number} startYMultiplier The fraction of windowSize.height value between 0 and 1 for swipe start Y co-ordinate
+   * @param  {Number} endXMultiplier The fraction of windowSize.width value between 0 and 1 for swipe end X co-ordinate
+   * @param  {Number} endYMultiplier The fraction of windowSize.height value between 0 and 1 for swipe end Y co-ordinate
+   */
   async swipeOnAndroid(startXMultiplier, startYMultiplier, endXMultiplier, endYMultiplier) {
     const windowSize = await driver.getWindowSize();
 
@@ -471,6 +478,13 @@ class Utils {
     ]);
   }
 
+  /**
+   * On Android when month and year needs to selected based on scrolls, this function is used to set a specific month and year
+   * @param  {string} monthYear The text of the form 'Jan, 2022'
+   * @param  {object} monthYearFieldSelector The selector for monthYear textfield
+   * @param  {object} monthPickerYearSelector The selector for currently selected year
+   * @param  {object} doneButtonSelector The selector for Done button
+   */
   async setMonthAndYearForAndroid(monthYear, monthYearFieldSelector, monthPickerYearSelector, doneButtonSelector) {
     const monthNames = { 'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5, 'July': 6,
       'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11 };
