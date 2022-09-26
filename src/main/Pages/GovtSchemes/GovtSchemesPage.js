@@ -285,7 +285,7 @@ class GovtSchemesPage {
         CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
     } else if(Device.isAndroidApp()) {
       await Utils.setMonthAndYearForAndroid(startMonth, GovtSchemesObjects.nscStartDateField,
-        CommonObjects.androidMonthPickerMonth, CommonObjects.androidMonthPickerYear,
+        CommonObjects.androidMonthPickerYear,
         CommonObjects.androidMonthPickerDoneButton);
     }
   }
@@ -296,7 +296,7 @@ class GovtSchemesPage {
         CommonObjects.previousYearButton, CommonObjects.nextYearButton, CommonObjects.monthPicker);
     } else if(Device.isAndroidApp()) {
       await Utils.setMonthAndYearForAndroid(maturityMonth, GovtSchemesObjects.nscMaturityDateField,
-        CommonObjects.androidMonthPickerMonth, CommonObjects.androidMonthPickerYear,
+        CommonObjects.androidMonthPickerYear,
         CommonObjects.androidMonthPickerDoneButton);
     }
   }

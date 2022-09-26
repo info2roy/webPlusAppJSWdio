@@ -81,7 +81,7 @@ class FixedDepositPage {
         CommonObjects.previousMonthLink, CommonObjects.nextMonthLink, CommonObjects.dayPicker);
     } else if (Device.isAndroidApp()) {
       await Utils.setMonthAndYearForAndroid(startMonth, FixedDepositObjects.fdStartMonthField,
-        CommonObjects.androidMonthPickerMonth, CommonObjects.androidMonthPickerYear,
+        CommonObjects.androidMonthPickerYear,
         CommonObjects.androidMonthPickerDoneButton);
     }
   }
@@ -103,7 +103,7 @@ class FixedDepositPage {
     } else if (Device.isAndroidApp()) {
       await Utils.scrollVerticalToEndForAndroid(0, 1);
       await Utils.setMonthAndYearForAndroid(maturityMonth, FixedDepositObjects.fdMaturityMonthField,
-        CommonObjects.androidMonthPickerMonth, CommonObjects.androidMonthPickerYear,
+        CommonObjects.androidMonthPickerYear,
         CommonObjects.androidMonthPickerDoneButton);
     }
   }
