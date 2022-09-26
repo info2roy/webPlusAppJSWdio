@@ -450,7 +450,7 @@ class Utils {
   async swipeOnAndroid(startXMultiplier, startYMultiplier, endXMultiplier, endYMultiplier) {
     const windowSize = await driver.getWindowSize();
 
-    const right2leftSwipeOptions = {
+    const startToEndSwipeOptions = {
       startX: windowSize.width * startXMultiplier,
       startY: windowSize.height * startYMultiplier,
       endX: windowSize.width * endXMultiplier,
@@ -462,16 +462,16 @@ class Utils {
       {
         action: 'press',
         options: {
-          x: right2leftSwipeOptions.startX,
-          y: right2leftSwipeOptions.startY
+          x: startToEndSwipeOptions.startX,
+          y: startToEndSwipeOptions.startY
         }
       },
-      { action: 'wait', options: { mseconds: right2leftSwipeOptions.delay } },
+      { action: 'wait', options: { mseconds: startToEndSwipeOptions.delay } },
       {
         action: 'moveTo',
         options: {
-          x: right2leftSwipeOptions.endX,
-          y: right2leftSwipeOptions.endY
+          x: startToEndSwipeOptions.endX,
+          y: startToEndSwipeOptions.endY
         }
       },
       { action: 'release' }
