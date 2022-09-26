@@ -283,6 +283,20 @@ class Utils {
     await $(`android=${func}(${maxSwipes})`);
   }
 
+  async scrollHorizontalToBeginningForAndroid(scrollableInstanceId, maxSwipes) {
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollToBeginning(int)
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsHorizontalList().scrollToBeginning`;
+    await $(`android=${func}(${maxSwipes})`);
+  }
+
+  async scrollHorizontalForAndroid(scrollableInstanceId, steps, forward = true) {
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollForward(int)
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollBackward(int)
+
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsHorizontalList()`;
+    await $(`android=${func}.${forward ? 'scrollForward' : 'scrollBackward' }(${steps})`);
+  }
+
   //Choose a Select tag option by Visible Text
   async chooseSelectOptionByVisibleText(selector, visibleText) {
     const locator = this.getLocator(selector);
