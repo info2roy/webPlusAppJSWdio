@@ -33,6 +33,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
     Then I click on "View investments"
     Then I validate section "SIP(s) and STP(s)" to contain <mutualFundPortfolio> SIP with <SIPAmount>
     Then I validate section "Monthly Summary -> Upcoming" to contain <mutualFundPortfolio> "Investment - Every Month" with <SIPAmount>
+    Then I go back to the dashboard page
     Examples:
       | mutualFundPortfolio | SIPFrequency | SIPAmount | SIPDuration | SIPStartDate | sipIncreasePercentPerYear |
       | Core Mutual Fund Portfolio | Every month (SIP)  | 30000 | Default | Default | Default |
@@ -72,6 +73,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
     Then I validate header "I would like to invest using"
     Then I validate header "Net Banking"
     Then I validate header "UPI"
+    Then I go back to the dashboard page
     Examples:
       | mutualFundPortfolio | SIPFrequency | SIPAmount | SIPDuration | UpcomingSIPStartDate | sipIncreasePercentPerYear |
       | Core Mutual Fund Portfolio | Every month (SIP)  | 30000 | Default | Default | Default |
@@ -111,6 +113,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
     Then I should see message "Investment scheduled successfully"
     When I click on "View investments"
     Then I validate section "Monthly Summary -> Upcoming" to contain <mutualFundPortfolio> "Investment - One Time" with <oneTimeAmount>
+    Then I go back to the dashboard page
     Examples:
       | mutualFundPortfolio | SIPFrequency | oneTimeAmount | investmentDate |
       | Core Mutual Fund Portfolio | One time  | 30000 | Default |
@@ -141,6 +144,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
     Then I validate header "I would like to invest using"
     Then I validate header "Net Banking"
     Then I validate header "UPI"
+    Then I go back to the dashboard page
     Examples:
       | mutualFundPortfolio | SIPFrequency | oneTimeAmount |
       | Core Mutual Fund Portfolio | One time  | 30000 |
