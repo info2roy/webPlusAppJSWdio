@@ -37,12 +37,12 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
       | mutualFundPortfolio | SIPFrequency | SIPAmount | SIPDuration | SIPStartDate | sipIncreasePercentPerYear |
       | Core Mutual Fund Portfolio | Every month (SIP)  | 30000 | Default | Default | Default |
       | Core Mutual Fund Portfolio | Every month (SIP)  | 1000 | Default | Default | 11 |
-      | Core Mutual Fund Portfolio | Every month (SIP)  | 3000 | Default | +2 | 8 |
+      | Core Mutual Fund Portfolio | Every month (SIP)  | 3000 | Default | T+2 | 8 |
       | Core Mutual Fund Portfolio | Every month (SIP)  | 5000 | Default | 1stOfNextMonth | 9 |
-      | Core Mutual Fund Portfolio | Every month (SIP)  | 9000 | 60 | Default | Default |
-      | Core Mutual Fund Portfolio | Every month (SIP)  | 12000 | 60 | Default | 11 |
-      | Core Mutual Fund Portfolio | Every month (SIP)  | 15000 | 60 | +2 | 8 |
-      | Core Mutual Fund Portfolio | Every month (SIP)  | 20000 | 60 | 1stOfNextMonth | 9 |
+      | Core Mutual Fund Portfolio | Every month (SIP)  | 9000 | 60 | T+3 | 15 |
+      | Core Mutual Fund Portfolio | Every month (SIP)  | 12000 | 12 | T+7 | 7 |
+      | Core Mutual Fund Portfolio | Every month (SIP)  | 15000 | 24 | 5thOfNextToNextMonth | 5 |
+      | Core Mutual Fund Portfolio | Every month (SIP)  | 20000 | 36 | 10thOfNextMonth | 0 |
 
   Scenario Outline: As a logged in user, I am able to do immediate "Core Mutual Fund Portfolio" investment in mutual funds via Every month (SIP)
     When I navigate to "Invest more" from Dashboard
