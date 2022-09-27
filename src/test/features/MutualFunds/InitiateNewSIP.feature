@@ -16,10 +16,11 @@ Feature: Scripbox Investment for monthly SIP
 
     @smoke
     Scenario Outline: As a logged in user, I want enter SIP details to initiate monthly SIP
-        When I select invest option <SIPFrequency> funds withdrawl
+        When I select invest option <SIPFrequency>
         And I enter SIP fund <SIPAmount> and <SIPDuration>
+        When I select date <StartMonth>
         And I select first date of next month
         #     Then I click on "Confirm SIP of "
         Examples:
-            | SIPFrequency | SIPAmount | SIPDuration |
-            | Monthly SIP  | 2000      | 20          |
+            | SIPFrequency | SIPAmount | SIPDuration | StartMonth |
+            | Monthly SIP  | 2000      | 20          | Mar, 2018     |

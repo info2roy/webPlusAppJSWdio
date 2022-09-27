@@ -260,5 +260,21 @@ class MFInvestmentObjects {
   SIPDurationTextBox = {
     web: '//input[@id="duration"]'
   };
+
+  setMonthField = {
+    web: '//input[contains(@class,"cursor-pointer ycof-amount-field")]'
+  };
+
+  currentMonth = {
+    web: 'div.CalendarMonth_caption div div'
+  };
+
+  previousMonthNavigation = {
+    web: '//*[@class="DayPickerNavigation_svg__horizontal DayPickerNavigation_svg__horizontal_1"]'
+  };
+
+  nextMonthNavigation = {
+    web: '(//*[@class="DayPickerNavigation_svg__horizontal DayPickerNavigation_svg__horizontal_1"])[2]'
+  };
 }
 module.exports = new MFInvestmentObjects();
