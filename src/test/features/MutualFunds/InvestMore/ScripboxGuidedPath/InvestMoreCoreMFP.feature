@@ -123,6 +123,8 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
       | Core Mutual Fund Portfolio | One time  | 30000 | Default |
       | Core Mutual Fund Portfolio | One time  | 15000 | T+2 |
       | Core Mutual Fund Portfolio | One time  | 20000 | 1stOfNextMonth |
+      | Core Mutual Fund Portfolio | One time  | 0 | Default |
+      | Core Mutual Fund Portfolio | One time  | -1000 | Default |
 
   Scenario Outline: As a logged in user, I am able to do immediate "Core Mutual Fund Portfolio" investment in mutual funds via One Time Investment
     When I go back to the dashboard page
