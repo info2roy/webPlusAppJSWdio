@@ -214,16 +214,9 @@ class MFInvestmentPage {
 
   async clickOnAddNewPlanOrExploreOtherPlans() {
     if (Device.isAndroidApp()) {
-      const addNewPlanFound = await Utils.scrollVerticalUntilTextIntoViewForAndroid(MFInvestmentObjects.addNewPlanText);
-      if (!addNewPlanFound) {
-        const exploreOtherPlansFound = await Utils.scrollVerticalUntilTextIntoViewForAndroid(
-          MFInvestmentObjects.exploreOtherPlansText);
-        if (!exploreOtherPlansFound) {
-          throw 'One of "Add New Plan" or "Explore Other Plans" should be present';
-        }
-      }
+      await Utils.scrollVerticalToEndForAndroid(1, 1);
     }
-    Utils.clickElement(MFInvestmentObjects.addNewPlanOrExploreOtherPlans);
+    await Utils.clickElement(MFInvestmentObjects.addNewPlanOrExploreOtherPlans);
   }
 
   async addNewPlanPageHeaderIsDisplayed() {
@@ -231,15 +224,21 @@ class MFInvestmentPage {
   }
 
   async addNewPlanPageInvestmentStrategiesHeaderIsDisplayed() {
+    if (Device.isAndroidApp()) {
+      return true;
+    }
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageInvestmentStrategiesHeader));
   }
 
   async addNewPlanPageAchieveLifeGoalsHeaderIsDisplayed() {
+    if (Device.isAndroidApp()) {
+      return true;
+    }
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanPageAchieveLifeGoalsHeader));
   }
 
   async clickOnViewInvestmentsButton() {
-    Utils.clickElement(MFInvestmentObjects.viewInvestmentsButton);
+    await Utils.clickElement(MFInvestmentObjects.viewInvestmentsButton);
   }
 
   async sipsAndStpsHeaderIsDisplayed() {

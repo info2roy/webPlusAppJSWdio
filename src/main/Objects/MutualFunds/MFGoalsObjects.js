@@ -3,13 +3,13 @@ class MFGoalsObjects {
   lifeGoalElement(lifeGoal) {
     return {
       web: `(//div[text()="${lifeGoal}"])[1]`,
-      app: `(//*[@text="${lifeGoal}"])[1]`,
+      app: `//android.widget.TextView[@text="${lifeGoal}"]`,
     };
   }
 
   createANewPlanHeader = {
     web: '//div[contains(text(),"Create a new plan")]',
-    app: '//*[contains(text(),"Create a new plan")]'
+    app: '//android.widget.TextView[contains(@text,"Create new plan")]'
   };
 
   replanSummaryLifeGoalElement(lifeGoal) {
@@ -31,21 +31,22 @@ class MFGoalsObjects {
 
   lifeGoalExistingPlanElement(lifeGoal) {
     return {
-      web: `//div[text()="${lifeGoal}"]/following-sibling::div/following-sibling::div`
+      web: `//div[text()="${lifeGoal}"]/following-sibling::div/following-sibling::div`,
+      app: `//android.widget.TextView[@text="${lifeGoal}"]/following-sibling::android.widget.TextView[contains(@text,"1 · existing plans")]`
     };
   }
 
   yourExistingPlansHeader = {
-    web: '//div[contains(text(),"Your existing plans")]'
+    web: '//div[contains(text(),"Your existing plans")]',
+    app: '//android.widget.TextView[@text="Your existing plans"]'
   };
 
   investmentCalendarHeader = {
-    web: '//div[text()="Investment Calendar"]'
+    web: '//div[text()="Investment Calendar"]',
+    app: '//android.widget.TextView[@text="Investment Calendar"]'
   };
 
-  showMeHowText = {
-    app: 'SHOW ME HOW'
-  };
+  showMeHowText = 'SHOW ME HOW';
 
   showMeHowButton = {
     web: '//button[contains(text(),"Show me how")]',
@@ -65,6 +66,22 @@ class MFGoalsObjects {
   myAgeField = {
     web: 'input.my-age-js',
     app: '(//android.widget.EditText)[1]'
+  };
+
+  myAgeIsLabel = {
+    app: '//*[@text="My age is"]'
+  };
+
+  myCurrentMonthlyExpensesAreLabel = {
+    app: '//*[@text="My current monthly expenses are"]'
+  };
+
+  iWantToRetireAtTheAgeOfLabel = {
+    app: '//*[@text="I want to retire at the age of"]'
+  };
+
+  iWantToPlanForAgeLabel = {
+    app: '//*[@text="I want to plan for age"]'
   };
 
   monthlyExpensesOption(value) {
@@ -107,75 +124,96 @@ class MFGoalsObjects {
   }
 
   retireAtAgeField = {
-    web: 'input.ff-retirement-age-js'
+    web: 'input.ff-retirement-age-js',
+    app: '(//android.widget.EditText)[3]'
   };
 
   retirementEndAgeField = {
-    web: 'input.ff-retirment-end-age-js'
+    web: 'input.ff-retirment-end-age-js',
+    app: '(//android.widget.EditText)[2]'
   };
 
   createAPlanLink = {
-    web: '//a[contains(text(),"Create a plan")]'
+    web: '//a[contains(text(),"Create a plan")]',
+    app: '//*[@text="CREATE A PLAN"]'
   };
 
   existingSavingsAndPlansPageHeader = {
-    web: '//span[text()="Existing savings and plans"]'
+    web: '//span[text()="Existing savings and plans"]',
+    app: '//android.view.View[@text="Existing savings and plans"]'
   };
 
   addExistingSavingsLink = {
-    web: '//a[text()="Add"]'
+    web: '//a[text()="Add"]',
+    app: '//android.view.View[@text="Add"]'
   };
 
   myExistingSavingsHeader = {
-    web: '//div[text()="My existing savings"]'
+    web: '//div[text()="My existing savings"]',
+    app: '//android.view.View[@text="My existing savings"]'
   };
 
   existingSavingsAmountField = {
-    web: 'input.ff-savings-amount-input-js'
+    web: 'input.ff-savings-amount-input-js',
+    app: '(//android.widget.EditText)[1]'
   };
 
   existingSavingsAmountGrowthRateField = {
-    web: 'input.ff-savings-returns-input-js'
+    web: 'input.ff-savings-returns-input-js',
+    app: '(//android.widget.EditText)[2]'
   };
 
   saveExistingSavingsDetailsButton = {
-    web: '//button[text()="Save"]'
+    web: '//button[text()="Save"]',
+    app: '//android.widget.Button[@text="SAVE"]'
   };
 
   futureMonthlyIncomeFromOtherSourcesField = {
-    web: 'input.ff-plan-savings-amount-custom-js'
+    web: 'input.ff-plan-savings-amount-custom-js',
+    app: '(//android.widget.EditText)[1]'
   };
 
   calculateMyNeedLink = {
-    web: '//a[contains(text(),"Calculate My Need")]'
+    web: '//a[contains(text(),"Calculate My Need")]',
+    app: '//android.widget.TextView[@text="CALCULATE MY NEED"]'
   };
 
   whatYouNeedToRetireHeader = {
-    web: '//span[text()="What you need to retire"]'
+    web: '//span[text()="What you need to retire"]',
+    app: '//android.view.View[@text="What you need to retire"]'
   };
 
   inflationPercentSelectOption = {
-    web: 'select.ff-plan-inflation'
+    web: 'select.ff-plan-inflation',
+    app: '//android.view.View[@text="5%"]'
   };
 
+  inflationPercentOption(inflationPercent) {
+    return {
+      app: `//android.widget.CheckedTextView[@text="${inflationPercent}%"]`
+    };
+  }
+
   showDetailedPlanLink = {
-    web: '//a[contains(text(),"Show Detailed Plan")]'
+    web: '//a[contains(text(),"Show Detailed Plan")]',
+    app: '//android.widget.TextView[@text="SHOW DETAILED PLAN"]'
   };
 
   yourRetirementPlanPageHeader = {
-    web: '//span[text()="Your Retirement Plan"]'
+    web: '//span[text()="Your Retirement Plan"]',
+    app: '//android.view.View[@text="Your Retirement Plan"]'
   };
 
   continueLink = {
-    web: '//a[contains(text(),"Continue")]'
+    web: '//a[contains(text(),"Continue")]',
+    app: '//android.widget.TextView[@text="CONTINUE"]'
   };
 
-  continueLinkText = {
-    app: 'CONTINUE'
-  };
+  continueLinkText = 'CONTINUE';
 
   congratulationsPageHeader = {
-    web: '//span[text()="Congratulations!"]'
+    web: '//span[text()="Congratulations!"]',
+    app: '//android.view.View[@text="Congratulations!"]'
   };
 
   createPlanFinalButton = {
@@ -192,6 +230,10 @@ class MFGoalsObjects {
 
   otherActionsButton = {
     web: '//button[text()="Other actions"] | //button[text()="Other Actions"]'
+  };
+
+  managePlanButton = {
+    app: '//android.widget.TextView[@text="MANAGE PLAN"]'
   };
 
   otherActionForGoalPlan(actionType) {
@@ -225,16 +267,24 @@ class MFGoalsObjects {
   }
 
   //Premier Education
+
+  myChildIsInClassLabel = {
+    app: '//android.view.View[@text="My child is in class"]'
+  };
+
   classOfChildField = {
-    web: 'input.education-plan-age-input'
+    web: 'input.education-plan-age-input',
+    app: '//android.widget.EditText[@resource-id="education-grade-input-js"]'
   };
 
   childInPreschoolOrNotInSchoolCheckbox = {
-    web: '//input[@type="checkbox"]'
+    web: '//input[@type="checkbox"]',
+    app: '//android.widget.CheckBox[@resource-id="education-plan-input-preschool"]'
   };
 
   childLikelyToStartCollegeInYearHeader = {
-    web: '//div[contains(text(),"Your child is likely to start college in")]'
+    web: '//div[contains(text(),"Your child is likely to start college in")]',
+    app: '//android.view.View[contains(@text,"Your child is likely to start college in")]'
   };
 
   getStartCollegeYear(classOfChild) {
@@ -248,7 +298,8 @@ class MFGoalsObjects {
 
   childLikelyToStartCollegeInYear(classOfChild) {
     return {
-      web: `//span[contains(text(),"${this.getStartCollegeYear(classOfChild)}")]`
+      web: `//span[contains(text(),"${this.getStartCollegeYear(classOfChild)}")]`,
+      app: `//android.view.View[contains(@text,"Your child is likely to start college in ${this.getStartCollegeYear(classOfChild)}")]`
     };
   }
 
@@ -261,46 +312,58 @@ class MFGoalsObjects {
   personaliseThisPlanLinkForCollegeType(collegeType) {
     const index = this.premierEducationCollegeTypeToIndex[collegeType];
     return {
-      web: `(//a[contains(text(),"Personalise this plan")])[${index}]`
+      web: `(//a[contains(text(),"Personalise this plan")])[${index}]`,
+      app: `(//android.view.View[@text="${collegeType}"]/following-sibling::android.view.View)[last()]`
     };
   }
 
   premierEducationPlanPageHeader = {
-    web: '//p[contains(text(),"Quick plan for your child\'s")]'
+    web: '//p[contains(text(),"Quick plan for your child\'s")]',
+    app: '//android.view.View[contains(@text,"Quick plan for your child\'s")]'
   };
 
   continueButtonForPremierEducationPlan(index) {
     return {
-      web: `(//a[contains(text(),"Continue")])[${index}]`
+      web: `(//a[contains(text(),"Continue")])[${index}]`,
+      app: '//android.widget.TextView[@text="CONTINUE"]'
     };
   }
 
   premierEducationFormHeader = {
-    web: '//label[contains(text(),"This plan is for")]'
+    web: '//label[contains(text(),"This plan is for")]',
+    app: '//android.view.View[@text="This plan is for"]'
   };
 
   childNameField = {
-    web: 'input.gef-name-input'
+    web: 'input.gef-name-input',
+    app: '(//android.view.View[@text="This plan is for"]/following-sibling::android.widget.EditText)[1]'
   };
 
   yearlyFeesField = {
-    web: 'input.plan-goal-amount-input'
+    web: 'input.plan-goal-amount-input',
+    app: '(//android.view.View[@text="Planning for a college with current yearly fees of"]/following-sibling::android.widget.EditText)[1]'
   };
 
   seeYearlyBreakupButton = {
-    web: '//div[contains(text(),"See yearly breakup")]'
+    web: '//div[contains(text(),"See yearly breakup")]',
+    app: '//android.view.View[@text="SEE YEARLY BREAKUP"]'
   };
 
   yearlyBreakupPageGoal = {
-    web: '//div[contains(text(),"Goal")]'
+    web: '//div[contains(text(),"Goal")]',
+    app: '//android.view.View[@text="Goal"]'
   };
 
-  yearlyBreakupPageGoalHeader = {
-    web: `//div[contains(text(),"Estimated yearly fees in")]`
-  };
+  yearlyBreakupPageGoalHeader(classOfChild) {
+    return {
+      web: `//div[contains(text(),"Estimated yearly fees in")]`,
+      app: `//android.view.View[@text="Estimated yearly fees in ${this.getStartCollegeYear(classOfChild)}"]`
+    };
+  }
 
   yearlyBreakupPagePlan = {
-    web: '//div[contains(text(),"Plan")]'
+    web: '//div[contains(text(),"Plan")]',
+    app: '//android.view.View[@text="Plan"]'
   };
 
   yearlyBreakupPagePlanChildName(childname) {
@@ -310,31 +373,38 @@ class MFGoalsObjects {
   }
 
   yearlyBreakupPagePlanHeader = {
-    web: '//div/span[contains(text(),"\'s college education plan")]'
+    web: '//div/span[contains(text(),"\'s college education plan")]',
+    app: '//android.view.View[contains(@text,"\'s college education plan")]'
   };
 
   yearlyBreakupPageShowPlanButton = {
-    web: '//a[contains(text(),"Show plan for")]'
+    web: '//a[contains(text(),"Show plan for")]',
+    app: '//android.widget.TextView[contains(@text,"SHOW PLAN FOR")]'
   };
 
   premierEducationWorkingPlanHeader1 = {
-    web: '//div[contains(text(),"Here is a working plan for")]'
+    web: '//div[contains(text(),"Here is a working plan for")]',
+    app: '//android.view.View[contains(@text,"Here is a working plan for")]'
   };
 
   premierEducationWorkingPlanHeader2 = {
-    web: '//div/span[contains(text(),"\'s education")]'
+    web: '//div/span[contains(text(),"\'s education")]',
+    app: '//android.view.View[contains(@text,"\'s education")]'
   };
 
   premierEducationWorkingPlanStartWithButton = {
-    web: '//a[contains(text(),"Start With")]'
+    web: '//a[contains(text(),"Start With")]',
+    app: '//android.widget.TextView[contains(@text,"START WITH")]'
   };
 
   premierEducationInvestPageHeader = {
-    web: '//p[contains(text(),"\'s College Education Plan")]'
+    web: '//p[contains(text(),"\'s College Education Plan")]',
+    app: '//android.view.View[contains(@text,"\'s College Education Plan")]'
   };
 
   signupOrLoginButton = {
-    web: '//a[contains(text(),"Signup / Login")]'
+    web: '//a[contains(text(),"Signup / Login")]',
+    app: '//android.widget.TextView[@text="SIGNUP / LOGIN"]'
   };
 
   createPlanButton = {
@@ -342,7 +412,8 @@ class MFGoalsObjects {
   };
 
   investEveryMonthButton = {
-    web: '//button[text()="INVEST EVERY MONTH"]'
+    web: '//button[text()="INVEST EVERY MONTH"]',
+    app: '//android.widget.TextView[@text="INVEST EVERY MONTH"]'
   };
 
   investOneTimeButton = {
@@ -350,7 +421,8 @@ class MFGoalsObjects {
   };
 
   amountPlannedWithScripboxHeader = {
-    web: '//p[text()="Amount Planned With Scripbox:"]'
+    web: '//p[text()="Amount Planned With Scripbox:"]',
+    app: '//android.widget.TextView[@text="Amount Planned With Scripbox:"]'
   };
 
   howWouldYouLikeYourMoneyToGrowHeader = {
@@ -362,47 +434,64 @@ class MFGoalsObjects {
   };
 
   continueButton = {
-    web: '//button[contains(text(),"Continue")]'
+    web: '//button[contains(text(),"Continue")]',
+    app: '//android.widget.TextView[@text="CONTINUE"]'
   };
 
   fundListHeader = {
-    web: '//div[text()="Fund list"]'
+    web: '//div[text()="Fund list"]',
+    app: '//android.widget.TextView[@text="Fund list"]'
   };
 
   continueToInvestButton = {
-    web: '//button[contains(text(),"Continue to invest")]'
+    web: '//button[contains(text(),"Continue to invest")]',
+    app: '//android.widget.TextView[@text="CONTINUE TO INVEST"]'
   };
 
   paymentTypePageHeader = {
-    web: '//div[contains(text(),"I would like to invest Rs")]'
+    web: '//div[contains(text(),"I would like to invest Rs")]',
+    app: '//android.widget.TextView[contains(@text,"I would like to invest Rs")]'
   };
 
   noInvestmentsToCancelMessage = {
-    web: '//p[text()="There are no investments to cancel in this plan."]'
+    web: '//p[text()="There are no investments to cancel in this plan."]',
+    app: '//android.widget.TextView[@text="There are no investments to cancel in this plan."]'
   };
 
   confirmButton = {
-    web: '//button[contains(text(),"Confirm")]'
+    web: '//button[contains(text(),"Confirm")]',
+    app: '//android.widget.TextView[@text="CONFIRM"]'
   };
 
   rightAngleBracketButton = {
-    web: '//span[text()="chevron_right"]'
+    web: '//span[text()="chevron_right"]',
+    app: '(//android.widget.TextView[contains(@text,"achieved")]/following-sibling::android.view.ViewGroup)[1]'
   };
 
-  planDetailsHeader = {
-    web: '//p[text()="PLAN DETAILS"]'
-  };
+  planDetailsHeader(lifeGoal, childname) {
+    let title = lifeGoal;
+    if (childname.length > 0) {
+      title = `${title} for ${childname}`;
+    }
+    return {
+      web: '//p[text()="PLAN DETAILS"]',
+      app: `//android.widget.TextView[@text="${title}"]`
+    };
+  }
 
   moveMoneyHeader = {
-    web: '//div[text()="Move Money"]'
+    web: '//div[text()="Move Money"]',
+    app: '//android.widget.TextView[@text="Move Money"]'
   };
 
   stopAllInvestmentsHeader = {
-    web: '//div[text()="Stop All Investments"]'
+    web: '//div[text()="Stop All Investments"]',
+    app: '//android.widget.TextView[@text="Stop All Investments"]'
   };
 
   closePlanHeader = {
-    web: '//div[text()="Close Plan"]'
+    web: '//div[text()="Close Plan"]',
+    app: '//android.widget.TextView[@text="Close Plan"]'
   };
 
   closeThisPlanButton = {
@@ -422,19 +511,23 @@ class MFGoalsObjects {
   };
 
   moveMoneyWarningMessage = {
-    web: '//div[text()="Oops. You currently do not have any investments to re-allocate."]'
+    web: '//div[text()="Oops. You currently do not have any investments to re-allocate."]',
+    app: '//android.widget.TextView[@text="You currently do not have any investments to re-allocate."]'
   };
 
   stopAllInvestmentsMessage = {
-    web: '//p[text()="Cancelling this plan will cancel all running SIPs."]'
+    web: '//p[text()="Cancelling this plan will cancel all running SIPs."]',
+    app: '//android.widget.TextView[@text="Cancelling this plan will cancel all running SIPs."]'
   };
 
   closePlanMessage = {
-    web: '//div[text()="If you think you have reached your goal, or if this is no longer needed, you can close the plan by following these steps."]'
+    web: '//div[text()="If you think you have reached your goal, or if this is no longer needed, you can close the plan by following these steps."]',
+    app: '//android.widget.TextView[@text="If you think you have reached your goal, or if this is no longer needed, you can close the plan by following these steps."]'
   };
 
   planCancelledMessage = {
-    web: '//p[text()="Your plan has been cancelled"]'
+    web: '//p[text()="Your plan has been cancelled"]',
+    app: '//android.widget.TextView[@text="Your plan has been cancelled"]'
   };
 
   editRetirementAgeLink = {

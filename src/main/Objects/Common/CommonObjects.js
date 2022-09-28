@@ -10,7 +10,7 @@ class CommonObjects {
   familyMember(familyMemberName) {
     return {
       web: `(//div[contains(text(),"${familyMemberName}")])[last()]`,
-      app: `(//*[contains(@text,"${familyMemberName}")])[last()]`
+      app: `//android.widget.TextView[contains(@text,"${familyMemberName}")]`
     };
   }
 
@@ -32,12 +32,13 @@ class CommonObjects {
   };
 
   backButton = {
-    web: '//i[text()="chevron_left"]'
+    web: '//i[text()="chevron_left"]',
+    app: '(//android.widget.TextView)[1]'
   };
 
   expandMoreButton = {
     web: '//i[text()="expand_more"]',
-    app: '//*[@text="expand_more"]'
+    app: '//android.widget.TextView[@text="\uE313"]' //The expand more button has this unicode char \uE313 value
   };
 
   otpField = {
@@ -51,17 +52,18 @@ class CommonObjects {
   };
 
   saveOrUpdateButton = {
-    web: '//button[text()="Save" or text()="Update"]'
+    web: '//button[text()="Save" or text()="Update"]',
+    app: '//android.widget.TextView[@text="Save" or @text="Update"]'
   };
 
   editDetailsLink = {
-    web: '//div[text()="Edit details"] | //h6[text()="Edit details"]',
-    app: '//*[@text="Edit details"]'
+    web: '//*[text()="Edit details"]',
+    app: '//android.widget.TextView[@text="Edit details"]'
   };
 
   deleteLink = {
-    web: '//div[text()="Delete"] | //h6[text()="Delete"]',
-    app: '//*[@text="Delete"]'
+    web: '//*[text()="Delete"]',
+    app: '//android.widget.TextView[@text="Delete"]'
   };
 
   previousYearButton = {
@@ -102,7 +104,19 @@ class CommonObjects {
 
   fixedDepositPageHeader = {
     web: '//div[contains(text(),"Interest rates upto")]',
-    app: '//*[contains(@text,"Interest rates upto")]'
+    app: '//android.widget.TextView[contains(@text,"You can now track all your Fixed Deposits in one place")]'
+  };
+
+  androidMonthPickerMonth = {
+    app: '(//android.widget.EditText[@resource-id="android:id/numberpicker_input"])[1]'
+  };
+
+  androidMonthPickerYear = {
+    app: '(//android.widget.EditText[@resource-id="android:id/numberpicker_input"])[2]'
+  };
+
+  androidMonthPickerDoneButton = {
+    app: '//android.widget.Button[@resource-id="android:id/button1"]'
   };
 }
 module.exports = new CommonObjects();

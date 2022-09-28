@@ -56,14 +56,6 @@ class GovtSchemesFunctionality {
     return (await GovtSchemesPage.amountUpdateSuccessMessageIsDisplayed(schemeName));
   }
 
-  async getTotalInvestedAmount() {
-    return (await GovtSchemesPage.getTotalInvestedAmount());
-  }
-
-  async getTotalInvestedAmountStr() {
-    return (await GovtSchemesPage.getTotalInvestedAmountStr());
-  }
-
   async getSchemePercentAndAmount(schemeName) {
     return (await GovtSchemesPage.getSchemePercentAndAmountPieChart(schemeName));
   }

@@ -75,7 +75,7 @@ When(/^I navigate to "(Service Agreement|Company)" Page from About Scripbox Page
 
 Then(/^I logout of Scripbox$/, async () => {
   await console.log('Then I logout of Scripbox');
-  await DashboardFunctionality.open();
+  await DashboardFunctionality.validate();
   await DashboardFunctionality.openMoreOptions();
   await MoreOptionsFunctionality.selectLogout();
 });

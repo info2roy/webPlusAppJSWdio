@@ -32,9 +32,7 @@ class MoreOptionsPageObjects {
     web: '//img[@src="/images/icons/interactive-utility/black/settings-medium.svg"]'
   };
 
-  personalInfoText = {
-    app: 'Personal information'
-  };
+  personalInfoText = 'Personal information';
 
   personalInfoOption = {
     web: '//div[text()="Personal Information"]',
@@ -46,46 +44,35 @@ class MoreOptionsPageObjects {
     web: '//div[text()="Account & Family Information"]'
   };
 
-  statementsAndTaxReportsText = {
-    app: 'Statements & reports'
-  };
+  statementsAndTaxReportsText = 'Statements & reports';
 
-  accountFamilyInformationOptionText = {
-    app: 'Account & Family Information'
-  };
+  accountFamilyInformationOptionText = 'Account & Family Information';
 
   statementsAndTaxReportsOption = {
     web: '//div[text()="Statements & Tax Reports"]',
     app: '//android.widget.TextView[@text="Statements & reports"]'
   };
 
-  statementsAndTaxReportsOptionText = {
-    app: 'Statements & Tax Reports'
-  };
+  statementsAndTaxReportsOptionText = 'Statements & Tax Reports';
 
   notificationPreferencesOption = {
     web: '//div[text()="Notification Preferences"]'
   };
 
-  notificationPreferencesOptionText = {
-    app: 'Notification Preferences'
-  };
+  notificationPreferencesOptionText = 'Notification Preferences';
 
   whatsappNotificationsOption = {
     web: '//div[text()="Whatsapp Notifications"]'
   };
 
-  whatsAppNotificationsOptionText = {
-    app: 'Whatsapp Notifications'
-  };
+  whatsAppNotificationsOptionText = 'Whatsapp Notifications';
+
   //Begin About Scripbox
   aboutScripboxOption = {
     web: '//div[text()="About Scripbox"]'
   };
 
-  aboutScripboxOptionText = {
-    app: 'About Scripbox'
-  };
+  aboutScripboxOptionText = 'About Scripbox';
 
   aboutScripboxPageHeader = {
     web: '(//div[text()="About Scripbox"])[last()]'
@@ -129,9 +116,7 @@ class MoreOptionsPageObjects {
     web: '//div[text()="Refer a Friend"]'
   };
 
-  referAFriendOptionText = {
-    app: 'Refer a Friend'
-  };
+  referAFriendOptionText = 'Refer a Friend';
 
   referAFriendPageHeader = {
     web: '(//div[text()="Refer a Friend"])[last()]'
@@ -146,21 +131,18 @@ class MoreOptionsPageObjects {
     web: '//div[text()="Give Feedback"]'
   };
 
-  giveFeedbackOptionText = {
-    app: 'Give Feedback'
-  };
+  giveFeedbackOptionText = 'Give Feedback';
 
   giveFeedbackPageHeader = {
     web: '//div[text()="Feedback on the new Scripbox experience"]'
   };
 
   logoutOption = {
-    web: '//div[text()="Logout"]'
+    web: '//div[text()="Logout"]',
+    app: '//android.widget.TextView[@text="Logout"]'
   };
 
-  logoutOptionText = {
-    app: 'Logout'
-  };
+  logoutOptionText = 'Logout';
 
   whatsAppImage = {
     web: '//img[@src="/images/icons/interactive-utility/black/whatsapp.svg"]'

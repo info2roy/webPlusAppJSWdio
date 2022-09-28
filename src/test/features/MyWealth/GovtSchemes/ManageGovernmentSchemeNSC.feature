@@ -5,11 +5,11 @@ Feature: Scripbox MyWealth: Add a Government Scheme "National Saving Certificate
 
   Scenario Outline: As a logged in user, I am able to add and update a Government Scheme "National Saving Certificate" to "My Wealth"
     Given I navigate to the MyWealth "Investments" type "Govt. Schemes"
-    When I select Govt Scheme "National Saving Certificate" for family member "Mahesh Rajesham Bale"
+    When I select Govt Scheme "National Saving Certificate" for family member "Investor 156012"
     When I fill form with <nscInvestedAmount>; <nscInterestPercent>; <nscStartMonth>; <nscMaturityMonth> for Govt Scheme "National Saving Certificate"
     When I go back to previous page
     Then Total invested amount should get updated
-    Then I select Govt Scheme "National Saving Certificate" tile for family member "Mahesh Rajesham Bale"
+    When I select Govt Scheme "National Saving Certificate" tile for family member "Investor 156012"
     Then NSC Scheme details are shown correctly for Govt Scheme "National Saving Certificate"
     Examples:
       | nscInvestedAmount | nscInterestPercent | nscStartMonth | nscMaturityMonth |
@@ -19,7 +19,7 @@ Feature: Scripbox MyWealth: Add a Government Scheme "National Saving Certificate
     When I edit the "National Saving Certificate" of <nscInvestedAmount> with <newInvestedAmount>; <nscInterestPercent>; <nscStartMonth>; <nscMaturityMonth>
     When I go back to previous page
     Then Total invested amount should get updated
-    Then I select Govt Scheme "National Saving Certificate" tile for family member "Mahesh Rajesham Bale"
+    When I select Govt Scheme "National Saving Certificate" tile for family member "Investor 156012"
     Then NSC Scheme details are shown correctly for Govt Scheme "National Saving Certificate"
     Examples:
       | nscInvestedAmount | newInvestedAmount | nscInterestPercent | nscStartMonth | nscMaturityMonth |

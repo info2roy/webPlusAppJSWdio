@@ -86,8 +86,7 @@ class RealEstateFunctionality {
   async deleteRealEstate(propertyName) {
     await RealEstatePage.clickOnRealEstatePropertyMoreOptionsButton(propertyName);
     await CommonPage.clickDeleteLink();
-    return true;
-    //return (await CommonMyWealthPage.wealthDeleteSuccessMessageIsDisplayed('Real estate'));
+    return (await CommonMyWealthPage.wealthDeleteSuccessMessageIsDisplayed('Real estate'));
   }
 }
 module.exports = new RealEstateFunctionality();
