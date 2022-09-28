@@ -145,7 +145,6 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
     When I validate header "I want to invest"
     When I select invest option <SIPFrequency>
     When I enter SIP amount <oneTimeAmount>
-    Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
     When I click on "See Recommended Funds"
     When I validate funds present
     When I validate funds total to be equal to <oneTimeAmount> 
