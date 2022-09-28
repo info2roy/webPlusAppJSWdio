@@ -30,9 +30,9 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
       | Monthly SIP  | 999      | Default | Default          |
       | Monthly SIP  | 10000      | Default | 0          |
       | Monthly SIP  | 1000      | Default | -1          |
-      | Monthly SIP  | 2000      | +2 | 1          |
-      | Monthly SIP  | 15000      | +5 | 12          |
-      | Monthly SIP  | 20000      | +7 | 24          |
+      | Monthly SIP  | 2000      | T+2 | 1          |
+      | Monthly SIP  | 15000      | T+5 | 12          |
+      | Monthly SIP  | 20000      | T+7 | 24          |
       | Monthly SIP  | 25000      | 1stOfNextMonth | 36          |
       | Monthly SIP  | 30000      | 5thOfNextMonth | 72          |
 
