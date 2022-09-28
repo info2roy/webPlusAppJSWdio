@@ -49,6 +49,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
       | Core Mutual Fund Portfolio | Every month (SIP)  | 12000 | -12 | T+7 | 7 |
 
   Scenario Outline: As a logged in user, I am able to do immediate "Core Mutual Fund Portfolio" investment in mutual funds via Every month (SIP)
+    When I go back to the dashboard page
     When I navigate to "Invest more" from Dashboard
     When I validate header "Select financial product"
     When I click on "Mutual Funds"
@@ -89,6 +90,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
       | Core Mutual Fund Portfolio | Every month (SIP)  | 20000 | 36 | 10thOfNextMonth | 0 |
 
   Scenario Outline: As a logged in user, I am able to schedule "Core Mutual Fund Portfolio" investment in mutual funds via One Time Investment
+    When I go back to the dashboard page
     When I navigate to "Invest more" from Dashboard
     When I validate header "Select financial product"
     When I click on "Mutual Funds"
@@ -123,6 +125,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
       | Core Mutual Fund Portfolio | One time  | 20000 | 1stOfNextMonth |
 
   Scenario Outline: As a logged in user, I am able to do immediate "Core Mutual Fund Portfolio" investment in mutual funds via One Time Investment
+    When I go back to the dashboard page
     When I navigate to "Invest more" from Dashboard
     When I validate header "Select financial product"
     When I click on "Mutual Funds"
