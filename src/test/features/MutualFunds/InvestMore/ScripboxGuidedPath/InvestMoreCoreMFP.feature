@@ -4,6 +4,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
     Given I login to Scripbox in "ANDROMEDA" for "automation+1@sb.io"
 
   Scenario Outline: As a logged in user, I am able to schedule "Core Mutual Fund Portfolio" investment in mutual funds via Every month (SIP)
+    When I go back to the dashboard page
     When I navigate to "Invest more" from Dashboard
     When I validate header "Select financial product"
     When I click on "Mutual Funds"
@@ -13,7 +14,8 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
     When I click on "Invest"
     When I validate header "I want to invest"
     When I select invest option <SIPFrequency>
-    When I enter SIP details <SIPAmount>
+    When I enter SIP amount <SIPAmount>
+    Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
     When I click on "See Recommended Funds"
     When I validate funds present
     When I validate funds total to be equal to <SIPAmount> 
@@ -25,7 +27,9 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
     When I validate button "Make Payment Now"
     When I click on "1-Click Invest"
     When I validate investment header "I would like to invest" containing <SIPAmount> and <SIPDuration>
-    When I enter SIP details <SIPDuration>
+    When I enter SIP duration <SIPDuration>
+    Then I should see error message "Duration can't be blank" if duration is blank
+    Then I should see error message "Duration must be greater than or equal to 1" if duration is less than 1
     When I select start date <SIPStartDate>
     When I click on "Confirm"
     # When I "Invest more" in <mutualFundPortfolio> with <SIPFrequency> for <SIPAmount> with <SIPDuration>; <SIPStartDate>; <sipIncreasePercentPerYear>
@@ -44,9 +48,11 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
       | Core Mutual Fund Portfolio | Every month (SIP)  | 12000 | 12 | T+7 | 7 |
       | Core Mutual Fund Portfolio | Every month (SIP)  | 15000 | 24 | 5thOfNextMonth | 5 |
       | Core Mutual Fund Portfolio | Every month (SIP)  | 20000 | 36 | 10thOfNextMonth | 0 |
-      | Core Mutual Fund Portfolio | Every month (SIP)  | 0 | Default | Default | Default |
-      | Core Mutual Fund Portfolio | Every month (SIP)  | -1000 | Default | Default | Default |
-      | Core Mutual Fund Portfolio | Every month (SIP)  | 12000 | -12 | T+7 | 7 |
+      | Core Mutual Fund Portfolio | Every month (SIP)  | 1 | Default | Default | Default |
+      | Core Mutual Fund Portfolio | Every month (SIP)  | 999 | Default | Default | Default |
+      | Core Mutual Fund Portfolio | Every month (SIP)  | 12000 |  | T+7 | 7 |
+      | Core Mutual Fund Portfolio | Every month (SIP)  | 12000 | 0 | T+7 | 7 |
+      | Core Mutual Fund Portfolio | Every month (SIP)  | 12000 | -1 | T+7 | 7 |
 
   Scenario Outline: As a logged in user, I am able to do immediate "Core Mutual Fund Portfolio" investment in mutual funds via Every month (SIP)
     When I go back to the dashboard page
@@ -59,7 +65,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
     When I click on "Invest"
     When I validate header "I want to invest"
     When I select invest option <SIPFrequency>
-    When I enter SIP details <SIPAmount>
+    When I enter SIP amount <SIPAmount>
     When I click on "See Recommended Funds"
     When I validate funds present
     When I validate funds total to be equal to <SIPAmount> 
@@ -71,7 +77,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
     When I validate button "Make Payment Now"
     When I click on "Make Payment Now"
     When I validate investment header "I would like to invest" containing <SIPAmount> and <SIPDuration>
-    When I enter SIP details <SIPDuration>
+    When I enter SIP duration <SIPDuration>
     When I select start date <UpcomingSIPStartDate>
     When I click on "Next"
     Then I validate header "I would like to invest using"
@@ -100,7 +106,8 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
     When I click on "Invest"
     When I validate header "I want to invest"
     When I select invest option <SIPFrequency>
-    When I enter SIP details <oneTimeAmount>
+    When I enter SIP amount <oneTimeAmount>
+    Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
     When I click on "See Recommended Funds"
     When I validate funds present
     When I validate funds total to be equal to <oneTimeAmount> 
@@ -123,8 +130,8 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
       | Core Mutual Fund Portfolio | One time  | 30000 | Default |
       | Core Mutual Fund Portfolio | One time  | 15000 | T+2 |
       | Core Mutual Fund Portfolio | One time  | 20000 | 1stOfNextMonth |
-      | Core Mutual Fund Portfolio | One time  | 0 | Default |
-      | Core Mutual Fund Portfolio | One time  | -1000 | Default |
+      | Core Mutual Fund Portfolio | One time  | 1 | Default |
+      | Core Mutual Fund Portfolio | One time  | 999 | Default |
 
   Scenario Outline: As a logged in user, I am able to do immediate "Core Mutual Fund Portfolio" investment in mutual funds via One Time Investment
     When I go back to the dashboard page
@@ -137,7 +144,8 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund P
     When I click on "Invest"
     When I validate header "I want to invest"
     When I select invest option <SIPFrequency>
-    When I enter SIP details <oneTimeAmount>
+    When I enter SIP amount <oneTimeAmount>
+    Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
     When I click on "See Recommended Funds"
     When I validate funds present
     When I validate funds total to be equal to <oneTimeAmount> 
