@@ -1,7 +1,7 @@
 Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Core Mutual Fund Portfolio
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "ANDROMEDA" for "automation+1@sb.io"
+    Given I login to Scripbox in "ANDROMEDA" for "test_email+9108fa0821@scripbox.io"
 
   Scenario Outline: As a logged in user, I am able to schedule "Core Mutual Fund Portfolio" investment in mutual funds via Every month (SIP)
     When I go back to the dashboard page

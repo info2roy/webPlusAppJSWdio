@@ -2,6 +2,7 @@ const { When, Then } = require('@wdio/cucumber-framework');
 const CommonFunctionality = require('../../../main/Functionalities/Common/CommonFunctionality');
 const Utils = require('../../../support/Utils/Utils');
 const { expect } = require('chai');
+const Utils = require('../../../support/Utils/Utils');
 
 When(/^I refresh the current page$/, async () => {
   await console.log('When I refresh the current page');
@@ -29,4 +30,9 @@ When(/^I enter OTP as (\d+) for verification$/, async (otp) => {
 Then(/^I should see "([^"]*)?" success message$/, async (message) => {
   await console.log(`I should see ${message} success message`);
   expect(await CommonFunctionality.assertMessage(message)).to.be.true;
+});
+
+When(/^I validate header "([^"]*)?"$/, async (header) => {
+  console.log(`I validate header ${header}`);
+  expect(await Utils.validateHeaderPresent(header)).to.be.true;
 });
