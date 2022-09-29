@@ -47,7 +47,7 @@ class CommonObjects {
   };
 
   verifyOTPButton = {
-    web: '//div[text()="Verify"]',
+    web: '//*[text()="Verify"]',
     app: '//*[@text="VERIFY"]'
   };
 

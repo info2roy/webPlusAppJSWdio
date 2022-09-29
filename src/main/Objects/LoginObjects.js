@@ -58,6 +58,11 @@ class LoginObjects {
   iAcceptButton = {
     app: '//*[@text="I ACCEPT"]'
   };
+
+  doItLaterLink = {
+    web: '(//span[text()="Do it later"])[last()]',
+    app: `//*[@text="Do it later"]`
+  };
 }
 
 module.exports = new LoginObjects();

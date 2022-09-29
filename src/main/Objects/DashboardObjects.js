@@ -11,9 +11,9 @@ class DashboardObjects {
 
   goToDashboardButton = { web: '//button[text()="Go to Dashboard"] | //button[text()="GO TO DASHBOARD"]' };
 
-  withdrawButton = { web: '//div[contains(@class,"dashboard-invest-withdraw-btn")]//*[text()="Withdraw"]', app: '//*[@text="Withdraw"]' };
+  withdrawButton = { web: '//div[contains(@class,"dashboard-invest-withdraw-btn")]', app: '//*[@text="Withdraw"]' };
 
-  investMoreButton = { web: '//button[text()="Invest more"]', app: '//*[@text="Invest more"]' };
+  investMoreButton = { web: '//button[text()="Invest more" or text()="Invest now"]', app: '//*[@text="Invest more" or @text="Invest now"]' };
 
   dashboardTab(tabName) { //Dashboard tabs like Invest, Home, My Wealth, Statements etc.
     return {

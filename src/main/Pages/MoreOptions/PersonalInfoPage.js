@@ -44,11 +44,13 @@ class PersonalInfoPage {
       await console.log('Web: uploadFile');
       const localFilePath = path.join(__dirname, '../../../config/data/images/desktop.jpg');
       await Utils.uploadFile(localFilePath, PersonalInfoObjects.fileInput, PersonalInfoObjects.submitPictureButton);
+      const imageSrc = await Utils.getElementAttributeBySelector(PersonalInfoObjects.profileImage, 'src');
+      expect(imageSrc).to.contain('desktop');
     }
   }
 
   async clickEditButton(value) {
-    await console.log(`Clicking edit button for ${ value.toString()}`);
+    await console.log(`Clicking edit button for ${value.toString()}`);
     switch (value.toString()) {
       case 'user name':
         await Utils.clickElement(PersonalInfoObjects.editFullNameButton);
@@ -66,23 +68,27 @@ class PersonalInfoPage {
         await Utils.clickElement(PersonalInfoObjects.editBankButton);
         break;
       default:
-        await console.warn(`Edit info type is not valid -->${ value.toString()}`);
+        await console.warn(`Edit info type is not valid -->${value.toString()}`);
     }
   }
 
   async enterNewData(value) {
-    await console.log(`Entering ${ value.toString()}`);
+    await console.log(`Entering ${value.toString()}`);
+    let chars = 'abc123';
+    let string = '';
     switch (value.toString()) {
       case 'user email':
-        await Utils.setInputField('abc@gmail.com', PersonalInfoObjects.enterNewEmail);
-        await Utils.setInputField('abc@gmail.com', PersonalInfoObjects.confirmNewEmail);
+        for(let per=0; per<10; per++) {
+          string += chars[Math.floor(Math.random() * chars.length)];
+        }
+        await Utils.setInputField(string + '@gmail.com', PersonalInfoObjects.enterNewEmail);
+        await Utils.setInputField(string + '@gmail.com', PersonalInfoObjects.confirmNewEmail);
         break;
       case 'mobile number':
         await Utils.setInputField('9876543210', PersonalInfoObjects.enterNewMobileNumber);
         break;
       case 'user name':
         await Utils.setInputField('UserAB', PersonalInfoObjects.enterFullName);
-        // await Utils.setInputField(faker.name.firstName(), PersonalInfoObjects.enterNewMobileNumber);
         break;
       case 'bank':
         await Utils.setInputField('12345678901', PersonalInfoObjects.accountNumber);
@@ -90,10 +96,13 @@ class PersonalInfoPage {
         await Utils.setInputField('HDFC0001852', PersonalInfoObjects.bankIFSCCode);
         break;
       case 'nominee':
+        await Utils.chooseSelectOptionByVisibleText(PersonalInfoObjects.relationshipDropdown, 'Spouse');
         await Utils.setInputField('UserAB', PersonalInfoObjects.enterFullName);
+        await Utils.setInputField('BEJPR4313R', PersonalInfoObjects.enterPAN);
         await Utils.setInputField('1991', PersonalInfoObjects.enterYear);
         await Utils.setInputField('10', PersonalInfoObjects.enterMonth);
         await Utils.setInputField('11', PersonalInfoObjects.enterDate);
+        await Utils.setInputField('Test address to fill', PersonalInfoObjects.enterAddress);
         break;
       default:
         await console.warn('Link type is not valid');
@@ -106,7 +115,7 @@ class PersonalInfoPage {
   }
 
   async checkEditHeader(value) {
-    await console.log(`Checking header displayed of ${ value.toString()}`);
+    await console.log(`Checking header displayed of ${value.toString()}`);
     switch (value.toString()) {
       case 'user email':
         return await Utils.elementIsDisplayed(PersonalInfoObjects.changeEmailHeader);

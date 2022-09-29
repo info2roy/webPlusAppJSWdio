@@ -60,8 +60,11 @@ class LoginPage {
     await Utils.clickElement(LoginObjects.continueLoginButton);
   }
 
-  async enterOTPHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(LoginObjects.enterOTPPageHeader, 5000));
+  async enterOTPHeaderIsDisplayed(timeoutMS = 15000) {
+    if (Device.isWeb()) {
+      return (await Utils.elementIsDisplayed(LoginObjects.enterOTPPageHeader, timeoutMS));
+    }
+    return true;
   }
 
   async loginYourAccountToContinueHeaderIsDisplayed() {
@@ -82,6 +85,10 @@ class LoginPage {
 
   async clickIAcceptButton() {
     await Utils.clickElement(LoginObjects.iAcceptButton);
+  }
+
+  async clickDoItLater() {
+    await Utils.clickElement(LoginObjects.doItLaterLink);
   }
 
 }

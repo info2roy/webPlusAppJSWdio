@@ -17,7 +17,7 @@ class MFInvestmentObjects {
   };
 
   investAsPerScripboxGuidedPathButton = {
-    web: '//button/div[text()="Invest"]',
+    web: '//button[text()="Invest"]',
     app: '//*[@text="Invest"]'
   };
 

@@ -50,6 +50,7 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, { timeout: 60000 }, a
       case 'MOCKAPI':
         await browser.url(MOCKAPI);
         await HomeFunctionality.performLogin(env, user);
+        break;
       default:
         await console.warn(`Environment is not defined in URL list --> ${ env.toString()}`);
         break;

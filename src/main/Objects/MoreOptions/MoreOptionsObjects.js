@@ -102,13 +102,24 @@ class MoreOptionsPageObjects {
     web: '(//div[text()="Company"])[last()]'
   };
 
-  aboutScripboxPageCompanyPageNameLabel = {
-    web: '//td[text()="Name"]'
+  aboutScripboxPageCompanyPageProperty(propertyName) {
+    return {
+      web: `//td[text()="${propertyName}"]/following-sibling::td`
+    };
+  }
+
+  aboutScripboxCompanyDetails = {
+    'Name': 'Scripbox.com India Private Limited',
+    'Incorporation': 'Incorporated in India on January 10, 2012\nRegistered as a private limited company under the (Indian) Companies Act, 1956',
+    'Corporate office': 'Indiqube @ The Leela Galleria 3rd Floor,\nNo. 23, Old Airport Road,\nBengaluru - 560008, India.',
+    'Phone': '1800-102-1265',
+    'Email': 'Press & Media: mediarelations@scripbox.com\nBusiness Enquiries: businessproposals@scripbox.com\nCustomer Support: help@scripbox.com',
+    'Website': 'https://invest.scripbox.com',
+    'Service Providers': 'BillDesk (IndiaIdeas.com Limited)\nExotel (Exotel Techcom Pvt. Ltd.)\nGeotrust Inc.\nGoogle Analytics (Google Inc.)\nScripbox Advisors Pvt. Ltd.\nTechProcess Payment Services Limited\nPi31 Labs Private Limited',
+    'Certification': 'Registered as a corporate distributor of mutual funds with the Association of Mutual Funds in India.\nAMFI Registration Number ARN-84967',
+    'Legal Compliance': 'Mr. Sanjiv Singhal ( sanjiv_singhal@scripbox.com )'
   };
 
-  aboutScripboxPageCompanyPageCompanyName = {
-    web: '//td[text()="Scripbox.com India Private Limited"]'
-  };
   //End About Scripbox
 
   //Begin Refer A Friend
@@ -125,6 +136,25 @@ class MoreOptionsPageObjects {
   referAFriendPageSummary = {
     web: '//div/h3[text()="Give your friends the gift of financial wellness."]'
   };
+
+  referAFriendSocialMediaLabel(socialMedia) {
+    return {
+      web: `//span[text()="${socialMedia}"]`
+    };
+  }
+
+  referAFriendSocialMediaImageLink(socialMedia) {
+    return {
+      web: `//span[text()="${socialMedia}"]/preceding-sibling::span[2]/img`
+    };
+  }
+
+  referAFriendSocialMediaHyperlink(socialMedia) {
+    return {
+      web: `//span[text()="${socialMedia}"]/parent::a`
+    };
+  }
+
   //End Refer A Friend
 
   giveFeedbackOption = {

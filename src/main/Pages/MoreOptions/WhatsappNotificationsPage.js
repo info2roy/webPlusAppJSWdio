@@ -18,9 +18,11 @@ class WhatsappNotificationsPage {
     const selector = WhatsappNotificationsObjects.enableWhatsappImage;
     const initialSrc = await Utils.getElementAttributeBySelector(selector, 'src');
     await Utils.clickElement(selector);
+    await browser.pause(1000);
     const firstToggleSrc = await Utils.getElementAttributeBySelector(selector, 'src');
     expect(firstToggleSrc).to.be.equal(MoreOptionsObjects.communicationsToggleScenarios[initialSrc]);
     await Utils.clickElement(selector);
+    await browser.pause(1000);
     const secondToggleSrc = await Utils.getElementAttributeBySelector(selector, 'src');
     expect(secondToggleSrc).to.be.equal(MoreOptionsObjects.communicationsToggleScenarios[firstToggleSrc]);
   }
