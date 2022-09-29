@@ -4,11 +4,11 @@ exports.config = {
   ...config,
 
   ...{
-    // hostname: process.env.SELENIUM_HUB_URL || '',
-    // protocol: 'https',
-    // port: 443,
-    // path: '/',
-    services: ['chromedriver'],
+    hostname: process.env.SELENIUM_HUB_URL || '',
+    protocol: 'https',
+    port: 443,
+    path: '/',
+    services: ['docker'],
 
     capabilities: [{
       maxInstances: 1,
@@ -18,7 +18,7 @@ exports.config = {
         args: [
           '--no-sandbox',
           '--disable-infobars',
-          // '--headless',
+          '--headless',
           '--disable-gpu',
           '--window-size=400,960',
           '--disable-dev-shm-usage'

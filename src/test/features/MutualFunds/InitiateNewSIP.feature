@@ -1,10 +1,10 @@
 Feature: Scripbox Investment for monthly SIP
 
-    @smoke
+    @DoNotExecute
     Scenario: As a Scripbox user, I am logged in
         Given I login to Scripbox in "ANDROMEDA" for "user180756"
 
-    @smoke
+    @DoNotExecute
     Scenario Outline: As a logged in user, I want to search a new fund to initiate SIP
         When I click on "Invest"
         And I click on "Mutual Funds"
@@ -14,7 +14,7 @@ Feature: Scripbox Investment for monthly SIP
             | fundName     |
             | Parag Parikh |
 
-    @smoke
+    @DoNotExecute
     Scenario Outline: As a logged in user, I want enter SIP details to initiate monthly SIP
         When I select invest option <SIPFrequency>
         And I enter SIP fund <SIPAmount> and <SIPDuration>
