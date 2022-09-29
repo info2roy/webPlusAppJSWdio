@@ -48,7 +48,7 @@ class PersonalInfoPage {
   }
 
   async clickEditButton(value) {
-    await console.log(`Clicking edit button for ${ value.toString()}`);
+    await console.log(`Clicking edit button for ${value.toString()}`);
     switch (value.toString()) {
       case 'user name':
         await Utils.clickElement(PersonalInfoObjects.editFullNameButton);
@@ -66,23 +66,25 @@ class PersonalInfoPage {
         await Utils.clickElement(PersonalInfoObjects.editBankButton);
         break;
       default:
-        await console.warn(`Edit info type is not valid -->${ value.toString()}`);
+        await console.warn(`Edit info type is not valid -->${value.toString()}`);
     }
   }
 
-  async enterNewData(value) {
-    await console.log(`Entering ${ value.toString()}`);
-    switch (value.toString()) {
+  async enterNewData(option, value) {
+    await console.log(`Entering ${value.toString()}`);
+    if (value.toString() == 'Blank') {
+      value = '';
+    }
+    switch (option.toString()) {
       case 'user email':
-        await Utils.setInputField('abc@gmail.com', PersonalInfoObjects.enterNewEmail);
-        await Utils.setInputField('abc@gmail.com', PersonalInfoObjects.confirmNewEmail);
+        await Utils.setInputField(value, PersonalInfoObjects.enterNewEmail);
+        await Utils.setInputField(value, PersonalInfoObjects.confirmNewEmail);
         break;
       case 'mobile number':
-        await Utils.setInputField('9876543210', PersonalInfoObjects.enterNewMobileNumber);
+        await Utils.setInputField(value, PersonalInfoObjects.enterNewMobileNumber);
         break;
       case 'user name':
-        await Utils.setInputField('UserAB', PersonalInfoObjects.enterFullName);
-        // await Utils.setInputField(faker.name.firstName(), PersonalInfoObjects.enterNewMobileNumber);
+        await Utils.setInputField(value, PersonalInfoObjects.enterFullName);
         break;
       case 'bank':
         await Utils.setInputField('12345678901', PersonalInfoObjects.accountNumber);
@@ -100,13 +102,24 @@ class PersonalInfoPage {
     }
   }
 
+  async readUImessage(message, data) {
+    switch (data.toString()) {
+      case data.toString():
+        await console.warn('Validating UI message => ' + message);
+        return await Utils.isTextDisplayed(message);
+      default:
+        await console.warn('Validating UI message out of scope');
+    }
+
+  }
+
   async clickUpdateButton() {
     await console.log('Saving changes');
     await Utils.clickElement(PersonalInfoObjects.updateChangesButton);
   }
 
   async checkEditHeader(value) {
-    await console.log(`Checking header displayed of ${ value.toString()}`);
+    await console.log(`Checking header displayed of ${value.toString()}`);
     switch (value.toString()) {
       case 'user email':
         return await Utils.elementIsDisplayed(PersonalInfoObjects.changeEmailHeader);
