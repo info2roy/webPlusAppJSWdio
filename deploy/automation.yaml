@@ -28,9 +28,10 @@ myscripbox:
           tag: v-master
         envs:
           SELENIUM_HUB_URL: 'selenium.scripbox.org'
-          ANDROMEDA_URL: https://{{ .Values.global.services.andromeda.hostname }}.{{ .Values.global.accountDomain }}
-          MYSCRIPBOX_URL: https://{{ .Values.global.services.myscripbox.hostname }}.{{ .Values.global.accountDomain }}
-          MYSCRIPBOX_API_URL: https://{{ .Values.global.services.myscripboxapi.hostname }}.{{ .Values.global.accountDomain }}
+          ANDROMEDA_URL: https://inte-andromeda-master.scripbox.org
+          MYSCRIPBOX_URL: https://inte-myscripbox-master.scripbox.org
+          MYSCRIPBOX_API_URL: https://inte-myscripboxapi-master.scripbox.org
+          MOCKAPI_URL: https://stag-myscripbox-2-feature-qa-automation.scripbox.org
       cases:
         - name: qa-automation
           image:

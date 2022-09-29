@@ -27,7 +27,9 @@ exports.config = {
   // port: 52033,
   // path: '/wd/hub',
   specs: [
-    './src/test/features/LoginViaHomepage.feature'
+    './src/test/features/LoginViaHomepage.feature',
+    './src/test/features/MutualFunds/MFStatements.feature',
+    './src/test/features/MoreOptions/*.feature',
   ],
   // Patterns to exclude.
   exclude: [

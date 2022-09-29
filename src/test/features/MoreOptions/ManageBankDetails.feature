@@ -1,7 +1,7 @@
 Feature: As customer I wish to update my account details
 
   Scenario: As a Scripbox user I login  and try to update my user name
-    Given I login to Scripbox in "MOCKAPI" for "user189182"
+    Given I login to Scripbox in "ANDROMEDA" for "test_email+c0984535bc@scripbox.io"
 
   Scenario: As a logged in user I wish to update my Bank details
     When I open the more options

@@ -46,8 +46,14 @@ class HomeFunctionality {
         }
       }
       await LoginPage.clickContinueOrNextButton();
-      await LoginPage.enterPassword(loginData.password);
-      await LoginPage.clickContinueLoginButton();
+      if (await LoginPage.enterOTPHeaderIsDisplayed(5000)) {
+        await LoginFunctionality.enterOTP([1, 1, 1, 1, 1, 1]);
+      } else {
+        await LoginPage.enterPassword(loginData.password);
+        await LoginPage.clickContinueLoginButton();
+      }
+      await LoginPage.clickDoItLater();
+      await DashboardFunctionality.home();
       await DashboardFunctionality.validate();
     } else if (env === 'MOCKAPI' || env === 'MYSCRIPBOX') {
       if (loginData[user.toString()] === undefined) {

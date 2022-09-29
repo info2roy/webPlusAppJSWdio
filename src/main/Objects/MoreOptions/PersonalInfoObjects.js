@@ -1,6 +1,8 @@
 class PersonalInfoObjects {
   fileInput = { web: 'input#file' }; // file input tag for uploading profile picture on web => <input type="file">
 
+  profileImage = { web: 'img.avatar-image' };
+
   submitPictureButton = { web: '//button[text()="Submit"]' }; // The submit button for updated profile picture on web
 
   profileInfomationHeader = { web: '(//div[text()="Personal Information"])[4]',
@@ -40,13 +42,21 @@ class PersonalInfoObjects {
 
   editBankButton = { web: '//div[contains(text(),"Bank")]//following-sibling::span' };
 
-  enterFullName = { web: '//input[@id="name"]' };
+  enterFullName = { web: '//input[@id="new-name"]' };
+
+  relationshipDropdown = {web: '#relationship'};
+
+  relationSelect = {web: '//*[text()="Spouse"]'};
 
   enterYear = {web: '//input[@name="year"]'};
+
+  enterPAN = {web: '//input[@id="pan"]'};
 
   enterDate = {web: '//input[@name="date"]'};
 
   enterMonth = {web: '//input[@name="month"]'};
+
+  enterAddress = {web: '//*[@id="address"]'};
 
   updateChangesButton = { web: '//button[contains(text(),"Update Changes")]' };
 

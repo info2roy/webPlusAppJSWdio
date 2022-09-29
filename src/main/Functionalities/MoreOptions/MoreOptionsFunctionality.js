@@ -5,7 +5,6 @@ class MoreOptionsFunctionality {
     return (await MoreOptionsPage.scripboxImageIsDisplayed()) &&
     (await MoreOptionsPage.bellImageIsDisplayed()) &&
     (await MoreOptionsPage.supportImageIsDisplayed()) &&
-    (await MoreOptionsPage.addAFamilyMemberButtonIsDisplayed()) &&
     (await MoreOptionsPage.yourProfileHeaderIsDisplayed()) &&
     (await MoreOptionsPage.yourProfileImageIsDisplayed()) &&
     (await MoreOptionsPage.personalInfoOptionIsDisplayed()) &&

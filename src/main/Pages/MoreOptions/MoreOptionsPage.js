@@ -200,7 +200,7 @@ class MoreOptionsPage {
       case 'Account and Family Information':
         return (await PersonalInfoPage.accountFamilyInfoPageHeaderIsDisplayed());
       case 'Statements and Tax Reports':
-        return (await MfStatementPage.mFPageHeaderIsDisplayed());
+        return (await MfStatementPage.statementsAndTaxReportPageHeaderIsDisplayed());
       case 'Notification Preferences':
         return (await NotificationPreferencesPage.notificationPreferencesPageHeaderIsDisplayed()) &&
           (await NotificationPreferencesPage.notificationPreferenceControlsAreDisplayedAndAreCorrect());
@@ -214,7 +214,8 @@ class MoreOptionsPage {
         return (this.giveFeedbackPageHeaderIsDisplayed());
       case 'Refer a Friend':
         return (await this.referAFriendPageHeaderIsDisplayed()) &&
-          (await this.referAFriendPageSummaryIsDisplayed());
+          (await this.referAFriendPageSummaryIsDisplayed()) &&
+          (await this.referAFriendSocialMediaLinksAreDisplayed());
       case 'Logout':
         return await HomePage.myScripboxLoginPageIsDisplayed();
       default:
@@ -237,14 +238,19 @@ class MoreOptionsPage {
   }
 
   async validateNavigateToPageFromAboutScripboxPage(pageName) {
+    let status = true;
     switch(pageName) {
       case 'Service Agreement':
         return (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageServiceAgreementPageHeader)) &&
          (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageServiceAgreementPageAgreementName));
       case 'Company':
-        return (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageHeader)) &&
-          (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageNameLabel)) &&
-          (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageCompanyName));
+        status = (await Utils.elementIsDisplayed(MoreOptionsObjects.aboutScripboxPageCompanyPageHeader));
+        for (const [property, propertyValue] of Object.entries(MoreOptionsObjects.aboutScripboxCompanyDetails)) {
+          status = status &&
+            (await Utils.getText(MoreOptionsObjects.aboutScripboxPageCompanyPageProperty(
+              property))).includes(propertyValue);
+        }
+        return status;
       default:
         console.log(`unsupported page ${pageName} from About Scripbox Page`);
         return false;
@@ -273,6 +279,34 @@ class MoreOptionsPage {
     const iframe = await browser.$('//iframe');
     await browser.switchToFrame(iframe);
     const status = await Utils.elementIsDisplayed(MoreOptionsObjects.referAFriendPageSummary);
+    await browser.switchToParentFrame();
+    return status;
+  }
+
+  async referAFriendSocialMediaLinksAreDisplayed() {
+    const iframe = await browser.$('//iframe');
+    await browser.switchToFrame(iframe);
+    const imagePathPrefix = 'https://clientcdn.notifyvisitors.com/scriptbox/';
+    const socialMediaLinks = {
+      'Whatsapp': { image: `${imagePathPrefix}Whatsapp.png`, aProperty: 'href', aPropertyValue: 'api.whatsapp.com' },
+      'Email': { image: `${imagePathPrefix}Mail.png`, aProperty: 'class', aPropertyValue: 'gmailInvite' },
+      'Facebook': { image: `${imagePathPrefix}FB.png`, aProperty: 'onclick', aPropertyValue: 'fbShare()' },
+      'Tweet': { image: `${imagePathPrefix}Twitter.png`, aProperty: 'href', aPropertyValue: 'twitter.com' },
+      'Messenger': { image: `${imagePathPrefix}Messenger.png`, aProperty: 'onclick', aPropertyValue: 'fbMessage()' },
+      'LinkedIn': { image: `${imagePathPrefix}Linkedin.png`, aProperty: 'id', aPropertyValue: 'linkedin' },
+      'Pinterest': { image: `${imagePathPrefix}Pinterest.png`, aProperty: 'id', aPropertyValue: 'pinterest' },
+      'Copy Link': { image: `${imagePathPrefix}Share_link.png`, aProperty: 'id', aPropertyValue: 'copyLink' }
+    };
+    let status = true;
+    for (const [key, value] of Object.entries(socialMediaLinks)) {
+      status = status && (await Utils.elementIsDisplayed(MoreOptionsObjects.referAFriendSocialMediaLabel(key)));
+
+      status = status && (await Utils.getElementAttributeBySelector(
+        MoreOptionsObjects.referAFriendSocialMediaImageLink(key), 'src') === value.image);
+
+      status = status && (await Utils.getElementAttributeBySelector(
+        MoreOptionsObjects.referAFriendSocialMediaHyperlink(key), value.aProperty)).includes(value.aPropertyValue);
+    }
     await browser.switchToParentFrame();
     return status;
   }

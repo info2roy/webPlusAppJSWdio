@@ -1,7 +1,7 @@
 Feature: Scripbox About Scripbox Page
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "MOCKAPI" for "user189182"
+    Given I login to Scripbox in "ANDROMEDA" for "test_email+9108fa0821@scripbox.io"
 
   Scenario: As a logged in user, I can view About Scripbox Page
     Given I am on the dashboard page
@@ -14,5 +14,4 @@ Feature: Scripbox About Scripbox Page
   
   Scenario: From About Scripbox Page, I can navigate to Company Page
     When I navigate to "Company" Page from About Scripbox Page
-    Then I logout of Scripbox
     
