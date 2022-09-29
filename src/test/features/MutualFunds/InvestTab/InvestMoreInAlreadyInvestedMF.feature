@@ -25,15 +25,15 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
     Then I go back to the dashboard page 
     Examples:
       | SIPFrequency | SIPAmount | SIPStartDate | SIPDuration |
-      | Monthly SIP  | 5000      | Default | Default          |
-      | Monthly SIP  | 1      | Default | Default          |
-      | Monthly SIP  | 999      | Default | Default          |
-      | Monthly SIP  | 10000      | Default | 0          |
-      | Monthly SIP  | 1000      | Default | -1          |
-      | Monthly SIP  | 2000      | T+2 | 1          |
-      | Monthly SIP  | 15000      | T+5 | 12          |
-      | Monthly SIP  | 20000      | T+7 | 24          |
-      | Monthly SIP  | 25000      | 1stOfNextMonth | 36          |
+      # | Monthly SIP  | 5000      | Default | Default          |
+      # | Monthly SIP  | 1      | Default | Default          |
+      | Monthly SIP  | 900      | Default | Default          |
+      # | Monthly SIP  | 10000      | Default | 0          |
+      # | Monthly SIP  | 1000      | Default | -1          |
+      # | Monthly SIP  | 2000      | T+2 | 1          |
+      # | Monthly SIP  | 15000      | T+5 | 12          |
+      # | Monthly SIP  | 20000      | T+7 | 24          |
+      # | Monthly SIP  | 25000      | 1stOfNextMonth | 36          |
       | Monthly SIP  | 30000      | 5thOfNextMonth | 72          |
 
   Scenario Outline: As a logged in user, I am able to schedule SIP into already invested fund with first payment today
@@ -83,8 +83,8 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
     Examples:
       | SIPFrequency | SIPAmount |
       | One time  | 5000   |
-      | One time  | 1      |
-      | One time  | 999    |
+      # | One time  | 1      |
+      | One time  | 900    |
 
   Scenario Outline: As a logged in user, I am able to do sheduled one time investment into already invested fund
     When I go back to the dashboard page
