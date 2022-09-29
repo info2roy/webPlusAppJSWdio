@@ -2,7 +2,6 @@ const { When, Then } = require('@wdio/cucumber-framework');
 const CommonFunctionality = require('../../../main/Functionalities/Common/CommonFunctionality');
 const Utils = require('../../../support/Utils/Utils');
 const { expect } = require('chai');
-const Utils = require('../../../support/Utils/Utils');
 
 When(/^I refresh the current page$/, async () => {
   await console.log('When I refresh the current page');
@@ -34,5 +33,10 @@ Then(/^I should see "([^"]*)?" success message$/, async (message) => {
 
 When(/^I validate header "([^"]*)?"$/, async (header) => {
   console.log(`I validate header ${header}`);
-  expect(await Utils.validateHeaderPresent(header)).to.be.true;
+  expect(await Utils.isTextDisplayed(header)).to.be.true;
+});
+
+When(/^I select radio option (.+)$/, async (option) => {
+  await console.log(`I select radio option ${option}`);
+  await Utils.clickRadioButton(option);
 });

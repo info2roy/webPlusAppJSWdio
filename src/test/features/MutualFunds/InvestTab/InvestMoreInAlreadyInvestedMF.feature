@@ -13,7 +13,7 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
     And I validate header "How would you like to invest?"
     And I validate header "Enter monthly SIP amount"
     And I validate fund name present before amount field
-    And I select invest option <SIPFrequency>
+    And I select radio option <SIPFrequency>
     And I enter SIP amount <SIPAmount>
     Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
     When I select start date <SIPStartDate>
@@ -47,7 +47,7 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
     And I validate header "How would you like to invest?"
     And I validate header "Enter monthly SIP amount"
     And I validate fund name present before amount field
-    And I select invest option <SIPFrequency>
+    And I select radio option <SIPFrequency>
     And I enter SIP amount <SIPAmount>
     And I select start date <SIPStartDate>
     And I enter SIP duration <SIPDuration>
@@ -72,7 +72,7 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
     And I validate header "How would you like to invest?"
     And I validate header "Enter One Time amount"
     And I validate fund name present before amount field
-    And I select invest option <SIPFrequency>
+    And I select radio option <SIPFrequency>
     And I enter SIP amount <SIPAmount>
     Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
     When I click on "Pay "
@@ -97,7 +97,7 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
     And I validate header "How would you like to invest?"
     And I validate header "Enter One Time amount"
     And I validate fund name present before amount field
-    And I select invest option <SIPFrequency>
+    And I select radio option <SIPFrequency>
     And I enter SIP amount <SIPAmount>
     And I select checkbox "Make your first payment today"
     And I click on "Confirm investment of "

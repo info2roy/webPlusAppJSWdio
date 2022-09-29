@@ -263,10 +263,6 @@ class MFInvestmentPage {
     await Utils.setInputField(fundName, MFInvestmentObjects.enterFundNameTextBox);
   }
 
-  async selectSIP(option) {
-    await Utils.clickRadioButton(option);
-  }
-
   async enterSIPValue(value) {
     await Utils.setInputField(value, MFInvestmentObjects.SIPAmountTextBox);
   }

@@ -114,11 +114,6 @@ When(/^I enter SIP fund (.+) and (.+)$/, async (amount, duration) => {
   await MFInvestmentFunctionality.enterSIPDetails(amount, duration);
 });
 
-When(/^I select invest option (.+)$/, async (frequency) => {
-  await console.log(`I select invest option ${frequency} funds withdrawl`);
-  await MFInvestmentFunctionality.selectSIPFrequency(frequency);
-});
-
 When(/^I select date (.+)$/, async (date) => {
   await console.log(`I select date ${date}`);
   await MFInvestmentFunctionality.selectSIPFrequency(date);

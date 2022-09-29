@@ -16,7 +16,7 @@ Feature: Scripbox Investment for monthly SIP
 
     # @DoNotExecute
     # Scenario Outline: As a logged in user, I want enter SIP details to initiate monthly SIP
-    #     When I select invest option <SIPFrequency>
+    #     When I select radio option <SIPFrequency>
     #     And I enter SIP fund <SIPAmount> and <SIPDuration>
     #     When I select date <StartMonth>
     #     And I select first date of next month

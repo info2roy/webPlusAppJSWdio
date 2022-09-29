@@ -577,13 +577,5 @@ class Utils {
     expect(selectedMonth).to.equal(month);
     await this.clickElement(daySelector(day));
   }
-
-  async validateHeaderPresent(header) {
-    const selector = {
-      web: `//*[text()="${header}"]`,
-      app: `//*[@text="${header}"]`
-    };
-    return (await this.elementIsDisplayed(selector));
-  }
 }
 module.exports = new Utils();
