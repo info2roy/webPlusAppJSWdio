@@ -1,5 +1,6 @@
 const { When, Then } = require('@wdio/cucumber-framework');
 const CommonFunctionality = require('../../../main/Functionalities/Common/CommonFunctionality');
+const Utils = require('../../../support/Utils/Utils');
 const { expect } = require('chai');
 
 When(/^I refresh the current page$/, async () => {
@@ -10,6 +11,14 @@ When(/^I refresh the current page$/, async () => {
 When(/^I go back to previous page$/, async () => {
   await console.log('When I go back to previous page');
   await CommonFunctionality.goBackToPreviousPage();
+});
+
+When(/^I click on "([^"]*)?"$/, async (button) => {
+  await console.log(`I click on ${button}`);
+  await Utils.clickElementByText(button);
+});
+
+When(/^I select first date of next month$/, async () => {
 });
 
 When(/^I enter OTP as (\d+) for verification$/, async (otp) => {

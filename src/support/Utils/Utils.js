@@ -372,6 +372,13 @@ class Utils {
     }
   }
 
+  async clickElementByText(button) {
+    const webElement = (`//*[text()="${button}"]`);
+    // const webElement = (`//*[text()="${button}" or contains(text(),"${button}")]`);
+    const myButton = await $(webElement);
+    await myButton.click();
+  }
+
   async clickRadioButton(option) {
     const webElement = (`//*[contains(@class, 'radio-input') and contains(text(),"${option}")]`);
     const myButton = await $(webElement);

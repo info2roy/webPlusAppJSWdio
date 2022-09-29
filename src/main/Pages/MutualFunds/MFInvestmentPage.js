@@ -208,7 +208,7 @@ class MFInvestmentPage {
           await Utils.elementIsDisplayed(MFInvestmentObjects.emailIcon) &&
           await Utils.elementIsDisplayed(MFInvestmentObjects.downloadIcon));
       default:
-        console.log(`Wrong type MF type to assert. -> ${ mfOption.toString()}`);
+        console.log(`Wrong type MF type to assert. -> ${mfOption.toString()}`);
     }
   }
 
@@ -251,6 +251,36 @@ class MFInvestmentPage {
 
   async monthlySummaryHeaderIsDisplayed() {
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.monthlySummaryHeader));
+  }
+
+  async chooseYourFundPageAvailable() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.chooseYourFundHeader) &&
+      await Utils.elementIsDisplayed(MFInvestmentObjects.searchResultsFoundText));
+  }
+
+  async searchMutualFund(fundName) {
+    await Utils.clickElement(MFInvestmentObjects.exploreFundsSearchBox);
+    await Utils.setInputField(fundName, MFInvestmentObjects.enterFundNameTextBox);
+  }
+
+  async selectSIP(option) {
+    await Utils.clickRadioButton(option);
+  }
+
+  async enterSIPValue(value) {
+    await Utils.setInputField(value, MFInvestmentObjects.SIPAmountTextBox);
+  }
+
+  async enterSIPDuration(time) {
+    await Utils.setInputField(time, MFInvestmentObjects.SIPDurationTextBox);
+  }
+
+  async clickPickFund() {
+    await Utils.clickElement(MFInvestmentObjects.firstPickFundButton);
+  }
+
+  async confirmSetUpInvestmentHeaderDisplayed() {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.setUpInvestmentHeader));
   }
 }
 module.exports = new MFInvestmentPage();

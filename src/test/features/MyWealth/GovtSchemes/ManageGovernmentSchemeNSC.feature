@@ -13,7 +13,7 @@ Feature: Scripbox MyWealth: Add a Government Scheme "National Saving Certificate
     Then NSC Scheme details are shown correctly for Govt Scheme "National Saving Certificate"
     Examples:
       | nscInvestedAmount | nscInterestPercent | nscStartMonth | nscMaturityMonth |
-      | 123453 | 7 | Jan, 2020 | Jan, 2025 |
+      | 123453            | 7                  | Jan, 2020     | Jan, 2025        |
 
   Scenario Outline: I am able update the NSC Investment created in previous step
     When I edit the "National Saving Certificate" of <nscInvestedAmount> with <newInvestedAmount>; <nscInterestPercent>; <nscStartMonth>; <nscMaturityMonth>
@@ -23,7 +23,7 @@ Feature: Scripbox MyWealth: Add a Government Scheme "National Saving Certificate
     Then NSC Scheme details are shown correctly for Govt Scheme "National Saving Certificate"
     Examples:
       | nscInvestedAmount | newInvestedAmount | nscInterestPercent | nscStartMonth | nscMaturityMonth |
-      | 123453 | 150000 | 7.5 | Mar, 2018 | Mar, 2023 |
+      | 123453            | 150000            | 7.5                | Mar, 2018     | Mar, 2023        |
 
   Scenario Outline: I delete the investment and logout
     When I delete Govt Scheme "National Saving Certificate"

@@ -41,6 +41,12 @@ class CommonObjects {
     app: '//android.widget.TextView[@text="\uE313"]' //The expand more button has this unicode char \uE313 value
   };
 
+  nextMonthButtonInCalander = { web: '(//*[contains(@class,"DayPickerNavigation_svg")])[2]' };
+
+  calanderInput = {web: '(//input[contains(@class,"-amount-field__input")])[2]'};
+
+  nextMonthFirstDayInCalander = { web: '//*[contains(@class,"CalendarMonth_table")]//td[text()="1"]' };
+
   otpField = {
     web: 'input#verify-otp',
     app: '.android.widget.EditText'

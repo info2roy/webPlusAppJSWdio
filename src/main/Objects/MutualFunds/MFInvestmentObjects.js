@@ -225,5 +225,53 @@ class MFInvestmentObjects {
   monthlySummaryHeader = {
     web: '//div[text()="Monthly Summary"]'
   };
+
+  exploreFundsSearchBox = {
+    web: '(//div[contains(text(),"Explore funds")]//ancestor::div[1]//img)[1]'
+  };
+
+  chooseYourFundHeader = {
+    web: '(//div[text()="Choose your fund"])[3]'
+  };
+
+  searchResultsFoundText = {
+    web: '//p[@class="link-title"]'
+  };
+
+  enterFundNameTextBox = {
+    web: '//input[@placeholder="Search for mutual funds"]'
+  };
+
+  firstPickFundButton = {
+    web: '(//div[text()="Pick fund"])[1]'
+  };
+
+  setUpInvestmentHeader = {
+    web: '(//div[text()="Set up investment"])[3]'
+  };
+
+  SIPAmountTextBox = {
+    web: '//input[@placeholder="SIP Amount"]'
+  };
+
+  SIPDurationTextBox = {
+    web: '//input[@id="duration"]'
+  };
+
+  setMonthField = {
+    web: '//input[contains(@class,"cursor-pointer ycof-amount-field")]'
+  };
+
+  currentMonth = {
+    web: 'div.CalendarMonth_caption div div'
+  };
+
+  previousMonthNavigation = {
+    web: '//*[@class="DayPickerNavigation_svg__horizontal DayPickerNavigation_svg__horizontal_1"]'
+  };
+
+  nextMonthNavigation = {
+    web: '(//*[@class="DayPickerNavigation_svg__horizontal DayPickerNavigation_svg__horizontal_1"])[2]'
+  };
 }
 module.exports = new MFInvestmentObjects();

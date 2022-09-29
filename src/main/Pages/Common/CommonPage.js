@@ -46,6 +46,9 @@ class CommonPage {
     return (await Utils.elementIsDisplayed(CommonObjects.expandMoreButton, timeoutMS));
   }
 
+  async clickNextMonthNavgationButton() {
+    await Utils.clickElement(CommonObjects.nextMonthButtonInCalander);
+  }
   async verifyMessage(message) {
     return (await Utils.isTextDisplayed(message));
   }
