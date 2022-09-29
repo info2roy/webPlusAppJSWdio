@@ -385,9 +385,18 @@ class Utils {
     await myButton.click();
   }
 
+  async enterIntegerField(fieldId, intValue, androidPressKeyCode = false) {
+    const selector = {
+      web: `#${fieldId}`,
+      app: `~${fieldId}`
+    };
+    await this.setInputField(intValue, selector, androidPressKeyCode);
+    await browser.pause(10000);
+  }
+
   async isTextDisplayed(text) {
     await browser.pause(1000);
-    const webElement = (`//*[contains(text(),"${text}")]`);
+    const webElement = (`(//*[contains(text(),"${text}")])[last()]`);
     const isDisplayed = await $(webElement).isDisplayed();
     return isDisplayed;
   }

@@ -37,6 +37,11 @@ When(/^I validate header "([^"]*)?"$/, async (header) => {
 });
 
 When(/^I select radio option (.+)$/, async (option) => {
-  await console.log(`I select radio option ${option}`);
+  console.log(`I select radio option ${option}`);
   await Utils.clickRadioButton(option);
+});
+
+When(/^I enter integer (.+) (\d+)$/, async (elementId, intValue) => {
+  console.log(`I enter integer  ${elementId} ${intValue}`);
+  await Utils.enterIntegerField(elementId, intValue, true);
 });
