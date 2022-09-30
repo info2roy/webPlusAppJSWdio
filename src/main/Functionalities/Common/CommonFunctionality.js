@@ -1,3 +1,4 @@
+const Device = require('../../../support/libraries/Device');
 const CommonPage = require('../../Pages/Common/CommonPage');
 
 class CommonFunctionality {
@@ -20,12 +21,15 @@ class CommonFunctionality {
         await CommonPage.clickOnFamilyMemberByName(familyMemberName);
         return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector));
       }
-      return false;
+      return true;
     }
-    return false;
+    return true;
   }
 
   async selectFamilyMember(familyMemberName, landingPageHeaderSelector) {
+    if (Device.isAndroidApp()) {
+      return true;
+    }
     if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
       await CommonPage.clickOnFamilyMemberByName(familyMemberName);
       return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector));

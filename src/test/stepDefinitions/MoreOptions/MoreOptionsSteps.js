@@ -68,6 +68,11 @@ When(/^I navigate to "([^"]*)?" Page from More Options Page$/, async (pageName) 
   expect(await MoreOptionsFunctionality.navigateToPage(pageName)).to.be.true;
 });
 
+When(/^I navigate to (Whatsapp|Email|Facebook|Tweet|Messenger|LinkedIn|Pinterest|Copy Link) Page from "Refer a Friend" Page$/,async (socialMedia) => {
+  await console.log(`When I navigate to ${socialMedia} Page from "Refer a Friend" Page`);
+  expect(await MoreOptionsFunctionality.navigateToPageFromReferAFriendPage(socialMedia)).to.be.true;
+});
+
 When(/^I navigate to "(Service Agreement|Company)" Page from About Scripbox Page$/, async (pageName) => {
   await console.log(`When I navigate to "${pageName}" Page from About Scripbox Page`);
   expect(await MoreOptionsFunctionality.navigateToPageFromAboutScripboxPage(pageName)).to.be.true;
@@ -75,7 +80,7 @@ When(/^I navigate to "(Service Agreement|Company)" Page from About Scripbox Page
 
 Then(/^I logout of Scripbox$/, async () => {
   await console.log('Then I logout of Scripbox');
-  await DashboardFunctionality.open();
+  await DashboardFunctionality.validate();
   await DashboardFunctionality.openMoreOptions();
   await MoreOptionsFunctionality.selectLogout();
 });

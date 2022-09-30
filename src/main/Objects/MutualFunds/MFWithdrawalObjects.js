@@ -12,13 +12,6 @@ class MFWithdrawalObjects {
     };
   }
 
-  mutualFundPlanNameText(planName) {
-    return {
-      web: `${planName}`,
-      app: `${planName}`
-    };
-  }
-
   confirmBankDetailsPageHeader = {
     web: '//div[text()="Confirm your bank details"]',
     app: '//*[@text="Confirm your bank details"]'
@@ -76,13 +69,6 @@ class MFWithdrawalObjects {
     web: '//div[text()="Select funds and amounts"]',
     app: '//*[@text="Select funds"]'
   };
-
-  mutualFundNameText(fundName) {
-    return {
-      web: `${fundName}`,
-      app: `${fundName}`
-    };
-  }
 
   mutualFund(fundName) {
     return {

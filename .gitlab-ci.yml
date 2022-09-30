@@ -60,7 +60,7 @@ automation:
     - yq write --inplace $VALUES_FILE myscripbox.myscripbox.testCases.global.image.tag "sha-$CI_COMMIT_SHA"
   script:
     - deploy.sh
-    - helm test $RELEASE_NAME --logs --namespace $NAMESPACE
+    - helm test $RELEASE_NAME --logs --namespace $NAMESPACE --timeout 60m
   artifacts:
     name: logs
     expire_in: 3d

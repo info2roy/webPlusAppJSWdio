@@ -1,10 +1,14 @@
+const Device = require('../../../support/libraries/Device');
 const Utils = require('../../../support/Utils/Utils');
 const CommonObjects = require('../../Objects/Common/CommonObjects');
 
 class CommonPage {
 
   async selectFamilyMemberPageHeaderIsDisplayed(timeoutMS = 15000) {
-    return (await Utils.elementIsDisplayed(CommonObjects.selectFamilyMemberPageHeader, timeoutMS));
+    if (Device.isWeb()) {
+      return (await Utils.elementIsDisplayed(CommonObjects.selectFamilyMemberPageHeader, timeoutMS));
+    }
+    return true;
   }
 
   async familyMemberNameIsDisplayed(familyMemberName, timeoutMS = 15000) {
@@ -24,7 +28,10 @@ class CommonPage {
   }
 
   async selectASchemePageHeaderIsDisplayed(timeoutMS = 15000) {
-    return (await Utils.elementIsDisplayed(CommonObjects.selectASchemePageHeader, timeoutMS));
+    if (Device.isWeb()) {
+      return (await Utils.elementIsDisplayed(CommonObjects.selectASchemePageHeader, timeoutMS));
+    }
+    return true;
   }
 
   async clickBackButton() {
@@ -39,6 +46,9 @@ class CommonPage {
     return (await Utils.elementIsDisplayed(CommonObjects.expandMoreButton, timeoutMS));
   }
 
+  async clickNextMonthNavgationButton() {
+    await Utils.clickElement(CommonObjects.nextMonthButtonInCalander);
+  }
   async verifyMessage(message) {
     return (await Utils.isTextDisplayed(message));
   }
@@ -49,6 +59,10 @@ class CommonPage {
 
   async clickVerifyWithOTPButton() {
     await Utils.clickElement(CommonObjects.verifyOTPButton);
+  }
+
+  async getExpandMoreText() {
+    return (await Utils.getText(CommonObjects.expandMoreButton));
   }
 
   async elementIsDisplayed(selector, timeoutMS = 15000) {

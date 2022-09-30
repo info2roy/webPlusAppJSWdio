@@ -3,7 +3,7 @@ class LoginObjects {
 
   loginPageBanner = { app: '//*[@text="All things good for your wealth, under one roof."]' };
 
-  passwordPageBanner = { app: '//*[@text="Enter Password"] | //*[@text="Welcome back"]' };
+  passwordPageBanner = { app: '//*[@text="Enter Password"] | //*[@text="Welcome back"] | //android.widget.TextView[contains(@text,"For added security")]' };
 
   stagingUserIdField = { web: '.login-email' };
 
@@ -21,7 +21,7 @@ class LoginObjects {
     app: '//*[@text="Login / Signup"]' };
 
   enterOTPPageHeader = {
-    web: '//span[text()="Enter OTP"]'
+    web: '//span[text()="Enter OTP"]', app: '//*[@text="Please enter OTP to continue."]'
   };
 
   secondLoginPageHeader = { web: '//span[text()="Enter Password"]', app: '//*[@text="Enter Password"]' };
@@ -42,9 +42,27 @@ class LoginObjects {
 
   otpField(index) {
     return {
-      web: `//input[@id="user_otp${index + 1}"]`
+      web: `//input[@id="user_otp${index + 1}"]`,
+      app: `(//android.widget.EditText)[${index + 1}]`
     };
   }
+
+  newTermsHeader = {
+    app: '//*[@text="New Terms"]'
+  };
+
+  acceptNewTermsCheckBox = {
+    app: '//android.widget.ImageView'
+  };
+
+  iAcceptButton = {
+    app: '//*[@text="I ACCEPT"]'
+  };
+
+  doItLaterLink = {
+    web: '(//span[text()="Do it later"])[last()]',
+    app: `//*[@text="Do it later"]`
+  };
 }
 
 module.exports = new LoginObjects();

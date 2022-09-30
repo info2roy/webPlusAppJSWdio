@@ -60,9 +60,9 @@ class LoginPage {
     await Utils.clickElement(LoginObjects.continueLoginButton);
   }
 
-  async enterOTPHeaderIsDisplayed() {
+  async enterOTPHeaderIsDisplayed(timeoutMS = 15000) {
     if (Device.isWeb()) {
-      return (await Utils.elementIsDisplayed(LoginObjects.enterOTPPageHeader));
+      return (await Utils.elementIsDisplayed(LoginObjects.enterOTPPageHeader, timeoutMS));
     }
     return true;
   }
@@ -73,6 +73,22 @@ class LoginPage {
 
   async enterOTPDigit(index, digit) {
     await Utils.setInputField(digit, LoginObjects.otpField(index));
+  }
+
+  async newTermsHeaderIsDisplayed() {
+    return (await Utils.elementIsDisplayed(LoginObjects.newTermsHeader, 5000));
+  }
+
+  async clickAcceptNewTermsCheckbox() {
+    await Utils.clickElement(LoginObjects.acceptNewTermsCheckBox);
+  }
+
+  async clickIAcceptButton() {
+    await Utils.clickElement(LoginObjects.iAcceptButton);
+  }
+
+  async clickDoItLater() {
+    await Utils.clickElement(LoginObjects.doItLaterLink);
   }
 
 }

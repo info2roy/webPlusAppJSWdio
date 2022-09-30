@@ -184,7 +184,7 @@ When(/^I fill "INVEST ONE TIME" (\d+) and click "CONTINUE" on the "(Retire Confi
 
 When(/^I click on ">" to see plan details for "(Retire Confident|Premier Education)" Plan$/, async(lifeGoal) => {
   await console.log(`When I click on ">" to see plan details for "${lifeGoal}" Plan`);
-  expect(await MFGoalsFunctionality.seeLifeGoalPlanDetails()).to.be.true;
+  expect(await MFGoalsFunctionality.seeLifeGoalPlanDetails(lifeGoal, this.childname)).to.be.true;
 });
 
 When(/^I click on "(OTHER ACTIONS|EDIT PLAN)" button for "(Retire Confident|Premier Education)" Plan$/, async(buttonText, lifeGoal) => {

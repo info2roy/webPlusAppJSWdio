@@ -4,6 +4,7 @@ const loginData = require('../../config/data/structured/LoginData');
 const LoginObjects = require('../Objects/LoginObjects');
 const DashboardFunctionality = require('../Functionalities/DashboardFunctionality');
 const Utils = require('../../support/Utils/Utils');
+const LoginFunctionality = require('./LoginFunctionality');
 
 class HomeFunctionality {
   async login() {
@@ -45,8 +46,14 @@ class HomeFunctionality {
         }
       }
       await LoginPage.clickContinueOrNextButton();
-      await LoginPage.enterPassword(loginData.password);
-      await LoginPage.clickContinueLoginButton();
+      if (await LoginPage.enterOTPHeaderIsDisplayed(5000)) {
+        await LoginFunctionality.enterOTP([1, 1, 1, 1, 1, 1]);
+      } else {
+        await LoginPage.enterPassword(loginData.password);
+        await LoginPage.clickContinueLoginButton();
+      }
+      await LoginPage.clickDoItLater();
+      await DashboardFunctionality.home();
       await DashboardFunctionality.validate();
     } else if (env === 'MOCKAPI' || env === 'MYSCRIPBOX') {
       if (loginData[user.toString()] === undefined) {
@@ -132,8 +139,16 @@ class HomeFunctionality {
         await console.log(`${user } User not available to add. Please add in login data to proceed`);
     }
     await LoginPage.clickContinueOrNextButton();
-    await LoginPage.enterPassword(loginData.password);
-    await LoginPage.clickContinueLoginButton();
+    if (await LoginPage.enterOTPHeaderIsDisplayed()) {
+      await LoginFunctionality.enterOTP([1, 1, 1, 1, 1, 1]);
+    } else {
+      await LoginPage.enterPassword(loginData.password);
+      await LoginPage.clickContinueLoginButton();
+    }
+    if (await LoginPage.newTermsHeaderIsDisplayed()) {
+      await LoginPage.clickAcceptNewTermsCheckbox();
+      await LoginPage.clickIAcceptButton();
+    }
     await DashboardFunctionality.validate();
   }
 }

@@ -98,3 +98,28 @@ When(/^I click on "VIEW INVESTMENTS" button$/, async () => {
   await console.log('When I click on "VIEW INVESTMENTS" button');
   expect(await MFInvestmentFunctionality.viewInvestments()).to.be.true;
 });
+
+When(/^I search mutual fund (.+)$/, async (mutualFund) => {
+  await console.log(`I search mutual fund ${mutualFund}`);
+  expect(await MFInvestmentFunctionality.searchMutualFund(mutualFund)).to.be.true;
+});
+
+When(/^I perform pick fund for first available fund$/, async () => {
+  await console.log(`I perform pick fund for first available fund`);
+  expect(await MFInvestmentFunctionality.pickFund()).to.be.true;
+});
+
+When(/^I enter SIP fund (.+) and (.+)$/, async (amount, duration) => {
+  await console.log(`I enter SIP fund ${amount} and ${duration}`);
+  await MFInvestmentFunctionality.enterSIPDetails(amount, duration);
+});
+
+When(/^I select invest option (.+)$/, async (frequency) => {
+  await console.log(`I select invest option ${frequency} funds withdrawl`);
+  await MFInvestmentFunctionality.selectSIPFrequency(frequency);
+});
+
+When(/^I select date (.+)$/, async (date) => {
+  await console.log(`I select date ${date}`);
+  await MFInvestmentFunctionality.selectSIPFrequency(date);
+});

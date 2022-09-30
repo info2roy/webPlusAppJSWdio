@@ -17,18 +17,15 @@ class MFInvestmentObjects {
   };
 
   investAsPerScripboxGuidedPathButton = {
-    web: '//button/div[text()="Invest"]',
+    web: '//button[text()="Invest"]',
     app: '//*[@text="Invest"]'
   };
 
-  ageGroupHeaderText = {
-    web: '30s',
-    app: '30s'
-  };
+  ageGroupHeaderText = '30s';
 
   ageGroupHeader = {
-    web: `//div[text()="${this.ageGroupHeaderText.web}"]`,
-    app: `//*[@text="${this.ageGroupHeaderText.app}"]`
+    web: `//div[text()="${this.ageGroupHeaderText}"]`,
+    app: `//*[@text="${this.ageGroupHeaderText}"]`
   };
 
   ageGroupTab(ageGroup) {
@@ -84,25 +81,25 @@ class MFInvestmentObjects {
     };
   }
 
-  MAKE_PAYMENT_NOW_TEXT = { web: 'MAKE PAYMENT NOW', app: 'MAKE PAYMENT NOW' };
+  MAKE_PAYMENT_NOW_TEXT = 'MAKE PAYMENT NOW';
 
-  ONE_CLICK_INVEST_TEXT = { web: '1-CLICK INVEST', app: '1-CLICK INVEST' };
+  ONE_CLICK_INVEST_TEXT = '1-CLICK INVEST';
 
-  AUTOMATE_NOW_TEXT = { web: 'AUTOMATE NOW', app: 'AUTOMATE NOW' };
+  AUTOMATE_NOW_TEXT = 'AUTOMATE NOW';
 
   makePaymentNowButton = {
     web: `//button[text()="Make Payment Now"]`,
-    app: `//*[@text="${this.MAKE_PAYMENT_NOW_TEXT.app}"]`
+    app: `//*[@text="${this.MAKE_PAYMENT_NOW_TEXT}"]`
   };
 
   oneClickInvestButton = {
     web: `//button[text()="1-Click Invest"] | //button[text()="Schedule Now"] | //button[text()="Automate Now"]`,
-    app: `//*[@text="${this.ONE_CLICK_INVEST_TEXT.app}"]`
+    app: `//*[@text="${this.ONE_CLICK_INVEST_TEXT}"]`
   };
 
   automateNowButton = {
     web: `//button[text()="Automate Now"]`,
-    app: `//*[@text="${this.AUTOMATE_NOW_TEXT.app}"]`
+    app: `//*[@text="${this.AUTOMATE_NOW_TEXT}"]`
   };
 
   setupMFSipInvestmentPageHeader(amount, months) {
@@ -134,7 +131,7 @@ class MFInvestmentObjects {
 
   investmentScheduledSuccessfullyPageHeader = {
     web: '//div[text()="Investment scheduled successfully"]',
-    app: '//*[@text="Investment scheduled successfully"]'
+    app: '//*[@text="Investment scheduled successfully" or @text="Investment Scheduled"]'
   };
 
   paymentInstrument(paymentInstrumentType) {
@@ -198,11 +195,11 @@ class MFInvestmentObjects {
 
   addNewPlanOrExploreOtherPlans = {
     web: '//div[text()="Add new plan"] | //div[text()="Explore other plans"]',
-    app: '//*[@text="Add new plan"] | //*[@text="Explore other plans"]'
+    app: '//*[@text="Add new plan" or @text="Explore other plans"]'
   };
 
   addNewPlanPageHeader = {
-    web: '//div[text()="Add new plan"]'
+    web: '//div[text()="Add new plan"]', app: '//*[@text="Add new plan"]'
   };
 
   addNewPlanPageInvestmentStrategiesHeader = {
@@ -227,6 +224,54 @@ class MFInvestmentObjects {
 
   monthlySummaryHeader = {
     web: '//div[text()="Monthly Summary"]'
+  };
+
+  exploreFundsSearchBox = {
+    web: '(//div[contains(text(),"Explore funds")]//ancestor::div[1]//img)[1]'
+  };
+
+  chooseYourFundHeader = {
+    web: '(//div[text()="Choose your fund"])[3]'
+  };
+
+  searchResultsFoundText = {
+    web: '//p[@class="link-title"]'
+  };
+
+  enterFundNameTextBox = {
+    web: '//input[@placeholder="Search for mutual funds"]'
+  };
+
+  firstPickFundButton = {
+    web: '(//div[text()="Pick fund"])[1]'
+  };
+
+  setUpInvestmentHeader = {
+    web: '(//div[text()="Set up investment"])[3]'
+  };
+
+  SIPAmountTextBox = {
+    web: '//input[@placeholder="SIP Amount"]'
+  };
+
+  SIPDurationTextBox = {
+    web: '//input[@id="duration"]'
+  };
+
+  setMonthField = {
+    web: '//input[contains(@class,"cursor-pointer ycof-amount-field")]'
+  };
+
+  currentMonth = {
+    web: 'div.CalendarMonth_caption div div'
+  };
+
+  previousMonthNavigation = {
+    web: '//*[@class="DayPickerNavigation_svg__horizontal DayPickerNavigation_svg__horizontal_1"]'
+  };
+
+  nextMonthNavigation = {
+    web: '(//*[@class="DayPickerNavigation_svg__horizontal DayPickerNavigation_svg__horizontal_1"])[2]'
   };
 }
 module.exports = new MFInvestmentObjects();

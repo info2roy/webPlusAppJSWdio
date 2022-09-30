@@ -2,27 +2,19 @@ class MfStatementObjects {
 
   investmentHistoryTab = { web: '//*[text()="Investment history"]', app: '//*[@text="Investment history"]' };
 
-  investmentHistoryTabText = {
-    app: 'Investment history'
-  };
+  investmentHistoryTabText = 'Investment history';
 
   fundHoldingsTab = { web: '//*[text()="Fund holdings"]', app: '//*[@text="Fund holdings"]' };
 
-  fundHoldingsTabText = {
-    app: 'Fund holdings'
-  };
+  fundHoldingsTabText = 'Fund holdings';
 
   taxStatementsTab = { web: '//*[text()="Tax statements"]', app: '//*[@text="Tax statements"]' };
 
-  taxStatementsTabText = {
-    app: 'Tax statements'
-  };
+  taxStatementsTabText = 'Tax statements';
 
   capitalGainsTab = { web: '//*[text()="Capital gains"]', app: '//*[@text="Capital gains"]' };
 
-  capitalGainsTabText = {
-    app: 'Capital gains'
-  };
+  capitalGainsTabText = 'Capital gains';
 
   investmentHistoryFundFoundHeader = {
     web: '//*[contains(text(),"funds found") or contains(text(),"fund found")]',

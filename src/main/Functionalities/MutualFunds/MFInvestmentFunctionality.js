@@ -103,5 +103,24 @@ class MFInvestmentFunctionality {
       (await MFInvestmentPage.externalSipsHeaderIsDisplayed()) &&
       (await MFInvestmentPage.monthlySummaryHeaderIsDisplayed());
   }
+
+  async searchMutualFund(fundName) {
+    await MFInvestmentPage.searchMutualFund(fundName);
+    return (await MFInvestmentPage.chooseYourFundPageAvailable());
+  }
+
+  async selectSIPFrequency(frequency) {
+    await MFInvestmentPage.selectSIP(frequency);
+  }
+
+  async enterSIPDetails(fundValue, fundDuration) {
+    await MFInvestmentPage.enterSIPValue(fundValue);
+    await MFInvestmentPage.enterSIPDuration(fundDuration);
+  }
+
+  async pickFund() {
+    await MFInvestmentPage.clickPickFund();
+    return (await MFInvestmentPage.confirmSetUpInvestmentHeaderDisplayed());
+  }
 }
 module.exports = new MFInvestmentFunctionality();

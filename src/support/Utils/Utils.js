@@ -47,7 +47,7 @@ class Utils {
 
   async clickElement(selector) {
     const locator = this.getLocator(selector);
-    await this.elementIsDisplayed(selector);
+    expect(await this.elementIsDisplayed(selector)).to.be.true;
     const myButton = await $(locator);
     if (Device.isWeb()) {
       await myButton.waitForClickable({ timeout: 10000 });
@@ -142,6 +142,7 @@ class Utils {
   async elementIsDisplayed(selector, timeoutMS = 15000) {
     const locator = this.getLocator(selector);
     // const element = await $(locator);
+    let isDisplayed = false;
     try {
       await browser.waitUntil(
         async () => await $(locator).isDisplayed(),
@@ -151,10 +152,10 @@ class Utils {
           interval: 2000
         },
       );
-    } catch (err) {
+      isDisplayed = await $(locator).isDisplayed();
+    } catch(err) {
       console.log(err.message);
     }
-    const isDisplayed = await $(locator).isDisplayed();
     console.log(`${locator} is displayed check --> ${isDisplayed}`);
     return isDisplayed;
   }
@@ -165,10 +166,34 @@ class Utils {
     return (await element.getAttribute(attribute));
   }
 
-  async setInputField(value, selector) {
-    await this.clickElement(selector);
-    const myButton = await $(this.getLocator(selector));
-    await myButton.setValue(value);
+  async setInputField(value, selector, androidPressKeyCode = false) {
+    if (Device.isWeb()) {
+      await this.clickElement(selector);
+    }
+    const myTextField = await $(this.getLocator(selector));
+    if (Device.isAndroidApp() && androidPressKeyCode) {
+      await myTextField.clearValue();
+      await myTextField.click();
+      const keycodes = {
+        '0': 7,
+        '1': 8,
+        '2': 9,
+        '3': 10,
+        '4': 11,
+        '5': 12,
+        '6': 13,
+        '7': 14,
+        '8': 15,
+        '9': 16
+      };
+      const numStr = value.toString();
+      for (let i = 0; i < numStr.length; i++) {
+        console.log(`i = ${i} char ${numStr[i]} code ${keycodes[numStr[i]]}`);
+        await driver.pressKeyCode(keycodes[numStr[i]]);
+      }
+    } else {
+      await myTextField.setValue(value);
+    }
   }
 
   async setTextObject(value, webElement) {
@@ -222,14 +247,54 @@ class Utils {
     await this.moveToElement(element);
   }
 
-  async scrollVerticalUntilTextIntoViewForAndroid(textToBeIntoView) {
-    const func = 'new UiScrollable(new UiSelector().scrollable(true)).scrollTextIntoView';
-    await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
+  async scrollVerticalUntilTextIntoViewForAndroid(textToBeIntoView, scrollableInstanceId = 0) {
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsVerticalList().scrollTextIntoView`;
+    await $(`android=${func}("${textToBeIntoView}")`);
   }
 
-  async scrollHorizontalUntilTextIntoViewForAndroid(textToBeIntoView) {
-    const func = 'new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollTextIntoView';
-    await $(`android=${func}("${this.getLocator(textToBeIntoView)}")`);
+  async scrollVerticalToEndForAndroid(scrollableInstanceId, maxSwipes) {
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrolltoend
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsVerticalList().scrollToEnd`;
+    await $(`android=${func}(${maxSwipes})`);
+  }
+
+  async scrollVerticalToBeginningForAndroid(scrollableInstanceId, maxSwipes) {
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollToBeginning(int)
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsVerticalList().scrollToBeginning`;
+    await $(`android=${func}(${maxSwipes})`);
+  }
+
+  async scrollVerticalForAndroid(scrollableInstanceId, steps, forward = true) {
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollForward(int)
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollBackward(int)
+
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsVerticalList()`;
+    await $(`android=${func}.${forward ? 'scrollForward' : 'scrollBackward' }(${steps})`);
+  }
+
+  async scrollHorizontalUntilTextIntoViewForAndroid(textToBeIntoView, scrollableInstanceId = 0) {
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsHorizontalList().scrollTextIntoView`;
+    await $(`android=${func}("${textToBeIntoView}")`);
+  }
+
+  async scrollHorizontalToEndForAndroid(scrollableInstanceId, maxSwipes) {
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrolltoend
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsHorizontalList().scrollToEnd`;
+    await $(`android=${func}(${maxSwipes})`);
+  }
+
+  async scrollHorizontalToBeginningForAndroid(scrollableInstanceId, maxSwipes) {
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollToBeginning(int)
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsHorizontalList().scrollToBeginning`;
+    await $(`android=${func}(${maxSwipes})`);
+  }
+
+  async scrollHorizontalForAndroid(scrollableInstanceId, steps, forward = true) {
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollForward(int)
+    //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollBackward(int)
+
+    const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsHorizontalList()`;
+    await $(`android=${func}.${forward ? 'scrollForward' : 'scrollBackward' }(${steps})`);
   }
 
   //Choose a Select tag option by Visible Text
@@ -307,6 +372,13 @@ class Utils {
     }
   }
 
+  async clickElementByText(button) {
+    const webElement = (`//*[text()="${button}"]`);
+    // const webElement = (`//*[text()="${button}" or contains(text(),"${button}")]`);
+    const myButton = await $(webElement);
+    await myButton.click();
+  }
+
   async clickRadioButton(option) {
     const webElement = (`//*[contains(@class, 'radio-input') and contains(text(),"${option}")]`);
     const myButton = await $(webElement);
@@ -320,6 +392,14 @@ class Utils {
     return isDisplayed;
   }
 
+  //monthYear should be of form => "Jan, 2022", "Feb, 2021" etc
+  splitMonthAndYear(monthYear) {
+    const parts = monthYear.split(' ');
+    const month = parts[0].slice(0, -1);
+    const year = parseInt(parts[1].trim(), 10);
+    return [month, year];
+  }
+
   /**
    * Set a monthYear for given month and year on the month calendar shown on the page
    * @param  {string} monthYear The text of the form 'Jan, 2022'
@@ -330,9 +410,7 @@ class Utils {
    * @param  {object} monthSelector The selector for selecting the month on the calendar
    */
   async setMonthAndYear(monthYear, monthYearFieldSelector, pickedYearSelector, prevYearButtonSelector, nextYearButtonSelector, monthSelector) {
-    const parts = monthYear.split(' ');
-    const month = parts[0].slice(0, -1);
-    const year = parseInt(parts[1].trim(), 10);
+    const [month, year] = this.splitMonthAndYear(monthYear);
     await this.clickElement(monthYearFieldSelector);
     const currentYear = parseInt(await this.getText(pickedYearSelector), 10);
     let yearDiff = currentYear - year;
@@ -349,6 +427,104 @@ class Utils {
     const selectedYear = parseInt(await this.getText(pickedYearSelector), 10);
     expect(selectedYear).to.equal(year);
     await this.clickElement(monthSelector(month));
+  }
+
+  monthAbbrToFullName(monthAbbr) {
+    const map = {
+      'Jan': 'January',
+      'Feb': 'February',
+      'Mar': 'March',
+      'Apr': 'April',
+      'May': 'May',
+      'Jun': 'June',
+      'Jul': 'July',
+      'Aug': 'August',
+      'Sep': 'September',
+      'Oct': 'October',
+      'Nov': 'November',
+      'Dec': 'December'
+    };
+    return map[monthAbbr];
+  }
+
+  /**
+   * Swipe on android based on fraction of window width and window height for start and end X and Y coordinates
+   * @param  {Number} startXMultiplier The fraction of windowSize.width value between 0 and 1 for swipe start X co-ordinate
+   * @param  {Number} startYMultiplier The fraction of windowSize.height value between 0 and 1 for swipe start Y co-ordinate
+   * @param  {Number} endXMultiplier The fraction of windowSize.width value between 0 and 1 for swipe end X co-ordinate
+   * @param  {Number} endYMultiplier The fraction of windowSize.height value between 0 and 1 for swipe end Y co-ordinate
+   */
+  async swipeOnAndroid(startXMultiplier, startYMultiplier, endXMultiplier, endYMultiplier) {
+    const windowSize = await driver.getWindowSize();
+
+    const startToEndSwipeOptions = {
+      startX: windowSize.width * startXMultiplier,
+      startY: windowSize.height * startYMultiplier,
+      endX: windowSize.width * endXMultiplier,
+      endY: windowSize.height * endYMultiplier,
+      delay: 0
+    };
+
+    await driver.touchPerform([
+      {
+        action: 'press',
+        options: {
+          x: startToEndSwipeOptions.startX,
+          y: startToEndSwipeOptions.startY
+        }
+      },
+      { action: 'wait', options: { mseconds: startToEndSwipeOptions.delay } },
+      {
+        action: 'moveTo',
+        options: {
+          x: startToEndSwipeOptions.endX,
+          y: startToEndSwipeOptions.endY
+        }
+      },
+      { action: 'release' }
+    ]);
+  }
+
+  /**
+   * On Android when month and year needs to selected based on scrolls, this function is used to set a specific month and year
+   * @param  {string} monthYear The text of the form 'Jan, 2022'
+   * @param  {object} monthYearFieldSelector The selector for monthYear textfield
+   * @param  {object} monthPickerYearSelector The selector for currently selected year
+   * @param  {object} doneButtonSelector The selector for Done button
+   */
+  async setMonthAndYearForAndroid(monthYear, monthYearFieldSelector, monthPickerYearSelector, doneButtonSelector) {
+    const monthNames = { 'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5, 'July': 6,
+      'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11 };
+    const [month, year] = this.splitMonthAndYear(monthYear);
+    const monthFullName = this.monthAbbrToFullName(month);
+    await this.clickElement(monthYearFieldSelector);
+    const currentMonth = new Date().getMonth();
+    const currentYear = parseInt(await this.getText(monthPickerYearSelector), 10);
+    console.log(`currentMonth ${currentMonth} currentYear ${currentYear} monthFullName ${monthFullName}`);
+    let yearDiff = currentYear - year;
+    let monthDiff = currentMonth - monthNames[monthFullName];
+    console.log(`yeardiff = ${yearDiff} monthDiff = ${monthDiff}`);
+    if (yearDiff > 0) {
+      for (let index = 0; index < yearDiff; index++) {
+        await this.swipeOnAndroid(0.6, 0.5, 0.6, 0.6);
+      }
+    } else if (yearDiff < 0) {
+      yearDiff = yearDiff * (-1);
+      for (let index = 0; index < yearDiff; index++) {
+        await this.swipeOnAndroid(0.6, 0.5, 0.6, 0.4);
+      }
+    }
+    if (monthDiff > 0) {
+      for (let index = 0; index < monthDiff; index++) {
+        await this.swipeOnAndroid(0.4, 0.5, 0.4, 0.6);
+      }
+    } else if (monthDiff < 0) {
+      monthDiff = monthDiff * (-1);
+      for (let index = 0; index < monthDiff; index++) {
+        await this.swipeOnAndroid(0.4, 0.5, 0.4, 0.4);
+      }
+    }
+    await this.clickElement(doneButtonSelector);
   }
 
   //pad zeroes at the beginning so that the string num has total places digits

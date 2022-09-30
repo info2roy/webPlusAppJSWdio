@@ -44,6 +44,8 @@ class PersonalInfoPage {
       await console.log('Web: uploadFile');
       const localFilePath = path.join(__dirname, '../../../config/data/images/desktop.jpg');
       await Utils.uploadFile(localFilePath, PersonalInfoObjects.fileInput, PersonalInfoObjects.submitPictureButton);
+      const imageSrc = await Utils.getElementAttributeBySelector(PersonalInfoObjects.profileImage, 'src');
+      expect(imageSrc).to.contain('desktop');
     }
   }
 
@@ -103,11 +105,14 @@ class PersonalInfoPage {
       case 'nominee name':
         await Utils.setInputField(value, PersonalInfoObjects.enterFullName);
       case 'nominee':
+        await Utils.chooseSelectOptionByVisibleText(PersonalInfoObjects.relationshipDropdown, 'Spouse');
         await Utils.setInputField('UserAB', PersonalInfoObjects.enterFullName);
+        await Utils.setInputField('BEJPR4313R', PersonalInfoObjects.enterPAN);
         await Utils.setInputField('1991', PersonalInfoObjects.enterYear);
         await Utils.setInputField('BEJPE4316R', PersonalInfoObjects.enterPan);
         await Utils.setInputField('10', PersonalInfoObjects.enterMonth);
         await Utils.setInputField('11', PersonalInfoObjects.enterDate);
+        await Utils.setInputField('Test address to fill', PersonalInfoObjects.enterAddress);
         break;
       default:
         await console.warn('Link type is not valid');

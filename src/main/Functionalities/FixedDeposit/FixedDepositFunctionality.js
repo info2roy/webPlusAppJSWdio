@@ -5,13 +5,22 @@ const CommonFunctionality = require('../Common/CommonFunctionality');
 const FixedDepositObjects = require('../../Objects/FixedDeposit/FixedDepositObjects');
 const Constants = require('../../../config/data/structured/Constants');
 const { expect } = require('chai');
+const Device = require('../../../support/libraries/Device');
 
 class FixedDepositFunctionality {
 
   //corresponds to state when no existing fixed deposit is added
   async addExistingFixedDepositInitialState() {
     await FixedDepositPage.clickAddExistingFixedDepositLink();
-    return (await CommonPage.selectFamilyMemberPageHeaderIsDisplayed());
+    return (await CommonPage.selectFamilyMemberPageHeaderIsDisplayed()) && (await FixedDepositPage.fixedDepositPageHeaderIsDisplayed());
+  }
+
+  async addFixedDeposit() {
+    if (Device.isAndroidApp()) {
+      await FixedDepositPage.clickAddFixedDepositLink();
+      return (await FixedDepositPage.enterInvestmentDetailsHeaderIsDisplayed());
+    }
+    return true;
   }
 
   //corresponds to state when at least one existing fixed deposit is added
@@ -51,9 +60,9 @@ class FixedDepositFunctionality {
     expect(await FixedDepositPage.fixedDepositGetStringAttribute(fdInvestedAmount, 1, Constants.FIXED_DEPOSIT_ATTR_INTEREST)
     ).to.equal(`${fdInterestRate}%`);
     expect(await FixedDepositPage.fixedDepositGetStringAttribute(fdInvestedAmount, 2, Constants.FIXED_DEPOSIT_ATTR_START_MONTH)
-    ).to.equal(fdStartMonth);
+    ).to.equal(`01 ${fdStartMonth}`);
     expect(await FixedDepositPage.fixedDepositGetStringAttribute(fdInvestedAmount, 3, Constants.FIXED_DEPOSIT_ATTR_MATURITY_MONTH)
-    ).to.equal(fdMaturityMonth);
+    ).to.equal(`01 ${fdMaturityMonth}`);
     await FixedDepositPage.clickOnFixedDepositMoreOptionsButton(fdInvestedAmount);
     await CommonPage.clickEditDetailsLink();
     expect(await FixedDepositPage.getFDFirmName()).to.equal(fdFirmName);

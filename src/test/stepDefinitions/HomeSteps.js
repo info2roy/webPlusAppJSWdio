@@ -33,7 +33,7 @@ When(/^I click on login option$/, async () => {
   expect(await LoginFunctionality.firstLoginPageLaunched()).to.be.true;
 });
 
-When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => {
+When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, { timeout: 60000 }, async (env, user) => {
   await console.log(`Logging in to ${ env } for user ${ user}`);
   const platform = Utils.getPlatform();
   Device.setDevice(platform);
@@ -50,6 +50,7 @@ When(/^I login to Scripbox in "([^"]*)?" for "([^"]*)?"$/, async (env, user) => 
       case 'MOCKAPI':
         await browser.url(MOCKAPI);
         await HomeFunctionality.performLogin(env, user);
+        break;
       default:
         await console.warn(`Environment is not defined in URL list --> ${ env.toString()}`);
         break;
