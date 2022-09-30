@@ -1,4 +1,5 @@
 const { When, Then } = require('@wdio/cucumber-framework');
+const { expect } = require('chai');
 const PersonalInfoFunctionality = require('../../../main/Functionalities/MoreOptions/PersonalInfoFunctionality');
 
 When(/^I update the profile picture$/, async () => {
@@ -10,9 +11,19 @@ Then(/^The picture is uploaded successfully$/, async () => {
   await console.log('Then The picture is uploaded successfully');
 });
 
-Then(/^I edit "([^"]*)?"$/, async (value) => {
-  await console.log(`Check stepdef method ${value}`);
-  await PersonalInfoFunctionality.updateProfileData(value);
+Then(/^I click edit "([^"]*)?"$/, async (option) => {
+  await console.log(`Check stepdef method ${option}`);
+  await PersonalInfoFunctionality.clickEdit(option);
+});
+
+When(/^I enter data for (.+) with value (.+)$/, async (option, value) => {
+  await console.log(`Entering data for ${option}`);
+  await PersonalInfoFunctionality.updateProfileData(option, value);
+});
+
+Then(/^I see message (.+) for (.+)$/, async (uiError, data) => {
+  await console.log(`I see message ${uiError}`);
+  expect(await PersonalInfoFunctionality.validateUIMessage(uiError, data)).to.be.true;
 });
 
 Then(/^I update changes$/, async () => {

@@ -12,11 +12,17 @@ class PersonalInfoFunctionality {
     await PersonalInfoPage.clickUpdateButton();
   }
 
-  async updateProfileData(value) {
-    await PersonalInfoPage.clickEditButton(value);
-    await PersonalInfoPage.checkEditHeader(value);
-    await PersonalInfoPage.enterNewData(value);
-    // await PersonalInfoPage.clickUpdateButton();
+  async clickEdit(option) {
+    await PersonalInfoPage.clickEditButton(option);
+  }
+
+  async updateProfileData(option, value) {
+    await PersonalInfoPage.checkEditHeader(option);
+    await PersonalInfoPage.enterNewData(option, value);
+  }
+
+  async validateUIMessage(message, data) {
+    return await PersonalInfoPage.readUImessage(message, data);
   }
 }
 
