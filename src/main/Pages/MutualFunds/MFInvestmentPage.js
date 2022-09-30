@@ -278,5 +278,17 @@ class MFInvestmentPage {
   async confirmSetUpInvestmentHeaderDisplayed() {
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.setUpInvestmentHeader));
   }
+
+  async validateFundsPresent() {
+    const funds = await Utils.getAllMatchingElements(MFInvestmentObjects.recommendedFunds);
+    return funds.length > 0;
+  }
+
+  async validateFundSplit(totalAmount) {
+    const splitAmounts = Utils.toInt(await Utils.getTexts(MFInvestmentObjects.recommendedFundAmounts));
+    const sum = splitAmounts.reduce((partialSum, a) => partialSum + a, 0);
+    console.log(`totalAmount ${totalAmount} sum ${sum}`);
+    return sum === totalAmount;
+  }
 }
 module.exports = new MFInvestmentPage();

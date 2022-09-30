@@ -63,6 +63,27 @@ class Utils {
     return (await element.getText());
   }
 
+  //Get all matching elements for a given selector
+  async getAllMatchingElements(selector) {
+    const locator = this.getLocator(selector);
+    return await $$(locator);
+  }
+
+  //Get the text of all elements matched by given selector.
+  async getTexts(selector) {
+    const elements = await this.getAllMatchingElements(selector);
+    const result = [];
+    for (const element of elements) {
+      result.push(await element.getText());
+    }
+    return result;
+  }
+
+  //Get integer for each of the string entry inside array textArray
+  toInt(textArray) {
+    return textArray.map(value => { return parseInt(value.toString().replace(/,/g, ''), 10); });
+  }
+
   /**
    * Return the matching element index for a given selector which matches input text
    * @param  {string} selector The selector representing multiple matching elements
@@ -141,7 +162,6 @@ class Utils {
 
   async elementIsDisplayed(selector, timeoutMS = 15000) {
     const locator = this.getLocator(selector);
-    // const element = await $(locator);
     let isDisplayed = false;
     try {
       await browser.waitUntil(
@@ -385,13 +405,16 @@ class Utils {
     await myButton.click();
   }
 
-  async enterIntegerField(fieldId, intValue, androidPressKeyCode = false) {
+  async enterValueInField(fieldId, value) {
     const selector = {
       web: `#${fieldId}`,
       app: `~${fieldId}`
     };
-    await this.setInputField(intValue, selector, androidPressKeyCode);
-    await browser.pause(10000);
+    if (isNaN(value)) {
+      await this.setInputField(value, selector, false);
+    } else {
+      await this.setInputField(value, selector, true);
+    }
   }
 
   async isTextDisplayed(text) {

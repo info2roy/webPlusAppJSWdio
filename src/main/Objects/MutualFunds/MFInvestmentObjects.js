@@ -273,5 +273,13 @@ class MFInvestmentObjects {
   nextMonthNavigation = {
     web: '(//*[@class="DayPickerNavigation_svg__horizontal DayPickerNavigation_svg__horizontal_1"])[2]'
   };
+
+  recommendedFunds = {
+    web: '//*[@class="section"]'
+  };
+
+  recommendedFundAmounts = {
+    web: '//*[@class="section"]//span//..//div'
+  };
 }
 module.exports = new MFInvestmentObjects();

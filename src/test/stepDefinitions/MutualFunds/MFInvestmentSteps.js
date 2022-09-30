@@ -118,3 +118,14 @@ When(/^I select date (.+)$/, async (date) => {
   await console.log(`I select date ${date}`);
   await MFInvestmentFunctionality.selectSIPFrequency(date);
 });
+
+When(/^I validate funds present$/, async () => {
+  console.log(`I validate funds present`);
+  expect(await MFInvestmentFunctionality.validateFundsPresent()).to.be.true;
+});
+
+When(/^I validate funds total to be equal to (\d+)$/, async (totalAmount) => {
+  console.log(`I validate funds total to be equal to ${totalAmount}`);
+  expect(await MFInvestmentFunctionality.validateFundSplit(totalAmount)).to.be.true;
+});
+

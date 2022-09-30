@@ -118,5 +118,14 @@ class MFInvestmentFunctionality {
     await MFInvestmentPage.clickPickFund();
     return (await MFInvestmentPage.confirmSetUpInvestmentHeaderDisplayed());
   }
+
+  async validateFundsPresent() {
+    await browser.pause(5000);
+    return (await MFInvestmentPage.validateFundsPresent());
+  }
+
+  async validateFundSplit(totalAmount) {
+    return (await MFInvestmentPage.validateFundSplit(totalAmount));
+  }
 }
 module.exports = new MFInvestmentFunctionality();

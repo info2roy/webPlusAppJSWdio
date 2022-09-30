@@ -41,7 +41,8 @@ When(/^I select radio option (.+)$/, async (option) => {
   await Utils.clickRadioButton(option);
 });
 
-When(/^I enter integer (.+) (\d+)$/, async (elementId, intValue) => {
-  console.log(`I enter integer  ${elementId} ${intValue}`);
-  await Utils.enterIntegerField(elementId, intValue, true);
+When(/^I enter field (.+) with data (.+)$/, async (fieldId, value) => {
+  console.log(`I enter field ${fieldId} with data ${value}`);
+  await Utils.enterValueInField(fieldId, value);
 });
+
