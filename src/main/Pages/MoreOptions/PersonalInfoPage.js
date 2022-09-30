@@ -86,14 +86,26 @@ class PersonalInfoPage {
       case 'user name':
         await Utils.setInputField(value, PersonalInfoObjects.enterFullName);
         break;
+      case 'account number':
+        await Utils.setInputField(value, PersonalInfoObjects.accountNumber);
+        break;
+      case 'account holder':
+        await Utils.setInputField(value, PersonalInfoObjects.accountHolderName);
+        break;
+      case 'IFSC':
+        await Utils.setInputField(value, PersonalInfoObjects.bankIFSCCode);
+        break;
       case 'bank':
         await Utils.setInputField('12345678901', PersonalInfoObjects.accountNumber);
         await Utils.setInputField('Test Name', PersonalInfoObjects.accountHolderName);
         await Utils.setInputField('HDFC0001852', PersonalInfoObjects.bankIFSCCode);
         break;
+      case 'nominee name':
+        await Utils.setInputField(value, PersonalInfoObjects.enterFullName);
       case 'nominee':
         await Utils.setInputField('UserAB', PersonalInfoObjects.enterFullName);
         await Utils.setInputField('1991', PersonalInfoObjects.enterYear);
+        await Utils.setInputField('BEJPE4316R', PersonalInfoObjects.enterPan);
         await Utils.setInputField('10', PersonalInfoObjects.enterMonth);
         await Utils.setInputField('11', PersonalInfoObjects.enterDate);
         break;
@@ -103,6 +115,9 @@ class PersonalInfoPage {
   }
 
   async readUImessage(message, data) {
+    if (message.toString() == 'Blank') {
+      message = '';
+    }
     switch (data.toString()) {
       case data.toString():
         await console.warn('Validating UI message => ' + message);
@@ -110,7 +125,6 @@ class PersonalInfoPage {
       default:
         await console.warn('Validating UI message out of scope');
     }
-
   }
 
   async clickUpdateButton() {

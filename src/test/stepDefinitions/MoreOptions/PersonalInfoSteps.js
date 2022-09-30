@@ -21,8 +21,8 @@ When(/^I enter data for (.+) with value (.+)$/, async (option, value) => {
   await PersonalInfoFunctionality.updateProfileData(option, value);
 });
 
-Then(/^I see error (.+) for (.+)$/, async (uiError, data) => {
-  await console.log(`I see error ${uiError}`);
+Then(/^I see message (.+) for (.+)$/, async (uiError, data) => {
+  await console.log(`I see message ${uiError}`);
   expect(await PersonalInfoFunctionality.validateUIMessage(uiError, data)).to.be.true;
 });
 

@@ -40,9 +40,11 @@ class PersonalInfoObjects {
 
   editBankButton = { web: '//div[contains(text(),"Bank")]//following-sibling::span' };
 
-  enterFullName = { web: '//input[@id="new-name"]' };
+  enterFullName = { web: '//input[@id="name"]' };
 
   enterYear = {web: '//input[@name="year"]'};
+
+  enterPan = {web: '//input[@name="pan"]'};
 
   enterDate = {web: '//input[@name="date"]'};
 
