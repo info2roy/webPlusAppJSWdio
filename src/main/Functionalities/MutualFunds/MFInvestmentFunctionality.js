@@ -127,5 +127,9 @@ class MFInvestmentFunctionality {
   async validateFundSplit(totalAmount) {
     return (await MFInvestmentPage.validateFundSplit(totalAmount));
   }
+
+  async validateInvestmentAmountHeader(investmentType, amount) {
+    return (await MFInvestmentPage.selectPaymentTypePageHeaderIsDisplayed(investmentType, amount));
+  }
 }
 module.exports = new MFInvestmentFunctionality();

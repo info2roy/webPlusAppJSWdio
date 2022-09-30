@@ -424,6 +424,16 @@ class Utils {
     return isDisplayed;
   }
 
+  async isButtonDisplayed(text) {
+    const selector = {
+      web: `//button[contains(text(),"${text}")]`,
+      app: `//*[contains(@text,"${text}")]`
+    };
+    const webElement = this.getLocator(selector);
+    const isDisplayed = await $(webElement).isDisplayed();
+    return isDisplayed;
+  }
+
   //monthYear should be of form => "Jan, 2022", "Feb, 2021" etc
   splitMonthAndYear(monthYear) {
     const parts = monthYear.split(' ');

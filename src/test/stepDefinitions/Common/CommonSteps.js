@@ -46,3 +46,7 @@ When(/^I enter field (.+) with data (.+)$/, async (fieldId, value) => {
   await Utils.enterValueInField(fieldId, value);
 });
 
+When(/^I validate button "([^"]*)?"$/, async (buttonText) => {
+  console.log(`I validate header ${buttonText}`);
+  expect(await Utils.isButtonDisplayed(buttonText)).to.be.true;
+});
