@@ -1,11 +1,7 @@
 Feature: As customer I wish to update my account details
 
   Scenario: As a Scripbox user I login  and try to update my user name
-<<<<<<< HEAD
-    Given I login to Scripbox in "MYSCRIPBOX" for "user189182"
-=======
-    Given I login to Scripbox in "ANDROMEDA" for "test_email+c0984535bc@scripbox.io"
->>>>>>> 647d6bfadfc0048925a9789b20793cc7d6c0e37b
+    Given I login to Scripbox in "MYSCRIPBOX" for "test_email+c0984535bc@scripbox.io"
 
   Scenario Outline: As a logged in user I wish to update my User name
     When I open the more options
