@@ -55,3 +55,8 @@ Then(/^I see message (.+) for (.+)$/, async (uiError, data) => {
   await console.log(`I see message ${uiError}`);
   expect(await CommonFunctionality.validateUIMessage(uiError, data)).to.be.true;
 });
+
+Then(/^I see data-error (.+) for (.+)$/, async (uiError, data) => {
+  await console.log(`I see data-error ${uiError}`);
+  expect(await CommonFunctionality.validateUIDataError(uiError, data)).to.be.true;
+});
