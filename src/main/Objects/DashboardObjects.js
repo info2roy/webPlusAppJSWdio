@@ -39,6 +39,8 @@ class DashboardObjects {
   investNowButton = { web: '//div[contains(@class,"dashboard-invest-withdraw-btn")]//*[contains(text(),"Invest ")]',
     app: '//*[@text="Invest now"]' };
 
+  investFooterButton = {web: '//*[@class="bottom-tab-navigator-label" and text()="Invest"]'};
+
   wealthCalenderNavigationButton = { web: '//div[contains(@class, "wealth-calendar")]//span[text()="chevron_right"]' };
 
   backButton = { web: '//i[contains(@class,"back-button")]' };

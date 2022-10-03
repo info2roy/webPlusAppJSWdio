@@ -1,5 +1,6 @@
 const Utils = require('../../support/Utils/Utils');
 const DashboardObjects = require('../Objects/DashboardObjects');
+const MFInvestmentObjects = require('../Objects/MutualFunds/MFInvestmentObjects');
 const Constants = require('../../config/data/structured/Constants');
 const InvestmentCalendarPage = require('./Reports/InvestmentCalendarPage');
 
@@ -33,7 +34,7 @@ class DashboardPage {
   }
 
   async navigateToPage(pageOption) {
-    await console.log(`Navigating to ${ pageOption.toString()}`);
+    await console.log(`Navigating to ${pageOption.toString()}`);
     switch (pageOption.toString()) {
       case 'Investment Calender':
         await Utils.clickElement(DashboardObjects.viewInvestmentCalender);
@@ -47,11 +48,14 @@ class DashboardPage {
       case 'Invest Now':
         await Utils.clickElement(DashboardObjects.investNowButton);
         break;
+      case 'Invest':
+        await Utils.clickElement(DashboardObjects.investFooterButton);
+        break;
       case 'Notifications':
         await Utils.clickElement(DashboardObjects.notifications);
         break;
       default:
-        await console.log(`${pageOption.toString() } Option not available in Dashboard page`);
+        await console.log(`${pageOption.toString()} Option not available in Dashboard page`);
     }
   }
 
@@ -67,10 +71,12 @@ class DashboardPage {
           await Utils.elementIsDisplayed(DashboardObjects.backButton));
       case 'Invest Now':
         return (await Utils.elementIsDisplayed(DashboardObjects.investNowHeader));
+      case 'Invest':
+        return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanOrExploreOtherPlans));
       case 'Notifications':
         return (await browser.getUrl()).includes('/notifications?');
       default:
-        await console.log(`Wrong page type -> ${ pageOption.toString()}`);
+        await console.log(`Wrong page type -> ${pageOption.toString()}`);
     }
   }
 }

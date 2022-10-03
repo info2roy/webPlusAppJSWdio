@@ -281,5 +281,9 @@ class MFInvestmentObjects {
   recommendedFundAmounts = {
     web: '//*[@class="section"]//span//..//div'
   };
+
+  chooseYourPlanHeader = {
+    web: '//div[text()="Choose your plan"]'
+  };
 }
 module.exports = new MFInvestmentObjects();
