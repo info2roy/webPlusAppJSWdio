@@ -67,12 +67,13 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate header "I want to invest"
     When I select radio option <SIPFrequency>
     When I enter field investment-amount with data <SIPAmount>
+    Then I see message <UiError> for <SIPAmount>
     # Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
     Then I go back to the dashboard page
     Examples:
-      | SIPFrequency | SIPAmount | SIPDuration | SIPStartDate | SIPIncreasePercentPerYear |
-      | Every month (SIP)  | 1 | Default | Default | Default |
-      | Every month (SIP)  | 900 | Default | Default | Default |
+      | SIPFrequency | SIPAmount | SIPDuration | SIPStartDate | SIPIncreasePercentPerYear | UiError |
+      | Every month (SIP)  | 1 | Default | Default | Default | Amount must be greater than or equal to 1000 |
+      | Every month (SIP)  | 900 | Default | Default | Default | Amount must be greater than or equal to 1000 |
 
 
   Scenario Outline: As a logged in user, I am able to do immediate "Long Term Wealth" investment in mutual funds via Every month (SIP)
