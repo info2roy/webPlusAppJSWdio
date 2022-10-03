@@ -137,6 +137,6 @@ When(/^I validate investment header "I would like to invest" containing (\d+) an
 When(/^I validate investment header "I would like to invest" containing (\d+), (.+) and (\d+)$/,
   async (amount, sipFrequency, sipDuration) => {
     console.log(`I validate investment header "I would like to invest" containing ${amount}, ${sipFrequency} and ${sipDuration}`);
-    expect(await MFInvestmentFunctionality.setupMFInvestmentPageLaunched(sipFrequency, amount, 84)).to.be.true;
+    expect(await MFInvestmentFunctionality.setupMFInvestmentPageLaunched(sipFrequency, amount, sipDuration)).to.be.true;
   });
 
