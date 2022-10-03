@@ -38,7 +38,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     # Then I click on "View investments"
     # Then I validate section "SIP(s) and STP(s)" to contain <mutualFundPortfolio> SIP with <SIPAmount>
     # Then I validate section "Monthly Summary -> Upcoming" to contain <mutualFundPortfolio> "Investment - Every Month" with <SIPAmount>
-    # Then I go back to the dashboard page
+    Then I go back to the dashboard page
     Examples:
       | SIPFrequency | SIPAmount | SIPDuration | SIPStartDate | SIPIncreasePercentPerYear |
       # | Every month (SIP)  | 30000 | Default | Default | Default |
@@ -54,6 +54,26 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
       # | Every month (SIP)  | 12000 |  | T+7 | 7 |
       # | Every month (SIP)  | 12000 | 0 | T+7 | 7 |
       # | Every month (SIP)  | 12000 | -1 | T+7 | 7 |
+
+  Scenario Outline: As a logged in user, I am able to schedule "Long Term Wealth" investment in mutual funds via Every month (SIP)
+    When I go back to the dashboard page
+    When I click on "Invest more"
+    When I validate header "Select financial product"
+    When I click on "Mutual Funds"
+    When I validate header "Add new plan"
+    When I click on "Long Term Wealth"
+    When I validate header "Scripbox Guided Path"
+    When I click on "Invest"
+    When I validate header "I want to invest"
+    When I select radio option <SIPFrequency>
+    When I enter field investment-amount with data <SIPAmount>
+    # Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
+    Then I go back to the dashboard page
+    Examples:
+      | SIPFrequency | SIPAmount | SIPDuration | SIPStartDate | SIPIncreasePercentPerYear |
+      | Every month (SIP)  | 1 | Default | Default | Default |
+      | Every month (SIP)  | 900 | Default | Default | Default |
+
 
   Scenario Outline: As a logged in user, I am able to do immediate "Long Term Wealth" investment in mutual funds via Every month (SIP)
     When I go back to the dashboard page
