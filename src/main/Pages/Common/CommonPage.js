@@ -85,5 +85,18 @@ class CommonPage {
     return (await Utils.elementIsDisplayed(CommonObjects.fixedDepositPageHeader));
   }
 
+  async readUImessage(message, data) {
+    if (message.toString() == 'Blank') {
+      message = '';
+    }
+    switch (data.toString()) {
+      case data.toString():
+        await console.warn('Validating UI message => ' + message);
+        return await Utils.isTextDisplayed(message);
+      default:
+        await console.warn('Validating UI message out of scope');
+    }
+  }
+
 }
 module.exports = new CommonPage();

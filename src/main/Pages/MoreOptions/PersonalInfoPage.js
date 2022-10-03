@@ -119,19 +119,6 @@ class PersonalInfoPage {
     }
   }
 
-  async readUImessage(message, data) {
-    if (message.toString() == 'Blank') {
-      message = '';
-    }
-    switch (data.toString()) {
-      case data.toString():
-        await console.warn('Validating UI message => ' + message);
-        return await Utils.isTextDisplayed(message);
-      default:
-        await console.warn('Validating UI message out of scope');
-    }
-  }
-
   async clickUpdateButton() {
     await console.log('Saving changes');
     await Utils.clickElement(PersonalInfoObjects.updateChangesButton);
