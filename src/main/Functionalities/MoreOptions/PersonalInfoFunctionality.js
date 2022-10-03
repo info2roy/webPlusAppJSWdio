@@ -1,5 +1,4 @@
 const PersonalInfoPage = require('../../Pages/MoreOptions/PersonalInfoPage');
-const CommonPage = require('../../Pages/Common/CommonPage');
 
 class PersonalInfoFunctionality {
 
@@ -22,9 +21,6 @@ class PersonalInfoFunctionality {
     await PersonalInfoPage.enterNewData(option, value);
   }
 
-  async validateUIMessage(message, data) {
-    return await CommonPage.readUImessage(message, data);
-  }
 }
 
 module.exports = new PersonalInfoFunctionality();

@@ -1,6 +1,7 @@
 const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const PersonalInfoFunctionality = require('../../../main/Functionalities/MoreOptions/PersonalInfoFunctionality');
+const CommonFunctionality = require('../../../main/Functionalities/Common/CommonFunctionality');
 
 When(/^I update the profile picture$/, async () => {
   await console.log('When I update the profile picture');
@@ -23,7 +24,7 @@ When(/^I enter data for (.+) with value (.+)$/, async (option, value) => {
 
 Then(/^I see message (.+) for (.+)$/, async (uiError, data) => {
   await console.log(`I see message ${uiError}`);
-  expect(await PersonalInfoFunctionality.validateUIMessage(uiError, data)).to.be.true;
+  expect(await CommonFunctionality.validateUIMessage(uiError, data)).to.be.true;
 });
 
 Then(/^I update changes$/, async () => {
