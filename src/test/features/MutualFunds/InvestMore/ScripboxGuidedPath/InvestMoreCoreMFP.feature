@@ -183,8 +183,26 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
       # | Long Term Wealth | One time  | 30000 | Default |
       # | Long Term Wealth | One time  | 15000 | T+2 |
       | Long Term Wealth | One time  | 20000 | 1stOfNextMonth |
-      # | Long Term Wealth | One time  | 1 | Default |
-      # | Long Term Wealth | One time  | 999 | Default |
+  
+  Scenario Outline: As a logged in user, I am able to schedule "Long Term Wealth" investment in mutual funds via One Time Investment
+    When I go back to the dashboard page
+    When I click on "Invest more"
+    When I validate header "Select financial product"
+    When I click on "Mutual Funds"
+    When I validate header "Add new plan"
+    When I click on "Long Term Wealth"
+    When I validate header "Scripbox Guided Path"
+    When I click on "Invest"
+    When I validate header "I want to invest"
+    When I select radio option <SIPFrequency>
+    When I enter field investment-amount with data <oneTimeAmount>
+    Then I see message <UiError> for <oneTimeAmount>
+    Then I go back to the dashboard page
+    Examples:
+      | mutualFundPortfolio | SIPFrequency | oneTimeAmount | UiError |
+      | Long Term Wealth | One time  | 1 | Amount must be greater than or equal to 5000 |
+      | Long Term Wealth | One time  | 4999 | Amount must be greater than or equal to 5000 |
+
 
   Scenario Outline: As a logged in user, I am able to do immediate "Long Term Wealth" investment in mutual funds via One Time Investment
     When I go back to the dashboard page
