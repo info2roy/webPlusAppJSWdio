@@ -28,11 +28,8 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
     When I enter field duration with data <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
-    # Then I should see error message "Duration can't be blank" if duration is blank
-    # Then I should see error message "Duration must be greater than or equal to 1" if duration is less than 1
     # When I select start date <SIPStartDate>
     When I click on "Confirm"
-    # # When I "Invest more" in <mutualFundPortfolio> with <SIPFrequency> for <SIPAmount> with <SIPDuration>; <SIPStartDate>; <SIPIncreasePercentPerYear>
     Then I validate header "Investment scheduled successfully"
     # Then I click on "View investments"
     # Then I validate section "SIP(s) and STP(s)" to contain <mutualFundPortfolio> SIP with <SIPAmount>
@@ -48,11 +45,6 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
       | Every month (SIP)  |  12000 | 60 | T+7 | 7 |
       # | Every month (SIP)  | 15000 | 24 | 5thOfNextMonth | 5 |
       # | Every month (SIP)  | 20000 | 36 | 10thOfNextMonth | 0 |
-      # | Every month (SIP)  | 1 | Default | Default | Default |
-      # | Every month (SIP)  | 900 | Default | Default | Default |
-      # | Every month (SIP)  | 12000 |  | T+7 | 7 |
-      # | Every month (SIP)  | 12000 | 0 | T+7 | 7 |
-      # | Every month (SIP)  | 12000 | -1 | T+7 | 7 |
 
   Scenario Outline: As a logged in user, I am able to schedule "Long Term Wealth" investment in mutual funds via Every month (SIP)
     When I go back to the dashboard page
@@ -160,7 +152,6 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate header "I want to invest"
     When I select radio option <SIPFrequency>
     When I enter field investment-amount with data <oneTimeAmount>
-    #Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
     When I click on "See Recommended Funds"
     When I validate funds present
     When I validate funds total to be equal to <oneTimeAmount> 
