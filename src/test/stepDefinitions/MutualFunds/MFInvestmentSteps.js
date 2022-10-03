@@ -1,5 +1,6 @@
 const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
+const Constants = require('../../../config/data/structured/Constants');
 const MFInvestmentFunctionality = require('../../../main/Functionalities/MutualFunds/MFInvestmentFunctionality');
 
 When(/^I select mutual fund portfolio (.+)$/, async (mutualFundPortfolio) => {
@@ -129,14 +130,18 @@ When(/^I validate funds total to be equal to (\d+)$/, async (totalAmount) => {
   expect(await MFInvestmentFunctionality.validateFundSplit(totalAmount)).to.be.true;
 });
 
-When(/^I validate investment header "I would like to invest" containing (\d+) and (.+)$/, async (amount, sipFrequency) => {
-  console.log(`I validate investment header "I would like to invest" containing ${amount} and ${sipFrequency}`);
-  expect(await MFInvestmentFunctionality.validateInvestmentAmountHeader(sipFrequency, amount)).to.be.true;
-});
-
-When(/^I validate investment header "I would like to invest" containing (\d+), (.+) and (\d+)$/,
+When(/^I validate investment header "I would like to invest" containing (\d+), (.+) and (.+)$/,
   async (amount, sipFrequency, sipDuration) => {
     console.log(`I validate investment header "I would like to invest" containing ${amount}, ${sipFrequency} and ${sipDuration}`);
-    expect(await MFInvestmentFunctionality.setupMFInvestmentPageLaunched(sipFrequency, amount, sipDuration)).to.be.true;
+    if (sipFrequency === Constants.INVESTMENT_TYPE_SIP) {
+      expect(await MFInvestmentFunctionality.setupMFSIPInvestmentPageLaunched(amount, sipDuration)).to.be.true;
+    } else if (sipFrequency === Constants.INVESTMENT_TYPE_ONETIME) {
+      expect(await MFInvestmentFunctionality.setupMFOneTimeInvestmentPageLaunched(amount, false)).to.be.true;
+    }
   });
 
+When(/^I validate investment header "I would like to make a one-time investment" containing (\d+)$/,
+  async (oneTimeAmount) => {
+    expect(await MFInvestmentFunctionality.setupMFOneTimeInvestmentPageLaunched(oneTimeAmount, true)).to.be.true;
+  }
+);
