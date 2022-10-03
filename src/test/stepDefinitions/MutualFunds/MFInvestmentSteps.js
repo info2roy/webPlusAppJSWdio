@@ -1,5 +1,6 @@
 const { When, Then } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
+const Constants = require('../../../config/data/structured/Constants');
 const MFInvestmentFunctionality = require('../../../main/Functionalities/MutualFunds/MFInvestmentFunctionality');
 
 When(/^I select mutual fund portfolio (.+)$/, async (mutualFundPortfolio) => {
@@ -139,3 +140,8 @@ When(/^I validate investment header "I would like to invest" containing (\d+), (
     }
   });
 
+When(/^I validate investment header "I would like to make a one-time investment" containing (\d+)$/,
+  async (oneTimeAmount) => {
+    expect(await MFInvestmentFunctionality.setupMFOneTimeInvestmentPageLaunched(oneTimeAmount, true)).to.be.true;
+  }
+);
