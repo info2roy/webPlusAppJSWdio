@@ -98,5 +98,10 @@ class CommonPage {
     }
   }
 
+  async readDataError(message, data) {
+    await console.warn(`Validating UI data error => ${message} for data ${data}`);
+    return await Utils.isDataErrorDisplayed(message);
+  }
+
 }
 module.exports = new CommonPage();

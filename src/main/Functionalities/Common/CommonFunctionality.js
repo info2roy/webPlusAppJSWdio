@@ -66,5 +66,9 @@ class CommonFunctionality {
     return await CommonPage.readUImessage(message, data);
   }
 
+  async validateUIDataError(message, data) {
+    return await CommonPage.readDataError(message, data);
+  }
+
 }
 module.exports = new CommonFunctionality();
