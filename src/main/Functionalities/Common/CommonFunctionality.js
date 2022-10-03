@@ -62,5 +62,9 @@ class CommonFunctionality {
     return (await CommonPage.fixedDepositPageIsDisplayed());
   }
 
+  async validateUIMessage(message, data) {
+    return await CommonPage.readUImessage(message, data);
+  }
+
 }
 module.exports = new CommonFunctionality();
