@@ -64,15 +64,6 @@ class MFInvestmentPage {
     return (await Utils.elementIsDisplayed(MFInvestmentObjects.recommendedFundsPageHeader));
   }
 
-  async selectPaymentTypePageHeaderIsDisplayed(investmentType, amount) {
-    if (investmentType == Constants.INVESTMENT_TYPE_SIP) {
-      return (await Utils.elementIsDisplayed(MFInvestmentObjects.selectMFSipPaymentTypePageHeader(amount)));
-    } else if (investmentType == Constants.INVESTMENT_TYPE_ONETIME) {
-      return (await Utils.elementIsDisplayed(MFInvestmentObjects.selectMFOneTimePaymentTypePageHeader(amount)));
-    }
-    return false;
-  }
-
   async scrollUntilInvestmentTypeTextIsDisplayed(paymentType) {
     if (Device.isAndroidApp()) {
       if (paymentType === Constants.PAYMENT_TYPE_IMMEDIATE) {
@@ -89,13 +80,18 @@ class MFInvestmentPage {
     }
   }
 
-  async setupMFInvestmentPageHeaderIsDisplayed(investmentType, amount, months) {
-    if (investmentType == Constants.INVESTMENT_TYPE_SIP) {
-      return (await Utils.elementIsDisplayed(MFInvestmentObjects.setupMFSipInvestmentPageHeader(amount, months)));
-    } else if (investmentType == Constants.INVESTMENT_TYPE_ONETIME) {
-      return (await Utils.elementIsDisplayed(MFInvestmentObjects.setupMFOneTimeInvestmentPageHeader(amount)));
+  async setupMFOneTimeInvestmentPageHeaderIsDisplayed(amount, paymentTypePage = true) {
+    if(paymentTypePage) {
+      return (await Utils.elementIsDisplayed(MFInvestmentObjects.selectMFOneTimePaymentTypePageHeader(amount)));
     }
-    return false;
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.setupMFOneTimeInvestmentPageHeader(amount)));
+  }
+
+  async setupMFSIPInvestmentPageHeaderIsDisplayed(amount, months = 'Blank') {
+    if (months === 'Blank') {
+      return (await Utils.elementIsDisplayed(MFInvestmentObjects.selectMFSipPaymentTypePageHeader(amount)));
+    }
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.setupMFSipInvestmentPageHeader(amount, parseInt(months))));
   }
 
   async enterSipDurationInMonths(months) {

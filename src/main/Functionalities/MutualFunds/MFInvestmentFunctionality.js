@@ -32,8 +32,12 @@ class MFInvestmentFunctionality {
     await MFInvestmentPage.clickMakePaymentButton(paymentType);
   }
 
-  async setupMFInvestmentPageLaunched(investmentType, amount, months) {
-    return (await MFInvestmentPage.setupMFInvestmentPageHeaderIsDisplayed(investmentType, amount, months));
+  async setupMFSIPInvestmentPageLaunched(amount, months) {
+    return (await MFInvestmentPage.setupMFSIPInvestmentPageHeaderIsDisplayed(amount, months));
+  }
+
+  async setupMFOneTimeInvestmentPageLaunched(amount, paymentTypePage = true) {
+    return (await MFInvestmentPage.setupMFOneTimeInvestmentPageHeaderIsDisplayed(amount, paymentTypePage));
   }
 
   async setupInvestment(sipDurationInMonths, paymentType, investmentType) {
