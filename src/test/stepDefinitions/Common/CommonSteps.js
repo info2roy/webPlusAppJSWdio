@@ -50,3 +50,8 @@ When(/^I validate button "([^"]*)?"$/, async (buttonText) => {
   console.log(`I validate header ${buttonText}`);
   expect(await Utils.isButtonDisplayed(buttonText)).to.be.true;
 });
+
+Then(/^I see message (.+) for (.+)$/, async (uiError, data) => {
+  await console.log(`I see message ${uiError}`);
+  expect(await CommonFunctionality.validateUIMessage(uiError, data)).to.be.true;
+});
