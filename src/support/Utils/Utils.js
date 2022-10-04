@@ -344,6 +344,14 @@ class Utils {
     }
   }
 
+  async setCheckBoxById(elementId) {
+    const selector = {
+      web: `//label[@for="${elementId}"]`,
+      app: `~${elementId}`
+    };
+    await this.clickElement(selector);
+  }
+
   //get a random integer between 0(inclusive) and maxIntValue(exclusive)
   getRandomInt(maxIntValue) {
     return Math.floor(Math.random() * maxIntValue);
