@@ -32,6 +32,11 @@ Then(/^I should see "([^"]*)?" success message$/, async (message) => {
 });
 
 When(/^I validate header "([^"]*)?"$/, async (header) => {
+  console.log(`I validate header "${header}"`);
+  expect(await Utils.isTextDisplayed(header)).to.be.true;
+});
+
+When(/^I validate header ([^"]+)$/, async (header) => {
   console.log(`I validate header ${header}`);
   expect(await Utils.isTextDisplayed(header)).to.be.true;
 });
@@ -66,4 +71,19 @@ When(/^I enter data for (.+) with value (.+)$/, async (option, value) => {
   if (value !== 'Default') {
     await CommonFunctionality.updateProfileData(option, value);
   }
+});
+
+When(/^I scroll until ([^"]+) is visible$/, async (fundName) => {
+  console.log(`I scroll until ${fundName} is visible`);
+  await Utils.scrollUntilTextIsDisplayed(fundName);
+});
+
+When(/^I scroll until "([^"]*)?" is visible$/, async (fundName) => {
+  console.log(`I scroll until "${fundName}" is visible`);
+  await Utils.scrollUntilTextIsDisplayed(fundName);
+});
+
+When(/^I click on button containing "([^"]*)?" and (\d+)$/, async (text, sipAmount) => {
+  console.log(`I click on button containing "${text}" and ${sipAmount}`);
+  await Utils.clickButtonByTextAndAmount(text, sipAmount);
 });

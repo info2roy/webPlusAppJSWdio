@@ -399,6 +399,16 @@ class Utils {
     await myButton.click();
   }
 
+  async clickButtonByTextAndAmount(text, amount) {
+    const selector = {
+      web: `//button[text()="${text} ${amount.toLocaleString('hi')}"]`,
+      app: ''
+    };
+    const locator = this.getLocator(selector);
+    const myButton = await $(locator);
+    await myButton.click();
+  }
+
   async clickRadioButton(option) {
     const webElement = (`//*[contains(@class, 'radio-input') and contains(text(),"${option}")]`);
     const myButton = await $(webElement);
@@ -438,6 +448,18 @@ class Utils {
     const webElement = this.getLocator(selector);
     const isDisplayed = await $(webElement).isDisplayed();
     return isDisplayed;
+  }
+
+  async scrollUntilTextIsDisplayed(text) {
+    const selector = {
+      web: `//*[contains(text(),"${text}")]`,
+      app: `//*[contains(@text,"${text}")]`
+    };
+    if (Device.isWeb()) {
+      await this.scrollAndMoveToElement(selector);
+    } else if (Device.isAndroidApp()) {
+      await this.scrollVerticalUntilTextIntoViewForAndroid(text);
+    }
   }
 
   //monthYear should be of form => "Jan, 2022", "Feb, 2021" etc

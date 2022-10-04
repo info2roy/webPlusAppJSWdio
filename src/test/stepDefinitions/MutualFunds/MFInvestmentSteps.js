@@ -155,3 +155,10 @@ When(/^I set yearly sip increase percent to (.+)$/, async(percent) => {
     await MFInvestmentFunctionality.setYearlySIPIncreasePercent(parseInt(percent, 10));
   }
 });
+
+When(/^I click on "Invest more" for (.+)$/, async (fundName) => {
+  console.log(`I click on "Invest more" for ${fundName}`);
+  await MFInvestmentFunctionality.investMoreInExistingMutualFund(fundName);
+  await browser.pause(10000);
+});
+

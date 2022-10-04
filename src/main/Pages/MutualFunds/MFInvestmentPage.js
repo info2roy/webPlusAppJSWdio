@@ -290,5 +290,9 @@ class MFInvestmentPage {
   async setYearlySIPIncreasePercent(percent) {
     await Utils.setHorizontalSlider(MFInvestmentObjects.sipIncreasePercentSlider, 10, percent);
   }
+
+  async clickInvestMoreLinkForExistingFund(fundName) {
+    await Utils.clickElement(MFInvestmentObjects.investMoreLinkForExistingFund(fundName));
+  }
 }
 module.exports = new MFInvestmentPage();
