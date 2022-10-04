@@ -40,26 +40,28 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
     When I go back to the dashboard page
     And I navigate to "Invest" from Dashboard
     And I click on "Mutual Funds"
-    And I scroll until "Your investments" is visible
-    And I validate already invested funds present
-    And I click on "Invest more" for first visible Fund
-    And I validate header "Set up investment"
-    And I validate header "How would you like to invest?"
-    And I validate header "Enter monthly SIP amount"
-    And I validate fund name present before amount field
-    And I select radio option <SIPFrequency>
-    And I enter SIP amount <SIPAmount>
-    And I select start date <SIPStartDate>
-    And I enter SIP duration <SIPDuration>
-    And I select checkbox "Make your first payment today"
-    And I click on "Pay "
+    When I validate header "Choose your plan"
+    When I validate header "Explore funds"
+    When I scroll until <FundName> is visible
+    When I validate header "Your investments"
+    When I click on "Invest more" for <FundName>
+    When I validate header "Set up investment"
+    When I validate header "How would you like to invest?"
+    When I validate header <FundName>
+    When I select radio option <SIPFrequency>
+    When I enter data for SIP Amount with value <SIPAmount>
+    # When I select start date <SIPStartDate>
+    When I enter data for duration with value <SIPDuration>
+    When I scroll until "Make your first payment today" is visible
+    When I select checkbox makeFirstPaymentNow
+    When I click on button containing "Pay " and <SIPAmount>
     Then I validate header "I would like to invest using"
     Then I validate header "Net Banking"
     Then I validate header "UPI"
     Then I go back to the dashboard page 
     Examples:
-      | SIPFrequency | SIPAmount | SIPStartDate | SIPDuration |
-      | Monthly SIP  | 5000      | Default | Default          |
+      | FundName | SIPFrequency | SIPAmount | SIPStartDate | SIPDuration |
+      | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 5000      | Default | 24          |
 
   Scenario Outline: As a logged in user, I am able to do immediate one time investment into already invested fund
     When I go back to the dashboard page
