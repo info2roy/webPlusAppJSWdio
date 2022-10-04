@@ -18,6 +18,8 @@ class DashboardFunctionality {
   }
 
   async validate() {
+    await browser.pause(3000); // Adding pause, because env routes to /login before /dashboard. Tests failing for that.
+    await Utils.clickElement(DashboardObjects.homeButton);
     if (Device.isWeb()) {
       expect(await browser.getUrl()).toContain('dashboard');
     }
