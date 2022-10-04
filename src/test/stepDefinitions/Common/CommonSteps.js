@@ -60,3 +60,8 @@ Then(/^I see data-error (.+) for (.+)$/, async (uiError, data) => {
   await console.log(`I see data-error ${uiError}`);
   expect(await CommonFunctionality.validateUIDataError(uiError, data)).to.be.true;
 });
+
+When(/^I enter data for (.+) with value (.+)$/, async (option, value) => {
+  await console.log(`Entering data for ${option}`);
+  await CommonFunctionality.updateProfileData(option, value);
+});
