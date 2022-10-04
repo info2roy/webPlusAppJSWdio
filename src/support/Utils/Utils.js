@@ -401,7 +401,7 @@ class Utils {
 
   async clickButtonByTextAndAmount(text, amount) {
     const selector = {
-      web: `//button[text()="${text} ${amount.toLocaleString('hi')}"]`,
+      web: `//button[text()="${text}${amount.toLocaleString('hi')}"]`,
       app: ''
     };
     const locator = this.getLocator(selector);
@@ -417,7 +417,7 @@ class Utils {
 
   async enterValueInField(fieldId, value) {
     const selector = {
-      web: `#${fieldId}`,
+      web: `//*[@id="${fieldId}" or @placeholder="${fieldId}"]`,
       app: `~${fieldId}`
     };
     if (isNaN(value)) {
