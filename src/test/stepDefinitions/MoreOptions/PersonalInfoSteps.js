@@ -1,5 +1,6 @@
 const { When, Then } = require('@wdio/cucumber-framework');
 const PersonalInfoFunctionality = require('../../../main/Functionalities/MoreOptions/PersonalInfoFunctionality');
+const CommonFunctionality = require('../../../main/Functionalities/Common/CommonFunctionality');
 
 When(/^I update the profile picture$/, async () => {
   await console.log('When I update the profile picture');
@@ -17,7 +18,7 @@ Then(/^I click edit "([^"]*)?"$/, async (option) => {
 
 When(/^I enter data for (.+) with value (.+)$/, async (option, value) => {
   await console.log(`Entering data for ${option}`);
-  await PersonalInfoFunctionality.updateProfileData(option, value);
+  await CommonFunctionality.updateProfileData(option, value);
 });
 
 Then(/^I update changes$/, async () => {
