@@ -40,10 +40,10 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
       | SIPFrequency | SIPAmount | SIPDuration | SIPStartDate | SIPIncreasePercentPerYear |
       # | Every month (SIP)  | 30000 | Default | Default | Default |
       # | Every month (SIP)  | 1000 | Default | Default | 11 |
-      # | Every month (SIP)  | 3000 | Default | T+2 | 8 |
+      | Every month (SIP)  | 3000 | Default | T+2 | 8 |
       # | Every month (SIP)  | 5000 | Default | 1stOfNextMonth | 9 |
       # | Every month (SIP)  | 9000 | 12 | T+3 | 15 |
-      | Every month (SIP)  |  12000 | 60 | T+7 | 7 |
+      # | Every month (SIP)  |  12000 | 60 | T+7 | 7 |
       # | Every month (SIP)  | 15000 | 24 | 5thOfNextMonth | 5 |
       # | Every month (SIP)  | 20000 | 36 | 10thOfNextMonth | 0 |
 
