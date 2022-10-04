@@ -145,3 +145,8 @@ When(/^I validate investment header "I would like to make a one-time investment"
     expect(await MFInvestmentFunctionality.setupMFOneTimeInvestmentPageLaunched(oneTimeAmount, true)).to.be.true;
   }
 );
+
+When(/^I set yearly sip increase percent to (\d+)$/, async(percent) => {
+  console.log(`I set yearly sip increase percent to ${percent}`);
+  await MFInvestmentFunctionality.setYearlySIPIncreasePercent(percent);
+});

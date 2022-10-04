@@ -285,5 +285,10 @@ class MFInvestmentObjects {
   chooseYourPlanHeader = {
     web: '//div[text()="Choose your plan"]'
   };
+
+  sipIncreasePercentSlider = {
+    web: 'div.rangeslider__handle'
+  };
+
 }
 module.exports = new MFInvestmentObjects();

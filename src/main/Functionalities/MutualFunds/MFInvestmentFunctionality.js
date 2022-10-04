@@ -135,5 +135,9 @@ class MFInvestmentFunctionality {
   async validateInvestmentAmountHeader(investmentType, amount) {
     return (await MFInvestmentPage.selectPaymentTypePageHeaderIsDisplayed(investmentType, amount));
   }
+
+  async setYearlySIPIncreasePercent(percent) {
+    await MFInvestmentPage.setYearlySIPIncreasePercent(percent);
+  }
 }
 module.exports = new MFInvestmentFunctionality();
