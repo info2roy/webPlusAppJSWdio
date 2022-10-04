@@ -125,6 +125,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     #When I select start date <UpcomingSIPStartDate>
+    When I set yearly sip increase percent to <SIPIncreasePercentPerYear>
     When I click on "Next"
     Then I validate header "I would like to invest using"
     Then I validate header "Net Banking"
