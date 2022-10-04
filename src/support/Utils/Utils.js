@@ -460,12 +460,6 @@ class Utils {
     return isDisplayed;
   }
 
-  async isDataErrorDisplayed(text) {
-    const webElement = (`//*[contains(@data-error,"${text}")]`);
-    const isDisplayed = await $(webElement).isDisplayed();
-    return isDisplayed;
-  }
-
   async isButtonDisplayed(text) {
     const selector = {
       web: `//button[contains(text(),"${text}")]`,
