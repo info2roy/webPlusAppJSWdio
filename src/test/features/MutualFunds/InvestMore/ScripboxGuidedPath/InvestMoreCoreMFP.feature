@@ -14,7 +14,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I click on "Invest"
     When I validate header "I want to invest"
     When I select radio option <SIPFrequency>
-    When I enter field investment-amount with data <SIPAmount>
+    When I enter data for investment-amount with value <SIPAmount>
     When I click on "See Recommended Funds"
     When I validate funds present
     When I validate funds total to be equal to <SIPAmount>
@@ -26,7 +26,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate button "Make Payment Now"
     When I click on "1-Click Invest"
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
-    When I enter field duration with data <SIPDuration>
+    When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     # When I select start date <SIPStartDate>
     When I set yearly sip increase percent to <SIPIncreasePercentPerYear>
@@ -58,7 +58,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I click on "Invest"
     When I validate header "I want to invest"
     When I select radio option <SIPFrequency>
-    When I enter field investment-amount with data <SIPAmount>
+    When I enter data for investment-amount with value <SIPAmount>
     Then I see message <UiError> for <SIPAmount>
     # Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
     Then I go back to the dashboard page
@@ -78,7 +78,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I click on "Invest"
     When I validate header "I want to invest"
     When I select radio option <SIPFrequency>
-    When I enter field investment-amount with data <SIPAmount>
+    When I enter data for investment-amount with value <SIPAmount>
     When I click on "See Recommended Funds"
     When I validate funds present
     When I validate funds total to be equal to <SIPAmount>
@@ -90,7 +90,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate button "Make Payment Now"
     When I click on "1-Click Invest"
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
-    When I enter field duration with data <SIPDuration>
+    When I enter data for duration with value <SIPDuration>
     Then I see data-error <UiError> for <SIPAmount>
     Then I go back to the dashboard page
     Examples:
@@ -110,7 +110,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I click on "Invest"
     When I validate header "I want to invest"
     When I select radio option <SIPFrequency>
-    When I enter field investment-amount with data <SIPAmount>
+    When I enter data for investment-amount with value <SIPAmount>
     When I click on "See Recommended Funds"
     When I validate funds present
     When I validate funds total to be equal to <SIPAmount> 
@@ -122,7 +122,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate button "Make Payment Now"
     When I click on "Make Payment Now"
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
-    When I enter field duration with data <SIPDuration>
+    When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     #When I select start date <UpcomingSIPStartDate>
     When I click on "Next"
@@ -152,7 +152,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I click on "Invest"
     When I validate header "I want to invest"
     When I select radio option <SIPFrequency>
-    When I enter field investment-amount with data <oneTimeAmount>
+    When I enter data for investment-amount with value <oneTimeAmount>
     When I click on "See Recommended Funds"
     When I validate funds present
     When I validate funds total to be equal to <oneTimeAmount> 
@@ -187,7 +187,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I click on "Invest"
     When I validate header "I want to invest"
     When I select radio option <SIPFrequency>
-    When I enter field investment-amount with data <oneTimeAmount>
+    When I enter data for investment-amount with value <oneTimeAmount>
     Then I see message <UiError> for <oneTimeAmount>
     Then I go back to the dashboard page
     Examples:
@@ -207,7 +207,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I click on "Invest"
     When I validate header "I want to invest"
     When I select radio option <SIPFrequency>
-    When I enter field investment-amount with data <oneTimeAmount>
+    When I enter data for investment-amount with value <oneTimeAmount>
     When I click on "See Recommended Funds"
     When I validate funds present
     When I validate funds total to be equal to <oneTimeAmount> 
