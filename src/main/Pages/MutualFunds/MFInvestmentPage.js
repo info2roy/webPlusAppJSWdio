@@ -286,5 +286,9 @@ class MFInvestmentPage {
     console.log(`totalAmount ${totalAmount} sum ${sum}`);
     return sum === totalAmount;
   }
+
+  async setYearlySIPIncreasePercent(percent) {
+    await Utils.setHorizontalSlider(MFInvestmentObjects.sipIncreasePercentSlider, 10, percent);
+  }
 }
 module.exports = new MFInvestmentPage();

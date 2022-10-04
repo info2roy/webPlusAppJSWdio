@@ -625,5 +625,17 @@ class Utils {
     expect(selectedMonth).to.equal(month);
     await this.clickElement(daySelector(day));
   }
+
+  async dragAndDropElement(selector, xOffset, yOffset) {
+    const locator = this.getLocator(selector);
+    const element = await $(locator);
+    await element.dragAndDrop({ x: xOffset, y: yOffset });
+  }
+
+  async setHorizontalSlider(selector, defaultValue, targetValue) {
+    const xOffset = (targetValue - defaultValue) * 20;
+    const yOffset = 0;
+    await this.dragAndDropElement(selector, xOffset, yOffset);
+  }
 }
 module.exports = new Utils();

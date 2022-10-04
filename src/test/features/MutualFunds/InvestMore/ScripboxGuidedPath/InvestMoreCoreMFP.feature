@@ -29,6 +29,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I enter field duration with data <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     # When I select start date <SIPStartDate>
+    When I set yearly sip increase percent to <SIPIncreasePercentPerYear>
     When I click on "Confirm"
     Then I validate header "Investment scheduled successfully"
     # Then I click on "View investments"
