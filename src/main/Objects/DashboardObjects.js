@@ -7,7 +7,7 @@ class DashboardObjects {
 
   returnToHome = { web: '//*[contains(text(),"Return to Home")]' };
 
-  homeButton = { web: '//button[text()="Home"]', app: '//android.widget.TextView[@text="HOME"]' };
+  homeButton = { web: '//*[text()="Home"]', app: '//android.widget.TextView[@text="HOME"]' };
 
   goToDashboardButton = { web: '//button[text()="Go to Dashboard"] | //button[text()="GO TO DASHBOARD"]' };
 

@@ -77,46 +77,30 @@ class PersonalInfoPage {
     if (value.toString() == 'Blank') {
       value = '';
     }
-    switch (option.toString()) {
-      case 'user email':
-        await Utils.setInputField(value, PersonalInfoObjects.enterNewEmail);
-        await Utils.setInputField(value, PersonalInfoObjects.confirmNewEmail);
-        break;
-      case 'mobile number':
-        await Utils.setInputField(value, PersonalInfoObjects.enterNewMobileNumber);
-        break;
-      case 'user name':
-        await Utils.setInputField(value, PersonalInfoObjects.enterFullName);
-        break;
-      case 'account number':
-        await Utils.setInputField(value, PersonalInfoObjects.accountNumber);
-        break;
-      case 'account holder':
-        await Utils.setInputField(value, PersonalInfoObjects.accountHolderName);
-        break;
-      case 'IFSC':
-        await Utils.setInputField(value, PersonalInfoObjects.bankIFSCCode);
-        break;
-      case 'bank':
-        await Utils.setInputField('12345678901', PersonalInfoObjects.accountNumber);
-        await Utils.setInputField('Test Name', PersonalInfoObjects.accountHolderName);
-        await Utils.setInputField('HDFC0001852', PersonalInfoObjects.bankIFSCCode);
-        break;
-      case 'nominee name':
-        await Utils.setInputField(value, PersonalInfoObjects.enterFullName);
-      case 'nominee':
-        await Utils.chooseSelectOptionByVisibleText(PersonalInfoObjects.relationshipDropdown, 'Spouse');
-        await Utils.setInputField('UserAB', PersonalInfoObjects.enterFullName);
-        await Utils.setInputField('BEJPR4313R', PersonalInfoObjects.enterPAN);
-        await Utils.setInputField('1991', PersonalInfoObjects.enterYear);
-        await Utils.setInputField('BEJPE4316R', PersonalInfoObjects.enterPan);
-        await Utils.setInputField('10', PersonalInfoObjects.enterMonth);
-        await Utils.setInputField('11', PersonalInfoObjects.enterDate);
-        await Utils.setInputField('Test address to fill', PersonalInfoObjects.enterAddress);
-        break;
-      default:
-        await console.warn('Link type is not valid');
+    else if (value.toString() == 'No Data Needed') {
+      switch (option.toString()) {
+        case 'bank':
+          await Utils.chooseSelectOptionByVisibleText(PersonalInfoObjects.accountTypeDropdown, 'Savings Account');
+          await Utils.setInputField('12345678901', PersonalInfoObjects.accountNumber);
+          await Utils.setInputField('Test Name', PersonalInfoObjects.accountHolderName);
+          await Utils.setInputField('HDFC0001852', PersonalInfoObjects.bankIFSCCode);
+          break;
+        case 'nominee':
+          await Utils.chooseSelectOptionByVisibleText(PersonalInfoObjects.relationshipDropdown, 'Spouse');
+          await Utils.setInputField('UserAB', PersonalInfoObjects.enterFullName);
+          await Utils.setInputField('BEJPR4313R', PersonalInfoObjects.enterPAN);
+          await Utils.setInputField('1991', PersonalInfoObjects.enterYear);
+          await Utils.setInputField('BEJPE4316R', PersonalInfoObjects.enterPan);
+          await Utils.setInputField('10', PersonalInfoObjects.enterMonth);
+          await Utils.setInputField('11', PersonalInfoObjects.enterDate);
+          await Utils.setInputField('Test address to fill', PersonalInfoObjects.enterAddress);
+          break;
+        default:
+          await console.warn('Link type is not valid');
+      }
     }
+    else
+      await Utils.enterValueInField(option, value);
   }
 
   async clickUpdateButton() {

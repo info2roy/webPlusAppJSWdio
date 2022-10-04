@@ -17,7 +17,7 @@ class PersonalInfoFunctionality {
   }
 
   async updateProfileData(option, value) {
-    await PersonalInfoPage.checkEditHeader(option);
+    // await PersonalInfoPage.checkEditHeader(option);
     await PersonalInfoPage.enterNewData(option, value);
   }
 

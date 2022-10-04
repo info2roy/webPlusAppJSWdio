@@ -44,6 +44,8 @@ class PersonalInfoObjects {
 
   enterFullName = { web: '//input[@id="new-name"]' };
 
+  accountTypeDropdown = {web: '#bank-account-type'};
+
   relationshipDropdown = {web: '#relationship'};
 
   relationSelect = {web: '//*[text()="Spouse"]'};
