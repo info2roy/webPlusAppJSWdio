@@ -15,7 +15,6 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate header "I want to invest"
     When I select radio option <SIPFrequency>
     When I enter field investment-amount with data <SIPAmount>
-    # Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
     When I click on "See Recommended Funds"
     When I validate funds present
     When I validate funds total to be equal to <SIPAmount>
@@ -38,7 +37,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     # Then I click on "View investments"
     # Then I validate section "SIP(s) and STP(s)" to contain <mutualFundPortfolio> SIP with <SIPAmount>
     # Then I validate section "Monthly Summary -> Upcoming" to contain <mutualFundPortfolio> "Investment - Every Month" with <SIPAmount>
-    # Then I go back to the dashboard page
+    Then I go back to the dashboard page
     Examples:
       | SIPFrequency | SIPAmount | SIPDuration | SIPStartDate | SIPIncreasePercentPerYear |
       # | Every month (SIP)  | 30000 | Default | Default | Default |
@@ -55,6 +54,58 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
       # | Every month (SIP)  | 12000 | 0 | T+7 | 7 |
       # | Every month (SIP)  | 12000 | -1 | T+7 | 7 |
 
+  Scenario Outline: As a logged in user, I am able to schedule "Long Term Wealth" investment in mutual funds via Every month (SIP)
+    When I go back to the dashboard page
+    When I click on "Invest more"
+    When I validate header "Select financial product"
+    When I click on "Mutual Funds"
+    When I validate header "Add new plan"
+    When I click on "Long Term Wealth"
+    When I validate header "Scripbox Guided Path"
+    When I click on "Invest"
+    When I validate header "I want to invest"
+    When I select radio option <SIPFrequency>
+    When I enter field investment-amount with data <SIPAmount>
+    Then I see message <UiError> for <SIPAmount>
+    # Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
+    Then I go back to the dashboard page
+    Examples:
+      | SIPFrequency | SIPAmount | UiError |
+      | Every month (SIP)  | 1 | Amount must be greater than or equal to 1000 |
+      | Every month (SIP)  | 900 | Amount must be greater than or equal to 1000 |
+
+  Scenario Outline: As a logged in user, I am able to schedule "Long Term Wealth" investment in mutual funds via Every month (SIP)
+    When I go back to the dashboard page
+    When I click on "Invest more"
+    When I validate header "Select financial product"
+    When I click on "Mutual Funds"
+    When I validate header "Add new plan"
+    When I click on "Long Term Wealth"
+    When I validate header "Scripbox Guided Path"
+    When I click on "Invest"
+    When I validate header "I want to invest"
+    When I select radio option <SIPFrequency>
+    When I enter field investment-amount with data <SIPAmount>
+    When I click on "See Recommended Funds"
+    When I validate funds present
+    When I validate funds total to be equal to <SIPAmount>
+    When I click on "Next"
+    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and Blank
+    When I validate header "Automated transfer from bank account"
+    When I validate header "Pay now using Net Banking or UPI"
+    When I validate button "1-Click Invest"
+    When I validate button "Make Payment Now"
+    When I click on "1-Click Invest"
+    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
+    When I enter field duration with data <SIPDuration>
+    Then I see data-error <UiError> for <SIPAmount>
+    Then I go back to the dashboard page
+    Examples:
+      | SIPFrequency | SIPAmount | SIPDuration | UiError |
+      | Every month (SIP)  | 12000 | Blank | Duration can't be blank |
+      | Every month (SIP)  | 10000 | 0 | Duration must be greater than or equal to 12 |
+      | Every month (SIP)  | 11000 | -1 | Duration must be greater than or equal to 12 |
+  
   Scenario Outline: As a logged in user, I am able to do immediate "Long Term Wealth" investment in mutual funds via Every month (SIP)
     When I go back to the dashboard page
     When I click on "Invest more"
@@ -87,15 +138,15 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     #Then I validate header "UPI"
     Then I go back to the dashboard page
     Examples:
-      | mutualFundPortfolio | SIPFrequency | SIPAmount | SIPDuration | UpcomingSIPStartDate | SIPIncreasePercentPerYear |
-      # | Long Term Wealth | Every month (SIP)  | 30000 | Default | Default | Default |
-      # | Long Term Wealth | Every month (SIP)  | 1000 | Default | Default | 11 |
-      # | Long Term Wealth | Every month (SIP)  | 3000 | Default | T+2 | 8 |
-      # | Long Term Wealth | Every month (SIP)  | 5000 | Default | 1stOfNextMonth | 9 |
-      # | Long Term Wealth | Every month (SIP)  | 9000 | 60 | T+3 | 15 |
-      # | Long Term Wealth | Every month (SIP)  | 12000 | 12 | T+7 | 7 |
-      | Long Term Wealth | Every month (SIP)  | 15000 | 24 | 5thOfNextMonth | 5 |
-      # | Long Term Wealth | Every month (SIP)  | 20000 | 36 | 10thOfNextMonth | 0 |
+      | SIPFrequency | SIPAmount | SIPDuration | UpcomingSIPStartDate | SIPIncreasePercentPerYear |
+      # | Every month (SIP)  | 30000 | Default | Default | Default |
+      # | Every month (SIP)  | 1000 | Default | Default | 11 |
+      # | Every month (SIP)  | 3000 | Default | T+2 | 8 |
+      # | Every month (SIP)  | 5000 | Default | 1stOfNextMonth | 9 |
+      # | Every month (SIP)  | 9000 | 60 | T+3 | 15 |
+      # | Every month (SIP)  | 12000 | 12 | T+7 | 7 |
+      | Every month (SIP)  | 15000 | 24 | 5thOfNextMonth | 5 |
+      # | Every month (SIP)  | 20000 | 36 | 10thOfNextMonth | 0 |
 
   Scenario Outline: As a logged in user, I am able to schedule "Long Term Wealth" investment in mutual funds via One Time Investment
     When I go back to the dashboard page
@@ -128,12 +179,30 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     # Then I validate section "Monthly Summary -> Upcoming" to contain <mutualFundPortfolio> "Investment - One Time" with <oneTimeAmount>
     Then I go back to the dashboard page
     Examples:
-      | mutualFundPortfolio | SIPFrequency | oneTimeAmount | investmentDate |
-      # | Long Term Wealth | One time  | 30000 | Default |
-      # | Long Term Wealth | One time  | 15000 | T+2 |
-      | Long Term Wealth | One time  | 20000 | 1stOfNextMonth |
-      # | Long Term Wealth | One time  | 1 | Default |
-      # | Long Term Wealth | One time  | 999 | Default |
+      | SIPFrequency | oneTimeAmount | investmentDate |
+      # | One time  | 30000 | Default |
+      # | One time  | 15000 | T+2 |
+      | One time  | 20000 | 1stOfNextMonth |
+  
+  Scenario Outline: As a logged in user, I am able to schedule "Long Term Wealth" investment in mutual funds via One Time Investment
+    When I go back to the dashboard page
+    When I click on "Invest more"
+    When I validate header "Select financial product"
+    When I click on "Mutual Funds"
+    When I validate header "Add new plan"
+    When I click on "Long Term Wealth"
+    When I validate header "Scripbox Guided Path"
+    When I click on "Invest"
+    When I validate header "I want to invest"
+    When I select radio option <SIPFrequency>
+    When I enter field investment-amount with data <oneTimeAmount>
+    Then I see message <UiError> for <oneTimeAmount>
+    Then I go back to the dashboard page
+    Examples:
+      | SIPFrequency | oneTimeAmount | UiError |
+      | One time  | 1 | Amount must be greater than or equal to 5000 |
+      | One time  | 4999 | Amount must be greater than or equal to 5000 |
+
 
   Scenario Outline: As a logged in user, I am able to do immediate "Long Term Wealth" investment in mutual funds via One Time Investment
     When I go back to the dashboard page
@@ -162,5 +231,5 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     #Then I validate header "UPI"
     Then I go back to the dashboard page
     Examples:
-      | mutualFundPortfolio | SIPFrequency | oneTimeAmount |
-      | Long Term Wealth | One time  | 30000 |
+      | SIPFrequency | oneTimeAmount |
+      | One time  | 30000 |
