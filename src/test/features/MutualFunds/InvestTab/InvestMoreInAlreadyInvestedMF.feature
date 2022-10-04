@@ -15,7 +15,7 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
     When I validate header "How would you like to invest?"
     When I validate header <FundName>
     When I select radio option <SIPFrequency>
-    When I enter data for 105 with value <SIPAmount>
+    When I enter data for SIP Amount with value <SIPAmount>
     # When I select start date <SIPStartDate>
     When I enter data for duration with value <SIPDuration>
     When I click on button containing "Confirm SIP of " and <SIPAmount>
