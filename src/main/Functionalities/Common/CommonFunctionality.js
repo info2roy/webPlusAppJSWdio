@@ -70,5 +70,9 @@ class CommonFunctionality {
     return await CommonPage.readDataError(message, data);
   }
 
+  async updateProfileData(option, value) {
+    await CommonPage.enterNewData(option, value);
+  }
+
 }
 module.exports = new CommonFunctionality();

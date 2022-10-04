@@ -16,11 +16,6 @@ class PersonalInfoFunctionality {
     await PersonalInfoPage.clickEditButton(option);
   }
 
-  async updateProfileData(option, value) {
-    // await PersonalInfoPage.checkEditHeader(option);
-    await PersonalInfoPage.enterNewData(option, value);
-  }
-
 }
 
 module.exports = new PersonalInfoFunctionality();
