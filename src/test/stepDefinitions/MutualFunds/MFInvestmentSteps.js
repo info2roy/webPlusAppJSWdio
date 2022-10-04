@@ -134,6 +134,9 @@ When(/^I validate investment header "I would like to invest" containing (\d+), (
   async (amount, sipFrequency, sipDuration) => {
     console.log(`I validate investment header "I would like to invest" containing ${amount}, ${sipFrequency} and ${sipDuration}`);
     if (sipFrequency === Constants.INVESTMENT_TYPE_SIP) {
+      if (sipDuration === 'Default') {
+        sipDuration = 84;
+      }
       expect(await MFInvestmentFunctionality.setupMFSIPInvestmentPageLaunched(amount, sipDuration)).to.be.true;
     } else if (sipFrequency === Constants.INVESTMENT_TYPE_ONETIME) {
       expect(await MFInvestmentFunctionality.setupMFOneTimeInvestmentPageLaunched(amount, false)).to.be.true;
