@@ -1,3 +1,5 @@
+const Utils = require('../../../support/Utils/Utils');
+
 class MFInvestmentObjects {
   mutualFundsPageHeader = {
     web: '//div[text()="Choose your plan"]',
@@ -296,5 +298,40 @@ class MFInvestmentObjects {
     };
   }
 
+  investmentSummaryAmount(portfolio, investmentType, amount) {
+    return {
+      web: `//div[text()="${portfolio} ${investmentType}"]/parent::div/following-sibling::div[text()="${amount.toLocaleString('hi')}"]`
+    };
+  }
+
+  investmentSummaryNumFunds(portfolio, investmentType, numFunds) {
+    return {
+      web: `//div[text()="${portfolio} ${investmentType}"]/parent::div/parent::div/following-sibling::div/div[1]/div[contains(text(),"${numFunds} Funds")]`
+    };
+  }
+
+  investmentSummaryInvestmentDate(portfolio, investmentType, investmentDate) {
+    return {
+      web: `//div[text()="${portfolio} ${investmentType}"]/parent::div/parent::div/following-sibling::div/div[2]/div[1][contains(text(),"${Utils.getSequenceNumberStr(investmentDate)} (every month)")]`
+    };
+  }
+
+  investmentSummaryStepUp(portfolio, investmentType, stepUpPercent) {
+    return {
+      web: `//div[text()="${portfolio} ${investmentType}"]/parent::div/parent::div/following-sibling::div/div[2]/div[2]/div[contains(text(),"${stepUpPercent}% Step up")]`
+    };
+  }
+
+  upcomingInvestmentAmount(portfolio, amount) {
+    return {
+      web: `//div[text()="${portfolio}"]/parent::div/following-sibling::div/div[text()="${amount.toLocaleString('hi')}"]`
+    };
+  }
+
+  upcomingInvestmentType(portfolio) {
+    return {
+      web: `//div[text()="${portfolio}"]/parent::div/parent::div/following-sibling::div/div[contains(text(),"Investment")]`
+    };
+  }
 }
 module.exports = new MFInvestmentObjects();

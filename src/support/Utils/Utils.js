@@ -58,9 +58,15 @@ class Utils {
   //Get the text of an element found by given selector.
   async getText(selector) {
     const locator = this.getLocator(selector);
-    await this.elementIsDisplayed(selector);
+    expect(await this.elementIsDisplayed(selector)).to.be.true;
     const element = await $(locator);
     return (await element.getText());
+  }
+
+  async validateElementText(selector, matchingText) {
+    const elementText = await this.getText(selector);
+    console.log(`validateElementText ${elementText}`);
+    return elementText.includes(matchingText);
   }
 
   //Get all matching elements for a given selector
@@ -673,6 +679,23 @@ class Utils {
     const xOffset = (targetValue - defaultValue) * 20;
     const yOffset = 0;
     await this.dragAndDropElement(selector, xOffset, yOffset);
+  }
+
+  getSequenceNumberStr(number) {
+    const mod = number % 10;
+    const sequenceMap = {
+      0: 'th',
+      1: 'st',
+      2: 'nd',
+      3: 'rd',
+      4: 'th',
+      5: 'th',
+      6: 'th',
+      7: 'th',
+      8: 'th',
+      9: 'th'
+    };
+    return `${number}${sequenceMap[mod]}`;
   }
 }
 module.exports = new Utils();

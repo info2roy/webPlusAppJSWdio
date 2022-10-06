@@ -294,5 +294,20 @@ class MFInvestmentPage {
   async clickInvestMoreLinkForExistingFund(fundName) {
     await Utils.clickElement(MFInvestmentObjects.investMoreLinkForExistingFund(fundName));
   }
+
+  async investmentSummaryAmountIsDisplayed(portfolio, investmentType, amount) {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.investmentSummaryAmount(
+      portfolio, investmentType, amount)));
+  }
+
+  async upcomingInvestmentAmountIsDisplayed(portfolio, amount) {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.upcomingInvestmentAmount(
+      portfolio, amount)));
+  }
+
+  async upcomingInvestmentTypeIsDisplayed(portfolio, investmentType) {
+    return (await Utils.validateElementText(MFInvestmentObjects.upcomingInvestmentType(portfolio),
+      investmentType));
+  }
 }
 module.exports = new MFInvestmentPage();

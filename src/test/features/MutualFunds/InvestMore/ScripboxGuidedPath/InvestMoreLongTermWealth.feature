@@ -33,8 +33,8 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I click on "Confirm"
     # Then I validate header "Investment scheduled successfully"
     # Then I click on "View investments"
-    # Then I validate section "SIP(s) and STP(s)" to contain <mutualFundPortfolio> SIP with <SIPAmount>
-    # Then I validate section "Monthly Summary -> Upcoming" to contain <mutualFundPortfolio> "Investment - Every Month" with <SIPAmount>
+    # Then I validate section "SIP(s) and STP(s)" to contain "Long Term Wealth" SIP with <SIPAmount>
+    # Then I validate section "Monthly Summary -> Upcoming" to contain "Long Term Wealth", "Investment - Every Month" with <SIPAmount>
     Then I go back to the dashboard page
     Examples:
       | SIPFrequency | SIPAmount | SIPDuration | SIPStartDate | SIPIncreasePercentPerYear |

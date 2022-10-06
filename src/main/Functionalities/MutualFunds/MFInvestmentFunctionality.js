@@ -143,5 +143,14 @@ class MFInvestmentFunctionality {
   async investMoreInExistingMutualFund(fundName) {
     await MFInvestmentPage.clickInvestMoreLinkForExistingFund(fundName);
   }
+
+  async validateInvestmentSummary(portfolio, investmentType, amount) {
+    return (await MFInvestmentPage.investmentSummaryAmountIsDisplayed(portfolio, investmentType, amount));
+  }
+
+  async validateUpcomingInvestment(portfolio, investmentType, amount) {
+    return (await MFInvestmentPage.upcomingInvestmentAmountIsDisplayed(portfolio, amount)) &&
+      (await MFInvestmentPage.upcomingInvestmentTypeIsDisplayed(portfolio, investmentType));
+  }
 }
 module.exports = new MFInvestmentFunctionality();
