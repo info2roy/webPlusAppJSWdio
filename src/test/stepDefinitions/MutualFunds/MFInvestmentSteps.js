@@ -161,3 +161,16 @@ When(/^I click on "Invest more" for (.+)$/, async (fundName) => {
   await MFInvestmentFunctionality.investMoreInExistingMutualFund(fundName);
 });
 
+When(/^I validate section "SIP(s) and STP(s)" to contain "([^"]*)?" (SIP|OneTime) with (\d+)$/,
+  async(portfolio, investmentType, amount) => {
+    console.log(`I validate section "SIP(s) and STP(s)" to contain "${portfolio}" ${investmentType} with ${amount}`);
+    expect(MFInvestmentFunctionality.validateInvestmentSummary(portfolio, investmentType, amount)).to.be.true;
+  }
+);
+
+When(/^I validate section "Monthly Summary -> Upcoming" to contain "([^"]*)?", "(Investment - Every Month|Investment - One Time)" with (\d+)$/,
+  async(portfolio, investmentType, amount) => {
+    console.log(`I validate section "Monthly Summary -> Upcoming" to contain "${portfolio}", "${investmentType}" with ${amount}`);
+    expect(MFInvestmentFunctionality.validateUpcomingInvestment(portfolio, investmentType, amount)).to.be.true;
+  }
+);
