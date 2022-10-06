@@ -188,7 +188,7 @@ exports.config = {
     // <string> (expression) only execute the features or scenarios with
     // tags matching the expression, see
     // https://docs.cucumber.io/tag-expressions/
-    tagExpression: 'not @smoke',
+    tagExpression: 'not @skip',
     timeout: 30000,
     tagsInTitle: false,
     snippetSyntax: undefined,

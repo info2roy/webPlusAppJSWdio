@@ -344,6 +344,14 @@ class Utils {
     }
   }
 
+  async setCheckBoxById(elementId) {
+    const selector = {
+      web: `//label[@for="${elementId}"]`,
+      app: `~${elementId}`
+    };
+    await this.clickElement(selector);
+  }
+
   //get a random integer between 0(inclusive) and maxIntValue(exclusive)
   getRandomInt(maxIntValue) {
     return Math.floor(Math.random() * maxIntValue);
@@ -399,6 +407,16 @@ class Utils {
     await myButton.click();
   }
 
+  async clickButtonByTextAndAmount(text, amount) {
+    const selector = {
+      web: `//button[text()="${text}${amount.toLocaleString('hi')}"]`,
+      app: ''
+    };
+    const locator = this.getLocator(selector);
+    const myButton = await $(locator);
+    await myButton.click();
+  }
+
   async clickRadioButton(option) {
     const webElement = (`//*[contains(@class, 'radio-input') and contains(text(),"${option}")]`);
     const myButton = await $(webElement);
@@ -407,7 +425,7 @@ class Utils {
 
   async enterValueInField(fieldId, value) {
     const selector = {
-      web: `#${fieldId}`,
+      web: `//*[@id="${fieldId}" or @placeholder="${fieldId}"]`,
       app: `~${fieldId}`
     };
     if (isNaN(value)) {
@@ -419,8 +437,15 @@ class Utils {
 
   async isTextDisplayed(text) {
     await browser.pause(1000);
-    const webElement = (`(//*[contains(text(),"${text}")])[last()]`);
-    const isDisplayed = await $(webElement).isDisplayed();
+    const webElement = (`//*[contains(text(),"${text}")]`);
+    const matches = await $$(webElement);
+    let isDisplayed = false;
+    for (const match of matches) {
+      isDisplayed = await match.isDisplayed();
+      if (isDisplayed) {
+        return true;
+      }
+    }
     return isDisplayed;
   }
 
@@ -438,6 +463,18 @@ class Utils {
     const webElement = this.getLocator(selector);
     const isDisplayed = await $(webElement).isDisplayed();
     return isDisplayed;
+  }
+
+  async scrollUntilTextIsDisplayed(text) {
+    const selector = {
+      web: `//*[contains(text(),"${text}")]`,
+      app: `//*[contains(@text,"${text}")]`
+    };
+    if (Device.isWeb()) {
+      await this.scrollAndMoveToElement(selector);
+    } else if (Device.isAndroidApp()) {
+      await this.scrollVerticalUntilTextIntoViewForAndroid(text);
+    }
   }
 
   //monthYear should be of form => "Jan, 2022", "Feb, 2021" etc

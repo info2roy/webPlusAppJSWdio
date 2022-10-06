@@ -139,5 +139,9 @@ class MFInvestmentFunctionality {
   async setYearlySIPIncreasePercent(percent) {
     await MFInvestmentPage.setYearlySIPIncreasePercent(percent);
   }
+
+  async investMoreInExistingMutualFund(fundName) {
+    await MFInvestmentPage.clickInvestMoreLinkForExistingFund(fundName);
+  }
 }
 module.exports = new MFInvestmentFunctionality();

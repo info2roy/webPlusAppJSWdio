@@ -134,6 +134,9 @@ When(/^I validate investment header "I would like to invest" containing (\d+), (
   async (amount, sipFrequency, sipDuration) => {
     console.log(`I validate investment header "I would like to invest" containing ${amount}, ${sipFrequency} and ${sipDuration}`);
     if (sipFrequency === Constants.INVESTMENT_TYPE_SIP) {
+      if (sipDuration === 'Default') {
+        sipDuration = 84;
+      }
       expect(await MFInvestmentFunctionality.setupMFSIPInvestmentPageLaunched(amount, sipDuration)).to.be.true;
     } else if (sipFrequency === Constants.INVESTMENT_TYPE_ONETIME) {
       expect(await MFInvestmentFunctionality.setupMFOneTimeInvestmentPageLaunched(amount, false)).to.be.true;
@@ -146,7 +149,16 @@ When(/^I validate investment header "I would like to make a one-time investment"
   }
 );
 
-When(/^I set yearly sip increase percent to (\d+)$/, async(percent) => {
+When(/^I set yearly sip increase percent to (.+)$/, async(percent) => {
   console.log(`I set yearly sip increase percent to ${percent}`);
-  await MFInvestmentFunctionality.setYearlySIPIncreasePercent(percent);
+  if (percent !== 'Default') {
+    await MFInvestmentFunctionality.setYearlySIPIncreasePercent(parseInt(percent, 10));
+  }
 });
+
+When(/^I click on "Invest more" for (.+)$/, async (fundName) => {
+  console.log(`I click on "Invest more" for ${fundName}`);
+  await MFInvestmentFunctionality.investMoreInExistingMutualFund(fundName);
+  await browser.pause(10000);
+});
+

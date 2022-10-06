@@ -290,5 +290,11 @@ class MFInvestmentObjects {
     web: 'div.rangeslider__handle'
   };
 
+  investMoreLinkForExistingFund(fundName) {
+    return {
+      web: `//div[text()="${fundName}"]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div/div[2]/div[2]/div[text()="Invest more"]`
+    };
+  }
+
 }
 module.exports = new MFInvestmentObjects();
