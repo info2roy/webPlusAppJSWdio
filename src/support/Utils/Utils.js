@@ -437,8 +437,15 @@ class Utils {
 
   async isTextDisplayed(text) {
     await browser.pause(1000);
-    const webElement = (`(//*[contains(text(),"${text}")])[last()]`);
-    const isDisplayed = await $(webElement).isDisplayed();
+    const webElement = (`//*[contains(text(),"${text}")]`);
+    const matches = await $$(webElement);
+    let isDisplayed = false;
+    for (const match of matches) {
+      isDisplayed = await match.isDisplayed();
+      if (isDisplayed) {
+        return true;
+      }
+    }
     return isDisplayed;
   }
 
