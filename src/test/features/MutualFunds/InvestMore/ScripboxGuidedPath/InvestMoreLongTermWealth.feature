@@ -64,8 +64,9 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     Then I go back to the dashboard page
     Examples:
       | SIPFrequency | SIPAmount | UiError |
+      | Every month (SIP)  | Blank | Amount must be greater than or equal to 1000 |
       | Every month (SIP)  | 1 | Amount must be greater than or equal to 1000 |
-      | Every month (SIP)  | 900 | Amount must be greater than or equal to 1000 |
+      | Every month (SIP)  | 999 | Amount must be greater than or equal to 1000 |
 
   Scenario Outline: As a logged in user, I am able to schedule "Long Term Wealth" investment in mutual funds via Every month (SIP)
     When I go back to the dashboard page
@@ -98,7 +99,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
       | Every month (SIP)  | 12000 | Blank | Duration can't be blank |
       | Every month (SIP)  | 10000 | 0 | Duration must be greater than or equal to 12 |
       | Every month (SIP)  | 11000 | -1 | Duration must be greater than or equal to 12 |
-  
+
   Scenario Outline: As a logged in user, I am able to do immediate "Long Term Wealth" investment in mutual funds via Every month (SIP)
     When I go back to the dashboard page
     When I click on "Invest more"
@@ -176,7 +177,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
       # | One time  | 30000 | Default |
       # | One time  | 15000 | T+2 |
       | One time  | 20000 | 1stOfNextMonth |
-  
+
   Scenario Outline: As a logged in user, I am able to schedule "Long Term Wealth" investment in mutual funds via One Time Investment
     When I go back to the dashboard page
     When I click on "Invest more"
@@ -195,7 +196,6 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
       | SIPFrequency | oneTimeAmount | UiError |
       | One time  | 1 | Amount must be greater than or equal to 5000 |
       | One time  | 4999 | Amount must be greater than or equal to 5000 |
-
 
   Scenario Outline: As a logged in user, I am able to do immediate "Long Term Wealth" investment in mutual funds via One Time Investment
     When I go back to the dashboard page
