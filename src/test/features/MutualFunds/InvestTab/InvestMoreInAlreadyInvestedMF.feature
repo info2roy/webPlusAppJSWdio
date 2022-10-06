@@ -36,6 +36,26 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
       # | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 25000      | 1stOfNextMonth | 36          |
       | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 30000      | 5thOfNextMonth | 72          |
 
+  Scenario Outline: As a logged in user, I am able to see error message when SIP amount is less than 1000
+    When I navigate to "Invest" from Dashboard
+    When I click on "Mutual Funds"
+    When I validate header "Choose your plan"
+    When I validate header "Explore funds"
+    When I scroll until "Your investments" is visible
+    When I validate header "Your investments"
+    When I click on "Invest more" for <FundName>
+    When I validate header "Set up investment"
+    When I validate header "How would you like to invest?"
+    When I validate header <FundName>
+    When I select radio option <SIPFrequency>
+    When I enter data for SIP Amount with value <SIPAmount>
+    Then I see message <UiError> for <SIPAmount>
+    Then I go back to the dashboard page 
+    Examples:
+      | FundName | SIPFrequency | SIPAmount | UiError |
+      | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 1 | Amount must be greater than or equal to 1000 |
+      | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 999 | Amount must be greater than or equal to 1000 |
+
   Scenario Outline: As a logged in user, I am able to schedule SIP into already invested fund with first payment today
     When I go back to the dashboard page
     When I navigate to "Invest" from Dashboard
