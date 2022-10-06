@@ -329,7 +329,7 @@ class MoreOptionsPage {
     if (Device.isAndroidApp()) {
       await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.logoutOptionText);
     } else if(Device.isWeb()) {
-      await Utils.scrollAndMoveToElement(MoreOptionsObjects.logoutOption);
+      await Utils.scrollToElement(MoreOptionsObjects.logoutOption);
     }
     await Utils.clickElement(MoreOptionsObjects.logoutOption);
   }
