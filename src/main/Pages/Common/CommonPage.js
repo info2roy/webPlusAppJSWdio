@@ -107,8 +107,8 @@ class CommonPage {
     await console.log(`Entering ${value.toString()}`);
     if (value.toString() == 'Blank') {
       value = '';
-    }
-    else if (value.toString() == 'No Data Needed') {
+      await Utils.enterValueInField(option, '1\b');
+    } else if (value.toString() == 'No Data Needed') {
       switch (option.toString()) {
         case 'bank':
           await Utils.chooseSelectOptionByVisibleText(PersonalInfoObjects.accountTypeDropdown, 'Savings Account');
@@ -129,8 +129,7 @@ class CommonPage {
         default:
           await console.warn('Link type is not valid');
       }
-    }
-    else
+    } else
       await Utils.enterValueInField(option, value);
   }
 
