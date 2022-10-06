@@ -3,6 +3,7 @@ const DashboardObjects = require('../Objects/DashboardObjects');
 const MFInvestmentObjects = require('../Objects/MutualFunds/MFInvestmentObjects');
 const Constants = require('../../config/data/structured/Constants');
 const InvestmentCalendarPage = require('./Reports/InvestmentCalendarPage');
+const CommonMyWealthPage = require('./Common/CommonMyWealthPage');
 
 class DashboardPage {
   async openMoreOptions() {
@@ -51,6 +52,9 @@ class DashboardPage {
       case 'Invest':
         await Utils.clickElement(DashboardObjects.investFooterButton);
         break;
+      case 'My Wealth':
+        await Utils.clickElement(DashboardObjects.dashboardTab(Constants.DASHBOARD_MYWEALTH));
+        break;
       case 'Notifications':
         await Utils.clickElement(DashboardObjects.notifications);
         break;
@@ -73,6 +77,10 @@ class DashboardPage {
         return (await Utils.elementIsDisplayed(DashboardObjects.investNowHeader));
       case 'Invest':
         return (await Utils.elementIsDisplayed(MFInvestmentObjects.addNewPlanOrExploreOtherPlans));
+      case 'My Wealth':
+        return (await CommonMyWealthPage.yourWealthHeaderIsDisplayed()) &&
+          (await CommonMyWealthPage.myWealthTabIsDisplayed(Constants.MY_WEALTH_INVESTMENTS)) &&
+          (await CommonMyWealthPage.myWealthTabIsDisplayed(Constants.MY_WEALTH_INSURANCE));
       case 'Notifications':
         return (await browser.getUrl()).includes('/notifications?');
       default:
