@@ -1,23 +1,23 @@
 Feature: Scripbox Dashboard -> Invest button -> Add new plan
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "MYSCRIPBOX" for "user189182"
+    Given I login to Scripbox in "MYSCRIPBOX" for "test_email+6d7d2ed4c9@scripbox.io"
 
   Scenario Outline: As a logged in user, I am able to schedule investment instruction via Dashboard Invest
-    When I navigate to "Invest" from Dashboard
-    And I click on "Mutual Funds"
-    And I click on "Add new plan"
-    And I validate header "Add new plan"
-    # And I validate header "Choose your plan"
-    And I click on "Emergency Fund"
-    And I validate header "Emergency Fund"
-    And I click on "Invest more"
-    And I validate header "I want to invest"
-    # And I select radio option <SIPFrequency>
-    # And I enter SIP details <SIPAmount>
-    # And I see Investment calculator container
-    # And I click on "See Recommended Funds"
-    # And I validate header "Recommended Funds and Amounts"
+  #   When I navigate to "Invest" from Dashboard
+  #   And I click on "Mutual Funds"
+  #   And I click on "Add new plan"
+  #   And I validate header "Add new plan"
+  #   And I validate header "Choose your plan"
+  #   And I click on "Emergency Fund"
+  #   And I validate header "Emergency Fund"
+  #   And I click on "Invest more"
+  #   And I validate header "I want to invest"
+  #   And I select radio option <SIPFrequency>
+  #   And I enter SIP details <SIPAmount>
+  #   And I see Investment calculator container
+  #   And I click on "See Recommended Funds"
+  #   And I validate header "Recommended Funds and Amounts"
     # And I validate funds present    //*[@class="section"]
     # And I validate funds total to be equal to <SIPAmount>   //*[@class="section"]//span//..//div
     # And I click on "Next"
