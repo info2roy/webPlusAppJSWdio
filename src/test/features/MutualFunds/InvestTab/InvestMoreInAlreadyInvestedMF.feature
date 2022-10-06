@@ -8,7 +8,7 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
     When I click on "Mutual Funds"
     When I validate header "Choose your plan"
     When I validate header "Explore funds"
-    When I scroll until <FundName> is visible
+    When I scroll until "Your investments" is visible
     When I validate header "Your investments"
     When I click on "Invest more" for <FundName>
     When I validate header "Set up investment"
@@ -38,11 +38,11 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
 
   Scenario Outline: As a logged in user, I am able to schedule SIP into already invested fund with first payment today
     When I go back to the dashboard page
-    And I navigate to "Invest" from Dashboard
-    And I click on "Mutual Funds"
+    When I navigate to "Invest" from Dashboard
+    When I click on "Mutual Funds"
     When I validate header "Choose your plan"
     When I validate header "Explore funds"
-    When I scroll until <FundName> is visible
+    When I scroll until "Your investments" is visible
     When I validate header "Your investments"
     When I click on "Invest more" for <FundName>
     When I validate header "Set up investment"
@@ -65,46 +65,48 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To the Bottom ->
 
   Scenario Outline: As a logged in user, I am able to do immediate one time investment into already invested fund
     When I go back to the dashboard page
-    And I navigate to "Invest" from Dashboard
-    And I click on "Mutual Funds"
-    And I scroll until "Your investments" is visible
-    And I validate already invested funds present
-    And I click on "Invest more" for first visible Fund
-    And I validate header "Set up investment"
-    And I validate header "How would you like to invest?"
-    And I validate header "Enter One Time amount"
-    And I validate fund name present before amount field
-    And I select radio option <SIPFrequency>
-    And I enter SIP amount <SIPAmount>
-    Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
-    When I click on "Pay "
+    When I navigate to "Invest" from Dashboard
+    When I click on "Mutual Funds"
+    When I validate header "Choose your plan"
+    When I validate header "Explore funds"
+    When I scroll until "Your investments" is visible
+    When I validate header "Your investments"
+    When I click on "Invest more" for <FundName>
+    When I validate header "Set up investment"
+    When I validate header "How would you like to invest?"
+    When I validate header <FundName>
+    When I select radio option <SIPFrequency>
+    When I enter data for One Time Amount with value <OneTimeAmount>
+    When I click on button containing "Pay " and <OneTimeAmount>
     Then I validate header "I would like to invest using"
     Then I validate header "Net Banking"
     Then I validate header "UPI"
     Then I go back to the dashboard page 
     Examples:
-      | SIPFrequency | SIPAmount |
-      | One time  | 5000   |
-      # | One time  | 1      |
-      | One time  | 900    |
+      | FundName | SIPFrequency | OneTimeAmount |
+      | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 5000   |
 
   Scenario Outline: As a logged in user, I am able to do sheduled one time investment into already invested fund
     When I go back to the dashboard page
-    And I navigate to "Invest" from Dashboard
-    And I click on "Mutual Funds"
-    And I scroll until "Your investments" is visible
-    And I validate already invested funds present
-    And I click on "Invest more" for first visible Fund
-    And I validate header "Set up investment"
-    And I validate header "How would you like to invest?"
-    And I validate header "Enter One Time amount"
-    And I validate fund name present before amount field
-    And I select radio option <SIPFrequency>
-    And I enter SIP amount <SIPAmount>
-    And I select checkbox "Make your first payment today"
-    And I click on "Confirm investment of "
-    Then I should see message "Investment scheduled successfully"
+    When I navigate to "Invest" from Dashboard
+    When I click on "Mutual Funds"
+    When I validate header "Choose your plan"
+    When I validate header "Explore funds"
+    When I scroll until "Your investments" is visible
+    When I validate header "Your investments"
+    When I click on "Invest more" for <FundName>
+    When I validate header "Set up investment"
+    When I validate header "How would you like to invest?"
+    When I validate header <FundName>
+    When I select radio option <SIPFrequency>
+    When I enter data for One Time Amount with value <OneTimeAmount>
+    When I select checkbox scheduleForLater
+    When I click on button containing "Confirm investment of " and <OneTimeAmount>
+    When I validate header "Nominee verification required"
+    When I enter data for verify-otp with value 111111
+    When I click on "Verify"
+    Then I validate header "Investment scheduled successfully"
     Then I go back to the dashboard page 
     Examples:
-      | SIPFrequency | SIPAmount |
-      | One time  | 5000      |
+      | FundName | SIPFrequency | OneTimeAmount |
+      | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 5000      |
