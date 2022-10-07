@@ -25,7 +25,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate button "1-Click Invest"
     When I validate button "Make Payment Now"
     When I click on "1-Click Invest"
-    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
+    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 180
     When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     # When I select start date <SIPStartDate>
@@ -92,7 +92,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate button "1-Click Invest"
     When I validate button "Make Payment Now"
     When I click on "1-Click Invest"
-    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
+    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 180
     When I enter data for duration with value <SIPDuration>
     Then I see data-error <UiError> for <SIPAmount>
     Then I go back to the dashboard page
@@ -124,7 +124,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate button "1-Click Invest"
     When I validate button "Make Payment Now"
     When I click on "Make Payment Now"
-    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
+    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 180
     When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     #When I select start date <UpcomingSIPStartDate>
