@@ -23,7 +23,7 @@ Feature: Scripbox Dashboard -> Invest -> Mutual Funds -> Long Term Wealth -> Scr
     When I validate button "1-Click Invest"
     When I validate button "Make Payment Now"
     When I click on "1-Click Invest"
-    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 180
+    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
     When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     # When I select start date <SIPStartDate>
@@ -36,10 +36,10 @@ Feature: Scripbox Dashboard -> Invest -> Mutual Funds -> Long Term Wealth -> Scr
     Then I go back to the dashboard page
     Examples:
       | SIPFrequency | SIPAmount | SIPDuration | SIPStartDate | SIPIncreasePercentPerYear |
-      # | Every month (SIP)  | 30000 | Default:180 | Default | Default |
-      # | Every month (SIP)  | 1000 | Default:180 | Default | 11 |
-      | Every month (SIP)  | 3000 | Default:180 | T+2 | 8 |
-      # | Every month (SIP)  | 5000 | Default:180 | 1stOfNextMonth | 9 |
+      # | Every month (SIP)  | 30000 | Default:84 | Default | Default |
+      # | Every month (SIP)  | 1000 | Default:84 | Default | 11 |
+      | Every month (SIP)  | 3000 | Default:84 | T+2 | 8 |
+      # | Every month (SIP)  | 5000 | Default:84 | 1stOfNextMonth | 9 |
       # | Every month (SIP)  | 9000 | 12 | T+3 | 15 |
       # | Every month (SIP)  |  12000 | 60 | T+7 | 7 |
       # | Every month (SIP)  | 15000 | 24 | 5thOfNextMonth | 5 |
@@ -67,7 +67,7 @@ Feature: Scripbox Dashboard -> Invest -> Mutual Funds -> Long Term Wealth -> Scr
     When I validate button "1-Click Invest"
     When I validate button "Make Payment Now"
     When I click on "Make Payment Now"
-    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 180
+    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
     When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     #When I select start date <UpcomingSIPStartDate>
@@ -79,10 +79,10 @@ Feature: Scripbox Dashboard -> Invest -> Mutual Funds -> Long Term Wealth -> Scr
     Then I go back to the dashboard page
     Examples:
       | SIPFrequency | SIPAmount | SIPDuration | UpcomingSIPStartDate | SIPIncreasePercentPerYear |
-      # | Every month (SIP)  | 30000 | Default:180 | Default | Default |
-      # | Every month (SIP)  | 1000 | Default:180 | Default | 11 |
-      # | Every month (SIP)  | 3000 | Default:180 | T+2 | 8 |
-      # | Every month (SIP)  | 5000 | Default:180 | 1stOfNextMonth | 9 |
+      # | Every month (SIP)  | 30000 | Default:84 | Default | Default |
+      # | Every month (SIP)  | 1000 | Default:84 | Default | 11 |
+      # | Every month (SIP)  | 3000 | Default:84 | T+2 | 8 |
+      # | Every month (SIP)  | 5000 | Default:84 | 1stOfNextMonth | 9 |
       # | Every month (SIP)  | 9000 | 60 | T+3 | 15 |
       # | Every month (SIP)  | 12000 | 12 | T+7 | 7 |
       | Every month (SIP)  | 15000 | 24 | 5thOfNextMonth | 5 |
