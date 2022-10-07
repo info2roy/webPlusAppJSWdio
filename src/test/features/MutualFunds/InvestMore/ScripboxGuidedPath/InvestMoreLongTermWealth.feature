@@ -25,23 +25,26 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate button "1-Click Invest"
     When I validate button "Make Payment Now"
     When I click on "1-Click Invest"
-    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
+    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 180
     When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     # When I select start date <SIPStartDate>
     When I set yearly sip increase percent to <SIPIncreasePercentPerYear>
     When I click on "Confirm"
+    # When I validate header "Nominee verification required"
+    # When I enter data for verify-otp with value 111111
+    # When I click on "Verify"
     # Then I validate header "Investment scheduled successfully"
     # Then I click on "View investments"
-    # Then I validate section "SIP(s) and STP(s)" to contain "Long Term Wealth" SIP with <SIPAmount>
+    # Then I validate section "SIP(s) and STP(s)" to contain "Long Term Wealth" SIP with <SIPAmount>, <SIPStartDate>, <SIPIncreasePercentPerYear>
     # Then I validate section "Monthly Summary -> Upcoming" to contain "Long Term Wealth", "Investment - Every Month" with <SIPAmount>
     Then I go back to the dashboard page
     Examples:
       | SIPFrequency | SIPAmount | SIPDuration | SIPStartDate | SIPIncreasePercentPerYear |
-      # | Every month (SIP)  | 30000 | Default | Default | Default |
-      # | Every month (SIP)  | 1000 | Default | Default | 11 |
-      | Every month (SIP)  | 3000 | Default | T+2 | 8 |
-      # | Every month (SIP)  | 5000 | Default | 1stOfNextMonth | 9 |
+      # | Every month (SIP)  | 30000 | Default:180 | Default | Default |
+      # | Every month (SIP)  | 1000 | Default:180 | Default | 11 |
+      | Every month (SIP)  | 3000 | Default:180 | T+2 | 8 |
+      # | Every month (SIP)  | 5000 | Default:180 | 1stOfNextMonth | 9 |
       # | Every month (SIP)  | 9000 | 12 | T+3 | 15 |
       # | Every month (SIP)  |  12000 | 60 | T+7 | 7 |
       # | Every month (SIP)  | 15000 | 24 | 5thOfNextMonth | 5 |
@@ -90,7 +93,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate button "1-Click Invest"
     When I validate button "Make Payment Now"
     When I click on "1-Click Invest"
-    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
+    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 180
     When I enter data for duration with value <SIPDuration>
     Then I see data-error <UiError> for <SIPAmount>
     Then I go back to the dashboard page
@@ -122,7 +125,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate button "1-Click Invest"
     When I validate button "Make Payment Now"
     When I click on "Make Payment Now"
-    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 84
+    When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and 180
     When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     #When I select start date <UpcomingSIPStartDate>
@@ -134,10 +137,10 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     Then I go back to the dashboard page
     Examples:
       | SIPFrequency | SIPAmount | SIPDuration | UpcomingSIPStartDate | SIPIncreasePercentPerYear |
-      # | Every month (SIP)  | 30000 | Default | Default | Default |
-      # | Every month (SIP)  | 1000 | Default | Default | 11 |
-      # | Every month (SIP)  | 3000 | Default | T+2 | 8 |
-      # | Every month (SIP)  | 5000 | Default | 1stOfNextMonth | 9 |
+      # | Every month (SIP)  | 30000 | Default:180 | Default | Default |
+      # | Every month (SIP)  | 1000 | Default:180 | Default | 11 |
+      # | Every month (SIP)  | 3000 | Default:180 | T+2 | 8 |
+      # | Every month (SIP)  | 5000 | Default:180 | 1stOfNextMonth | 9 |
       # | Every month (SIP)  | 9000 | 60 | T+3 | 15 |
       # | Every month (SIP)  | 12000 | 12 | T+7 | 7 |
       | Every month (SIP)  | 15000 | 24 | 5thOfNextMonth | 5 |
@@ -168,9 +171,12 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I validate investment header "I would like to invest" containing <oneTimeAmount>, <SIPFrequency> and Blank
     #When I select investment date <investmentDate>
     When I click on "Confirm"
+    # When I validate header "Nominee verification required"
+    # When I enter data for verify-otp with value 111111
+    # When I click on "Verify"
     # Then I validate header "Investment scheduled successfully"
-    # When I click on "View investments"
-    # Then I validate section "Monthly Summary -> Upcoming" to contain <mutualFundPortfolio> "Investment - One Time" with <oneTimeAmount>
+    # Then I click on "View investments"
+    # Then I validate section "Monthly Summary -> Upcoming" to contain "Long Term Wealth", "Investment - One Time" with <oneTimeAmount>
     Then I go back to the dashboard page
     Examples:
       | SIPFrequency | oneTimeAmount | investmentDate |
