@@ -33,12 +33,6 @@ Then(/^I should see "([^"]*)?" success message$/, async (message) => {
 
 When(/^I validate header "([^"]*)?"$/, async (header) => {
   console.log(`I validate header "${header}"`);
-<<<<<<< HEAD
-  if (['I want to invest', 'Investment Growth'].includes(header)) {
-    await browser.pause(5000);
-  }
-=======
->>>>>>> 3479c31 (added support for investMoreIntoExistingMutualFund)
   expect(await Utils.isTextDisplayed(header)).to.be.true;
 });
 
