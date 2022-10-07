@@ -26,8 +26,8 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To "Your Investm
     Then I go back to the dashboard page 
     Examples:
       | FundName | SIPFrequency | SIPAmount | SIPStartDate | SIPDuration |
-      # | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 5000      | Default | Default          |
-      # | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 1      | Default | Default          |
+      # | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 5000      | Default | Default:84          |
+      # | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 1      | Default | Default:84          |
       # | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 10000      | Default | 0          |
       # | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 1000      | Default | -1          |
       # | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 2000      | T+2 | 1          |
