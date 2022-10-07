@@ -304,9 +304,9 @@ class MFInvestmentObjects {
     };
   }
 
-  investmentSummaryNumFunds(portfolio, investmentType, numFunds) {
+  investmentSummaryNumFunds(portfolio, investmentType) {
     return {
-      web: `//div[text()="${portfolio} ${investmentType}"]/parent::div/parent::div/following-sibling::div/div[1]/div[contains(text(),"${numFunds} Funds")]`
+      web: `//div[text()="${portfolio} ${investmentType}"]/parent::div/parent::div/following-sibling::div/div[1]/div[contains(text(),"Funds")]`
     };
   }
 

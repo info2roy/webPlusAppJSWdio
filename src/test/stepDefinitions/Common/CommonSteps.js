@@ -33,6 +33,9 @@ Then(/^I should see "([^"]*)?" success message$/, async (message) => {
 
 When(/^I validate header "([^"]*)?"$/, async (header) => {
   console.log(`I validate header "${header}"`);
+  if (header === 'I want to invest') {
+    await browser.pause(5000);
+  }
   expect(await Utils.isTextDisplayed(header)).to.be.true;
 });
 
@@ -68,7 +71,7 @@ Then(/^I see data-error (.+) for (.+)$/, async (uiError, data) => {
 
 When(/^I enter data for (.+) with value (.+)$/, async (option, value) => {
   await console.log(`Entering data for ${option}`);
-  if (value !== 'Default') {
+  if (!(value.startsWith('Default:'))) {
     await CommonFunctionality.updateProfileData(option, value);
   }
 });

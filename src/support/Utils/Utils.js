@@ -697,5 +697,28 @@ class Utils {
     };
     return `${number}${sequenceMap[mod]}`;
   }
+
+  getInvestmentDate(currentDate, investmentDateCode) {
+    if (investmentDateCode === 'Default') {
+      currentDate.setDate(currentDate.getDate() + 1);
+      return currentDate;
+    } else if (investmentDateCode === '1stOfNextMonth') {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      currentDate.setDate(1);
+      return currentDate;
+    } else if (investmentDateCode === '5thOfNextMonth') {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      currentDate.setDate(5);
+      return currentDate;
+    } else if (investmentDateCode === '10thOfNextMonth') {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      currentDate.setDate(10);
+      return currentDate;
+    } else if (investmentDateCode.startsWith('T+')) {
+      currentDate.setDate(currentDate.getDate() + parseInt(investmentDateCode.slice(2)));
+      return currentDate;
+    }
+    throw `Unknown investmentDateCode ${investmentDateCode}`;
+  }
 }
 module.exports = new Utils();
