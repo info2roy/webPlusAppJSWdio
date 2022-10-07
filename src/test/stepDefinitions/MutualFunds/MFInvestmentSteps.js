@@ -134,8 +134,8 @@ When(/^I validate investment header "I would like to invest" containing (\d+), (
   async (amount, sipFrequency, sipDuration) => {
     console.log(`I validate investment header "I would like to invest" containing ${amount}, ${sipFrequency} and ${sipDuration}`);
     if (sipFrequency === Constants.INVESTMENT_TYPE_SIP) {
-      if (sipDuration === 'Default') {
-        sipDuration = 84;
+      if (sipDuration.startsWith('Default:')) {
+        sipDuration = parseInt(sipDuration.slice('Default:'.length));
       }
       expect(await MFInvestmentFunctionality.setupMFSIPInvestmentPageLaunched(amount, sipDuration)).to.be.true;
     } else if (sipFrequency === Constants.INVESTMENT_TYPE_ONETIME) {
@@ -161,16 +161,20 @@ When(/^I click on "Invest more" for (.+)$/, async (fundName) => {
   await MFInvestmentFunctionality.investMoreInExistingMutualFund(fundName);
 });
 
-When(/^I validate section "SIP(s) and STP(s)" to contain "([^"]*)?" (SIP|OneTime) with (\d+)$/,
-  async(portfolio, investmentType, amount) => {
-    console.log(`I validate section "SIP(s) and STP(s)" to contain "${portfolio}" ${investmentType} with ${amount}`);
-    expect(MFInvestmentFunctionality.validateInvestmentSummary(portfolio, investmentType, amount)).to.be.true;
+Then(/^I validate section "SIP\(s\) and STP\(s\)" to contain "([^"]*)?" (SIP|OneTime) with (\d+), (.+), (.+)$/,
+  async(portfolio, investmentType, amount, investmentDateCode, stepUpPercent) => {
+    console.log(`I validate section "SIP(s) and STP(s)" to contain "${portfolio}" ${investmentType} with ${amount}, ${investmentDateCode}, ${stepUpPercent}`);
+    let percent = 10;
+    if (stepUpPercent !== 'Default') {
+      percent = parseInt(stepUpPercent);
+    }
+    expect(await MFInvestmentFunctionality.validateInvestmentSummary(portfolio, investmentType, amount, investmentDateCode, percent)).to.be.true;
   }
 );
 
-When(/^I validate section "Monthly Summary -> Upcoming" to contain "([^"]*)?", "(Investment - Every Month|Investment - One Time)" with (\d+)$/,
+Then(/^I validate section "Monthly Summary -> Upcoming" to contain "([^"]*)?", "(Investment - Every Month|Investment - One Time)" with (\d+)$/,
   async(portfolio, investmentType, amount) => {
     console.log(`I validate section "Monthly Summary -> Upcoming" to contain "${portfolio}", "${investmentType}" with ${amount}`);
-    expect(MFInvestmentFunctionality.validateUpcomingInvestment(portfolio, investmentType, amount)).to.be.true;
+    expect(await MFInvestmentFunctionality.validateUpcomingInvestment(portfolio, investmentType, amount)).to.be.true;
   }
 );
