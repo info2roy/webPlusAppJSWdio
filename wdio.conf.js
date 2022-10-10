@@ -27,13 +27,13 @@ exports.config = {
   // port: 52033,
   // path: '/wd/hub',
   specs: [
-    './src/test/features/LoginViaHomepage.feature',
-    './src/test/features/MutualFunds/MFStatements.feature',
-    './src/test/features/MoreOptions/*.feature',
-    './src/test/features/MutualFunds/InvestTab/ScripboxGuidedPath/InvestLongTermWealth.feature',
-    './src/test/features/MutualFunds/InvestTab/InvestMoreInAlreadyInvestedMF.feature',
+    //'./src/test/features/LoginViaHomepage.feature',
+    //'./src/test/features/MutualFunds/MFStatements.feature',
+    //'./src/test/features/MoreOptions/*.feature',
+    //'./src/test/features/MutualFunds/InvestTab/ScripboxGuidedPath/InvestLongTermWealth.feature',
+    //'./src/test/features/MutualFunds/InvestTab/InvestMoreInAlreadyInvestedMF.feature',
     './src/test/features/MutualFunds/InvestMore/ScripboxGuidedPath/InvestMoreLongTermWealth.feature',
-    './src/test/features/MutualFunds/MyWealth/InvestMore/InvestLongTermWealth.feature'
+    //'./src/test/features/MutualFunds/MyWealth/InvestMore/InvestLongTermWealth.feature'
   ],
   // Patterns to exclude.
   exclude: [
@@ -192,7 +192,7 @@ exports.config = {
     // <string> (expression) only execute the features or scenarios with
     // tags matching the expression, see
     // https://docs.cucumber.io/tag-expressions/
-    tagExpression: 'not @skip',
+    tagExpression: '@run',
     timeout: 30000,
     tagsInTitle: false,
     snippetSyntax: undefined,
