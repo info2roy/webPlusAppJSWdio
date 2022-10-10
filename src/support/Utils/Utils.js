@@ -455,6 +455,13 @@ class Utils {
     return isDisplayed;
   }
 
+  async isTextDisplayedv2(text) {
+    //await browser.pause(1000);
+    const selector = { web: `//*[contains(text(),"${text}")]`, app: `//*[contains(text(),"${text}")]` };
+    const isDisplayed = await this.elementIsDisplayed(selector);
+    return isDisplayed;
+  }
+
   async isDataErrorDisplayed(text) {
     const webElement = (`//*[contains(@data-error,"${text}")]`);
     const isDisplayed = await $(webElement).isDisplayed();
