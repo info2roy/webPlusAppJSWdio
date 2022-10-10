@@ -63,7 +63,6 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I select radio option <SIPFrequency>
     When I enter data for investment-amount with value <SIPAmount>
     Then I see message <UiError> for <SIPAmount>
-    # Then I should see error message "Amount must be greater than or equal to 1000" if amount is less than 1000
     Then I go back to the dashboard page
     Examples:
       | SIPFrequency | SIPAmount | UiError |
