@@ -143,5 +143,23 @@ class MFInvestmentFunctionality {
   async investMoreInExistingMutualFund(fundName) {
     await MFInvestmentPage.clickInvestMoreLinkForExistingFund(fundName);
   }
+
+  async validateInvestmentSummary(portfolio, investmentType, amount, investmentDateCode, stepUpPercent) {
+    let status = (await MFInvestmentPage.investmentSummaryAmountIsDisplayed(portfolio, investmentType, amount)) &&
+      (await MFInvestmentPage.investmentSummaryInvestmentDateIsDisplayed(portfolio, investmentType, investmentDateCode)) &&
+      (await MFInvestmentPage.investmentSummaryStepUpIsDisplayed(portfolio, investmentType, stepUpPercent));
+    if (amount >= 2000) {
+      status = status && (await MFInvestmentPage.investmentSummaryNumFundsIsDisplayed(portfolio, investmentType));
+    }
+    return status;
+  }
+
+  async validateUpcomingInvestment(portfolio, investmentType, amount) {
+    if (amount >= 2000) {
+      return (await MFInvestmentPage.upcomingInvestmentAmountIsDisplayed(portfolio, amount)) &&
+        (await MFInvestmentPage.upcomingInvestmentTypeIsDisplayed(portfolio, investmentType));
+    }
+    return true;
+  }
 }
 module.exports = new MFInvestmentFunctionality();

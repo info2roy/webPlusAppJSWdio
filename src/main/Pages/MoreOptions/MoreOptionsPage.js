@@ -315,7 +315,7 @@ class MoreOptionsPage {
     if (Device.isAndroidApp()) {
       await Utils.scrollVerticalUntilTextIntoViewForAndroid(MoreOptionsObjects.giveFeedbackOptionText);
     } else if(Device.isWeb()) {
-      await Utils.scrollAndMoveToElement(MoreOptionsObjects.giveFeedbackOption);
+      await Utils.scrollToElement(MoreOptionsObjects.giveFeedbackOption);
     }
     await Utils.clickElement(MoreOptionsObjects.giveFeedbackOption);
   }

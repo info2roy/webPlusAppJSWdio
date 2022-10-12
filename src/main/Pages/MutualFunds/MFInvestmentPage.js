@@ -294,5 +294,38 @@ class MFInvestmentPage {
   async clickInvestMoreLinkForExistingFund(fundName) {
     await Utils.clickElement(MFInvestmentObjects.investMoreLinkForExistingFund(fundName));
   }
+
+  async investmentSummaryAmountIsDisplayed(portfolio, investmentType, amount) {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.investmentSummaryAmount(
+      portfolio, investmentType, amount)));
+  }
+
+  async investmentSummaryNumFundsIsDisplayed(portfolio, investmentType) {
+    await browser.pause(15000);
+    const numFundsStr = await Utils.getText(MFInvestmentObjects.investmentSummaryNumFunds(portfolio, investmentType));
+    const numFunds = parseInt(numFundsStr);
+    return (numFunds > 0);
+  }
+
+  async investmentSummaryInvestmentDateIsDisplayed(portfolio, investmentType, investmentDateCode) {
+    const investmentDate = Utils.getInvestmentDate(new Date(), investmentDateCode).getDate();
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.investmentSummaryInvestmentDate(
+      portfolio, investmentType, investmentDate)));
+  }
+
+  async investmentSummaryStepUpIsDisplayed(portfolio, investmentType, stepUpPercent) {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.investmentSummaryStepUp(
+      portfolio, investmentType, stepUpPercent)));
+  }
+
+  async upcomingInvestmentAmountIsDisplayed(portfolio, amount) {
+    return (await Utils.elementIsDisplayed(MFInvestmentObjects.upcomingInvestmentAmount(
+      portfolio, amount)));
+  }
+
+  async upcomingInvestmentTypeIsDisplayed(portfolio, investmentType) {
+    return (await Utils.validateElementText(MFInvestmentObjects.upcomingInvestmentType(portfolio),
+      investmentType));
+  }
 }
 module.exports = new MFInvestmentPage();

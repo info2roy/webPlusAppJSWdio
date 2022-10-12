@@ -68,7 +68,7 @@ Then(/^I see data-error (.+) for (.+)$/, async (uiError, data) => {
 
 When(/^I enter data for (.+) with value (.+)$/, async (option, value) => {
   await console.log(`Entering data for ${option}`);
-  if (value !== 'Default') {
+  if (!(value.startsWith('Default:'))) {
     await CommonFunctionality.updateProfileData(option, value);
   }
 });
