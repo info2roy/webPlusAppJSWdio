@@ -71,7 +71,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: 'debug',
+  logLevel: 'warn',
   //
   // Set specific log levels per logger
   // loggers:
@@ -192,7 +192,7 @@ exports.config = {
     // <string> (expression) only execute the features or scenarios with
     // tags matching the expression, see
     // https://docs.cucumber.io/tag-expressions/
-    tagExpression: '@run',
+    tagExpression: 'not @skip',
     timeout: 30000,
     tagsInTitle: false,
     snippetSyntax: undefined,
