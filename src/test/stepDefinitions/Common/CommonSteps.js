@@ -36,7 +36,7 @@ When(/^I validate header "([^"]*)?"$/, async (header) => {
   // if (['I want to invest', 'Investment Growth'].includes(header)) {
   //   await browser.pause(5000);
   // }
-  expect(await Utils.isTextDisplayedv2(header)).to.be.true;
+  expect(await Utils.isTextDisplayed(header)).to.be.true;
 });
 
 When(/^I validate header ([^"]+)$/, async (header) => {

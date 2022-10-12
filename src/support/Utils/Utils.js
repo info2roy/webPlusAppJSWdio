@@ -446,20 +446,12 @@ class Utils {
     const webElement = (`//*[contains(text(),"${text}")]`);
     const matches = await $$(webElement);
     let isDisplayed = false;
-    for (const match of matches) {
-      isDisplayed = await match.isDisplayed();
-      if (isDisplayed) {
+    for (let i = 0; i < matches.length; i++) {
+      isDisplayed = await matches[i].isDisplayed();
+      if (isDisplayed)
         return true;
-      }
     }
-    return isDisplayed;
-  }
-
-  async isTextDisplayedv2(text) {
-    //await browser.pause(1000);
-    const selector = { web: `//*[contains(text(),"${text}")]`, app: `//*[contains(text(),"${text}")]` };
-    const isDisplayed = await this.elementIsDisplayed(selector);
-    return isDisplayed;
+    return false;
   }
 
   async isDataErrorDisplayed(text) {
