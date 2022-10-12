@@ -27,13 +27,13 @@ exports.config = {
   // port: 52033,
   // path: '/wd/hub',
   specs: [
-    //'./src/test/features/LoginViaHomepage.feature',
-    //'./src/test/features/MutualFunds/MFStatements.feature',
-    //'./src/test/features/MoreOptions/*.feature',
-    //'./src/test/features/MutualFunds/InvestTab/ScripboxGuidedPath/InvestLongTermWealth.feature',
-    //'./src/test/features/MutualFunds/InvestTab/InvestMoreInAlreadyInvestedMF.feature',
+    './src/test/features/LoginViaHomepage.feature',
+    './src/test/features/MutualFunds/MFStatements.feature',
+    './src/test/features/MoreOptions/*.feature',
+    './src/test/features/MutualFunds/InvestTab/ScripboxGuidedPath/InvestLongTermWealth.feature',
+    './src/test/features/MutualFunds/InvestTab/InvestMoreInAlreadyInvestedMF.feature',
     './src/test/features/MutualFunds/InvestMore/ScripboxGuidedPath/InvestMoreLongTermWealth.feature',
-    //'./src/test/features/MutualFunds/MyWealth/InvestMore/InvestLongTermWealth.feature'
+    './src/test/features/MutualFunds/MyWealth/InvestMore/InvestLongTermWealth.feature'
   ],
   // Patterns to exclude.
   exclude: [
@@ -71,7 +71,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: 'warn',
+  logLevel: 'info',
   //
   // Set specific log levels per logger
   // loggers:
