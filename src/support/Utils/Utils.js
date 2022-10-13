@@ -446,13 +446,12 @@ class Utils {
     const webElement = (`//*[contains(text(),"${text}")]`);
     const matches = await $$(webElement);
     let isDisplayed = false;
-    for (const match of matches) {
-      isDisplayed = await match.isDisplayed();
-      if (isDisplayed) {
+    for (let i = 0; i < matches.length; i++) {
+      isDisplayed = await matches[i].isDisplayed();
+      if (isDisplayed)
         return true;
-      }
     }
-    return isDisplayed;
+    return false;
   }
 
   async isDataErrorDisplayed(text) {

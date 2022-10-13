@@ -29,11 +29,14 @@ Feature: Scripbox Dashboard -> Invest -> Mutual Funds -> Long Term Wealth -> Scr
     # When I select start date <SIPStartDate>
     When I set yearly sip increase percent to <SIPIncreasePercentPerYear>
     When I click on "Confirm"
+    # When I validate header "Nominee verification required"
+    # When I enter data for verify-otp with value 111111
+    # When I click on "Verify"
     # Then I validate header "Investment scheduled successfully"
     # Then I click on "View investments"
-    # Then I validate section "SIP(s) and STP(s)" to contain <mutualFundPortfolio> SIP with <SIPAmount>
-    # Then I validate section "Monthly Summary -> Upcoming" to contain <mutualFundPortfolio> "Investment - Every Month" with <SIPAmount>
-    Then I go back to the dashboard page
+    # Then I validate section "SIP(s) and STP(s)" to contain "Long Term Wealth" SIP with <SIPAmount>, <SIPStartDate>, <SIPIncreasePercentPerYear>
+    # Then I validate section "Monthly Summary -> Upcoming" to contain "Long Term Wealth", "Investment - Every Month" with <SIPAmount>
+  Then I go back to the dashboard page
     Examples:
       | SIPFrequency | SIPAmount | SIPDuration | SIPStartDate | SIPIncreasePercentPerYear |
       # | Every month (SIP)  | 30000 | Default:84 | Default | Default |
@@ -112,9 +115,12 @@ Feature: Scripbox Dashboard -> Invest -> Mutual Funds -> Long Term Wealth -> Scr
     When I validate investment header "I would like to invest" containing <oneTimeAmount>, <SIPFrequency> and Blank
     #When I select investment date <investmentDate>
     When I click on "Confirm"
+    # When I validate header "Nominee verification required"
+    # When I enter data for verify-otp with value 111111
+    # When I click on "Verify"
     # Then I validate header "Investment scheduled successfully"
-    # When I click on "View investments"
-    # Then I validate section "Monthly Summary -> Upcoming" to contain <mutualFundPortfolio> "Investment - One Time" with <oneTimeAmount>
+    # Then I click on "View investments"
+    # Then I validate section "Monthly Summary -> Upcoming" to contain "Long Term Wealth", "Investment - One Time" with <oneTimeAmount>
     Then I go back to the dashboard page
     Examples:
       | SIPFrequency | oneTimeAmount | investmentDate |

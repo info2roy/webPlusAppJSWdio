@@ -1,7 +1,7 @@
 Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To "Your Investments" -> Invest more in a fund
 
   Scenario: As a Scripbox user, I am logged in
-    Given I login to Scripbox in "ANDROMEDA" for "mahesh.bale@scripbox.com"
+    Given I login to Scripbox in "ANDROMEDA" for "test_email+d98c92961d@scripbox.io"
 
   Scenario Outline: As a logged in user, I am able to schedule SIP into already invested fund for Invest tab -> Mutual Funds -> Go To "Your Investments" -> Invest more in a fund
     When I navigate to "Invest" from Dashboard
@@ -19,9 +19,9 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To "Your Investm
     # When I select start date <SIPStartDate>
     When I enter data for duration with value <SIPDuration>
     When I click on button containing "Confirm SIP of " and <SIPAmount>
-    When I validate header "Nominee verification required"
-    When I enter data for verify-otp with value 111111
-    When I click on "Verify"
+    # When I validate header "Nominee verification required"
+    # When I enter data for verify-otp with value 111111
+    # When I click on "Verify"
     # Then I validate header "Investment scheduled successfully"
     Then I go back to the dashboard page 
     Examples:
@@ -50,6 +50,7 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To "Your Investm
     Then I go back to the dashboard page 
     Examples:
       | FundName | SIPFrequency | SIPAmount | UiError |
+      | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | Blank | Amount must be greater than or equal to 1000 |
       | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 1 | Amount must be greater than or equal to 1000 |
       | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 999 | Amount must be greater than or equal to 1000 |
 
@@ -164,9 +165,9 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To "Your Investm
     When I enter data for One Time Amount with value <OneTimeAmount>
     When I select checkbox scheduleForLater
     When I click on button containing "Confirm investment of " and <OneTimeAmount>
-    When I validate header "Nominee verification required"
-    When I enter data for verify-otp with value 111111
-    When I click on "Verify"
+    # When I validate header "Nominee verification required"
+    # When I enter data for verify-otp with value 111111
+    # When I click on "Verify"
     # Then I validate header "Investment scheduled successfully"
     Then I go back to the dashboard page 
     Examples:
