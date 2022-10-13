@@ -1,10 +1,8 @@
 Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
 
-  @run
   Scenario: As a Scripbox user, I am logged in
     Given I login to Scripbox in "ANDROMEDA" for "test_email+d98c92961d@scripbox.io"
 
-  @run
   Scenario Outline: As a logged in user, I am able to schedule "Long Term Wealth" investment in mutual funds via Every month (SIP) for Invest more -> Mutual Funds -> Long Term Wealth
     When I go back to the dashboard page
     When I click on "Invest more"
