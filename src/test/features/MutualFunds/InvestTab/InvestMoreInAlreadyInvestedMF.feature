@@ -31,6 +31,7 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To "Your Investm
       # | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 15000      | T+5 | 12          |
       # | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 20000      | T+7 | 24          |
       # | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 25000      | 1stOfNextMonth | 36          |
+      # | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 999999999      | 10thOfNextMonth | 48          |
       | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 30000      | 5thOfNextMonth | 72          |
   
   Scenario Outline: As a logged in user, I am able to see error messages when SIP amount is less than 1000 when scheduling SIP into already invested fund for Invest tab -> Mutual Funds -> Go To "Your Investments" -> Invest more in a fund
@@ -53,6 +54,7 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To "Your Investm
       | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | Blank | Amount must be greater than or equal to 1000 |
       | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 1 | Amount must be greater than or equal to 1000 |
       | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 999 | Amount must be greater than or equal to 1000 |
+      | HDFC Floating Rate Debt Wholesale Plan (G) | Monthly SIP  | 1000000000 | Amount must be less than or equal to 999999999 |
 
   Scenario Outline: As a logged in user, I am able to see error messages when SIP duration is invalid when scheduling SIP into already invested fund for Invest tab -> Mutual Funds -> Go To "Your Investments" -> Invest more in a fund
     When I navigate to "Invest" from Dashboard
@@ -126,6 +128,7 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To "Your Investm
     Examples:
       | FundName | SIPFrequency | OneTimeAmount |
       | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 5000   |
+      # | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 10000000   |
 
   Scenario Outline: As a logged in user, when I do immediate one time investment into already invested fund, I see error messages when One Time Amount is invalid for Invest tab -> Mutual Funds -> Go To "Your Investments" -> Invest more in a fund
     When I go back to the dashboard page
@@ -148,6 +151,7 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To "Your Investm
       | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | Blank   | Amount must be greater than or equal to 1000 |
       | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 1   | Amount must be greater than or equal to 1000 |
       | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 999   | Amount must be greater than or equal to 1000 |
+      | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 10000001   | Amount must be less than or equal to 10000000 |
   
   Scenario Outline: As a logged in user, I am able to do sheduled one time investment into already invested fund for Invest tab -> Mutual Funds -> Go To "Your Investments" -> Invest more in a fund
     When I go back to the dashboard page
