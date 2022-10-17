@@ -725,5 +725,12 @@ class Utils {
     }
     throw `Unknown investmentDateCode ${investmentDateCode}`;
   }
+
+  getNextInvestmentDate(currentDate, yearsOffset, monthsOffset, daysOffset) {
+    currentDate.setFullYear(currentDate.getFullYear() + yearsOffset);
+    currentDate.setMonth(currentDate.getMonth() + monthsOffset);
+    currentDate.setDate(currentDate.getDate() + daysOffset);
+    return currentDate;
+  }
 }
 module.exports = new Utils();

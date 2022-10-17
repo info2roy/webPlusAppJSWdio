@@ -69,6 +69,8 @@ When(/^I validate text at xpath as "([^"]*)?"$/, async (text, dataTable) => {
 When(/^I validate investment date years (.+) months (.+) days (.+)$/,
   async(yearsOffset, monthsOffset, daysOffset) => {
     console.log(`I validate investment date years ${yearsOffset} months ${monthsOffset} days ${daysOffset}`);
+    const nextInvestmentDate = Utils.getNextInvestmentDate(new Date(), parseInt(yearsOffset), parseInt(monthsOffset), parseInt(daysOffset));
+    expect(await Utils.isTextDisplayed(nextInvestmentDate.toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }))).to.be.true;
   });
 
 When(/^I select radio option (.+)$/, async (option) => {
