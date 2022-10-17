@@ -287,8 +287,8 @@ class MFInvestmentPage {
     return sum === totalAmount;
   }
 
-  async setYearlySIPIncreasePercent(percent) {
-    await Utils.setHorizontalSlider(MFInvestmentObjects.sipIncreasePercentSlider, 10, percent);
+  async setYearlySIPIncreasePercent(percent, defaultPercent) {
+    await Utils.setHorizontalSlider(MFInvestmentObjects.sipIncreasePercentSlider, defaultPercent, percent);
   }
 
   async clickInvestMoreLinkForExistingFund(fundName) {

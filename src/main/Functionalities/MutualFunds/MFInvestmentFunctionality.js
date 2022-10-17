@@ -136,8 +136,8 @@ class MFInvestmentFunctionality {
     return (await MFInvestmentPage.selectPaymentTypePageHeaderIsDisplayed(investmentType, amount));
   }
 
-  async setYearlySIPIncreasePercent(percent) {
-    await MFInvestmentPage.setYearlySIPIncreasePercent(percent);
+  async setYearlySIPIncreasePercent(percent, defaultPercent) {
+    await MFInvestmentPage.setYearlySIPIncreasePercent(percent, defaultPercent);
   }
 
   async investMoreInExistingMutualFund(fundName) {

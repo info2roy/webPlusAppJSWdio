@@ -676,7 +676,7 @@ class Utils {
   }
 
   async setHorizontalSlider(selector, defaultValue, targetValue) {
-    const xOffset = (targetValue - defaultValue) * 20;
+    const xOffset = (targetValue - defaultValue) * 18;
     const yOffset = 0;
     await this.dragAndDropElement(selector, xOffset, yOffset);
   }
