@@ -25,7 +25,8 @@ Feature: Scripbox Dashboard -> View Investment Calendar ->  Long Term Wealth SIP
     When I validate header "SIP Amount"
     When I validate amount <UpdatedSIPAmount>
     When I validate header "Step up"
-    When I validate header <SIPIncreasePercentPerYear>%
+    When I validate text at xpath as <SIPIncreasePercentPerYear>%
+      | //div[text()="Step up"]/parent::div/parent::div/following-sibling::div/div[2]/div |  |
     #When I validate investment header "SIP amount will be increased by" containing <SIPIncreasePercentPerYear> and years +1 months +1
     When I validate header "SIP Tenure"
     When I validate header "84 months"

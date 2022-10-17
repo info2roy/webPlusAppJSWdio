@@ -46,8 +46,24 @@ When(/^I validate amount (\d+)$/, async (amount) => {
   expect(await Utils.isTextDisplayed(amount.toLocaleString('hi'))).to.be.true;
 });
 
-When(/^I validate text at xpath as (.+)$/, async (text) => {
+When(/^I validate text at xpath as ([^"]+)$/, async (text, dataTable) => {
   console.log(`I validate text at xpath as ${text}`);
+  const data = dataTable.raw();
+  data.forEach(async function(element) {
+    selector = { web: element[0], app: element[1] };
+    console.log(`xpath selector ${JSON.stringify(selector)}`);
+    expect(await Utils.isTextPresentAtSelector(selector, text)).to.be.true;
+  }, this);
+});
+
+When(/^I validate text at xpath as "([^"]*)?"$/, async (text, dataTable) => {
+  console.log(`I validate text at xpath as "${text}"`);
+  const data = dataTable.raw();
+  data.forEach(async function(element) {
+    selector = { web: element[0], app: element[1] };
+    console.log(`xpath selector ${JSON.stringify(selector)}`);
+    expect(await Utils.isTextPresentAtSelector(selector, text)).to.be.true;
+  }, this);
 });
 
 When(/^I validate investment date years (.+) months (.+) days (.+)$/,

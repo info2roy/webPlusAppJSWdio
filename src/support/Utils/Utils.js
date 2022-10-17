@@ -471,6 +471,11 @@ class Utils {
     return isDisplayed;
   }
 
+  async isTextPresentAtSelector(selector, text) {
+    const textAt = await this.getText(selector);
+    return textAt.includes(text);
+  }
+
   async scrollUntilTextIsDisplayed(text) {
     const selector = {
       web: `//*[contains(text(),"${text}")]`,
