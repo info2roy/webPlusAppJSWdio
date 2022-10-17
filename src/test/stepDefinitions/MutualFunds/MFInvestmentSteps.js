@@ -153,7 +153,6 @@ When(/^I set yearly sip increase percent from (.+) to (.+)$/, async(defaultPerce
   console.log(`I set yearly sip increase percent to ${toPercent}`);
   if (toPercent !== 'Default') {
     await MFInvestmentFunctionality.setYearlySIPIncreasePercent(parseInt(toPercent, 10), parseInt(defaultPercent, 10));
-    await browser.pause(30000);
   }
 });
 
