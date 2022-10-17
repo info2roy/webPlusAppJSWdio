@@ -179,3 +179,9 @@ Then(/^I validate section "Monthly Summary -> Upcoming" to contain "([^"]*)?", "
     expect(await MFInvestmentFunctionality.validateUpcomingInvestment(portfolio, investmentType, amount)).to.be.true;
   }
 );
+
+When(/^I modify SIP amount via Investment Calendar from (\d+) to (\d+)$/,
+  async(currentSIPAmount, updatedSIPAmount) => {
+    console.log(`I modify SIP amount via Investment Calendar from ${currentSIPAmount} to ${updatedSIPAmount}`);
+    await MFInvestmentFunctionality.modifySIPViaInvestmentCalendar(currentSIPAmount, updatedSIPAmount);
+  });

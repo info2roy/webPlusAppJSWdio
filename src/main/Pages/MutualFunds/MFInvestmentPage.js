@@ -327,5 +327,16 @@ class MFInvestmentPage {
     return (await Utils.validateElementText(MFInvestmentObjects.upcomingInvestmentType(portfolio),
       investmentType));
   }
+
+  async modifySIPViaInvestmentCalendar(currentSIPAmount, updatedSIPAmount, recommendedAmount) {
+    if (updatedSIPAmount === recommendedAmount) {
+      console.log('nothing to click');
+    } else if(updatedSIPAmount === currentSIPAmount) {
+      await Utils.clickElement(MFInvestmentObjects.modifySIPAmountViaInvestmentCalenderOption(currentSIPAmount.toString()));
+    } else {
+      await Utils.clickElement(MFInvestmentObjects.modifySIPAmountViaInvestmentCalenderOption('0'));
+      await Utils.setInputField(updatedSIPAmount, MFInvestmentObjects.modifySIPAmountViaInvestmentCalendarField, true);
+    }
+  }
 }
 module.exports = new MFInvestmentPage();

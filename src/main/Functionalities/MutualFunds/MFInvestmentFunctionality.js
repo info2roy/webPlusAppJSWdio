@@ -161,5 +161,10 @@ class MFInvestmentFunctionality {
     }
     return true;
   }
+
+  async modifySIPViaInvestmentCalendar(currentSIPAmount, updatedSIPAmount) {
+    const recommendedAmount = currentSIPAmount + parseInt(currentSIPAmount * 0.1, 10);
+    await MFInvestmentPage.modifySIPViaInvestmentCalendar(currentSIPAmount, updatedSIPAmount, recommendedAmount);
+  }
 }
 module.exports = new MFInvestmentFunctionality();

@@ -333,5 +333,15 @@ class MFInvestmentObjects {
       web: `//div[text()="${portfolio}"]/parent::div/parent::div/following-sibling::div/div[contains(text(),"Investment")]`
     };
   }
+
+  modifySIPAmountViaInvestmentCalendarField = {
+    web: '//input[@name="value" and contains(@class,"ycof-amount-field__input")]'
+  };
+
+  modifySIPAmountViaInvestmentCalenderOption(option) {
+    return {
+      web: `//label[@for="${option}"]`
+    };
+  }
 }
 module.exports = new MFInvestmentObjects();
