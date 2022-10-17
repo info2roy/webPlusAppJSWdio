@@ -41,6 +41,20 @@ When(/^I validate header ([^"]+)$/, async (header) => {
   expect(await Utils.isTextDisplayed(header)).to.be.true;
 });
 
+When(/^I validate amount (\d+)$/, async (amount) => {
+  console.log(`I validate amount ${amount}`);
+  expect(await Utils.isTextDisplayed(amount.toLocaleString('hi'))).to.be.true;
+});
+
+When(/^I validate text at xpath as (.+)$/, async (text) => {
+  console.log(`I validate text at xpath as ${text}`);
+});
+
+When(/^I validate investment date years (.+) months (.+) days (.+)$/,
+  async(yearsOffset, monthsOffset, daysOffset) => {
+    console.log(`I validate investment date years ${yearsOffset} months ${monthsOffset} days ${daysOffset}`);
+  });
+
 When(/^I select radio option (.+)$/, async (option) => {
   console.log(`I select radio option ${option}`);
   await Utils.clickRadioButton(option);
