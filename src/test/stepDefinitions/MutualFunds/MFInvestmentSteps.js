@@ -184,3 +184,11 @@ When(/^I modify SIP amount via Investment Calendar from (\d+) to (\d+)$/,
     console.log(`I modify SIP amount via Investment Calendar from ${currentSIPAmount} to ${updatedSIPAmount}`);
     await MFInvestmentFunctionality.modifySIPViaInvestmentCalendar(currentSIPAmount, updatedSIPAmount);
   });
+
+When(/^I validate investment header "SIP amount will be increased by" containing (\d+) and years (.+) months (.+)$/,
+  async (stepUpPercent, yearsOffset, monthsOffset) => {
+    console.log(`I validate investment header "SIP amount will be increased by" containing ${stepUpPercent} and years ${yearsOffset} months ${monthsOffset}`);
+    expect(await MFInvestmentFunctionality.validateModifySIPSummaryText(
+      stepUpPercent, parseInt(yearsOffset), parseInt(monthsOffset))).to.be.true;
+  }
+);

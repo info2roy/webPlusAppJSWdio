@@ -343,5 +343,9 @@ class MFInvestmentObjects {
       web: `//label[@for="${option}"]`
     };
   }
+
+  modifySIPAmountSummaryTextElement = {
+    web: '//div[text()="SIP Amount"]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div[1]/div[1]/div[1]'
+  };
 }
 module.exports = new MFInvestmentObjects();

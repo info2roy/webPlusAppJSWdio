@@ -338,5 +338,10 @@ class MFInvestmentPage {
       await Utils.setInputField(updatedSIPAmount, MFInvestmentObjects.modifySIPAmountViaInvestmentCalendarField, true);
     }
   }
+
+  async validateModifySIPSummaryText(stepUpPercent, stepUpStartMonth) {
+    const expectedSummaryText = `SIP amount will be increased by ${stepUpPercent}% every year from ${stepUpStartMonth}`;
+    return (await Utils.isTextPresentAtSelector(MFInvestmentObjects.modifySIPAmountSummaryTextElement, expectedSummaryText));
+  }
 }
 module.exports = new MFInvestmentPage();

@@ -1,4 +1,5 @@
 const Constants = require('../../../config/data/structured/Constants');
+const Utils = require('../../../support/Utils/Utils');
 const MFInvestmentPage = require('../../Pages/MutualFunds/MFInvestmentPage');
 
 class MFInvestmentFunctionality {
@@ -165,6 +166,12 @@ class MFInvestmentFunctionality {
   async modifySIPViaInvestmentCalendar(currentSIPAmount, updatedSIPAmount) {
     const recommendedAmount = currentSIPAmount + parseInt(currentSIPAmount * 0.1, 10);
     await MFInvestmentPage.modifySIPViaInvestmentCalendar(currentSIPAmount, updatedSIPAmount, recommendedAmount);
+  }
+
+  async validateModifySIPSummaryText(stepUpPercent, yearOffset, monthsOffset) {
+    const stepUpStartDate = Utils.getNextInvestmentDate(new Date(), yearOffset, monthsOffset, 0);
+    const stepUpStartMonth = stepUpStartDate.toLocaleString('en-GB', { month: 'short', year: 'numeric' });
+    return (await MFInvestmentPage.validateModifySIPSummaryText(stepUpPercent, stepUpStartMonth));
   }
 }
 module.exports = new MFInvestmentFunctionality();
