@@ -2,6 +2,7 @@ const { When, Then } = require('@wdio/cucumber-framework');
 const CommonFunctionality = require('../../../main/Functionalities/Common/CommonFunctionality');
 const Utils = require('../../../support/Utils/Utils');
 const { expect } = require('chai');
+const CommonObjects = require('../../../main/Objects/Common/CommonObjects');
 
 When(/^I refresh the current page$/, async () => {
   await console.log('When I refresh the current page');
@@ -125,4 +126,9 @@ When(/^I click on button containing "([^"]*)?" and (\d+)$/, async (text, sipAmou
 When(/^I select checkbox (.+)$/, async(checkboxId) => {
   console.log(`I select checkbox ${checkboxId}`);
   await Utils.setCheckBoxById(checkboxId);
+});
+
+When(/^I select a family member "([^"]*)?"$/, async (familyMember) => {
+  await console.log(`When I select a family member "${familyMember}"`);
+  expect(await CommonFunctionality.selectFamilyMember(familyMember, CommonObjects.selectFinancialProductPageHeader)).to.be.true;
 });
