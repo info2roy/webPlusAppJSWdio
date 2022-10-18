@@ -202,7 +202,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     Then I go back to the dashboard page
     Examples:
       | SIPFrequency | oneTimeAmount | UiError |
-      | Blank  | 1 | Amount must be greater than or equal to 5000 |
+      | One time  | Blank | Amount must be greater than or equal to 5000 |
       | One time  | 1 | Amount must be greater than or equal to 5000 |
       | One time  | 4999 | Amount must be greater than or equal to 5000 |
       | One time  | 10000001 | Amount must be less than or equal to 10000000 |
