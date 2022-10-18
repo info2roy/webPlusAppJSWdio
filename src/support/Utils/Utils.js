@@ -413,6 +413,12 @@ class Utils {
     await myButton.click();
   }
 
+  async clickNavigationElementByText(webNavigateText, appXpath) {
+    const selector = { web: `//i[text()="${webNavigateText}"]`, app: appXpath };
+    const myButton = await $(this.getLocator(selector));
+    await myButton.click();
+  }
+
   async clickButtonByTextAndAmount(text, amount) {
     const selector = {
       web: `//button[text()="${text}${amount.toLocaleString('hi')}"]`,

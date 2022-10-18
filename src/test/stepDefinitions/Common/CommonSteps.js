@@ -132,3 +132,11 @@ When(/^I select a family member "([^"]*)?"$/, async (familyMember) => {
   await console.log(`When I select a family member "${familyMember}"`);
   expect(await CommonFunctionality.selectFamilyMember(familyMember, CommonObjects.selectFinancialProductPageHeader)).to.be.true;
 });
+
+When(/^I click on navigation$/, async (dataTable) => {
+  console.log(`When I click on navigation`);
+  const data = dataTable.raw();
+  data.forEach(async function(element) {
+    await Utils.clickNavigationElementByText(element[0], element[1]);
+  }, this);
+});
