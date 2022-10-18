@@ -148,9 +148,10 @@ Feature: Scripbox Dashboard -> Invest tab -> Mutual Funds -> Go To "Your Investm
     Then I go back to the dashboard page 
     Examples:
       | FundName | SIPFrequency | OneTimeAmount | UiError |
-      | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | Blank   | Amount must be greater than or equal to 1000 |
-      | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 1   | Amount must be greater than or equal to 1000 |
-      | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 999   | Amount must be greater than or equal to 1000 |
+      | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | Blank   | Amount must be greater than or equal to 500 |
+      | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 1   | Amount must be greater than or equal to 500 |
+      | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 499   | Amount must be greater than or equal to 500 |
+      | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 501   | Amount must be multiple of 100 |
       | HDFC Floating Rate Debt Wholesale Plan (G) | One time  | 10000001   | Amount must be less than or equal to 10000000 |
   
   Scenario Outline: As a logged in user, I am able to do sheduled one time investment into already invested fund for Invest tab -> Mutual Funds -> Go To "Your Investments" -> Invest more in a fund
