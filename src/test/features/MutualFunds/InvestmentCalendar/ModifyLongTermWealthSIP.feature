@@ -31,12 +31,12 @@ Feature: Scripbox Dashboard -> View Investment Calendar ->  Long Term Wealth SIP
     When I validate header "SIP Tenure"
     When I validate header "84 months"
     When I validate header "Next Investment Date"
-    When I validate investment date at years 0 months +1 days -1
+    When I validate investment date for <InvestmentDayOfMonth> at years 0 months +1 days 0
     When I click on button containing "Confirm with " and <UpdatedSIPAmount>
     When I validate header "Nominee verification required"
     When I enter data for verify-otp with value 111111
     When I click on "Verify"
     # Then I validate header "Investment scheduled successfully"
     Examples:
-      | CurrentSIPAmount | UpdatedSIPAmount | SIPIncreasePercentPerYear |
-      | 20000            | 21000            | 5                         |
+      | CurrentSIPAmount | UpdatedSIPAmount | SIPIncreasePercentPerYear | InvestmentDayOfMonth |
+      | 20000            | 21000            | 5                         | 16 |

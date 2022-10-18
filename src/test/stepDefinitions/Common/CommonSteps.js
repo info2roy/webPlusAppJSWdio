@@ -66,10 +66,12 @@ When(/^I validate text at xpath as "([^"]*)?"$/, async (text, dataTable) => {
   }, this);
 });
 
-When(/^I validate investment date at years (.+) months (.+) days (.+)$/,
-  async(yearsOffset, monthsOffset, daysOffset) => {
+When(/^I validate investment date for (\d+) at years (.+) months (.+) days (.+)$/,
+  async(investmentDayOfMonth, yearsOffset, monthsOffset, daysOffset) => {
     console.log(`I validate investment date at years ${yearsOffset} months ${monthsOffset} days ${daysOffset}`);
-    const nextInvestmentDate = Utils.getNextInvestmentDate(new Date(), parseInt(yearsOffset), parseInt(monthsOffset), parseInt(daysOffset));
+    const investmentDateOfCurrentMonth = new Date();
+    investmentDateOfCurrentMonth.setDate(investmentDayOfMonth);
+    const nextInvestmentDate = Utils.getNextInvestmentDate(investmentDateOfCurrentMonth, parseInt(yearsOffset), parseInt(monthsOffset), parseInt(daysOffset));
     expect(await Utils.isTextDisplayed(nextInvestmentDate.toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }))).to.be.true;
   });
 
