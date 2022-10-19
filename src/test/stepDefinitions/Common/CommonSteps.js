@@ -2,6 +2,7 @@ const { When, Then } = require('@wdio/cucumber-framework');
 const CommonFunctionality = require('../../../main/Functionalities/Common/CommonFunctionality');
 const Utils = require('../../../support/Utils/Utils');
 const { expect } = require('chai');
+const CommonObjects = require('../../../main/Objects/Common/CommonObjects');
 
 When(/^I refresh the current page$/, async () => {
   await console.log('When I refresh the current page');
@@ -35,6 +36,45 @@ When(/^I validate header "([^"]*)?"$/, async (header) => {
   console.log(`I validate header "${header}"`);
   expect(await Utils.isTextDisplayed(header)).to.be.true;
 });
+
+When(/^I validate header ([^"]+)$/, async (header) => {
+  console.log(`I validate header ${header}`);
+  expect(await Utils.isTextDisplayed(header)).to.be.true;
+});
+
+When(/^I validate amount (\d+)$/, async (amount) => {
+  console.log(`I validate amount ${amount}`);
+  expect(await Utils.isTextDisplayed(amount.toLocaleString('hi'))).to.be.true;
+});
+
+When(/^I validate text at xpath as ([^"]+)$/, async (text, dataTable) => {
+  console.log(`I validate text at xpath as ${text}`);
+  const data = dataTable.raw();
+  data.forEach(async function(element) {
+    selector = { web: element[0], app: element[1] };
+    console.log(`xpath selector ${JSON.stringify(selector)}`);
+    expect(await Utils.isTextPresentAtSelector(selector, text)).to.be.true;
+  }, this);
+});
+
+When(/^I validate text at xpath as "([^"]*)?"$/, async (text, dataTable) => {
+  console.log(`I validate text at xpath as "${text}"`);
+  const data = dataTable.raw();
+  data.forEach(async function(element) {
+    selector = { web: element[0], app: element[1] };
+    console.log(`xpath selector ${JSON.stringify(selector)}`);
+    expect(await Utils.isTextPresentAtSelector(selector, text)).to.be.true;
+  }, this);
+});
+
+When(/^I validate investment date for (\d+) at years (.+) months (.+) days (.+)$/,
+  async(investmentDayOfMonth, yearsOffset, monthsOffset, daysOffset) => {
+    console.log(`I validate investment date at years ${yearsOffset} months ${monthsOffset} days ${daysOffset}`);
+    const investmentDateOfCurrentMonth = new Date();
+    investmentDateOfCurrentMonth.setDate(investmentDayOfMonth);
+    const nextInvestmentDate = Utils.getNextInvestmentDate(investmentDateOfCurrentMonth, parseInt(yearsOffset), parseInt(monthsOffset), parseInt(daysOffset));
+    expect(await Utils.isTextDisplayed(nextInvestmentDate.toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }))).to.be.true;
+  });
 
 When(/^I select radio option (.+)$/, async (option) => {
   console.log(`I select radio option ${option}`);
@@ -107,4 +147,17 @@ When(/^I click on button containing "([^"]*)?" and (\d+)$/, async (text, sipAmou
 When(/^I select checkbox (.+)$/, async (checkboxId) => {
   console.log(`I select checkbox ${checkboxId}`);
   await Utils.setCheckBoxById(checkboxId);
+});
+
+When(/^I select a family member "([^"]*)?"$/, async (familyMember) => {
+  await console.log(`When I select a family member "${familyMember}"`);
+  expect(await CommonFunctionality.selectFamilyMember(familyMember, CommonObjects.selectFinancialProductPageHeader)).to.be.true;
+});
+
+When(/^I click on navigation$/, async (dataTable) => {
+  console.log(`When I click on navigation`);
+  const data = dataTable.raw();
+  data.forEach(async function(element) {
+    await Utils.clickNavigationElementByText(element[0], element[1]);
+  }, this);
 });

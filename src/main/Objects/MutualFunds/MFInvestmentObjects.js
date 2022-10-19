@@ -333,5 +333,19 @@ class MFInvestmentObjects {
       web: `//div[text()="${portfolio}"]/parent::div/parent::div/following-sibling::div/div[contains(text(),"Investment")]`
     };
   }
+
+  modifySIPAmountViaInvestmentCalendarField = {
+    web: '//input[@name="value" and contains(@class,"ycof-amount-field__input")]'
+  };
+
+  modifySIPAmountViaInvestmentCalenderOption(option) {
+    return {
+      web: `//label[@for="${option}"]`
+    };
+  }
+
+  modifySIPAmountSummaryTextElement = {
+    web: '//div[text()="SIP Amount"]/parent::div/parent::div/parent::div/parent::div/following-sibling::div/div[1]/div[1]/div[1]'
+  };
 }
 module.exports = new MFInvestmentObjects();

@@ -129,8 +129,9 @@ class CommonPage {
         default:
           await console.warn('Link type is not valid');
       }
-    } else
+    } else {
       await Utils.enterValueInField(option, value);
+    }
   }
 
 }

@@ -149,10 +149,10 @@ When(/^I validate investment header "I would like to make a one-time investment"
   }
 );
 
-When(/^I set yearly sip increase percent to (.+)$/, async(percent) => {
-  console.log(`I set yearly sip increase percent to ${percent}`);
-  if (percent !== 'Default') {
-    await MFInvestmentFunctionality.setYearlySIPIncreasePercent(parseInt(percent, 10));
+When(/^I set yearly sip increase percent from (.+) to (.+)$/, async(defaultPercent, toPercent) => {
+  console.log(`I set yearly sip increase percent to ${toPercent}`);
+  if (toPercent !== 'Default') {
+    await MFInvestmentFunctionality.setYearlySIPIncreasePercent(parseInt(toPercent, 10), parseInt(defaultPercent, 10));
   }
 });
 
@@ -176,5 +176,19 @@ Then(/^I validate section "Monthly Summary -> Upcoming" to contain "([^"]*)?", "
   async(portfolio, investmentType, amount) => {
     console.log(`I validate section "Monthly Summary -> Upcoming" to contain "${portfolio}", "${investmentType}" with ${amount}`);
     expect(await MFInvestmentFunctionality.validateUpcomingInvestment(portfolio, investmentType, amount)).to.be.true;
+  }
+);
+
+When(/^I modify SIP amount via Investment Calendar from (\d+) to (\d+)$/,
+  async(currentSIPAmount, updatedSIPAmount) => {
+    console.log(`I modify SIP amount via Investment Calendar from ${currentSIPAmount} to ${updatedSIPAmount}`);
+    await MFInvestmentFunctionality.modifySIPViaInvestmentCalendar(currentSIPAmount, updatedSIPAmount);
+  });
+
+When(/^I validate investment header "SIP amount will be increased by" containing (\d+) and years (.+) months (.+)$/,
+  async (stepUpPercent, yearsOffset, monthsOffset) => {
+    console.log(`I validate investment header "SIP amount will be increased by" containing ${stepUpPercent} and years ${yearsOffset} months ${monthsOffset}`);
+    expect(await MFInvestmentFunctionality.validateModifySIPSummaryText(
+      stepUpPercent, parseInt(yearsOffset), parseInt(monthsOffset))).to.be.true;
   }
 );

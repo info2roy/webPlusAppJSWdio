@@ -413,6 +413,12 @@ class Utils {
     await myButton.click();
   }
 
+  async clickNavigationElementByText(webNavigateText, appXpath) {
+    const selector = { web: `//i[text()="${webNavigateText}"]`, app: appXpath };
+    const myButton = await $(this.getLocator(selector));
+    await myButton.click();
+  }
+
   async clickButtonByTextAndAmount(text, amount) {
     const selector = {
       web: `//button[text()="${text}${amount.toLocaleString('hi')}"]`,
@@ -444,6 +450,7 @@ class Utils {
   async isTextDisplayed(text) {
     await browser.pause(1000);
     const webElement = (`//*[contains(text(),"${text}")]`);
+    await $(webElement).waitForExist();
     const matches = await $$(webElement);
     let isDisplayed = false;
     for (let i = 0; i < matches.length; i++) {
@@ -468,6 +475,11 @@ class Utils {
     const webElement = this.getLocator(selector);
     const isDisplayed = await $(webElement).isDisplayed();
     return isDisplayed;
+  }
+
+  async isTextPresentAtSelector(selector, text) {
+    const textAt = await this.getText(selector);
+    return textAt.includes(text);
   }
 
   async scrollUntilTextIsDisplayed(text) {
@@ -675,7 +687,7 @@ class Utils {
   }
 
   async setHorizontalSlider(selector, defaultValue, targetValue) {
-    const xOffset = (targetValue - defaultValue) * 20;
+    const xOffset = (targetValue - defaultValue) * 18;
     const yOffset = 0;
     await this.dragAndDropElement(selector, xOffset, yOffset);
   }
@@ -718,6 +730,13 @@ class Utils {
       return currentDate;
     }
     throw `Unknown investmentDateCode ${investmentDateCode}`;
+  }
+
+  getNextInvestmentDate(currentDate, yearsOffset, monthsOffset, daysOffset) {
+    currentDate.setFullYear(currentDate.getFullYear() + yearsOffset);
+    currentDate.setMonth(currentDate.getMonth() + monthsOffset);
+    currentDate.setDate(currentDate.getDate() + daysOffset);
+    return currentDate;
   }
 }
 module.exports = new Utils();

@@ -287,8 +287,8 @@ class MFInvestmentPage {
     return sum === totalAmount;
   }
 
-  async setYearlySIPIncreasePercent(percent) {
-    await Utils.setHorizontalSlider(MFInvestmentObjects.sipIncreasePercentSlider, 10, percent);
+  async setYearlySIPIncreasePercent(percent, defaultPercent) {
+    await Utils.setHorizontalSlider(MFInvestmentObjects.sipIncreasePercentSlider, defaultPercent, percent);
   }
 
   async clickInvestMoreLinkForExistingFund(fundName) {
@@ -326,6 +326,22 @@ class MFInvestmentPage {
   async upcomingInvestmentTypeIsDisplayed(portfolio, investmentType) {
     return (await Utils.validateElementText(MFInvestmentObjects.upcomingInvestmentType(portfolio),
       investmentType));
+  }
+
+  async modifySIPViaInvestmentCalendar(currentSIPAmount, updatedSIPAmount, recommendedAmount) {
+    if (updatedSIPAmount === recommendedAmount) {
+      console.log('nothing to click');
+    } else if(updatedSIPAmount === currentSIPAmount) {
+      await Utils.clickElement(MFInvestmentObjects.modifySIPAmountViaInvestmentCalenderOption(currentSIPAmount.toString()));
+    } else {
+      await Utils.clickElement(MFInvestmentObjects.modifySIPAmountViaInvestmentCalenderOption('0'));
+      await Utils.setInputField(updatedSIPAmount, MFInvestmentObjects.modifySIPAmountViaInvestmentCalendarField, true);
+    }
+  }
+
+  async validateModifySIPSummaryText(stepUpPercent, stepUpStartMonth) {
+    const expectedSummaryText = `SIP amount will be increased by ${stepUpPercent}% every year from ${stepUpStartMonth}`;
+    return (await Utils.isTextPresentAtSelector(MFInvestmentObjects.modifySIPAmountSummaryTextElement, expectedSummaryText));
   }
 }
 module.exports = new MFInvestmentPage();

@@ -29,7 +29,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     # When I select start date <SIPStartDate>
-    When I set yearly sip increase percent to <SIPIncreasePercentPerYear>
+    When I set yearly sip increase percent from 10 to <SIPIncreasePercentPerYear>
     When I click on "Confirm"
     # When I validate header "Nominee verification required"
     # When I enter data for verify-otp with value 111111
@@ -49,6 +49,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
       # | Every month (SIP)  |  12000 | 60 | T+7 | 7 |
       # | Every month (SIP)  | 15000 | 24 | 5thOfNextMonth | 5 |
       # | Every month (SIP)  | 20000 | 36 | 10thOfNextMonth | 0 |
+      # | Every month (SIP)  | 10000000 | 48 | 15thOfNextMonth | 1 |
 
   Scenario Outline: As a logged in user, I am able to see invalid Amount errors while scheduling "Long Term Wealth" investment in mutual funds via Every month (SIP) for Invest more -> Mutual Funds -> Long Term Wealth 
     When I go back to the dashboard page
@@ -69,6 +70,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
       | Every month (SIP)  | Blank | Amount must be greater than or equal to 1000 |
       | Every month (SIP)  | 1 | Amount must be greater than or equal to 1000 |
       | Every month (SIP)  | 999 | Amount must be greater than or equal to 1000 |
+      | Every month (SIP)  | 10000001 | Amount must be less than or equal to 10000000 |
 
   Scenario Outline: As a logged in user, I am able to see invalid SIP duration errors while scheduling "Long Term Wealth" investment in mutual funds via Every month (SIP) for Invest more -> Mutual Funds -> Long Term Wealth
     When I go back to the dashboard page
@@ -128,7 +130,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
     When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     #When I select start date <UpcomingSIPStartDate>
-    When I set yearly sip increase percent to <SIPIncreasePercentPerYear>
+    When I set yearly sip increase percent from 10 to <SIPIncreasePercentPerYear>
     When I click on "Next"
     Then I validate header "I would like to invest using"
     Then I validate header "Net Banking"
@@ -182,6 +184,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
       # | One time  | 30000 | Default |
       # | One time  | 15000 | T+2 |
       | One time  | 20000 | 1stOfNextMonth |
+      # | One time  | 10000000 | 15thOfNextMonth |
 
   Scenario Outline: As a logged in user, I am able to see invalid Amount errors while scheduling "Long Term Wealth" investment in mutual funds via One Time Investment  for Invest more -> Mutual Funds -> Long Term Wealth
     When I go back to the dashboard page
@@ -202,6 +205,7 @@ Feature: Scripbox Dashboard -> Invest more -> Mutual Funds -> Long Term Wealth
       | One time  | Blank | Amount must be greater than or equal to 5000 |
       | One time  | 1 | Amount must be greater than or equal to 5000 |
       | One time  | 4999 | Amount must be greater than or equal to 5000 |
+      | One time  | 10000001 | Amount must be less than or equal to 10000000 |
 
   Scenario Outline: As a logged in user, I am able to do immediate "Long Term Wealth" investment in mutual funds via One Time Investment  for Invest more -> Mutual Funds -> Long Term Wealth
     When I go back to the dashboard page

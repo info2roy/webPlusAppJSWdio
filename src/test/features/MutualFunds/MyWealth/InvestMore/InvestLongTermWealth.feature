@@ -30,7 +30,7 @@ Feature: Scripbox Dashboard -> My Wealth -> Mutual Funds -> Long Term Wealth -> 
     When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     # When I select start date <SIPStartDate>
-    When I set yearly sip increase percent to <SIPIncreasePercentPerYear>
+    When I set yearly sip increase percent from 10 to <SIPIncreasePercentPerYear>
     When I click on "Confirm"
     # When I validate header "Nominee verification required"
     # When I enter data for verify-otp with value 111111
@@ -72,7 +72,7 @@ Feature: Scripbox Dashboard -> My Wealth -> Mutual Funds -> Long Term Wealth -> 
     When I enter data for duration with value <SIPDuration>
     When I validate investment header "I would like to invest" containing <SIPAmount>, <SIPFrequency> and <SIPDuration>
     #When I select start date <UpcomingSIPStartDate>
-    When I set yearly sip increase percent to <SIPIncreasePercentPerYear>
+    When I set yearly sip increase percent from 10 to <SIPIncreasePercentPerYear>
     When I click on "Next"
     Then I validate header "I would like to invest using"
     Then I validate header "Net Banking"

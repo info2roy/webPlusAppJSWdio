@@ -33,7 +33,8 @@ exports.config = {
     './src/test/features/MutualFunds/InvestTab/ScripboxGuidedPath/InvestLongTermWealth.feature',
     './src/test/features/MutualFunds/InvestTab/InvestMoreInAlreadyInvestedMF.feature',
     './src/test/features/MutualFunds/InvestMore/ScripboxGuidedPath/InvestMoreLongTermWealth.feature',
-    './src/test/features/MutualFunds/MyWealth/InvestMore/InvestLongTermWealth.feature'
+    './src/test/features/MutualFunds/MyWealth/InvestMore/InvestLongTermWealth.feature',
+    './src/test/features/MutualFunds/InvestmentCalendar/ModifyLongTermWealthSIP.feature'
   ],
   // Patterns to exclude.
   exclude: [

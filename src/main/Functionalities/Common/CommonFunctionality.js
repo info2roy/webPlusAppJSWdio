@@ -30,11 +30,8 @@ class CommonFunctionality {
     if (Device.isAndroidApp()) {
       return true;
     }
-    if(await CommonPage.selectFamilyMemberPageHeaderIsDisplayed(2000)) {
-      await CommonPage.clickOnFamilyMemberByName(familyMemberName);
-      return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector));
-    }
-    return false;
+    await CommonPage.clickOnFamilyMemberByName(familyMemberName);
+    return (await CommonPage.elementIsDisplayed(landingPageHeaderSelector));
   }
 
   async expandMore() {
@@ -73,6 +70,5 @@ class CommonFunctionality {
   async updateProfileData(option, value) {
     await CommonPage.enterNewData(option, value);
   }
-
 }
 module.exports = new CommonFunctionality();
