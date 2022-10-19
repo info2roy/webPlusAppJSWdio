@@ -36,11 +36,6 @@ When(/^I validate header "([^"]*)?"$/, async (header) => {
   expect(await Utils.isTextDisplayed(header)).to.be.true;
 });
 
-When(/^I validate header ([^"]+)$/, async (header) => {
-  console.log(`I validate header ${header}`);
-  expect(await Utils.isTextDisplayed(header)).to.be.true;
-});
-
 When(/^I select radio option (.+)$/, async (option) => {
   console.log(`I select radio option ${option}`);
   await Utils.clickRadioButton(option);
@@ -52,7 +47,7 @@ When(/^I enter field (.+) with data (.+)$/, async (fieldId, value) => {
 });
 
 When(/^I validate button "([^"]*)?"$/, async (buttonText) => {
-  console.log(`I validate header ${buttonText}`);
+  console.log(`I validate button ${buttonText}`);
   expect(await Utils.isButtonDisplayed(buttonText)).to.be.true;
 });
 
@@ -73,6 +68,27 @@ When(/^I enter data for (.+) with value (.+)$/, async (option, value) => {
   }
 });
 
+// Following method was started for readin g table data from feature file.
+// When(/^Testing "<Option>"$/,  (data) => {
+//   await console.log(`Reading data`);
+//   // const dataTable = data.raw()
+//   // dataTable.forEach((linkType) => {
+//   //   console.log('linkType in steps:' + linkType)
+//   // })
+//   // await console.log("Printing first row data  ->              "+dataTable.get(1).get(1));
+// });
+
+// Following method was started for readin g table data from feature file.
+// Then(/^Testing "<Option>" and "<value>"$/, async (links) => {
+//   await console.log(`Reading data`);
+//   const linksarray = links.raw();
+//   console.log ("Key - " + linksarray[0][0]);
+//   console.log ("Value - " + linksarray[0][1]);
+//   linksarray.forEach((linkType) => {
+//     console.log('linkType in steps:' + linkType)
+//   })
+// })
+
 When(/^I scroll until ([^"]+) is visible$/, async (text) => {
   console.log(`I scroll until ${text} is visible`);
   await Utils.scrollUntilTextIsDisplayed(text);
@@ -88,7 +104,7 @@ When(/^I click on button containing "([^"]*)?" and (\d+)$/, async (text, sipAmou
   await Utils.clickButtonByTextAndAmount(text, sipAmount);
 });
 
-When(/^I select checkbox (.+)$/, async(checkboxId) => {
+When(/^I select checkbox (.+)$/, async (checkboxId) => {
   console.log(`I select checkbox ${checkboxId}`);
   await Utils.setCheckBoxById(checkboxId);
 });
