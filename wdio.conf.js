@@ -27,14 +27,7 @@ exports.config = {
   // port: 52033,
   // path: '/wd/hub',
   specs: [
-    './src/test/features/LoginViaHomepage.feature',
-    './src/test/features/MutualFunds/MFStatements.feature',
-    './src/test/features/MoreOptions/*.feature',
-    './src/test/features/MutualFunds/InvestTab/ScripboxGuidedPath/InvestLongTermWealth.feature',
-    './src/test/features/MutualFunds/InvestTab/InvestMoreInAlreadyInvestedMF.feature',
-    './src/test/features/MutualFunds/InvestMore/ScripboxGuidedPath/InvestMoreLongTermWealth.feature',
-    './src/test/features/MutualFunds/MyWealth/InvestMore/InvestLongTermWealth.feature',
-    './src/test/features/MutualFunds/InvestmentCalendar/ModifyLongTermWealthSIP.feature'
+    './src/test/features/FeedsListingPage.feature'
   ],
   // Patterns to exclude.
   exclude: [
@@ -56,7 +49,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 1,
+  maxInstances: 3,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -112,15 +105,7 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  // services: [['appium', {
-  //               args: {
-  //                   address: 'localhost',
-  //                   port: 4723
-  //               },
-  //               logPath: './'
-
-  //                     }]
-  //                 ],
+  services: ['chromedriver'],
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber

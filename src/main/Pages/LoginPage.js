@@ -1,91 +1,66 @@
+/* eslint-disable prefer-template */
 const Utils = require('../../support/Utils/Utils');
 const LoginObjects = require('../Objects/LoginObjects');
-const Device = require('../../support/libraries/Device');
+const loginData = require('../../config/data/structured/LoginData');
 
 class LoginPage {
-  async enterUserId(emailID) {
-    await Utils.setInputField(emailID, LoginObjects.userIdField);
-    if (Device.isAndroidApp()) {
-      await Utils.clickElement(LoginObjects.loginPageBanner);
-    }
+
+  async validateHealthDayLogo() {
+    return (await Utils.elementIsDisplayed(LoginObjects.loginPageBanner));
   }
 
-  async clickContinueOrNextButton() {
-    await Utils.clickElement(LoginObjects.continueOrNextButton);
+  async validateLoginForm() {
+    return (await Utils.elementIsDisplayed(LoginObjects.loginForm));
   }
 
-  async clickContinueWithPasswordButton() {
-    await Utils.clickElement(LoginObjects.continueWithPasswordButton);
+  async validateEmailTextBox() {
+    return (await Utils.elementIsDisplayed(LoginObjects.loginEmailField));
   }
 
-  async continueWithPasswordButtonIsDisplayed() {
-    return (await Utils.elementIsDisplayed(LoginObjects.continueWithPasswordButton));
+  async validatePasswordTextBox() {
+    return (await Utils.elementIsDisplayed(LoginObjects.loginPasswordField));
   }
 
-  async firstLoginPageHeaderIsDisplayed() {
-    return await Utils.elementIsDisplayed(LoginObjects.firstLoginPageHeader);
+  async validateShowPasswordCheckbox() {
+    return (await Utils.elementIsDisplayed(LoginObjects.showPasswordCheckBox));
   }
 
-  async secondLoginPageHeaderIsDisplayed() {
-    return await Utils.elementIsDisplayed(LoginObjects.secondLoginPageHeader);
+  async validateloginButton() {
+    return (await Utils.elementIsDisplayed(LoginObjects.logInButton));
   }
 
   async enterEmail(emailID) {
-    if (Device.isMobileWeb() || Device.isDesktop()) {
-      await Utils.setInputField(emailID, LoginObjects.emailField);
-    } else if (Device.isAndroid) {
-      await console.log('Skipping enterEmail for Android');
-    }
-  }
-
-  async clickStartExploring() {
-    if (driver.isAndroid) {
-      await Utils.clickElement(LoginObjects.startExploring);
-    }
-  }
-
-  async scripBoxExclusiveBenifitsDisplayed() {
-    return (await Utils.elementIsDisplayed(LoginObjects.scripBoxExclusiveBenifits));
+    await Utils.setInputField(emailID, LoginObjects.loginEmailField);
   }
 
   async enterPassword(password) {
-    await Utils.setInputField(password, LoginObjects.passwordField);
-    await browser.pause(2000); // App slow to react. Added 2 secs pause.
-    if (Device.isAndroidApp()) {
-      await Utils.clickElement(LoginObjects.passwordPageBanner);
+    await Utils.setInputField(password, LoginObjects.loginPasswordField);
+  }
+
+  async clickLoginButton() {
+    return (await Utils.clickElement(LoginObjects.logInButton));
+  }
+
+  async performLogin(env, user) {
+    console.log(`testing for environment ${env}`);
+    if (env === 'HDAY_QA' || env === 'HDAY_DEV') {
+      switch (user.toString()) {
+        case 'ADMIN_QA':
+          await this.enterEmail(loginData.username_QA);
+          await this.enterPassword(loginData.password);
+          break;
+        case 'ADMIN_DEV':
+          await LoginPage.enterUserId(loginData.username_DEV);
+          await this.enterPassword(loginData.password);
+          break;
+        default:
+          await console.log(user + ' User not available. Please add user to strapi to proceed.');
+      }
+
+    } else {
+      await console.log(user + ' User not available. Please add user to strapi to proceed.');
     }
-  }
-
-  async clickContinueLoginButton() {
-    await Utils.clickElement(LoginObjects.continueLoginButton);
-  }
-
-  async enterOTPHeaderIsDisplayed(timeoutMS = 15000) {
-    return (await Utils.elementIsDisplayed(LoginObjects.enterOTPPageHeader, timeoutMS));
-  }
-
-  async loginYourAccountToContinueHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(LoginObjects.loginYourAccountToContinueHeader));
-  }
-
-  async enterOTPDigit(index, digit) {
-    await Utils.setInputField(digit, LoginObjects.otpField(index));
-  }
-
-  async newTermsHeaderIsDisplayed() {
-    return (await Utils.elementIsDisplayed(LoginObjects.newTermsHeader, 5000));
-  }
-
-  async clickAcceptNewTermsCheckbox() {
-    await Utils.clickElement(LoginObjects.acceptNewTermsCheckBox);
-  }
-
-  async clickIAcceptButton() {
-    await Utils.clickElement(LoginObjects.iAcceptButton);
-  }
-
-  async clickDoItLater() {
-    await Utils.clickElement(LoginObjects.doItLaterLink);
+    this.clickLoginButton();
   }
 
 }

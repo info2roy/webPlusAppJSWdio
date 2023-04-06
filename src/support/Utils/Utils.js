@@ -137,7 +137,7 @@ class Utils {
   async findMatchingElementWithGivenAttributes(selector, atrributes_object) {
     const locator = this.getLocator(selector);
     const elements = await $$(locator);
-    for (let index = 0; index < elements.length; index ++) {
+    for (let index = 0; index < elements.length; index++) {
       let all_matched = true;
       for (attribute in atrributes_object) {
         const value = await elements[index].getAttribute(attribute);
@@ -147,7 +147,7 @@ class Utils {
           break;
         }
       }
-      if(all_matched) {
+      if (all_matched) {
         return elements[index];
       }
     }
@@ -179,7 +179,7 @@ class Utils {
         },
       );
       isDisplayed = await $(locator).isDisplayed();
-    } catch(err) {
+    } catch (err) {
       console.log(err.message);
     }
     console.log(`${locator} is displayed check --> ${isDisplayed}`);
@@ -192,34 +192,12 @@ class Utils {
     return (await element.getAttribute(attribute));
   }
 
-  async setInputField(value, selector, androidPressKeyCode = false) {
+  async setInputField(value, selector = false) {
     if (Device.isWeb()) {
       await this.clickElement(selector);
     }
     const myTextField = await $(this.getLocator(selector));
-    if (Device.isAndroidApp() && androidPressKeyCode) {
-      await myTextField.clearValue();
-      await myTextField.click();
-      const keycodes = {
-        '0': 7,
-        '1': 8,
-        '2': 9,
-        '3': 10,
-        '4': 11,
-        '5': 12,
-        '6': 13,
-        '7': 14,
-        '8': 15,
-        '9': 16
-      };
-      const numStr = value.toString();
-      for (let i = 0; i < numStr.length; i++) {
-        console.log(`i = ${i} char ${numStr[i]} code ${keycodes[numStr[i]]}`);
-        await driver.pressKeyCode(keycodes[numStr[i]]);
-      }
-    } else {
-      await myTextField.setValue(value);
-    }
+    await myTextField.setValue(value);
   }
 
   async setTextObject(value, webElement) {
@@ -295,7 +273,7 @@ class Utils {
     //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollBackward(int)
 
     const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsVerticalList()`;
-    await $(`android=${func}.${forward ? 'scrollForward' : 'scrollBackward' }(${steps})`);
+    await $(`android=${func}.${forward ? 'scrollForward' : 'scrollBackward'}(${steps})`);
   }
 
   async scrollHorizontalUntilTextIntoViewForAndroid(textToBeIntoView, scrollableInstanceId = 0) {
@@ -320,7 +298,7 @@ class Utils {
     //Ref: https://developer.android.com/reference/androidx/test/uiautomator/UiScrollable#scrollBackward(int)
 
     const func = `new UiScrollable(new UiSelector().scrollable(true).instance(${scrollableInstanceId})).setAsHorizontalList()`;
-    await $(`android=${func}.${forward ? 'scrollForward' : 'scrollBackward' }(${steps})`);
+    await $(`android=${func}.${forward ? 'scrollForward' : 'scrollBackward'}(${steps})`);
   }
 
   //Choose a Select tag option by Visible Text
@@ -407,7 +385,7 @@ class Utils {
   }
 
   async clickElementByText(button) {
-    const webElement = (`//*[text()="${button}"]`);
+    const webElement = (`//*[text()="${button}" or @data-testid="${button}"]`);
     // const webElement = (`//*[text()="${button}" or contains(text(),"${button}")]`);
     const myButton = await $(webElement);
     await myButton.click();
@@ -437,7 +415,7 @@ class Utils {
 
   async enterValueInField(fieldId, value) {
     const selector = {
-      web: `//*[@id="${fieldId}" or @placeholder="${fieldId}"]`,
+      web: `//*[@data-testid=${fieldId} or @id=${fieldId}]`,
       app: `~${fieldId}`
     };
     if (isNaN(value)) {
@@ -517,12 +495,12 @@ class Utils {
     const currentYear = parseInt(await this.getText(pickedYearSelector), 10);
     let yearDiff = currentYear - year;
     if (yearDiff > 0) {
-      for (let index = 0; index < yearDiff; index ++) {
+      for (let index = 0; index < yearDiff; index++) {
         await this.clickElement(prevYearButtonSelector);
       }
     } else if (yearDiff < 0) {
       yearDiff = yearDiff * (-1);
-      for (let index = 0; index < yearDiff; index ++) {
+      for (let index = 0; index < yearDiff; index++) {
         await this.clickElement(nextYearButtonSelector);
       }
     }
@@ -595,8 +573,10 @@ class Utils {
    * @param  {object} doneButtonSelector The selector for Done button
    */
   async setMonthAndYearForAndroid(monthYear, monthYearFieldSelector, monthPickerYearSelector, doneButtonSelector) {
-    const monthNames = { 'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5, 'July': 6,
-      'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11 };
+    const monthNames = {
+      'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5, 'July': 6,
+      'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11
+    };
     const [month, year] = this.splitMonthAndYear(monthYear);
     const monthFullName = this.monthAbbrToFullName(month);
     await this.clickElement(monthYearFieldSelector);
@@ -645,7 +625,7 @@ class Utils {
    * @param  {object} daySelector The selector for selecting the day on the calendar
    */
   async setDate(day, monthYear, monthYearFieldSelector, pickedMonthSelector, prevMonthButtonSelector, nextMonthButtonSelector, daySelector) {
-    const monthNames = { 'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12};
+    const monthNames = { 'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12 };
     const parts = monthYear.split(' ');
     const month = parts[0].slice(0, -1);
     const year = parseInt(parts[1].trim(), 10);
@@ -660,13 +640,13 @@ class Utils {
     let monthDiff = monthNames[currentMonth] - monthNames[month];
     console.log(`yearDiff ${yearDiff} monthDiff ${monthDiff}`);
     if (yearDiff > 0 || (yearDiff === 0 && monthDiff >= 0)) {
-      for (let index = 0; index < (12 * yearDiff + monthDiff); index ++) {
+      for (let index = 0; index < (12 * yearDiff + monthDiff); index++) {
         await this.clickElement(prevMonthButtonSelector);
       }
     } else if (yearDiff <= 0) {
       yearDiff = yearDiff * (-1);
       monthDiff = monthDiff * (-1);
-      for (let index = 0; index < (12 * yearDiff + monthDiff); index ++) {
+      for (let index = 0; index < (12 * yearDiff + monthDiff); index++) {
         await this.clickElement(nextMonthButtonSelector);
       }
     }

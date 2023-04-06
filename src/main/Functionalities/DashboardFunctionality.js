@@ -1,5 +1,3 @@
-const DashboardPage = require('../Pages/DashboardPage');
-const DashboardObjects = require('../Objects/DashboardObjects');
 const Utils = require('../../support/Utils/Utils');
 const Device = require('../../support/libraries/Device');
 require('dotenv').config();

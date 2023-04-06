@@ -17,6 +17,6 @@ exports.config = {
       acceptInsecureCerts: true
     }],
 
-    baseUrl: process.env.ANDROMEDA_URL || '',
+    baseUrl: process.env.HOME_URL || '',
   }
 };

@@ -4,10 +4,7 @@ class Device {
   }
 
   setDevice(newDevice) {
-    if (
-      newDevice.toLowerCase() !== 'androidapp' &&
-        newDevice.toLowerCase() !== 'iosapp' &&
-        newDevice.toLowerCase() !== 'desktop' &&
+    if (newDevice.toLowerCase() !== 'desktop' &&
         newDevice.toLowerCase() !== 'mobileweb'
     ) {
       return false;
@@ -15,16 +12,6 @@ class Device {
 
     this.device = newDevice.toLowerCase();
     return this.device;
-  }
-
-  // getELement(locator) -- read object class from here
-
-  isAndroidApp() {
-    return this.device === 'androidapp';
-  }
-
-  isiOSApp() {
-    return this.device === 'iosapp';
   }
 
   isDesktop() {
