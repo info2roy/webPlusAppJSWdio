@@ -1,4 +1,4 @@
-const { Given, When, Then } = require('@wdio/cucumber-framework');
+const { When } = require('@wdio/cucumber-framework');
 const { expect } = require('chai');
 const FeedsPage = require('../../main/Pages/FeedsPage');
 require('dotenv').config();
